@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "QNPC.h"
+#include "Interfaces/OnlineSessionInterface.h"
 #include "QPlayer.generated.h"
 
 /**
@@ -91,4 +92,8 @@ public:
 	void StartConversation(const AQNPC* NPC);
 	/** @brief NPC와의 대화 마무리 공용 인터페이스*/
 	void FinishConversation(const AQNPC* NPC);
+
+public:
+	// lobby test
+	FOnCreateSessionCompleteDelegate CreateSessionCompleteDelegate;
 };

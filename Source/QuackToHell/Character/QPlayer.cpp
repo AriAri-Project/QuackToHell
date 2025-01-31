@@ -10,12 +10,11 @@
 #include "Character/QNPC.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Net/UnrealNetwork.h"
-
+#include "OnlineSubsystem.h"
 
 AQPlayer::AQPlayer()
 	:Super()
 {
-	
 	/*캡슐 콜라이더 산하 컴포넌트*/
 	RootComponent= this->GetCapsuleComponent();
 	//충돌처리
@@ -44,6 +43,17 @@ AQPlayer::AQPlayer()
 	this->GetMesh()->SetRelativeRotation(FRotator(0.f, 0.f, -90.f));
 	/*캡슐 콜라이더 세팅*/
 	this->GetCapsuleComponent()->InitCapsuleSize(21.0f, 21.0f);
+
+	// lobby test
+	IOnlineSubsystem* OnlineSubsystem = IOnlineSubsystem::Get();
+	if (OnlineSubsystem)
+	{
+		if (GEngine != nullptr)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue,
+				FString::Printf(TEXT("Found Subsystem: %s"), *OnlineSubsystem->GetSubsystemName().ToString()));
+		}
+	}
 }
 
 TObjectPtr<AActor> AQPlayer::GetClosestNPC()
