@@ -4,7 +4,9 @@
 
 #include "CoreMinimal.h"
 #include "QNPC.h"
+#include "QCharacter.h"
 #include "Interfaces/OnlineSessionInterface.h"
+#include "OnlineSubsystem.h"
 #include "QPlayer.generated.h"
 
 /**
@@ -95,5 +97,24 @@ public:
 
 public:
 	// lobby test
+	TSubclassOf<UUserWidget> StartLevelWidget;
+	FString NewSessionName = "new session name yeah!";
+	
+	IOnlineSessionPtr OnlineSessionInterface;
+	TSharedPtr<FOnlineSessionSearch> SessionSearch;
+	
+	// delegate 선언
 	FOnCreateSessionCompleteDelegate CreateSessionCompleteDelegate;
+	FOnFindSessionsCompleteDelegate FindSessionsCompleteDelegate;
+	FOnJoinSessionCompleteDelegate JoinSessionCompleteDelegate;
+	
+	UFUNCTION(BlueprintCallable)
+	void CreateSession();
+	// Session이 Create되면 콜백될 함수
+	void OnCreateSessionComplete(FName SessionName, bool bWasSuccessful);
+
+	UFUNCTION(BlueprintCallable)
+	void JoinSession();
+	void OnFindSessionComplete(bool bWasSuccessful);
+	void OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
 };
