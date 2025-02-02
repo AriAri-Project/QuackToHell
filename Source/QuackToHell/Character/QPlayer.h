@@ -94,27 +94,4 @@ public:
 	void StartConversation(const AQNPC* NPC);
 	/** @brief NPC와의 대화 마무리 공용 인터페이스*/
 	void FinishConversation(const AQNPC* NPC);
-
-public:
-	// lobby test
-	TSubclassOf<UUserWidget> StartLevelWidget;
-	FString NewSessionName = "new session name yeah!";
-	
-	IOnlineSessionPtr OnlineSessionInterface;
-	TSharedPtr<FOnlineSessionSearch> SessionSearch;
-	
-	// delegate 선언
-	FOnCreateSessionCompleteDelegate CreateSessionCompleteDelegate;
-	FOnFindSessionsCompleteDelegate FindSessionsCompleteDelegate;
-	FOnJoinSessionCompleteDelegate JoinSessionCompleteDelegate;
-	
-	UFUNCTION(BlueprintCallable)
-	void CreateSession();
-	// Session이 Create되면 콜백될 함수
-	void OnCreateSessionComplete(FName SessionName, bool bWasSuccessful);
-
-	UFUNCTION(BlueprintCallable)
-	void JoinSession();
-	void OnFindSessionComplete(bool bWasSuccessful);
-	void OnJoinSessionComplete(FName SessionName, EOnJoinSessionCompleteResult::Type Result);
 };
