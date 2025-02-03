@@ -9,6 +9,7 @@
 #include "Components/PrimitiveComponent.h"
 #include "Character/QNPC.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Net/UnrealNetwork.h"
 
 
 AQPlayer::AQPlayer()
@@ -92,6 +93,50 @@ void AQPlayer::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherAc
 	}
 }
 
+// -------------------------------------------------------------------------------------------------------- //
+void AQPlayer::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
+	// replicate할 프로퍼티 등록
+	DOREPLIFETIME(AQPlayer, bCanStartConversP2N);
+	DOREPLIFETIME(AQPlayer, bCanFinishConversP2N);
+}
 
+void AQPlayer::ServerRPCCanStartConversP2N_Implementation(const AQNPC* NPC)
+{
+}
 
+void AQPlayer::ServerRPCCanFinishConversP2N_Implementation(const AQNPC* NPC)
+{
+}
+
+void AQPlayer::ServerRPCStartConversation_Implementation(const AQNPC* NPC)
+{
+}
+
+void AQPlayer::ServerRPCFinishConversation_Implementation(const AQNPC* NPC)
+{
+}
+
+// ------------------------------------------------------------------------------------------------- //
+
+bool AQPlayer::GetCanStartConversP2N(const AQNPC* NPC)
+{
+	ServerRPCCanStartConversP2N_Implementation(NPC);
+	return bCanStartConversP2N;
+}
+
+bool AQPlayer::GetCanFinishConversP2N(const AQNPC* NPC)
+{
+	ServerRPCCanFinishConversP2N_Implementation(NPC);
+	return bCanFinishConversP2N;
+}
+
+void AQPlayer::StartConversation(const AQNPC* NPC)
+{
+}
+
+void AQPlayer::FinishConversation(const AQNPC* NPC)
+{
+}

@@ -6,6 +6,7 @@
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
 #include "Templates/Function.h"
+#include "EngineUtils.h"  // 
 
 // Sets default values for this component's properties
 UNPCComponent::UNPCComponent()
@@ -304,10 +305,15 @@ void UNPCComponent::PerformNPCMonologue()
 	MonologuePrompt += TEXT("\nNPC의 혼잣말: ");
 
 	// OpenAI API 요청
-	RequestOpenAIResponse({ MonologuePrompt, 100 }, [](FOpenAIResponse AIResponse)
+	FOpenAIRequest AIRequest;
+	AIRequest.Prompt = MonologuePrompt;
+	AIRequest.MaxTokens = 100;
+
+	RequestOpenAIResponse(AIRequest, [](FOpenAIResponse AIResponse)
 		{
 			UE_LOG(LogTemp, Log, TEXT("Generated Monologue: %s"), *AIResponse.ResponseText);
 		});
+
 
 }
 
@@ -336,6 +342,20 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FString& NPCRes
 {
 	if (!NPCResponse.IsEmpty() && NPCResponse != TEXT("죄송합니다, 답변할 수 없습니다."))
 	{
+
+		FString PlayerName = TEXT("Unknown Player");  // 기본값 설정
+
+		for (APlayerController* PlayerController : TActorRange<APlayerController>(GetWorld()))
+		{
+			if (PlayerController)
+			{
+				PlayerName = PlayerController->GetName();  // 루프 내에서 값 변경
+				ClientRPCReceiveNPCResponse(PlayerName, NPCResponse);
+			}
+		}
+
+		UE_LOG(LogTemp, Log, TEXT("%s received NPC response: %s"), *PlayerName, *NPCResponse);
+
 		UE_LOG(LogTemp, Log, TEXT("Sending NPC response to server: %s"), *NPCResponse);
 
 		// 클라이언트에게도 응답을 전송
@@ -343,8 +363,10 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FString& NPCRes
 
 		// 델리게이트를 활용하여 브로드캐스트 (서버 & 클라이언트에 전달)
 		OnNPCResponseReceived.Broadcast(NPCResponse);
+
 	}
 }
+
 
 bool UNPCComponent::SendNPCResponseToServer_Validate(const FString& NPCResponse)
 {
@@ -361,6 +383,13 @@ void UNPCComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 }
 
 // -------------------------------------------------------------------------------------- //
+
+void UNPCComponent::ClientRPCReceiveNPCResponse_Implementation(const FString& NPCResponse)
+{
+	UE_LOG(LogTemp, Log, TEXT("Client received NPC response: %s"), *NPCResponse);
+
+	// 여기서 UI 업데이트하거나 NPC 대사를 표시하는 로직 추가 가능함.!
+}
 
 void UNPCComponent::ServerRPCGetGreeting_Implementation(const FString& NPCID)
 {
