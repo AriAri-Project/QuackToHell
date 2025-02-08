@@ -13,8 +13,14 @@
 #include "Components/WidgetComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Blueprint/UserWidget.h"
+#include "UI/QPlayer2NSpeechBubbleWidget.h"
 #include "Net/UnrealNetwork.h"
 
+
+TObjectPtr<class UQPlayer2NSpeechBubbleWidget> AQPlayer::GetPlayer2NSpeechBubbleWidget() const
+{
+	return Player2NSpeechBubbleWidget;
+}
 
 AQPlayer::AQPlayer()
 	:Super()
@@ -49,7 +55,15 @@ AQPlayer::AQPlayer()
 	/*캡슐 콜라이더 세팅*/
 	this->GetCapsuleComponent()->InitCapsuleSize(21.0f, 21.0f);
 
-
+	/*허공말풍선 UI 컴포넌트*/
+	this->Player2NSpeechBubbleWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("Player2NSpeechBubbleWidget"));
+	EWidgetSpace WidgetSpace = EWidgetSpace::Screen;
+	this->Player2NSpeechBubbleWidgetComponent->SetWidgetSpace(WidgetSpace);
+	this->Player2NSpeechBubbleWidgetComponent->SetDrawAtDesiredSize(true);
+	this->Player2NSpeechBubbleWidgetComponent->SetupAttachment(RootComponent);
+	TSubclassOf<UQPlayer2NSpeechBubbleWidget> _Player2NSpeechBubbleWidget;
+	//UQPlayer2NSpeechBubbleWidget을 상속한 클래스만 담을 수 있도록 강제한다.
+	this->Player2NSpeechBubbleWidgetComponent->SetWidgetClass(_Player2NSpeechBubbleWidget);
 }
 
 TObjectPtr<AActor> AQPlayer::GetClosestNPC()
@@ -83,6 +97,19 @@ void AQPlayer::BeginPlay()
 	FString _Name = TEXT("플레이어");
 	this->SetCharacterName(_Name);
 	Super::GetNameWidget()->SetNameWidgetText(GetCharacterName());
+
+
+	/*Player2N말풍선 위젯 변수에 객체값 할당*/
+	if (Player2NSpeechBubbleWidget)
+	{
+		UUserWidget* UserWidget = Player2NSpeechBubbleWidgetComponent->GetWidget();
+		if (UserWidget)
+		{
+			Player2NSpeechBubbleWidget = Cast<UQPlayer2NSpeechBubbleWidget>(UserWidget);
+		}
+	}
+	/*Player2N말풍선 위젯 기본적으로 끈 채로 시작*/
+	//Player2NSpeechBubbleWidget->TurnOffSpeechBubble();
 }
 
 

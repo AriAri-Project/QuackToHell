@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "QNPC.h"
+
 #include "QPlayer.generated.h"
 
 /**
@@ -26,6 +27,13 @@ public:
 	/** @brief NPC와의 대화 마무리 공용 인터페이스*/
 	void FinishConversation(const AQNPC* NPC);
 public:
+	/**
+	 * @brief Player2N 스피치버블 위젯을 리턴합니다. NPCController에서 접근하기 위함입니다.
+	 *
+	 * @return Player2Nspeechbubblewidget
+	 */
+	TObjectPtr<class UQPlayer2NSpeechBubbleWidget> GetPlayer2NSpeechBubbleWidget() const;
+public:
 	AQPlayer();
 	/**
 	 * @brief 캐릭터 기준으로 가장 가까이 있는 npc를 반환합니다.
@@ -34,7 +42,12 @@ public:
 	 */
 	TObjectPtr<AActor> GetClosestNPC();
 
-
+protected:
+	/**
+	 * @brief Player2NSpeechBubble UI 컴포넌트입니다.
+	 */
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
+	TObjectPtr<class UWidgetComponent>  Player2NSpeechBubbleWidgetComponent;
 protected:
 	virtual void BeginPlay() override;
 
@@ -92,5 +105,9 @@ private:
 	void OnOverlapEnd(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 	/** @brief overlap에 들어온 대상을 담습니다. */
 	TArray<TObjectPtr<AActor>> OverlappingNPCs;
+private:
+	/** @brief 허공말풍선 위젯 클래스 정보를 담습니다. */
+	UPROPERTY()
+	TObjectPtr<class UQPlayer2NSpeechBubbleWidget> Player2NSpeechBubbleWidget;
 
 };

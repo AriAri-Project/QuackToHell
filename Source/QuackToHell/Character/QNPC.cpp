@@ -5,6 +5,7 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/WidgetComponent.h"
 #include "QLogCategories.h"
+#include "UI/QPlayer2NSpeechBubbleWidget.h"
 #include "Components/SphereComponent.h"
 #include "NPCComponent.h"
 #include "UI/QSpeechBubbleWidget.h"
@@ -28,8 +29,17 @@ AQNPC::AQNPC()
 	TSubclassOf<UQSpeechBubbleWidget> _SpeechBubbleWidget;
 	//UQSpeechBubbleWidget을 상속한 클래스만 담을 수 있도록 강제한다.
 	this->SpeechBubbleWidgetComponent->SetWidgetClass(_SpeechBubbleWidget);
+
+	/*허공말풍선 UI 컴포넌트*/
+	this->Player2NSpeechBubbleWidgetComponent= CreateDefaultSubobject<UWidgetComponent>(TEXT("Player2NSpeechBubbleWidget"));
+	this->Player2NSpeechBubbleWidgetComponent->SetWidgetSpace(WidgetSpace);
+	this->Player2NSpeechBubbleWidgetComponent->SetDrawAtDesiredSize(true);
+	this->Player2NSpeechBubbleWidgetComponent->SetupAttachment(RootComponent);
+	TSubclassOf<UQPlayer2NSpeechBubbleWidget> _Player2NSpeechBubbleWidget;
+	//UQPlayer2NSpeechBubbleWidget을 상속한 클래스만 담을 수 있도록 강제한다.
+	this->Player2NSpeechBubbleWidgetComponent->SetWidgetClass(_Player2NSpeechBubbleWidget);
+
 	/*충돌처리*/
-	//충돌처리
 	InteractionSphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("InteractionSphere"));
 	InteractionSphereComponent->SetupAttachment(RootComponent);
 	InteractionSphereComponent->SetSphereRadius(SphereRadius);
@@ -84,6 +94,11 @@ TObjectPtr<class UQSpeechBubbleWidget> AQNPC::GetSpeechBubbleWidget() const
 	return SpeechBubbleWidget;
 }
 
+TObjectPtr<class UQPlayer2NSpeechBubbleWidget> AQNPC::GetPlayer2NSpeechBubbleWidget() const
+{
+	return Player2NSpeechBubbleWidget;
+}
+
 TObjectPtr<AActor> AQNPC::GetClosestNPC()
 {
 	if (OverlappingNPCs.Num() == 0) {
@@ -136,5 +151,19 @@ void AQNPC::BeginPlay()
 			SpeechBubbleWidget = Cast<UQSpeechBubbleWidget>(UserWidget);
 		}
 	}
+	/*말풍선 위젯 기본적으로 끈 채로 시작*/
+	//SpeechBubbleWidget->TurnOffSpeechBubble();
+	
+	/*Player2N말풍선 위젯 변수에 객체값 할당*/
+	if (Player2NSpeechBubbleWidget)
+	{
+		UUserWidget* UserWidget = Player2NSpeechBubbleWidgetComponent->GetWidget();
+		if (UserWidget)
+		{
+			Player2NSpeechBubbleWidget = Cast<UQPlayer2NSpeechBubbleWidget>(UserWidget);
+		}
+	}
+	/*Player2N말풍선 위젯 기본적으로 끈 채로 시작*/
+	//Player2NSpeechBubbleWidget->TurnOffSpeechBubble();
 }
 

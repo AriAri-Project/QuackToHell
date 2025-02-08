@@ -5,9 +5,10 @@
 
 void UQPlayer2NSpeechBubbleWidget::TurnOnSpeechBubble()
 {
-	
+	this->SetVisibility(ESlateVisibility::Visible);
 }
 
 void UQPlayer2NSpeechBubbleWidget::TurnOffSpeechBubble()
 {
+	this->SetVisibility(ESlateVisibility::Hidden);
 }
