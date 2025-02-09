@@ -14,7 +14,11 @@ enum class EVillageUIType :uint8 {
 	Map,
 	Inventory
 	Player2NSpeechBubble,
-	SpeechBubble
+	SpeechBubble,
+	Inventory, 
+	Record,
+	ChatBox
+
 
 
 };

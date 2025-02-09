@@ -15,11 +15,30 @@ class QUACKTOHELL_API UQInventoryWidget : public UUserWidget
 {
 	GENERATED_BODY()
 protected:
-	virtual void NativeDestruct() override;
+	/*바인드*/
+	/**
+	 * @brie 녹음위젯 컴포넌트 바인드
+	 */
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UQRecordWidget> RecordWidget;
+
+protected:
+	
 	/**
 	 * @brief. 유아이를 끕니다.
 	 * 
 	 */
 	UFUNCTION(BlueprintCallable)
 	void TurnOffUI() const;
+	/**
+	 * @brief. 녹음기록 위젯을 켭니다.
+	 */
+	UFUNCTION(BlueprintCallable)
+	void TurnOnRecordUI() const;
+	/**
+	 * @brief. 녹음기록 위젯을 끕니다.
+	 */
+	UFUNCTION(BlueprintCallable)
+	void TurnOffRecordUI() const;
+
 };

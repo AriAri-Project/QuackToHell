@@ -4,12 +4,19 @@
 #include "UI/QInventoryWidget.h"
 #include "UI/QVillageUIManager.h"
 #include "QLogCategories.h"
-void UQInventoryWidget::NativeDestruct()
-{
-	UE_LOG(LogLogic, Log, TEXT("데이터 어떻게 오는지 확인"));
+#include "UI/QRecordWidget.h"
 
-}
 void UQInventoryWidget::TurnOffUI() const
 {
 	AQVillageUIManager::GetInstance(GetWorld())->TurnOffUI(EVillageUIType::Inventory);
+}
+
+void UQInventoryWidget::TurnOnRecordUI() const
+{
+	RecordWidget->SetVisibility(ESlateVisibility::Visible);
+}
+
+void UQInventoryWidget::TurnOffRecordUI() const
+{
+	RecordWidget->SetVisibility(ESlateVisibility::Hidden);
 }
