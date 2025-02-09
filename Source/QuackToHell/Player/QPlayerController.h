@@ -43,6 +43,9 @@ protected:
 	/** @brief TurnOnOff Map IA 입니다. true일 경우 지도가 활성화/비활성화 됩니다. */
 	UPROPERTY(EditAnyWhere, Category = "Input")
 	TObjectPtr<class UInputAction> TurnOnOffMapAction;
+	/** @brief TurnOnOff Inventory IA 입니다. true일 경우 인벤토리가 활성화/비활성화 됩니다. */
+	UPROPERTY(EditAnyWhere, Category = "Input")
+	TObjectPtr<class UInputAction> TurnOnOffInventoryAction;
 private:
 	/**
 	 * @brief 이동 입력 처리 함수입니다..
@@ -74,14 +77,19 @@ private:
 	 * @param InputValue 입력 값
 	 */
 	void InputTurnOnOffMap(const FInputActionValue& InputValue);
-
+	/**
+	 * @brief 인벤토리 Turn On/Off 입력 처리 함수입니다. InputValue가 true면 끄거나 킵니다.
+	 *
+	 * @param InputValue 입력 값
+	 */
+	void InputTurnOnOffInventory(const FInputActionValue& InputValue);
 	
 	
 	/**
 	 * @brief 회전 활성화 처리 함수함수에서 true가 들어올 시, 이 변수도 true됩니다.
 	 */
 	bool bEnableTurn = false;
-
+private:
 	/**
 	 * @brief 대화를 시작합니다.
 	 */
@@ -90,14 +98,7 @@ private:
 	 * @brief 대화를 중단합니다.
 	 */
 	void EndDialog();
-	/**
-	 * @brief 공백말풍선 UI컴포넌트를 킵니다.
-	 */
-	void TurnOnPlayer2NSpeechBubble();
-	/**
-	 * @brief 공백말풍선 UI컴포넌트를 끕니다.
-	 */
-	void TurnOffPlayer2NSpeechBubble();
+	
 	/**
 	 * @brief 몸을 멈춥니다.
 	 */
@@ -111,7 +112,7 @@ private:
 	 * @brief 대화중일때의 처리를 구현합니다. 1. 몸 멈추기 2. 대화상태로 전환하기
 	 */
 	void ConverseProcess();
-
+private:
 	/** @brief VillageUIManager정보를 갖습니다. */
 	TObjectPtr<class AQVillageUIManager> VillageUIManager;
 

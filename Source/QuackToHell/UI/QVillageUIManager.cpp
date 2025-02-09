@@ -9,6 +9,7 @@
 #include "UI/QPlayer2NSpeechBubbleWidget.h"
 #include "UI/QSpeechBubbleWidget.h"
 #include "QLogCategories.h"
+#include "UI/QInventoryWidget.h"
 
 //(이중포인터아님)클래스타입 재차 명시한 이유: 어떤 클래스의 정적 멤버인지 명확히 지정" 하기 위함(C++문법)
 TObjectPtr<AQVillageUIManager> AQVillageUIManager::Instance = nullptr;
@@ -30,6 +31,7 @@ AQVillageUIManager::AQVillageUIManager()
 	static ConstructorHelpers::FClassFinder<UQP2NWidget> P2NWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_QP2NWidget.WBP_QP2NWidget_C'"));
 	static ConstructorHelpers::FClassFinder<UQDefaultVillageWidget> DefaultVillageWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_QDefailtVillageWidgets.WBP_QDefailtVillageWidgets_C'"));
 	static ConstructorHelpers::FClassFinder<UQMapWidget> MapWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_QMap.WBP_QMap_C'"));
+	static ConstructorHelpers::FClassFinder<UQInventoryWidget> InventoryWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_QInventory.WBP_QInventory_C'"));
 	static ConstructorHelpers::FClassFinder<UQPlayer2NSpeechBubbleWidget> Player2NSpeechBubbleWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_QPlayer2NSpeechBubble.WBP_QPlayer2NSpeechBubble_C'"));
 	static ConstructorHelpers::FClassFinder<UQSpeechBubbleWidget> SpeechBubbleWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_QSpeechBubble.WBP_QSpeechBubble_C'"));
 
@@ -46,6 +48,10 @@ AQVillageUIManager::AQVillageUIManager()
 	if (MapWidgetAsset.Succeeded())
 	{
 		UIWidgetClasses.Add(EVillageUIType::Map, MapWidgetAsset.Class);
+	}
+	if (InventoryWidgetAsset.Succeeded())
+	{
+		UIWidgetClasses.Add(EVillageUIType::Inventory, InventoryWidgetAsset.Class);
 	}
 	if (Player2NSpeechBubbleWidgetAsset.Succeeded())
 	{

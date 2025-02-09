@@ -22,6 +22,12 @@ private:
 	 */
 	UFUNCTION(BlueprintCallable)
 	void TurnOnMapUI();
+	/**
+	 * @brief 녹음기 버튼이 눌릴 시 녹음기 UI를 켭니다.
+	 *
+	 */
+	UFUNCTION(BlueprintCallable)
+	void TurnOnWalkieTakieUI();
 
 
 };

@@ -9,6 +9,7 @@
 #include "UI/QMapWidget.h"
 #include "UI/QP2NWidget.h"
 #include "EnhancedInputComponent.h"
+#include "UI/QInventoryWidget.h"
 #include "Character/QPlayer.h"
 #include "Character/QNPC.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -49,6 +50,7 @@ void AQPlayerController::SetupInputComponent()
 		EnhancedInputComponent->BindAction(InteractionAction, ETriggerEvent::Started, this, &ThisClass::InputInteraction);
 		EnhancedInputComponent->BindAction(EnableTurnAction, ETriggerEvent::Started, this, &ThisClass::InputEnableTurn);
 		EnhancedInputComponent->BindAction(TurnOnOffMapAction, ETriggerEvent::Started, this, &ThisClass::InputTurnOnOffMap);
+		EnhancedInputComponent->BindAction(TurnOnOffInventoryAction, ETriggerEvent::Started, this, &ThisClass::InputTurnOnOffInventory);
 		EnhancedInputComponent->BindAction(EnableTurnAction, ETriggerEvent::Completed, this, &ThisClass::InputEnableTurn);
 
 
@@ -104,14 +106,6 @@ void AQPlayerController::EndDialog()
 
 	//3. 대화 그만하라고 명령한다.
 	NPCController->EndDialog();
-}
-
-void AQPlayerController::TurnOnPlayer2NSpeechBubble()
-{
-}
-
-void AQPlayerController::TurnOffPlayer2NSpeechBubble()
-{
 }
 
 void AQPlayerController::FreezePawn()
@@ -206,6 +200,28 @@ void AQPlayerController::InputTurnOnOffMap(const FInputActionValue& InputValue)
 		VillageUIManager->TurnOnUI(EVillageUIType::Map);
 	}
 	
+}
+
+void AQPlayerController::InputTurnOnOffInventory(const FInputActionValue& InputValue)
+{
+	//인벤토리가 켜져있는지, 꺼져있는지에 따라 켤지끌지가 결정됨.
+	//인벤토리가 있는지부터 확인
+	if (VillageUIManager->GetVillageWidgets().Contains(EVillageUIType::Inventory)) {
+		TObjectPtr<UQInventoryWidget> InventoryWidget = Cast<UQInventoryWidget>((VillageUIManager->GetVillageWidgets())[EVillageUIType::Inventory]);
+
+		//보이는 상태가 아니면 켜기
+		if (InventoryWidget->GetVisibility() != ESlateVisibility::Visible) {
+			VillageUIManager->TurnOnUI(EVillageUIType::Inventory);
+		}
+		//보이면 끄기
+		else {
+			VillageUIManager->TurnOffUI(EVillageUIType::Inventory);
+		}
+	}
+	else {
+		//지도없으면 UI켜기(생성)
+		VillageUIManager->TurnOnUI(EVillageUIType::Inventory);
+	}
 }
 
 void AQPlayerController::InputTurn(const FInputActionValue& InputValue)

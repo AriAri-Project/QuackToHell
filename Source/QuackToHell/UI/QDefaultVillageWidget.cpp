@@ -8,3 +8,8 @@ void UQDefaultVillageWidget::TurnOnMapUI()
 {
 	AQVillageUIManager::GetInstance(GetWorld())->TurnOnUI(EVillageUIType::Map);
 }
+
+void UQDefaultVillageWidget::TurnOnWalkieTakieUI()
+{
+	AQVillageUIManager::GetInstance(GetWorld())->TurnOnUI(EVillageUIType::Inventory);
+}

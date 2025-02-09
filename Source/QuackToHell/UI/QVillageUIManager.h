@@ -12,6 +12,7 @@ enum class EVillageUIType :uint8 {
 	P2N= 0,
 	DefaultVillageUI,
 	Map,
+	Inventory
 	Player2NSpeechBubble,
 	SpeechBubble
 

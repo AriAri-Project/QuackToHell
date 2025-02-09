@@ -22,5 +22,6 @@ protected:
 	 */
 	UFUNCTION(BlueprintCallable)
 	void TurnOffMapUI();
+
 	
 };
