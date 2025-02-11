@@ -21,9 +21,6 @@ void UGodCall::PostInitProperties()
         return;
     }
 
-    // 프롬프트 생성 (기존 삭제 후)
-    UGodFunction::DeleteOldPromptFiles();
-
     World->GetTimerManager().SetTimerForNextTick([World]()
         {
             UGodFunction::GenerateDefendantPrompt(World, [World]()
@@ -42,17 +39,31 @@ void UGodCall::BeginPlay()
 
 }
 
-void UGodCall::EndPlay(const EEndPlayReason::Type EndPlayReason)
-{
-    Super::EndPlay(EndPlayReason);
-    UE_LOG(LogTemp, Log, TEXT("UGodCall::EndPlay() 실행됨. 기존 프롬프트 삭제 중"));
-
-    if (EndPlayReason == EEndPlayReason::Quit)
-    {
-        UE_LOG(LogTemp, Log, TEXT("게임이 종료됨! 기존 프롬프트 삭제."));
-        UGodFunction::DeleteOldPromptFiles();
-    }
-}
+//void UGodCall::EndPlay(const EEndPlayReason::Type EndPlayReason)
+//{
+//    Super::EndPlay(EndPlayReason);
+//    UE_LOG(LogTemp, Log, TEXT("UGodCall::EndPlay() 실행됨. 기존 프롬프트 삭제 중"));
+//    UGodFunction::DeleteOldPromptFiles();
+//
+//    UWorld* World = GetWorld();
+//    if (!World)
+//    {
+//        UE_LOG(LogTemp, Error, TEXT("UGodCall::EndPlay() - World가 NULL입니다."));
+//        return;
+//    }
+//
+//    // 3초 후 PromptToDefendant.json 생성 시작
+//    FTimerHandle TimerHandle;
+//    World->GetTimerManager().SetTimer(TimerHandle, [World]()
+//        {
+//            UE_LOG(LogTemp, Log, TEXT("⏳ 3초 경과 후 PromptToDefendant.json 생성 시작"));
+//            UGodFunction::GenerateDefendantPrompt(World, [World]()
+//                {
+//                    UE_LOG(LogTemp, Log, TEXT("✅ PromptToDefendant.json 생성 완료! 배심원 생성 시작"));
+//                    UGodFunction::GenerateJuryNPC(World, 1);
+//                });
+//        }, 3.0f, false);
+//}
 
 bool UGodCall::StartGodProcess()
 {

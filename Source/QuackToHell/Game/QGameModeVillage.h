@@ -28,5 +28,9 @@ public:
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 
 private:
-	void GeneratePromptsBeforeNextGame();
+	// 3초 후 Prompt 생성 시작
+	void StartPromptGeneration();
+
+	// Timer Handle: 3초 대기 후 프롬프트 생성에 사용
+	FTimerHandle TimerHandle_GeneratePrompt;
 };
