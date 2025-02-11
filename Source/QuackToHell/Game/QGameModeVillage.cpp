@@ -2,6 +2,7 @@
 
 
 #include "Game/QGameModeVillage.h"
+#include "QGameInstanceVillage.h"
 
 #include "QVillageGameState.h"
 #include "Blueprint/WidgetBlueprintLibrary.h"
@@ -87,31 +88,17 @@ void AQGameModeVillage::BeginPlay()
 void AQGameModeVillage::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
 	Super::EndPlay(EndPlayReason);
+
 	UE_LOG(LogTemp, Log, TEXT("QGameModeVillage::EndPlay() - 프롬프트 삭제 및 재생성 예약"));
 
-	// 게임 종료 시 프롬프트 삭제 후 다시 생성
-	if (EndPlayReason == EEndPlayReason::EndPlayInEditor)
-    {
-        UE_LOG(LogTemp, Log, TEXT("🔄 프롬프트 삭제 후 다시 생성 시작"));
-        GeneratePromptsBeforeNextGame();
-    }
-}
-
-void AQGameModeVillage::GeneratePromptsBeforeNextGame()
-{
-	UWorld* World = GetWorld();
-	if (!World)
+	UQGameInstanceVillage* GameInstance = Cast<UQGameInstanceVillage>(GetGameInstance());
+	if (GameInstance)
 	{
-		UE_LOG(LogTemp, Error, TEXT("GeneratePromptsBeforeNextGame() - World가 NULL! 프롬프트 생성 불가"));
-		return;
+		GameInstance->SchedulePromptRegeneration();
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("❌ GameInstance를 찾을 수 없음! 프롬프트 재생성 실패"));
 	}
 
-	UE_LOG(LogTemp, Log, TEXT("GeneratePromptsBeforeNextGame() - 기존 프롬프트 삭제 후 재생성 시작"));
-
-	UE_LOG(LogTemp, Log, TEXT("GeneratePromptsBeforeNextGame() - PromptToDefendant.json 생성 시작"));
-	UGodFunction::GenerateDefendantPrompt(World, [World]()
-		{
-			UE_LOG(LogTemp, Log, TEXT("✅ PromptToDefendant.json 생성 완료! 배심원 생성 시작"));
-			UGodFunction::GenerateJuryNPC(World, 1);
-		});
 }

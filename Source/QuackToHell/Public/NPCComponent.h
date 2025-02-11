@@ -21,7 +21,17 @@ struct FOpenAIRequest
 {
 	GENERATED_BODY()
 
+<<<<<<< Updated upstream
 	int32 SpeakerID; 
+=======
+	UPROPERTY(BlueprintReadWrite, Category = "AI") 
+    FString ResponseText;
+
+	UPROPERTY(BlueprintReadWrite, Category = "AI")
+	int32 SpeakerID;
+
+	UPROPERTY(BlueprintReadWrite, Category = "AI")
+>>>>>>> Stashed changes
 	int32 ListenerID;
 	EConversationType ConversationType;
 	FString Prompt;

@@ -2,6 +2,7 @@
 
 #include "GodFunction.h"
 #include "GodCall.h"
+#include "QGameInstanceVillage.h"
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
 #include "HAL/PlatformFilemanager.h"
@@ -117,29 +118,29 @@ bool UGodFunction::SavePromptToFile(const FString& FileName, const FString& Cont
     FString PromptFolder = FPaths::ProjectSavedDir() + TEXT("Prompt/");
     FString FilePath = PromptFolder + FileName;
 
-    IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
-    PlatformFile.SetReadOnly(*FilePath, false);
-
     // ✅ 절대 경로 변환
     FilePath = FPaths::ConvertRelativePathToFull(FilePath);
 
-    // ✅ 파일 강제 삭제 (존재하지 않는 경우에도 체크)
-    DeleteOldPromptFiles();
+    IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
+    PlatformFile.SetReadOnly(*FilePath, false);
 
-    // ✅ 기존 파일 삭제 시도
-    //if (FPaths::FileExists(FilePath))
-    //{
-    //    UE_LOG(LogTemp, Warning, TEXT("기존 파일 발견: %s → 삭제 후 저장 진행"), *FilePath);
+    // ✅ 기존 파일 삭제 후 저장
+    if (PlatformFile.FileExists(*FilePath))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("⚠️ 기존 파일 삭제 후 덮어쓰기: %s"), *FilePath);
+        PlatformFile.DeleteFile(*FilePath);
+    }
 
-    //    IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
-    //    PlatformFile.SetReadOnly(*FilePath, false);  // ✅ 읽기 전용 해제
-
-    //    if (!PlatformFile.DeleteFile(*FilePath))
-    //    {
-    //        UE_LOG(LogTemp, Error, TEXT("❌ 기존 파일 삭제 실패: %s"), *FilePath);
-    //        return false;
-    //    }
-    //}
+    // ✅ 폴더 존재 여부 확인 및 강제 생성
+    if (!FPaths::DirectoryExists(PromptFolder))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("🚨 폴더가 존재하지 않음. 폴더 생성 시도: %s"), *PromptFolder);
+        if (!PlatformFile.CreateDirectoryTree(*PromptFolder))
+        {
+            UE_LOG(LogTemp, Error, TEXT("❌ 폴더 생성 실패: %s"), *PromptFolder);
+            return false;
+        }
+    }
 
     // 빈 JSON이면 저장하지 않음
     if (Content.IsEmpty())
@@ -149,13 +150,15 @@ bool UGodFunction::SavePromptToFile(const FString& FileName, const FString& Cont
     }
 
     bool bSuccess = FFileHelper::SaveStringToFile(Content, *FilePath);
-    if (bSuccess)
+
+    if (bSuccess && FPaths::FileExists(FilePath))
     {
-        UE_LOG(LogTemp, Log, TEXT("프롬프트 저장 완료: %s"), *FileName);
+        UE_LOG(LogTemp, Log, TEXT("프롬프트 저장 완료: %s"), *FilePath);
     }
     else
     {
-        UE_LOG(LogTemp, Error, TEXT("프롬프트 저장 실패: %s"), *FileName);
+        UE_LOG(LogTemp, Error, TEXT("프롬프트 저장 실패: %s"), *FilePath);
+
     }
 
     return bSuccess;
@@ -234,6 +237,14 @@ void UGodFunction::CallOpenAIAsync(const FString& Prompt, TFunction<void(FString
 
 void UGodFunction::DeleteOldPromptFiles()
 {
+
+    static bool bAlreadyDeleted = false;  // ✅ 중복 실행 방지
+    if (bAlreadyDeleted)
+    {
+        UE_LOG(LogTemp, Log, TEXT("🛑 DeleteOldPromptFiles()가 이미 실행되었으므로 재실행 방지"));
+        return;
+    }
+
     FString PromptFolder = FPaths::ProjectSavedDir() + TEXT("Prompt/");
 
     if (!FPaths::DirectoryExists(PromptFolder))
@@ -266,6 +277,11 @@ void UGodFunction::DeleteOldPromptFiles()
         {
             UE_LOG(LogTemp, Error, TEXT("Failed to delete file: %s"), *FilePath);
         }
+    }
+    bAlreadyDeleted = true;  // ✅ 삭제가 한 번만 실행되도록 설정
+    if (UQGameInstanceVillage* GameInstance = Cast<UQGameInstanceVillage>(GEngine->GetWorldContextFromGameViewport(GEngine->GameViewport)->World()->GetGameInstance()))
+    {
+        GameInstance->StartPromptGeneration();
     }
 }
 
