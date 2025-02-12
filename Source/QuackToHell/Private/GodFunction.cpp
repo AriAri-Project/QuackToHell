@@ -124,7 +124,7 @@ bool UGodFunction::SavePromptToFile(const FString& FileName, const FString& Cont
     FilePath = FPaths::ConvertRelativePathToFull(FilePath);
 
     // ✅ 파일 강제 삭제 (존재하지 않는 경우에도 체크)
-    DeleteOldPromptFiles();
+    // DeleteOldPromptFiles();
 
     // ✅ 기존 파일 삭제 시도
     //if (FPaths::FileExists(FilePath))
@@ -345,8 +345,11 @@ void UGodFunction::GenerateDefendantPrompt(UWorld* World, TFunction<void()> Call
         *EscapeJSON(PromptToGod.Mid(0, 2000))
     );
 
+    FString DefendantFileName = FString::Printf(TEXT("PromptToDefendant.json"));
+    UE_LOG(LogTemp, Log, TEXT("Jury JSON 파일명: %s"), *DefendantFileName);
+
     // OpenAI API 호출
-    CallOpenAIAsync(DefendantPrompt, [World, Callback, DefendantFilePath](FString DefendantJson)
+    CallOpenAIAsync(DefendantPrompt, [World, Callback, DefendantFileName](FString DefendantJson)
         {
             if (!World)
             {
@@ -354,8 +357,9 @@ void UGodFunction::GenerateDefendantPrompt(UWorld* World, TFunction<void()> Call
                 return;
             }
 
+
             FString CleanedJson = UGodFunction::CleanUpJson(DefendantJson);
-            if (UGodFunction::SavePromptToFile(DefendantFilePath, CleanedJson))
+            if (UGodFunction::SavePromptToFile(DefendantFileName, CleanedJson))
             {
                 UE_LOG(LogTemp, Log, TEXT("PromptToDefendant.json 저장 완료!"));
                 if (Callback) Callback();
@@ -379,6 +383,7 @@ void UGodFunction::GenerateNPCPrompts(UWorld* World)
 
     FString PromptToDefendantPath = FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToDefendant.json");
     FString PromptToGodPath = FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToGod.json");
+
 
     if (!FPaths::FileExists(PromptToDefendantPath) || !FPaths::FileExists(PromptToGodPath))
     {
