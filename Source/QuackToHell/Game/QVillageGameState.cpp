@@ -42,8 +42,6 @@ void AQVillageGameState::Tick(float DeltaSeconds)
 
 	if (HasAuthority()) // 서버에서만 실행
 	{
-		UE_LOG(LogTemp, Display, TEXT("AQVillageGameState::Tick"));
-		
 		ServerLeftTimeUntilTrial += DeltaSeconds;
 		ForceNetUpdate();
 
@@ -57,20 +55,9 @@ void AQVillageGameState::Tick(float DeltaSeconds)
 
 void AQVillageGameState::MulticastRPCUpdateServerTime_Implementation()
 {
-	if (!HasAuthority()) // ✅ 클라이언트에서만 로그 출력
-	{
-		UE_LOG(LogLogic, Log, TEXT("[CLIENT] OnRep_UpdateServerTime called! ServerLeftTimeUntilTrial: %f"), ServerLeftTimeUntilTrial);
-	}
-	else
-	{
-		UE_LOG(LogLogic, Log, TEXT("[SERVER] OnRep_UpdateServerTime called!"));
-	}
-	
 	TObjectPtr<UQVillageTimerWidget> VillageTimerUI = Cast<UQVillageTimerWidget>(AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets()[EVillageUIType::VillageTimer]);
 	if (VillageTimerUI)
 	{
-		UE_LOG(LogLogic, Log, TEXT("Get VillageTime Successed"));
-		UE_LOG(LogLogic, Log, TEXT("ServerLeftTimeUntilTrial: %f, TimeUntilTrailMax: %f."), ServerLeftTimeUntilTrial, TimeUntilTrialMax);
 		VillageTimerUI->UpdateServerTimeToUITime(ServerLeftTimeUntilTrial, TimeUntilTrialMax);
 	}
 	else

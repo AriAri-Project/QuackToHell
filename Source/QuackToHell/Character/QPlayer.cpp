@@ -102,8 +102,6 @@ void AQPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 	UE_LOG(LogLogic, Log, TEXT("Player의Beginplay호출"));
-
-	LocalPlayerState = GetWorld()->GetFirstPlayerController()->GetPlayerState<AQPlayerState>();
 	
 	/*이름 세팅*/
 	if (LocalPlayerState)
@@ -124,6 +122,13 @@ void AQPlayer::BeginPlay()
 	}
 	/*Player2N말풍선 위젯 기본적으로 끈 채로 시작*/
 	//Player2NSpeechBubbleWidget->TurnOffSpeechBubble();
+}
+
+void AQPlayer::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+
+	LocalPlayerState = NewController->GetPlayerState<AQPlayerState>();
 }
 
 void AQPlayer::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -151,45 +156,48 @@ void AQPlayer::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLi
 
 }
 
-void AQPlayer::ServerRPCCanStartConversP2N_Implementation(AQNPC* NPC)
+void AQPlayer::ServerRPCCanStartConversP2N_Implementation(AQPlayerController* TargetController,  AQNPC* NPC)
 {
-	bool bResult = true;
-	TObjectPtr<AQPlayerController> MyPlayerController = Cast<AQPlayerController>(GetController());
+    bool bResult = true;
 	TObjectPtr<UNPCComponent> NPCComponent = NPC->FindComponentByClass<UNPCComponent>();
 
 	if (LocalPlayerState == nullptr || NPCComponent == nullptr)
 	{
+		UE_LOG(LogLogic, Log, TEXT("ServerRPCCanStartConversP2N_Implementation -> LocalPlayerState or NPCComponent is null."));
 		bResult = false;
 	}
 	
 	// OpenAI에 Request를 보낼 수 있는지 확인
 	if (!NPCComponent->CanSendOpenAIRequest())
 	{
+		UE_LOG(LogLogic, Log, TEXT("ServerRPCCanStartConversP2N_Implementation -> CanSendOpenAIRequest is false"));
 		bResult = false;
 	}
 	// Player ConversationState가 None인지 확인
 	else if (LocalPlayerState->GetPlayerConversationState() != EConversationType::None)
 	{
+		UE_LOG(LogLogic, Log, TEXT("ServerRPCCanStartConversP2N_Implementation -> Player ConversationState is not None but %s"), *UEnum::GetValueAsString(LocalPlayerState->GetPlayerConversationState()) );
 		bResult = false;
 	}
 	// NPC ConversationState가 None인지 확인
 	else if (NPC->GetNPCConversationState() != EConversationType::None)
 	{
+		UE_LOG(LogLogic, Log, TEXT("ServerRPCCanStartConversP2N_Implementation -> NPC ConversationState is not None"));
 		bResult = false;
 	}
 	// NPC와 이전에 대화한 적 있는지 확인
 	else if (!NPCComponent->GetIsFirstConversation())
 	{
+		UE_LOG(LogLogic, Log, TEXT("ServerRPCCanStartConversP2N_Implementation -> This is not a first conversation."));
 		bResult = false;
 	}
-	MyPlayerController->ClientRPCUpdateCanStartConversP2N_Implementation(bResult);
+	TargetController->ClientRPCUpdateCanStartConversP2N(bResult);
 }
 
 
-void AQPlayer::ServerRPCCanFinishConversP2N_Implementation(AQNPC* NPC)
+void AQPlayer::ServerRPCCanFinishConversP2N_Implementation(AQPlayerController* TargetController, AQNPC* NPC)
 {
 	bool bResult = true;
-	TObjectPtr<AQPlayerController> MyPlayerController = Cast<AQPlayerController>(GetController());
 	TObjectPtr<UNPCComponent> NPCComponent = NPC->FindComponentByClass<UNPCComponent>();
 
 	// Player ConversationState가 None인지 확인
@@ -210,7 +218,7 @@ void AQPlayer::ServerRPCCanFinishConversP2N_Implementation(AQNPC* NPC)
 		bResult = false;
 	}
 	
-	MyPlayerController->ClientRPCUpdateCanFinishConversP2N_Implementation(bResult);
+	TargetController->ClientRPCUpdateCanFinishConversP2N(bResult);
 }
 
 
@@ -224,7 +232,7 @@ void AQPlayer::ServerRPCStartConversation_Implementation(AQNPC* NPC)
 	AQPlayer* LocalPlayer = Cast<AQPlayer>(LocalPlayerState->GetPawn());
 	if (LocalPlayer)
 	{
-		MulticastRPCStartConversation_Implementation(LocalPlayer, NPC);
+		MulticastRPCStartConversation(LocalPlayer, NPC);
 	}
 
 	// OpenAI에게 NPC의 첫 대사 요청하기
@@ -232,17 +240,23 @@ void AQPlayer::ServerRPCStartConversation_Implementation(AQNPC* NPC)
 	FOpenAIRequest Request(
 		LocalPlayerState->GetPlayerId(),
 		NPC->FindComponentByClass<UNPCComponent>()->GetNPCID(),
-		EConversationType::PStart,
+		EConversationType::P2N,
 		Temp
 	);
-	NPC->FindComponentByClass<UNPCComponent>()->GetNPCResponse(Request);
+	NPC->FindComponentByClass<UNPCComponent>()->ServerRPCGetNPCResponse(Request);
 }
 
 
 
 void AQPlayer::MulticastRPCStartConversation_Implementation(AQPlayer* Player, AQNPC* NPC)
 {
-	if (HasAuthority() || LocalPlayerState->GetPawn() == Player)
+	if (LocalPlayerState == nullptr)
+	{
+		UE_LOG(LogLogic, Log, TEXT("AQPlayer::MulticastRPCStartConversation_Implementation -> LocalPlayerState is null."));
+		return;
+	}
+	AQPlayer* LocalPlayer = Cast<AQPlayer>(LocalPlayerState->GetPawn());
+	if (HasAuthority() || LocalPlayer == Player)
 	{
 		return;
 	}
@@ -251,7 +265,7 @@ void AQPlayer::MulticastRPCStartConversation_Implementation(AQPlayer* Player, AQ
 	Cast<AQDynamicNPC>(NPC)->GetPlayer2NSpeechBubbleWidget()->TurnOnSpeechBubble();
 }
 
-void AQPlayer::ServerRPCFinishConversation_Implementation(AQNPC* NPC)
+void AQPlayer::ServerRPCFinishConversation_Implementation(AQPlayerController* TargetController,  AQNPC* NPC)
 {
 	bool bResult = false;
 	// 상태 업데이트
@@ -267,11 +281,11 @@ void AQPlayer::ServerRPCFinishConversation_Implementation(AQNPC* NPC)
 	AQPlayer* LocalPlayer = Cast<AQPlayer>(LocalPlayerState->GetPawn());
 	if (LocalPlayer)
 	{
-		MulticastRPCFinishConversation_Implementation(LocalPlayer, NPC);
+		MulticastRPCFinishConversation(LocalPlayer, NPC);
 	}
 
 	//클라이언트에게 대화끝내기 처리 요청
-	Cast<AQPlayerController>(GetController())->ClientRPCFinishConversation_Implementation(NPC);
+	TargetController->ClientRPCFinishConversation(NPC);
 }
 
 

@@ -70,6 +70,9 @@ public:
 
 	void SetPlayerConverstationState(EConversationType NewState)
 	{
+		UE_LOG(LogTemp, Log, TEXT("SetPlayerConverstationState: 기존 상태 = %s, 새로운 상태 = %s"), 
+				   *UEnum::GetValueAsString(PlayerConversationState), *UEnum::GetValueAsString(NewState));
+
 		PlayerConversationState = NewState;
 	}
 	

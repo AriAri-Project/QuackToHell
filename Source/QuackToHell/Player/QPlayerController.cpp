@@ -74,7 +74,7 @@ void AQPlayerController::ClientRPCUpdateCanFinishConversP2N_Implementation(bool 
 		TObjectPtr<AQDynamicNPCController> NPCController = Cast<AQDynamicNPCController>(NPC->GetController());
 
 		//서버 대화로직 실행
-		Cast<AQPlayer>(this->GetPawn())->ServerRPCFinishConversation(NPC);
+		Cast<AQPlayer>(this->GetPawn())->ServerRPCFinishConversation(this, NPC);
 	}
 	else
 	{
@@ -213,7 +213,7 @@ void AQPlayerController::InputInteraction(const FInputActionValue& InputValue)
 	TObjectPtr<AQPlayer> _Player = Cast<AQPlayer>(this->GetPawn());
 	TObjectPtr<AQDynamicNPC> NPC = Cast<AQDynamicNPC>(_Player->GetClosestNPC());
 	//1. 물어봄
-	Cast<AQPlayer>(GetPawn())->ServerRPCCanStartConversP2N(NPC);
+	Cast<AQPlayer>(GetPawn())->ServerRPCCanStartConversP2N(this, NPC);
 	UE_LOG(LogLogic, Log, TEXT("E버튼 누름!"));
 	
 }

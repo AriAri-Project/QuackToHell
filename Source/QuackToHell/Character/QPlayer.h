@@ -43,6 +43,7 @@ protected:
 	TObjectPtr<class UWidgetComponent>  Player2NSpeechBubbleWidgetComponent;
 protected:
 	virtual void BeginPlay() override;
+	virtual void PossessedBy(AController* NewController) override;
 
 	/**
 	 * @brief 스프링암 컴포넌트입니다.
@@ -74,11 +75,11 @@ protected:
 
 	/** @brief 해당 NPC와 대화가능한지 check*/
 	UFUNCTION(Server, Reliable)
-	void ServerRPCCanStartConversP2N(AQNPC* NPC);
+	void ServerRPCCanStartConversP2N(AQPlayerController* TargetController,  AQNPC* NPC);
 
 	/** @brief 해당 NPC와의 대화를 마칠 수 있는 check*/
 	UFUNCTION(Server, Reliable)
-	void ServerRPCCanFinishConversP2N(AQNPC* NPC);
+	void ServerRPCCanFinishConversP2N(AQPlayerController* TargetController,  AQNPC* NPC);
 
 
 	// NPC 대화 관련 대화 실행/마무리 함수 ---------------------------------------------------
@@ -86,13 +87,10 @@ protected:
 	UFUNCTION(Server, Reliable)
 	void ServerRPCStartConversation(AQNPC* NPC);
 	
-	
 	/** @brief NPC와의 대화 마무리*/
 	UFUNCTION(Server, Reliable)
-	void ServerRPCFinishConversation(AQNPC* NPC);
-
-
-
+	void ServerRPCFinishConversation(AQPlayerController* TargetController,  AQNPC* NPC);
+	
 	UFUNCTION(NetMulticast, Reliable)
 	void MulticastRPCStartConversation(AQPlayer* Player, AQNPC* NPC);
 

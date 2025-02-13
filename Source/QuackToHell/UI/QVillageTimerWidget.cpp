@@ -12,7 +12,6 @@ void UQVillageTimerWidget::UpdateServerTimeToUITime(float AccumulatedTime, const
 		UE_LOG(LogLogic, Log, TEXT("UQVillageTimerWidget UpdateServerTimeToUITime: MaxTime cannot be zero"));
 		return;
 	}
-	UE_LOG(LogLogic, Log, TEXT("LeftTime: %f, MaxTime: %f"), AccumulatedTime, MaxTime);
 	NormalizedTime = AccumulatedTime / MaxTime;
 }
 

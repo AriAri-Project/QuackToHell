@@ -2,6 +2,8 @@
 
 
 #include "UI/QVillageUIManager.h"
+
+#include "EngineUtils.h"
 #include "UI/QP2NWidget.h"
 #include "UI/QDefaultVillageWidget.h"
 #include "UI/QRecordWidget.h"
@@ -27,6 +29,8 @@ AQVillageUIManager::AQVillageUIManager()
 	}
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
+	bReplicates = true;
+	bAlwaysRelevant = true;
 
 	//UI타입과 UI클래스 매핑
 	/**
@@ -88,9 +92,20 @@ void AQVillageUIManager::TurnOffUI(EVillageUIType UIType)
 
 TObjectPtr<AQVillageUIManager> AQVillageUIManager::GetInstance(TObjectPtr<UWorld> World)
 {
-	if (!Instance) {
-		//없으면 생성
-		Instance = World->SpawnActor<AQVillageUIManager>(AQVillageUIManager::StaticClass());
+	if (!Instance)
+	{
+		// ✅ 클라이언트에서도 `AQVillageUIManager` 찾도록 설정
+		for (TActorIterator<AQVillageUIManager> It(World); It; ++It)
+		{
+			Instance = *It;
+			break;
+		}
+
+		// ✅ 그래도 없으면 생성 (서버에서만 실행)
+		if (!Instance && World->GetNetMode() != NM_Client)
+		{
+			Instance = World->SpawnActor<AQVillageUIManager>(AQVillageUIManager::StaticClass());
+		}
 	}
 	return Instance;
 }
@@ -108,7 +123,18 @@ void AQVillageUIManager::BeginPlay()
 		Instance = this;
 	}
 	//UI초기화
-	OnMapLoad();
+	if (GetNetMode() == NM_Client || HasAuthority())
+	{
+		OnMapLoad();
+	}
+	if (!HasAuthority())
+	{
+		UE_LOG(LogLogic, Log, TEXT("Client -> AQVillageUIManager::BeginPlay()"));
+	}
+	else
+	{
+		UE_LOG(LogLogic, Log, TEXT("Server -> AQVillageUIManager::BeginPlay()"));
+	}
 	
 }
 
@@ -127,7 +153,6 @@ void AQVillageUIManager::EndPlay(const EEndPlayReason::Type EndPlayReason)
 
 void AQVillageUIManager::OnMapLoad()
 {
-
 	//마을맵이면 기본으로 활성화 할 것들
 	/**
 	* @TODO: 기본 마을 UI들 띄운다(초기화작업).
@@ -135,6 +160,15 @@ void AQVillageUIManager::OnMapLoad()
 	*/
 	TurnOnUI(EVillageUIType::DefaultVillageUI);
 	UE_LOG(LogLogic, Log, TEXT("UIManager - 디폴트위젯: %s"), *ActivedVillageWidgets[EVillageUIType::DefaultVillageUI].GetName());
+
+	if (!HasAuthority())
+	{
+		UE_LOG(LogLogic, Log, TEXT("Client -> AQVillageUIManager::OnMapLoad()"));
+	}
+	else
+	{
+		UE_LOG(LogLogic, Log, TEXT("Server -> AQVillageUIManager::OnMapLoad()"));
+	}
 }
 
 bool AQVillageUIManager::IsVillageMap()

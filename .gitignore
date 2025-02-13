@@ -595,3 +595,5 @@ FodyWeavers.xsd
 .idea/.idea.QuackToHell/.idea/
 
 OpenAIAuth.ini
+
+Config/DefaultGame.ini
