@@ -125,6 +125,7 @@ bool UGodFunction::SavePromptToFile(const FString& FileName, const FString& Cont
     // DeleteOldPromptFiles();
 
     // ✅ 기존 파일 삭제 후 저장
+    IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
     if (PlatformFile.FileExists(*FilePath))
     {
         UE_LOG(LogTemp, Warning, TEXT("⚠️ 기존 파일 삭제 후 덮어쓰기: %s"), *FilePath);
@@ -440,13 +441,14 @@ void UGodFunction::GenerateJuryNPC(UWorld* World, int JuryIndex)
     FString PromptToGod = ReadFileContent(FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToGod.json"));
     FString PromptToDefendant = ReadFileContent(FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToDefendant.json"));
 
+    int32 AssignedNPCID = 2000 + JuryIndex;
     FString JuryPrompt = FString::Printf(
         TEXT("{ \"task\": \"배심원%d 정보를 생성하세요.\", "
             "\"instructions\": ["
             "\"PromptToGod.json과 PromptToDefendant.json을 참고하여 배심원(NPC) 한 명의 정보를 생성하세요.\", "
-            "\"npcid 값을 2001부터 순차적으로 증가하는 정수로 설정하세요.\"], "
+            "\"npcid\"의 값은 %d여야 합니다\", "
             "\"references\": { \"PromptToGod\": \"%s\", \"PromptToDefendant\": \"%s\" } }"),
-        JuryIndex, *EscapeJSON(PromptToGod.Mid(0, 2000)), *EscapeJSON(PromptToDefendant.Mid(0, 2000))
+        JuryIndex, AssignedNPCID, *EscapeJSON(PromptToGod.Mid(0, 2000)), *EscapeJSON(PromptToDefendant.Mid(0, 2000))
     );
 
     FString JuryFileName = FString::Printf(TEXT("PromptToJury%d.json"), JuryIndex);
@@ -506,13 +508,14 @@ void UGodFunction::GenerateResidentNPC(UWorld* World, int ResidentIndex)
     FString PromptToGod = ReadFileContent(FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToGod.json"));
     FString PromptToDefendant = ReadFileContent(FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToDefendant.json"));
 
+    int32 AssignedNPCID = 2003 + ResidentIndex;
     FString ResidentPrompt = FString::Printf(
         TEXT("{ \"task\": \"마을 주민%d 정보를 생성하세요.\", "
             "\"instructions\": ["
             "\"PromptToGod.json과 PromptToDefendant.json을 참고하여 한 명의 마을 주민(NPC) 정보를 생성하세요.\", "
-            "\"npcid 값을 2004부터 순차적으로 증가하는 정수로 설정하세요.\"], "
+            "\"npcid\"의 값은 %d여야 합니다\", "
             "\"references\": { \"PromptToGod\": \"%s\", \"PromptToDefendant\": \"%s\" } }"),
-        ResidentIndex, *EscapeJSON(PromptToGod.Mid(0, 2000)), *EscapeJSON(PromptToDefendant.Mid(0, 2000))
+        ResidentIndex, AssignedNPCID, *EscapeJSON(PromptToGod.Mid(0, 2000)), *EscapeJSON(PromptToDefendant.Mid(0, 2000))
     );
 
     FString ResidentFileName = FString::Printf(TEXT("PromptToResident%d.json"), ResidentIndex);

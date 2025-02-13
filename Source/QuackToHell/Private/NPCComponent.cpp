@@ -318,7 +318,7 @@ void UNPCComponent::ContinueNPCToNPCDialog(const FOpenAIRequest& Request)
 // N혼잣말 생성
 void UNPCComponent::PerformNPCMonologue(const FOpenAIRequest& Request)
 {
-	FString NPCIDString = FString::FromInt(NPCID);
+	FString NPCIDString = FString(NPCID);
 	FString Context;
 	FString SpeakerNPCID = FString::FromInt(Request.SpeakerID);  // NPC ID 변환
 
