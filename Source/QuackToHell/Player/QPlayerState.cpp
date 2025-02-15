@@ -14,6 +14,7 @@ AQPlayerState::AQPlayerState()
 {
 	/*멀티플레이 관련*/
 	bReplicates = true;
+	PlayerConversationState = EConversationType::None;
 }
 
 void AQPlayerState::BeginPlay()

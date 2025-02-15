@@ -63,8 +63,9 @@ void UQP2NWidget::HandleEnterEndButton()
     //대화마치기 가능한지 서버에게 물어보기
     TObjectPtr<AQPlayer> _Player = Cast<AQPlayer>(ConversingPlayer->GetPawn());
     TObjectPtr<AQNPC> _NPC = Cast<AQNPC>(ConversingNPC->GetPawn());
-    
-    _Player->ServerRPCCanFinishConversP2N_Implementation(_NPC);    
+
+    AQPlayerController* LocalPlayerController = Cast<AQPlayerController>(_Player->GetController());
+    _Player->ServerRPCCanFinishConversP2N_Implementation(LocalPlayerController, _NPC);    
 }
 
 

@@ -196,5 +196,5 @@ void AQDynamicNPCController::Response(FString& Text, EConversationType InputConv
     OpenAIRequest.SpeakerID = NPCComponent->GetNPCID();
 
 
-    NPCComponent->GetNPCResponse(OpenAIRequest);
+    NPCComponent->ServerRPCGetNPCResponse(OpenAIRequest);
 }

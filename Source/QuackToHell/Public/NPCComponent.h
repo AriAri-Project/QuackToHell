@@ -16,25 +16,27 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNPCResponseReceived, const FStrin
  * @author 박시언
  * @brief OpenAI API 요청을 위한 구조체
  */
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FOpenAIRequest
 {
 	GENERATED_BODY()
 
-<<<<<<< Updated upstream
-	int32 SpeakerID; 
-=======
-	UPROPERTY(BlueprintReadWrite, Category = "AI") 
-    FString ResponseText;
+	UPROPERTY(BlueprintReadWrite, Category = "AI")
+	FString ResponseText;
 
 	UPROPERTY(BlueprintReadWrite, Category = "AI")
 	int32 SpeakerID;
 
 	UPROPERTY(BlueprintReadWrite, Category = "AI")
->>>>>>> Stashed changes
 	int32 ListenerID;
+
+	UPROPERTY(BlueprintReadWrite, Category = "AI")
 	EConversationType ConversationType;
+
+	UPROPERTY(BlueprintReadWrite, Category = "AI")
 	FString Prompt;
+
+	UPROPERTY(BlueprintReadWrite, Category = "AI")
 	int32 MaxTokens = 150;
 
 	// 기본 생성자
@@ -80,7 +82,7 @@ private:
  * @author 박시언
  * @brief OpenAI API 응답을 위한 구조체
  */
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FOpenAIResponse
 {
 	GENERATED_BODY()
@@ -212,7 +214,7 @@ public:
 	 * @param PlayerInput 플레이어의 입력 대사
 	 */
 	UFUNCTION(BlueprintCallable, Category = "NPC")
-	virtual void StartConversation(const FString& PlayerInput);
+	virtual void StartConversation(const FOpenAIRequest& Request);
 
 	/**
 	 * @author 박시언
@@ -222,7 +224,7 @@ public:
 	 * @param SecondNPCID 대화를 받는 NPC의 ID입니다.
 	 */
 	UFUNCTION(BlueprintCallable, Category = "NPC")
-	void StartNPCToNPCDialog(const FString& SpeakerNPCID, const FString& ListenerNPCID);
+	void StartNPCToNPCDialog(const FOpenAIRequest& Request);
 
 	/**
 	 * @author 박시언
@@ -233,13 +235,13 @@ public:
 	 * @param ReceivedMessage 상대 NPC가 보낸 대사입니다.
 	 * @param RemainingTurns 남은 대화 턴 수입니다.
 	 */
-	void ContinueNPCToNPCDialog(const FString& SpeakerNPCID, const FString& ListenerNPCID, const FString& ReceivedMessage, int RemainingTurns);
+	void ContinueNPCToNPCDialog(const FOpenAIRequest& Request);
 
 	/**
 	 * @author 박시언
 	 * @brief NPC가 혼잣말을 실행하는 함수입니다.
 	 */
-	void PerformNPCMonologue(int32 NPCID);
+	void PerformNPCMonologue(const FOpenAIRequest& Request);
 
 	/**
 	 * @brief 특정 NPC의 대화 기록을 가져올 수 있습니다.
@@ -359,7 +361,7 @@ public:
 	 * @param NPCResponse OpenAI로부터 생성된 NPC의 대사
 	 */
 	UFUNCTION(Server, Reliable, WithValidation)
-	void SendNPCResponseToServer(const FString& NPCResponse);
+	void SendNPCResponseToServer(const FOpenAIResponse& AIResponse);
 
 protected:
 	/**
@@ -368,7 +370,7 @@ protected:
 	 *
 	 * @param NPCResponse OpenAI로부터 생성된 NPC의 대사
 	 */
-	void SendNPCResponseToServer_Implementation(const FString& NPCResponse);
+	void SendNPCResponseToServer_Implementation(const FOpenAIResponse& AIResponse);
 
 	/**
 	 * @author 박시언
@@ -377,7 +379,7 @@ protected:
 	 * @param NPCResponse 전송될 NPC 대사
 	 * @return true면 유효한 데이터로 간주
 	 */
-	bool SendNPCResponseToServer_Validate(const FString& NPCResponse);
+	bool SendNPCResponseToServer_Validate(const FOpenAIResponse& AIResponse);
 
 public:
 	/**
@@ -385,7 +387,7 @@ public:
 	 * @brief NPC 별로 P2N 대화 기록을 저장합니다.
 	 */
 	UFUNCTION(BlueprintCallable, Category = "Dialogue")
-	void SaveP2NDialogue(const FString& PlayerInput, const FString& NPCResponse);
+	void SaveP2NDialogue(const FOpenAIRequest& Request, const FOpenAIResponse& Response);
 
 	/**
 	 * @author 박시언
@@ -405,23 +407,23 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 protected:
+	
 	// Server RPC 함수
 	/** @brief 서버에게 NPC의 시작멘트를 요청한다. ServerRPC 내부에서 ClientRPC를 호출. 클라이언트는 ClientRPC 내부에서 응답 멘트를 저장 */
+	/*
 	UFUNCTION()
-	void GetNPCResponseServer(FOpenAIRequest Request);
+	void GetNPCResponseServer(FOpenAIRequest Request); */
 
 	/** @brief 서버에게 플레이어 입력에 대한 NPC의 응답을 요청한다. ServerRPC 내부에서 ClientRPC를 호출. 클라이언트는 ClientRPC 내부에서 응답 멘트를 저장*/
+/*
 	UFUNCTION(Server, Reliable)
-	void ServerRPCGetNPCResponseP2N(FOpenAIRequest Request);
+	void ServerRPCGetNPCResponseP2N(FOpenAIRequest Request); */
 	
-	/** @breif */
-	UFUNCTION()
-	void OnSuccessGetNPCResponse(FOpenAIResponse Response);
 
 public:
 	// 공용 인터페이스
 	/** @brief */
-	UFUNCTION()
-	void GetNPCResponse(FOpenAIRequest Request);
+	UFUNCTION(Server, Reliable)
+	void ServerRPCGetNPCResponse(FOpenAIRequest Request);
 
 };
