@@ -2,6 +2,7 @@
 
 #include "GodFunction.h"
 #include "GodCall.h"
+#include "QGameInstanceVillage.h"
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
 #include "HAL/PlatformFilemanager.h"
@@ -117,29 +118,30 @@ bool UGodFunction::SavePromptToFile(const FString& FileName, const FString& Cont
     FString PromptFolder = FPaths::ProjectSavedDir() + TEXT("Prompt/");
     FString FilePath = PromptFolder + FileName;
 
-    IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
-    PlatformFile.SetReadOnly(*FilePath, false);
-
     // ✅ 절대 경로 변환
     FilePath = FPaths::ConvertRelativePathToFull(FilePath);
 
     // ✅ 파일 강제 삭제 (존재하지 않는 경우에도 체크)
-    DeleteOldPromptFiles();
+    // DeleteOldPromptFiles();
 
-    // ✅ 기존 파일 삭제 시도
-    //if (FPaths::FileExists(FilePath))
-    //{
-    //    UE_LOG(LogTemp, Warning, TEXT("기존 파일 발견: %s → 삭제 후 저장 진행"), *FilePath);
+    // ✅ 기존 파일 삭제 후 저장
+    IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
+    if (PlatformFile.FileExists(*FilePath))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("⚠️ 기존 파일 삭제 후 덮어쓰기: %s"), *FilePath);
+        PlatformFile.DeleteFile(*FilePath);
+    }
 
-    //    IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
-    //    PlatformFile.SetReadOnly(*FilePath, false);  // ✅ 읽기 전용 해제
-
-    //    if (!PlatformFile.DeleteFile(*FilePath))
-    //    {
-    //        UE_LOG(LogTemp, Error, TEXT("❌ 기존 파일 삭제 실패: %s"), *FilePath);
-    //        return false;
-    //    }
-    //}
+    // ✅ 폴더 존재 여부 확인 및 강제 생성
+    if (!FPaths::DirectoryExists(PromptFolder))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("🚨 폴더가 존재하지 않음. 폴더 생성 시도: %s"), *PromptFolder);
+        if (!PlatformFile.CreateDirectoryTree(*PromptFolder))
+        {
+            UE_LOG(LogTemp, Error, TEXT("❌ 폴더 생성 실패: %s"), *PromptFolder);
+            return false;
+        }
+    }
 
     // 빈 JSON이면 저장하지 않음
     if (Content.IsEmpty())
@@ -149,13 +151,15 @@ bool UGodFunction::SavePromptToFile(const FString& FileName, const FString& Cont
     }
 
     bool bSuccess = FFileHelper::SaveStringToFile(Content, *FilePath);
-    if (bSuccess)
+
+    if (bSuccess && FPaths::FileExists(FilePath))
     {
-        UE_LOG(LogTemp, Log, TEXT("프롬프트 저장 완료: %s"), *FileName);
+        UE_LOG(LogTemp, Log, TEXT("프롬프트 저장 완료: %s"), *FilePath);
     }
     else
     {
-        UE_LOG(LogTemp, Error, TEXT("프롬프트 저장 실패: %s"), *FileName);
+        UE_LOG(LogTemp, Error, TEXT("프롬프트 저장 실패: %s"), *FilePath);
+
     }
 
     return bSuccess;
@@ -234,6 +238,14 @@ void UGodFunction::CallOpenAIAsync(const FString& Prompt, TFunction<void(FString
 
 void UGodFunction::DeleteOldPromptFiles()
 {
+
+    static bool bAlreadyDeleted = false;  // ✅ 중복 실행 방지
+    if (bAlreadyDeleted)
+    {
+        UE_LOG(LogTemp, Log, TEXT("🛑 DeleteOldPromptFiles()가 이미 실행되었으므로 재실행 방지"));
+        return;
+    }
+
     FString PromptFolder = FPaths::ProjectSavedDir() + TEXT("Prompt/");
 
     if (!FPaths::DirectoryExists(PromptFolder))
@@ -266,6 +278,11 @@ void UGodFunction::DeleteOldPromptFiles()
         {
             UE_LOG(LogTemp, Error, TEXT("Failed to delete file: %s"), *FilePath);
         }
+    }
+    bAlreadyDeleted = true;  // ✅ 삭제가 한 번만 실행되도록 설정
+    if (UQGameInstanceVillage* GameInstance = Cast<UQGameInstanceVillage>(GEngine->GetWorldContextFromGameViewport(GEngine->GameViewport)->World()->GetGameInstance()))
+    {
+        GameInstance->StartPromptGeneration();
     }
 }
 
@@ -345,8 +362,11 @@ void UGodFunction::GenerateDefendantPrompt(UWorld* World, TFunction<void()> Call
         *EscapeJSON(PromptToGod.Mid(0, 2000))
     );
 
+    FString DefendantFileName = FString::Printf(TEXT("PromptToDefendant.json"));
+    UE_LOG(LogTemp, Log, TEXT("Jury JSON 파일명: %s"), *DefendantFileName);
+
     // OpenAI API 호출
-    CallOpenAIAsync(DefendantPrompt, [World, Callback, DefendantFilePath](FString DefendantJson)
+    CallOpenAIAsync(DefendantPrompt, [World, Callback, DefendantFileName](FString DefendantJson)
         {
             if (!World)
             {
@@ -354,8 +374,9 @@ void UGodFunction::GenerateDefendantPrompt(UWorld* World, TFunction<void()> Call
                 return;
             }
 
+
             FString CleanedJson = UGodFunction::CleanUpJson(DefendantJson);
-            if (UGodFunction::SavePromptToFile(DefendantFilePath, CleanedJson))
+            if (UGodFunction::SavePromptToFile(DefendantFileName, CleanedJson))
             {
                 UE_LOG(LogTemp, Log, TEXT("PromptToDefendant.json 저장 완료!"));
                 if (Callback) Callback();
@@ -379,6 +400,7 @@ void UGodFunction::GenerateNPCPrompts(UWorld* World)
 
     FString PromptToDefendantPath = FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToDefendant.json");
     FString PromptToGodPath = FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToGod.json");
+
 
     if (!FPaths::FileExists(PromptToDefendantPath) || !FPaths::FileExists(PromptToGodPath))
     {
@@ -419,13 +441,14 @@ void UGodFunction::GenerateJuryNPC(UWorld* World, int JuryIndex)
     FString PromptToGod = ReadFileContent(FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToGod.json"));
     FString PromptToDefendant = ReadFileContent(FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToDefendant.json"));
 
+    int32 AssignedNPCID = 2000 + JuryIndex;
     FString JuryPrompt = FString::Printf(
         TEXT("{ \"task\": \"배심원%d 정보를 생성하세요.\", "
             "\"instructions\": ["
             "\"PromptToGod.json과 PromptToDefendant.json을 참고하여 배심원(NPC) 한 명의 정보를 생성하세요.\", "
-            "\"npcid 값을 2001부터 순차적으로 증가하는 정수로 설정하세요.\"], "
+            "\"npcid\"의 값은 %d여야 합니다\", "
             "\"references\": { \"PromptToGod\": \"%s\", \"PromptToDefendant\": \"%s\" } }"),
-        JuryIndex, *EscapeJSON(PromptToGod.Mid(0, 2000)), *EscapeJSON(PromptToDefendant.Mid(0, 2000))
+        JuryIndex, AssignedNPCID, *EscapeJSON(PromptToGod.Mid(0, 2000)), *EscapeJSON(PromptToDefendant.Mid(0, 2000))
     );
 
     FString JuryFileName = FString::Printf(TEXT("PromptToJury%d.json"), JuryIndex);
@@ -485,13 +508,14 @@ void UGodFunction::GenerateResidentNPC(UWorld* World, int ResidentIndex)
     FString PromptToGod = ReadFileContent(FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToGod.json"));
     FString PromptToDefendant = ReadFileContent(FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToDefendant.json"));
 
+    int32 AssignedNPCID = 2003 + ResidentIndex;
     FString ResidentPrompt = FString::Printf(
         TEXT("{ \"task\": \"마을 주민%d 정보를 생성하세요.\", "
             "\"instructions\": ["
             "\"PromptToGod.json과 PromptToDefendant.json을 참고하여 한 명의 마을 주민(NPC) 정보를 생성하세요.\", "
-            "\"npcid 값을 2004부터 순차적으로 증가하는 정수로 설정하세요.\"], "
+            "\"npcid\"의 값은 %d여야 합니다\", "
             "\"references\": { \"PromptToGod\": \"%s\", \"PromptToDefendant\": \"%s\" } }"),
-        ResidentIndex, *EscapeJSON(PromptToGod.Mid(0, 2000)), *EscapeJSON(PromptToDefendant.Mid(0, 2000))
+        ResidentIndex, AssignedNPCID, *EscapeJSON(PromptToGod.Mid(0, 2000)), *EscapeJSON(PromptToDefendant.Mid(0, 2000))
     );
 
     FString ResidentFileName = FString::Printf(TEXT("PromptToResident%d.json"), ResidentIndex);
