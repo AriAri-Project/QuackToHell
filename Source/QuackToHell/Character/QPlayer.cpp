@@ -240,12 +240,11 @@ void AQPlayer::ServerRPCStartConversation_Implementation(AQNPC* NPC)
 	FOpenAIRequest Request(
 		LocalPlayerState->GetPlayerId(),
 		NPC->FindComponentByClass<UNPCComponent>()->GetNPCID(),
-		EConversationType::P2N,
+		EConversationType::PStart,
 		Temp
 	);
 	NPC->FindComponentByClass<UNPCComponent>()->ServerRPCGetNPCResponse(Request);
 }
-
 
 
 void AQPlayer::MulticastRPCStartConversation_Implementation(AQPlayer* Player, AQNPC* NPC)
@@ -287,8 +286,6 @@ void AQPlayer::ServerRPCFinishConversation_Implementation(AQPlayerController* Ta
 	//클라이언트에게 대화끝내기 처리 요청
 	TargetController->ClientRPCFinishConversation(NPC);
 }
-
-
 
 void AQPlayer::MulticastRPCFinishConversation_Implementation(AQPlayer* Player, AQNPC* NPC)
 {
