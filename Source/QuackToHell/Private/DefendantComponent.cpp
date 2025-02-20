@@ -11,8 +11,13 @@ void UDefendantComponent::BeginPlay()
     Super::BeginPlay();
     UE_LOG(LogTemp, Warning, TEXT("UDefendantComponent::BeginPlay() 실행됨 - NPC %s"), *NPCID);
 
+    static int32 DefendantCounter = 2001;
+
     if (NPCID.IsEmpty())
-        return;
+    {
+        NPCID = FString::FromInt(DefendantCounter);
+        UE_LOG(LogTemp, Log, TEXT("NPCID 자동 할당됨: %s"), *NPCID);
+    }
 
     // 피고인의 JSON 파일 경로 설정
     PromptFilePath = FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Prompt"), TEXT("PromptToDefendant.json"));

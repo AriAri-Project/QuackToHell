@@ -251,24 +251,38 @@ void UNPCComponent::StartConversation(FOpenAIRequest Request)
 
 	if (bIsFirstGreeting && Request.Prompt.IsEmpty())
 	{
+		FString EscapedPromptContent = PromptContent.Replace(TEXT("\n"), TEXT("\\n")).Replace(TEXT("\""), TEXT("\\\""));
+
+		UE_LOG(LogTemp, Log, TEXT("StartConversation - 대화 유형: PStart"));
 		AIRequest.ConversationType = EConversationType::PStart;
+
 		// 첫 대사 생성 (NPC 설정을 기반으로 인사)
 		AIRequest.Prompt = FString::Printf(TEXT(
-			"아래 설정을 가진 NPC가 플레이어를 처음 만났을 때 하는 첫 인사를 생성하세요.\n"
-			"==== NPC 설정 ====\n%s\n"
-			"첫 인사는 NPC의 성격과 설정을 반영하여 자연스럽게 작성해야 합니다."), *PromptContent);
+			"{ \"model\": \"gpt-4o\", \"messages\": ["
+			"{ \"role\": \"system\", \"content\": \"당신은 마을 NPC입니다. 플레이어를 처음 만났을 때의 첫 인사를 출력하세요. "
+			"NPC의 설정을 반영하여 자연스럽게 작성해야 합니다.\\n==== NPC 설정 ====\n%s\" },"
+			"{ \"role\": \"user\", \"content\": \"플레이어가 NPC를 처음 만났을 때 당신이 할 인사는?\" }],"
+			"\"max_tokens\": 150 }"
+		), *EscapedPromptContent);
 	}
 	else
 	{
+		FString EscapedPromptContent = PromptContent.Replace(TEXT("\n"), TEXT("\\n")).Replace(TEXT("\""), TEXT("\\\""));
+		FString EscapedPlayerInput = Request.Prompt.Replace(TEXT("\n"), TEXT("\\n")).Replace(TEXT("\""), TEXT("\\\""));
+
+		UE_LOG(LogTemp, Log, TEXT("StartConversation - 대화 유형: P2N, 플레이어 입력: %s"), *Request.Prompt);
 		AIRequest.ConversationType = EConversationType::P2N;
+
 		// 일반적인 P2N 대화 처리
 		AIRequest.Prompt = FString::Printf(TEXT(
-			"아래 설정을 가진 NPC가 플레이어 '%d'의 질문에 답변합니다.\n"
-			"==== NPC 설정 ====\n%s\n"
-			"==== 플레이어의 질문 ====\n"
-			"플레이어: \"%s\"\n"
-			"NPC:"), Request.SpeakerID, *PromptContent, *Request.Prompt);
+			"{ \"model\": \"gpt-4o\", \"messages\": ["
+			"{ \"role\": \"system\", \"content\": \"당신은 마을 NPC입니다. 플레이어의 질문에 답변해야 하며, 다음 설정을 가지고 있습니다.\\n==== NPC 설정 ====\n%s\" },"
+			"{ \"role\": \"system\", \"content\": \"플레이어 ID(참고용): %d\" },"
+			"{ \"role\": \"user\", \"content\": \"플레이어의 질문: '%s'\" }],"
+			"\"max_tokens\": 150 }"
+		), *EscapedPromptContent, Request.SpeakerID, *EscapedPlayerInput);
 	}
+	UE_LOG(LogTemp, Log, TEXT("📤 OpenAI 최종 요청 데이터(JSON): %s"), *AIRequest.Prompt);
 
 	RequestOpenAIResponse(AIRequest, [this, Request](FOpenAIResponse AIResponse)
 		{
@@ -415,6 +429,22 @@ void UNPCComponent::PerformNPCMonologue(const FOpenAIRequest& Request)
 // OpenAI API 요청 처리
 void UNPCComponent::RequestOpenAIResponse(const FOpenAIRequest& AIRequest, TFunction<void(FOpenAIResponse)> Callback)
 {
+	/*
+	{
+	UE_LOG(LogTemp, Warning, TEXT("⚠️ OpenAI 요청을 생략하고, 임의의 응답을 서버로 보냄!"));
+
+	// OpenAI 응답을 흉내낸 더미 데이터 생성
+	FOpenAIResponse FakeResponse;
+	FakeResponse.ResponseText = TEXT("이것은 테스트 응답입니다.");
+	FakeResponse.ConversationType = AIRequest.ConversationType;
+	FakeResponse.SpeakerID = AIRequest.ListenerID;  // NPC가 응답하는 구조 유지
+	FakeResponse.ListenerID = AIRequest.SpeakerID;
+
+	// 즉시 콜백 실행 (실제 OpenAI 요청 없이)
+	Callback(FakeResponse);
+	}
+	*/
+
 	if (!CanSendOpenAIRequest())
 	{
 		UE_LOG(LogTemp, Warning, TEXT("OpenAI가 호출 중이기 때문에 새로운 요청을 보낼 수 없습니다."));
@@ -432,6 +462,8 @@ void UNPCComponent::RequestOpenAIResponse(const FOpenAIRequest& AIRequest, TFunc
 		return;
 	}
 
+	FString RequestBody = AIRequest.Prompt;
+
 	TSharedPtr<IHttpRequest> Request = FHttpModule::Get().CreateRequest();
 	Request->SetURL("https://api.openai.com/v1/completions");
 	Request->SetVerb("POST");
@@ -439,18 +471,11 @@ void UNPCComponent::RequestOpenAIResponse(const FOpenAIRequest& AIRequest, TFunc
 	Request->SetHeader("Content-Type", "application/json");
 	Request->SetContentAsString(AIRequest.ToJson());
 
-	//NEW
-	FString RequestBody = AIRequest.ToJson();
-	Request->SetContentAsString(RequestBody);
 
 	Request->OnProcessRequestComplete().BindLambda([this, Callback](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
 		{
 			// 요청 완료되면 진행 상태 해제하고 false로 변경
 			bIsRequestInProgress = false;
-
-			/*Callback(bWasSuccessful && Response.IsValid() && Response->GetResponseCode() == 200
-				? FOpenAIResponse::FromJson(Response->GetContentAsString())
-				: FOpenAIResponse{ TEXT("콜백 함수 - 응답 불러오기에 실패했습니다.") });*/
 
 			if (!bWasSuccessful || !Response.IsValid() || Response->GetResponseCode() != 200)
 			{
@@ -475,6 +500,7 @@ void UNPCComponent::RequestOpenAIResponse(const FOpenAIRequest& AIRequest, TFunc
 
 			Callback(AIResponse);
 		});
+		
 
 	Request->ProcessRequest();
 }
