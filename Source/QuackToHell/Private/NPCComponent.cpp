@@ -514,14 +514,14 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 	TObjectPtr<UQP2NWidget> P2NWidget;
 	switch (Response.ConversationType)
 	{
-	case EConversationType::P2N: // 임시
+	case EConversationType::PStart: // 임시
 		TargetPlayerController = Cast<APlayerController>(GetOwner());
 		if (TargetPlayerController)
 		{
 			Cast<AQPlayerController>(TargetPlayerController)->ClientRPCStartConversation(Response);
 		}
 		break;
-	case EConversationType::None: // 임시
+	case EConversationType::P2N: // 임시
 		P2NWidget = Cast<UQP2NWidget>(AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets()[EVillageUIType::P2N]);			
 		if (P2NWidget)
 		{
@@ -554,34 +554,11 @@ void UNPCComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 }
 
 // -------------------------------------------------------------------------------------- //
-/*
-void UNPCComponent::GetNPCResponseServer(FOpenAIRequest Request)
-{
-	UE_LOG(LogLogic, Log, TEXT("GetNPCResponseServer Started"));
-	if (!GetOwner()->HasAuthority())
-	{
-		UE_LOG(LogTemp, Log, TEXT("GetNPCGreeting -> HasAuthority false."))
-	}
-	RequestOpenAIResponse(Request, [this](FOpenAIResponse Response)
-	{
-		this->OnSuccessGetNPCResponse(Response);
-	});
-}
-
-void UNPCComponent::ServerRPCGetNPCResponseP2N_Implementation(FOpenAIRequest Request)
-{
-	UE_LOG(LogLogic, Log, TEXT("ServerRPCGetNPCResponseP2N Started"));
-	RequestOpenAIResponse(Request, [this](FOpenAIResponse Response)
-	{
-		this->OnSuccessGetNPCResponse(Response);
-	});
-}
-*/
 
 void UNPCComponent::ServerRPCGetNPCResponse_Implementation(FOpenAIRequest Request)
 {
 	/*
-	 *	P2N : StartConversation, SendNPCResponseToServer()
+	 *	PStart, P2N : StartConversation, SendNPCResponseToServer()
 	 *	N2N 대화 시작 : StartNPCToNPCDialog, SendNPCResponseToServer()
 	 *	N2N 대화 진행 : ContinueNPCToNPCDialog(), SendNPCResponseToServer()
 	 *	NMonologue : PerformNPCMonologue(), SendNPCResponseToServer()
@@ -593,9 +570,6 @@ void UNPCComponent::ServerRPCGetNPCResponse_Implementation(FOpenAIRequest Reques
 	case EConversationType::None:
 		UE_LOG(LogTemp, Error, TEXT("GetNPCResponse -> Invaild ConversationType"));
 		break;
-	case EConversationType::P2N:
-		StartConversation(Request);
-		break;
 	case EConversationType::N2N:
 		ContinueNPCToNPCDialog(Request);
 		break;
@@ -605,8 +579,8 @@ void UNPCComponent::ServerRPCGetNPCResponse_Implementation(FOpenAIRequest Reques
 	case EConversationType::NMonologue:
 		PerformNPCMonologue(Request);
 		break;
-	default:
-		UE_LOG(LogTemp, Error, TEXT("GetNPCResponse -> Invaild ConversationType"));
+	default:	// type이 PStart나 P2N이라면 
+		StartConversation(Request);
 		break;
 	}
 }
