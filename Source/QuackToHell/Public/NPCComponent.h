@@ -170,10 +170,11 @@ protected:
 	FString GetPlayerIDAsString() const;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "NPC")
+	FString NPCID;
+
 	FString NPCName;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "NPC")
-	FString NPCID;
+	FString NPCRole;
 
 	FString NPCPersonality;
 
@@ -214,7 +215,7 @@ public:
 	 * @param PlayerInput 플레이어의 입력 대사
 	 */
 	UFUNCTION(BlueprintCallable, Category = "NPC")
-	virtual void StartConversation(const FOpenAIRequest& Request);
+	virtual void StartConversation(FOpenAIRequest Request);
 
 	/**
 	 * @author 박시언

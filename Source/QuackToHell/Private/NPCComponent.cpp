@@ -63,6 +63,37 @@ void UNPCComponent::PerformNPCLogic()
 // NPC의 프롬프트 파일 로드
 bool UNPCComponent::LoadPrompt()
 {
+	if (PromptFilePath.IsEmpty())
+	{
+		UE_LOG(LogTemp, Warning, TEXT("LoadPrompt 실행 전 PromptFilePath가 비어 있음! 기본 경로 설정 시도."));
+
+		FString PromptFileName;
+
+		// NPC 역할(role)에 따라 JSON 파일명 결정
+		if (NPCRole == "resident")
+		{
+			PromptFileName = FString::Printf(TEXT("PromptToResident%d.json"), FCString::Atoi(*NPCID) - 2003);
+		}
+		else if (NPCRole == "jury")
+		{
+			PromptFileName = FString::Printf(TEXT("PromptToJury%d.json"), FCString::Atoi(*NPCID) - 2000);
+		}
+		else if (NPCRole == "defendant")
+		{
+			PromptFileName = TEXT("PromptToDefendant.json"); // Defendant는 단 하나만 존재
+		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("LoadPrompt - 알 수 없는 NPC Role: %s"), *NPCRole);
+			return false;
+		}
+
+		// 파일 경로 설정
+		PromptFilePath = FPaths::ConvertRelativePathToFull(FPaths::Combine(FPaths::ProjectSavedDir(), TEXT("Prompt"), PromptFileName));
+
+		UE_LOG(LogTemp, Log, TEXT("LoadPrompt - NPCID: %s, Role: %s, 파일 경로: %s"), *NPCID, *NPCRole, *PromptFilePath);
+	}
+
 	FString FileContent;
 
 	if (!FFileHelper::LoadFileToString(FileContent, *PromptFilePath) || FileContent.IsEmpty())
@@ -80,28 +111,30 @@ bool UNPCComponent::LoadPrompt()
 		return false;
 	}
 
+	PromptContent = FileContent;
+
 	// 필수 필드 확인
-	if (!JsonObject->HasField("npcid") || !JsonObject->HasField("name"))
+	if (JsonObject->HasField("npcid"))
 	{
-		UE_LOG(LogTemp, Error, TEXT("필수 필드 누락 - %s"), *PromptFilePath);
-		return false;
+		NPCID = FString::FromInt(JsonObject->GetIntegerField("npcid"));
+		UE_LOG(LogTemp, Log, TEXT("LoadPrompt - NPCID 할당 완료: %s"), *NPCID);
 	}
 
-	// NPCID를 정상적으로 읽어왔는지 확인
-	int32 TempID = 0;
-	if (JsonObject->TryGetNumberField("npcid", TempID))
+	if (JsonObject->HasField("name"))
 	{
-		NPCID = FString::FromInt(TempID);
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("NPCID 변환 실패!"));
-		return false;
+		NPCName = JsonObject->GetStringField("name");
+		UE_LOG(LogTemp, Log, TEXT("LoadPrompt - NPCName 할당 완료: %s"), *NPCName);
 	}
 
-	NPCName = JsonObject->GetStringField("name");
+	if (JsonObject->HasField("role"))
+	{
+		NPCRole = JsonObject->GetStringField("role");
+		UE_LOG(LogTemp, Log, TEXT("LoadPrompt - NPCRole 할당 완료: %s"), *NPCRole);
+	}
 
-	UE_LOG(LogTemp, Log, TEXT("LoadPrompt 완료: NPCID=%s, Name=%s"), *NPCID, *NPCName);
+	UE_LOG(LogTemp, Log, TEXT("LoadPrompt 완료 - NPCID=%s, Name=%s, Role=%s"), *NPCID, *NPCName, *NPCRole);
+	UE_LOG(LogTemp, Log, TEXT("PromptContent 저장 완료 - 내용: %s"), *PromptContent.Left(200));
+
 	return true;
 }
 
@@ -121,9 +154,21 @@ bool UNPCComponent::LoadPrompt()
 // OpenAI API 키 불러오기
 FString UNPCComponent::GetAPIKey()
 {
-	FString ApiKey;
-	GConfig->GetString(TEXT("OpenAI"), TEXT("ApiKey"), ApiKey, GGameIni);
-	return ApiKey;
+	FString ConfigPath = FPaths::ProjectDir() + TEXT("OpenAIAuth.ini");
+	FString FileContent;
+
+	if (FFileHelper::LoadFileToString(FileContent, *ConfigPath))
+	{
+		UE_LOG(LogTemp, Log, TEXT("OpenAIAuth.ini 로드 성공"));
+		FString ApiKey;
+		if (FileContent.Split(TEXT("="), nullptr, &ApiKey))
+		{
+			return ApiKey.TrimStartAndEnd();
+		}
+	}
+
+	UE_LOG(LogTemp, Error, TEXT("OpenAI API Key 로드 실패! OpenAIAuth.ini 확인 필요"));
+	return TEXT("");
 }
 
 // OpenAI API 응답 JSON 파싱 함수
@@ -177,8 +222,13 @@ bool UNPCComponent::CanSendOpenAIRequest() const
 }
 
 // P2N 대화 시작
-void UNPCComponent::StartConversation(const FOpenAIRequest& Request)
+void UNPCComponent::StartConversation(FOpenAIRequest Request)
 {
+	UE_LOG(LogTemp, Log, TEXT("NPCComponent::StartConversation 실행 - NPCID: %s"), *NPCID);
+
+	Request.SpeakerID = FCString::Atoi(*GetPlayerIDAsString());
+	Request.ListenerID = GetNPCID();
+
 	if (PromptContent.IsEmpty())
 	{
 		UE_LOG(LogTemp, Error, TEXT("Prompt file is empty or failed to load for NPC: %d"), Request.ListenerID);
@@ -389,14 +439,41 @@ void UNPCComponent::RequestOpenAIResponse(const FOpenAIRequest& AIRequest, TFunc
 	Request->SetHeader("Content-Type", "application/json");
 	Request->SetContentAsString(AIRequest.ToJson());
 
+	//NEW
+	FString RequestBody = AIRequest.ToJson();
+	Request->SetContentAsString(RequestBody);
+
 	Request->OnProcessRequestComplete().BindLambda([this, Callback](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
 		{
 			// 요청 완료되면 진행 상태 해제하고 false로 변경
 			bIsRequestInProgress = false;
 
-			Callback(bWasSuccessful && Response.IsValid() && Response->GetResponseCode() == 200
+			/*Callback(bWasSuccessful && Response.IsValid() && Response->GetResponseCode() == 200
 				? FOpenAIResponse::FromJson(Response->GetContentAsString())
-				: FOpenAIResponse{ TEXT("콜백 함수 - 응답 불러오기에 실패했습니다.") });
+				: FOpenAIResponse{ TEXT("콜백 함수 - 응답 불러오기에 실패했습니다.") });*/
+
+			if (!bWasSuccessful || !Response.IsValid() || Response->GetResponseCode() != 200)
+			{
+				UE_LOG(LogTemp, Error, TEXT("OpenAI 응답 실패! 응답 코드: %d"), Response.IsValid() ? Response->GetResponseCode() : -1);
+				FOpenAIResponse FailedResponse;
+				FailedResponse.ResponseText = TEXT("죄송합니다, 현재 답변할 수 없습니다.");
+				FailedResponse.ConversationType = EConversationType::P2N; // 기본값스로 P2N을 설정
+				Callback(FailedResponse);
+				return;
+			}
+
+			FString ResponseContent = Response->GetContentAsString();
+			UE_LOG(LogTemp, Log, TEXT("OpenAI 응답 수신: %s"), *ResponseContent);
+
+			FOpenAIResponse AIResponse = FOpenAIResponse::FromJson(ResponseContent);
+			if (AIResponse.ResponseText.IsEmpty())
+			{
+				UE_LOG(LogTemp, Error, TEXT("OpenAI 응답이 비어 있음! 기본 응답 제공."));
+				AIResponse.ResponseText = TEXT("죄송합니다, 질문에 답할 수 없습니다.");
+				AIResponse.ConversationType = EConversationType::P2N; // 기본값으로 P2N을 설정
+			}
+
+			Callback(AIResponse);
 		});
 
 	Request->ProcessRequest();

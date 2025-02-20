@@ -8,13 +8,20 @@
 #include "GameFramework/PlayerState.h"
 #include "GameFramework/PlayerController.h"
 
+#include "TimerManager.h"
+
 void UResidentComponent::BeginPlay()
 {
     Super::BeginPlay();
     UE_LOG(LogTemp, Warning, TEXT("UResidentComponent::BeginPlay() 실행됨 - NPC %s"), *NPCID);
 
+    static int32 ResidentCounter = 2004;
+
     if (NPCID.IsEmpty())
-        return;
+    {
+        NPCID = FString::FromInt(ResidentCounter++);
+        UE_LOG(LogTemp, Log, TEXT("NPCID 자동 할당됨: %s"), *NPCID);
+    }
 
     // 마을 주민의 JSON 파일 경로 설정
     int32 ResidentIndex = FCString::Atoi(*NPCID) - 2003; // NPCID 2004 -> ResidentIndex 1
@@ -28,33 +35,21 @@ void UResidentComponent::BeginPlay()
     UE_LOG(LogTemp, Log, TEXT("ResidentComponent - NPC %s는 %s를 사용합니다."), *NPCID, *PromptFilePath);
 
     // 마을 주민 데이터 로드
-    if (!NPCID.IsEmpty())
-        LoadPrompt();
-}
-
-void UResidentComponent::AskResidentQuestion(const FString& PlayerInput)
-{
-    if (PlayerInput.IsEmpty() || PlayerInput.Len() < 3)
+    bool bLoaded = LoadPrompt();
+    if (!bLoaded)
     {
-        UE_LOG(LogTemp, Warning, TEXT("Player input is too short or empty."));
-        return;
+        UE_LOG(LogTemp, Error, TEXT("프롬프트 로드 실패 - NPCID: %s, 파일: %s"), *NPCID, *PromptFilePath);
     }
-
-    UE_LOG(LogTemp, Log, TEXT("Player asked the Resident: %s"), *PlayerInput);
-
-    // 🎯 FOpenAIRequest 구조체 사용으로 변경
-    FOpenAIRequest AIRequest;
-    AIRequest.Prompt = PlayerInput;
-    AIRequest.SpeakerID = FCString::Atoi(*GetPlayerIDAsString());
-    AIRequest.ListenerID = FCString::Atoi(*NPCID);
-    AIRequest.ConversationType = EConversationType::P2N;
-    AIRequest.MaxTokens = 150;
-
-    StartConversation(AIRequest);
 }
 
-void UResidentComponent::StartConversation(const FOpenAIRequest& Request)
+
+void UResidentComponent::StartConversation(FOpenAIRequest Request)
 {
+    UE_LOG(LogTemp, Log, TEXT("StartConversation 실행됨 - 현재 PromptContent 길이: %d"), PromptContent.Len());
+
+    Request.SpeakerID = FCString::Atoi(*GetPlayerIDAsString());
+    Request.ListenerID = GetNPCID();
+
     if (PromptContent.IsEmpty())
     {
         UE_LOG(LogTemp, Error, TEXT("Prompt file is empty or failed to load for Resident: %d"), Request.ListenerID);
