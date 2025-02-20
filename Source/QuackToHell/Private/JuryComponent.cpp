@@ -13,8 +13,13 @@ void UJuryComponent::BeginPlay()
     Super::BeginPlay();
     UE_LOG(LogTemp, Warning, TEXT("UJuryComponent::BeginPlay() 실행됨 - NPC %s"), *NPCID);
 
+    static int32 JuryCounter = 2001;
+
     if (NPCID.IsEmpty())
-        return;
+    {
+        NPCID = FString::FromInt(JuryCounter++);
+        UE_LOG(LogTemp, Log, TEXT("NPCID 자동 할당됨: %s"), *NPCID);
+    }
 
     // 배심원의 JSON 파일 경로 설정
     int32 JuryIndex = FCString::Atoi(*NPCID) - 2000; // NPCID 2001 -> JuryIndex 1
@@ -28,28 +33,25 @@ void UJuryComponent::BeginPlay()
     UE_LOG(LogTemp, Log, TEXT("JuryComponent - NPC %s는 %s를 사용합니다."), *NPCID, *PromptFilePath);
 
     // 배심원 데이터 로드
-    if (!NPCID.IsEmpty())
-        LoadPrompt();
+    bool bLoaded = LoadPrompt();
+    if (!bLoaded)
+    {
+        UE_LOG(LogTemp, Error, TEXT("프롬프트 로드 실패 - NPCID: %s, 파일: %s"), *NPCID, *PromptFilePath);
+    }
+
+    UE_LOG(LogTemp, Log, TEXT("🧐 BeginPlay 끝 - NPCID: %s, PromptContent 길이: %d"), *NPCID, PromptContent.Len());
 
 }
 
-void UJuryComponent::AskJuryQuestion(const FString& PlayerInput)
+void UJuryComponent::StartConversation(FOpenAIRequest Request)
 {
-    UE_LOG(LogTemp, Log, TEXT("Player asked the Jury: %s"), *PlayerInput);
+    UE_LOG(LogTemp, Log, TEXT("🔵 JuryComponent::StartConversation 실행 - NPCID: %s"), *NPCID);
 
-    // FOpenAIRequest로 변환하여 StartConversation 호출
-    FOpenAIRequest Request;
+    UE_LOG(LogTemp, Log, TEXT("StartConversation 실행됨 - 현재 PromptContent 길이: %d"), PromptContent.Len());
+
     Request.SpeakerID = FCString::Atoi(*GetPlayerIDAsString());
-    Request.ListenerID = GetNPCID();  // NPC ID 가져오기
-    Request.Prompt = PlayerInput;
-    Request.MaxTokens = 150;
-    Request.ConversationType = EConversationType::P2N;
+    Request.ListenerID = GetNPCID();
 
-    StartConversation(Request);
-}
-
-void UJuryComponent::StartConversation(const FOpenAIRequest& Request)
-{
     if (PromptContent.IsEmpty())
     {
         UE_LOG(LogTemp, Error, TEXT("Prompt file is empty or failed to load for Jury NPC ID: %d"), Request.ListenerID);
