@@ -156,6 +156,8 @@ public:
 	 */
 	UNPCComponent();
 
+	static FString ConvertJsonToReadableText(const FString& JsonString);
+
 protected:
 	/**
 	 * @author 박시언

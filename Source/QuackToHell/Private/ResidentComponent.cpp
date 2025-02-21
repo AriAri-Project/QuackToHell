@@ -59,13 +59,19 @@ void UResidentComponent::StartConversation(FOpenAIRequest Request)
         return;
     }
 
-    UE_LOG(LogTemp, Log, TEXT("Player started conversation with Resident %d: %s"), Request.ListenerID, *Request.Prompt);
+	UE_LOG(LogTemp, Log, TEXT("Player started conversation with NPC %d: %s"), Request.ListenerID, *Request.Prompt);
 
-    // 첫 대화 여부 확인
-    bool bIsFirstGreeting = !P2NDialogueHistory.Contains(FString::Printf(TEXT("%d"), Request.ListenerID)) ||
-        P2NDialogueHistory[FString::Printf(TEXT("%d"), Request.ListenerID)].DialogueLines.Num() == 0;
+	FString ListenerNPCID = FString::FromInt(Request.ListenerID);
+	// 첫 대화인지 확인 (플레이어와의 P2N 대화 기록이 없는 경우)
+	bool bIsFirstGreeting = !P2NDialogueHistory.Contains(ListenerNPCID) ||
+		P2NDialogueHistory[ListenerNPCID].DialogueLines.Num() == 0;
 
-    FOpenAIRequest AIRequest = Request;
+
+	// 기존 AIRequest 유지
+	FOpenAIRequest AIRequest;
+	AIRequest.SpeakerID = Request.SpeakerID;
+	AIRequest.ListenerID = Request.ListenerID;
+	AIRequest.MaxTokens = 150;
 
 	if (bIsFirstGreeting && Request.Prompt.IsEmpty())
 	{
@@ -77,8 +83,8 @@ void UResidentComponent::StartConversation(FOpenAIRequest Request)
 		// 첫 대사 생성 (NPC 설정을 기반으로 인사)
 		AIRequest.Prompt = FString::Printf(TEXT(
 			"{ \"model\": \"gpt-4o\", \"messages\": ["
-			"{ \"role\": \"system\", \"content\": \"당신은 마을 NPC입니다. 플레이어를 처음 만났을 때의 첫 인사를 출력하세요. NPC의 설정을 반영하여 자연스럽게 작성해야 합니다.\" },"
-			"{ \"role\": \"system\", \"content\": \"==== NPC 설정 ====\n%s\" },"
+			"{ \"role\": \"system\", \"content\": \"당신은 마을 NPC입니다. 플레이어를 처음 만났을 때의 첫 인사를 출력하세요. "
+			"NPC의 설정을 반영하여 자연스럽게 작성해야 합니다.\\n==== NPC 설정 ====\n%s\" },"
 			"{ \"role\": \"user\", \"content\": \"플레이어가 NPC를 처음 만났을 때 당신이 할 인사는?\" }],"
 			"\"max_tokens\": 150 }"
 		), *EscapedPromptContent);
