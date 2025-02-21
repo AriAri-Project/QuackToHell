@@ -62,6 +62,8 @@ void UResidentComponent::StartConversation(FOpenAIRequest Request)
     UE_LOG(LogTemp, Log, TEXT("Player started conversation with NPC %d: %s"), Request.ListenerID, *Request.Prompt);
 
     FString ReadablePromptContent = UNPCComponent::ConvertJsonToReadableText(PromptContent);
+    FString EscapedPlayerInput = Request.Prompt;
+
     UE_LOG(LogTemp, Log, TEXT("변환된 NPC 설정: %s"), *ReadablePromptContent);
 
     FOpenAIRequest AIRequest;
@@ -90,9 +92,15 @@ void UResidentComponent::StartConversation(FOpenAIRequest Request)
         AIRequest.ConversationType = EConversationType::PStart;
 
         SystemMessage->SetStringField("content",
-            FString::Printf(TEXT("당신은 마을 NPC입니다. 플레이어가 처음 당신과 대화할 때, "
-                "친절하고 자연스러운 첫 인사를 해야 합니다. 다음은 당신의 설정입니다.\n%s"),
+            FString::Printf(TEXT("당신은 마을 주민 NPC입니다. 플레이어가 처음 당신과 대화할 때, "
+                "당신의 성격에 맞는 짧은 첫 인사를 해야 합니다. 다음은 당신의 설정입니다.\n%s"),
                 *ReadablePromptContent));
+        Messages.Add(MakeShareable(new FJsonValueObject(SystemMessage)));
+
+        TSharedPtr<FJsonObject> UserMessage = MakeShareable(new FJsonObject());
+        UserMessage->SetStringField("role", "user");
+        UserMessage->SetStringField("content", "안녕하세요! 당신은 누구인가요?");
+        Messages.Add(MakeShareable(new FJsonValueObject(UserMessage)));
     }
     // P2N (일반 대화)
     else
@@ -100,27 +108,19 @@ void UResidentComponent::StartConversation(FOpenAIRequest Request)
         AIRequest.ConversationType = EConversationType::P2N;
 
         SystemMessage->SetStringField("content",
-            FString::Printf(TEXT("당신은 마을 NPC입니다. 다음은 당신의 설정입니다.\n%s"),
+            FString::Printf(TEXT("당신은 마을 주민 NPC입니다. 다음은 당신의 설정입니다.\n%s"),
                 *ReadablePromptContent));
-    }
+        Messages.Add(MakeShareable(new FJsonValueObject(SystemMessage)));
 
-    Messages.Add(MakeShareable(new FJsonValueObject(SystemMessage)));
-
-    // user 메시지 추가
-    TSharedPtr<FJsonObject> UserMessage = MakeShareable(new FJsonObject());
-    UserMessage->SetStringField("role", "user");
-
-    if (bIsFirstGreeting && Request.Prompt.IsEmpty())
-    {
-        UserMessage->SetStringField("content", "안녕하세요! 당신은 누구인가요?");
-    }
-    else
-    {
+        // 여기서 `EscapedPlayerInput`을 OpenAI 요청에 반영
+        TSharedPtr<FJsonObject> UserMessage = MakeShareable(new FJsonObject());
+        UserMessage->SetStringField("role", "user");
         UserMessage->SetStringField("content",
-            FString::Printf(TEXT("플레이어의 질문: '%s'"), *Request.Prompt));
+            FString::Printf(TEXT("플레이어의 질문: '%s'"), *EscapedPlayerInput));
+
+        Messages.Add(MakeShareable(new FJsonValueObject(UserMessage)));
     }
 
-    Messages.Add(MakeShareable(new FJsonValueObject(UserMessage)));
     RootObject->SetArrayField("messages", Messages);
     RootObject->SetNumberField("max_tokens", 150);
 
