@@ -107,6 +107,7 @@ void AQPlayerController::ClientRPCStartConversation_Implementation(FOpenAIRespon
 	// UE_LOG(LogTemp, Log, TEXT("Player Conversation State Updated. -> %hhd"), LocalPlayerState->GetPlayerConversationState());
 	// UE_LOG(LogTemp, Log, TEXT("%s Conversation State Updated. -> %hhd"), *NPC->GetName(), NPC->GetNPCConversationState());
 
+		UE_LOG(LogLogic, Log, TEXT("ClientRPCStartConversation Started."))
 		//0. 상대방 NPC를 불러옴
 		TObjectPtr<AQPlayer> _Player = Cast<AQPlayer>(this->GetPawn());
 		TObjectPtr<AQDynamicNPC> NPC = Cast<AQDynamicNPC>(_Player->GetClosestNPC());
