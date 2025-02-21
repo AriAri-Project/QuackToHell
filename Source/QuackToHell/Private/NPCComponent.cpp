@@ -497,7 +497,7 @@ void UNPCComponent::RequestOpenAIResponse(const FOpenAIRequest& AIRequest, TFunc
 	UE_LOG(LogTemp, Log, TEXT("OpenAI에 보낼 최종 JSON 데이터: %s"), *RequestBody);
 
 	TSharedPtr<IHttpRequest> Request = FHttpModule::Get().CreateRequest();
-	Request->SetURL("https://api.openai.com/v1/completions");
+	Request->SetURL("https://api.openai.com/v1/chat/completions");
 	Request->SetVerb("POST");
 	Request->SetHeader("Authorization", "Bearer " + ApiKey);
 	Request->SetHeader("Content-Type", "application/json");
@@ -507,19 +507,42 @@ void UNPCComponent::RequestOpenAIResponse(const FOpenAIRequest& AIRequest, TFunc
 		{
 			bIsRequestInProgress = false;
 
-			if (!bWasSuccessful || !Response.IsValid() || Response->GetResponseCode() != 200)
+			if (!bWasSuccessful || !Response.IsValid())
 			{
-				UE_LOG(LogTemp, Error, TEXT("OpenAI 응답 실패! 기본 응답 반환."));
+				UE_LOG(LogTemp, Error, TEXT("OpenAI 요청 자체가 실패함!"));
+
 				FOpenAIResponse FailedResponse;
 				FailedResponse.ResponseText = TEXT("죄송합니다, 현재 답변할 수 없습니다.");
 				Callback(FailedResponse);
 				return;
 			}
 
+			int32 ResponseCode = Response->GetResponseCode();
 			FString ResponseContent = Response->GetContentAsString();
-			UE_LOG(LogTemp, Log, TEXT("OpenAI 응답 수신: %s"), *ResponseContent);
 
+			UE_LOG(LogTemp, Log, TEXT("OpenAI 응답 코드: %d"), ResponseCode);
+			UE_LOG(LogTemp, Log, TEXT("OpenAI 응답 본문: %s"), *ResponseContent);
+
+			if (ResponseCode != 200)
+			{
+				UE_LOG(LogTemp, Error, TEXT("OpenAI 응답 실패! HTTP 응답 코드: %d"), ResponseCode);
+				UE_LOG(LogTemp, Error, TEXT("OpenAI 오류 메시지: %s"), *ResponseContent);
+
+				FOpenAIResponse FailedResponse;
+				FailedResponse.ResponseText = TEXT("죄송합니다, 현재 답변할 수 없습니다.");
+				Callback(FailedResponse);
+				return;
+			}
+
+			// 정상 응답 처리
 			FOpenAIResponse AIResponse = FOpenAIResponse::FromJson(ResponseContent);
+
+			if (AIResponse.ResponseText.IsEmpty())
+			{
+				UE_LOG(LogTemp, Error, TEXT("OpenAI 응답이 비어 있음! 기본 응답 반환."));
+				AIResponse.ResponseText = TEXT("죄송합니다, 질문에 답할 수 없습니다.");
+			}
+
 			Callback(AIResponse);
 		});
 

@@ -93,38 +93,54 @@ struct FOpenAIResponse
 	EConversationType ConversationType;
 
 	static FOpenAIResponse FromJson(const FString& JsonContent)
-	{
-		FOpenAIResponse Response;
-		TSharedPtr<FJsonObject> JsonObject;
-		TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonContent);
+{
+    FOpenAIResponse Response;
+    TSharedPtr<FJsonObject> JsonObject;
+    TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonContent);
 
-		if (FJsonSerializer::Deserialize(Reader, JsonObject) && JsonObject.IsValid())
-		{
-			const TArray<TSharedPtr<FJsonValue>>* ChoicesArray;
-			if (JsonObject->TryGetArrayField("choices", ChoicesArray) && ChoicesArray->Num() > 0)
-			{
-				Response.ResponseText = (*ChoicesArray)[0]->AsString();
-			}
+    if (!FJsonSerializer::Deserialize(Reader, JsonObject) || !JsonObject.IsValid())
+    {
+        UE_LOG(LogTemp, Error, TEXT("OpenAI 응답 JSON 파싱 실패!"));
+        return Response;
+    }
 
-			// SpeakerID, ListenerID, ConversationType 값
-            Response.SpeakerID = JsonObject->GetIntegerField("speaker_id");
-            Response.ListenerID = JsonObject->GetIntegerField("listener_id");
+    // ✅ "choices" 배열에서 첫 번째 "message.content" 값을 추출
+    const TArray<TSharedPtr<FJsonValue>>* ChoicesArray;
+    if (JsonObject->TryGetArrayField(TEXT("choices"), ChoicesArray) && ChoicesArray->Num() > 0)
+    {
+        TSharedPtr<FJsonObject> FirstChoice = (*ChoicesArray)[0]->AsObject();
+        if (FirstChoice.IsValid() && FirstChoice->HasField(TEXT("message")))
+        {
+            TSharedPtr<FJsonObject> MessageObj = FirstChoice->GetObjectField(TEXT("message"));
+            if (MessageObj.IsValid() && MessageObj->HasField(TEXT("content")))
+            {
+                Response.ResponseText = MessageObj->GetStringField(TEXT("content"));
+            }
+        }
+    }
 
-            FString ConversationTypeString = JsonObject->GetStringField("conversation_type");
+    // ✅ speaker_id, listener_id, conversation_type 필드가 존재할 경우만 할당
+    if (JsonObject->HasField("speaker_id"))
+    {
+        Response.SpeakerID = JsonObject->GetIntegerField("speaker_id");
+    }
 
-            if (ConversationTypeString == "P2N") Response.ConversationType = EConversationType::P2N;
-            else if (ConversationTypeString == "N2N") Response.ConversationType = EConversationType::N2N;
-            else if (ConversationTypeString == "NMonologue") Response.ConversationType = EConversationType::NMonologue;
-            else Response.ConversationType = EConversationType::P2N; 
-		}
+    if (JsonObject->HasField("listener_id"))
+    {
+        Response.ListenerID = JsonObject->GetIntegerField("listener_id");
+    }
+    
+    FString ConversationTypeString;
+    if (JsonObject->TryGetStringField("conversation_type", ConversationTypeString))
+    {
+        if (ConversationTypeString == "P2N") Response.ConversationType = EConversationType::P2N;
+        else if (ConversationTypeString == "N2N") Response.ConversationType = EConversationType::N2N;
+        else if (ConversationTypeString == "NMonologue") Response.ConversationType = EConversationType::NMonologue;
+    }
 
-		if (Response.ResponseText.IsEmpty())
-		{
-			Response.ResponseText = TEXT("죄송합니다, 답변할 수 없습니다.");
-		}
-
-		return Response;
-	}
+    UE_LOG(LogTemp, Log, TEXT("OpenAI 응답 파싱 완료: %s"), *Response.ResponseText);
+    return Response;
+}
 };
 
 // ---------------------------------------------------------------------------------------------
