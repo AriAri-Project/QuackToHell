@@ -7,6 +7,7 @@
 #include "JsonObjectConverter.h"
 #include "GameFramework/PlayerState.h"
 #include "GameFramework/PlayerController.h"
+#include "Logging/LogMacros.h"
 
 void UJuryComponent::BeginPlay()
 {
@@ -18,7 +19,7 @@ void UJuryComponent::BeginPlay()
         // 현재 생성된 Resident 개수를 확인
         static int32 JuryCount = 0;
 
-        NPCID = FString::FromInt(2004 + JuryCount);
+        NPCID = FString::FromInt(2001 + JuryCount);
         JuryCount++;
 
         UE_LOG(LogTemp, Log, TEXT("NPCID 자동 할당됨: %s"), *NPCID);
@@ -42,7 +43,7 @@ void UJuryComponent::BeginPlay()
         UE_LOG(LogTemp, Error, TEXT("프롬프트 로드 실패 - NPCID: %s, 파일: %s"), *NPCID, *PromptFilePath);
     }
 
-    UE_LOG(LogTemp, Log, TEXT("🧐 BeginPlay 끝 - NPCID: %s, PromptContent 길이: %d"), *NPCID, PromptContent.Len());
+    UE_LOG(LogTemp, Log, TEXT("BeginPlay 끝 - NPCID: %s, PromptContent 길이: %d"), *NPCID, PromptContent.Len());
 
 }
 
@@ -50,73 +51,99 @@ void UJuryComponent::StartConversation(FOpenAIRequest Request)
 {
     UE_LOG(LogTemp, Log, TEXT("🔵 JuryComponent::StartConversation 실행 - NPCID: %s"), *NPCID);
 
-    UE_LOG(LogTemp, Log, TEXT("StartConversation 실행됨 - 현재 PromptContent 길이: %d"), PromptContent.Len());
-
     Request.SpeakerID = FCString::Atoi(*GetPlayerIDAsString());
     Request.ListenerID = GetNPCID();
 
     if (PromptContent.IsEmpty())
     {
-        UE_LOG(LogTemp, Error, TEXT("Prompt file is empty or failed to load for Jury NPC ID: %d"), Request.ListenerID);
+        UE_LOG(LogTemp, Error, TEXT("PromptContent가 비어 있음! NPCID: %s"), *NPCID);
         return;
     }
 
     UE_LOG(LogTemp, Log, TEXT("Player started conversation with NPC %d: %s"), Request.ListenerID, *Request.Prompt);
 
-    // 첫 대화인지 확인 (P2N 대화 기록이 없는 경우)
-    bool bIsFirstGreeting = !P2NDialogueHistory.Contains(FString::Printf(TEXT("%d"), Request.ListenerID)) ||
-        P2NDialogueHistory[FString::Printf(TEXT("%d"), Request.ListenerID)].DialogueLines.Num() == 0;
+    FString ReadablePromptContent = UNPCComponent::ConvertJsonToReadableText(PromptContent);
+    FString EscapedPlayerInput = Request.Prompt;
+
+    UE_LOG(LogTemp, Log, TEXT("변환된 NPC 설정: %s"), *ReadablePromptContent);
 
     FOpenAIRequest AIRequest;
     AIRequest.SpeakerID = Request.SpeakerID;
     AIRequest.ListenerID = Request.ListenerID;
     AIRequest.MaxTokens = 150;
-    AIRequest.ConversationType = EConversationType::P2N;
 
-    if (bIsFirstGreeting && Request.Prompt.IsEmpty())
+    FString ListenerNPCID = FString::FromInt(Request.ListenerID);
+    // 첫 대화인지 확인 (플레이어와의 P2N 대화 기록이 없는 경우)
+    bool bIsFirstGreeting = !P2NDialogueHistory.Contains(ListenerNPCID) ||
+        P2NDialogueHistory[ListenerNPCID].DialogueLines.Num() == 0;
+
+    // JSON 객체 생성
+    TSharedPtr<FJsonObject> RootObject = MakeShareable(new FJsonObject());
+    RootObject->SetStringField("model", "gpt-4o");
+
+    TArray<TSharedPtr<FJsonValue>> Messages;
+
+    // system 메시지 추가
+    TSharedPtr<FJsonObject> SystemMessage = MakeShareable(new FJsonObject());
+    SystemMessage->SetStringField("role", "system");
+
+    // PStart (첫 대화)
+    if (bIsFirstGreeting && Request.Prompt.IsEmpty()) 
     {
-        FString EscapedPromptContent = PromptContent.Replace(TEXT("\n"), TEXT("\\n")).Replace(TEXT("\""), TEXT("\\\""));
-
-        UE_LOG(LogTemp, Log, TEXT("StartConversation - 대화 유형: PStart"));
         AIRequest.ConversationType = EConversationType::PStart;
 
-        // 첫 대사 생성 (NPC 설정을 기반으로 인사)
-        AIRequest.Prompt = FString::Printf(TEXT(
-            "{ \"model\": \"gpt-4o\", \"messages\": ["
-            "{ \"role\": \"system\", \"content\": \"당신은 마을 NPC입니다. 플레이어를 처음 만났을 때의 첫 인사를 출력하세요. NPC의 설정을 반영하여 자연스럽게 작성해야 합니다.\" },"
-            "{ \"role\": \"system\", \"content\": \"==== NPC 설정 ====\n%s\" },"
-            "{ \"role\": \"user\", \"content\": \"플레이어가 NPC를 처음 만났을 때 당신이 할 인사는?\" }],"
-            "\"max_tokens\": 150 }"
-        ), *EscapedPromptContent);
-    }
-    else
-    {
-        FString EscapedPromptContent = PromptContent.Replace(TEXT("\n"), TEXT("\\n")).Replace(TEXT("\""), TEXT("\\\""));
-        FString EscapedPlayerInput = Request.Prompt.Replace(TEXT("\n"), TEXT("\\n")).Replace(TEXT("\""), TEXT("\\\""));
+        SystemMessage->SetStringField("content",
+            FString::Printf(TEXT("당신은 배심원 NPC입니다. 플레이어가 처음 당신과 대화할 때, "
+                "당신의 성격에 맞는 짧은 첫 인사를 해야 합니다. 다음은 당신의 설정입니다.\n%s"),
+                *ReadablePromptContent));
+        Messages.Add(MakeShareable(new FJsonValueObject(SystemMessage)));
 
-        UE_LOG(LogTemp, Log, TEXT("StartConversation - 대화 유형: P2N, 플레이어 입력: %s"), *Request.Prompt);
+        TSharedPtr<FJsonObject> UserMessage = MakeShareable(new FJsonObject());
+        UserMessage->SetStringField("role", "user");
+        UserMessage->SetStringField("content", "안녕하세요! 당신은 누구인가요?");
+        Messages.Add(MakeShareable(new FJsonValueObject(UserMessage)));
+    }
+    // P2N (일반 대화)
+    else 
+    {
         AIRequest.ConversationType = EConversationType::P2N;
 
-        // 일반적인 P2N 대화 처리
-        AIRequest.Prompt = FString::Printf(TEXT(
-            "{ \"model\": \"gpt-4o\", \"messages\": ["
-            "{ \"role\": \"system\", \"content\": \"당신은 마을 NPC입니다. 플레이어의 질문에 답변해야 하며, 다음 설정을 가지고 있습니다.\\n==== NPC 설정 ====\n%s\" },"
-            "{ \"role\": \"system\", \"content\": \"플레이어 ID(참고용): %d\" },"
-            "{ \"role\": \"user\", \"content\": \"플레이어의 질문: '%s'\" }],"
-            "\"max_tokens\": 150 }"
-        ), *EscapedPromptContent, Request.SpeakerID, *EscapedPlayerInput);
+        SystemMessage->SetStringField("content",
+            FString::Printf(TEXT("당신은 배심원 NPC입니다. 다음은 당신의 설정입니다.\n%s"),
+                *ReadablePromptContent));
+        Messages.Add(MakeShareable(new FJsonValueObject(SystemMessage)));
+
+        // 여기서 `EscapedPlayerInput`을 OpenAI 요청에 반영
+        TSharedPtr<FJsonObject> UserMessage = MakeShareable(new FJsonObject());
+        UserMessage->SetStringField("role", "user");
+        UserMessage->SetStringField("content",
+            FString::Printf(TEXT("플레이어의 질문: '%s'"), *EscapedPlayerInput));
+
+        Messages.Add(MakeShareable(new FJsonValueObject(UserMessage)));
     }
-    UE_LOG(LogTemp, Log, TEXT("📤 OpenAI 최종 요청 데이터(JSON): %s"), *AIRequest.Prompt);
+
+    RootObject->SetArrayField("messages", Messages);
+    RootObject->SetNumberField("max_tokens", 150);
+
+    // JSON을 문자열로 변환
+    FString RequestBody;
+    TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
+    FJsonSerializer::Serialize(RootObject.ToSharedRef(), Writer);
+
+    AIRequest.Prompt = RequestBody;
+
+    UE_LOG(LogTemp, Log, TEXT("OpenAI 최종 요청 데이터(JSON): %s"), *RequestBody);
 
     RequestOpenAIResponse(AIRequest, [this, Request](FOpenAIResponse AIResponse)
         {
+            if (AIResponse.ResponseText.IsEmpty())
+            {
+                AIResponse.ResponseText = TEXT("죄송합니다, 질문에 답할 수 없습니다.");
+            }
+
+            AIResponse.ConversationType = Request.ConversationType;
             ResponseCache.Add(Request.Prompt, AIResponse.ResponseText);
-            UE_LOG(LogTemp, Log, TEXT("OpenAI Response: %s"), *AIResponse.ResponseText);
-
-            // 응답 서버 전송 (전체 응답 전달)
             SendNPCResponseToServer(AIResponse);
-
-            // 대화 기록 저장
             SaveP2NDialogue(Request, AIResponse);
         });
 }

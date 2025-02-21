@@ -221,78 +221,126 @@ bool UNPCComponent::CanSendOpenAIRequest() const
 	return !bIsRequestInProgress;
 }
 
+FString UNPCComponent::ConvertJsonToReadableText(const FString& JsonString)
+{
+	TSharedPtr<FJsonObject> JsonObject;
+	TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(JsonString);
+
+	if (!FJsonSerializer::Deserialize(Reader, JsonObject) || !JsonObject.IsValid())
+	{
+		UE_LOG(LogTemp, Error, TEXT("🚨 JSON 파싱 실패! 원본 데이터 반환"));
+		return JsonString;
+	}
+
+	FString ReadableText;
+
+	// NPC 기본 정보
+	if (JsonObject->HasField("name"))
+	{
+		ReadableText += FString::Printf(TEXT("이름: %s\n"), *JsonObject->GetStringField("name"));
+	}
+
+	if (JsonObject->HasField("npcid"))
+	{
+		ReadableText += FString::Printf(TEXT("NPC ID: %d\n"), JsonObject->GetIntegerField("npcid"));
+	}
+
+	if (JsonObject->HasField("personality"))
+	{
+		ReadableText += FString::Printf(TEXT("성격: %s\n"), *JsonObject->GetStringField("personality"));
+	}
+
+	if (JsonObject->HasField("speech_style"))
+	{
+		ReadableText += FString::Printf(TEXT("말투: %s\n"), *JsonObject->GetStringField("speech_style"));
+	}
+
+	if (JsonObject->HasField("situation_understanding"))
+	{
+		ReadableText += FString::Printf(TEXT("현재 상황 인식: %s\n"), *JsonObject->GetStringField("situation_understanding"));
+	}
+
+	if (JsonObject->HasField("past_life_relevance"))
+	{
+		ReadableText += FString::Printf(TEXT("과거 관련성: %s\n"), *JsonObject->GetStringField("past_life_relevance"));
+	}
+
+	if (JsonObject->HasField("past_life_story"))
+	{
+		ReadableText += FString::Printf(TEXT("과거 이야기: %s\n"), *JsonObject->GetStringField("past_life_story"));
+	}
+
+	if (JsonObject->HasField("knowledge_of_defendant's_past_life"))
+	{
+		ReadableText += FString::Printf(TEXT("피고인의 과거에 대한 지식: %s\n"), *JsonObject->GetStringField("knowledge_of_defendant's_past_life"));
+	}
+
+	return ReadableText;
+}
+
+
 // P2N 대화 시작
 void UNPCComponent::StartConversation(FOpenAIRequest Request)
 {
 	UE_LOG(LogTemp, Log, TEXT("NPCComponent::StartConversation 실행 - NPCID: %s"), *NPCID);
+	UE_LOG(LogTemp, Log, TEXT("StartConversation 실행됨 - 현재 PromptContent 길이: %d"), PromptContent.Len());
 
 	Request.SpeakerID = FCString::Atoi(*GetPlayerIDAsString());
 	Request.ListenerID = GetNPCID();
 
 	if (PromptContent.IsEmpty())
 	{
-		UE_LOG(LogTemp, Error, TEXT("Prompt file is empty or failed to load for NPC: %d"), Request.ListenerID);
+		UE_LOG(LogTemp, Error, TEXT("🚨 PromptContent가 비어 있음! NPCID: %s"), *NPCID);
 		return;
 	}
 
 	UE_LOG(LogTemp, Log, TEXT("Player started conversation with NPC %d: %s"), Request.ListenerID, *Request.Prompt);
 
 	FString ListenerNPCID = FString::FromInt(Request.ListenerID);
-	// 첫 대화인지 확인 (플레이어와의 P2N 대화 기록이 없는 경우)
 	bool bIsFirstGreeting = !P2NDialogueHistory.Contains(ListenerNPCID) ||
 		P2NDialogueHistory[ListenerNPCID].DialogueLines.Num() == 0;
 
-
-	// 기존 AIRequest 유지
 	FOpenAIRequest AIRequest;
 	AIRequest.SpeakerID = Request.SpeakerID;
 	AIRequest.ListenerID = Request.ListenerID;
 	AIRequest.MaxTokens = 150;
 
+	// OpenAI가 JSON을 올바르게 해석할 수 있도록 변환
+	FString ReadablePromptContent = ConvertJsonToReadableText(PromptContent);
+
 	if (bIsFirstGreeting && Request.Prompt.IsEmpty())
 	{
-		FString EscapedPromptContent = PromptContent.Replace(TEXT("\n"), TEXT("\\n")).Replace(TEXT("\""), TEXT("\\\""));
-
-		UE_LOG(LogTemp, Log, TEXT("StartConversation - 대화 유형: PStart"));
 		AIRequest.ConversationType = EConversationType::PStart;
-
-		// 첫 대사 생성 (NPC 설정을 기반으로 인사)
 		AIRequest.Prompt = FString::Printf(TEXT(
 			"{ \"model\": \"gpt-4o\", \"messages\": ["
-			"{ \"role\": \"system\", \"content\": \"당신은 마을 NPC입니다. 플레이어를 처음 만났을 때의 첫 인사를 출력하세요. "
-			"NPC의 설정을 반영하여 자연스럽게 작성해야 합니다.\\n==== NPC 설정 ====\n%s\" },"
+			"{ \"role\": \"system\", \"content\": \"당신은 마을 NPC입니다. 다음은 NPC의 설정입니다: %s\" },"
 			"{ \"role\": \"user\", \"content\": \"플레이어가 NPC를 처음 만났을 때 당신이 할 인사는?\" }],"
 			"\"max_tokens\": 150 }"
-		), *EscapedPromptContent);
+		), *ReadablePromptContent);
 	}
 	else
 	{
-		FString EscapedPromptContent = PromptContent.Replace(TEXT("\n"), TEXT("\\n")).Replace(TEXT("\""), TEXT("\\\""));
-		FString EscapedPlayerInput = Request.Prompt.Replace(TEXT("\n"), TEXT("\\n")).Replace(TEXT("\""), TEXT("\\\""));
-
-		UE_LOG(LogTemp, Log, TEXT("StartConversation - 대화 유형: P2N, 플레이어 입력: %s"), *Request.Prompt);
 		AIRequest.ConversationType = EConversationType::P2N;
-
-		// 일반적인 P2N 대화 처리
+		FString EscapedPlayerInput = Request.Prompt.Replace(TEXT("\n"), TEXT(" ")).Replace(TEXT("\""), TEXT("'"));
 		AIRequest.Prompt = FString::Printf(TEXT(
 			"{ \"model\": \"gpt-4o\", \"messages\": ["
-			"{ \"role\": \"system\", \"content\": \"당신은 마을 NPC입니다. 플레이어의 질문에 답변해야 하며, 다음 설정을 가지고 있습니다.\\n==== NPC 설정 ====\n%s\" },"
-			"{ \"role\": \"system\", \"content\": \"플레이어 ID(참고용): %d\" },"
+			"{ \"role\": \"system\", \"content\": \"당신은 마을 NPC입니다. 다음은 NPC의 설정입니다: %s\" },"
 			"{ \"role\": \"user\", \"content\": \"플레이어의 질문: '%s'\" }],"
 			"\"max_tokens\": 150 }"
-		), *EscapedPromptContent, Request.SpeakerID, *EscapedPlayerInput);
+		), *ReadablePromptContent, *EscapedPlayerInput);
 	}
-	UE_LOG(LogTemp, Log, TEXT("📤 OpenAI 최종 요청 데이터(JSON): %s"), *AIRequest.Prompt);
+
+	UE_LOG(LogTemp, Log, TEXT("OpenAI 최종 요청 데이터(JSON): %s"), *AIRequest.Prompt);
 
 	RequestOpenAIResponse(AIRequest, [this, Request](FOpenAIResponse AIResponse)
 		{
+			if (AIResponse.ResponseText.IsEmpty())
+			{
+				AIResponse.ResponseText = TEXT("죄송합니다, 질문에 답할 수 없습니다.");
+			}
+
 			ResponseCache.Add(Request.Prompt, AIResponse.ResponseText);
-			UE_LOG(LogTemp, Log, TEXT("OpenAI Response: %s"), *AIResponse.ResponseText);
-
-			// 응답 서버 전송 (전체 응답 전달)
 			SendNPCResponseToServer(AIResponse);
-
-			// 대화 기록 저장
 			SaveP2NDialogue(Request, AIResponse);
 		});
 }
@@ -429,78 +477,74 @@ void UNPCComponent::PerformNPCMonologue(const FOpenAIRequest& Request)
 // OpenAI API 요청 처리
 void UNPCComponent::RequestOpenAIResponse(const FOpenAIRequest& AIRequest, TFunction<void(FOpenAIResponse)> Callback)
 {
-	/*
-	{
-	UE_LOG(LogTemp, Warning, TEXT("⚠️ OpenAI 요청을 생략하고, 임의의 응답을 서버로 보냄!"));
-
-	// OpenAI 응답을 흉내낸 더미 데이터 생성
-	FOpenAIResponse FakeResponse;
-	FakeResponse.ResponseText = TEXT("이것은 테스트 응답입니다.");
-	FakeResponse.ConversationType = AIRequest.ConversationType;
-	FakeResponse.SpeakerID = AIRequest.ListenerID;  // NPC가 응답하는 구조 유지
-	FakeResponse.ListenerID = AIRequest.SpeakerID;
-
-	// 즉시 콜백 실행 (실제 OpenAI 요청 없이)
-	Callback(FakeResponse);
-	}
-	*/
-
 	if (!CanSendOpenAIRequest())
 	{
-		UE_LOG(LogTemp, Warning, TEXT("OpenAI가 호출 중이기 때문에 새로운 요청을 보낼 수 없습니다."));
+		UE_LOG(LogTemp, Warning, TEXT("OpenAI가 호출 중이므로 새로운 요청을 보낼 수 없습니다."));
 		return;
 	}
 
-	// 새로운 요청 진행 가능이라면 true 상태로 변경
 	bIsRequestInProgress = true;
 
 	FString ApiKey = GetAPIKey();
 	if (ApiKey.IsEmpty())
 	{
-		UE_LOG(LogTemp, Error, TEXT("OpenAI API Key is missing!"));
+		UE_LOG(LogTemp, Error, TEXT("OpenAI API Key가 없습니다!"));
 		bIsRequestInProgress = false;
 		return;
 	}
 
 	FString RequestBody = AIRequest.Prompt;
+	UE_LOG(LogTemp, Log, TEXT("OpenAI에 보낼 최종 JSON 데이터: %s"), *RequestBody);
 
 	TSharedPtr<IHttpRequest> Request = FHttpModule::Get().CreateRequest();
-	Request->SetURL("https://api.openai.com/v1/completions");
+	Request->SetURL("https://api.openai.com/v1/chat/completions");
 	Request->SetVerb("POST");
 	Request->SetHeader("Authorization", "Bearer " + ApiKey);
 	Request->SetHeader("Content-Type", "application/json");
-	Request->SetContentAsString(AIRequest.ToJson());
-
+	Request->SetContentAsString(RequestBody);
 
 	Request->OnProcessRequestComplete().BindLambda([this, Callback](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
 		{
-			// 요청 완료되면 진행 상태 해제하고 false로 변경
 			bIsRequestInProgress = false;
 
-			if (!bWasSuccessful || !Response.IsValid() || Response->GetResponseCode() != 200)
+			if (!bWasSuccessful || !Response.IsValid())
 			{
-				UE_LOG(LogTemp, Error, TEXT("OpenAI 응답 실패! 응답 코드: %d"), Response.IsValid() ? Response->GetResponseCode() : -1);
+				UE_LOG(LogTemp, Error, TEXT("OpenAI 요청 자체가 실패함!"));
+
 				FOpenAIResponse FailedResponse;
 				FailedResponse.ResponseText = TEXT("죄송합니다, 현재 답변할 수 없습니다.");
-				FailedResponse.ConversationType = EConversationType::P2N; // 기본값스로 P2N을 설정
 				Callback(FailedResponse);
 				return;
 			}
 
+			int32 ResponseCode = Response->GetResponseCode();
 			FString ResponseContent = Response->GetContentAsString();
-			UE_LOG(LogTemp, Log, TEXT("OpenAI 응답 수신: %s"), *ResponseContent);
 
+			UE_LOG(LogTemp, Log, TEXT("OpenAI 응답 코드: %d"), ResponseCode);
+			UE_LOG(LogTemp, Log, TEXT("OpenAI 응답 본문: %s"), *ResponseContent);
+
+			if (ResponseCode != 200)
+			{
+				UE_LOG(LogTemp, Error, TEXT("OpenAI 응답 실패! HTTP 응답 코드: %d"), ResponseCode);
+				UE_LOG(LogTemp, Error, TEXT("OpenAI 오류 메시지: %s"), *ResponseContent);
+
+				FOpenAIResponse FailedResponse;
+				FailedResponse.ResponseText = TEXT("죄송합니다, 현재 답변할 수 없습니다.");
+				Callback(FailedResponse);
+				return;
+			}
+
+			// 정상 응답 처리
 			FOpenAIResponse AIResponse = FOpenAIResponse::FromJson(ResponseContent);
+
 			if (AIResponse.ResponseText.IsEmpty())
 			{
-				UE_LOG(LogTemp, Error, TEXT("OpenAI 응답이 비어 있음! 기본 응답 제공."));
+				UE_LOG(LogTemp, Error, TEXT("OpenAI 응답이 비어 있음! 기본 응답 반환."));
 				AIResponse.ResponseText = TEXT("죄송합니다, 질문에 답할 수 없습니다.");
-				AIResponse.ConversationType = EConversationType::P2N; // 기본값으로 P2N을 설정
 			}
 
 			Callback(AIResponse);
 		});
-		
 
 	Request->ProcessRequest();
 }
