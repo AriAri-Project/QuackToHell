@@ -643,6 +643,7 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 	{
 		UE_LOG(LogTemp, Log, TEXT("OnSuccessGetNPCResponse -> HasAuthority false."))
 	}
+	
 	// 대화기록 저장
 	TObjectPtr<AQVillageGameState> VillageGameState = Cast<AQVillageGameState>(GetWorld()->GetGameState());
 	if (VillageGameState == nullptr)
@@ -656,19 +657,41 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 	{
 		return;
 	}
+
+	AQPlayerState* PlayerState = GetWorld()->GetFirstPlayerController()->GetPlayerState<AQPlayerState>();
+	const FConversationRecord* Record = PlayerState->GetRecordWithConvID(RecordID);
+	UE_LOG(LogLogic, Log, TEXT("New Record - %d to %d : %s"), Record->GetSpeakerID(), Record->GetListenerID(), *Record->GetMessage());
+
 	
-	APlayerController* TargetPlayerController;
+	AActor* OwnerActor = GetOwner();	// QNPC
+	APlayerController* LocalPlayerController = Cast<APlayerController>(OwnerActor->GetOwner());
+	if (LocalPlayerController->GetNetConnection())
+	{
+		UE_LOG(LogLogic, Log, TEXT("%s has NetConnection."), *this->GetName());
+	}
+	else
+	{
+		UE_LOG(LogLogic, Log, TEXT("%s has not NetConnection."), *this->GetName());
+	}
+	
 	TObjectPtr<UQP2NWidget> P2NWidget;
 	switch (Response.ConversationType)
 	{
-	case EConversationType::PStart: // 임시
-		TargetPlayerController = Cast<APlayerController>(GetOwner());
-		if (TargetPlayerController)
+	case EConversationType::PStart:
+		UE_LOG(LogLogic, Log, TEXT("Server - PStart NPCResponse received"));
+		if (LocalPlayerController)
 		{
-			Cast<AQPlayerController>(TargetPlayerController)->ClientRPCStartConversation(Response);
+			UE_LOG(LogLogic, Log, TEXT("Server - Found Owner & Activate ClientRPCStartConversation"));
+			Cast<AQPlayerController>(LocalPlayerController)->ClientRPCStartConversation(Response);
+			P2NWidget = Cast<UQP2NWidget>(AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets()[EVillageUIType::P2N]);
+			if (P2NWidget)
+			{
+				P2NWidget->ClientRPCGetNPCResponse(Response);
+			}
 		}
 		break;
-	case EConversationType::P2N: // 임시
+	case EConversationType::P2N: 
+		UE_LOG(LogLogic, Log, TEXT("Server - P2N NPCResponse received"));
 		P2NWidget = Cast<UQP2NWidget>(AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets()[EVillageUIType::P2N]);			
 		if (P2NWidget)
 		{
@@ -710,23 +733,25 @@ void UNPCComponent::ServerRPCGetNPCResponse_Implementation(FOpenAIRequest Reques
 	 *	N2N 대화 진행 : ContinueNPCToNPCDialog(), SendNPCResponseToServer()
 	 *	NMonologue : PerformNPCMonologue(), SendNPCResponseToServer()
 	 */
-	
-	UE_LOG(LogLogic, Log, TEXT("GetNPCResponse Started"));
 	switch (Request.ConversationType)
 	{
 	case EConversationType::None:
 		UE_LOG(LogTemp, Error, TEXT("GetNPCResponse -> Invaild ConversationType"));
 		break;
 	case EConversationType::N2N:
+		UE_LOG(LogLogic, Log, TEXT("Server - N2N GetNPCResponse Started"));
 		ContinueNPCToNPCDialog(Request);
 		break;
 	case EConversationType::N2NStart:
+		UE_LOG(LogLogic, Log, TEXT("Server - N2NStart GetNPCResponse Started"));	
 		StartNPCToNPCDialog(Request);
 		break;
 	case EConversationType::NMonologue:
+		UE_LOG(LogLogic, Log, TEXT("Server - NMonologue GetNPCResponse Started"));
 		PerformNPCMonologue(Request);
 		break;
-	default:	// type이 PStart나 P2N이라면 
+	default:	// type이 PStart나 P2N이라면
+		UE_LOG(LogLogic, Log, TEXT("Server - PStart/P2N GetNPCResponse Started"));
 		StartConversation(Request);
 		break;
 	}

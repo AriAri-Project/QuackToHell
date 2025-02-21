@@ -4,10 +4,12 @@
 #include "Character/QCharacter.h"
 
 #include "EngineUtils.h"
+#include "QLogCategories.h"
 #include "Blueprint/UserWidget.h"
 #include "UObject/SoftObjectPath.h"
 #include "UI/QNameWidget.h"
 #include "Components/WidgetComponent.h"
+#include "Kismet/GameplayStatics.h"
 
 // Sets default values
 AQCharacter::AQCharacter(const FObjectInitializer& ObjectInitializer)
@@ -45,11 +47,30 @@ void AQCharacter::BeginPlay()
 	// 서버에서 실행 -> 오너십을 부여하기 위해
 	if (HasAuthority())
 	{
-		if (GetOwner() == nullptr)
+		APlayerController* LocalPlayerController = nullptr;
+
+		// GetWorld()에서 모든 플레이어 컨트롤러를 순회하며, 로컬 플레이어 컨트롤러 찾기
+		for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
 		{
-			SetOwner(GetWorld()->GetFirstPlayerController());
+			APlayerController* PC = Cast<APlayerController>(*It);
+			if (PC && PC->IsLocalPlayerController()) // 로컬 플레이어인지 확인
+			{
+				LocalPlayerController = PC;
+				break;
+			}
+		}
+
+		if (LocalPlayerController)
+		{
+			SetOwner(LocalPlayerController);
+			UE_LOG(LogLogic, Log, TEXT("%s 's Owner is %s"), *this->GetName(), *GetOwner()->GetName());
+		}
+		else
+		{
+			UE_LOG(LogTemp, Error, TEXT("Failed to find Local Player Controller!"));
 		}
 	}
+
 }
 
 const FString& AQCharacter::GetCharacterName() const
