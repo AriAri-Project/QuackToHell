@@ -7,6 +7,7 @@
 #include "JsonObjectConverter.h"
 #include "GameFramework/PlayerState.h"
 #include "GameFramework/PlayerController.h"
+#include "Logging/LogMacros.h"
 
 void UJuryComponent::BeginPlay()
 {
@@ -146,4 +147,3 @@ void UJuryComponent::StartConversation(FOpenAIRequest Request)
             SaveP2NDialogue(Request, AIResponse);
         });
 }
-
