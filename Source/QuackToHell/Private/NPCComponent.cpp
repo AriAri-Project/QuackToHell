@@ -683,6 +683,11 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 		{
 			UE_LOG(LogLogic, Log, TEXT("Server - Found Owner & Activate ClientRPCStartConversation"));
 			Cast<AQPlayerController>(LocalPlayerController)->ClientRPCStartConversation(Response);
+			P2NWidget = Cast<UQP2NWidget>(AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets()[EVillageUIType::P2N]);
+			if (P2NWidget)
+			{
+				P2NWidget->ClientRPCGetNPCResponse(Response);
+			}
 		}
 		break;
 	case EConversationType::P2N: 

@@ -17,6 +17,10 @@ class QUACKTOHELL_API AQDynamicNPCController : public AQNPCController
 	GENERATED_BODY()
 public:
     /**
+     * @brief. 얼음땡
+     */
+    void UnFreezePawn();
+    /**
      * @brief NPC와의 대화시작 요청을 처리하는 함수입니다. npc-npc, player-npc 대화시스템에 활용됩니다.
      * @param 대화거는 주체의 폰 정보를 넘깁니다.
      */
@@ -69,10 +73,7 @@ private:
      * @param 상대방의 pawn
      */
     void UpdateRotation();
-    /**
-     * @brief. 얼음땡
-     */
-    void UnFreezePawn();
+
 private:
     TObjectPtr<class AQNPC> MyPawn;
 };
