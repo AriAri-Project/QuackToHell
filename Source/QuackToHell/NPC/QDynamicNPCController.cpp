@@ -148,9 +148,10 @@ void AQDynamicNPCController::StartDialog(TObjectPtr<APawn> _OpponentPawn, ENPCCo
     {
     case ENPCConversationType::P2N:
     {
-        //몸멈추기 & 상대방을 향해 회전하기
-        FreezePawn();
+        ////몸멈추기 & 상대방을 향해 회전하기
+        //FreezePawn();
         RotateToOpponent(_OpponentPawn);
+        
         //P2N Widget에게 자신의 정보를 넘긴다: 내 정보 넘겨주기
         TMap<EVillageUIType, TObjectPtr<UUserWidget>> VillageWidgets = VillageUIManager->GetActivedVillageWidgets();
         TObjectPtr<UQP2NWidget> P2NWidget = Cast<UQP2NWidget>(VillageWidgets[EVillageUIType::P2N]);
