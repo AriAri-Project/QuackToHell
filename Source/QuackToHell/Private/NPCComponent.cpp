@@ -352,7 +352,7 @@ void UNPCComponent::StartNPCToNPCDialog(const FOpenAIRequest& Request)
 	FString SpeakerNPCID = FString::FromInt(Request.SpeakerID);
 	FString ListenerNPCID = FString::FromInt(Request.ListenerID);
 
-	UE_LOG(LogTemp, Log, TEXT("Starting NPC-to-NPC dialog between %s and %s"), *SpeakerNPCID, *ListenerNPCID);
+	UE_LOG(LogTemp, Log, TEXT("StartNPCToNPCDialog 시작: %s → %s"), *SpeakerNPCID, *ListenerNPCID);
 
 	FString PlayerDialogueSummary = TEXT("(플레이어와의 대화 기록 없음)");
 
@@ -371,17 +371,18 @@ void UNPCComponent::StartNPCToNPCDialog(const FOpenAIRequest& Request)
 		PlayerDialogueSummary = RecentLines.TrimEnd();
 	}
 
+	FString ReadablePromptContent = ConvertJsonToReadableText(PromptContent);
 	FOpenAIRequest AIRequest;
-	AIRequest.Prompt = FString::Printf(
-		TEXT("NPC '%s'가 NPC '%s'와의 대화를 시작합니다. "
-			"최근 플레이어와 나눈 대화 기록: %s "
-			"위 내용을 참고하여 상대 NPC와의 대화를 시작하기 위한 말을 꺼내세요."),
-		*SpeakerNPCID, *ListenerNPCID, *PlayerDialogueSummary);
+	AIRequest.Prompt = FString::Printf(TEXT(
+		"NPC '%s'가 NPC '%s'에게 말을 겁니다.\n"
+		"최근 플레이어와 나눈 대화 요약: %s\n"
+		"NPC '%s'의 성격을 반영해 첫 대화를 생성하세요."),
+		*SpeakerNPCID, *ListenerNPCID, *PlayerDialogueSummary, *SpeakerNPCID);
 
 	AIRequest.MaxTokens = 150;
-	AIRequest.SpeakerID = Request.SpeakerID;  // 그대로 유지
-	AIRequest.ListenerID = Request.ListenerID;  // 그대로 유지
-	AIRequest.ConversationType = EConversationType::N2NStart;
+	AIRequest.SpeakerID = Request.SpeakerID;
+	AIRequest.ListenerID = Request.ListenerID;
+	AIRequest.ConversationType = EConversationType::N2N;
 
 	RequestOpenAIResponse(AIRequest, [this, ListenerNPCID, SpeakerNPCID](FOpenAIResponse AIResponse)
 		{
@@ -405,16 +406,24 @@ void UNPCComponent::ContinueNPCToNPCDialog(const FOpenAIRequest& Request)
 	FString SpeakerNPCID = FString::FromInt(Request.SpeakerID);
 	FString ListenerNPCID = FString::FromInt(Request.ListenerID);
 
+	UE_LOG(LogTemp, Log, TEXT("ContinueNPCToNPCDialog: %s → %s"), *SpeakerNPCID, *ListenerNPCID);
+
 	// 최근 대화 내역을 반영하여 응답 생성
+	FString PreviousResponse = Request.Prompt;
+	FString ReadablePromptContent = ConvertJsonToReadableText(PromptContent);
+
 	FOpenAIRequest AIRequest;
 	AIRequest.Prompt = FString::Printf(TEXT(
-		"NPC '%s'가 NPC '%s'의 말에 대답합니다. 이때 자연스럽고 일관성 있는 대화를 이어가세요. NPC '%s'가 방금 한 말: \"%s\""),
-		*SpeakerNPCID, *ListenerNPCID, *SpeakerNPCID, *Request.Prompt); // 이전 메시지를 Prompt로 전달
+		"NPC '%s'가 NPC '%s'의 말에 대답합니다.\n"
+		"이전 대화: %s\n"
+		"자연스럽고 일관성 있는 대화를 이어가세요."),
+		*SpeakerNPCID, *ListenerNPCID, *PreviousResponse);
 
-	AIRequest.MaxTokens = 150;
+	AIRequest.MaxTokens = Request.MaxTokens - 1;
 	AIRequest.SpeakerID = Request.SpeakerID;
 	AIRequest.ListenerID = Request.ListenerID;
 	AIRequest.ConversationType = EConversationType::N2N;
+
 
 	// OpenAI API 호출 후, 대화 이어나가기 (남은 턴 수 감소)
 	RequestOpenAIResponse(AIRequest, [this, Request](FOpenAIResponse AIResponse)
@@ -432,9 +441,8 @@ void UNPCComponent::ContinueNPCToNPCDialog(const FOpenAIRequest& Request)
 // N혼잣말 생성
 void UNPCComponent::PerformNPCMonologue(const FOpenAIRequest& Request)
 {
-	FString NPCIDString = FString(NPCID);
-	FString Context;
-	FString SpeakerNPCID = FString::FromInt(Request.SpeakerID);  // NPC ID 변환
+	FString SpeakerNPCID = FString::FromInt(Request.SpeakerID);
+	FString PlayerDialogueSummary = "(플레이어와 나눈 대화 없음)";
 
 	// P2N 대화 기록이 존재하는 경우에만!! 해당 NPC의 대화 기록을 기반으로 혼잣말 생성
 	if (P2NDialogueHistory.Contains(SpeakerNPCID) && P2NDialogueHistory[SpeakerNPCID].DialogueLines.Num() > 0)
@@ -449,28 +457,25 @@ void UNPCComponent::PerformNPCMonologue(const FOpenAIRequest& Request)
 			RecentLines += DialogueLines[i] + TEXT(" ");
 		}
 
-		Context = RecentLines.TrimEnd();
-	}
-	else
-	{
-		Context = TEXT("플레이어와 대화를 나눈 적이 없는 NPC입니다.");
+		PlayerDialogueSummary = RecentLines.TrimEnd();
 	}
 
-	FOpenAIRequest AIRequest = Request; // 기존 요청 정보를 유지
+	FOpenAIRequest AIRequest;
 	AIRequest.Prompt = FString::Printf(TEXT(
-		"NPC '%s'가 혼잣말을 합니다. "
-		"최근 대화 기록: %s "
-		"이 대화를 바탕으로 자연스럽고 감정적인 독백을 생성하세요."),
-		*SpeakerNPCID, *Context);
+		"NPC '%s'가 혼잣말을 합니다.\n"
+		"최근 플레이어와 나눈 대화 요약: %s\n"
+		"NPC의 성격과 감정을 반영하여 혼잣말을 자연스럽게 생성하세요."),
+		*SpeakerNPCID, *PlayerDialogueSummary);
 
 	AIRequest.MaxTokens = 100;
-	AIRequest.ListenerID = 0;  // 혼잣말이므로 Listener 없음
+	AIRequest.SpeakerID = Request.SpeakerID;
+	AIRequest.ListenerID = 0; // 혼잣말이므로 Listener가 없음
 	AIRequest.ConversationType = EConversationType::NMonologue;
 
 	RequestOpenAIResponse(AIRequest, [this, SpeakerNPCID](FOpenAIResponse AIResponse)
 		{
 			SendNPCResponseToServer(AIResponse);
-			UE_LOG(LogTemp, Log, TEXT("NPC %s가 혼잣말을 시작합니다.: %s"), *SpeakerNPCID, *AIResponse.ResponseText);
+			UE_LOG(LogTemp, Log, TEXT("NPC %s의 혼잣말: %s"), *SpeakerNPCID, *AIResponse.ResponseText);
 		});
 }
 
