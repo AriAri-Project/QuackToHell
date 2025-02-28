@@ -21,6 +21,12 @@ public:
 	 * @ 녹음기 버튼이 눌리는 이벤트에 대한 델리게이트
 	 */
 	FOnRecordButtonPressed OnRecordButtonPressed;
+public:
+	/**
+	 * @brief 버튼 상호작용을 차단합니다.
+	 * 
+	 */
+	void BlockButtonsInteraction();
 protected:
 	/**
 	 * @brief 타이머 sizebox를 바인드
@@ -28,10 +34,11 @@ protected:
 	 */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class USizeBox> TimerBox;
+	
 protected:
 	/**
-	 * @brief 맵 버튼이 눌릴 시 맵 UI를 켭니다.
-	 *
+	 * @brief 타이머 UI를 TimerBox sizebox에 달아줍니다.
+	 * @details 블루프린트 노드에서 호출합니다.
 	 */
 	UFUNCTION(BlueprintCallable)
 	void TurnOnTimerUI();

@@ -21,6 +21,13 @@ public:
 	AQVillageGameState();
 
 	virtual void Tick(float DeltaSeconds) override;
+public:
+	/**
+	 * @brief 타이머가 울린 뒤, 마을활동을 마무리하는 함수입니다.
+	 * 
+	 */
+	UFUNCTION(NetMulticast, Reliable)
+	void EndVillageActivity();
 
 private:
 	float TimeUntilTrialMax = 60 * 7;

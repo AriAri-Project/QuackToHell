@@ -15,6 +15,12 @@ class QUACKTOHELL_API AQPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 public:
+	/**
+	 * @brief 상호작용을 block합니다.
+	 * 
+	 */
+	void BlockInteraction();
+public:
 	/** @breif ServerRPCStartConversation을 성공적으로 마치게 되면 실행되는 함수. 이 내부에 클라쪽 StartConversation 구현
 	* @param NPC 대화대상 npc
 	* @param NPCStartResponse NPC 시작 메세지
