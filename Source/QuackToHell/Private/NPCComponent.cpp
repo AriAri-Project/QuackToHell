@@ -634,6 +634,9 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 	case EConversationType::NMonologue:
 		UE_LOG(LogTemp, Log, TEXT("NMonologue 대화 응답 처리"));
 		break;
+	case EConversationType::OpeningStatement:
+		UE_LOG(LogTemp, Log, TEXT("OpeningStatement 모두진술 응답 처리"));
+		break;
 	default:
 		UE_LOG(LogTemp, Error, TEXT("알 수 없는 ConversationType 처리 불가"));
 		return;
@@ -709,6 +712,8 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 		break;
 	case EConversationType::NMonologue:
 		break;
+	case EConversationType::OpeningStatement:
+		break;
 	default:
 		UE_LOG(LogTemp, Error, TEXT("GetNPCResponse -> Invaild ConversationType"));
 		break;
@@ -753,6 +758,10 @@ void UNPCComponent::ServerRPCGetNPCResponse_Implementation(FOpenAIRequest Reques
 		break;
 	case EConversationType::NMonologue:
 		UE_LOG(LogLogic, Log, TEXT("Server - NMonologue GetNPCResponse Started"));
+		PerformNPCMonologue(Request);
+		break;
+	case EConversationType::OpeningStatement:
+		UE_LOG(LogLogic, Log, TEXT("Server - OpeningStatement GetNPCResponse Started"));
 		PerformNPCMonologue(Request);
 		break;
 	default:	// type이 PStart나 P2N이라면

@@ -71,6 +71,7 @@ private:
 		case EConversationType::P2N: return TEXT("P2N");
 		case EConversationType::N2N: return TEXT("N2N");
 		case EConversationType::NMonologue: return TEXT("NMonologue");
+		case EConversationType::OpeningStatement: return TEXT("OpeningStatement");
 		default: return TEXT("Unknown");
 		}
 	}
@@ -136,6 +137,7 @@ struct FOpenAIResponse
         if (ConversationTypeString == "P2N") Response.ConversationType = EConversationType::P2N;
         else if (ConversationTypeString == "N2N") Response.ConversationType = EConversationType::N2N;
         else if (ConversationTypeString == "NMonologue") Response.ConversationType = EConversationType::NMonologue;
+		else if (ConversationTypeString == "OpeningStatement") Response.ConversationType = EConversationType::OpeningStatement;
     }
 
     UE_LOG(LogTemp, Log, TEXT("OpenAI 응답 파싱 완료: %s"), *Response.ResponseText);

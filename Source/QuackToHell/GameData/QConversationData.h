@@ -22,7 +22,8 @@ enum class EConversationType : uint8
 	P2N UMETA(DisplayName = "P2N"),  // 플레이어 ↔ NPC 대화
 	N2N UMETA(DisplayName = "N2N"),    // NPC ↔ NPC 대화
 	N2NStart UMETA(DisplayName = "N2NStart "),
-	NMonologue UMETA(DisplayName = "NMonologue") // NPC 혼잣말
+	NMonologue UMETA(DisplayName = "NMonologue"), // NPC 혼잣말
+	OpeningStatement UMETA(DisplayName = "OpeningStatement") // 피고인 모두진술
 };
 
 USTRUCT(BlueprintType)
