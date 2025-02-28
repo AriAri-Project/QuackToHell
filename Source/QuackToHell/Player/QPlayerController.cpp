@@ -23,6 +23,7 @@
 
 void AQPlayerController::BlockInteraction()
 {
+	UE_LOG(LogLogic, Log, TEXT("AQPlayerController::BlockInteraction: 구현됨. "));
 	//상호작용을 block == 이동입력처리x
 	InputComponent = nullptr;
 }
