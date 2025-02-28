@@ -53,6 +53,14 @@ void AQVillageGameState::Tick(float DeltaSeconds)
 	}
 }
 
+void AQVillageGameState::EndVillageActivity_Implementation()
+{
+	//1. UI정리
+	AQVillageUIManager::GetInstance(GetWorld())->EndupUI();
+	//2. 플레이어정리 : 로컬플레이어의 상호작용 차단
+	//-> BlockInteraction();
+}
+
 void AQVillageGameState::MulticastRPCUpdateServerTime_Implementation()
 {
 	TObjectPtr<UQVillageTimerWidget> VillageTimerUI = Cast<UQVillageTimerWidget>(AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets()[EVillageUIType::VillageTimer]);

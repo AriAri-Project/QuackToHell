@@ -5,6 +5,10 @@
 #include "UI/QVillageUIManager.h"
 #include "QLogCategories.h"
 #include "Components/SizeBox.h"
+void UQDefaultVillageWidget::BlockButtonsInteraction()
+{
+	UE_LOG(LogLogic, Log, TEXT("아직 미구현: UQDefaultVillageWidget::BlockButtonsInteraction"));
+}
 void UQDefaultVillageWidget::TurnOnTimerUI()
 {
 	//만약 아직 생성되지 않은 상태이면
