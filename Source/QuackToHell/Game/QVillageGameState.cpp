@@ -173,6 +173,14 @@ const TArray<FEvidence> AQVillageGameState::GetEvidencesWithPlayerID() const
 	return EvidenceList.GetEvidencesWithPlayerID(PlayerID);
 }
 
+// 재판장 이동 함수 ------------------------------------------------------------------------------------------
+void AQVillageGameState::ServerRPCRequestTravelToCourt_Implementation(APlayerController* LocalPlayerController, bool bTravelToCourt)
+{
+	if (!HasAuthority()) return;
+
+	// todo: 해당 클라이언트가 재판장으로 이동할 준비가 되었다고 Gamemode에 업데이트
+}
+
 void AQVillageGameState::BeginPlay()
 {
 	Super::BeginPlay();
