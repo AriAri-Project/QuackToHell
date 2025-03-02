@@ -21,6 +21,13 @@ public:
 	AQVillageGameState();
 
 	virtual void Tick(float DeltaSeconds) override;
+public:
+	/**
+	 * @brief 타이머가 울린 뒤, 마을활동을 마무리하는 함수입니다.
+	 * 
+	 */
+	UFUNCTION(NetMulticast, Reliable)
+	void EndVillageActivity();
 
 private:
 	float TimeUntilTrialMax = 60 * 7;
@@ -51,7 +58,8 @@ public:
 	void RemoveEvidence(int32 EvidenceID);
 	void RemoveAllEvidence();
 
-	// 클라 접근용 Get Set 함수
+	// 클라 접근 함수
+	/* 대화기록 증거 저장 시스템 */
 	const FEvidenceList& GetEvidenceList() const
 	{
 		return EvidenceList;
@@ -67,6 +75,12 @@ public:
 	const FEvidence* GetEvidenceWithName(FString EvidenceName) const;
 	const TArray<FEvidence> GetEvidencesWithPlayerID() const;
 
+	/* 재판장 이동 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCRequestTravelToCourt(APlayerController* LocalPlayerController, bool bTravelToCourt);
+
+
+	// 테스트 용
 	virtual void BeginPlay() override;
 	
 	TSubclassOf<UUserWidget> StartLevelWidget;

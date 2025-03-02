@@ -5,6 +5,7 @@
 
 #include "EngineUtils.h"
 #include "UI/QP2NWidget.h"
+#include "QLogCategories.h"
 #include "UI/QDefaultVillageWidget.h"
 #include "UI/QRecordWidget.h"
 #include "UI/QVillageTimerWidget.h"
@@ -14,6 +15,7 @@
 #include "UI/QPlayer2NSpeechBubbleWidget.h"
 #include "UI/QSpeechBubbleWidget.h"
 #include "UI/QRecordWidget.h"
+#include "UI/QDefaultVillageWidget.h"
 #include "QLogCategories.h"
 #include "UI/QInventoryWidget.h"
 
@@ -113,6 +115,21 @@ TObjectPtr<AQVillageUIManager> AQVillageUIManager::GetInstance(TObjectPtr<UWorld
 TMap<EVillageUIType, TObjectPtr<UUserWidget>> AQVillageUIManager::GetActivedVillageWidgets() const
 {
 	return ActivedVillageWidgets;
+}
+
+void AQVillageUIManager::CloseUIInteraction()
+{
+	//defaultUI에서 열어준 함수를 호출한다: 버튼 상호작용 막기
+	Cast<UQDefaultVillageWidget>(ActivedVillageWidgets[EVillageUIType::DefaultVillageUI])->BlockButtonsInteraction();
+}
+
+void AQVillageUIManager::EndupUI()
+{
+	UE_LOG(LogLogic, Log, TEXT("AQVillageUIManager::EndupUI: 미구현"));
+	//1. 열린 UI팝업을 닫는다. == default UI빼고 다 turnoff한다. 
+	
+	//2. 상호작용을 막는다.
+	CloseUIInteraction();
 }
 
 // Called when the game starts or when spawned

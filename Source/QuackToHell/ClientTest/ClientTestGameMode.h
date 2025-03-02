@@ -14,5 +14,6 @@ UCLASS()
 class QUACKTOHELL_API AClientTestGameMode : public AGameMode
 {
 	GENERATED_BODY()
-	
+protected:
+	virtual void BeginPlay();
 };

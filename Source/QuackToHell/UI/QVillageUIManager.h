@@ -55,6 +55,11 @@ public:
 	 * @return 마을 위젯들의 map 
 	 */
 	TMap<EVillageUIType, TObjectPtr<UUserWidget>> GetActivedVillageWidgets() const;
+	/**
+	 * .@brief 타이머 종료 시 호출됩니다. 마을 UI를 마무리합니다.
+	 *  @details 내부에서 1. 열린 UI 팝업 닫기 2. UI 상호작용 차단을 구현합니다.
+	 */
+	void EndupUI();
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -89,6 +94,10 @@ private:
 	 * @brief.마을맵인지 체크 (마을맵이 아닐 시 싱글톤생성 x)
 	 */
 	bool IsVillageMap();
+	/**
+	 * @brief UI상호작용을 닫습니다. 즉, 상호작용이 안되도록 블락처리합니다.
+	 */
+	void CloseUIInteraction();
 };
 
 

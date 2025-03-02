@@ -53,6 +53,15 @@ void AQVillageGameState::Tick(float DeltaSeconds)
 	}
 }
 
+void AQVillageGameState::EndVillageActivity_Implementation()
+{
+	UE_LOG(LogLogic, Log, TEXT("AQVillageGameState::EndVillageActivity_Implementation : 아직 미구현상태"));
+	//1. UI정리
+	AQVillageUIManager::GetInstance(GetWorld())->EndupUI();
+	//2. 플레이어정리 : 로컬플레이어의 상호작용 차단
+	//-> BlockInteraction();
+}
+
 void AQVillageGameState::MulticastRPCUpdateServerTime_Implementation()
 {
 	TObjectPtr<UQVillageTimerWidget> VillageTimerUI = Cast<UQVillageTimerWidget>(AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets()[EVillageUIType::VillageTimer]);
@@ -162,6 +171,14 @@ const TArray<FEvidence> AQVillageGameState::GetEvidencesWithPlayerID() const
 {
 	int32 PlayerID = GetWorld()->GetFirstPlayerController()->GetPlayerState<AQPlayerState>()->GetPlayerId();
 	return EvidenceList.GetEvidencesWithPlayerID(PlayerID);
+}
+
+// 재판장 이동 함수 ------------------------------------------------------------------------------------------
+void AQVillageGameState::ServerRPCRequestTravelToCourt_Implementation(APlayerController* LocalPlayerController, bool bTravelToCourt)
+{
+	if (!HasAuthority()) return;
+
+	// todo: 해당 클라이언트가 재판장으로 이동할 준비가 되었다고 Gamemode에 업데이트
 }
 
 void AQVillageGameState::BeginPlay()
