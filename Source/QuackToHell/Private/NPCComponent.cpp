@@ -479,6 +479,87 @@ void UNPCComponent::PerformNPCMonologue(const FOpenAIRequest& Request)
 		});
 }
 
+void UNPCComponent::TrialStatement(FOpenAIRequest Request)
+{
+	UE_LOG(LogTemp, Log, TEXT("재판 관련 AI 응답 요청 처리 시작 (Type: %d)"), static_cast<int32>(Request.ConversationType));
+
+	if (PromptContent.IsEmpty())
+	{
+		UE_LOG(LogTemp, Error, TEXT("PromptContent가 비어 있음! NPCID: %s"), *NPCID);
+		return;
+	}
+
+	// 기본 설정 (Speaker: NPC ID, Listener: 플레이어 ID)
+	Request.SpeakerID = GetNPCID();
+	Request.ListenerID = FCString::Atoi(*GetPlayerIDAsString());
+
+	FString ReadablePromptContent = UNPCComponent::ConvertJsonToReadableText(PromptContent);
+	FString EscapedPlayerInput = Request.Prompt;
+
+	// JSON 객체 생성
+	TSharedPtr<FJsonObject> RootObject = MakeShareable(new FJsonObject());
+	RootObject->SetStringField("model", "gpt-4o");
+
+	// 메시지 배열 미리 선언
+	TArray<TSharedPtr<FJsonValue>> Messages;
+	TSharedPtr<FJsonObject> SystemMessage = MakeShareable(new FJsonObject());
+	SystemMessage->SetStringField("role", "system");
+
+	switch (Request.ConversationType)
+	{
+	case EConversationType::OpeningStatement:
+	{
+		Request.SpeakerID = GetNPCID(); // 피고인은 2000
+		Request.ListenerID = FCString::Atoi(*GetPlayerIDAsString());
+		
+		SystemMessage->SetStringField("content",
+			FString::Printf(TEXT("당신은 천국행vs지옥행 재판을 받는 피고인입니다. 당신이 기억하는 당신의 전생이 어땠는지, 당신에게 재판이 유리해지도록 진술하세요: %s"),
+				*ReadablePromptContent));
+		Messages.Add(MakeShareable(new FJsonValueObject(SystemMessage)));
+	}
+		break;
+
+	default:
+		UE_LOG(LogTemp, Error, TEXT("잘못된 ConversationType 입니다."));
+		return;
+	}
+
+	// 메시지 배열 추가
+	RootObject->SetArrayField("messages", Messages);
+	RootObject->SetNumberField("max_tokens", 250);
+
+	// JSON을 문자열로 변환 후 AIRequest.Prompt에 저장
+	FString RequestBody;
+	TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
+	FJsonSerializer::Serialize(RootObject.ToSharedRef(), Writer);
+
+	// AI 요청 생성
+	FOpenAIRequest AIRequest;
+	AIRequest.SpeakerID = Request.SpeakerID;
+	AIRequest.ListenerID = Request.ListenerID;
+	AIRequest.MaxTokens = 250;
+	AIRequest.ConversationType = Request.ConversationType;
+	AIRequest.Prompt = RequestBody;
+
+	UE_LOG(LogTemp, Log, TEXT("OpenAI 최종 요청 데이터(JSON): %s"), *RequestBody);
+
+	// AI 응답 요청
+	RequestOpenAIResponse(AIRequest, [this](FOpenAIResponse AIResponse)
+		{
+			if (AIResponse.ResponseText.IsEmpty())
+			{
+				UE_LOG(LogTemp, Error, TEXT("AI 응답이 비어 있음!"));
+				AIResponse.ResponseText = TEXT("응답이 비어 있습니다. DefendentComponent 확인 요망");
+			}
+
+			UE_LOG(LogTemp, Log, TEXT("AI 응답 성공: %s"), *AIResponse.ResponseText);
+
+			// 서버로 전송
+			SendNPCResponseToServer(AIResponse);
+
+		});
+}
+
 // OpenAI API 요청 처리
 void UNPCComponent::RequestOpenAIResponse(const FOpenAIRequest& AIRequest, TFunction<void(FOpenAIResponse)> Callback)
 {
