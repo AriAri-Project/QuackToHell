@@ -273,6 +273,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Dialogue")
 	TArray<FString> GetP2NDialogueHistory() const;
 
+	/**
+     * @brief NPC의 재판 관련 진술을 처리하는 함수
+     * @param Request FOpenAIRequest 구조체, 대화 타입(ConversationType) 포함
+     * @return 없음 (결과는 SendNPCResponseToServer()를 통해 서버로 전송)
+     */
+	UFUNCTION(BlueprintCallable, Category = "Trial")
+	void TrialStatement(FOpenAIRequest Request);
+
+
 protected:
 	/**
 	 * @author 박시언
