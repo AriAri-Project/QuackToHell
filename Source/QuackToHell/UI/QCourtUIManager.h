@@ -17,6 +17,7 @@ enum class ECourtUIType :uint8 {
 /**
  * @author 전유진.
  * @brief 법원 UI 매니저입니다. 키고끄는 책임이 있습니다. 
+ * 흐름 덩어리에 대해서도 키고 끌 수 있습니다. (ex. 모두진술, 증거조사 ..  )
  * @details 법원 내 UI 오브젝트 정보를 가지고 있습니다.
  */
 UCLASS()
@@ -35,6 +36,13 @@ public:
 	 */
 	UFUNCTION(NetMulticast, Reliable)
 	void TurnOnOpening();
+	/**
+	 * @brief 모두진술 연출을 틉니다.
+	 *
+	 */
+	UFUNCTION(NetMulticast, Reliable)
+	void TurnOnOpeningStatement();
+public:
 	/**
 	 * @brief UI를 켭니다.
 	 *

@@ -86,6 +86,13 @@ bool AQCourtUIManager::IsCourtMap()
 	return true;
 }
 
+
+
+void AQCourtUIManager::TurnOnOpeningStatement_Implementation()
+{
+	UE_LOG(LogLogic, Log, TEXT("모두진술 연출 ~~ 미구현"));
+}
+
 void AQCourtUIManager::TurnOnUI(ECourtUIType UIType)
 {
 	/*예외처리*/
