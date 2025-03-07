@@ -5,7 +5,7 @@
 
 ----------
 ## 👧 팀원
-|  [전유진](https://github.com/YujinJeon888888) |   [박시언](https://github.com/siunp1203) |  [유서현](https://github.com/ruruisryu)     | 
+|  [전유진](https://github.com/YujinJeon888888) : PM, 클라이언트|   [박시언](https://github.com/siunp1203) : 기획, AI|  [유서현](https://github.com/ruruisryu) : 기획, 서버   | 
 |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:-------------------------------------------------------------------------------------------------------------------------------:|:-----------------------------------------------------------------------------------------------------------------------------:| 
 | ![enter image description here](https://avatars.githubusercontent.com/u/117812553?v=4) | ![enter image description here](https://avatars.githubusercontent.com/u/164330547?v=4) | ![enter image description here](https://avatars.githubusercontent.com/u/79790536?s=400&u=7c2349c5abcbf78280980f42215b0c26cb714d63&v=4) |  
 
