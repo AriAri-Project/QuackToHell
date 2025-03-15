@@ -10,9 +10,21 @@ UENUM()
 /** @brief 법원 내 존재해야하는 UI목록들 */
 enum class ECourtUIType :uint8 {
 	OpeningStatement, //모두진술 UI
+	EvidenceExam,//증거조사UI
+	ExamDefendant, //피고인심문 UI
 	CourtTimer, // 법원 타이머
 	InputBox, //입력창
 };
+UENUM()
+/** @brief 법원 내 존재해야하는 연출 목록들 */
+enum class ECourtDirectionType :uint8 {
+	Opening,//도입부
+	OpeningStatement,//모두진술
+	EvidenceExamStarting,//증거조사
+	ExamDefendantStarting,//피고인심문 시작
+	ExamDefendantResponse,//피고인심문 답변
+};
+
 
 /**
  * @author 전유진.
@@ -30,6 +42,7 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 public:
+	/*연출켜기*/
 	/**
 	 * @brief 재판 도입부 연출을 틉니다.
 	 * 
@@ -42,6 +55,23 @@ public:
 	 */
 	UFUNCTION(NetMulticast, Reliable)
 	void TurnOnOpeningStatement();
+
+public:
+	/*깔끔 ver: 연출켜기*/
+	/**
+	 * @brief 연출켜기
+	 * @param 연출타입
+	 */
+	UFUNCTION(NetMulticast, Reliable)
+	void TurnOnDirection(ECourtDirectionType DirectionType);
+public: 
+	/*UI마무리*/
+	/**
+	 * @brief UI 마무리 : 입력마무리 처리, 타이머 마무리 초기화, .. 
+	 * @param 현재 켜져있는 UI  (마무리하려는 UI)
+	 */
+	UFUNCTION(NetMulticast, Reliable)
+	void FinishUIWork(ECourtUIType UIType);
 public:
 	/**
 	 * @brief UI를 켭니다.

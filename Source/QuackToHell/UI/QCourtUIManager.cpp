@@ -5,8 +5,10 @@
 #include "Kismet/GameplayStatics.h"
 #include "QLogCategories.h"
 #include "UI/QCourtTimerWidget.h"
+#include "UI/QEvidenceExamWidget.h"
 #include "UI/QCourtInputBoxWidget.h"
 #include "UI/QOpeningStatementWidget.h"
+#include "UI/QExamDefendantWidget.h"
 #include "EngineUtils.h"
 //(이중포인터아님)클래스타입 재차 명시한 이유: 어떤 클래스의 정적 멤버인지 명확히 지정" 하기 위함(C++문법)
 TObjectPtr<AQCourtUIManager> AQCourtUIManager::Instance = nullptr;
@@ -31,6 +33,8 @@ AQCourtUIManager::AQCourtUIManager()
 	static ConstructorHelpers::FClassFinder<UQOpeningStatementWidget> OpeningStatementWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_OpeningStatement.WBP_OpeningStatement_C'"));
 	static ConstructorHelpers::FClassFinder<UQCourtTimerWidget> UQCourtTimerWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_CourtTImer.WBP_CourtTImer_C'"));
 	static ConstructorHelpers::FClassFinder<UQCourtInputBoxWidget> UQCourtInputBoxWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_CourtInputBox.WBP_CourtInputBox_C'"));
+	static ConstructorHelpers::FClassFinder<UQEvidenceExamWidget> UQEvidenceExamWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_EvidenceExam.WBP_EvidenceExam_C'"));
+	static ConstructorHelpers::FClassFinder<UQExamDefendantWidget> UQExamDefendantWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_ExamDefendant.WBP_ExamDefendant_C'"));
 
 
 	// TSubclassOf 템플릿 클래스 객체에 블루프린트 클래스를 넣어준다
@@ -46,8 +50,14 @@ AQCourtUIManager::AQCourtUIManager()
 	{
 		UIWidgetClasses.Add(ECourtUIType::InputBox, UQCourtInputBoxWidgetAsset.Class);
 	}
-
-
+	if (UQEvidenceExamWidgetAsset.Succeeded())
+	{
+		UIWidgetClasses.Add(ECourtUIType::EvidenceExam, UQEvidenceExamWidgetAsset.Class);
+	}
+	if (UQExamDefendantWidgetAsset.Succeeded())
+	{
+		UIWidgetClasses.Add(ECourtUIType::ExamDefendant, UQExamDefendantWidgetAsset.Class);
+	}
 }
 
 void AQCourtUIManager::OnMapLoad()
@@ -91,6 +101,54 @@ bool AQCourtUIManager::IsCourtMap()
 void AQCourtUIManager::TurnOnOpeningStatement_Implementation()
 {
 	UE_LOG(LogLogic, Log, TEXT("모두진술 연출 ~~ 미구현"));
+}
+
+
+
+
+
+
+
+void AQCourtUIManager::TurnOnDirection_Implementation(ECourtDirectionType DirectionType)
+{
+	switch (DirectionType)
+	{
+	case ECourtDirectionType::Opening:
+		UE_LOG(LogLogic, Log, TEXT("오프닝연출 - 미구현"));
+		break;
+	case ECourtDirectionType::OpeningStatement:
+		UE_LOG(LogLogic, Log, TEXT("모두진술연출 - 미구현"));
+		break;
+	case ECourtDirectionType::EvidenceExamStarting:
+		UE_LOG(LogLogic, Log, TEXT("증거조사연출 - 미구현"));
+		break;
+	case ECourtDirectionType::ExamDefendantStarting:
+		UE_LOG(LogLogic, Log, TEXT("피고인심문시작연출 - 미구현"));
+		break;
+	case ECourtDirectionType::ExamDefendantResponse:
+		UE_LOG(LogLogic, Log, TEXT("피고인심문답변연출 - 미구현"));
+		break;
+	default:
+		break;
+	}
+}
+
+void AQCourtUIManager::FinishUIWork_Implementation(ECourtUIType UIType)
+{
+	switch (UIType)
+	{
+	case ECourtUIType::OpeningStatement:
+		UE_LOG(LogLogic, Log, TEXT("모두진술 UI 마무리처리 - 미구현"));
+		break;
+	case ECourtUIType::EvidenceExam:
+		UE_LOG(LogLogic, Log, TEXT("증거조사 UI 마무리처리 - 미구현"));
+		break;
+	case ECourtUIType::ExamDefendant:
+		UE_LOG(LogLogic, Log, TEXT("피고인심문 UI 마무리처리 - 미구현"));
+		break;
+	default:
+		break;
+	}
 }
 
 void AQCourtUIManager::TurnOnUI(ECourtUIType UIType)
