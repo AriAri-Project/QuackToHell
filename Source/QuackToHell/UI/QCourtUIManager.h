@@ -41,20 +41,6 @@ class QUACKTOHELL_API AQCourtUIManager : public AActor
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-public:
-	/*연출켜기*/
-	/**
-	 * @brief 재판 도입부 연출을 틉니다.
-	 * 
-	 */
-	UFUNCTION(NetMulticast, Reliable)
-	void TurnOnOpening();
-	/**
-	 * @brief 모두진술 연출을 틉니다.
-	 *
-	 */
-	UFUNCTION(NetMulticast, Reliable)
-	void TurnOnOpeningStatement();
 
 public:
 	/*깔끔 ver: 연출켜기*/

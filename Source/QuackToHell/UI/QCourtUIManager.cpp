@@ -98,13 +98,6 @@ bool AQCourtUIManager::IsCourtMap()
 
 
 
-void AQCourtUIManager::TurnOnOpeningStatement_Implementation()
-{
-	UE_LOG(LogLogic, Log, TEXT("모두진술 연출 ~~ 미구현"));
-}
-
-
-
 
 
 
@@ -253,9 +246,4 @@ void AQCourtUIManager::Tick(float DeltaTime)
 
 }
 
-
-void AQCourtUIManager::TurnOnOpening_Implementation()
-{
-	UE_LOG(LogLogic, Log, TEXT("재판 시작 연출 ~~ 미구현"));
-}
 
