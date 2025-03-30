@@ -112,6 +112,20 @@ private:
 	bool IsCourtMap();
 
 	/* Server Interface */
+	/*
+	 * 재판 도입
+	 * 증거조사 연출
+	 * 증거조사 입력
+	 * 피고인 신문 연출
+	 * 피고인 신문 입력
+	 * 피고인 답변 연출
+	 * 배심원 평가 연출
+	 * 최종 판결 연출
+	 */
+	
+	/* @breif 재판 도입 연출 마쳤음 알리고 모두 진술 연출 대기임을 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlert재판도입연출End(bool isSucceeded);
 	
 	/* @breif 서버에게 증거 조사 연출 시작 대기 임을 알리기 */
 	UFUNCTION(Server, Reliable)
