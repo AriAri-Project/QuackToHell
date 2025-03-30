@@ -110,4 +110,39 @@ private:
 	 * @brief.재판장맵인지 체크 (마을맵이 아닐 시 싱글톤생성 x)
 	 */
 	bool IsCourtMap();
+
+	/* Server Interface */
+	
+	/* @breif 서버에게 증거 조사 연출 시작 대기 임을 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlertWaitingFor증거조사Perform(bool isSucceeded);
+	
+	/* @breif 서버에게 증거 조사 입력 시작 대기 임을 알리기*/
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlertWaitingFor증거조사Input(bool isSucceeded);
+	
+	/* @breif 서버에게 피고인 신문 연출 시작 대기 임을 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlertWaitingFor피고인신문Perform(bool isSucceeded);
+	
+	/* @breif 서버에게 피고인 신문 입력 시작 대기 임을 알리기*/
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlertWaitingFor피고인신문Input(bool isSucceeded);
+
+	/* @breif 피고인 답변 연출 끝났음을 서버에게 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlert피고인답변PerformEnd(bool isSurcceded);
+	
+	/* @breif 배심원 평가 연출 끝났음을 서버에게 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlert배심원평가PerformEnd(bool isSurcceded);
+	
+	/* @breif 최종판결 연출 끝났음을 서버에게 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlert최종판결PerformEnd(bool isSurcceded);
+
+
+	/* @breif 해당 유저를 세션에서 제외 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCRemoveUserFromSession(APlayerController* LocalPlayerController);
 };
