@@ -1,0 +1,9 @@
+<map id="QuackToHell/UI/QMapWidget.h" name="QuackToHell/UI/QMapWidget.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="190,5,395,32"/>
+<area shape="rect" id="Node000002" href="$_q_player_controller_8cpp.html" title=" " alt="" coords="5,80,159,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="247,40,137,82,135,77,245,35"/>
+<area shape="rect" id="Node000003" href="$_q_map_widget_8cpp.html" title=" " alt="" coords="183,88,402,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="295,48,295,88,290,88,290,48"/>
+<area shape="rect" id="Node000004" href="$_q_village_u_i_manager_8cpp.html" title=" " alt="" coords="426,88,682,115"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="349,34,514,85,512,90,347,40"/>
+</map>

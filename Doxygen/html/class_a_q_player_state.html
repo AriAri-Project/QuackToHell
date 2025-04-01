@@ -105,6 +105,8 @@ $(function(){initNavTree('class_a_q_player_state.html',''); initResizable(true);
   <div class="summary">
 <a href="#pub-methods">Public 멤버 함수</a> &#124;
 <a href="#pub-attribs">Public 속성</a> &#124;
+<a href="#pri-methods">Private 멤버 함수</a> &#124;
+<a href="#pri-attribs">Private 속성</a> &#124;
 <a href="class_a_q_player_state-members.html">모든 멤버 목록</a>  </div>
   <div class="headertitle"><div class="title">AQPlayerState 클래스 참조</div></div>
 </div><!--header-->
@@ -119,9 +121,9 @@ AQPlayerState에 대한 상속 다이어그램 : </div>
 <div class="dyncontent">
 <div class="center"><img src="class_a_q_player_state__inherit__graph.png" border="0" usemap="#a_a_q_player_state_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_a_q_player_state_inherit__map" id="a_a_q_player_state_inherit__map">
-<area shape="rect" title="player state클래스입니다." alt="" coords="5,123,204,299"/>
-<area shape="rect" title=" " alt="" coords="61,5,149,75"/>
-<area shape="poly" title=" " alt="" coords="108,90,108,123,102,123,102,90"/>
+<area shape="rect" title="player state클래스입니다." alt="" coords="5,123,270,971"/>
+<area shape="rect" title=" " alt="" coords="94,5,182,75"/>
+<area shape="poly" title=" " alt="" coords="140,89,140,123,135,123,135,89"/>
 </map>
 </div>
 <div class="dynheader">
@@ -129,9 +131,17 @@ AQPlayerState에 대한 협력 다이어그램:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_a_q_player_state__coll__graph.png" border="0" usemap="#a_a_q_player_state_coll__map" alt="Collaboration graph"/></div>
 <map name="a_a_q_player_state_coll__map" id="a_a_q_player_state_coll__map">
-<area shape="rect" title="player state클래스입니다." alt="" coords="5,123,204,299"/>
-<area shape="rect" title=" " alt="" coords="61,5,149,75"/>
-<area shape="poly" title=" " alt="" coords="108,90,108,123,102,123,102,90"/>
+<area shape="rect" title="player state클래스입니다." alt="" coords="5,1227,270,2037"/>
+<area shape="rect" title=" " alt="" coords="73,733,160,803"/>
+<area shape="poly" title=" " alt="" coords="120,818,130,1227,125,1227,115,818"/>
+<area shape="rect" href="class_a_q_village_game_state.html" title=" " alt="" coords="184,373,449,1163"/>
+<area shape="poly" title=" " alt="" coords="238,1163,228,1211,222,1210,232,1162"/>
+<area shape="rect" title=" " alt="" coords="80,123,166,192"/>
+<area shape="poly" title=" " alt="" coords="141,205,194,373,189,374,136,207"/>
+<area shape="rect" href="struct_f_evidence_list.html" title=" " alt="" coords="190,5,444,309"/>
+<area shape="poly" title=" " alt="" coords="319,309,319,356,314,356,314,309"/>
+<area shape="rect" href="struct_f_conversation_list.html" title=" " alt="" coords="468,8,682,307"/>
+<area shape="poly" title=" " alt="" coords="515,308,458,441,453,439,510,306"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -140,24 +150,68 @@ Public 멤버 함수</h2></td></tr>
 <tr class="memitem:a39229675af9ba0f496da559eb3db6e75" id="r_a39229675af9ba0f496da559eb3db6e75"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_a39229675af9ba0f496da559eb3db6e75.html#a39229675af9ba0f496da559eb3db6e75">AddStateTag</a> (FGameplayTag NewStateTag)</td></tr>
 <tr class="memdesc:a39229675af9ba0f496da559eb3db6e75"><td class="mdescLeft">&#160;</td><td class="mdescRight">새로운 태그를 추가합니다.  <br /></td></tr>
 <tr class="separator:a39229675af9ba0f496da559eb3db6e75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d885d1a8600a7b6a8744c0c95fce250" id="r_a3d885d1a8600a7b6a8744c0c95fce250"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_a3d885d1a8600a7b6a8744c0c95fce250.html#a3d885d1a8600a7b6a8744c0c95fce250">AQPlayerState</a> ()</td></tr>
+<tr class="separator:a3d885d1a8600a7b6a8744c0c95fce250"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b591a51a5b9f4036c6ac0f825a0d24c" id="r_a4b591a51a5b9f4036c6ac0f825a0d24c"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c">BeginPlay</a> () override</td></tr>
+<tr class="separator:a4b591a51a5b9f4036c6ac0f825a0d24c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68919aecef2f7cbc628dd57af54dcb1c" id="r_a68919aecef2f7cbc628dd57af54dcb1c"><td class="memItemLeft" align="right" valign="top">TArray&lt; int32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_a68919aecef2f7cbc628dd57af54dcb1c.html#a68919aecef2f7cbc628dd57af54dcb1c">GetEvidenceIDInHand</a> () const</td></tr>
+<tr class="separator:a68919aecef2f7cbc628dd57af54dcb1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a712a70c67af3e281dc229e6ee57d8dcc" id="r_a712a70c67af3e281dc229e6ee57d8dcc"><td class="memItemLeft" align="right" valign="top">const TArray&lt; <a class="el" href="struct_f_evidence.html">FEvidence</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_a712a70c67af3e281dc229e6ee57d8dcc.html#a712a70c67af3e281dc229e6ee57d8dcc">GetEvidencesWithPlayerID</a> () const</td></tr>
+<tr class="memdesc:a712a70c67af3e281dc229e6ee57d8dcc"><td class="mdescLeft">&#160;</td><td class="mdescRight">플레이어가 소유한 증거를 배열 형태로 반환  <br /></td></tr>
+<tr class="separator:a712a70c67af3e281dc229e6ee57d8dcc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5de8591eb5b2aa03fe971b4926f2edf" id="r_af5de8591eb5b2aa03fe971b4926f2edf"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_f_evidence.html">FEvidence</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_af5de8591eb5b2aa03fe971b4926f2edf.html#af5de8591eb5b2aa03fe971b4926f2edf">GetEvidenceWithID</a> (int32 EvidenceID) const</td></tr>
+<tr class="memdesc:af5de8591eb5b2aa03fe971b4926f2edf"><td class="mdescLeft">&#160;</td><td class="mdescRight">증거ID를 이용해 증거 조회.  <br /></td></tr>
+<tr class="separator:af5de8591eb5b2aa03fe971b4926f2edf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69c772400936e3044115fc0cdb84ef16" id="r_a69c772400936e3044115fc0cdb84ef16"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_f_evidence.html">FEvidence</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_a69c772400936e3044115fc0cdb84ef16.html#a69c772400936e3044115fc0cdb84ef16">GetEvidenceWithName</a> (FString EvidenceName) const</td></tr>
+<tr class="memdesc:a69c772400936e3044115fc0cdb84ef16"><td class="mdescLeft">&#160;</td><td class="mdescRight">증거 이름을 이용해 증거 조회  <br /></td></tr>
+<tr class="separator:a69c772400936e3044115fc0cdb84ef16"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec2e9560cc8d9228d1fbc987ee49c2ee" id="r_aec2e9560cc8d9228d1fbc987ee49c2ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_q_conversation_data_8h_a5a3dc02e2290664f11dc2f3220970e09.html#a5a3dc02e2290664f11dc2f3220970e09">EConversationType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_aec2e9560cc8d9228d1fbc987ee49c2ee.html#aec2e9560cc8d9228d1fbc987ee49c2ee">GetPlayerConversationState</a> () const</td></tr>
+<tr class="separator:aec2e9560cc8d9228d1fbc987ee49c2ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42d59caa6617569f0f3a4451aab8887a" id="r_a42d59caa6617569f0f3a4451aab8887a"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="struct_f_conversation_record.html">FConversationRecord</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_a42d59caa6617569f0f3a4451aab8887a.html#a42d59caa6617569f0f3a4451aab8887a">GetRecordWithConvID</a> (int32 ConversationID) const</td></tr>
+<tr class="memdesc:a42d59caa6617569f0f3a4451aab8887a"><td class="mdescLeft">&#160;</td><td class="mdescRight">대화기록ID를 이용해 대화기록 조회.  <br /></td></tr>
+<tr class="separator:a42d59caa6617569f0f3a4451aab8887a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae888ee9b5cc6aa0aa15b6d4e402f171a" id="r_ae888ee9b5cc6aa0aa15b6d4e402f171a"><td class="memItemLeft" align="right" valign="top">const TArray&lt; <a class="el" href="struct_f_conversation_record.html">FConversationRecord</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_ae888ee9b5cc6aa0aa15b6d4e402f171a.html#ae888ee9b5cc6aa0aa15b6d4e402f171a">GetRecordWithPlayerID</a> () const</td></tr>
+<tr class="memdesc:ae888ee9b5cc6aa0aa15b6d4e402f171a"><td class="mdescLeft">&#160;</td><td class="mdescRight">PlayerID를 이욯해 대화기록 조회.  <br /></td></tr>
+<tr class="separator:ae888ee9b5cc6aa0aa15b6d4e402f171a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c0a12162389a9d4058dfb2f1cc0f445" id="r_a0c0a12162389a9d4058dfb2f1cc0f445"><td class="memItemLeft" align="right" valign="top">const TArray&lt; <a class="el" href="struct_f_conversation_record.html">FConversationRecord</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_a0c0a12162389a9d4058dfb2f1cc0f445.html#a0c0a12162389a9d4058dfb2f1cc0f445">GetRecrodWithNPCID</a> (int32 NPCID) const</td></tr>
+<tr class="memdesc:a0c0a12162389a9d4058dfb2f1cc0f445"><td class="mdescLeft">&#160;</td><td class="mdescRight">특정 NPCID를 이용해 대화기록 조회.  <br /></td></tr>
+<tr class="separator:a0c0a12162389a9d4058dfb2f1cc0f445"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6ec087741152a1e4b581fb2b8d1b51bc" id="r_a6ec087741152a1e4b581fb2b8d1b51bc"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_a6ec087741152a1e4b581fb2b8d1b51bc.html#a6ec087741152a1e4b581fb2b8d1b51bc">HasStateTag</a> (FGameplayTag StateTag) const</td></tr>
 <tr class="memdesc:a6ec087741152a1e4b581fb2b8d1b51bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">태그를 갖고있는지 체크합니다.  <br /></td></tr>
 <tr class="separator:a6ec087741152a1e4b581fb2b8d1b51bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42e57d1f6e572dbdf0afe56382bbd39d" id="r_a42e57d1f6e572dbdf0afe56382bbd39d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_a42e57d1f6e572dbdf0afe56382bbd39d.html#a42e57d1f6e572dbdf0afe56382bbd39d">RemoveStateTag</a> (FGameplayTag StateTag)</td></tr>
 <tr class="memdesc:a42e57d1f6e572dbdf0afe56382bbd39d"><td class="mdescLeft">&#160;</td><td class="mdescRight">태그를 지웁니다.  <br /></td></tr>
 <tr class="separator:a42e57d1f6e572dbdf0afe56382bbd39d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa722e09aca90bd45f51e17d308739ca" id="r_aaa722e09aca90bd45f51e17d308739ca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_aaa722e09aca90bd45f51e17d308739ca.html#aaa722e09aca90bd45f51e17d308739ca">SetPlayerConverstationState</a> (<a class="el" href="_q_conversation_data_8h_a5a3dc02e2290664f11dc2f3220970e09.html#a5a3dc02e2290664f11dc2f3220970e09">EConversationType</a> NewState)</td></tr>
+<tr class="separator:aaa722e09aca90bd45f51e17d308739ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public 속성</h2></td></tr>
 <tr class="memitem:aee80dcc81f661f448c5a3daf09b38698" id="r_aee80dcc81f661f448c5a3daf09b38698"><td class="memItemLeft" align="right" valign="top">FGameplayTagContainer&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_aee80dcc81f661f448c5a3daf09b38698.html#aee80dcc81f661f448c5a3daf09b38698">PlayerStateTags</a></td></tr>
 <tr class="memdesc:aee80dcc81f661f448c5a3daf09b38698"><td class="mdescLeft">&#160;</td><td class="mdescRight">플레이어의 상태를 관리하는 GameplayTags.  <br /></td></tr>
 <tr class="separator:aee80dcc81f661f448c5a3daf09b38698"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private 멤버 함수</h2></td></tr>
+<tr class="memitem:a688759ffe4cd83ff0873786f3318dc3f" id="r_a688759ffe4cd83ff0873786f3318dc3f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_a688759ffe4cd83ff0873786f3318dc3f.html#a688759ffe4cd83ff0873786f3318dc3f">GetLifetimeReplicatedProps</a> (TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</td></tr>
+<tr class="separator:a688759ffe4cd83ff0873786f3318dc3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private 속성</h2></td></tr>
+<tr class="memitem:ad760bbe7bab8b56710cc9fedd688ee08" id="r_ad760bbe7bab8b56710cc9fedd688ee08"><td class="memItemLeft" align="right" valign="top">TArray&lt; int32 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_ad760bbe7bab8b56710cc9fedd688ee08.html#ad760bbe7bab8b56710cc9fedd688ee08">EvidenceIDInHand</a></td></tr>
+<tr class="memdesc:ad760bbe7bab8b56710cc9fedd688ee08"><td class="mdescLeft">&#160;</td><td class="mdescRight">@breif 플레이어가 소지한 증거 정보의 ID가 저장되어 있는 Array  <br /></td></tr>
+<tr class="separator:ad760bbe7bab8b56710cc9fedd688ee08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef0cddd55b0c38d7ef18f9188a621681" id="r_aef0cddd55b0c38d7ef18f9188a621681"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_q_village_game_state.html">AQVillageGameState</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">GameState</a></td></tr>
+<tr class="separator:aef0cddd55b0c38d7ef18f9188a621681"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaeb5644a3c529b8dab3c294e9bbaef77" id="r_aaeb5644a3c529b8dab3c294e9bbaef77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_q_conversation_data_8h_a5a3dc02e2290664f11dc2f3220970e09.html#a5a3dc02e2290664f11dc2f3220970e09">EConversationType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_state_aaeb5644a3c529b8dab3c294e9bbaef77.html#aaeb5644a3c529b8dab3c294e9bbaef77">PlayerConversationState</a> = EConversationType::None</td></tr>
+<tr class="memdesc:aaeb5644a3c529b8dab3c294e9bbaef77"><td class="mdescLeft">&#160;</td><td class="mdescRight">플레이어의 대화 상태  <br /></td></tr>
+<tr class="separator:aaeb5644a3c529b8dab3c294e9bbaef77"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>
 <div class="textblock"><p>player state클래스입니다. </p>
 <dl class="section author"><dt>작성자</dt><dd>전유진 </dd></dl>
 
-<p class="definition"><a class="el" href="_q_player_state_8h_source.html">QPlayerState.h</a> 파일의 <a class="el" href="_q_player_state_8h_source.html#l00017">17</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="_q_player_state_8h_source.html">QPlayerState.h</a> 파일의 <a class="el" href="_q_player_state_8h_source.html#l00022">22</a> 번째 라인에서 정의되었습니다.</p>
 </div><hr/>이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.:<ul>
 <li>QuackToHell/Player/<a class="el" href="_q_player_state_8h_source.html">QPlayerState.h</a></li>
 <li>QuackToHell/Player/<a class="el" href="_q_player_state_8cpp_source.html">QPlayerState.cpp</a></li>

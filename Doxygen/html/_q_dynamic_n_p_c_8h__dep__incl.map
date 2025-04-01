@@ -1,0 +1,21 @@
+<map id="QuackToHell/Character/QDynamicNPC.h" name="QuackToHell/Character/QDynamicNPC.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="549,5,707,48"/>
+<area shape="rect" id="Node000002" href="$_q_dynamic_n_p_c_8cpp.html" title=" " alt="" coords="5,96,163,139"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="534,43,367,67,175,99,164,101,163,96,174,93,366,62,533,38"/>
+<area shape="rect" id="Node000003" href="$_q_jury_n_p_c_8h.html" title=" " alt="" coords="187,96,344,139"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="535,53,345,99,344,94,534,48"/>
+<area shape="rect" id="Node000005" href="$_q_player_8cpp.html" title=" " alt="" coords="368,96,525,139"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="573,58,490,98,488,93,571,53"/>
+<area shape="rect" id="Node000006" href="$_q_resident_n_p_c_8h.html" title=" " alt="" coords="549,96,707,139"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="631,64,631,96,625,96,625,64"/>
+<area shape="rect" id="Node000008" href="$_q_dynamic_n_p_c_controller_8cpp.html" title=" " alt="" coords="730,96,926,139"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="690,52,782,93,780,98,688,57"/>
+<area shape="rect" id="Node000009" href="$_q_player_controller_8cpp.html" title=" " alt="" coords="950,96,1103,139"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="722,46,938,93,950,96,949,101,937,99,721,51"/>
+<area shape="rect" id="Node000010" href="$_q_p2_n_widget_8cpp.html" title=" " alt="" coords="1127,104,1348,131"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="722,38,1116,93,1163,101,1163,106,1116,99,721,43"/>
+<area shape="rect" id="Node000004" href="$_q_jury_n_p_c_8cpp.html" title=" " alt="" coords="187,187,344,229"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="268,154,268,186,263,186,263,154"/>
+<area shape="rect" id="Node000007" href="$_q_resident_n_p_c_8cpp.html" title=" " alt="" coords="549,187,707,229"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="631,154,631,186,625,186,625,154"/>
+</map>

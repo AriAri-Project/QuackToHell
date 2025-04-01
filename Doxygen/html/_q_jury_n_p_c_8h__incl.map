@@ -1,0 +1,31 @@
+<map id="QuackToHell/Character/QJuryNPC.h" name="QuackToHell/Character/QJuryNPC.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="103,5,261,48"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="195,320,300,347"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="134,51,85,77,38,112,22,132,11,152,9,174,16,196,32,218,50,238,93,270,140,295,185,312,183,317,138,300,90,275,46,241,27,221,12,199,3,174,6,151,17,129,35,108,82,73,132,46"/>
+<area shape="rect" id="Node000003" href="$_q_dynamic_n_p_c_8h.html" title=" " alt="" coords="90,96,274,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="185,49,185,80,179,80,179,49"/>
+<area shape="rect" id="Node000013" title=" " alt="" coords="298,96,455,123"/>
+<area shape="poly" id="edge16_Node000001_Node000013" title=" " alt="" coords="233,46,333,87,331,92,231,51"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="195,122,211,143,225,170,236,205,243,241,249,304,244,304,238,242,230,206,220,172,206,146,191,125"/>
+<area shape="rect" id="Node000004" href="$_q_n_p_c_8h.html" title=" " alt="" coords="349,171,482,197"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="223,121,361,163,359,168,222,126"/>
+<area shape="rect" id="Node000012" title=" " alt="" coords="26,171,210,197"/>
+<area shape="poly" id="edge15_Node000003_Node000012" title=" " alt="" coords="173,125,141,161,137,157,169,121"/>
+<area shape="poly" id="edge5_Node000004_Node000002" title=" " alt="" coords="394,200,360,221,325,247,294,279,268,310,264,306,290,275,322,243,357,216,391,196"/>
+<area shape="rect" id="Node000005" href="$_q_character_8h.html" title=" " alt="" coords="335,245,496,272"/>
+<area shape="poly" id="edge6_Node000004_Node000005" title=" " alt="" coords="418,198,418,230,413,230,413,198"/>
+<area shape="rect" id="Node000008" href="$_q_conversation_data_8h.html" title=" " alt="" coords="700,245,915,272"/>
+<area shape="poly" id="edge10_Node000004_Node000008" title=" " alt="" coords="482,195,724,239,723,245,481,200"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="520,245,652,272"/>
+<area shape="poly" id="edge14_Node000004_Node000011" title=" " alt="" coords="446,195,543,236,541,241,444,200"/>
+<area shape="poly" id="edge7_Node000005_Node000002" title=" " alt="" coords="387,275,292,316,290,311,385,270"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="509,320,703,347"/>
+<area shape="poly" id="edge8_Node000005_Node000006" title=" " alt="" coords="450,270,560,312,558,317,448,275"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="325,320,485,347"/>
+<area shape="poly" id="edge9_Node000005_Node000007" title=" " alt="" coords="416,273,411,305,406,304,411,272"/>
+<area shape="poly" id="edge11_Node000008_Node000002" title=" " alt="" coords="700,274,524,294,316,322,315,317,524,289,700,268"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="960,320,1135,347"/>
+<area shape="poly" id="edge12_Node000008_Node000009" title=" " alt="" coords="850,270,991,312,990,318,848,275"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="727,320,936,347"/>
+<area shape="poly" id="edge13_Node000008_Node000010" title=" " alt="" coords="814,272,825,304,820,306,809,273"/>
+</map>

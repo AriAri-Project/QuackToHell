@@ -1,7 +1,7 @@
 <map id="BeginPlay" name="BeginPlay">
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,31,86,57"/>
-<area shape="rect" id="Node000002" href="$class_a_q_n_p_c_a88a365972aa4c47ec8892b5735529bbf.html#a88a365972aa4c47ec8892b5735529bbf" title="이름을 namewidget에 반영합니다." alt="" coords="169,5,316,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,36,153,27,154,33,86,42"/>
-<area shape="rect" id="Node000003" href="$class_a_q_character_ad23255f7ed065b9dc3becd27b68d5812.html#ad23255f7ed065b9dc3becd27b68d5812" title="이름 설정 함수" alt="" coords="134,56,351,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="86,46,119,51,119,56,86,52"/>
+<area shape="rect" id="Node000002" href="$class_a_q_character_a30bc0ffc017a2491b154bad6ef8970dd.html#a30bc0ffc017a2491b154bad6ef8970dd" title="이름 리턴 함수" alt="" coords="134,5,352,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,36,119,32,119,37,87,42"/>
+<area shape="rect" id="Node000003" href="$class_a_q_character_ad23255f7ed065b9dc3becd27b68d5812.html#ad23255f7ed065b9dc3becd27b68d5812" title="이름 설정 함수" alt="" coords="134,56,352,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="87,46,119,51,119,56,86,52"/>
 </map>

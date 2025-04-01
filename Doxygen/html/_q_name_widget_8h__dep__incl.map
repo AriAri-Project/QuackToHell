@@ -1,11 +1,13 @@
 <map id="QuackToHell/UI/QNameWidget.h" name="QuackToHell/UI/QNameWidget.h">
-<area shape="rect" id="Node000001" title=" " alt="" coords="248,5,464,32"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="339,5,554,32"/>
 <area shape="rect" id="Node000002" href="$_q_character_8cpp.html" title=" " alt="" coords="5,80,163,123"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="300,39,155,82,153,77,299,34"/>
-<area shape="rect" id="Node000003" href="$_q_n_p_c_8cpp.html" title=" " alt="" coords="187,80,344,123"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="332,44,290,82,287,78,329,40"/>
-<area shape="rect" id="Node000004" href="$_q_player_8cpp.html" title=" " alt="" coords="368,80,525,123"/>
-<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="383,40,425,78,422,82,380,44"/>
-<area shape="rect" id="Node000005" href="$_q_name_widget_8cpp.html" title=" " alt="" coords="549,88,779,115"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="420,34,616,85,615,90,418,39"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="375,38,164,85,163,80,374,33"/>
+<area shape="rect" id="Node000003" href="$_q_defendant_n_p_c_8cpp.html" title=" " alt="" coords="187,80,344,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="405,41,313,82,311,77,403,36"/>
+<area shape="rect" id="Node000004" href="$_q_n_p_c_8cpp.html" title=" " alt="" coords="368,80,525,123"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="449,48,449,80,444,80,444,48"/>
+<area shape="rect" id="Node000005" href="$_q_player_8cpp.html" title=" " alt="" coords="549,80,707,123"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="490,36,582,77,580,82,488,41"/>
+<area shape="rect" id="Node000006" href="$_q_name_widget_8cpp.html" title=" " alt="" coords="731,88,960,115"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="525,33,783,85,782,90,524,38"/>
 </map>

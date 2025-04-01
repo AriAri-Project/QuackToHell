@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['finishconversation_0',['FinishConversation',['../class_a_q_player_a0d957ca1b7bcd8a56f26a6c659a0f1b0.html#a0d957ca1b7bcd8a56f26a6c659a0f1b0',1,'AQPlayer']]],
-  ['freezepawn_1',['FreezePawn',['../class_a_q_player_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe',1,'AQPlayerController']]],
-  ['fromjson_2',['FromJson',['../struct_f_open_a_i_response_aaccaba061a901927c770fa62130e269a.html#aaccaba061a901927c770fa62130e269a',1,'FOpenAIResponse']]]
+  ['fconversationlist_0',['FConversationList',['../struct_f_conversation_list_a5bd10a6e14fbfee7cb45cff997fe6056.html#a5bd10a6e14fbfee7cb45cff997fe6056',1,'FConversationList']]],
+  ['fconversationrecord_1',['FConversationRecord',['../struct_f_conversation_record_a2869763a72ee6a7ba87a9cb1f095f74c.html#a2869763a72ee6a7ba87a9cb1f095f74c',1,'FConversationRecord::FConversationRecord()'],['../struct_f_conversation_record_a091fe935c38ec4388b5c5c39a93c82c3.html#a091fe935c38ec4388b5c5c39a93c82c3',1,'FConversationRecord::FConversationRecord(int32 ConversationID, EConversationType ConversationType, int32 SpeakerID, int32 ListenerID, FDateTime Timestamp, const FString &amp;Message)']]],
+  ['fevidence_2',['FEvidence',['../struct_f_evidence_abd00efc648b857f40e910c5e9e0d8f36.html#abd00efc648b857f40e910c5e9e0d8f36',1,'FEvidence::FEvidence(int32 EvidenceID, const FString &amp;EvidenceName, const FString &amp;EvidenceDescription, const FString &amp;EvidenceImagePath)'],['../struct_f_evidence_ad976b2397c784698cfc3c08d54aca487.html#ad976b2397c784698cfc3c08d54aca487',1,'FEvidence::FEvidence()']]],
+  ['finishuiwork_3',['FinishUIWork',['../class_a_q_court_u_i_manager_aaaf6f3ee1103f1fdf5520b8059a572fe.html#aaaf6f3ee1103f1fdf5520b8059a572fe',1,'AQCourtUIManager']]],
+  ['fopenairequest_4',['FOpenAIRequest',['../struct_f_open_a_i_request_ab44fb7694a194c5e6bb68c74a7878ce9.html#ab44fb7694a194c5e6bb68c74a7878ce9',1,'FOpenAIRequest::FOpenAIRequest()'],['../struct_f_open_a_i_request_aaecaa59512094f0ad388d3fe00a7232e.html#aaecaa59512094f0ad388d3fe00a7232e',1,'FOpenAIRequest::FOpenAIRequest(int32 NewSpeakerID, int32 NewListenerID, EConversationType ConversationState, const FString &amp;NewPrompt, int32 NewMaxTokens=150)']]],
+  ['freezepawn_5',['FreezePawn',['../class_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe',1,'AQDynamicNPCController::FreezePawn()'],['../class_a_q_player_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe',1,'AQPlayerController::FreezePawn()']]],
+  ['fromjson_6',['FromJson',['../struct_f_open_a_i_response_aaccaba061a901927c770fa62130e269a.html#aaccaba061a901927c770fa62130e269a',1,'FOpenAIResponse']]]
 ];

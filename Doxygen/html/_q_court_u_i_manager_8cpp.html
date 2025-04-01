@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>QuackToHell: QuackToHell/UI/QCourtUIManager.cpp 파일 참조</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">QuackToHell<span id="projectnumber">&#160;0.0.1</span>
+   </div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="검색" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('_q_court_u_i_manager_8cpp.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">QCourtUIManager.cpp 파일 참조</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="_q_court_u_i_manager_8h_source.html">UI/QCourtUIManager.h</a>&quot;</code><br />
+<code>#include &quot;Kismet/GameplayStatics.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="_q_log_categories_8h_source.html">QLogCategories.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_q_court_timer_widget_8h_source.html">UI/QCourtTimerWidget.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_q_evidence_exam_widget_8h_source.html">UI/QEvidenceExamWidget.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_q_court_input_box_widget_8h_source.html">UI/QCourtInputBoxWidget.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_q_opening_statement_widget_8h_source.html">UI/QOpeningStatementWidget.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_q_exam_defendant_widget_8h_source.html">UI/QExamDefendantWidget.h</a>&quot;</code><br />
+<code>#include &quot;EngineUtils.h&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+QCourtUIManager.cpp에 대한 include 의존 그래프</div>
+<div class="dyncontent">
+<div class="center"><img src="_q_court_u_i_manager_8cpp__incl.png" border="0" usemap="#a_quack_to_hell_2_u_i_2_q_court_u_i_manager_8cpp" alt=""/></div>
+<map name="a_quack_to_hell_2_u_i_2_q_court_u_i_manager_8cpp" id="a_quack_to_hell_2_u_i_2_q_court_u_i_manager_8cpp">
+<area shape="rect" title=" " alt="" coords="1161,5,1410,32"/>
+<area shape="rect" href="_q_court_u_i_manager_8h.html" title=" " alt="" coords="1407,80,1564,107"/>
+<area shape="poly" title=" " alt="" coords="1321,30,1437,72,1435,77,1319,35"/>
+<area shape="rect" title=" " alt="" coords="1588,80,1765,107"/>
+<area shape="poly" title=" " alt="" coords="1354,30,1594,74,1593,79,1354,35"/>
+<area shape="rect" href="_q_log_categories_8h.html" title=" " alt="" coords="1789,80,1915,107"/>
+<area shape="poly" title=" " alt="" coords="1400,30,1774,77,1773,82,1399,35"/>
+<area shape="rect" href="_q_court_timer_widget_8h.html" title=" " alt="" coords="997,80,1163,107"/>
+<area shape="poly" title=" " alt="" coords="1251,35,1131,77,1129,72,1249,30"/>
+<area shape="rect" href="_q_evidence_exam_widget_8h.html" title=" " alt="" coords="340,80,530,107"/>
+<area shape="poly" title=" " alt="" coords="1161,32,884,53,545,83,545,77,883,48,1160,26"/>
+<area shape="rect" href="_q_court_input_box_widget_8h.html" title=" " alt="" coords="554,80,740,107"/>
+<area shape="poly" title=" " alt="" coords="1173,35,755,82,755,77,1172,30"/>
+<area shape="rect" href="_q_opening_statement_widget_8h.html" title=" " alt="" coords="764,80,973,107"/>
+<area shape="poly" title=" " alt="" coords="1213,35,956,79,956,74,1212,30"/>
+<area shape="rect" href="_q_exam_defendant_widget_8h.html" title=" " alt="" coords="1188,80,1383,107"/>
+<area shape="poly" title=" " alt="" coords="1288,33,1288,64,1283,64,1283,33"/>
+<area shape="rect" title=" " alt="" coords="1940,80,2039,107"/>
+<area shape="poly" title=" " alt="" coords="1411,25,1645,45,1924,77,1924,82,1644,50,1410,31"/>
+<area shape="rect" title=" " alt="" coords="970,155,1076,181"/>
+<area shape="poly" title=" " alt="" coords="1407,108,1091,157,1091,152,1407,103"/>
+<area shape="rect" title=" " alt="" coords="1819,155,1986,181"/>
+<area shape="poly" title=" " alt="" coords="1559,105,1815,149,1815,154,1558,110"/>
+<area shape="rect" title=" " alt="" coords="790,155,946,181"/>
+<area shape="poly" title=" " alt="" coords="1407,108,1395,109,962,157,961,152,1395,104,1407,103"/>
+<area shape="rect" title=" " alt="" coords="1595,155,1794,181"/>
+<area shape="poly" title=" " alt="" coords="1523,105,1645,147,1643,152,1521,110"/>
+<area shape="poly" title=" " alt="" coords="1072,109,1044,144,1040,141,1068,106"/>
+<area shape="poly" title=" " alt="" coords="1044,110,921,152,919,147,1042,105"/>
+<area shape="rect" title=" " alt="" coords="1100,155,1309,181"/>
+<area shape="poly" title=" " alt="" coords="1103,105,1171,144,1168,149,1100,110"/>
+<area shape="poly" title=" " alt="" coords="530,103,955,152,954,157,529,108"/>
+<area shape="poly" title=" " alt="" coords="511,105,778,149,777,154,510,110"/>
+<area shape="rect" title=" " alt="" coords="5,155,238,181"/>
+<area shape="poly" title=" " alt="" coords="380,110,192,153,190,148,379,105"/>
+<area shape="poly" title=" " alt="" coords="713,105,955,151,954,156,712,110"/>
+<area shape="poly" title=" " alt="" coords="686,105,816,147,814,152,685,110"/>
+<area shape="rect" title=" " alt="" coords="262,155,490,181"/>
+<area shape="poly" title=" " alt="" coords="600,110,439,153,438,148,599,105"/>
+<area shape="poly" title=" " alt="" coords="896,105,983,145,981,150,894,110"/>
+<area shape="poly" title=" " alt="" coords="871,107,871,139,866,139,866,107"/>
+<area shape="rect" title=" " alt="" coords="514,155,766,181"/>
+<area shape="poly" title=" " alt="" coords="829,110,695,152,694,147,828,105"/>
+<area shape="poly" title=" " alt="" coords="1240,110,1084,153,1083,147,1239,105"/>
+<area shape="poly" title=" " alt="" coords="1213,110,956,154,956,149,1212,105"/>
+<area shape="rect" title=" " alt="" coords="1333,155,1571,181"/>
+<area shape="poly" title=" " alt="" coords="1316,105,1410,146,1408,151,1313,110"/>
+</map>
+</div>
+</div>
+<p><a href="_q_court_u_i_manager_8cpp_source.html">이 파일의 소스 코드 페이지로 가기</a></p>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_320e33a89b1321a072d50dfb68a1fdef.html">QuackToHell</a></li><li class="navelem"><a class="el" href="dir_0276ba65687389df496b70f4b45c8c17.html">UI</a></li><li class="navelem"><a class="el" href="_q_court_u_i_manager_8cpp.html">QCourtUIManager.cpp</a></li>
+    <li class="footer">다음에 의해 생성됨 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,9 @@
+<map id="QuackToHell/Game/QGameInstance.h" name="QuackToHell/Game/QGameInstance.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="93,5,338,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,111,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,35,101,75,98,71,187,30"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="135,80,296,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="218,33,218,64,213,64,213,33"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="320,80,508,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="251,30,366,72,364,77,249,35"/>
+</map>

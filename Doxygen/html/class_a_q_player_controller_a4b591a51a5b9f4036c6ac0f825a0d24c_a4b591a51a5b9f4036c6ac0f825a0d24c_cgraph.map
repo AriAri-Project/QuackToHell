@@ -2,4 +2,8 @@
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,13,86,40"/>
 <area shape="rect" id="Node000002" href="$class_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218.html#a14027a8dd3d11d56d004556d8463c218" title="싱글톤 인스턴스 반환." alt="" coords="134,5,277,48"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,24,118,24,118,29,86,29"/>
+<area shape="rect" id="Node000003" href="$class_a_q_village_u_i_manager_ab13fe3650f7027a04e252fdbea6ee43c.html#ab13fe3650f7027a04e252fdbea6ee43c" title="private생성자로 외부에서 객체생성을 막음." alt="" coords="325,5,476,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="277,24,310,24,310,29,277,29"/>
+<area shape="rect" id="Node000004" href="$class_a_q_village_u_i_manager_a1da182c7b2c5dcb13c097d45ccf53526.html#a1da182c7b2c5dcb13c097d45ccf53526" title=" " alt="" coords="524,5,668,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="476,24,509,24,509,29,476,29"/>
 </map>

@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>QuackToHell: UGodFunction::GenerateNPCPrompts</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">QuackToHell<span id="projectnumber">&#160;0.0.1</span>
+   </div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="검색" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('class_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="contents">
+<a id="a4de9f6ddf1cbfb26fe4f0529d8dbbadc" name="a4de9f6ddf1cbfb26fe4f0529d8dbbadc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4de9f6ddf1cbfb26fe4f0529d8dbbadc">&#9670;&#160;</a></span>GenerateNPCPrompts()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GenerateNPCPrompts </td>
+          <td>(</td>
+          <td class="paramtype">UWorld *</td>          <td class="paramname"><span class="paramname"><em>World</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_god_function_8cpp_source.html">GodFunction.cpp</a> 파일의 <a class="el" href="_god_function_8cpp_source.html#l00393">393</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  394</span>{</div>
+<div class="line"><span class="lineno">  395</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">  396</span>    {</div>
+<div class="line"><span class="lineno">  397</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateNPCPrompts - World is nullptr!&quot;</span>));</div>
+<div class="line"><span class="lineno">  398</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  399</span>    }</div>
+<div class="line"><span class="lineno">  400</span> </div>
+<div class="line"><span class="lineno">  401</span>    FString PromptToDefendantPath = FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToDefendant.json&quot;</span>);</div>
+<div class="line"><span class="lineno">  402</span>    FString PromptToGodPath = FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToGod.json&quot;</span>);</div>
+<div class="line"><span class="lineno">  403</span> </div>
+<div class="line"><span class="lineno">  404</span> </div>
+<div class="line"><span class="lineno">  405</span>    <span class="keywordflow">if</span> (!FPaths::FileExists(PromptToDefendantPath) || !FPaths::FileExists(PromptToGodPath))</div>
+<div class="line"><span class="lineno">  406</span>    {</div>
+<div class="line"><span class="lineno">  407</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;PromptToGod.json 또는 PromptToDefendant.json이 존재하지 않음. NPC 생성 불가.&quot;</span>));</div>
+<div class="line"><span class="lineno">  408</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  409</span>    }</div>
+<div class="line"><span class="lineno">  410</span> </div>
+<div class="line"><span class="lineno">  411</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;PromptToGod.json 및 PromptToDefendant.json 존재 확인됨. NPC 프롬프트 순차적 생성 시작.&quot;</span>));</div>
+<div class="line"><span class="lineno">  412</span>    <a class="code hl_function" href="class_u_god_function_a800687b9234e88341a3ff75a44089a24.html#a800687b9234e88341a3ff75a44089a24">GenerateJuryNPC</a>(World, 1);</div>
+<div class="line"><span class="lineno">  413</span>}</div>
+<div class="ttc" id="aclass_u_god_function_a800687b9234e88341a3ff75a44089a24_html_a800687b9234e88341a3ff75a44089a24"><div class="ttname"><a href="class_u_god_function_a800687b9234e88341a3ff75a44089a24.html#a800687b9234e88341a3ff75a44089a24">UGodFunction::GenerateJuryNPC</a></div><div class="ttdeci">static void GenerateJuryNPC(UWorld *World, int JuryIndex)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00424">GodFunction.cpp:424</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_cgraph.png" border="0" usemap="#aclass_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_cgraph" alt=""/></div>
+<map name="aclass_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_cgraph" id="aclass_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_cgraph">
+<area shape="rect" title=" " alt="" coords="5,157,158,184"/>
+<area shape="rect" href="class_u_god_function_a800687b9234e88341a3ff75a44089a24.html#a800687b9234e88341a3ff75a44089a24" title=" " alt="" coords="206,157,334,184"/>
+<area shape="poly" title=" " alt="" coords="158,168,190,168,190,173,158,173"/>
+<area shape="poly" title=" " alt="" coords="238,158,232,149,236,139,249,133,270,131,292,133,304,140,302,144,291,138,270,136,250,138,240,143,237,148,242,155"/>
+<area shape="rect" href="class_u_god_function_a4193e5e1b757eb6f3ff4e387674fb200.html#a4193e5e1b757eb6f3ff4e387674fb200" title=" " alt="" coords="587,31,712,57"/>
+<area shape="poly" title=" " alt="" coords="279,155,320,110,348,86,381,67,428,51,478,41,571,36,571,41,479,46,430,56,383,72,351,90,323,114,283,159"/>
+<area shape="rect" href="class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f" title=" " alt="" coords="771,132,872,159"/>
+<area shape="poly" title=" " alt="" coords="293,182,365,223,415,247,471,268,531,284,593,291,654,288,684,281,712,270,743,250,768,224,804,171,809,174,772,228,746,254,715,274,685,286,655,293,593,297,530,289,470,273,413,252,363,228,291,187"/>
+<area shape="rect" href="class_u_god_function_a941993f5f191f9dc599b55d316ac04f2.html#a941993f5f191f9dc599b55d316ac04f2" title=" " alt="" coords="599,81,700,108"/>
+<area shape="poly" title=" " alt="" coords="284,155,325,122,352,106,381,93,433,82,487,78,584,82,584,87,487,83,434,87,383,99,354,110,328,126,287,159"/>
+<area shape="rect" href="class_u_god_function_a99ce1641c91019a763248259829f18bc.html#a99ce1641c91019a763248259829f18bc" title=" " alt="" coords="382,132,537,159"/>
+<area shape="poly" title=" " alt="" coords="334,159,366,155,367,160,335,165"/>
+<area shape="rect" href="class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee" title=" " alt="" coords="590,183,709,209"/>
+<area shape="poly" title=" " alt="" coords="334,172,574,188,574,194,334,178"/>
+<area shape="rect" href="class_u_god_function_aaac6f0b28b727bc92185ba3fe44117a5.html#aaac6f0b28b727bc92185ba3fe44117a5" title=" " alt="" coords="585,233,714,260"/>
+<area shape="poly" title=" " alt="" coords="335,181,383,191,570,228,569,234,381,196,334,186"/>
+<area shape="poly" title=" " alt="" coords="620,32,615,22,618,12,630,6,650,4,670,7,681,13,679,18,668,12,649,9,632,11,622,16,620,21,625,29"/>
+<area shape="poly" title=" " alt="" coords="691,55,715,67,757,93,793,120,790,124,754,98,712,72,688,60"/>
+<area shape="rect" href="class_u_god_function_a33a42a38f7e8b48cabc4648738618249.html#a33a42a38f7e8b48cabc4648738618249" title=" " alt="" coords="762,56,881,83"/>
+<area shape="poly" title=" " alt="" coords="713,51,746,56,746,61,712,56"/>
+<area shape="rect" href="class_u_god_function_a283cf18abc0d86f40e6813d90c24837b.html#a283cf18abc0d86f40e6813d90c24837b" title=" " alt="" coords="763,5,880,32"/>
+<area shape="poly" title=" " alt="" coords="712,32,747,27,748,32,713,37"/>
+<area shape="poly" title=" " alt="" coords="480,129,527,99,584,67,596,61,598,66,587,72,530,104,483,134"/>
+<area shape="poly" title=" " alt="" coords="538,143,755,143,755,148,538,148"/>
+<area shape="poly" title=" " alt="" coords="512,129,584,109,585,114,513,134"/>
+<area shape="poly" title=" " alt="" coords="427,133,421,123,425,114,439,107,460,105,482,108,494,114,492,119,481,113,460,111,440,113,429,117,427,123,432,130"/>
+<area shape="poly" title=" " alt="" coords="513,157,583,176,581,181,512,162"/>
+<area shape="poly" title=" " alt="" coords="483,157,530,187,587,219,598,225,596,229,584,224,527,192,480,162"/>
+</map>
+</div>
+<div class="dynheader">
+이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_icgraph.png" border="0" usemap="#aclass_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_icgraph" alt=""/></div>
+<map name="aclass_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_icgraph" id="aclass_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_icgraph">
+<area shape="rect" title=" " alt="" coords="896,29,1048,56"/>
+<area shape="rect" href="class_u_god_function_a5c30132246dec8610cc93cc07a32ee07.html#a5c30132246dec8610cc93cc07a32ee07" title=" " alt="" coords="671,29,848,56"/>
+<area shape="poly" title=" " alt="" coords="880,45,848,45,848,40,880,40"/>
+<area shape="poly" title=" " alt="" coords="796,16,783,10,759,8,737,10,725,15,722,20,728,27,724,30,717,21,722,11,736,5,760,3,785,5,798,12"/>
+<area shape="rect" href="class_u_q_game_instance_village_a1ee5ca1a4c7d06fd8d5a3cd9a3d27587.html#a1ee5ca1a4c7d06fd8d5a3cd9a3d27587" title=" " alt="" coords="458,21,623,64"/>
+<area shape="poly" title=" " alt="" coords="656,45,624,45,624,40,656,40"/>
+<area shape="rect" href="class_u_q_game_instance_village_a5a7c0c3e2f26533acb1dfdd30cb430f3.html#a5a7c0c3e2f26533acb1dfdd30cb430f3" title=" " alt="" coords="208,21,410,64"/>
+<area shape="poly" title=" " alt="" coords="443,45,411,45,411,40,443,40"/>
+<area shape="rect" href="class_a_q_game_mode_village_aa1e28be0d0b9be7af2a074941a144c65.html#aa1e28be0d0b9be7af2a074941a144c65" title=" " alt="" coords="5,21,160,64"/>
+<area shape="poly" title=" " alt="" coords="192,45,160,45,160,40,192,40"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_u_god_function.html">UGodFunction</a></li>
+    <li class="footer">다음에 의해 생성됨 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

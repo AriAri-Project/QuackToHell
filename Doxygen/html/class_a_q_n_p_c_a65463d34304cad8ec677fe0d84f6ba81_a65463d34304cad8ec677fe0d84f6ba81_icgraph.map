@@ -1,0 +1,15 @@
+<map id="AQNPC" name="AQNPC">
+<area shape="rect" id="Node000001" title=" " alt="" coords="301,107,370,133"/>
+<area shape="rect" id="Node000002" href="$class_a_q_n_p_c_a1a405b0763199288b555d0fc862e315d.html#a1a405b0763199288b555d0fc862e315d" title="NPC와의 대화를 마칠 수 있는지에 대한 Getter" alt="" coords="40,5,218,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="312,97,285,70,251,46,217,33,219,28,254,42,288,66,316,93"/>
+<area shape="rect" id="Node000003" href="$class_a_q_n_p_c_a088b1ed4cb49e0a264a0ec9dbd2dd8a5.html#a088b1ed4cb49e0a264a0ec9dbd2dd8a5" title="N2N 대화가 가능한지에 대한 Getter" alt="" coords="44,56,214,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="285,107,252,97,203,86,204,81,253,92,287,102"/>
+<area shape="rect" id="Node000004" href="$class_a_q_n_p_c_a688759ffe4cd83ff0873786f3318dc3f.html#a688759ffe4cd83ff0873786f3318dc3f" title=" " alt="" coords="37,107,221,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="285,123,222,123,222,117,285,117"/>
+<area shape="rect" id="Node000005" href="$class_a_q_n_p_c_af7e6f652038c54bcf609da6c75102c72.html#af7e6f652038c54bcf609da6c75102c72" title=" " alt="" coords="5,181,253,208"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="287,140,169,183,167,178,285,135"/>
+<area shape="rect" id="Node000006" href="$class_a_q_n_p_c_ae51e766903b74e2ebb84e6254ab5dfa8.html#ae51e766903b74e2ebb84e6254ab5dfa8" title=" " alt="" coords="9,256,249,283"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="320,148,292,186,254,222,219,243,182,258,180,253,216,238,251,218,288,182,316,145"/>
+<area shape="poly" id="edge5_Node000005_Node000005" title=" " alt="" coords="164,168,152,162,129,160,107,162,96,167,93,172,98,179,94,182,88,173,92,163,106,157,129,155,154,157,167,164"/>
+<area shape="poly" id="edge7_Node000006_Node000006" title=" " alt="" coords="164,243,152,237,129,235,107,237,96,241,93,247,98,254,94,257,88,247,92,238,106,231,129,229,154,232,167,238"/>
+</map>

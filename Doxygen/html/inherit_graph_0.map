@@ -1,5 +1,7 @@
 <map id="그래픽컬한 클래스 계통도" name="그래픽컬한 클래스 계통도">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,5,67,32"/>
-<area shape="rect" id="Node000001" href="$class_a_q_village_u_i_manager.html" title="마을 맵 내에서만 존재하는 마을 UI manager" alt="" coords="115,5,258,32"/>
-<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="82,16,114,16,114,21,82,21"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,31,67,57"/>
+<area shape="rect" id="Node000001" href="$class_a_q_court_u_i_manager.html" title="법원 UI 매니저입니다. 키고끄는 책임이 있습니다. 흐름 덩어리에 대해서도 키고 끌 수 있습니다. (ex. 모두진술, 증거조사 .. )" alt="" coords="118,5,254,32"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="82,34,118,28,118,33,83,39"/>
+<area shape="rect" id="Node000002" href="$class_a_q_village_u_i_manager.html" title="마을 맵 내에서만 존재하는 마을 UI manager. 싱글톤 객체로 관리됩니다." alt="" coords="115,56,258,83"/>
+<area shape="poly" id="edge2_Node000000_Node000002" title=" " alt="" coords="83,49,115,55,114,60,82,54"/>
 </map>

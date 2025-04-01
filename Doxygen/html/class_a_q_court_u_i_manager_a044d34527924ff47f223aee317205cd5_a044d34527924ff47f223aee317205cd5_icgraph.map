@@ -1,0 +1,23 @@
+<map id="AQCourtUIManager" name="AQCourtUIManager">
+<area shape="rect" id="Node000001" title=" " alt="" coords="384,196,520,223"/>
+<area shape="rect" id="Node000002" href="$class_a_q_court_u_i_manager_aaaf6f3ee1103f1fdf5520b8059a572fe.html#aaaf6f3ee1103f1fdf5520b8059a572fe" title="UI 마무리 : 입력마무리 처리, 타이머 마무리 초기화, ." alt="" coords="50,29,151,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="416,189,318,131,258,99,195,70,150,56,152,51,197,66,260,94,321,126,418,185"/>
+<area shape="rect" id="Node000003" href="$class_a_q_court_u_i_manager_aa56c4d66f4cff45a03044904c195df9f.html#aa56c4d66f4cff45a03044904c195df9f" title="싱글톤 인스턴스 반환." alt="" coords="244,221,336,248"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="369,225,337,230,336,225,368,220"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="133,16,122,10,100,8,81,10,70,15,68,20,73,27,68,30,62,21,66,11,79,5,101,3,123,5,135,12"/>
+<area shape="poly" id="edge5_Node000003_Node000002" title=" " alt="" coords="274,208,236,130,214,93,194,70,173,58,150,51,152,46,175,53,197,66,218,90,240,128,279,206"/>
+<area shape="rect" id="Node000004" href="$class_a_client_test_game_mode_a923ec9197c44f7ac18197419583fdb9f.html#a923ec9197c44f7ac18197419583fdb9f" title=" " alt="" coords="22,80,179,123"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="268,211,236,173,194,137,173,126,176,121,197,132,240,169,272,207"/>
+<area shape="rect" id="Node000005" href="$class_u_q_evidence_exam_widget_a9bd6ff865f455f18463abdb44682568c.html#a9bd6ff865f455f18463abdb44682568c" title="inputbox UI를 InputBox sizebox에 달아줍니다." alt="" coords="15,147,186,189"/>
+<area shape="poly" id="edge6_Node000003_Node000005" title=" " alt="" coords="235,218,195,204,163,192,164,187,197,199,236,213"/>
+<area shape="rect" id="Node000006" href="$class_u_q_exam_defendant_widget_a9bd6ff865f455f18463abdb44682568c.html#a9bd6ff865f455f18463abdb44682568c" title="inputbox UI를 InputBox sizebox에 달아줍니다." alt="" coords="12,213,189,256"/>
+<area shape="poly" id="edge7_Node000003_Node000006" title=" " alt="" coords="228,237,189,237,189,232,228,232"/>
+<area shape="rect" id="Node000007" href="$class_u_q_opening_statement_widget_a9bd6ff865f455f18463abdb44682568c.html#a9bd6ff865f455f18463abdb44682568c" title="inputbox UI를 InputBox sizebox에 달아줍니다." alt="" coords="5,280,196,323"/>
+<area shape="poly" id="edge8_Node000003_Node000007" title=" " alt="" coords="236,256,197,271,164,282,163,277,195,265,235,251"/>
+<area shape="rect" id="Node000008" href="$class_u_q_evidence_exam_widget_a89c3bbf32d6839fe36d79b1d832a2c3e.html#a89c3bbf32d6839fe36d79b1d832a2c3e" title="타이머 UI를 TimerBox sizebox에 달아줍니다." alt="" coords="15,347,186,389"/>
+<area shape="poly" id="edge9_Node000003_Node000008" title=" " alt="" coords="272,262,240,300,197,337,176,348,173,344,194,332,236,297,268,259"/>
+<area shape="rect" id="Node000009" href="$class_u_q_exam_defendant_widget_a89c3bbf32d6839fe36d79b1d832a2c3e.html#a89c3bbf32d6839fe36d79b1d832a2c3e" title="타이머 UI를 TimerBox sizebox에 달아줍니다." alt="" coords="12,413,189,456"/>
+<area shape="poly" id="edge10_Node000003_Node000009" title=" " alt="" coords="282,264,252,333,228,371,197,403,180,415,177,411,194,399,224,367,247,331,277,262"/>
+<area shape="rect" id="Node000010" href="$class_u_q_opening_statement_widget_a89c3bbf32d6839fe36d79b1d832a2c3e.html#a89c3bbf32d6839fe36d79b1d832a2c3e" title="타이머 UI를 TimerBox sizebox에 달아줍니다." alt="" coords="5,480,196,523"/>
+<area shape="poly" id="edge11_Node000003_Node000010" title=" " alt="" coords="287,264,278,309,262,364,236,420,218,447,197,470,182,481,179,477,194,466,214,443,231,418,257,362,273,307,282,263"/>
+</map>

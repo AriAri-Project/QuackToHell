@@ -1,0 +1,6 @@
+<map id="GetActivedCourtWidgets" name="GetActivedCourtWidgets">
+<area shape="rect" id="Node000001" title="재판장의 위젯들을 리턴합니다." alt="" coords="154,29,320,56"/>
+<area shape="rect" id="Node000002" href="$class_a_q_court_u_i_manager_aaaf6f3ee1103f1fdf5520b8059a572fe.html#aaaf6f3ee1103f1fdf5520b8059a572fe" title="UI 마무리 : 입력마무리 처리, 타이머 마무리 초기화, ." alt="" coords="5,29,106,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,45,106,45,106,40,138,40"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="86,16,76,10,55,8,37,10,27,15,24,20,29,28,24,30,19,21,23,11,35,5,56,3,77,5,89,12"/>
+</map>

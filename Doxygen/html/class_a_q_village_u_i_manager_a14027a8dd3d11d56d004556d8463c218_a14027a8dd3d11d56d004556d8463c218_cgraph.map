@@ -1,0 +1,7 @@
+<map id="GetInstance" name="GetInstance">
+<area shape="rect" id="Node000001" title="싱글톤 인스턴스 반환." alt="" coords="5,5,98,32"/>
+<area shape="rect" id="Node000002" href="$class_a_q_village_u_i_manager_ab13fe3650f7027a04e252fdbea6ee43c.html#ab13fe3650f7027a04e252fdbea6ee43c" title="private생성자로 외부에서 객체생성을 막음." alt="" coords="146,5,289,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,16,130,16,130,21,98,21"/>
+<area shape="rect" id="Node000003" href="$class_a_q_village_u_i_manager_a1da182c7b2c5dcb13c097d45ccf53526.html#a1da182c7b2c5dcb13c097d45ccf53526" title=" " alt="" coords="337,5,433,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="289,16,321,16,321,21,289,21"/>
+</map>

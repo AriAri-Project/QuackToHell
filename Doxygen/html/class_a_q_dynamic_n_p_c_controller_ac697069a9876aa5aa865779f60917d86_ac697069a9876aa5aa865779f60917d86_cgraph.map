@@ -1,0 +1,5 @@
+<map id="StartDialog" name="StartDialog">
+<area shape="rect" id="Node000001" title="NPC와의 대화시작 요청을 처리하는 함수입니다." alt="" coords="5,5,92,32"/>
+<area shape="rect" id="Node000002" href="$class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059" title="상대방을 향해 고개를 회전합니다." alt="" coords="140,5,270,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="92,16,124,16,124,21,92,21"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="AQVillageGameState" name="AQVillageGameState">
+<area shape="rect" id="Node000001" title=" " alt="" coords="109,373,374,1163"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,123,91,192"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,205,119,373,114,374,61,207"/>
+<area shape="rect" id="Node000003" href="$struct_f_evidence_list.html" title=" " alt="" coords="114,5,368,309"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="244,309,244,356,239,356,239,309"/>
+<area shape="rect" id="Node000004" href="$struct_f_conversation_list.html" title=" " alt="" coords="393,8,607,307"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="440,308,383,441,378,439,435,306"/>
+</map>

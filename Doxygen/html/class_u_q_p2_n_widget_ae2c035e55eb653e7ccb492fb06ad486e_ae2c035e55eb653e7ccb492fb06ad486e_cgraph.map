@@ -1,0 +1,18 @@
+<map id="ClientRPCGetNPCResponse" name="ClientRPCGetNPCResponse">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,132,199,159"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="65,133,58,123,62,113,78,107,102,105,128,108,142,114,140,119,127,113,102,111,79,113,66,117,63,123,69,130"/>
+<area shape="rect" id="Node000002" href="$class_u_q_p2_n_widget_a17a475cd707db22984696f1438a074ce.html#a17a475cd707db22984696f1438a074ce" title="종료버튼 눌렸을때의 처리;" alt="" coords="247,5,401,32"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="120,129,175,91,245,48,270,36,273,41,248,53,178,96,123,134"/>
+<area shape="rect" id="Node000003" href="$class_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b82.html#a4443ff350fe14fe5a16bce2cbaf75b82" title="엔터키 눌렸을때의 처리;" alt="" coords="249,107,399,133"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="199,132,233,128,234,133,199,137"/>
+<area shape="rect" id="Node000004" href="$class_u_q_p2_n_widget_a295cbf313003db73b1ec4d8c916c6cf7.html#a295cbf313003db73b1ec4d8c916c6cf7" title="대화상자의 글씨를 업데이트합니다." alt="" coords="453,81,570,108"/>
+<area shape="poly" id="edge8_Node000001_Node000004" title=" " alt="" coords="132,129,185,108,246,92,296,86,346,83,438,85,438,91,346,89,296,91,247,97,186,113,134,134"/>
+<area shape="rect" id="Node000005" href="$class_u_q_p2_n_widget_aa9750057e825099fb837b1c7ac3bd6b7.html#aa9750057e825099fb837b1c7ac3bd6b7" title="대화상자의 글씨를 업데이트합니다." alt="" coords="449,132,574,159"/>
+<area shape="poly" id="edge9_Node000001_Node000005" title=" " alt="" coords="199,143,434,143,434,148,199,148"/>
+<area shape="rect" id="Node000006" href="$class_u_q_p2_n_widget_a9958ad32f1a2bcd86e45d1a9bf2d7e21.html#a9958ad32f1a2bcd86e45d1a9bf2d7e21" title="대화중인 NPC정보를 세팅합니다." alt="" coords="256,208,392,235"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="144,157,269,200,267,205,143,162"/>
+<area shape="rect" id="Node000007" href="$class_u_q_p2_n_widget_a83ffad6ddd121a3fd3ae6a668d4d778b.html#a83ffad6ddd121a3fd3ae6a668d4d778b" title="대화중인 player정보를 세팅합니다." alt="" coords="252,259,396,285"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="121,157,176,199,248,244,261,250,258,255,245,249,172,204,118,161"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="399,107,437,102,438,107,400,112"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="400,128,434,132,433,137,399,133"/>
+</map>

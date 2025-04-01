@@ -1,0 +1,6 @@
+<map id="SetupInputComponent" name="SetupInputComponent">
+<area shape="rect" id="Node000001" title=" " alt="" coords="307,29,458,56"/>
+<area shape="rect" id="Node000002" href="$class_a_q_player_controller_afa7451673faba73fb437c9e6992a1714.html#afa7451673faba73fb437c9e6992a1714" title="@breif ServerRPCCanStartConversP2N를 통해 대화시작이 가능한지 체크가 완료된 후 실행되는 클라이언트 RPC 인자로 시작할 수 있는지 없는지에 대한 bool..." alt="" coords="5,29,259,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="291,45,259,45,259,40,291,40"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="176,17,161,10,132,8,106,10,91,15,88,20,94,27,90,31,82,21,88,11,104,5,132,3,162,5,178,12"/>
+</map>

@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>QuackToHell: QuackToHell/Character/QDynamicNPC.h 소스 파일</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">QuackToHell<span id="projectnumber">&#160;0.0.1</span>
+   </div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="검색" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('_q_dynamic_n_p_c_8h_source.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">QDynamicNPC.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_q_dynamic_n_p_c_8h.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright_Team_AriAri</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#pragma once</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;CoreMinimal.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="_q_n_p_c_8h.html">Character/QNPC.h</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;QDynamicNPC.generated.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>UCLASS()</div>
+<div class="foldopen" id="foldopen00014" data-start="{" data-end="};">
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c.html">   14</a></span>class QUACKTOHELL_API <a class="code hl_function" href="class_a_q_dynamic_n_p_c_a6a966aada7b0e96d8eaa9519bfd8343b.html#a6a966aada7b0e96d8eaa9519bfd8343b">AQDynamicNPC</a> : public <a class="code hl_function" href="class_a_q_n_p_c_a65463d34304cad8ec677fe0d84f6ba81.html#a65463d34304cad8ec677fe0d84f6ba81">AQNPC</a></div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>{</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    GENERATED_BODY()</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>    <a class="code hl_function" href="class_a_q_dynamic_n_p_c_a6a966aada7b0e96d8eaa9519bfd8343b.html#a6a966aada7b0e96d8eaa9519bfd8343b">AQDynamicNPC</a>(<span class="keyword">const</span> FObjectInitializer&amp; ObjectInitializer);</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    TObjectPtr&lt;class UQPlayer2NSpeechBubbleWidget&gt; <a class="code hl_function" href="class_a_q_dynamic_n_p_c_a59cdb7312b7742f76cdb3798d0309c1b.html#a59cdb7312b7742f76cdb3798d0309c1b">GetPlayer2NSpeechBubbleWidget</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    TObjectPtr&lt;AActor&gt; <a class="code hl_function" href="class_a_q_dynamic_n_p_c_ac87905fa54ad3f9108eaf3ff44f28679.html#ac87905fa54ad3f9108eaf3ff44f28679">GetClosestNPC</a>();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_ae9cb47ef10ab2cc1fad7cd2c522892b6.html#ae9cb47ef10ab2cc1fad7cd2c522892b6">OnOverlapBegin</a>(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, <span class="keywordtype">bool</span> bFromSweep, <span class="keyword">const</span> FHitResult&amp; SweepResult) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_aa47961ada7c35442071f4dd747bb5c49.html#aa47961ada7c35442071f4dd747bb5c49">OnOverlapEnd</a>(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex) <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c">BeginPlay</a>() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span><span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    UPROPERTY(VisibleAnywhere, BlueprintReadWrite)</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_afdb4c42d6c3d8e2ec8375f9c10767fce.html#afdb4c42d6c3d8e2ec8375f9c10767fce">   45</a></span>    TObjectPtr&lt;class UWidgetComponent&gt; <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_afdb4c42d6c3d8e2ec8375f9c10767fce.html#afdb4c42d6c3d8e2ec8375f9c10767fce">EKeyWidgetComponent</a>;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    UPROPERTY(VisibleAnywhere, BlueprintReadWrite)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_aecfb676d074b56dc0818f849fcfa2d30.html#aecfb676d074b56dc0818f849fcfa2d30">   50</a></span>    TObjectPtr&lt;class UWidgetComponent&gt;  <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_aecfb676d074b56dc0818f849fcfa2d30.html#aecfb676d074b56dc0818f849fcfa2d30">Player2NSpeechBubbleWidgetComponent</a>;</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>private:</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    UPROPERTY()</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_a89e53efdb93d6bd32e7837d6c00021ed.html#a89e53efdb93d6bd32e7837d6c00021ed">   54</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="class_u_q_e_key_widget.html">UQEKeyWidget</a>&gt; <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_a89e53efdb93d6bd32e7837d6c00021ed.html#a89e53efdb93d6bd32e7837d6c00021ed">EKeyWidget</a>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    UPROPERTY()</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_a750cf101877cff12990ba42c4de89d0c.html#a750cf101877cff12990ba42c4de89d0c">   58</a></span>    TObjectPtr&lt;class <a class="code hl_class" href="class_u_q_player2_n_speech_bubble_widget.html">UQPlayer2NSpeechBubbleWidget</a>&gt; <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_a750cf101877cff12990ba42c4de89d0c.html#a750cf101877cff12990ba42c4de89d0c">Player2NSpeechBubbleWidget</a>;</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>private:</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_a38f60d50b11950f351ce29d9b4634a45.html#a38f60d50b11950f351ce29d9b4634a45">   62</a></span>    TArray&lt;TObjectPtr&lt;class <a class="code hl_function" href="class_a_q_dynamic_n_p_c_a6a966aada7b0e96d8eaa9519bfd8343b.html#a6a966aada7b0e96d8eaa9519bfd8343b">AQDynamicNPC</a>&gt;&gt; <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_a38f60d50b11950f351ce29d9b4634a45.html#a38f60d50b11950f351ce29d9b4634a45">OverlappingNPCs</a>;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>private:</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_aa9a0e0a3ae757e714bfce43263d23e0d.html#aa9a0e0a3ae757e714bfce43263d23e0d">TurnOnEKeyUI</a>();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_a062ba70f22086364720eb9a01a724c1b.html#a062ba70f22086364720eb9a01a724c1b">TurnOffEKeyUI</a>();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>};</div>
+</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="ttc" id="a_q_n_p_c_8h_html"><div class="ttname"><a href="_q_n_p_c_8h.html">QNPC.h</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_a062ba70f22086364720eb9a01a724c1b_html_a062ba70f22086364720eb9a01a724c1b"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_a062ba70f22086364720eb9a01a724c1b.html#a062ba70f22086364720eb9a01a724c1b">AQDynamicNPC::TurnOffEKeyUI</a></div><div class="ttdeci">void TurnOffEKeyUI()</div><div class="ttdoc">EKey위젯 UI를 끕니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_8cpp_source.html#l00124">QDynamicNPC.cpp:124</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_a38f60d50b11950f351ce29d9b4634a45_html_a38f60d50b11950f351ce29d9b4634a45"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_a38f60d50b11950f351ce29d9b4634a45.html#a38f60d50b11950f351ce29d9b4634a45">AQDynamicNPC::OverlappingNPCs</a></div><div class="ttdeci">TArray&lt; TObjectPtr&lt; class AQDynamicNPC &gt; &gt; OverlappingNPCs</div><div class="ttdoc">overlap에 들어온 대상을 담습니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00062">QDynamicNPC.h:62</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_a4b591a51a5b9f4036c6ac0f825a0d24c_html_a4b591a51a5b9f4036c6ac0f825a0d24c"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c">AQDynamicNPC::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_8cpp_source.html#l00094">QDynamicNPC.cpp:94</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_a59cdb7312b7742f76cdb3798d0309c1b_html_a59cdb7312b7742f76cdb3798d0309c1b"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_a59cdb7312b7742f76cdb3798d0309c1b.html#a59cdb7312b7742f76cdb3798d0309c1b">AQDynamicNPC::GetPlayer2NSpeechBubbleWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UQPlayer2NSpeechBubbleWidget &gt; GetPlayer2NSpeechBubbleWidget() const</div><div class="ttdoc">Player2N 스피치버블 위젯을 리턴합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_8cpp_source.html#l00058">QDynamicNPC.cpp:58</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_a6a966aada7b0e96d8eaa9519bfd8343b_html_a6a966aada7b0e96d8eaa9519bfd8343b"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_a6a966aada7b0e96d8eaa9519bfd8343b.html#a6a966aada7b0e96d8eaa9519bfd8343b">AQDynamicNPC::AQDynamicNPC</a></div><div class="ttdeci">AQDynamicNPC(const FObjectInitializer &amp;ObjectInitializer)</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_8cpp_source.html#l00011">QDynamicNPC.cpp:11</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_a750cf101877cff12990ba42c4de89d0c_html_a750cf101877cff12990ba42c4de89d0c"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_a750cf101877cff12990ba42c4de89d0c.html#a750cf101877cff12990ba42c4de89d0c">AQDynamicNPC::Player2NSpeechBubbleWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UQPlayer2NSpeechBubbleWidget &gt; Player2NSpeechBubbleWidget</div><div class="ttdoc">허공말풍선 위젯 클래스 정보를 담습니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00058">QDynamicNPC.h:58</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_a89e53efdb93d6bd32e7837d6c00021ed_html_a89e53efdb93d6bd32e7837d6c00021ed"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_a89e53efdb93d6bd32e7837d6c00021ed.html#a89e53efdb93d6bd32e7837d6c00021ed">AQDynamicNPC::EKeyWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UQEKeyWidget &gt; EKeyWidget</div><div class="ttdoc">EKey위젯 클래스 정보를 담습니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00054">QDynamicNPC.h:54</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_aa47961ada7c35442071f4dd747bb5c49_html_aa47961ada7c35442071f4dd747bb5c49"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_aa47961ada7c35442071f4dd747bb5c49.html#aa47961ada7c35442071f4dd747bb5c49">AQDynamicNPC::OnOverlapEnd</a></div><div class="ttdeci">virtual void OnOverlapEnd(UPrimitiveComponent *OverlappedComp, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex) override</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_8cpp_source.html#l00079">QDynamicNPC.cpp:79</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_aa9a0e0a3ae757e714bfce43263d23e0d_html_aa9a0e0a3ae757e714bfce43263d23e0d"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_aa9a0e0a3ae757e714bfce43263d23e0d.html#aa9a0e0a3ae757e714bfce43263d23e0d">AQDynamicNPC::TurnOnEKeyUI</a></div><div class="ttdeci">void TurnOnEKeyUI()</div><div class="ttdoc">EKey위젯 UI를 켭니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_8cpp_source.html#l00118">QDynamicNPC.cpp:118</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_ac87905fa54ad3f9108eaf3ff44f28679_html_ac87905fa54ad3f9108eaf3ff44f28679"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_ac87905fa54ad3f9108eaf3ff44f28679.html#ac87905fa54ad3f9108eaf3ff44f28679">AQDynamicNPC::GetClosestNPC</a></div><div class="ttdeci">TObjectPtr&lt; AActor &gt; GetClosestNPC()</div><div class="ttdoc">캐릭터 기준으로 가장 가까이 있는 npc를 반환합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_8cpp_source.html#l00034">QDynamicNPC.cpp:34</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_ae9cb47ef10ab2cc1fad7cd2c522892b6_html_ae9cb47ef10ab2cc1fad7cd2c522892b6"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_ae9cb47ef10ab2cc1fad7cd2c522892b6.html#ae9cb47ef10ab2cc1fad7cd2c522892b6">AQDynamicNPC::OnOverlapBegin</a></div><div class="ttdeci">virtual void OnOverlapBegin(UPrimitiveComponent *OverlappedComp, AActor *OtherActor, UPrimitiveComponent *OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &amp;SweepResult) override</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_8cpp_source.html#l00063">QDynamicNPC.cpp:63</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_aecfb676d074b56dc0818f849fcfa2d30_html_aecfb676d074b56dc0818f849fcfa2d30"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_aecfb676d074b56dc0818f849fcfa2d30.html#aecfb676d074b56dc0818f849fcfa2d30">AQDynamicNPC::Player2NSpeechBubbleWidgetComponent</a></div><div class="ttdeci">TObjectPtr&lt; class UWidgetComponent &gt; Player2NSpeechBubbleWidgetComponent</div><div class="ttdoc">Player2NSpeechBubble UI 컴포넌트입니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00050">QDynamicNPC.h:50</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_afdb4c42d6c3d8e2ec8375f9c10767fce_html_afdb4c42d6c3d8e2ec8375f9c10767fce"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_afdb4c42d6c3d8e2ec8375f9c10767fce.html#afdb4c42d6c3d8e2ec8375f9c10767fce">AQDynamicNPC::EKeyWidgetComponent</a></div><div class="ttdeci">TObjectPtr&lt; class UWidgetComponent &gt; EKeyWidgetComponent</div><div class="ttdoc">E UI 컴포넌트입니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00045">QDynamicNPC.h:45</a></div></div>
+<div class="ttc" id="aclass_a_q_n_p_c_a65463d34304cad8ec677fe0d84f6ba81_html_a65463d34304cad8ec677fe0d84f6ba81"><div class="ttname"><a href="class_a_q_n_p_c_a65463d34304cad8ec677fe0d84f6ba81.html#a65463d34304cad8ec677fe0d84f6ba81">AQNPC::AQNPC</a></div><div class="ttdeci">AQNPC(const FObjectInitializer &amp;ObjectInitializer)</div><div class="ttdef"><b>Definition</b> <a href="_q_n_p_c_8cpp_source.html#l00015">QNPC.cpp:15</a></div></div>
+<div class="ttc" id="aclass_u_q_e_key_widget_html"><div class="ttname"><a href="class_u_q_e_key_widget.html">UQEKeyWidget</a></div><div class="ttdoc">E대화하기 키 UI입니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_e_key_widget_8h_source.html#l00014">QEKeyWidget.h:15</a></div></div>
+<div class="ttc" id="aclass_u_q_player2_n_speech_bubble_widget_html"><div class="ttname"><a href="class_u_q_player2_n_speech_bubble_widget.html">UQPlayer2NSpeechBubbleWidget</a></div><div class="ttdoc">공백 말풍선에 대한 widget 입니다. 상대방 플레이어가 npc와 대화 시 해당 말풍선이 대화 대상들의 머리 위에 뜹니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_player2_n_speech_bubble_widget_8h_source.html#l00014">QPlayer2NSpeechBubbleWidget.h:15</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_320e33a89b1321a072d50dfb68a1fdef.html">QuackToHell</a></li><li class="navelem"><a class="el" href="dir_2aebb6d19044b52516145202f69fb931.html">Character</a></li><li class="navelem"><a class="el" href="_q_dynamic_n_p_c_8h.html">QDynamicNPC.h</a></li>
+    <li class="footer">다음에 의해 생성됨 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

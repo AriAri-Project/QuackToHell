@@ -1,0 +1,4 @@
+<map id="ServerRPCCanFinishConversP2N" name="ServerRPCCanFinishConversP2N">
+<area shape="rect" id="Node000001" title="해당 NPC와의 대화를 마칠 수 있는 check" alt="" coords="5,29,228,56"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="155,16,141,10,116,8,93,10,80,15,78,20,83,27,79,30,72,21,77,11,92,5,117,3,143,5,157,12"/>
+</map>

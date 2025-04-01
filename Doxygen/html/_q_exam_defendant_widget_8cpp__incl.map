@@ -1,0 +1,21 @@
+<map id="QuackToHell/UI/QExamDefendantWidget.cpp" name="QuackToHell/UI/QExamDefendantWidget.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="435,5,657,48"/>
+<area shape="rect" id="Node000002" href="$_q_exam_defendant_widget_8h.html" title=" " alt="" coords="248,96,444,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="495,51,392,92,390,87,493,46"/>
+<area shape="rect" id="Node000006" href="$_q_court_u_i_manager_8h.html" title=" " alt="" coords="468,96,624,123"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="548,49,548,80,543,80,543,49"/>
+<area shape="rect" id="Node000009" title=" " alt="" coords="648,96,807,123"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="594,46,686,87,684,92,591,51"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="448,171,553,197"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="374,121,461,161,459,166,372,126"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="268,171,424,197"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="348,123,348,155,343,155,343,123"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,171,244,197"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="308,126,179,168,177,163,306,121"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="540,125,519,159,514,156,536,122"/>
+<area shape="poly" id="edge8_Node000006_Node000004" title=" " alt="" coords="512,126,396,167,394,162,510,121"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="801,171,968,197"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="606,121,811,164,810,170,605,126"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="577,171,776,197"/>
+<area shape="poly" id="edge9_Node000006_Node000008" title=" " alt="" coords="570,121,641,160,639,165,567,126"/>
+</map>

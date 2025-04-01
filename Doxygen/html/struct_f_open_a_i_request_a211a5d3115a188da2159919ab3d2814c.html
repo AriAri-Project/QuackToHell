@@ -125,42 +125,35 @@ $(function(){initNavTree('struct_f_open_a_i_request_a211a5d3115a188da2159919ab3d
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="_n_p_c_component_8h_source.html">NPCComponent.h</a> 파일의 <a class="el" href="_n_p_c_component_8h_source.html#l00030">30</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   31</span>    {</div>
-<div class="line"><span class="lineno">   32</span>        TSharedPtr&lt;FJsonObject&gt; JsonObject = MakeShareable(<span class="keyword">new</span> FJsonObject);</div>
-<div class="line"><span class="lineno">   33</span>        JsonObject-&gt;SetStringField(<span class="stringliteral">&quot;prompt&quot;</span>, <a class="code hl_variable" href="struct_f_open_a_i_request_a57b65c17b9cf8db83f1006f26b1700b6.html#a57b65c17b9cf8db83f1006f26b1700b6">Prompt</a>);</div>
-<div class="line"><span class="lineno">   34</span>        JsonObject-&gt;SetNumberField(<span class="stringliteral">&quot;max_tokens&quot;</span>, <a class="code hl_variable" href="struct_f_open_a_i_request_a7035788dc8c3adc652df9984aab227f7.html#a7035788dc8c3adc652df9984aab227f7">MaxTokens</a>);</div>
-<div class="line"><span class="lineno">   35</span>        JsonObject-&gt;SetStringField(<span class="stringliteral">&quot;speaker_id&quot;</span>, <a class="code hl_variable" href="struct_f_open_a_i_request_a57a766e7bd6b313ed290c6b0616838dc.html#a57a766e7bd6b313ed290c6b0616838dc">SpeakerID</a>);</div>
-<div class="line"><span class="lineno">   36</span>        JsonObject-&gt;SetStringField(<span class="stringliteral">&quot;listener_id&quot;</span>, <a class="code hl_variable" href="struct_f_open_a_i_request_a8041e73204b9b71339c0f64b31b47674.html#a8041e73204b9b71339c0f64b31b47674">ListenerID</a>);</div>
-<div class="line"><span class="lineno">   37</span>        JsonObject-&gt;SetStringField(<span class="stringliteral">&quot;conversation_type&quot;</span>, <a class="code hl_variable" href="struct_f_open_a_i_request_afc2e71188d291f3cb99c1d5fac139191.html#afc2e71188d291f3cb99c1d5fac139191">ConversationType</a>);</div>
-<div class="line"><span class="lineno">   38</span> </div>
-<div class="line"><span class="lineno">   39</span>        FString OutputString;</div>
-<div class="line"><span class="lineno">   40</span>        TSharedRef&lt;TJsonWriter&lt;&gt;&gt; Writer = TJsonWriterFactory&lt;&gt;::Create(&amp;OutputString);</div>
-<div class="line"><span class="lineno">   41</span>        FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);</div>
-<div class="line"><span class="lineno">   42</span> </div>
-<div class="line"><span class="lineno">   43</span>        <span class="keywordflow">return</span> OutputString;</div>
-<div class="line"><span class="lineno">   44</span>    }</div>
-<div class="ttc" id="astruct_f_open_a_i_request_a57a766e7bd6b313ed290c6b0616838dc_html_a57a766e7bd6b313ed290c6b0616838dc"><div class="ttname"><a href="struct_f_open_a_i_request_a57a766e7bd6b313ed290c6b0616838dc.html#a57a766e7bd6b313ed290c6b0616838dc">FOpenAIRequest::SpeakerID</a></div><div class="ttdeci">FString SpeakerID</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00025">NPCComponent.h:25</a></div></div>
-<div class="ttc" id="astruct_f_open_a_i_request_a57b65c17b9cf8db83f1006f26b1700b6_html_a57b65c17b9cf8db83f1006f26b1700b6"><div class="ttname"><a href="struct_f_open_a_i_request_a57b65c17b9cf8db83f1006f26b1700b6.html#a57b65c17b9cf8db83f1006f26b1700b6">FOpenAIRequest::Prompt</a></div><div class="ttdeci">FString Prompt</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00023">NPCComponent.h:23</a></div></div>
-<div class="ttc" id="astruct_f_open_a_i_request_a7035788dc8c3adc652df9984aab227f7_html_a7035788dc8c3adc652df9984aab227f7"><div class="ttname"><a href="struct_f_open_a_i_request_a7035788dc8c3adc652df9984aab227f7.html#a7035788dc8c3adc652df9984aab227f7">FOpenAIRequest::MaxTokens</a></div><div class="ttdeci">int32 MaxTokens</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00024">NPCComponent.h:24</a></div></div>
-<div class="ttc" id="astruct_f_open_a_i_request_a8041e73204b9b71339c0f64b31b47674_html_a8041e73204b9b71339c0f64b31b47674"><div class="ttname"><a href="struct_f_open_a_i_request_a8041e73204b9b71339c0f64b31b47674.html#a8041e73204b9b71339c0f64b31b47674">FOpenAIRequest::ListenerID</a></div><div class="ttdeci">FString ListenerID</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00026">NPCComponent.h:26</a></div></div>
-<div class="ttc" id="astruct_f_open_a_i_request_afc2e71188d291f3cb99c1d5fac139191_html_afc2e71188d291f3cb99c1d5fac139191"><div class="ttname"><a href="struct_f_open_a_i_request_afc2e71188d291f3cb99c1d5fac139191.html#afc2e71188d291f3cb99c1d5fac139191">FOpenAIRequest::ConversationType</a></div><div class="ttdeci">FString ConversationType</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00027">NPCComponent.h:27</a></div></div>
+<p class="definition"><a class="el" href="_n_p_c_component_8h_source.html">NPCComponent.h</a> 파일의 <a class="el" href="_n_p_c_component_8h_source.html#l00050">50</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>    {</div>
+<div class="line"><span class="lineno">   52</span>        TSharedPtr&lt;FJsonObject&gt; JsonObject = MakeShareable(<span class="keyword">new</span> FJsonObject);</div>
+<div class="line"><span class="lineno">   53</span>        JsonObject-&gt;SetStringField(<span class="stringliteral">&quot;prompt&quot;</span>, <a class="code hl_variable" href="struct_f_open_a_i_request_a57b65c17b9cf8db83f1006f26b1700b6.html#a57b65c17b9cf8db83f1006f26b1700b6">Prompt</a>);</div>
+<div class="line"><span class="lineno">   54</span>        JsonObject-&gt;SetNumberField(<span class="stringliteral">&quot;max_tokens&quot;</span>, <a class="code hl_variable" href="struct_f_open_a_i_request_a7035788dc8c3adc652df9984aab227f7.html#a7035788dc8c3adc652df9984aab227f7">MaxTokens</a>);</div>
+<div class="line"><span class="lineno">   55</span>        JsonObject-&gt;SetNumberField(<span class="stringliteral">&quot;speaker_id&quot;</span>, <a class="code hl_variable" href="struct_f_open_a_i_request_a6e93d1c037caf84ee14f186346d6cb06.html#a6e93d1c037caf84ee14f186346d6cb06">SpeakerID</a>);</div>
+<div class="line"><span class="lineno">   56</span>        JsonObject-&gt;SetNumberField(<span class="stringliteral">&quot;listener_id&quot;</span>, <a class="code hl_variable" href="struct_f_open_a_i_request_a693967d3b1ad02b19c5d4c2c6fe92b84.html#a693967d3b1ad02b19c5d4c2c6fe92b84">ListenerID</a>);</div>
+<div class="line"><span class="lineno">   57</span>        JsonObject-&gt;SetStringField(<span class="stringliteral">&quot;conversation_type&quot;</span>, <a class="code hl_function" href="struct_f_open_a_i_request_a9efc1623fe9b233ade4b24b4e69bfae3.html#a9efc1623fe9b233ade4b24b4e69bfae3">ConversationTypeToString</a>(<a class="code hl_variable" href="struct_f_open_a_i_request_aeaff446838e7ac1a62e038f6a724c7da.html#aeaff446838e7ac1a62e038f6a724c7da">ConversationType</a>));</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>        FString OutputString;</div>
+<div class="line"><span class="lineno">   60</span>        TSharedRef&lt;TJsonWriter&lt;&gt;&gt; Writer = TJsonWriterFactory&lt;&gt;::Create(&amp;OutputString);</div>
+<div class="line"><span class="lineno">   61</span>        FJsonSerializer::Serialize(JsonObject.ToSharedRef(), Writer);</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">return</span> OutputString;</div>
+<div class="line"><span class="lineno">   64</span>    }</div>
+<div class="ttc" id="astruct_f_open_a_i_request_a57b65c17b9cf8db83f1006f26b1700b6_html_a57b65c17b9cf8db83f1006f26b1700b6"><div class="ttname"><a href="struct_f_open_a_i_request_a57b65c17b9cf8db83f1006f26b1700b6.html#a57b65c17b9cf8db83f1006f26b1700b6">FOpenAIRequest::Prompt</a></div><div class="ttdeci">FString Prompt</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00037">NPCComponent.h:37</a></div></div>
+<div class="ttc" id="astruct_f_open_a_i_request_a693967d3b1ad02b19c5d4c2c6fe92b84_html_a693967d3b1ad02b19c5d4c2c6fe92b84"><div class="ttname"><a href="struct_f_open_a_i_request_a693967d3b1ad02b19c5d4c2c6fe92b84.html#a693967d3b1ad02b19c5d4c2c6fe92b84">FOpenAIRequest::ListenerID</a></div><div class="ttdeci">int32 ListenerID</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00031">NPCComponent.h:31</a></div></div>
+<div class="ttc" id="astruct_f_open_a_i_request_a6e93d1c037caf84ee14f186346d6cb06_html_a6e93d1c037caf84ee14f186346d6cb06"><div class="ttname"><a href="struct_f_open_a_i_request_a6e93d1c037caf84ee14f186346d6cb06.html#a6e93d1c037caf84ee14f186346d6cb06">FOpenAIRequest::SpeakerID</a></div><div class="ttdeci">int32 SpeakerID</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00028">NPCComponent.h:28</a></div></div>
+<div class="ttc" id="astruct_f_open_a_i_request_a7035788dc8c3adc652df9984aab227f7_html_a7035788dc8c3adc652df9984aab227f7"><div class="ttname"><a href="struct_f_open_a_i_request_a7035788dc8c3adc652df9984aab227f7.html#a7035788dc8c3adc652df9984aab227f7">FOpenAIRequest::MaxTokens</a></div><div class="ttdeci">int32 MaxTokens</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00040">NPCComponent.h:40</a></div></div>
+<div class="ttc" id="astruct_f_open_a_i_request_a9efc1623fe9b233ade4b24b4e69bfae3_html_a9efc1623fe9b233ade4b24b4e69bfae3"><div class="ttname"><a href="struct_f_open_a_i_request_a9efc1623fe9b233ade4b24b4e69bfae3.html#a9efc1623fe9b233ade4b24b4e69bfae3">FOpenAIRequest::ConversationTypeToString</a></div><div class="ttdeci">FString ConversationTypeToString(EConversationType Type) const</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00067">NPCComponent.h:67</a></div></div>
+<div class="ttc" id="astruct_f_open_a_i_request_aeaff446838e7ac1a62e038f6a724c7da_html_aeaff446838e7ac1a62e038f6a724c7da"><div class="ttname"><a href="struct_f_open_a_i_request_aeaff446838e7ac1a62e038f6a724c7da.html#aeaff446838e7ac1a62e038f6a724c7da">FOpenAIRequest::ConversationType</a></div><div class="ttdeci">EConversationType ConversationType</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00034">NPCComponent.h:34</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div class="dyncontent">
 <div class="center"><img src="struct_f_open_a_i_request_a211a5d3115a188da2159919ab3d2814c_a211a5d3115a188da2159919ab3d2814c_cgraph.png" border="0" usemap="#astruct_f_open_a_i_request_a211a5d3115a188da2159919ab3d2814c_a211a5d3115a188da2159919ab3d2814c_cgraph" alt=""/></div>
 <map name="astruct_f_open_a_i_request_a211a5d3115a188da2159919ab3d2814c_a211a5d3115a188da2159919ab3d2814c_cgraph" id="astruct_f_open_a_i_request_a211a5d3115a188da2159919ab3d2814c_a211a5d3115a188da2159919ab3d2814c_cgraph">
-<area shape="rect" title=" " alt="" coords="5,29,69,56"/>
-<area shape="poly" title=" " alt="" coords="24,29,24,12,29,5,37,3,46,6,50,12,46,15,43,10,37,8,32,10,29,14,30,29"/>
-</map>
-</div>
-<div class="dynheader">
-이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div class="dyncontent">
-<div class="center"><img src="struct_f_open_a_i_request_a211a5d3115a188da2159919ab3d2814c_a211a5d3115a188da2159919ab3d2814c_icgraph.png" border="0" usemap="#astruct_f_open_a_i_request_a211a5d3115a188da2159919ab3d2814c_a211a5d3115a188da2159919ab3d2814c_icgraph" alt=""/></div>
-<map name="astruct_f_open_a_i_request_a211a5d3115a188da2159919ab3d2814c_a211a5d3115a188da2159919ab3d2814c_icgraph" id="astruct_f_open_a_i_request_a211a5d3115a188da2159919ab3d2814c_a211a5d3115a188da2159919ab3d2814c_icgraph">
-<area shape="rect" title=" " alt="" coords="5,29,69,56"/>
-<area shape="poly" title=" " alt="" coords="46,15,43,10,37,8,32,10,29,14,30,29,24,29,24,12,29,5,37,3,46,6,50,12"/>
+<area shape="rect" title=" " alt="" coords="5,5,69,32"/>
+<area shape="rect" href="struct_f_open_a_i_request_a9efc1623fe9b233ade4b24b4e69bfae3.html#a9efc1623fe9b233ade4b24b4e69bfae3" title=" " alt="" coords="117,5,291,32"/>
+<area shape="poly" title=" " alt="" coords="69,16,101,16,101,21,69,21"/>
 </map>
 </div>
 

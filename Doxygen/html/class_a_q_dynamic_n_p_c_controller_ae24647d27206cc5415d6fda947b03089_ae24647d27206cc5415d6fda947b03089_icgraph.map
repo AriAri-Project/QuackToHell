@@ -1,0 +1,5 @@
+<map id="UnFreezePawn" name="UnFreezePawn">
+<area shape="rect" id="Node000001" title=" " alt="" coords="135,5,246,32"/>
+<area shape="rect" id="Node000002" href="$class_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d.html#afd156935d4f1dc9acab4e7095922240d" title="NPC와의 대화중단 요청을 처리하는 함수입니다." alt="" coords="5,5,87,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,21,87,21,87,16,119,16"/>
+</map>

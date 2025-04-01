@@ -125,15 +125,14 @@ $(function(){initNavTree('class_a_q_village_u_i_manager_a1ad2bb76dece78b232c5c00
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="_q_village_u_i_manager_8cpp_source.html">QVillageUIManager.cpp</a> 파일의 <a class="el" href="_q_village_u_i_manager_8cpp_source.html#l00031">31</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   32</span>{</div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_village_u_i_manager_af0fdc3504bdfb3f5b160acfe652071ad.html#af0fdc3504bdfb3f5b160acfe652071ad">ActiveWidgets</a>.Contains(UIType)) {</div>
-<div class="line"><span class="lineno">   34</span>        <a class="code hl_variable" href="class_a_q_village_u_i_manager_af0fdc3504bdfb3f5b160acfe652071ad.html#af0fdc3504bdfb3f5b160acfe652071ad">ActiveWidgets</a>[UIType]-&gt;SetVisibility(ESlateVisibility::Hidden);</div>
-<div class="line"><span class="lineno">   35</span>        <span class="comment">//TODO: 활성위젯에서삭제</span></div>
-<div class="line"><span class="lineno">   36</span>        <a class="code hl_variable" href="class_a_q_village_u_i_manager_af0fdc3504bdfb3f5b160acfe652071ad.html#af0fdc3504bdfb3f5b160acfe652071ad">ActiveWidgets</a>.Remove(UIType);</div>
-<div class="line"><span class="lineno">   37</span>    }</div>
-<div class="line"><span class="lineno">   38</span>}</div>
-<div class="ttc" id="aclass_a_q_village_u_i_manager_af0fdc3504bdfb3f5b160acfe652071ad_html_af0fdc3504bdfb3f5b160acfe652071ad"><div class="ttname"><a href="class_a_q_village_u_i_manager_af0fdc3504bdfb3f5b160acfe652071ad.html#af0fdc3504bdfb3f5b160acfe652071ad">AQVillageUIManager::ActiveWidgets</a></div><div class="ttdeci">TMap&lt; EVillageUIType, TObjectPtr&lt; UUserWidget &gt; &gt; ActiveWidgets</div><div class="ttdoc">활성화 된 위젯 관리</div><div class="ttdef"><b>Definition</b> <a href="_q_village_u_i_manager_8h_source.html#l00066">QVillageUIManager.h:66</a></div></div>
+<p class="definition"><a class="el" href="_q_village_u_i_manager_8cpp_source.html">QVillageUIManager.cpp</a> 파일의 <a class="el" href="_q_village_u_i_manager_8cpp_source.html#l00087">87</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   88</span>{</div>
+<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_village_u_i_manager_ac15ee7f8fb559f7b3b22f3d1097b6de4.html#ac15ee7f8fb559f7b3b22f3d1097b6de4">ActivedVillageWidgets</a>.Contains(UIType)) {</div>
+<div class="line"><span class="lineno">   90</span>        <span class="comment">//안 보이게 바꾼다.</span></div>
+<div class="line"><span class="lineno">   91</span>        <a class="code hl_variable" href="class_a_q_village_u_i_manager_ac15ee7f8fb559f7b3b22f3d1097b6de4.html#ac15ee7f8fb559f7b3b22f3d1097b6de4">ActivedVillageWidgets</a>[UIType]-&gt;SetVisibility(ESlateVisibility::Hidden);</div>
+<div class="line"><span class="lineno">   92</span>    }</div>
+<div class="line"><span class="lineno">   93</span>}</div>
+<div class="ttc" id="aclass_a_q_village_u_i_manager_ac15ee7f8fb559f7b3b22f3d1097b6de4_html_ac15ee7f8fb559f7b3b22f3d1097b6de4"><div class="ttname"><a href="class_a_q_village_u_i_manager_ac15ee7f8fb559f7b3b22f3d1097b6de4.html#ac15ee7f8fb559f7b3b22f3d1097b6de4">AQVillageUIManager::ActivedVillageWidgets</a></div><div class="ttdeci">TMap&lt; EVillageUIType, TObjectPtr&lt; UUserWidget &gt; &gt; ActivedVillageWidgets</div><div class="ttdoc">마을 위젯 관리</div><div class="ttdef"><b>Definition</b> <a href="_q_village_u_i_manager_8h_source.html#l00085">QVillageUIManager.h:85</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -1,13 +1,16 @@
 <map id="QuackToHell/NPC" name="QuackToHell/NPC">
 <area shape="rect" id="node1" href="dir_0276ba65687389df496b70f4b45c8c17.html" title="UI" alt="" coords="26,128,65,155"/>
 <area shape="rect" id="node2" href="dir_81e4fdda12d0a847ae8f128f7544b005.html" title="Public" alt="" coords="89,128,146,155"/>
-<area shape="rect" id="node3" href="dir_2aebb6d19044b52516145202f69fb931.html" title="Character" alt="" coords="170,128,248,155"/>
-<area shape="rect" id="node4" href="dir_5f2132d64ecf45836bac00d65beb0c75.html" title="NPC" alt="" coords="92,53,142,80"/>
-<area shape="poly" id="edge1" href="dir_000003_000008.html" alt="" coords="107,82,70,119,67,115,103,79"/>
-<area shape="rect" id="edge1-headlabel" href="dir_000003_000008.html" title="2" alt="" coords="73,113,80,129"/>
-<area shape="poly" id="edge3" href="dir_000003_000006.html" alt="" coords="120,81,120,112,115,112,115,81"/>
-<area shape="rect" id="edge3-headlabel" href="dir_000003_000006.html" title="1" alt="" coords="122,101,129,117"/>
-<area shape="poly" id="edge2" href="dir_000003_000001.html" alt="" coords="135,78,183,116,180,121,132,83"/>
-<area shape="rect" id="edge2-headlabel" href="dir_000003_000001.html" title="1" alt="" coords="181,102,188,118"/>
-<area shape="rect" id="clust1" href="dir_320e33a89b1321a072d50dfb68a1fdef.html" title="QuackToHell" alt="" coords="16,16,259,165"/>
+<area shape="rect" id="node3" href="dir_646b9adf1c0f9f27de425bfcc41e6985.html" title="Player" alt="" coords="170,128,228,155"/>
+<area shape="rect" id="node4" href="dir_2aebb6d19044b52516145202f69fb931.html" title="Character" alt="" coords="252,128,330,155"/>
+<area shape="rect" id="node5" href="dir_5f2132d64ecf45836bac00d65beb0c75.html" title="NPC" alt="" coords="132,53,182,80"/>
+<area shape="poly" id="edge1" href="dir_000005_000010.html" alt="" coords="139,83,79,122,76,117,136,78"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000005_000010.html" title="3" alt="" coords="81,117,88,133"/>
+<area shape="poly" id="edge4" href="dir_000005_000008.html" alt="" coords="153,82,134,116,129,113,148,79"/>
+<area shape="rect" id="edge4-headlabel" href="dir_000005_000008.html" title="2" alt="" coords="137,108,144,124"/>
+<area shape="poly" id="edge3" href="dir_000005_000006.html" alt="" coords="167,79,186,113,182,116,162,82"/>
+<area shape="rect" id="edge3-headlabel" href="dir_000005_000006.html" title="2" alt="" coords="186,100,193,116"/>
+<area shape="poly" id="edge2" href="dir_000005_000001.html" alt="" coords="182,78,256,118,253,123,179,83"/>
+<area shape="rect" id="edge2-headlabel" href="dir_000005_000001.html" title="3" alt="" coords="252,103,259,119"/>
+<area shape="rect" id="clust1" href="dir_320e33a89b1321a072d50dfb68a1fdef.html" title="QuackToHell" alt="" coords="16,16,340,165"/>
 </map>

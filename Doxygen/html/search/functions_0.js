@@ -1,8 +1,19 @@
 var searchData=
 [
-  ['addstatetag_0',['AddStateTag',['../class_a_q_player_state_a39229675af9ba0f496da559eb3db6e75.html#a39229675af9ba0f496da559eb3db6e75',1,'AQPlayerState']]],
-  ['aqcharacter_1',['AQCharacter',['../class_a_q_character_a14145af5db8c1ae9a6e847cfe42e6c7c.html#a14145af5db8c1ae9a6e847cfe42e6c7c',1,'AQCharacter']]],
-  ['aqnpc_2',['AQNPC',['../class_a_q_n_p_c_ae113cdefbb1c4e15c7cd250aff0f7bf4.html#ae113cdefbb1c4e15c7cd250aff0f7bf4',1,'AQNPC']]],
-  ['aqplayer_3',['AQPlayer',['../class_a_q_player_a9e9466824193aeb7e10d61bfde1ba605.html#a9e9466824193aeb7e10d61bfde1ba605',1,'AQPlayer']]],
-  ['aqvillageuimanager_4',['AQVillageUIManager',['../class_a_q_village_u_i_manager_ab13fe3650f7027a04e252fdbea6ee43c.html#ab13fe3650f7027a04e252fdbea6ee43c',1,'AQVillageUIManager']]]
+  ['addconversation_0',['AddConversation',['../struct_f_conversation_list_a730d4a2c87aaa56abd4acb1afeea4f8f.html#a730d4a2c87aaa56abd4acb1afeea4f8f',1,'FConversationList']]],
+  ['addconversationrecord_1',['AddConversationRecord',['../class_a_q_village_game_state_ad185111ee1f321943cab4c0941c21178.html#ad185111ee1f321943cab4c0941c21178',1,'AQVillageGameState']]],
+  ['addevidence_2',['AddEvidence',['../class_a_q_village_game_state_a53f26af3465df6cfc43b1586dda6de82.html#a53f26af3465df6cfc43b1586dda6de82',1,'AQVillageGameState::AddEvidence()'],['../struct_f_evidence_list_a89571a5624d2cff30cdb24d29057818d.html#a89571a5624d2cff30cdb24d29057818d',1,'FEvidenceList::AddEvidence()']]],
+  ['addstatetag_3',['AddStateTag',['../class_a_q_player_state_a39229675af9ba0f496da559eb3db6e75.html#a39229675af9ba0f496da559eb3db6e75',1,'AQPlayerState']]],
+  ['aqcharacter_4',['AQCharacter',['../class_a_q_character_abab11df56cf4c60043c7dd87ef299090.html#abab11df56cf4c60043c7dd87ef299090',1,'AQCharacter']]],
+  ['aqcourtuimanager_5',['AQCourtUIManager',['../class_a_q_court_u_i_manager_a044d34527924ff47f223aee317205cd5.html#a044d34527924ff47f223aee317205cd5',1,'AQCourtUIManager']]],
+  ['aqdefendantnpc_6',['AQDefendantNPC',['../class_a_q_defendant_n_p_c_a1a002f06fd27bf9bade042cc51dfd3d8.html#a1a002f06fd27bf9bade042cc51dfd3d8',1,'AQDefendantNPC']]],
+  ['aqdynamicnpc_7',['AQDynamicNPC',['../class_a_q_dynamic_n_p_c_a6a966aada7b0e96d8eaa9519bfd8343b.html#a6a966aada7b0e96d8eaa9519bfd8343b',1,'AQDynamicNPC']]],
+  ['aqgamemodevillage_8',['AQGameModeVillage',['../class_a_q_game_mode_village_a20cf3ce7cd028a959655fe476a4abb94.html#a20cf3ce7cd028a959655fe476a4abb94',1,'AQGameModeVillage']]],
+  ['aqjurynpc_9',['AQJuryNPC',['../class_a_q_jury_n_p_c_a35a83a29ed6f4a73e0459b4f871f96f3.html#a35a83a29ed6f4a73e0459b4f871f96f3',1,'AQJuryNPC']]],
+  ['aqnpc_10',['AQNPC',['../class_a_q_n_p_c_a65463d34304cad8ec677fe0d84f6ba81.html#a65463d34304cad8ec677fe0d84f6ba81',1,'AQNPC']]],
+  ['aqplayer_11',['AQPlayer',['../class_a_q_player_a4030393ad650723f7f137c3722ac75e9.html#a4030393ad650723f7f137c3722ac75e9',1,'AQPlayer']]],
+  ['aqplayerstate_12',['AQPlayerState',['../class_a_q_player_state_a3d885d1a8600a7b6a8744c0c95fce250.html#a3d885d1a8600a7b6a8744c0c95fce250',1,'AQPlayerState']]],
+  ['aqresidentnpc_13',['AQResidentNPC',['../class_a_q_resident_n_p_c_aa2ceac71a2c27ac4e1abed7443108cbf.html#aa2ceac71a2c27ac4e1abed7443108cbf',1,'AQResidentNPC']]],
+  ['aqvillagegamestate_14',['AQVillageGameState',['../class_a_q_village_game_state_a0123dbe72e42f5ef9982d99b2b3b6486.html#a0123dbe72e42f5ef9982d99b2b3b6486',1,'AQVillageGameState']]],
+  ['aqvillageuimanager_15',['AQVillageUIManager',['../class_a_q_village_u_i_manager_ab13fe3650f7027a04e252fdbea6ee43c.html#ab13fe3650f7027a04e252fdbea6ee43c',1,'AQVillageUIManager']]]
 ];

@@ -1,0 +1,6 @@
+<map id="GetClosestNPC" name="GetClosestNPC">
+<area shape="rect" id="Node000001" title="캐릭터 기준으로 가장 가까이 있는 npc를 반환합니다." alt="" coords="162,29,278,56"/>
+<area shape="rect" id="Node000002" href="$class_a_q_player_a935f4a41db6d8c6235232354ee6df438.html#a935f4a41db6d8c6235232354ee6df438" title=" " alt="" coords="5,29,114,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,45,114,45,114,40,146,40"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="86,16,77,10,59,8,43,10,34,15,32,20,36,28,32,30,27,21,30,11,41,5,60,3,79,5,89,12"/>
+</map>

@@ -1,5 +1,5 @@
 <map id="UQSpeechBubbleWidget" name="UQSpeechBubbleWidget">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,123,161,192"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="38,5,128,75"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,90,86,123,80,123,80,90"/>
+<area shape="rect" id="Node000001" title="말풍선 위젯입니다." alt="" coords="5,123,207,267"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="62,5,151,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,90,109,123,104,123,104,90"/>
 </map>

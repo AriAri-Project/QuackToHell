@@ -1,0 +1,11 @@
+<map id="UpdateRecordHistory" name="UpdateRecordHistory">
+<area shape="rect" id="Node000001" title="대화기록을 업데이트합니다." alt="" coords="5,113,153,140"/>
+<area shape="rect" id="Node000002" href="$class_a_q_player_state_ae888ee9b5cc6aa0aa15b6d4e402f171a.html#ae888ee9b5cc6aa0aa15b6d4e402f171a" title="PlayerID를 이욯해 대화기록 조회." alt="" coords="201,5,380,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="102,111,199,58,212,52,214,57,202,62,104,115"/>
+<area shape="rect" id="Node000003" href="$struct_f_conversation_record_ab2e31a84eb0623426a5440861c6b1e92.html#ab2e31a84eb0623426a5440861c6b1e92" title=" " alt="" coords="216,72,364,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="153,112,200,105,201,110,154,118"/>
+<area shape="rect" id="Node000004" href="$struct_f_conversation_record_ae4b7ca6bb9acc162eee02925e1ce73f0.html#ae4b7ca6bb9acc162eee02925e1ce73f0" title=" " alt="" coords="216,139,364,181"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="154,136,201,143,200,149,153,141"/>
+<area shape="rect" id="Node000005" href="$class_u_q_record_widget_af0299cf8720c6b6b500e5d9235f575ff.html#af0299cf8720c6b6b500e5d9235f575ff" title="버튼위젯의 모양을 업데이트한다." alt="" coords="217,205,364,232"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="103,138,148,164,202,191,220,198,218,203,200,196,145,169,100,143"/>
+</map>

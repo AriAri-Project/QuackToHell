@@ -125,23 +125,51 @@ $(function(){initNavTree('class_a_q_character_a4b591a51a5b9f4036c6ac0f825a0d24c.
 </table>
 </div><div class="memdoc">
 
-<p><a class="el" href="class_a_q_n_p_c_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c">AQNPC</a>, <a class="el" href="class_a_q_player_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c">AQPlayer</a>에서 재구현되었습니다.</p>
+<p><a class="el" href="class_a_q_defendant_n_p_c_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c">AQDefendantNPC</a>, <a class="el" href="class_a_q_dynamic_n_p_c_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c">AQDynamicNPC</a>, <a class="el" href="class_a_q_jury_n_p_c_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c">AQJuryNPC</a>, <a class="el" href="class_a_q_n_p_c_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c">AQNPC</a>, <a class="el" href="class_a_q_player_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c">AQPlayer</a>, <a class="el" href="class_a_q_resident_n_p_c_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c">AQResidentNPC</a>에서 재구현되었습니다.</p>
 
-<p class="definition"><a class="el" href="_q_character_8cpp_source.html">QCharacter.cpp</a> 파일의 <a class="el" href="_q_character_8cpp_source.html#l00027">27</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   28</span>{</div>
-<div class="line"><span class="lineno">   29</span>    Super::BeginPlay();</div>
-<div class="line"><span class="lineno">   30</span> </div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_character_a05115d25cc41b4c2ea3aa700fa808dea.html#a05115d25cc41b4c2ea3aa700fa808dea">WidgetComponent</a>)</div>
-<div class="line"><span class="lineno">   32</span>    {</div>
-<div class="line"><span class="lineno">   33</span>        UUserWidget* UserWidget = <a class="code hl_variable" href="class_a_q_character_a05115d25cc41b4c2ea3aa700fa808dea.html#a05115d25cc41b4c2ea3aa700fa808dea">WidgetComponent</a>-&gt;GetWidget();</div>
-<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">if</span> (UserWidget)</div>
-<div class="line"><span class="lineno">   35</span>        {</div>
-<div class="line"><span class="lineno">   36</span>            <a class="code hl_variable" href="class_a_q_character_a5837ca7b4afbb568c2ada653b588e713.html#a5837ca7b4afbb568c2ada653b588e713">NameWidget</a> = Cast&lt;UQNameWidget&gt;(UserWidget);</div>
-<div class="line"><span class="lineno">   37</span>        }</div>
-<div class="line"><span class="lineno">   38</span>    }</div>
-<div class="line"><span class="lineno">   39</span>}</div>
-<div class="ttc" id="aclass_a_q_character_a05115d25cc41b4c2ea3aa700fa808dea_html_a05115d25cc41b4c2ea3aa700fa808dea"><div class="ttname"><a href="class_a_q_character_a05115d25cc41b4c2ea3aa700fa808dea.html#a05115d25cc41b4c2ea3aa700fa808dea">AQCharacter::WidgetComponent</a></div><div class="ttdeci">TObjectPtr&lt; class UWidgetComponent &gt; WidgetComponent</div><div class="ttdoc">UI 컴포넌트입니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_character_8h_source.html#l00043">QCharacter.h:43</a></div></div>
-<div class="ttc" id="aclass_a_q_character_a5837ca7b4afbb568c2ada653b588e713_html_a5837ca7b4afbb568c2ada653b588e713"><div class="ttname"><a href="class_a_q_character_a5837ca7b4afbb568c2ada653b588e713.html#a5837ca7b4afbb568c2ada653b588e713">AQCharacter::NameWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UQNameWidget &gt; NameWidget</div><div class="ttdoc">네임위젯 클래스 정보를 담습니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_character_8h_source.html#l00046">QCharacter.h:46</a></div></div>
+<p class="definition"><a class="el" href="_q_character_8cpp_source.html">QCharacter.cpp</a> 파일의 <a class="el" href="_q_character_8cpp_source.html#l00034">34</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   35</span>{</div>
+<div class="line"><span class="lineno">   36</span>    Super::BeginPlay();</div>
+<div class="line"><span class="lineno">   37</span> </div>
+<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_character_a7e2c2c9c4ed915d9b3d5ab875c71d53f.html#a7e2c2c9c4ed915d9b3d5ab875c71d53f">NameWidgetComponent</a>)</div>
+<div class="line"><span class="lineno">   39</span>    {</div>
+<div class="line"><span class="lineno">   40</span>        UUserWidget* UserWidget = <a class="code hl_variable" href="class_a_q_character_a7e2c2c9c4ed915d9b3d5ab875c71d53f.html#a7e2c2c9c4ed915d9b3d5ab875c71d53f">NameWidgetComponent</a>-&gt;GetWidget();</div>
+<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">if</span> (UserWidget)</div>
+<div class="line"><span class="lineno">   42</span>        {</div>
+<div class="line"><span class="lineno">   43</span>            <a class="code hl_variable" href="class_a_q_character_a5837ca7b4afbb568c2ada653b588e713.html#a5837ca7b4afbb568c2ada653b588e713">NameWidget</a> = Cast&lt;UQNameWidget&gt;(UserWidget);</div>
+<div class="line"><span class="lineno">   44</span>        }</div>
+<div class="line"><span class="lineno">   45</span>    }</div>
+<div class="line"><span class="lineno">   46</span> </div>
+<div class="line"><span class="lineno">   47</span>    <span class="comment">// 서버에서 실행 -&gt; 오너십을 부여하기 위해</span></div>
+<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">if</span> (HasAuthority())</div>
+<div class="line"><span class="lineno">   49</span>    {</div>
+<div class="line"><span class="lineno">   50</span>        APlayerController* LocalPlayerController = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>        <span class="comment">// GetWorld()에서 모든 플레이어 컨트롤러를 순회하며, 로컬 플레이어 컨트롤러 찾기</span></div>
+<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">for</span> (FConstPlayerControllerIterator It = GetWorld()-&gt;GetPlayerControllerIterator(); It; ++It)</div>
+<div class="line"><span class="lineno">   54</span>        {</div>
+<div class="line"><span class="lineno">   55</span>            APlayerController* PC = Cast&lt;APlayerController&gt;(*It);</div>
+<div class="line"><span class="lineno">   56</span>            <span class="keywordflow">if</span> (PC &amp;&amp; PC-&gt;IsLocalPlayerController()) <span class="comment">// 로컬 플레이어인지 확인</span></div>
+<div class="line"><span class="lineno">   57</span>            {</div>
+<div class="line"><span class="lineno">   58</span>                LocalPlayerController = PC;</div>
+<div class="line"><span class="lineno">   59</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   60</span>            }</div>
+<div class="line"><span class="lineno">   61</span>        }</div>
+<div class="line"><span class="lineno">   62</span> </div>
+<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">if</span> (LocalPlayerController)</div>
+<div class="line"><span class="lineno">   64</span>        {</div>
+<div class="line"><span class="lineno">   65</span>            SetOwner(LocalPlayerController);</div>
+<div class="line"><span class="lineno">   66</span>            UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;%s &#39;s Owner is %s&quot;</span>), *this-&gt;GetName(), *GetOwner()-&gt;GetName());</div>
+<div class="line"><span class="lineno">   67</span>        }</div>
+<div class="line"><span class="lineno">   68</span>        <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   69</span>        {</div>
+<div class="line"><span class="lineno">   70</span>            UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;Failed to find Local Player Controller!&quot;</span>));</div>
+<div class="line"><span class="lineno">   71</span>        }</div>
+<div class="line"><span class="lineno">   72</span>    }</div>
+<div class="line"><span class="lineno">   73</span> </div>
+<div class="line"><span class="lineno">   74</span>}</div>
+<div class="ttc" id="aclass_a_q_character_a5837ca7b4afbb568c2ada653b588e713_html_a5837ca7b4afbb568c2ada653b588e713"><div class="ttname"><a href="class_a_q_character_a5837ca7b4afbb568c2ada653b588e713.html#a5837ca7b4afbb568c2ada653b588e713">AQCharacter::NameWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UQNameWidget &gt; NameWidget</div><div class="ttdoc">네임위젯 클래스 정보를 담습니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_character_8h_source.html#l00055">QCharacter.h:55</a></div></div>
+<div class="ttc" id="aclass_a_q_character_a7e2c2c9c4ed915d9b3d5ab875c71d53f_html_a7e2c2c9c4ed915d9b3d5ab875c71d53f"><div class="ttname"><a href="class_a_q_character_a7e2c2c9c4ed915d9b3d5ab875c71d53f.html#a7e2c2c9c4ed915d9b3d5ab875c71d53f">AQCharacter::NameWidgetComponent</a></div><div class="ttdeci">TObjectPtr&lt; class UWidgetComponent &gt; NameWidgetComponent</div><div class="ttdoc">name UI 컴포넌트입니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_character_8h_source.html#l00043">QCharacter.h:43</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

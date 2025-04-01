@@ -1,0 +1,13 @@
+<map id="QuackToHell/UI/QCourtUIManager.h" name="QuackToHell/UI/QCourtUIManager.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="453,5,688,32"/>
+<area shape="rect" id="Node000002" href="$_client_test_game_mode_8cpp.html" title=" " alt="" coords="5,80,182,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="471,37,194,83,182,85,181,80,193,77,470,32"/>
+<area shape="rect" id="Node000003" href="$_q_court_u_i_manager_8cpp.html" title=" " alt="" coords="206,88,456,115"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="520,40,369,90,368,85,518,35"/>
+<area shape="rect" id="Node000004" href="$_q_evidence_exam_widget_8cpp.html" title=" " alt="" coords="480,80,662,123"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="574,48,574,80,568,80,568,48"/>
+<area shape="rect" id="Node000005" href="$_q_exam_defendant_widget_8cpp.html" title=" " alt="" coords="686,80,909,123"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="621,35,740,77,738,82,620,40"/>
+<area shape="rect" id="Node000006" href="$_q_opening_statement_widget_8cpp.html" title=" " alt="" coords="933,80,1169,123"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="662,32,933,78,932,83,661,38"/>
+</map>

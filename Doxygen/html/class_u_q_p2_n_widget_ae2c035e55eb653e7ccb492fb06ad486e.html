@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>QuackToHell: UQP2NWidget::ClientRPCGetNPCResponse</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">QuackToHell<span id="projectnumber">&#160;0.0.1</span>
+   </div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="검색" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('class_u_q_p2_n_widget_ae2c035e55eb653e7ccb492fb06ad486e.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="contents">
+<a id="ae2c035e55eb653e7ccb492fb06ad486e" name="ae2c035e55eb653e7ccb492fb06ad486e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae2c035e55eb653e7ccb492fb06ad486e">&#9670;&#160;</a></span>ClientRPCGetNPCResponse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientRPCGetNPCResponse </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_f_open_a_i_response.html">FOpenAIResponse</a></td>          <td class="paramname"><span class="paramname"><em>NPCStartResponse</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p></p>
+<p>NPC에게 답장올 시 처리해야되는 로직이 실행된다. </p>
+<div class="dynheader">
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_u_q_p2_n_widget_ae2c035e55eb653e7ccb492fb06ad486e_ae2c035e55eb653e7ccb492fb06ad486e_cgraph.png" border="0" usemap="#aclass_u_q_p2_n_widget_ae2c035e55eb653e7ccb492fb06ad486e_ae2c035e55eb653e7ccb492fb06ad486e_cgraph" alt=""/></div>
+<map name="aclass_u_q_p2_n_widget_ae2c035e55eb653e7ccb492fb06ad486e_ae2c035e55eb653e7ccb492fb06ad486e_cgraph" id="aclass_u_q_p2_n_widget_ae2c035e55eb653e7ccb492fb06ad486e_ae2c035e55eb653e7ccb492fb06ad486e_cgraph">
+<area shape="rect" title=" " alt="" coords="5,132,199,159"/>
+<area shape="poly" title=" " alt="" coords="65,133,58,123,62,113,78,107,102,105,128,108,142,114,140,119,127,113,102,111,79,113,66,117,63,123,69,130"/>
+<area shape="rect" href="class_u_q_p2_n_widget_a17a475cd707db22984696f1438a074ce.html#a17a475cd707db22984696f1438a074ce" title="종료버튼 눌렸을때의 처리;" alt="" coords="247,5,401,32"/>
+<area shape="poly" title=" " alt="" coords="120,129,175,91,245,48,270,36,273,41,248,53,178,96,123,134"/>
+<area shape="rect" href="class_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b82.html#a4443ff350fe14fe5a16bce2cbaf75b82" title="엔터키 눌렸을때의 처리;" alt="" coords="249,107,399,133"/>
+<area shape="poly" title=" " alt="" coords="199,132,233,128,234,133,199,137"/>
+<area shape="rect" href="class_u_q_p2_n_widget_a295cbf313003db73b1ec4d8c916c6cf7.html#a295cbf313003db73b1ec4d8c916c6cf7" title="대화상자의 글씨를 업데이트합니다." alt="" coords="453,81,570,108"/>
+<area shape="poly" title=" " alt="" coords="132,129,185,108,246,92,296,86,346,83,438,85,438,91,346,89,296,91,247,97,186,113,134,134"/>
+<area shape="rect" href="class_u_q_p2_n_widget_aa9750057e825099fb837b1c7ac3bd6b7.html#aa9750057e825099fb837b1c7ac3bd6b7" title="대화상자의 글씨를 업데이트합니다." alt="" coords="449,132,574,159"/>
+<area shape="poly" title=" " alt="" coords="199,143,434,143,434,148,199,148"/>
+<area shape="rect" href="class_u_q_p2_n_widget_a9958ad32f1a2bcd86e45d1a9bf2d7e21.html#a9958ad32f1a2bcd86e45d1a9bf2d7e21" title="대화중인 NPC정보를 세팅합니다." alt="" coords="256,208,392,235"/>
+<area shape="poly" title=" " alt="" coords="144,157,269,200,267,205,143,162"/>
+<area shape="rect" href="class_u_q_p2_n_widget_a83ffad6ddd121a3fd3ae6a668d4d778b.html#a83ffad6ddd121a3fd3ae6a668d4d778b" title="대화중인 player정보를 세팅합니다." alt="" coords="252,259,396,285"/>
+<area shape="poly" title=" " alt="" coords="121,157,176,199,248,244,261,250,258,255,245,249,172,204,118,161"/>
+<area shape="poly" title=" " alt="" coords="399,107,437,102,438,107,400,112"/>
+<area shape="poly" title=" " alt="" coords="400,128,434,132,433,137,399,133"/>
+</map>
+</div>
+<div class="dynheader">
+이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_u_q_p2_n_widget_ae2c035e55eb653e7ccb492fb06ad486e_ae2c035e55eb653e7ccb492fb06ad486e_icgraph.png" border="0" usemap="#aclass_u_q_p2_n_widget_ae2c035e55eb653e7ccb492fb06ad486e_ae2c035e55eb653e7ccb492fb06ad486e_icgraph" alt=""/></div>
+<map name="aclass_u_q_p2_n_widget_ae2c035e55eb653e7ccb492fb06ad486e_ae2c035e55eb653e7ccb492fb06ad486e_icgraph" id="aclass_u_q_p2_n_widget_ae2c035e55eb653e7ccb492fb06ad486e_ae2c035e55eb653e7ccb492fb06ad486e_icgraph">
+<area shape="rect" title=" " alt="" coords="5,29,199,56"/>
+<area shape="poly" title=" " alt="" coords="135,16,124,10,102,8,82,10,71,15,68,20,74,27,69,30,63,21,67,11,80,5,102,3,125,5,137,12"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_u_q_p2_n_widget.html">UQP2NWidget</a></li>
+    <li class="footer">다음에 의해 생성됨 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

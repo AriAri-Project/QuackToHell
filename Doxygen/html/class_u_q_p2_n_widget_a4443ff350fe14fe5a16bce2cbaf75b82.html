@@ -119,30 +119,30 @@ $(function(){initNavTree('class_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b8
 
 <p>엔터키 눌렸을때의 처리; </p>
 
-<p class="definition"><a class="el" href="_q_p2_n_widget_8cpp_source.html">QP2NWidget.cpp</a> 파일의 <a class="el" href="_q_p2_n_widget_8cpp_source.html#l00044">44</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   45</span>{</div>
-<div class="line"><span class="lineno">   46</span>    <span class="comment">/*예외처리*/</span></div>
-<div class="line"><span class="lineno">   47</span>    <span class="comment">//공백문자열이면 무시한다. </span></div>
-<div class="line"><span class="lineno">   48</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;GetText().ToString() == TEXT(<span class="stringliteral">&quot;&quot;</span>)) {</div>
-<div class="line"><span class="lineno">   49</span>        UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;공백문자열을 input했습니다. 리턴합니다.&quot;</span>));</div>
-<div class="line"><span class="lineno">   50</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   51</span>    }</div>
-<div class="line"><span class="lineno">   53</span>    <span class="comment">//1 .플레이어 텍스트를 inputbox에 있던거로 업뎃한다.  </span></div>
-<div class="line"><span class="lineno">   54</span>    <a class="code hl_function" href="class_u_q_p2_n_widget_aa9750057e825099fb837b1c7ac3bd6b7.html#aa9750057e825099fb837b1c7ac3bd6b7">UpdatePlayerText</a>(<a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;GetText().ToString());</div>
-<div class="line"><span class="lineno">   55</span>    FString PlayerInput = <a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;GetText().ToString();</div>
-<div class="line"><span class="lineno">   56</span> </div>
-<div class="line"><span class="lineno">   57</span>    <span class="comment">//2. inputbox는 공란으로 만든다.</span></div>
-<div class="line"><span class="lineno">   58</span>    <a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;&quot;</span>)));</div>
-<div class="line"><span class="lineno">   59</span>    <span class="comment">//3. NPC Text는 음.. 으로 바꾼다.</span></div>
-<div class="line"><span class="lineno">   60</span>    <a class="code hl_function" href="class_u_q_p2_n_widget_a295cbf313003db73b1ec4d8c916c6cf7.html#a295cbf313003db73b1ec4d8c916c6cf7">UpdateNPCText</a>(<a class="code hl_variable" href="class_u_q_p2_n_widget_a142e8a5800c027b8fadc79f5039a6fd8.html#a142e8a5800c027b8fadc79f5039a6fd8">WhenGenerateResponseText</a>);</div>
-<div class="line"><span class="lineno">   61</span>    <span class="comment">//4. NPC에게 응답을 요청한다.</span></div>
-<div class="line"><span class="lineno">   62</span>    <a class="code hl_variable" href="class_u_q_p2_n_widget_ae87a000848320ba1f20ec21020948816.html#ae87a000848320ba1f20ec21020948816">ConversingNPC</a>-&gt;Response(PlayerInput);</div>
-<div class="line"><span class="lineno">   63</span>}</div>
-<div class="ttc" id="aclass_u_q_p2_n_widget_a142e8a5800c027b8fadc79f5039a6fd8_html_a142e8a5800c027b8fadc79f5039a6fd8"><div class="ttname"><a href="class_u_q_p2_n_widget_a142e8a5800c027b8fadc79f5039a6fd8.html#a142e8a5800c027b8fadc79f5039a6fd8">UQP2NWidget::WhenGenerateResponseText</a></div><div class="ttdeci">const FString WhenGenerateResponseText</div><div class="ttdoc">응답생성중일때의 멘트</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00077">QP2NWidget.h:77</a></div></div>
-<div class="ttc" id="aclass_u_q_p2_n_widget_a295cbf313003db73b1ec4d8c916c6cf7_html_a295cbf313003db73b1ec4d8c916c6cf7"><div class="ttname"><a href="class_u_q_p2_n_widget_a295cbf313003db73b1ec4d8c916c6cf7.html#a295cbf313003db73b1ec4d8c916c6cf7">UQP2NWidget::UpdateNPCText</a></div><div class="ttdeci">void UpdateNPCText(const FString &amp;Text)</div><div class="ttdoc">대화상자의 글씨를 업데이트합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8cpp_source.html#l00022">QP2NWidget.cpp:22</a></div></div>
-<div class="ttc" id="aclass_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa_html_a450775460af55e653967745961dfc7fa"><div class="ttname"><a href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">UQP2NWidget::inputBox</a></div><div class="ttdeci">TObjectPtr&lt; class UEditableTextBox &gt; inputBox</div><div class="ttdoc">@brie inputBox 컴포넌트 바인드</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00067">QP2NWidget.h:67</a></div></div>
-<div class="ttc" id="aclass_u_q_p2_n_widget_aa9750057e825099fb837b1c7ac3bd6b7_html_aa9750057e825099fb837b1c7ac3bd6b7"><div class="ttname"><a href="class_u_q_p2_n_widget_aa9750057e825099fb837b1c7ac3bd6b7.html#aa9750057e825099fb837b1c7ac3bd6b7">UQP2NWidget::UpdatePlayerText</a></div><div class="ttdeci">void UpdatePlayerText(const FString &amp;Text)</div><div class="ttdoc">대화상자의 글씨를 업데이트합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8cpp_source.html#l00015">QP2NWidget.cpp:15</a></div></div>
-<div class="ttc" id="aclass_u_q_p2_n_widget_ae87a000848320ba1f20ec21020948816_html_ae87a000848320ba1f20ec21020948816"><div class="ttname"><a href="class_u_q_p2_n_widget_ae87a000848320ba1f20ec21020948816.html#ae87a000848320ba1f20ec21020948816">UQP2NWidget::ConversingNPC</a></div><div class="ttdeci">TObjectPtr&lt; class AQNPCController &gt; ConversingNPC</div><div class="ttdoc">대화중인 npc정보</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00070">QP2NWidget.h:70</a></div></div>
+<p class="definition"><a class="el" href="_q_p2_n_widget_8cpp_source.html">QP2NWidget.cpp</a> 파일의 <a class="el" href="_q_p2_n_widget_8cpp_source.html#l00039">39</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
+<div class="line"><span class="lineno">   41</span>    <span class="comment">/*예외처리*/</span></div>
+<div class="line"><span class="lineno">   42</span>    <span class="comment">//공백문자열이면 무시한다. </span></div>
+<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;GetText().ToString() == TEXT(<span class="stringliteral">&quot;&quot;</span>)) {</div>
+<div class="line"><span class="lineno">   44</span>        UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;공백문자열을 input했습니다. 리턴합니다.&quot;</span>));</div>
+<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   46</span>    }</div>
+<div class="line"><span class="lineno">   48</span>    <span class="comment">//1 .플레이어 텍스트를 inputbox에 있던거로 업뎃한다.  </span></div>
+<div class="line"><span class="lineno">   49</span>    <a class="code hl_function" href="class_u_q_p2_n_widget_aa9750057e825099fb837b1c7ac3bd6b7.html#aa9750057e825099fb837b1c7ac3bd6b7">UpdatePlayerText</a>(<a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;GetText().ToString());</div>
+<div class="line"><span class="lineno">   50</span>    FString PlayerInput = <a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;GetText().ToString();</div>
+<div class="line"><span class="lineno">   51</span> </div>
+<div class="line"><span class="lineno">   52</span>    <span class="comment">//2. inputbox는 공란으로 만든다.</span></div>
+<div class="line"><span class="lineno">   53</span>    <a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;&quot;</span>)));</div>
+<div class="line"><span class="lineno">   54</span>    <span class="comment">//3. NPC Text는 음.. 으로 바꾼다.</span></div>
+<div class="line"><span class="lineno">   55</span>    <a class="code hl_function" href="class_u_q_p2_n_widget_a295cbf313003db73b1ec4d8c916c6cf7.html#a295cbf313003db73b1ec4d8c916c6cf7">UpdateNPCText</a>(<a class="code hl_variable" href="class_u_q_p2_n_widget_a142e8a5800c027b8fadc79f5039a6fd8.html#a142e8a5800c027b8fadc79f5039a6fd8">WhenGenerateResponseText</a>);</div>
+<div class="line"><span class="lineno">   56</span>    <span class="comment">//4. NPC에게 응답을 요청한다.</span></div>
+<div class="line"><span class="lineno">   57</span>    <a class="code hl_variable" href="class_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450.html#afd4fc717ac802ea7d5ddd2f173739450">ConversingNPC</a>-&gt;Response(PlayerInput,EConversationType::P2N);</div>
+<div class="line"><span class="lineno">   58</span>}</div>
+<div class="ttc" id="aclass_u_q_p2_n_widget_a142e8a5800c027b8fadc79f5039a6fd8_html_a142e8a5800c027b8fadc79f5039a6fd8"><div class="ttname"><a href="class_u_q_p2_n_widget_a142e8a5800c027b8fadc79f5039a6fd8.html#a142e8a5800c027b8fadc79f5039a6fd8">UQP2NWidget::WhenGenerateResponseText</a></div><div class="ttdeci">const FString WhenGenerateResponseText</div><div class="ttdoc">응답생성중일때의 멘트</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00084">QP2NWidget.h:84</a></div></div>
+<div class="ttc" id="aclass_u_q_p2_n_widget_a295cbf313003db73b1ec4d8c916c6cf7_html_a295cbf313003db73b1ec4d8c916c6cf7"><div class="ttname"><a href="class_u_q_p2_n_widget_a295cbf313003db73b1ec4d8c916c6cf7.html#a295cbf313003db73b1ec4d8c916c6cf7">UQP2NWidget::UpdateNPCText</a></div><div class="ttdeci">void UpdateNPCText(const FString &amp;Text)</div><div class="ttdoc">대화상자의 글씨를 업데이트합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8cpp_source.html#l00023">QP2NWidget.cpp:23</a></div></div>
+<div class="ttc" id="aclass_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa_html_a450775460af55e653967745961dfc7fa"><div class="ttname"><a href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">UQP2NWidget::inputBox</a></div><div class="ttdeci">TObjectPtr&lt; class UEditableTextBox &gt; inputBox</div><div class="ttdoc">@brie inputBox 컴포넌트 바인드</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00075">QP2NWidget.h:75</a></div></div>
+<div class="ttc" id="aclass_u_q_p2_n_widget_aa9750057e825099fb837b1c7ac3bd6b7_html_aa9750057e825099fb837b1c7ac3bd6b7"><div class="ttname"><a href="class_u_q_p2_n_widget_aa9750057e825099fb837b1c7ac3bd6b7.html#aa9750057e825099fb837b1c7ac3bd6b7">UQP2NWidget::UpdatePlayerText</a></div><div class="ttdeci">void UpdatePlayerText(const FString &amp;Text)</div><div class="ttdoc">대화상자의 글씨를 업데이트합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8cpp_source.html#l00017">QP2NWidget.cpp:17</a></div></div>
+<div class="ttc" id="aclass_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450_html_afd4fc717ac802ea7d5ddd2f173739450"><div class="ttname"><a href="class_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450.html#afd4fc717ac802ea7d5ddd2f173739450">UQP2NWidget::ConversingNPC</a></div><div class="ttdeci">TObjectPtr&lt; class AQDynamicNPCController &gt; ConversingNPC</div><div class="ttdoc">대화중인 npc정보</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00078">QP2NWidget.h:78</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div class="dyncontent">
@@ -153,6 +153,17 @@ $(function(){initNavTree('class_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b8
 <area shape="poly" title=" " alt="" coords="155,31,192,26,193,31,156,36"/>
 <area shape="rect" href="class_u_q_p2_n_widget_aa9750057e825099fb837b1c7ac3bd6b7.html#aa9750057e825099fb837b1c7ac3bd6b7" title="대화상자의 글씨를 업데이트합니다." alt="" coords="204,56,329,83"/>
 <area shape="poly" title=" " alt="" coords="156,52,189,56,188,61,155,57"/>
+</map>
+</div>
+<div class="dynheader">
+이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b82_a4443ff350fe14fe5a16bce2cbaf75b82_icgraph.png" border="0" usemap="#aclass_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b82_a4443ff350fe14fe5a16bce2cbaf75b82_icgraph" alt=""/></div>
+<map name="aclass_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b82_a4443ff350fe14fe5a16bce2cbaf75b82_icgraph" id="aclass_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b82_a4443ff350fe14fe5a16bce2cbaf75b82_icgraph">
+<area shape="rect" title="엔터키 눌렸을때의 처리;" alt="" coords="247,29,397,56"/>
+<area shape="rect" href="class_u_q_p2_n_widget_ae2c035e55eb653e7ccb492fb06ad486e.html#ae2c035e55eb653e7ccb492fb06ad486e" title=" " alt="" coords="5,29,199,56"/>
+<area shape="poly" title=" " alt="" coords="231,45,199,45,199,40,231,40"/>
+<area shape="poly" title=" " alt="" coords="140,16,127,10,102,8,79,10,66,15,64,20,69,27,65,30,58,21,63,11,78,5,102,3,128,5,142,12"/>
 </map>
 </div>
 

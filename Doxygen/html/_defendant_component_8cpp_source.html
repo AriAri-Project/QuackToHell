@@ -107,64 +107,52 @@ $(function(){initNavTree('_defendant_component_8cpp_source.html',''); initResiza
 <div class="contents">
 <a href="_defendant_component_8cpp.html">이 파일의 문서화 페이지로 가기</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// Copyright_Team_AriAri</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="_defendant_component_8h.html">DefendantComponent.h</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;Misc/FileHelper.h&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Misc/Paths.h&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;HAL/PlatformFilemanager.h&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;JsonObjectConverter.h&quot;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keywordtype">void</span> UDefendantComponent::PerformNPCLogic()</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>{</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>    <span class="comment">// 피고인 컴포넌트의 로직 시작 로그 출력</span></div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Defendant is preparing their case.&quot;</span>));</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">// 피고인 JSON 파일 경로 정의</span></div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    FString ContentPath = FPaths::ProjectContentDir();</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    FString DefendantFilePath = FPaths::Combine(ContentPath, TEXT(<span class="stringliteral">&quot;DefendantSettings.json&quot;</span>));</div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="_defendant_component_8h.html">DefendantComponent.h</a>&quot;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;Misc/FileHelper.h&quot;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;Misc/Paths.h&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;HAL/PlatformFilemanager.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;JsonObjectConverter.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;GameFramework/PlayerState.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;GameFramework/PlayerController.h&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Logging/LogMacros.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keywordtype">void</span> UDefendantComponent::BeginPlay()</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    Super::BeginPlay();</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;UDefendantComponent::BeginPlay() 실행됨 - NPC %s&quot;</span>), *NPCID);</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span> </div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <span class="keyword">static</span> int32 DefendantCounter = 2001;</div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="comment">// JSON 파일 내용을 저장할 문자열</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    FString DefendantJsonContent;</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordflow">if</span> (!FFileHelper::LoadFileToString(DefendantJsonContent, *DefendantFilePath))</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="comment">// 파일 읽기 실패 시 로그 출력</span></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;Failed to load Defendant settings file at: %s&quot;</span>), *DefendantFilePath);</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    }</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>    <span class="keywordflow">if</span> (NPCID.IsEmpty())</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>    {</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        NPCID = FString::FromInt(DefendantCounter);</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;NPCID 자동 할당됨: %s&quot;</span>), *NPCID);</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    }</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="comment">// 피고인의 JSON 파일 경로 설정</span></div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    PromptFilePath = FPaths::Combine(FPaths::ProjectSavedDir(), TEXT(<span class="stringliteral">&quot;Prompt&quot;</span>), TEXT(<span class="stringliteral">&quot;PromptToDefendant.json&quot;</span>));</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="comment">// JSON 문자열을 파싱하여 JSON 객체로 변환</span></div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    TSharedPtr&lt;FJsonObject&gt; DefendantJson;</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(DefendantJsonContent);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span> (FJsonSerializer::Deserialize(Reader, DefendantJson) &amp;&amp; DefendantJson.IsValid())</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    {</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="comment">// JSON에서 데이터 추출</span></div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        FString Name = DefendantJson-&gt;GetStringField(<span class="stringliteral">&quot;Name&quot;</span>);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        FString Role = DefendantJson-&gt;GetStringField(<span class="stringliteral">&quot;Role&quot;</span>);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        FString Prompt = DefendantJson-&gt;GetStringField(<span class="stringliteral">&quot;Prompt&quot;</span>);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="comment">// 로그로 데이터 확인</span></div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Defendant Name: %s&quot;</span>), *Name);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Role: %s&quot;</span>), *Role);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Prompt: %s&quot;</span>), *Prompt);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="comment">// 추출한 데이터를 기반으로 피고인 초기화 로직 구현 가능</span></div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="comment">// 예: 특정 속성에 저장하거나 게임 상태에 따라 사용</span></div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="comment">// JSON 파싱 실패 시 오류 로그 출력</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;Failed to parse Defendant settings JSON file.&quot;</span>));</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    }</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keywordtype">void</span> UDefendantComponent::AskDefendantQuestion(<span class="keyword">const</span> FString&amp; PlayerInput)</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>{</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Player asked the Defendant: %s&quot;</span>), *PlayerInput);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// NPCComponent를 통한 OpenAI 요청</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    StartConversation(PlayerInput);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;DefendantComponent - NPC %s는 %s를 사용합니다.&quot;</span>), *NPCID, *PromptFilePath);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="comment">// 피고인 데이터 로드</span></div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span> (!NPCID.IsEmpty())</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        LoadPrompt();</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keywordtype">void</span> UDefendantComponent::PerformNPCLogic()</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>{</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Defendant is preparing their case.&quot;</span>));</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keywordflow">if</span> (PromptContent.IsEmpty())</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    {</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;Failed to load Defendant&#39;s prompt file.&quot;</span>));</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    }</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="comment">// 피고인의 JSON 데이터를 로그로 출력 (디버깅용)</span></div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Defendant&#39;s prompt loaded: %s&quot;</span>), *PromptContent);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
 <div class="ttc" id="a_defendant_component_8h_html"><div class="ttname"><a href="_defendant_component_8h.html">DefendantComponent.h</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

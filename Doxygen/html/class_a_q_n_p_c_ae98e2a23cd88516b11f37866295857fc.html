@@ -1,0 +1,183 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>QuackToHell: AQNPC::OnOverlapEnd</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">QuackToHell<span id="projectnumber">&#160;0.0.1</span>
+   </div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="검색" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('class_a_q_n_p_c_ae98e2a23cd88516b11f37866295857fc.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="contents">
+<a id="ae98e2a23cd88516b11f37866295857fc" name="ae98e2a23cd88516b11f37866295857fc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae98e2a23cd88516b11f37866295857fc">&#9670;&#160;</a></span>OnOverlapEnd()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OnOverlapEnd </td>
+          <td>(</td>
+          <td class="paramtype">class UPrimitiveComponent *</td>          <td class="paramname"><span class="paramname"><em>OverlappedComp</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">class AActor *</td>          <td class="paramname"><span class="paramname"><em>OtherActor</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">class UPrimitiveComponent *</td>          <td class="paramname"><span class="paramname"><em>OtherComp</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int32</td>          <td class="paramname"><span class="paramname"><em>OtherBodyIndex</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_a_q_defendant_n_p_c_a532d65b038ad883e6455df6fce0f13e1.html#a532d65b038ad883e6455df6fce0f13e1">AQDefendantNPC</a>, <a class="el" href="class_a_q_dynamic_n_p_c_aa47961ada7c35442071f4dd747bb5c49.html#aa47961ada7c35442071f4dd747bb5c49">AQDynamicNPC</a>에서 재구현되었습니다.</p>
+
+<p class="definition"><a class="el" href="_q_n_p_c_8cpp_source.html">QNPC.cpp</a> 파일의 <a class="el" href="_q_n_p_c_8cpp_source.html#l00064">64</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   65</span>{</div>
+<div class="line"><span class="lineno">   66</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_a_q_n_p_c_ae98e2a23cd88516b11f37866295857fc_ae98e2a23cd88516b11f37866295857fc_icgraph.png" border="0" usemap="#aclass_a_q_n_p_c_ae98e2a23cd88516b11f37866295857fc_ae98e2a23cd88516b11f37866295857fc_icgraph" alt=""/></div>
+<map name="aclass_a_q_n_p_c_ae98e2a23cd88516b11f37866295857fc_ae98e2a23cd88516b11f37866295857fc_icgraph" id="aclass_a_q_n_p_c_ae98e2a23cd88516b11f37866295857fc_ae98e2a23cd88516b11f37866295857fc_icgraph">
+<area shape="rect" title=" " alt="" coords="418,181,524,208"/>
+<area shape="rect" href="class_a_q_n_p_c_a65463d34304cad8ec677fe0d84f6ba81.html#a65463d34304cad8ec677fe0d84f6ba81" title=" " alt="" coords="301,144,370,171"/>
+<area shape="poly" title=" " alt="" coords="405,179,370,169,371,164,406,174"/>
+<area shape="rect" href="class_a_q_n_p_c_af7e6f652038c54bcf609da6c75102c72.html#af7e6f652038c54bcf609da6c75102c72" title=" " alt="" coords="5,256,253,283"/>
+<area shape="poly" title=" " alt="" coords="403,212,194,258,193,253,402,207"/>
+<area shape="rect" href="class_a_q_n_p_c_a1a405b0763199288b555d0fc862e315d.html#a1a405b0763199288b555d0fc862e315d" title="NPC와의 대화를 마칠 수 있는지에 대한 Getter" alt="" coords="40,5,218,32"/>
+<area shape="poly" title=" " alt="" coords="319,131,292,86,273,64,251,46,217,31,219,26,254,42,277,61,296,83,324,128"/>
+<area shape="rect" href="class_a_q_n_p_c_a088b1ed4cb49e0a264a0ec9dbd2dd8a5.html#a088b1ed4cb49e0a264a0ec9dbd2dd8a5" title="N2N 대화가 가능한지에 대한 Getter" alt="" coords="44,56,214,83"/>
+<area shape="poly" title=" " alt="" coords="308,136,282,115,252,97,213,84,215,79,254,92,285,111,311,131"/>
+<area shape="rect" href="class_a_q_n_p_c_a688759ffe4cd83ff0873786f3318dc3f.html#a688759ffe4cd83ff0873786f3318dc3f" title=" " alt="" coords="37,107,221,133"/>
+<area shape="poly" title=" " alt="" coords="285,151,206,137,207,131,286,146"/>
+<area shape="poly" title=" " alt="" coords="309,183,254,222,213,242,174,258,172,253,211,237,251,218,306,179"/>
+<area shape="rect" href="class_a_q_n_p_c_ae51e766903b74e2ebb84e6254ab5dfa8.html#ae51e766903b74e2ebb84e6254ab5dfa8" title=" " alt="" coords="9,181,249,208"/>
+<area shape="poly" title=" " alt="" coords="286,169,207,183,206,178,285,164"/>
+<area shape="poly" title=" " alt="" coords="164,243,152,237,129,235,107,237,96,241,93,247,98,254,94,257,88,247,92,238,106,231,129,229,154,232,167,238"/>
+<area shape="poly" title=" " alt="" coords="164,168,152,162,129,160,107,162,96,167,93,172,98,179,94,182,88,173,92,163,106,157,129,155,154,157,167,164"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_a_q_n_p_c.html">AQNPC</a></li>
+    <li class="footer">다음에 의해 생성됨 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

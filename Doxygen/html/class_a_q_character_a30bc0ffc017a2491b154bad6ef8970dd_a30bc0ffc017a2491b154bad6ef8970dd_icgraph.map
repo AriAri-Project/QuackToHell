@@ -1,0 +1,7 @@
+<map id="GetCharacterName" name="GetCharacterName">
+<area shape="rect" id="Node000001" title="이름 리턴 함수" alt="" coords="198,31,332,57"/>
+<area shape="rect" id="Node000002" href="$class_a_q_n_p_c_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c" title=" " alt="" coords="9,5,146,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,35,145,30,146,25,183,30"/>
+<area shape="rect" id="Node000003" href="$class_a_q_player_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c" title=" " alt="" coords="5,56,150,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="183,58,151,62,150,57,182,52"/>
+</map>

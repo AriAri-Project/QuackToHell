@@ -1,0 +1,28 @@
+<map id="GenerateJuryNPC" name="GenerateJuryNPC">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,157,134,184"/>
+<area shape="poly" id="edge8_Node000001_Node000001" title=" " alt="" coords="37,158,31,149,35,139,48,133,70,131,92,133,104,140,102,144,91,138,69,136,50,138,39,143,37,148,42,155"/>
+<area shape="rect" id="Node000002" href="$class_u_god_function_a4193e5e1b757eb6f3ff4e387674fb200.html#a4193e5e1b757eb6f3ff4e387674fb200" title=" " alt="" coords="386,31,512,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,155,119,110,148,86,181,67,228,51,278,41,370,36,371,41,278,46,229,56,183,72,151,90,123,114,83,159"/>
+<area shape="rect" id="Node000003" href="$class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f" title=" " alt="" coords="570,132,672,159"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="93,182,165,223,215,247,271,268,331,284,393,291,454,288,484,281,512,270,542,250,568,224,604,171,608,174,572,228,546,254,515,274,485,286,455,293,392,297,330,289,269,273,213,252,162,228,90,187"/>
+<area shape="rect" id="Node000006" href="$class_u_god_function_a941993f5f191f9dc599b55d316ac04f2.html#a941993f5f191f9dc599b55d316ac04f2" title=" " alt="" coords="399,81,499,108"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="83,155,125,122,152,106,181,93,233,82,287,78,383,82,383,87,287,83,234,87,182,99,154,110,128,126,87,159"/>
+<area shape="rect" id="Node000007" href="$class_u_god_function_a99ce1641c91019a763248259829f18bc.html#a99ce1641c91019a763248259829f18bc" title=" " alt="" coords="182,132,337,159"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="134,159,166,155,166,160,135,165"/>
+<area shape="rect" id="Node000008" href="$class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee" title=" " alt="" coords="390,183,509,209"/>
+<area shape="poly" id="edge16_Node000001_Node000008" title=" " alt="" coords="134,172,374,188,373,194,134,178"/>
+<area shape="rect" id="Node000009" href="$class_u_god_function_aaac6f0b28b727bc92185ba3fe44117a5.html#aaac6f0b28b727bc92185ba3fe44117a5" title=" " alt="" coords="385,233,513,260"/>
+<area shape="poly" id="edge17_Node000001_Node000009" title=" " alt="" coords="135,181,182,191,370,228,369,234,181,196,134,186"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="420,32,414,22,418,12,430,6,449,4,470,7,481,13,478,18,468,12,449,9,431,11,422,16,420,21,424,29"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="490,55,515,67,556,93,593,120,590,124,553,98,512,72,488,60"/>
+<area shape="rect" id="Node000004" href="$class_u_god_function_a33a42a38f7e8b48cabc4648738618249.html#a33a42a38f7e8b48cabc4648738618249" title=" " alt="" coords="561,56,681,83"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="512,51,546,56,545,61,512,56"/>
+<area shape="rect" id="Node000005" href="$class_u_god_function_a283cf18abc0d86f40e6813d90c24837b.html#a283cf18abc0d86f40e6813d90c24837b" title=" " alt="" coords="563,5,679,32"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="512,32,547,27,548,32,512,37"/>
+<area shape="poly" id="edge10_Node000007_Node000002" title=" " alt="" coords="280,129,327,99,384,67,396,61,398,66,386,72,329,104,283,134"/>
+<area shape="poly" id="edge12_Node000007_Node000003" title=" " alt="" coords="337,143,554,143,554,148,337,148"/>
+<area shape="poly" id="edge11_Node000007_Node000006" title=" " alt="" coords="312,129,384,109,385,114,313,134"/>
+<area shape="poly" id="edge13_Node000007_Node000007" title=" " alt="" coords="227,133,221,123,225,114,238,107,259,105,282,108,294,114,292,119,280,113,259,111,240,113,229,117,226,123,231,130"/>
+<area shape="poly" id="edge14_Node000007_Node000008" title=" " alt="" coords="313,157,382,176,381,181,312,162"/>
+<area shape="poly" id="edge15_Node000007_Node000009" title=" " alt="" coords="283,157,329,187,386,219,398,225,396,229,384,224,327,192,280,162"/>
+</map>

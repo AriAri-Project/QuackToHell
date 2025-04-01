@@ -1,0 +1,5 @@
+<map id="UQEvidenceExamWidget" name="UQEvidenceExamWidget">
+<area shape="rect" id="Node000001" title="증거조사 UI입니다. 최종적으로 선택 한 증거를 가지고 상대방과 의견논쟁을 하는 UI입니다." alt="" coords="5,123,197,267"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="56,5,146,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="104,90,104,123,99,123,99,90"/>
+</map>

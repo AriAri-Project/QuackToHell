@@ -1,0 +1,281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>QuackToHell: UGodFunction::GenerateDefendantPrompt</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">QuackToHell<span id="projectnumber">&#160;0.0.1</span>
+   </div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="검색" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('class_u_god_function_a5c30132246dec8610cc93cc07a32ee07.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="contents">
+<a id="a5c30132246dec8610cc93cc07a32ee07" name="a5c30132246dec8610cc93cc07a32ee07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5c30132246dec8610cc93cc07a32ee07">&#9670;&#160;</a></span>GenerateDefendantPrompt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void GenerateDefendantPrompt </td>
+          <td>(</td>
+          <td class="paramtype">UWorld *</td>          <td class="paramname"><span class="paramname"><em>World</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">TFunction&lt; void()&gt;</td>          <td class="paramname"><span class="paramname"><em>Callback</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition"><a class="el" href="_god_function_8cpp_source.html">GodFunction.cpp</a> 파일의 <a class="el" href="_god_function_8cpp_source.html#l00321">321</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  322</span>{</div>
+<div class="line"><span class="lineno">  323</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">  324</span>    {</div>
+<div class="line"><span class="lineno">  325</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateDefendantPrompt - World is nullptr!&quot;</span>));</div>
+<div class="line"><span class="lineno">  326</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  327</span>    }</div>
+<div class="line"><span class="lineno">  328</span> </div>
+<div class="line"><span class="lineno">  329</span>    FString DefendantFilePath = FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToDefendant.json&quot;</span>);</div>
+<div class="line"><span class="lineno">  330</span>    FString PromptToGodPath = FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToGod.json&quot;</span>);</div>
+<div class="line"><span class="lineno">  331</span> </div>
+<div class="line"><span class="lineno">  332</span>   <span class="comment">// if (FPaths::FileExists(DefendantFilePath))</span></div>
+<div class="line"><span class="lineno">  333</span>   <span class="comment">// {</span></div>
+<div class="line"><span class="lineno">  334</span>   <span class="comment">//    UE_LOG(LogTemp, Warning, TEXT(&quot;PromptToDefendant.json 이미 존재하지만, 새로 생성하여 덮어쓰기 진행.&quot;));</span></div>
+<div class="line"><span class="lineno">  335</span>   <span class="comment">// }</span></div>
+<div class="line"><span class="lineno">  336</span> </div>
+<div class="line"><span class="lineno">  337</span>    <span class="comment">// 이미 존재하면 생성하지 않음</span></div>
+<div class="line"><span class="lineno">  338</span>    <span class="comment">/*if (FPaths::FileExists(DefendantFilePath))</span></div>
+<div class="line"><span class="lineno">  339</span><span class="comment">    {</span></div>
+<div class="line"><span class="lineno">  340</span><span class="comment">        UE_LOG(LogTemp, Warning, TEXT(&quot;PromptToDefendant.json 이미 존재하므로 생성하지 않음.&quot;));</span></div>
+<div class="line"><span class="lineno">  341</span><span class="comment">        if (Callback) Callback();</span></div>
+<div class="line"><span class="lineno">  342</span><span class="comment">        return;</span></div>
+<div class="line"><span class="lineno">  343</span><span class="comment">    }*/</span></div>
+<div class="line"><span class="lineno">  344</span> </div>
+<div class="line"><span class="lineno">  345</span>    <span class="comment">// PromptToGod.json이 없으면 재시도</span></div>
+<div class="line"><span class="lineno">  346</span>    <span class="keywordflow">if</span> (!FPaths::FileExists(PromptToGodPath))</div>
+<div class="line"><span class="lineno">  347</span>    {</div>
+<div class="line"><span class="lineno">  348</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;PromptToGod.json이 존재하지 않음. 피고인 프롬프트 생성 대기!&quot;</span>));</div>
+<div class="line"><span class="lineno">  349</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  350</span>    }</div>
+<div class="line"><span class="lineno">  351</span> </div>
+<div class="line"><span class="lineno">  352</span>    <span class="comment">// 프롬프트 생성 시작</span></div>
+<div class="line"><span class="lineno">  353</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;PromptToDefendant.json 생성 시작!&quot;</span>));</div>
+<div class="line"><span class="lineno">  354</span> </div>
+<div class="line"><span class="lineno">  355</span>    FString PromptToGod = <a class="code hl_function" href="class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee">ReadFileContent</a>(PromptToGodPath);</div>
+<div class="line"><span class="lineno">  356</span>    FString DefendantPrompt = FString::Printf(</div>
+<div class="line"><span class="lineno">  357</span>        TEXT(<span class="stringliteral">&quot;{ \&quot;task\&quot;: \&quot;피고인 정보를 생성하세요.\&quot;, &quot;</span></div>
+<div class="line"><span class="lineno">  358</span>            <span class="stringliteral">&quot;\&quot;instructions\&quot;: [&quot;</span></div>
+<div class="line"><span class="lineno">  359</span>            <span class="stringliteral">&quot;\&quot;PromptToGod.json을 바탕으로 피고인(NPC)의 정보를 생성하세요.\&quot;, &quot;</span></div>
+<div class="line"><span class="lineno">  360</span>            <span class="stringliteral">&quot;\&quot;npcid 값을 &#39;2000&#39;으로 설정하세요.\&quot;], &quot;</span></div>
+<div class="line"><span class="lineno">  361</span>            <span class="stringliteral">&quot;\&quot;references\&quot;: { \&quot;PromptToGod\&quot;: \&quot;%s\&quot; } }&quot;</span>),</div>
+<div class="line"><span class="lineno">  362</span>        *<a class="code hl_function" href="class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f">EscapeJSON</a>(PromptToGod.Mid(0, 2000))</div>
+<div class="line"><span class="lineno">  363</span>    );</div>
+<div class="line"><span class="lineno">  364</span> </div>
+<div class="line"><span class="lineno">  365</span>    FString DefendantFileName = FString::Printf(TEXT(<span class="stringliteral">&quot;PromptToDefendant.json&quot;</span>));</div>
+<div class="line"><span class="lineno">  366</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Jury JSON 파일명: %s&quot;</span>), *DefendantFileName);</div>
+<div class="line"><span class="lineno">  367</span> </div>
+<div class="line"><span class="lineno">  368</span>    <span class="comment">// OpenAI API 호출</span></div>
+<div class="line"><span class="lineno">  369</span>    <a class="code hl_function" href="class_u_god_function_a4193e5e1b757eb6f3ff4e387674fb200.html#a4193e5e1b757eb6f3ff4e387674fb200">CallOpenAIAsync</a>(DefendantPrompt, [World, Callback, DefendantFileName](FString DefendantJson)</div>
+<div class="line"><span class="lineno">  370</span>        {</div>
+<div class="line"><span class="lineno">  371</span>            <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">  372</span>            {</div>
+<div class="line"><span class="lineno">  373</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateDefendantPrompt - World is nullptr in Callback!&quot;</span>));</div>
+<div class="line"><span class="lineno">  374</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  375</span>            }</div>
+<div class="line"><span class="lineno">  376</span> </div>
+<div class="line"><span class="lineno">  377</span> </div>
+<div class="line"><span class="lineno">  378</span>            FString CleanedJson = <a class="code hl_function" href="class_u_god_function_a941993f5f191f9dc599b55d316ac04f2.html#a941993f5f191f9dc599b55d316ac04f2">UGodFunction::CleanUpJson</a>(DefendantJson);</div>
+<div class="line"><span class="lineno">  379</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="class_u_god_function_aaac6f0b28b727bc92185ba3fe44117a5.html#aaac6f0b28b727bc92185ba3fe44117a5">UGodFunction::SavePromptToFile</a>(DefendantFileName, CleanedJson))</div>
+<div class="line"><span class="lineno">  380</span>            {</div>
+<div class="line"><span class="lineno">  381</span>                UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;PromptToDefendant.json 저장 완료!&quot;</span>));</div>
+<div class="line"><span class="lineno">  382</span>                <span class="keywordflow">if</span> (Callback) Callback();</div>
+<div class="line"><span class="lineno">  383</span>                <a class="code hl_function" href="class_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc.html#a4de9f6ddf1cbfb26fe4f0529d8dbbadc">GenerateNPCPrompts</a>(World);</div>
+<div class="line"><span class="lineno">  384</span>            }</div>
+<div class="line"><span class="lineno">  385</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  386</span>            {</div>
+<div class="line"><span class="lineno">  387</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;PromptToDefendant.json 저장 실패! 다시 시도.&quot;</span>));</div>
+<div class="line"><span class="lineno">  388</span>                <a class="code hl_function" href="#a5c30132246dec8610cc93cc07a32ee07">GenerateDefendantPrompt</a>(World, <span class="keyword">nullptr</span>);</div>
+<div class="line"><span class="lineno">  389</span>            }</div>
+<div class="line"><span class="lineno">  390</span>        });</div>
+<div class="line"><span class="lineno">  391</span>}</div>
+<div class="ttc" id="aclass_u_god_function_a4193e5e1b757eb6f3ff4e387674fb200_html_a4193e5e1b757eb6f3ff4e387674fb200"><div class="ttname"><a href="class_u_god_function_a4193e5e1b757eb6f3ff4e387674fb200.html#a4193e5e1b757eb6f3ff4e387674fb200">UGodFunction::CallOpenAIAsync</a></div><div class="ttdeci">static void CallOpenAIAsync(const FString &amp;Prompt, TFunction&lt; void(FString)&gt; Callback, int RetryCount=0)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00169">GodFunction.cpp:169</a></div></div>
+<div class="ttc" id="aclass_u_god_function_a4241f80dfacb777b42502aa8cca25cee_html_a4241f80dfacb777b42502aa8cca25cee"><div class="ttname"><a href="class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee">UGodFunction::ReadFileContent</a></div><div class="ttdeci">static FString ReadFileContent(const FString &amp;FilePath)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00016">GodFunction.cpp:16</a></div></div>
+<div class="ttc" id="aclass_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_html_a4de9f6ddf1cbfb26fe4f0529d8dbbadc"><div class="ttname"><a href="class_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc.html#a4de9f6ddf1cbfb26fe4f0529d8dbbadc">UGodFunction::GenerateNPCPrompts</a></div><div class="ttdeci">static void GenerateNPCPrompts(UWorld *World)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00393">GodFunction.cpp:393</a></div></div>
+<div class="ttc" id="aclass_u_god_function_a5c30132246dec8610cc93cc07a32ee07_html_a5c30132246dec8610cc93cc07a32ee07"><div class="ttname"><a href="#a5c30132246dec8610cc93cc07a32ee07">UGodFunction::GenerateDefendantPrompt</a></div><div class="ttdeci">static void GenerateDefendantPrompt(UWorld *World, TFunction&lt; void()&gt; Callback)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00321">GodFunction.cpp:321</a></div></div>
+<div class="ttc" id="aclass_u_god_function_a941993f5f191f9dc599b55d316ac04f2_html_a941993f5f191f9dc599b55d316ac04f2"><div class="ttname"><a href="class_u_god_function_a941993f5f191f9dc599b55d316ac04f2.html#a941993f5f191f9dc599b55d316ac04f2">UGodFunction::CleanUpJson</a></div><div class="ttdeci">static FString CleanUpJson(FString JsonString)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00088">GodFunction.cpp:88</a></div></div>
+<div class="ttc" id="aclass_u_god_function_aaac6f0b28b727bc92185ba3fe44117a5_html_aaac6f0b28b727bc92185ba3fe44117a5"><div class="ttname"><a href="class_u_god_function_aaac6f0b28b727bc92185ba3fe44117a5.html#aaac6f0b28b727bc92185ba3fe44117a5">UGodFunction::SavePromptToFile</a></div><div class="ttdeci">static bool SavePromptToFile(const FString &amp;FileName, const FString &amp;Content)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00116">GodFunction.cpp:116</a></div></div>
+<div class="ttc" id="aclass_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f_html_abe9739c45ce5e747ddf5f27ac321e59f"><div class="ttname"><a href="class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f">UGodFunction::EscapeJSON</a></div><div class="ttdeci">static FString EscapeJSON(const FString &amp;Input)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00047">GodFunction.cpp:47</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_u_god_function_a5c30132246dec8610cc93cc07a32ee07_a5c30132246dec8610cc93cc07a32ee07_cgraph.png" border="0" usemap="#aclass_u_god_function_a5c30132246dec8610cc93cc07a32ee07_a5c30132246dec8610cc93cc07a32ee07_cgraph" alt=""/></div>
+<map name="aclass_u_god_function_a5c30132246dec8610cc93cc07a32ee07_a5c30132246dec8610cc93cc07a32ee07_cgraph" id="aclass_u_god_function_a5c30132246dec8610cc93cc07a32ee07_a5c30132246dec8610cc93cc07a32ee07_cgraph">
+<area shape="rect" title=" " alt="" coords="5,183,182,209"/>
+<area shape="poly" title=" " alt="" coords="58,184,51,174,56,164,70,158,94,156,119,159,132,165,130,170,117,164,93,161,71,163,59,168,56,173,62,181"/>
+<area shape="rect" href="class_u_god_function_a4193e5e1b757eb6f3ff4e387674fb200.html#a4193e5e1b757eb6f3ff4e387674fb200" title=" " alt="" coords="811,421,936,448"/>
+<area shape="poly" title=" " alt="" coords="107,208,156,265,192,297,231,324,302,359,378,386,456,405,534,419,680,434,796,435,796,441,679,439,534,425,455,411,377,391,300,364,228,329,188,301,153,268,103,212"/>
+<area shape="rect" href="class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f" title=" " alt="" coords="995,195,1096,221"/>
+<area shape="poly" title=" " alt="" coords="109,180,167,134,258,75,312,47,370,24,431,9,493,3,685,3,739,8,792,23,842,45,888,72,968,131,1023,181,1019,185,964,135,885,76,839,50,790,28,738,13,685,8,493,8,432,14,372,29,314,52,260,80,170,138,112,184"/>
+<area shape="rect" href="class_u_god_function_a941993f5f191f9dc599b55d316ac04f2.html#a941993f5f191f9dc599b55d316ac04f2" title=" " alt="" coords="824,195,924,221"/>
+<area shape="poly" title=" " alt="" coords="118,180,168,156,229,136,378,107,440,98,497,94,555,95,616,102,684,115,763,136,808,157,847,183,844,187,806,161,761,141,682,121,615,107,554,100,497,99,440,103,379,112,230,141,170,161,120,184"/>
+<area shape="rect" href="class_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc.html#a4de9f6ddf1cbfb26fe4f0529d8dbbadc" title=" " alt="" coords="230,220,382,247"/>
+<area shape="poly" title=" " alt="" coords="173,207,215,215,214,220,172,213"/>
+<area shape="rect" href="class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee" title=" " alt="" coords="814,347,934,373"/>
+<area shape="poly" title=" " alt="" coords="122,207,202,246,319,297,460,346,533,366,607,381,684,388,761,381,804,374,805,380,762,387,684,394,606,387,532,372,458,351,317,302,199,251,120,212"/>
+<area shape="rect" href="class_u_god_function_aaac6f0b28b727bc92185ba3fe44117a5.html#aaac6f0b28b727bc92185ba3fe44117a5" title=" " alt="" coords="810,245,938,272"/>
+<area shape="poly" title=" " alt="" coords="182,193,356,195,559,207,661,220,762,237,795,243,794,248,761,243,660,225,558,212,356,201,182,198"/>
+<area shape="poly" title=" " alt="" coords="844,422,839,413,843,403,855,397,874,395,895,397,906,404,903,408,893,402,874,400,856,402,847,407,844,412,849,420"/>
+<area shape="poly" title=" " alt="" coords="895,419,936,383,966,346,992,305,1030,234,1034,237,996,308,970,349,940,387,898,423"/>
+<area shape="rect" href="class_u_god_function_a33a42a38f7e8b48cabc4648738618249.html#a33a42a38f7e8b48cabc4648738618249" title=" " alt="" coords="986,447,1105,473"/>
+<area shape="poly" title=" " alt="" coords="937,441,971,446,970,452,936,447"/>
+<area shape="rect" href="class_u_god_function_a283cf18abc0d86f40e6813d90c24837b.html#a283cf18abc0d86f40e6813d90c24837b" title=" " alt="" coords="988,396,1104,423"/>
+<area shape="poly" title=" " alt="" coords="936,423,972,418,972,423,937,428"/>
+<area shape="rect" href="class_u_god_function_a800687b9234e88341a3ff75a44089a24.html#a800687b9234e88341a3ff75a44089a24" title=" " alt="" coords="430,245,558,272"/>
+<area shape="poly" title=" " alt="" coords="383,241,415,245,414,251,382,246"/>
+<area shape="poly" title=" " alt="" coords="506,271,545,326,574,357,608,382,654,403,703,417,751,426,796,430,796,436,751,431,701,422,652,408,605,386,570,361,541,330,501,274"/>
+<area shape="poly" title=" " alt="" coords="522,242,561,225,606,209,697,186,770,173,844,172,938,180,983,188,982,193,938,185,844,177,771,179,698,191,607,215,563,230,524,247"/>
+<area shape="poly" title=" " alt="" coords="558,245,606,237,808,212,808,218,607,243,559,250"/>
+<area shape="poly" title=" " alt="" coords="462,246,456,237,460,227,473,221,494,219,517,221,529,228,526,232,515,226,494,224,475,226,464,231,462,236,467,243"/>
+<area shape="rect" href="class_u_god_function_a99ce1641c91019a763248259829f18bc.html#a99ce1641c91019a763248259829f18bc" title=" " alt="" coords="606,320,762,347"/>
+<area shape="poly" title=" " alt="" coords="531,270,635,311,633,316,529,275"/>
+<area shape="poly" title=" " alt="" coords="507,271,547,316,575,339,607,356,655,369,705,375,754,375,799,371,799,376,754,380,705,380,654,375,605,361,572,343,543,319,503,274"/>
+<area shape="poly" title=" " alt="" coords="559,256,794,256,794,261,559,261"/>
+<area shape="poly" title=" " alt="" coords="712,345,835,411,833,416,710,350"/>
+<area shape="poly" title=" " alt="" coords="761,324,848,310,893,297,937,282,980,257,1016,230,1020,234,983,262,939,286,895,303,849,315,762,330"/>
+<area shape="poly" title=" " alt="" coords="698,317,745,276,808,231,818,226,821,230,811,236,748,280,701,321"/>
+<area shape="poly" title=" " alt="" coords="652,321,646,311,650,302,663,295,684,293,707,296,719,302,716,307,705,301,684,299,664,301,654,305,651,311,656,318"/>
+<area shape="poly" title=" " alt="" coords="762,342,799,347,799,352,762,347"/>
+<area shape="poly" title=" " alt="" coords="719,317,823,276,825,281,721,322"/>
+</map>
+</div>
+<div class="dynheader">
+이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_u_god_function_a5c30132246dec8610cc93cc07a32ee07_a5c30132246dec8610cc93cc07a32ee07_icgraph.png" border="0" usemap="#aclass_u_god_function_a5c30132246dec8610cc93cc07a32ee07_a5c30132246dec8610cc93cc07a32ee07_icgraph" alt=""/></div>
+<map name="aclass_u_god_function_a5c30132246dec8610cc93cc07a32ee07_a5c30132246dec8610cc93cc07a32ee07_icgraph" id="aclass_u_god_function_a5c30132246dec8610cc93cc07a32ee07_a5c30132246dec8610cc93cc07a32ee07_icgraph">
+<area shape="rect" title=" " alt="" coords="671,29,848,56"/>
+<area shape="poly" title=" " alt="" coords="797,16,784,10,759,8,737,10,724,15,721,20,727,27,723,30,716,21,720,11,735,5,760,3,785,5,799,12"/>
+<area shape="rect" href="class_u_q_game_instance_village_a1ee5ca1a4c7d06fd8d5a3cd9a3d27587.html#a1ee5ca1a4c7d06fd8d5a3cd9a3d27587" title=" " alt="" coords="458,21,623,64"/>
+<area shape="poly" title=" " alt="" coords="656,45,624,45,624,40,656,40"/>
+<area shape="rect" href="class_u_q_game_instance_village_a5a7c0c3e2f26533acb1dfdd30cb430f3.html#a5a7c0c3e2f26533acb1dfdd30cb430f3" title=" " alt="" coords="208,21,410,64"/>
+<area shape="poly" title=" " alt="" coords="443,45,411,45,411,40,443,40"/>
+<area shape="rect" href="class_a_q_game_mode_village_aa1e28be0d0b9be7af2a074941a144c65.html#aa1e28be0d0b9be7af2a074941a144c65" title=" " alt="" coords="5,21,160,64"/>
+<area shape="poly" title=" " alt="" coords="192,45,160,45,160,40,192,40"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_u_god_function.html">UGodFunction</a></li>
+    <li class="footer">다음에 의해 생성됨 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

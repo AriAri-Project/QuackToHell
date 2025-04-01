@@ -1,0 +1,9 @@
+<map id="TurnOnTimerUI" name="TurnOnTimerUI">
+<area shape="rect" id="Node000001" title="타이머 UI를 TimerBox sizebox에 달아줍니다." alt="" coords="5,13,117,40"/>
+<area shape="rect" id="Node000002" href="$class_a_q_court_u_i_manager_aa56c4d66f4cff45a03044904c195df9f.html#aa56c4d66f4cff45a03044904c195df9f" title="싱글톤 인스턴스 반환." alt="" coords="165,13,380,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,24,149,24,149,29,117,29"/>
+<area shape="rect" id="Node000003" href="$class_a_q_court_u_i_manager_a044d34527924ff47f223aee317205cd5.html#a044d34527924ff47f223aee317205cd5" title=" " alt="" coords="428,5,623,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="380,24,413,24,413,29,380,29"/>
+<area shape="rect" id="Node000004" href="$class_a_q_court_u_i_manager_a9bb13a3863cd9093dba0fb880eec820d.html#a9bb13a3863cd9093dba0fb880eec820d" title=" " alt="" coords="671,13,884,40"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="624,24,656,24,656,29,624,29"/>
+</map>

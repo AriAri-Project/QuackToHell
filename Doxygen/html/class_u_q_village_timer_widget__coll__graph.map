@@ -1,0 +1,5 @@
+<map id="UQVillageTimerWidget" name="UQVillageTimerWidget">
+<area shape="rect" id="Node000001" title="마을 타이머 위젯입니다." alt="" coords="5,123,223,245"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="70,5,159,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,90,117,123,112,123,112,90"/>
+</map>

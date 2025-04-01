@@ -1,0 +1,9 @@
+<map id="QuackToHell/UI/QInventoryWidget.h" name="QuackToHell/UI/QInventoryWidget.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="122,5,304,48"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,96,111,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="174,51,97,91,95,86,172,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="134,96,291,123"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="215,49,215,80,210,80,210,49"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="315,96,513,123"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="265,46,370,87,368,92,264,51"/>
+</map>

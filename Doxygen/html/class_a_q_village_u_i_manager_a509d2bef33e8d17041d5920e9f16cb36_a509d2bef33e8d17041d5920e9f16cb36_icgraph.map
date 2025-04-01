@@ -1,5 +1,5 @@
 <map id="OnMapLoad" name="OnMapLoad">
-<area shape="rect" id="Node000001" title="맵 로드 시 실행" alt="" coords="134,5,225,32"/>
+<area shape="rect" id="Node000001" title="맵 로드 시 실행." alt="" coords="134,5,225,32"/>
 <area shape="rect" id="Node000002" href="$class_a_q_village_u_i_manager_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c" title=" " alt="" coords="5,5,86,32"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="118,21,86,21,86,16,118,16"/>
 </map>

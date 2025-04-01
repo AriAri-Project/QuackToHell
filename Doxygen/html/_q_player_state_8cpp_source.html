@@ -110,35 +110,265 @@ $(function(){initNavTree('_q_player_state_8cpp_source.html',''); initResizable(t
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="_q_player_state_8h.html">Player/QPlayerState.h</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="_q_log_categories_8h.html">QLogCategories.h</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="foldopen" id="foldopen00007" data-start="{" data-end="}">
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="class_a_q_player_state_a39229675af9ba0f496da559eb3db6e75.html#a39229675af9ba0f496da559eb3db6e75">    7</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_player_state_a39229675af9ba0f496da559eb3db6e75.html#a39229675af9ba0f496da559eb3db6e75">AQPlayerState::AddStateTag</a>(FGameplayTag NewStateTag)</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>{</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span>    <a class="code hl_variable" href="class_a_q_player_state_aee80dcc81f661f448c5a3daf09b38698.html#aee80dcc81f661f448c5a3daf09b38698">PlayerStateTags</a>.AddTag(NewStateTag);</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;플레이어 상태 태그 추가: %s&quot;</span>), *NewStateTag.ToString());</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>}</div>
-</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;Blueprint/UserWidget.h&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;Engine/Engine.h&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;Engine/World.h&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &quot;<a class="code" href="_q_village_game_state_8h.html">Game/QVillageGameState.h</a>&quot;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;Net/UnrealNetwork.h&quot;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;UObject/ConstructorHelpers.h&quot;</span></div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="foldopen" id="foldopen00013" data-start="{" data-end="}">
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_a_q_player_state_a42e57d1f6e572dbdf0afe56382bbd39d.html#a42e57d1f6e572dbdf0afe56382bbd39d">   13</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_player_state_a42e57d1f6e572dbdf0afe56382bbd39d.html#a42e57d1f6e572dbdf0afe56382bbd39d">AQPlayerState::RemoveStateTag</a>(FGameplayTag StateTag)</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="class_a_q_player_state_a3d885d1a8600a7b6a8744c0c95fce250.html#a3d885d1a8600a7b6a8744c0c95fce250">   13</a></span><a class="code hl_function" href="class_a_q_player_state_a3d885d1a8600a7b6a8744c0c95fce250.html#a3d885d1a8600a7b6a8744c0c95fce250">AQPlayerState::AQPlayerState</a>()</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>{</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <a class="code hl_variable" href="class_a_q_player_state_aee80dcc81f661f448c5a3daf09b38698.html#aee80dcc81f661f448c5a3daf09b38698">PlayerStateTags</a>.RemoveTag(StateTag);</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;플레이어 상태 태그 제거: %s&quot;</span>), *StateTag.ToString());</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>}</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>    <span class="comment">/*멀티플레이 관련*/</span></div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    bReplicates = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>    <a class="code hl_variable" href="class_a_q_player_state_aaeb5644a3c529b8dab3c294e9bbaef77.html#aaeb5644a3c529b8dab3c294e9bbaef77">PlayerConversationState</a> = EConversationType::None;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>}</div>
 </div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="foldopen" id="foldopen00019" data-start="{" data-end="}">
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="class_a_q_player_state_a6ec087741152a1e4b581fb2b8d1b51bc.html#a6ec087741152a1e4b581fb2b8d1b51bc">   19</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_a_q_player_state_a6ec087741152a1e4b581fb2b8d1b51bc.html#a6ec087741152a1e4b581fb2b8d1b51bc">AQPlayerState::HasStateTag</a>(FGameplayTag StateTag)<span class="keyword"> const</span></div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="keyword"></span>{</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="class_a_q_player_state_aee80dcc81f661f448c5a3daf09b38698.html#aee80dcc81f661f448c5a3daf09b38698">PlayerStateTags</a>.HasTagExact(StateTag);</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
+<div class="foldopen" id="foldopen00020" data-start="{" data-end="}">
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="class_a_q_player_state_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c">   20</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_player_state_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c">AQPlayerState::BeginPlay</a>()</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>{</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    Super::BeginPlay();</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    <a class="code hl_variable" href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">GameState</a> = Cast&lt;AQVillageGameState&gt;(GetWorld()-&gt;GetGameState());</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">GameState</a> == <span class="keyword">nullptr</span>)</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;AQPlayerState::BeginPlay Can&#39;t find GameState.&quot;</span>));</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    }</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
 </div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="foldopen" id="foldopen00031" data-start="{" data-end="}">
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno"><a class="line" href="class_a_q_player_state_a39229675af9ba0f496da559eb3db6e75.html#a39229675af9ba0f496da559eb3db6e75">   31</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_player_state_a39229675af9ba0f496da559eb3db6e75.html#a39229675af9ba0f496da559eb3db6e75">AQPlayerState::AddStateTag</a>(FGameplayTag NewStateTag)</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>{</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <a class="code hl_variable" href="class_a_q_player_state_aee80dcc81f661f448c5a3daf09b38698.html#aee80dcc81f661f448c5a3daf09b38698">PlayerStateTags</a>.AddTag(NewStateTag);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;플레이어 상태 태그 추가: %s&quot;</span>), *NewStateTag.ToString());</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="foldopen" id="foldopen00037" data-start="{" data-end="}">
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno"><a class="line" href="class_a_q_player_state_a42e57d1f6e572dbdf0afe56382bbd39d.html#a42e57d1f6e572dbdf0afe56382bbd39d">   37</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_player_state_a42e57d1f6e572dbdf0afe56382bbd39d.html#a42e57d1f6e572dbdf0afe56382bbd39d">AQPlayerState::RemoveStateTag</a>(FGameplayTag StateTag)</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>{</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <a class="code hl_variable" href="class_a_q_player_state_aee80dcc81f661f448c5a3daf09b38698.html#aee80dcc81f661f448c5a3daf09b38698">PlayerStateTags</a>.RemoveTag(StateTag);</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;플레이어 상태 태그 제거: %s&quot;</span>), *StateTag.ToString());</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
+</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="foldopen" id="foldopen00043" data-start="{" data-end="}">
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="class_a_q_player_state_a6ec087741152a1e4b581fb2b8d1b51bc.html#a6ec087741152a1e4b581fb2b8d1b51bc">   43</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_a_q_player_state_a6ec087741152a1e4b581fb2b8d1b51bc.html#a6ec087741152a1e4b581fb2b8d1b51bc">AQPlayerState::HasStateTag</a>(FGameplayTag StateTag)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="class_a_q_player_state_aee80dcc81f661f448c5a3daf09b38698.html#aee80dcc81f661f448c5a3daf09b38698">PlayerStateTags</a>.HasTagExact(StateTag);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
+</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="foldopen" id="foldopen00048" data-start="{" data-end="}">
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="class_a_q_player_state_a688759ffe4cd83ff0873786f3318dc3f.html#a688759ffe4cd83ff0873786f3318dc3f">   48</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_player_state_a688759ffe4cd83ff0873786f3318dc3f.html#a688759ffe4cd83ff0873786f3318dc3f">AQPlayerState::GetLifetimeReplicatedProps</a>(TArray&lt;class FLifetimeProperty&gt;&amp; OutLifetimeProps)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    Super::GetLifetimeReplicatedProps(OutLifetimeProps);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    DOREPLIFETIME(<a class="code hl_function" href="class_a_q_player_state_a3d885d1a8600a7b6a8744c0c95fce250.html#a3d885d1a8600a7b6a8744c0c95fce250">AQPlayerState</a>, <a class="code hl_variable" href="class_a_q_player_state_ad760bbe7bab8b56710cc9fedd688ee08.html#ad760bbe7bab8b56710cc9fedd688ee08">EvidenceIDInHand</a>);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    DOREPLIFETIME(<a class="code hl_function" href="class_a_q_player_state_a3d885d1a8600a7b6a8744c0c95fce250.html#a3d885d1a8600a7b6a8744c0c95fce250">AQPlayerState</a>, <a class="code hl_variable" href="class_a_q_player_state_aaeb5644a3c529b8dab3c294e9bbaef77.html#aaeb5644a3c529b8dab3c294e9bbaef77">PlayerConversationState</a>);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>}</div>
+</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="foldopen" id="foldopen00056" data-start="{" data-end="}">
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno"><a class="line" href="class_a_q_player_state_a42d59caa6617569f0f3a4451aab8887a.html#a42d59caa6617569f0f3a4451aab8887a">   56</a></span><span class="keyword">const</span> <a class="code hl_struct" href="struct_f_conversation_record.html">FConversationRecord</a>* <a class="code hl_function" href="class_a_q_player_state_a42d59caa6617569f0f3a4451aab8887a.html#a42d59caa6617569f0f3a4451aab8887a">AQPlayerState::GetRecordWithConvID</a>(int32 ConversationID)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="comment">// GameState에 저장되어 있는 대화기록 리스트에서 ID가 일치하는 대화기록 찾기</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="keyword">const</span> <a class="code hl_struct" href="struct_f_conversation_record.html">FConversationRecord</a>* <a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36">Record</a> = <a class="code hl_variable" href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">GameState</a>-&gt;GetRecordWithConvID(ConversationID);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36">Record</a> == <span class="keyword">nullptr</span>) <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    <span class="comment">// 로컬 플레이어가 해당 대화기록에 참여한 사람일 경우에만 대화기록 반환하기</span></div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">// if (Record-&gt;GetSpeakerID() != GetPlayerId() &amp;&amp; Record-&gt;GetListenerID() != GetPlayerId()) return nullptr;</span></div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordflow">return</span> <a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36">Record</a>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
+</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="foldopen" id="foldopen00069" data-start="{" data-end="}">
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="class_a_q_player_state_ae888ee9b5cc6aa0aa15b6d4e402f171a.html#ae888ee9b5cc6aa0aa15b6d4e402f171a">   69</a></span><span class="keyword">const</span> TArray&lt;FConversationRecord&gt; <a class="code hl_function" href="class_a_q_player_state_ae888ee9b5cc6aa0aa15b6d4e402f171a.html#ae888ee9b5cc6aa0aa15b6d4e402f171a">AQPlayerState::GetRecordWithPlayerID</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="comment">//AQVillageGameState* VillageGameState = GetWorld() ? GetWorld()-&gt;GetGameState&lt;AQVillageGameState&gt;() : nullptr;</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">GameState</a>)</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;AQPlayerState GetRecordWithPlayerID: VillageGameState is nullptr!&quot;</span>));</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">return</span> TArray&lt;FConversationRecord&gt;();</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">GameState</a>-&gt;GetConversationList().GetConversationList().Num() &lt;= 0)</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    {</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;AQPlayerState GetRecordWithPlayerID: ConversationList is empty!&quot;</span>));</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">return</span> TArray&lt;FConversationRecord&gt;();</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">GameState</a>-&gt;GetRecordWithPlayerID(GetPlayerId());</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>}</div>
+</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="foldopen" id="foldopen00087" data-start="{" data-end="}">
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno"><a class="line" href="class_a_q_player_state_a0c0a12162389a9d4058dfb2f1cc0f445.html#a0c0a12162389a9d4058dfb2f1cc0f445">   87</a></span><span class="keyword">const</span> TArray&lt;FConversationRecord&gt; <a class="code hl_function" href="class_a_q_player_state_a0c0a12162389a9d4058dfb2f1cc0f445.html#a0c0a12162389a9d4058dfb2f1cc0f445">AQPlayerState::GetRecrodWithNPCID</a>(int32 NPCID)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">GameState</a>-&gt;GetRecordWithNPCID(NPCID);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>}</div>
+</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
+<div class="foldopen" id="foldopen00092" data-start="{" data-end="}">
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno"><a class="line" href="class_a_q_player_state_af5de8591eb5b2aa03fe971b4926f2edf.html#af5de8591eb5b2aa03fe971b4926f2edf">   92</a></span><span class="keyword">const</span> <a class="code hl_struct" href="struct_f_evidence.html">FEvidence</a>* <a class="code hl_function" href="class_a_q_player_state_af5de8591eb5b2aa03fe971b4926f2edf.html#af5de8591eb5b2aa03fe971b4926f2edf">AQPlayerState::GetEvidenceWithID</a>(int32 EvidenceID)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">GameState</a>-&gt;GetEvidenceWithID(EvidenceID);</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>}</div>
+</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="foldopen" id="foldopen00097" data-start="{" data-end="}">
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno"><a class="line" href="class_a_q_player_state_a69c772400936e3044115fc0cdb84ef16.html#a69c772400936e3044115fc0cdb84ef16">   97</a></span><span class="keyword">const</span> <a class="code hl_struct" href="struct_f_evidence.html">FEvidence</a>* <a class="code hl_function" href="class_a_q_player_state_a69c772400936e3044115fc0cdb84ef16.html#a69c772400936e3044115fc0cdb84ef16">AQPlayerState::GetEvidenceWithName</a>(FString EvidenceName)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">GameState</a>-&gt;GetEvidenceWithName(EvidenceName);</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>}</div>
+</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span> </div>
+<div class="foldopen" id="foldopen00102" data-start="{" data-end="}">
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno"><a class="line" href="class_a_q_player_state_a712a70c67af3e281dc229e6ee57d8dcc.html#a712a70c67af3e281dc229e6ee57d8dcc">  102</a></span><span class="keyword">const</span> TArray&lt;FEvidence&gt; <a class="code hl_function" href="class_a_q_player_state_a712a70c67af3e281dc229e6ee57d8dcc.html#a712a70c67af3e281dc229e6ee57d8dcc">AQPlayerState::GetEvidencesWithPlayerID</a>()<span class="keyword"> const</span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">return</span> <a class="code hl_variable" href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">GameState</a>-&gt;GetEvidencesWithPlayerID();</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>}</div>
+</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span><span class="comment">// -------------------------------------------------------------------------- //</span></div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span><span class="comment"></span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="comment">void AQPlayerState::PrintEvidence(int32 EvidenceID, FString EvidenceName) const</span></div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span><span class="comment">{</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span><span class="comment">    const FEvidence* EvWithName = GetEvidenceWithName(EvidenceName);</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="comment">    const FEvidence* EvWithID = GetEvidenceWithID(EvidenceID);</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span><span class="comment">    if (GEngine)</span></div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span><span class="comment">    {</span></div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span><span class="comment">        GEngine-&gt;AddOnScreenDebugMessage(-1, 10.f, FColor::Blue,</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span><span class="comment">                FString::Printf(TEXT(&quot;Found Evidence with ID - Evidence Name: %s, EvidenceID: %d&quot;), *EvWithID-&gt;GetName(), EvWithID-&gt;GetID()));</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span><span class="comment">        GEngine-&gt;AddOnScreenDebugMessage(-1, 10.f, FColor::Blue,</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span><span class="comment">                    FString::Printf(TEXT(&quot;Found Evidence with Name - Evidence Name: %s, EvidenceID: %d&quot;), *EvWithName-&gt;GetName(), EvWithName-&gt;GetID()));</span></div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span><span class="comment">    }</span></div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span><span class="comment">}</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span><span class="comment"></span> </div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span><span class="comment">void AQPlayerState::PrintAllEvidence() const</span></div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span><span class="comment">{</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span><span class="comment">    const TArray&lt;FEvidence&gt;&amp; PlayerEvidences = GetEvidencesWithPlayerID();</span></div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span><span class="comment">    if (GEngine)</span></div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span><span class="comment">    {</span></div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span><span class="comment">        for (const auto&amp; Evidence : PlayerEvidences)</span></div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span><span class="comment">        {</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span><span class="comment">            GEngine-&gt;AddOnScreenDebugMessage(-1, 10.f, FColor::Blue,</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span><span class="comment">                FString::Printf(TEXT(&quot;Found All Evidence - Evidence Name: %s, EvidenceID: %d&quot;), *Evidence.GetName(), Evidence.GetID()));</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span><span class="comment">        }</span></div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span><span class="comment">    }</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span><span class="comment">}</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span><span class="comment"></span> </div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span><span class="comment">void AQPlayerState::PrintConversation(int32 ConversationID) const</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span><span class="comment">{</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span><span class="comment">    AQVillageGameState* VillageGameState = GetWorld() ? GetWorld()-&gt;GetGameState&lt;AQVillageGameState&gt;() : nullptr;</span></div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span><span class="comment"></span> </div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span><span class="comment">    if (!VillageGameState)</span></div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span><span class="comment">    {</span></div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span><span class="comment">        UE_LOG(LogTemp, Error, TEXT(&quot;PrintConversation: VillageGameState is nullptr!&quot;));</span></div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span><span class="comment">        return;</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span><span class="comment">    }</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span><span class="comment">    if (GameState-&gt;GetConversationList().GetConversationList().Num() &lt;= 0)</span></div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span><span class="comment">    {</span></div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span><span class="comment">        UE_LOG(LogTemp, Warning, TEXT(&quot;GetRecordWithConvID: ConversationList is empty!&quot;));</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span><span class="comment">        return;</span></div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span><span class="comment">    }</span></div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span><span class="comment">    else</span></div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span><span class="comment">    {</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span><span class="comment">        for (const auto&amp; Record : GameState-&gt;GetConversationList().GetConversationList())</span></div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span><span class="comment">        {</span></div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span><span class="comment">            UE_LOG(LogTemp, Log, TEXT(&quot;GetRecordWithConvID: ConversationList Record ID - %d&quot;), Record.GetConversationID())</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span><span class="comment">        }</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span><span class="comment">    }</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span><span class="comment">    const FConversationRecord* Record = GetRecordWithConvID(ConversationID);</span></div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span><span class="comment">    if (Record == nullptr)</span></div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span><span class="comment">    {</span></div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span><span class="comment">        UE_LOG(LogTemp, Error, TEXT(&quot;PrintConversation: Record is nullptr!&quot;));</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span><span class="comment">        return;</span></div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span><span class="comment">    }</span></div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span><span class="comment">    if (GEngine)</span></div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span><span class="comment">    {</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="comment">        GEngine-&gt;AddOnScreenDebugMessage(-1, 10.f, FColor::Blue,</span></div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span><span class="comment">                FString::Printf(TEXT(&quot;Found Conversation with ID - Speaker: %d, Listener: %d at %s \n Conversation message: %s&quot;), Record-&gt;GetSpeakerID(), Record-&gt;GetListenerID(), *Record-&gt;GetTimestamp().ToString()));</span></div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span><span class="comment">    }</span></div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span><span class="comment">}</span></div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span><span class="comment"></span> </div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span><span class="comment">void AQPlayerState::PrintAllConversation(int32 SpeakerID) const</span></div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span><span class="comment">{</span></div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span><span class="comment">    const TArray&lt;FConversationRecord&gt; Records = GetRecordWithPlayerID();</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span><span class="comment">    if (GEngine)</span></div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span><span class="comment">    {</span></div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span><span class="comment">        for (const auto&amp; Record : Records)</span></div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span><span class="comment">        {</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="comment">            GEngine-&gt;AddOnScreenDebugMessage(-1, 10.f, FColor::Blue,</span></div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span><span class="comment">            FString::Printf(TEXT(&quot;Found Conversation with Speaker - Speaker: %d, Listener: %d at %s\n Conversation message: %s&quot;), Record.GetSpeakerID(), Record.GetListenerID(), *Record.GetTimestamp().ToString(),*Record.GetMessage()));</span></div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment">        }</span></div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span><span class="comment">    }</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span><span class="comment">}</span></div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span><span class="comment"></span> </div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span><span class="comment">void AQPlayerState::TestAddConversation()</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span><span class="comment">{</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span><span class="comment">    GameState = Cast&lt;AQVillageGameState&gt;(GetWorld()-&gt;GetGameState());</span></div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span><span class="comment">    FDateTime Timestamp = FDateTime::Now();</span></div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span><span class="comment">    int32 ConversationID = GameState-&gt;AddConversationRecord(EConversationType::P2N, 1000, 1001, Timestamp, FString::Printf(TEXT(&quot;TestAddConversation s: %d  l:%d&quot;), 1000, 1001));</span></div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span><span class="comment">    PrintConversation(ConversationID);</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span><span class="comment">    PrintAllConversation(1001);</span></div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span><span class="comment">}</span></div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span><span class="comment"></span> </div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span><span class="comment">void AQPlayerState::TestAddEvidence()</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span><span class="comment">{</span></div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span><span class="comment">    GameState = Cast&lt;AQVillageGameState&gt;(GetWorld()-&gt;GetGameState());</span></div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span><span class="comment">    int32 EvidenceID1 = GameState-&gt;AddEvidence(TEXT(&quot;Evidence1&quot;), TEXT(&quot;Evidence1 description&quot;), TEXT(&quot;Evidence1 Image Path&quot;));</span></div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="comment">    int32 EvidenceID2 = GameState-&gt;AddEvidence(TEXT(&quot;Evidence2&quot;), TEXT(&quot;Evidence2 description&quot;), TEXT(&quot;Evidence2 Image Path&quot;));</span></div>
+<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span><span class="comment">    int32 EvidenceID3 = GameState-&gt;AddEvidence(TEXT(&quot;Evidence3&quot;), TEXT(&quot;Evidence3 description&quot;), TEXT(&quot;Evidence3 Image Path&quot;));</span></div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="comment"></span> </div>
+<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span><span class="comment">    PrintEvidence(EvidenceID1, &quot;Evidence1&quot;);</span></div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span><span class="comment">    PrintEvidence(EvidenceID2, &quot;Evidence2&quot;);</span></div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span><span class="comment">    PrintAllEvidence();</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span><span class="comment"></span> </div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span><span class="comment">    if (GEngine)</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span><span class="comment">    {</span></div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span><span class="comment">        GEngine-&gt;AddOnScreenDebugMessage(-1, 10.f, FColor::Blue, TEXT(&quot;Remove Evidence1&quot;));</span></div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span><span class="comment">    }</span></div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span><span class="comment"></span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span><span class="comment">    GameState-&gt;RemoveEvidence(EvidenceID1);</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="comment">    PrintAllEvidence();</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment"></span> </div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span><span class="comment">    if (GEngine)</span></div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span><span class="comment">    {</span></div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span><span class="comment">        GEngine-&gt;AddOnScreenDebugMessage(-1, 10.f, FColor::Blue, TEXT(&quot;Remove all Evidence&quot;));</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span><span class="comment">    }</span></div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span><span class="comment">    </span></div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span><span class="comment">    GameState-&gt;RemoveAllEvidence();</span></div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span><span class="comment">    PrintAllEvidence();</span></div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span><span class="comment">}</span></div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span><span class="comment">*/</span></div>
 <div class="ttc" id="a_q_log_categories_8h_html"><div class="ttname"><a href="_q_log_categories_8h.html">QLogCategories.h</a></div></div>
 <div class="ttc" id="a_q_player_state_8h_html"><div class="ttname"><a href="_q_player_state_8h.html">QPlayerState.h</a></div></div>
-<div class="ttc" id="aclass_a_q_player_state_a39229675af9ba0f496da559eb3db6e75_html_a39229675af9ba0f496da559eb3db6e75"><div class="ttname"><a href="class_a_q_player_state_a39229675af9ba0f496da559eb3db6e75.html#a39229675af9ba0f496da559eb3db6e75">AQPlayerState::AddStateTag</a></div><div class="ttdeci">void AddStateTag(FGameplayTag NewStateTag)</div><div class="ttdoc">새로운 태그를 추가합니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00007">QPlayerState.cpp:7</a></div></div>
-<div class="ttc" id="aclass_a_q_player_state_a42e57d1f6e572dbdf0afe56382bbd39d_html_a42e57d1f6e572dbdf0afe56382bbd39d"><div class="ttname"><a href="class_a_q_player_state_a42e57d1f6e572dbdf0afe56382bbd39d.html#a42e57d1f6e572dbdf0afe56382bbd39d">AQPlayerState::RemoveStateTag</a></div><div class="ttdeci">void RemoveStateTag(FGameplayTag StateTag)</div><div class="ttdoc">태그를 지웁니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00013">QPlayerState.cpp:13</a></div></div>
-<div class="ttc" id="aclass_a_q_player_state_a6ec087741152a1e4b581fb2b8d1b51bc_html_a6ec087741152a1e4b581fb2b8d1b51bc"><div class="ttname"><a href="class_a_q_player_state_a6ec087741152a1e4b581fb2b8d1b51bc.html#a6ec087741152a1e4b581fb2b8d1b51bc">AQPlayerState::HasStateTag</a></div><div class="ttdeci">bool HasStateTag(FGameplayTag StateTag) const</div><div class="ttdoc">태그를 갖고있는지 체크합니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00019">QPlayerState.cpp:19</a></div></div>
-<div class="ttc" id="aclass_a_q_player_state_aee80dcc81f661f448c5a3daf09b38698_html_aee80dcc81f661f448c5a3daf09b38698"><div class="ttname"><a href="class_a_q_player_state_aee80dcc81f661f448c5a3daf09b38698.html#aee80dcc81f661f448c5a3daf09b38698">AQPlayerState::PlayerStateTags</a></div><div class="ttdeci">FGameplayTagContainer PlayerStateTags</div><div class="ttdoc">플레이어의 상태를 관리하는 GameplayTags.</div><div class="ttdef"><b>Definition</b> <a href="_q_player_state_8h_source.html#l00025">QPlayerState.h:25</a></div></div>
+<div class="ttc" id="a_q_village_game_state_8h_html"><div class="ttname"><a href="_q_village_game_state_8h.html">QVillageGameState.h</a></div></div>
+<div class="ttc" id="a_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e_html_a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36"><div class="ttname"><a href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36">EVillageUIType::Record</a></div><div class="ttdeci">@ Record</div><div class="ttdef"><b>Definition</b> <a href="_q_village_u_i_manager_8h_source.html#l00018">QVillageUIManager.h:18</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_a0c0a12162389a9d4058dfb2f1cc0f445_html_a0c0a12162389a9d4058dfb2f1cc0f445"><div class="ttname"><a href="class_a_q_player_state_a0c0a12162389a9d4058dfb2f1cc0f445.html#a0c0a12162389a9d4058dfb2f1cc0f445">AQPlayerState::GetRecrodWithNPCID</a></div><div class="ttdeci">const TArray&lt; FConversationRecord &gt; GetRecrodWithNPCID(int32 NPCID) const</div><div class="ttdoc">특정 NPCID를 이용해 대화기록 조회.</div><div class="ttdef"><b>Definition</b> <a href="#l00087">QPlayerState.cpp:87</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_a39229675af9ba0f496da559eb3db6e75_html_a39229675af9ba0f496da559eb3db6e75"><div class="ttname"><a href="class_a_q_player_state_a39229675af9ba0f496da559eb3db6e75.html#a39229675af9ba0f496da559eb3db6e75">AQPlayerState::AddStateTag</a></div><div class="ttdeci">void AddStateTag(FGameplayTag NewStateTag)</div><div class="ttdoc">새로운 태그를 추가합니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00031">QPlayerState.cpp:31</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_a3d885d1a8600a7b6a8744c0c95fce250_html_a3d885d1a8600a7b6a8744c0c95fce250"><div class="ttname"><a href="class_a_q_player_state_a3d885d1a8600a7b6a8744c0c95fce250.html#a3d885d1a8600a7b6a8744c0c95fce250">AQPlayerState::AQPlayerState</a></div><div class="ttdeci">AQPlayerState()</div><div class="ttdef"><b>Definition</b> <a href="#l00013">QPlayerState.cpp:13</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_a42d59caa6617569f0f3a4451aab8887a_html_a42d59caa6617569f0f3a4451aab8887a"><div class="ttname"><a href="class_a_q_player_state_a42d59caa6617569f0f3a4451aab8887a.html#a42d59caa6617569f0f3a4451aab8887a">AQPlayerState::GetRecordWithConvID</a></div><div class="ttdeci">const FConversationRecord * GetRecordWithConvID(int32 ConversationID) const</div><div class="ttdoc">대화기록ID를 이용해 대화기록 조회.</div><div class="ttdef"><b>Definition</b> <a href="#l00056">QPlayerState.cpp:56</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_a42e57d1f6e572dbdf0afe56382bbd39d_html_a42e57d1f6e572dbdf0afe56382bbd39d"><div class="ttname"><a href="class_a_q_player_state_a42e57d1f6e572dbdf0afe56382bbd39d.html#a42e57d1f6e572dbdf0afe56382bbd39d">AQPlayerState::RemoveStateTag</a></div><div class="ttdeci">void RemoveStateTag(FGameplayTag StateTag)</div><div class="ttdoc">태그를 지웁니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00037">QPlayerState.cpp:37</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_a4b591a51a5b9f4036c6ac0f825a0d24c_html_a4b591a51a5b9f4036c6ac0f825a0d24c"><div class="ttname"><a href="class_a_q_player_state_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c">AQPlayerState::BeginPlay</a></div><div class="ttdeci">virtual void BeginPlay() override</div><div class="ttdef"><b>Definition</b> <a href="#l00020">QPlayerState.cpp:20</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_a688759ffe4cd83ff0873786f3318dc3f_html_a688759ffe4cd83ff0873786f3318dc3f"><div class="ttname"><a href="class_a_q_player_state_a688759ffe4cd83ff0873786f3318dc3f.html#a688759ffe4cd83ff0873786f3318dc3f">AQPlayerState::GetLifetimeReplicatedProps</a></div><div class="ttdeci">virtual void GetLifetimeReplicatedProps(TArray&lt; class FLifetimeProperty &gt; &amp;OutLifetimeProps) const override</div><div class="ttdef"><b>Definition</b> <a href="#l00048">QPlayerState.cpp:48</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_a69c772400936e3044115fc0cdb84ef16_html_a69c772400936e3044115fc0cdb84ef16"><div class="ttname"><a href="class_a_q_player_state_a69c772400936e3044115fc0cdb84ef16.html#a69c772400936e3044115fc0cdb84ef16">AQPlayerState::GetEvidenceWithName</a></div><div class="ttdeci">const FEvidence * GetEvidenceWithName(FString EvidenceName) const</div><div class="ttdoc">증거 이름을 이용해 증거 조회</div><div class="ttdef"><b>Definition</b> <a href="#l00097">QPlayerState.cpp:97</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_a6ec087741152a1e4b581fb2b8d1b51bc_html_a6ec087741152a1e4b581fb2b8d1b51bc"><div class="ttname"><a href="class_a_q_player_state_a6ec087741152a1e4b581fb2b8d1b51bc.html#a6ec087741152a1e4b581fb2b8d1b51bc">AQPlayerState::HasStateTag</a></div><div class="ttdeci">bool HasStateTag(FGameplayTag StateTag) const</div><div class="ttdoc">태그를 갖고있는지 체크합니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00043">QPlayerState.cpp:43</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_a712a70c67af3e281dc229e6ee57d8dcc_html_a712a70c67af3e281dc229e6ee57d8dcc"><div class="ttname"><a href="class_a_q_player_state_a712a70c67af3e281dc229e6ee57d8dcc.html#a712a70c67af3e281dc229e6ee57d8dcc">AQPlayerState::GetEvidencesWithPlayerID</a></div><div class="ttdeci">const TArray&lt; FEvidence &gt; GetEvidencesWithPlayerID() const</div><div class="ttdoc">플레이어가 소유한 증거를 배열 형태로 반환</div><div class="ttdef"><b>Definition</b> <a href="#l00102">QPlayerState.cpp:102</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_aaeb5644a3c529b8dab3c294e9bbaef77_html_aaeb5644a3c529b8dab3c294e9bbaef77"><div class="ttname"><a href="class_a_q_player_state_aaeb5644a3c529b8dab3c294e9bbaef77.html#aaeb5644a3c529b8dab3c294e9bbaef77">AQPlayerState::PlayerConversationState</a></div><div class="ttdeci">EConversationType PlayerConversationState</div><div class="ttdoc">플레이어의 대화 상태</div><div class="ttdef"><b>Definition</b> <a href="_q_player_state_8h_source.html#l00056">QPlayerState.h:56</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_ad760bbe7bab8b56710cc9fedd688ee08_html_ad760bbe7bab8b56710cc9fedd688ee08"><div class="ttname"><a href="class_a_q_player_state_ad760bbe7bab8b56710cc9fedd688ee08.html#ad760bbe7bab8b56710cc9fedd688ee08">AQPlayerState::EvidenceIDInHand</a></div><div class="ttdeci">TArray&lt; int32 &gt; EvidenceIDInHand</div><div class="ttdoc">@breif 플레이어가 소지한 증거 정보의 ID가 저장되어 있는 Array</div><div class="ttdef"><b>Definition</b> <a href="_q_player_state_8h_source.html#l00060">QPlayerState.h:60</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_ae888ee9b5cc6aa0aa15b6d4e402f171a_html_ae888ee9b5cc6aa0aa15b6d4e402f171a"><div class="ttname"><a href="class_a_q_player_state_ae888ee9b5cc6aa0aa15b6d4e402f171a.html#ae888ee9b5cc6aa0aa15b6d4e402f171a">AQPlayerState::GetRecordWithPlayerID</a></div><div class="ttdeci">const TArray&lt; FConversationRecord &gt; GetRecordWithPlayerID() const</div><div class="ttdoc">PlayerID를 이욯해 대화기록 조회.</div><div class="ttdef"><b>Definition</b> <a href="#l00069">QPlayerState.cpp:69</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_aee80dcc81f661f448c5a3daf09b38698_html_aee80dcc81f661f448c5a3daf09b38698"><div class="ttname"><a href="class_a_q_player_state_aee80dcc81f661f448c5a3daf09b38698.html#aee80dcc81f661f448c5a3daf09b38698">AQPlayerState::PlayerStateTags</a></div><div class="ttdeci">FGameplayTagContainer PlayerStateTags</div><div class="ttdoc">플레이어의 상태를 관리하는 GameplayTags.</div><div class="ttdef"><b>Definition</b> <a href="_q_player_state_8h_source.html#l00033">QPlayerState.h:33</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681_html_aef0cddd55b0c38d7ef18f9188a621681"><div class="ttname"><a href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">AQPlayerState::GameState</a></div><div class="ttdeci">AQVillageGameState * GameState</div><div class="ttdef"><b>Definition</b> <a href="_q_player_state_8h_source.html#l00052">QPlayerState.h:52</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_af5de8591eb5b2aa03fe971b4926f2edf_html_af5de8591eb5b2aa03fe971b4926f2edf"><div class="ttname"><a href="class_a_q_player_state_af5de8591eb5b2aa03fe971b4926f2edf.html#af5de8591eb5b2aa03fe971b4926f2edf">AQPlayerState::GetEvidenceWithID</a></div><div class="ttdeci">const FEvidence * GetEvidenceWithID(int32 EvidenceID) const</div><div class="ttdoc">증거ID를 이용해 증거 조회.</div><div class="ttdef"><b>Definition</b> <a href="#l00092">QPlayerState.cpp:92</a></div></div>
+<div class="ttc" id="astruct_f_conversation_record_html"><div class="ttname"><a href="struct_f_conversation_record.html">FConversationRecord</a></div><div class="ttdef"><b>Definition</b> <a href="_q_conversation_data_8h_source.html#l00030">QConversationData.h:31</a></div></div>
+<div class="ttc" id="astruct_f_evidence_html"><div class="ttname"><a href="struct_f_evidence.html">FEvidence</a></div><div class="ttdef"><b>Definition</b> <a href="_q_evidence_data_8h_source.html#l00015">QEvidenceData.h:16</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

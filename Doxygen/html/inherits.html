@@ -110,82 +110,155 @@ $(function(){initNavTree('hierarchy.html',''); initResizable(true); });
 </div><table border="0" cellspacing="10" cellpadding="0">
 <tr><td><img src="inherit_graph_0.png" border="0" usemap="#a_a_actor" alt=""/>
 <map name="a_a_actor" id="a_a_actor">
-<area shape="rect" title=" " alt="" coords="5,5,67,32"/>
-<area shape="rect" href="class_a_q_village_u_i_manager.html" title="마을 맵 내에서만 존재하는 마을 UI manager" alt="" coords="115,5,258,32"/>
-<area shape="poly" title=" " alt="" coords="82,16,114,16,114,21,82,21"/>
+<area shape="rect" title=" " alt="" coords="5,31,67,57"/>
+<area shape="rect" href="class_a_q_court_u_i_manager.html" title="법원 UI 매니저입니다. 키고끄는 책임이 있습니다. 흐름 덩어리에 대해서도 키고 끌 수 있습니다. (ex. 모두진술, 증거조사 .. )" alt="" coords="118,5,254,32"/>
+<area shape="poly" title=" " alt="" coords="82,34,118,28,118,33,83,39"/>
+<area shape="rect" href="class_a_q_village_u_i_manager.html" title="마을 맵 내에서만 존재하는 마을 UI manager. 싱글톤 객체로 관리됩니다." alt="" coords="115,56,258,83"/>
+<area shape="poly" title=" " alt="" coords="83,49,115,55,114,60,82,54"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_1.png" border="0" usemap="#a_a_a_i_controller" alt=""/>
 <map name="a_a_a_i_controller" id="a_a_a_i_controller">
-<area shape="rect" title=" " alt="" coords="5,5,105,32"/>
-<area shape="rect" href="class_a_q_n_p_c_controller.html" title="NPCController 클래스입니다." alt="" coords="153,5,278,32"/>
-<area shape="poly" title=" " alt="" coords="120,16,152,16,152,21,120,21"/>
+<area shape="rect" title=" " alt="" coords="5,31,105,57"/>
+<area shape="rect" href="class_a_q_n_p_c_controller.html" title="NPCController 클래스입니다." alt="" coords="153,31,278,57"/>
+<area shape="poly" title=" " alt="" coords="120,41,152,41,152,47,120,47"/>
+<area shape="rect" href="class_a_q_defendant_n_p_c_controller.html" title="Defendant NPC 컨트롤러입니다." alt="" coords="326,5,511,32"/>
+<area shape="poly" title=" " alt="" coords="293,32,325,28,326,33,294,37"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_controller.html" title="스스로 움직이고, 역동적으로 상호작용(n2n, p2n)하는 Dynamic NPC 컨트롤러입니다." alt="" coords="330,56,507,83"/>
+<area shape="poly" title=" " alt="" coords="294,51,330,56,329,61,293,56"/>
+<area shape="rect" href="class_a_q_jury_n_p_c_controller.html" title="Jury NPC Controller입니다." alt="" coords="573,31,723,57"/>
+<area shape="poly" title=" " alt="" coords="523,55,572,50,573,55,523,60"/>
+<area shape="rect" href="class_a_q_resident_n_p_c_controller.html" title="Resident NPC Controller입니다." alt="" coords="559,81,737,108"/>
+<area shape="poly" title=" " alt="" coords="523,78,559,82,559,88,522,83"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_2.png" border="0" usemap="#a_a_character" alt=""/>
 <map name="a_a_character" id="a_a_character">
-<area shape="rect" title=" " alt="" coords="5,31,93,57"/>
-<area shape="rect" href="class_a_q_character.html" title=" " alt="" coords="141,31,238,57"/>
-<area shape="poly" title=" " alt="" coords="108,41,140,41,140,47,108,47"/>
-<area shape="rect" href="class_a_q_n_p_c.html" title="NPC 캐릭터 클래스입니다." alt="" coords="290,5,359,32"/>
-<area shape="poly" title=" " alt="" coords="253,29,289,22,290,28,254,35"/>
-<area shape="rect" href="class_a_q_player.html" title="플레이어 캐릭터 클래스입니다." alt="" coords="286,56,363,83"/>
-<area shape="poly" title=" " alt="" coords="254,53,286,59,285,65,253,59"/>
-<area shape="rect" href="class_a_q_laywer.html" title="Laywer 캐릭터 클래스" alt="" coords="422,31,504,57"/>
-<area shape="poly" title=" " alt="" coords="378,57,421,49,422,54,379,62"/>
-<area shape="rect" href="class_a_q_prosecutor.html" title="Prosecutor 캐릭터 클래스" alt="" coords="411,81,515,108"/>
-<area shape="poly" title=" " alt="" coords="379,77,411,83,410,88,378,82"/>
+<area shape="rect" title=" " alt="" coords="5,81,93,108"/>
+<area shape="rect" href="class_a_q_character.html" title=" " alt="" coords="141,81,238,108"/>
+<area shape="poly" title=" " alt="" coords="108,92,140,92,140,97,108,97"/>
+<area shape="rect" href="class_a_q_n_p_c.html" title="NPC 캐릭터 클래스입니다." alt="" coords="290,56,359,83"/>
+<area shape="poly" title=" " alt="" coords="253,80,289,73,290,78,254,85"/>
+<area shape="rect" href="class_a_q_player.html" title="플레이어 캐릭터 클래스입니다." alt="" coords="286,107,363,133"/>
+<area shape="poly" title=" " alt="" coords="254,104,286,110,285,115,253,109"/>
+<area shape="rect" href="class_a_q_defendant_n_p_c.html" title="Defendant 캐릭터 클래스입니다." alt="" coords="411,5,541,32"/>
+<area shape="poly" title=" " alt="" coords="373,51,433,30,435,35,375,56"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c.html" title="스스로 움직이고, 역동적으로 상호작용(n2n, p2n)하는 NPC 캐릭터들을 담습니다." alt="" coords="415,56,537,83"/>
+<area shape="poly" title=" " alt="" coords="375,67,415,67,415,72,375,72"/>
+<area shape="rect" href="class_a_q_jury_n_p_c.html" title="Jury 캐릭터 클래스입니다." alt="" coords="602,31,696,57"/>
+<area shape="poly" title=" " alt="" coords="552,56,601,48,602,54,553,61"/>
+<area shape="rect" href="class_a_q_resident_n_p_c.html" title="Resident 캐릭터 클래스입니다." alt="" coords="589,81,710,108"/>
+<area shape="poly" title=" " alt="" coords="552,78,588,83,588,88,552,83"/>
+<area shape="rect" href="class_a_q_laywer.html" title="Laywer 캐릭터 클래스" alt="" coords="435,107,517,133"/>
+<area shape="poly" title=" " alt="" coords="379,117,434,117,434,123,379,123"/>
+<area shape="rect" href="class_a_q_prosecutor.html" title="Prosecutor 캐릭터 클래스" alt="" coords="424,157,528,184"/>
+<area shape="poly" title=" " alt="" coords="379,135,435,154,433,159,377,140"/>
 </map>
 </td></tr>
 <tr><td><img src="inherit_graph_3.png" border="0" usemap="#a_a_game_mode" alt=""/>
 <map name="a_a_game_mode" id="a_a_game_mode">
-<area shape="rect" title=" " alt="" coords="5,5,103,32"/>
+<area shape="rect" title=" " alt="" coords="5,56,103,83"/>
 <area shape="rect" href="class_a_client_test_game_mode.html" title="클라이언트 구현 테스트를 위한 게임모드입니다." alt="" coords="151,5,307,32"/>
-<area shape="poly" title=" " alt="" coords="118,16,150,16,150,21,118,21"/>
+<area shape="poly" title=" " alt="" coords="117,48,179,30,181,35,118,54"/>
+<area shape="rect" href="class_a_q_game_mode_court.html" title=" " alt="" coords="159,56,298,83"/>
+<area shape="poly" title=" " alt="" coords="118,67,159,67,159,72,118,72"/>
+<area shape="rect" href="class_a_q_game_mode_village.html" title=" " alt="" coords="156,107,302,133"/>
+<area shape="poly" title=" " alt="" coords="118,85,181,104,179,109,117,90"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_4.png" border="0" usemap="#a_a_player_controller" alt=""/>
+<tr><td><img src="inherit_graph_4.png" border="0" usemap="#a_a_game_mode_base" alt=""/>
+<map name="a_a_game_mode_base" id="a_a_game_mode_base">
+<area shape="rect" title=" " alt="" coords="5,5,133,32"/>
+<area shape="rect" href="class_a_a_i_game_mode_test.html" title=" " alt="" coords="181,5,316,32"/>
+<area shape="poly" title=" " alt="" coords="148,16,180,16,180,21,148,21"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_5.png" border="0" usemap="#a_a_game_state" alt=""/>
+<map name="a_a_game_state" id="a_a_game_state">
+<area shape="rect" title=" " alt="" coords="5,31,102,57"/>
+<area shape="rect" href="class_a_q_game_state_court.html" title=" " alt="" coords="153,5,292,32"/>
+<area shape="poly" title=" " alt="" coords="116,32,152,26,153,32,117,37"/>
+<area shape="rect" href="class_a_q_village_game_state.html" title=" " alt="" coords="150,56,295,83"/>
+<area shape="poly" title=" " alt="" coords="117,51,150,56,149,61,117,56"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_6.png" border="0" usemap="#a_a_player_controller" alt=""/>
 <map name="a_a_player_controller" id="a_a_player_controller">
 <area shape="rect" title=" " alt="" coords="5,5,129,32"/>
 <area shape="rect" href="class_a_q_player_controller.html" title="플레이어 컨트롤러 클래스입니다." alt="" coords="177,5,310,32"/>
 <area shape="poly" title=" " alt="" coords="144,16,176,16,176,21,144,21"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_5.png" border="0" usemap="#a_a_player_state" alt=""/>
+<tr><td><img src="inherit_graph_7.png" border="0" usemap="#a_a_player_state" alt=""/>
 <map name="a_a_player_state" id="a_a_player_state">
 <area shape="rect" title=" " alt="" coords="5,5,104,32"/>
 <area shape="rect" href="class_a_q_player_state.html" title="player state클래스입니다." alt="" coords="152,5,260,32"/>
 <area shape="poly" title=" " alt="" coords="119,16,151,16,151,21,119,21"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_6.png" border="0" usemap="#a_f_dialogue_history" alt=""/>
+<tr><td><img src="inherit_graph_8.png" border="0" usemap="#a_f_chat" alt=""/>
+<map name="a_f_chat" id="a_f_chat">
+<area shape="rect" href="struct_f_chat.html" title=" " alt="" coords="5,5,63,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_9.png" border="0" usemap="#a_f_conversation_i_d_wrapper" alt=""/>
+<map name="a_f_conversation_i_d_wrapper" id="a_f_conversation_i_d_wrapper">
+<area shape="rect" href="struct_f_conversation_i_d_wrapper.html" title=" " alt="" coords="5,5,174,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_10.png" border="0" usemap="#a_f_conversation_list" alt=""/>
+<map name="a_f_conversation_list" id="a_f_conversation_list">
+<area shape="rect" href="struct_f_conversation_list.html" title=" " alt="" coords="5,5,133,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_11.png" border="0" usemap="#a_f_conversation_record" alt=""/>
+<map name="a_f_conversation_record" id="a_f_conversation_record">
+<area shape="rect" href="struct_f_conversation_record.html" title=" " alt="" coords="5,5,154,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_12.png" border="0" usemap="#a_f_dialogue_history" alt=""/>
 <map name="a_f_dialogue_history" id="a_f_dialogue_history">
 <area shape="rect" href="struct_f_dialogue_history.html" title=" " alt="" coords="5,5,128,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_7.png" border="0" usemap="#a_f_open_a_i_request" alt=""/>
+<tr><td><img src="inherit_graph_13.png" border="0" usemap="#a_f_evidence" alt=""/>
+<map name="a_f_evidence" id="a_f_evidence">
+<area shape="rect" href="struct_f_evidence.html" title=" " alt="" coords="5,5,89,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_14.png" border="0" usemap="#a_f_evidence_list" alt=""/>
+<map name="a_f_evidence_list" id="a_f_evidence_list">
+<area shape="rect" href="struct_f_evidence_list.html" title=" " alt="" coords="5,5,110,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_15.png" border="0" usemap="#a_f_my_button" alt=""/>
+<map name="a_f_my_button" id="a_f_my_button">
+<area shape="rect" href="struct_f_my_button.html" title="버튼의 정보를 가지는 구조체입니다." alt="" coords="5,5,91,32"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_16.png" border="0" usemap="#a_f_open_a_i_request" alt=""/>
 <map name="a_f_open_a_i_request" id="a_f_open_a_i_request">
 <area shape="rect" href="struct_f_open_a_i_request.html" title="OpenAI API 요청을 위한 구조체" alt="" coords="5,5,128,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_8.png" border="0" usemap="#a_f_open_a_i_response" alt=""/>
+<tr><td><img src="inherit_graph_17.png" border="0" usemap="#a_f_open_a_i_response" alt=""/>
 <map name="a_f_open_a_i_response" id="a_f_open_a_i_response">
 <area shape="rect" href="struct_f_open_a_i_response.html" title="OpenAI API 응답을 위한 구조체" alt="" coords="5,5,138,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_9.png" border="0" usemap="#a_module_rules" alt=""/>
+<tr><td><img src="inherit_graph_18.png" border="0" usemap="#a_module_rules" alt=""/>
 <map name="a_module_rules" id="a_module_rules">
 <area shape="rect" title=" " alt="" coords="5,5,103,32"/>
 <area shape="rect" href="class_quack_to_hell.html" title=" " alt="" coords="151,5,247,32"/>
 <area shape="poly" title=" " alt="" coords="118,16,150,16,150,21,118,21"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_10.png" border="0" usemap="#a_q_gameplay_tags" alt=""/>
+<tr><td><img src="inherit_graph_19.png" border="0" usemap="#a_q_gameplay_tags" alt=""/>
 <map name="a_q_gameplay_tags" id="a_q_gameplay_tags">
 <area shape="rect" href="class_q_gameplay_tags.html" title=" " alt="" coords="5,5,124,32"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_11.png" border="0" usemap="#a_target_rules" alt=""/>
+<tr><td><img src="inherit_graph_20.png" border="0" usemap="#a_target_rules" alt=""/>
 <map name="a_target_rules" id="a_target_rules">
 <area shape="rect" title=" " alt="" coords="5,31,97,57"/>
 <area shape="rect" href="class_quack_to_hell_editor_target.html" title=" " alt="" coords="145,5,311,32"/>
@@ -194,45 +267,87 @@ $(function(){initNavTree('hierarchy.html',''); initResizable(true); });
 <area shape="poly" title=" " alt="" coords="112,50,162,57,161,63,112,55"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_12.png" border="0" usemap="#a_u_anim_instance" alt=""/>
+<tr><td><img src="inherit_graph_21.png" border="0" usemap="#a_u_anim_instance" alt=""/>
 <map name="a_u_anim_instance" id="a_u_anim_instance">
 <area shape="rect" title=" " alt="" coords="5,5,117,32"/>
 <area shape="rect" href="class_u_q_player_anim_instance.html" title="플레이어 애니메이션 클래스입니다." alt="" coords="165,5,323,32"/>
 <area shape="poly" title=" " alt="" coords="132,16,164,16,164,21,132,21"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_13.png" border="0" usemap="#a_u_blueprint_function_library" alt=""/>
+<tr><td><img src="inherit_graph_22.png" border="0" usemap="#a_u_blueprint_function_library" alt=""/>
 <map name="a_u_blueprint_function_library" id="a_u_blueprint_function_library">
 <area shape="rect" title=" " alt="" coords="5,5,177,32"/>
 <area shape="rect" href="class_u_god_function.html" title=" " alt="" coords="225,5,330,32"/>
 <area shape="poly" title=" " alt="" coords="192,16,224,16,224,21,192,21"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_14.png" border="0" usemap="#a_u_b_t_task_node" alt=""/>
+<tr><td><img src="inherit_graph_23.png" border="0" usemap="#a_u_b_t_task_node" alt=""/>
 <map name="a_u_b_t_task_node" id="a_u_b_t_task_node">
 <area shape="rect" title=" " alt="" coords="5,5,113,32"/>
 <area shape="rect" href="class_u_q_b_t_t_find_patrol_pos.html" title="NPC 산책 태스크 정의 클래스입니다." alt="" coords="161,5,309,32"/>
 <area shape="poly" title=" " alt="" coords="128,16,161,16,161,21,128,21"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_15.png" border="0" usemap="#a_u_user_widget" alt=""/>
-<map name="a_u_user_widget" id="a_u_user_widget">
-<area shape="rect" title=" " alt="" coords="5,56,106,83"/>
-<area shape="rect" href="class_u_q_name_widget.html" title="이름 UI 클래스" alt="" coords="178,5,296,32"/>
-<area shape="poly" title=" " alt="" coords="120,49,186,30,187,35,121,54"/>
-<area shape="rect" href="class_u_q_p2_n_widget.html" title="P2N 대화 UI입니다." alt="" coords="183,56,291,83"/>
-<area shape="poly" title=" " alt="" coords="121,67,183,67,183,72,121,72"/>
-<area shape="rect" href="class_u_q_speech_bubble_widget.html" title=" " alt="" coords="154,107,320,133"/>
-<area shape="poly" title=" " alt="" coords="121,85,187,104,186,109,120,90"/>
+<tr><td><img src="inherit_graph_24.png" border="0" usemap="#a_u_game_instance" alt=""/>
+<map name="a_u_game_instance" id="a_u_game_instance">
+<area shape="rect" title=" " alt="" coords="5,31,122,57"/>
+<area shape="rect" href="class_u_q_game_instance.html" title=" " alt="" coords="189,5,316,32"/>
+<area shape="poly" title=" " alt="" coords="137,32,189,24,189,30,137,37"/>
+<area shape="rect" href="class_u_q_game_instance_village.html" title=" " alt="" coords="170,56,335,83"/>
+<area shape="poly" title=" " alt="" coords="138,51,170,56,169,61,137,56"/>
 </map>
 </td></tr>
-<tr><td><img src="inherit_graph_16.png" border="0" usemap="#a_u_widget_component" alt=""/>
-<map name="a_u_widget_component" id="a_u_widget_component">
-<area shape="rect" title=" " alt="" coords="5,31,145,57"/>
-<area shape="rect" href="class_u_q_player2_n_speech_bubble_widget.html" title="공백 말풍선에 대한 widget component입니다. 상대방 플레이어가 npc와 대화 시 해당 말풍선이 대화 대상들의 머리 위에 뜹니다." alt="" coords="199,5,420,32"/>
-<area shape="poly" title=" " alt="" coords="160,32,198,28,199,33,160,37"/>
-<area shape="rect" href="class_u_q_speech_bubble_widget_component.html" title="캐릭터의 머리 위에 뜨는 말풍선 UI 컴포넌트입니다. ." alt="" coords="193,56,426,83"/>
-<area shape="poly" title=" " alt="" coords="160,51,192,54,192,59,160,56"/>
+<tr><td><img src="inherit_graph_25.png" border="0" usemap="#a_u_n_p_c_component" alt=""/>
+<map name="a_u_n_p_c_component" id="a_u_n_p_c_component">
+<area shape="rect" title=" " alt="" coords="5,5,133,32"/>
+<area shape="rect" href="class_u_judge_component.html" title=" " alt="" coords="181,5,314,32"/>
+<area shape="poly" title=" " alt="" coords="148,16,181,16,181,21,148,21"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_26.png" border="0" usemap="#a_u_object" alt=""/>
+<map name="a_u_object" id="a_u_object">
+<area shape="rect" title=" " alt="" coords="5,31,75,57"/>
+<area shape="rect" href="class_u_q_conversation_data.html" title=" " alt="" coords="123,5,269,32"/>
+<area shape="poly" title=" " alt="" coords="90,33,122,28,123,33,91,39"/>
+<area shape="rect" href="class_u_q_evidence_data.html" title=" " alt="" coords="134,56,258,83"/>
+<area shape="poly" title=" " alt="" coords="91,49,135,57,134,62,90,55"/>
+</map>
+</td></tr>
+<tr><td><img src="inherit_graph_27.png" border="0" usemap="#a_u_user_widget" alt=""/>
+<map name="a_u_user_widget" id="a_u_user_widget">
+<area shape="rect" title=" " alt="" coords="5,385,106,412"/>
+<area shape="rect" href="class_u_q_chat_box_widget.html" title="녹음기위젯에서, 채팅 블록 하나하나의 위젯 (카카오톡 말풍선)" alt="" coords="197,5,330,32"/>
+<area shape="poly" title=" " alt="" coords="58,370,71,293,91,195,118,103,134,67,152,42,173,28,196,20,198,25,175,33,156,46,139,69,123,105,96,196,76,294,63,370"/>
+<area shape="rect" href="class_u_q_court_input_box_widget.html" title="법원 내 입력 박스(플레이어가 메세지를 입력하는 곳)입니다." alt="" coords="181,56,347,83"/>
+<area shape="poly" title=" " alt="" coords="54,370,59,312,73,237,86,198,103,159,124,124,152,93,179,76,182,81,155,97,129,127,107,162,91,200,79,238,64,313,60,371"/>
+<area shape="rect" href="class_u_q_court_timer_widget.html" title="재판장 타이머 위젯 클래스" alt="" coords="190,107,338,133"/>
+<area shape="poly" title=" " alt="" coords="57,370,64,320,81,259,109,197,128,168,152,143,169,132,189,124,191,129,172,136,155,147,132,172,113,199,86,261,70,322,62,370"/>
+<area shape="rect" href="class_u_q_default_village_widget.html" title="마을에 기본적으로 존재해야 하는 위젯입니다. (녹음기버튼, .. )" alt="" coords="182,157,346,184"/>
+<area shape="poly" title=" " alt="" coords="60,369,70,330,88,282,115,234,132,213,152,194,181,178,183,183,155,198,136,216,119,237,93,284,75,331,65,371"/>
+<area shape="rect" href="class_u_q_e_key_widget.html" title="E대화하기 키 UI입니다." alt="" coords="207,208,321,235"/>
+<area shape="poly" title=" " alt="" coords="65,369,97,306,122,273,152,244,178,231,206,223,207,228,180,236,155,249,125,276,101,309,69,372"/>
+<area shape="rect" href="class_u_q_evidence_exam_widget.html" title="증거조사 UI입니다. 최종적으로 선택 한 증거를 가지고 상대방과 의견논쟁을 하는 UI입니다." alt="" coords="179,259,349,285"/>
+<area shape="poly" title=" " alt="" coords="73,371,107,331,128,312,152,295,179,283,181,288,155,300,132,316,111,335,77,374"/>
+<area shape="rect" href="class_u_q_exam_defendant_widget.html" title="피고인심문 UI입니다." alt="" coords="176,309,352,336"/>
+<area shape="poly" title=" " alt="" coords="92,375,153,346,190,334,192,339,155,350,94,379"/>
+<area shape="rect" href="class_u_q_inventory_widget.html" title="인벤토리 위젯입니다." alt="" coords="196,360,332,387"/>
+<area shape="poly" title=" " alt="" coords="121,388,195,379,196,384,121,393"/>
+<area shape="rect" href="class_u_q_map_widget.html" title="지도위젯입니다." alt="" coords="210,411,318,437"/>
+<area shape="poly" title=" " alt="" coords="121,404,210,415,209,420,121,409"/>
+<area shape="rect" href="class_u_q_name_widget.html" title="이름 UI 클래스" alt="" coords="205,461,322,488"/>
+<area shape="poly" title=" " alt="" coords="94,418,155,447,205,461,204,467,153,452,92,423"/>
+<area shape="rect" href="class_u_q_opening_statement_widget.html" title="재판장 모두진술 UI입니다." alt="" coords="169,512,359,539"/>
+<area shape="poly" title=" " alt="" coords="77,423,111,462,132,482,155,498,181,509,179,514,152,502,128,486,107,466,73,427"/>
+<area shape="rect" href="class_u_q_p2_n_widget.html" title="P2N 대화 UI입니다." alt="" coords="210,563,318,589"/>
+<area shape="poly" title=" " alt="" coords="69,425,101,489,125,521,155,548,181,562,210,569,209,575,179,567,152,553,122,525,97,491,65,428"/>
+<area shape="rect" href="class_u_q_player2_n_speech_bubble_widget.html" title="공백 말풍선에 대한 widget 입니다. 상대방 플레이어가 npc와 대화 시 해당 말풍선이 대화 대상들의 머리 위에 뜹니다." alt="" coords="154,613,374,640"/>
+<area shape="poly" title=" " alt="" coords="65,427,75,466,93,513,119,560,136,581,155,599,174,611,171,615,152,603,132,585,115,563,88,515,70,468,60,428"/>
+<area shape="rect" href="class_u_q_record_widget.html" title="녹음기록 화면의 위젯입니다." alt="" coords="202,664,326,691"/>
+<area shape="poly" title=" " alt="" coords="62,427,70,476,86,536,113,598,132,626,155,650,177,663,202,671,200,676,175,668,152,654,128,629,109,601,81,538,64,477,57,428"/>
+<area shape="rect" href="class_u_q_speech_bubble_widget.html" title="말풍선 위젯입니다." alt="" coords="181,715,347,741"/>
+<area shape="poly" title=" " alt="" coords="60,427,64,485,79,559,91,598,107,635,129,670,155,701,182,717,179,721,152,705,124,674,103,638,86,600,73,560,59,485,54,427"/>
+<area shape="rect" href="class_u_q_village_timer_widget.html" title="마을 타이머 위젯입니다." alt="" coords="187,765,341,792"/>
+<area shape="poly" title=" " alt="" coords="63,427,76,503,96,601,123,693,139,728,156,751,170,762,187,770,185,774,168,767,152,755,134,731,118,695,91,602,71,504,58,428"/>
 </map>
 </td></tr>
 </table>

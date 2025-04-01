@@ -1,4 +1,7 @@
 <map id="QuackToHell/Public" name="QuackToHell/Public">
-<area shape="rect" id="node1" href="dir_81e4fdda12d0a847ae8f128f7544b005.html" title="Public" alt="" coords="35,53,93,80"/>
-<area shape="rect" id="clust1" href="dir_320e33a89b1321a072d50dfb68a1fdef.html" title="QuackToHell" alt="" coords="16,16,112,91"/>
+<area shape="rect" id="node1" href="dir_ff09285db7f2e780067a2327fd676169.html" title="GameData" alt="" coords="27,128,112,155"/>
+<area shape="rect" id="node2" href="dir_81e4fdda12d0a847ae8f128f7544b005.html" title="Public" alt="" coords="41,53,98,80"/>
+<area shape="poly" id="edge1" href="dir_000008_000004.html" alt="" coords="72,81,72,112,67,112,67,81"/>
+<area shape="rect" id="edge1-headlabel" href="dir_000008_000004.html" title="1" alt="" coords="74,101,81,117"/>
+<area shape="rect" id="clust1" href="dir_320e33a89b1321a072d50dfb68a1fdef.html" title="QuackToHell" alt="" coords="16,16,123,165"/>
 </map>

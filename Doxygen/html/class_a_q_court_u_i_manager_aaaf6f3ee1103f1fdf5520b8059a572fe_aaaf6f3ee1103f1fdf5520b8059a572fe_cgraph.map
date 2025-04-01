@@ -1,0 +1,23 @@
+<map id="FinishUIWork" name="FinishUIWork">
+<area shape="rect" id="Node000001" title="UI 마무리 : 입력마무리 처리, 타이머 마무리 초기화, ." alt="" coords="5,157,106,184"/>
+<area shape="poly" id="edge6_Node000001_Node000001" title=" " alt="" coords="24,158,19,149,23,139,35,133,56,131,77,133,89,140,86,144,76,138,55,136,37,138,27,143,24,148,29,156"/>
+<area shape="rect" id="Node000002" href="$class_a_q_court_u_i_manager_a044d34527924ff47f223aee317205cd5.html#a044d34527924ff47f223aee317205cd5" title=" " alt="" coords="368,132,504,159"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,155,102,122,126,105,153,92,199,80,236,77,274,82,321,92,362,105,399,122,397,127,360,110,319,97,273,87,236,83,199,85,155,97,129,109,105,126,70,159"/>
+<area shape="rect" id="Node000004" href="$class_a_q_court_u_i_manager_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c" title=" " alt="" coords="197,5,277,32"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="62,155,97,104,123,75,152,48,181,32,184,37,155,53,126,78,101,107,67,158"/>
+<area shape="rect" id="Node000006" href="$class_a_q_court_u_i_manager_aa1e28be0d0b9be7af2a074941a144c65.html#aa1e28be0d0b9be7af2a074941a144c65" title=" " alt="" coords="202,107,272,133"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="105,154,186,131,187,137,107,159"/>
+<area shape="rect" id="Node000007" href="$class_a_q_court_u_i_manager_a79ed96099a183878eadbfce1b5e2a1fd.html#a79ed96099a183878eadbfce1b5e2a1fd" title="재판장의 위젯들을 리턴합니다." alt="" coords="154,157,320,184"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="106,168,138,168,138,173,106,173"/>
+<area shape="rect" id="Node000008" href="$class_a_q_court_u_i_manager_aa56c4d66f4cff45a03044904c195df9f.html#aa56c4d66f4cff45a03044904c195df9f" title="싱글톤 인스턴스 반환." alt="" coords="191,208,283,235"/>
+<area shape="poly" id="edge8_Node000001_Node000008" title=" " alt="" coords="107,182,176,202,175,207,105,187"/>
+<area shape="rect" id="Node000009" href="$class_a_q_court_u_i_manager_accd7fa7768e2386e741f16c942739375.html#accd7fa7768e2386e741f16c942739375" title="UI를 끕니다." alt="" coords="198,259,276,285"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="72,182,108,213,155,244,184,256,182,261,152,249,105,218,69,186"/>
+<area shape="rect" id="Node000010" href="$class_a_q_court_u_i_manager_a1cc412d3a5ec97dbc4490696a4a06459.html#a1cc412d3a5ec97dbc4490696a4a06459" title="UI를 켭니다." alt="" coords="198,309,276,336"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="66,183,99,238,125,269,155,295,184,309,181,314,152,300,121,272,95,241,61,186"/>
+<area shape="rect" id="Node000003" href="$class_a_q_court_u_i_manager_a9bb13a3863cd9093dba0fb880eec820d.html#a9bb13a3863cd9093dba0fb880eec820d" title=" " alt="" coords="552,132,642,159"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="505,143,537,143,537,148,505,148"/>
+<area shape="rect" id="Node000005" href="$class_a_q_court_u_i_manager_a509d2bef33e8d17041d5920e9f16cb36.html#a509d2bef33e8d17041d5920e9f16cb36" title="맵 로드 시 실행." alt="" coords="390,5,482,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="277,16,375,16,375,21,277,21"/>
+<area shape="poly" id="edge9_Node000008_Node000002" title=" " alt="" coords="283,206,319,194,391,163,393,168,321,198,284,211"/>
+</map>

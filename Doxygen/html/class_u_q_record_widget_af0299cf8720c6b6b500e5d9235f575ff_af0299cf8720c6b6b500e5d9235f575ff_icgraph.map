@@ -1,0 +1,7 @@
+<map id="UpdateButtonOverlay" name="UpdateButtonOverlay">
+<area shape="rect" id="Node000001" title="버튼위젯의 모양을 업데이트한다." alt="" coords="365,5,511,32"/>
+<area shape="rect" id="Node000002" href="$class_u_q_record_widget_ae18da0aeb6f4d311103961e43e659657.html#ae18da0aeb6f4d311103961e43e659657" title="대화기록을 업데이트합니다." alt="" coords="170,5,317,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="350,21,317,21,317,16,350,16"/>
+<area shape="rect" id="Node000003" href="$class_u_q_record_widget_aa9dbac3f49162faac6a1c92888c53bf1.html#aa9dbac3f49162faac6a1c92888c53bf1" title=" " alt="" coords="5,5,122,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="154,21,122,21,122,16,154,16"/>
+</map>

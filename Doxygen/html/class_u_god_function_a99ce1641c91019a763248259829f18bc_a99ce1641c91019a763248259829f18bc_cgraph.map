@@ -1,0 +1,20 @@
+<map id="GenerateResidentNPC" name="GenerateResidentNPC">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,124,161,151"/>
+<area shape="poly" id="edge8_Node000001_Node000001" title=" " alt="" coords="51,125,45,115,49,106,62,99,83,97,106,100,118,106,115,111,104,105,83,103,63,105,53,109,50,115,55,122"/>
+<area shape="rect" id="Node000002" href="$class_u_god_function_a4193e5e1b757eb6f3ff4e387674fb200.html#a4193e5e1b757eb6f3ff4e387674fb200" title=" " alt="" coords="210,73,336,100"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="135,121,205,102,206,107,137,126"/>
+<area shape="rect" id="Node000003" href="$class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f" title=" " alt="" coords="394,5,495,32"/>
+<area shape="poly" id="edge7_Node000001_Node000003" title=" " alt="" coords="94,122,140,77,172,53,208,35,251,22,295,14,378,11,378,16,296,20,252,27,210,40,175,58,144,81,98,126"/>
+<area shape="rect" id="Node000006" href="$class_u_god_function_a941993f5f191f9dc599b55d316ac04f2.html#a941993f5f191f9dc599b55d316ac04f2" title=" " alt="" coords="223,124,323,151"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="161,135,207,135,207,140,161,140"/>
+<area shape="rect" id="Node000007" href="$class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee" title=" " alt="" coords="213,175,332,201"/>
+<area shape="poly" id="edge9_Node000001_Node000007" title=" " alt="" coords="137,149,206,168,205,173,135,154"/>
+<area shape="rect" id="Node000008" href="$class_u_god_function_aaac6f0b28b727bc92185ba3fe44117a5.html#aaac6f0b28b727bc92185ba3fe44117a5" title=" " alt="" coords="209,225,337,252"/>
+<area shape="poly" id="edge10_Node000001_Node000008" title=" " alt="" coords="106,149,153,179,210,211,222,217,219,221,207,216,150,184,103,154"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="243,74,238,65,242,55,254,49,273,47,294,49,305,56,302,60,292,54,273,52,255,54,246,59,243,64,248,72"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="308,70,394,36,396,41,310,75"/>
+<area shape="rect" id="Node000004" href="$class_u_god_function_a33a42a38f7e8b48cabc4648738618249.html#a33a42a38f7e8b48cabc4648738618249" title=" " alt="" coords="385,68,504,95"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="336,82,369,81,369,86,336,87"/>
+<area shape="rect" id="Node000005" href="$class_u_god_function_a283cf18abc0d86f40e6813d90c24837b.html#a283cf18abc0d86f40e6813d90c24837b" title=" " alt="" coords="386,119,503,145"/>
+<area shape="poly" id="edge5_Node000002_Node000005" title=" " alt="" coords="327,98,378,112,376,117,326,103"/>
+</map>

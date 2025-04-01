@@ -1,0 +1,6 @@
+<map id="TurnOffUI" name="TurnOffUI">
+<area shape="rect" id="Node000001" title="UI를 끕니다." alt="" coords="154,29,232,56"/>
+<area shape="rect" id="Node000002" href="$class_a_q_court_u_i_manager_aaaf6f3ee1103f1fdf5520b8059a572fe.html#aaaf6f3ee1103f1fdf5520b8059a572fe" title="UI 마무리 : 입력마무리 처리, 타이머 마무리 초기화, ." alt="" coords="5,29,106,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="138,45,106,45,106,40,138,40"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="78,16,70,10,55,8,42,10,34,14,32,20,36,28,31,30,27,21,30,11,40,5,56,3,72,5,81,12"/>
+</map>

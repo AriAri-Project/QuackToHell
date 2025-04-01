@@ -1,0 +1,11 @@
+<map id="QuackToHell/UI/QCourtUIManager.h" name="QuackToHell/UI/QCourtUIManager.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="192,5,428,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,80,111,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="267,35,117,78,116,73,265,30"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="134,80,302,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="296,35,247,73,244,68,292,30"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="325,80,482,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="328,30,377,68,374,73,325,35"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="505,80,704,107"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="362,30,539,73,538,78,361,35"/>
+</map>

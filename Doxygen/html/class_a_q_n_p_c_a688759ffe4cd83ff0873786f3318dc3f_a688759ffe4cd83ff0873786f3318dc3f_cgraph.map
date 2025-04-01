@@ -1,5 +1,9 @@
 <map id="GetLifetimeReplicatedProps" name="GetLifetimeReplicatedProps">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,190,32"/>
-<area shape="rect" id="Node000002" href="$class_a_q_n_p_c_ae113cdefbb1c4e15c7cd250aff0f7bf4.html#ae113cdefbb1c4e15c7cd250aff0f7bf4" title=" " alt="" coords="238,5,307,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,16,222,16,222,21,190,21"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,190,57"/>
+<area shape="rect" id="Node000002" href="$class_a_q_n_p_c_a65463d34304cad8ec677fe0d84f6ba81.html#a65463d34304cad8ec677fe0d84f6ba81" title=" " alt="" coords="238,31,307,57"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="190,41,222,41,222,47,190,47"/>
+<area shape="rect" id="Node000003" href="$class_a_q_n_p_c_ada416e6078a5a9a8f91d0672407df623.html#ada416e6078a5a9a8f91d0672407df623" title=" " alt="" coords="355,5,471,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="307,35,339,29,340,34,308,40"/>
+<area shape="rect" id="Node000004" href="$class_a_q_n_p_c_ae98e2a23cd88516b11f37866295857fc.html#ae98e2a23cd88516b11f37866295857fc" title=" " alt="" coords="360,56,466,83"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="308,48,345,54,344,60,307,53"/>
 </map>

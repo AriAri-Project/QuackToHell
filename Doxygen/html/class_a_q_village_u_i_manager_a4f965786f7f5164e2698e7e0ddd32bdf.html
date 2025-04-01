@@ -125,39 +125,42 @@ $(function(){initNavTree('class_a_q_village_u_i_manager_a4f965786f7f5164e2698e7e
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="_q_village_u_i_manager_8cpp_source.html">QVillageUIManager.cpp</a> 파일의 <a class="el" href="_q_village_u_i_manager_8cpp_source.html#l00109">109</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  110</span>{</div>
-<div class="line"><span class="lineno">  111</span>    <span class="comment">//위젯 이미 만들어져있으면 visible 전환</span></div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_village_u_i_manager_af0fdc3504bdfb3f5b160acfe652071ad.html#af0fdc3504bdfb3f5b160acfe652071ad">ActiveWidgets</a>.Contains(UIType)) {</div>
-<div class="line"><span class="lineno">  113</span>        <a class="code hl_variable" href="class_a_q_village_u_i_manager_af0fdc3504bdfb3f5b160acfe652071ad.html#af0fdc3504bdfb3f5b160acfe652071ad">ActiveWidgets</a>[UIType]-&gt;SetVisibility(ESlateVisibility::Visible);</div>
-<div class="line"><span class="lineno">  114</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  115</span>    }</div>
-<div class="line"><span class="lineno">  116</span> </div>
-<div class="line"><span class="lineno">  117</span>    <span class="comment">//마을 UI로 타입을 넣어두지않았으면</span></div>
-<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_a_q_village_u_i_manager_adc56ad48e1f8dc507e92f6f48619187f.html#adc56ad48e1f8dc507e92f6f48619187f">UIWidgetClasses</a>[UIType]) {</div>
-<div class="line"><span class="lineno">  119</span>        UE_LOG(LogLogic, Warning, TEXT(<span class="stringliteral">&quot;QVillageUIManager: UIClassWidgetClasses에 UI타입에 맞는 값을 생성하세요&quot;</span>));</div>
-<div class="line"><span class="lineno">  120</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  121</span>    }</div>
-<div class="line"><span class="lineno">  122</span> </div>
-<div class="line"><span class="lineno">  123</span>    TObjectPtr&lt;UWorld&gt; World = GetWorld();</div>
-<div class="line"><span class="lineno">  124</span>    <span class="keywordflow">if</span> (!World) <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  125</span>    <span class="comment">//위젯 새로 만들기</span></div>
-<div class="line"><span class="lineno">  126</span>    TObjectPtr&lt;UUserWidget&gt; NewWidget = CreateWidget&lt;UUserWidget&gt;(World, <a class="code hl_variable" href="class_a_q_village_u_i_manager_adc56ad48e1f8dc507e92f6f48619187f.html#adc56ad48e1f8dc507e92f6f48619187f">UIWidgetClasses</a>[UIType]);</div>
-<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">if</span> (NewWidget) {</div>
-<div class="line"><span class="lineno">  128</span>        NewWidget-&gt;AddToViewport();</div>
-<div class="line"><span class="lineno">  129</span>        NewWidget-&gt;SetVisibility(ESlateVisibility::Visible);  </div>
-<div class="line"><span class="lineno">  130</span>        <a class="code hl_variable" href="class_a_q_village_u_i_manager_af0fdc3504bdfb3f5b160acfe652071ad.html#af0fdc3504bdfb3f5b160acfe652071ad">ActiveWidgets</a>.Add(UIType, NewWidget);</div>
-<div class="line"><span class="lineno">  131</span>    }</div>
-<div class="line"><span class="lineno">  132</span>}</div>
-<div class="ttc" id="aclass_a_q_village_u_i_manager_adc56ad48e1f8dc507e92f6f48619187f_html_adc56ad48e1f8dc507e92f6f48619187f"><div class="ttname"><a href="class_a_q_village_u_i_manager_adc56ad48e1f8dc507e92f6f48619187f.html#adc56ad48e1f8dc507e92f6f48619187f">AQVillageUIManager::UIWidgetClasses</a></div><div class="ttdeci">TMap&lt; EVillageUIType, TSubclassOf&lt; UUserWidget &gt; &gt; UIWidgetClasses</div><div class="ttdoc">UI타입과 위젯클래스 매핑</div><div class="ttdef"><b>Definition</b> <a href="_q_village_u_i_manager_8h_source.html#l00064">QVillageUIManager.h:64</a></div></div>
-<div class="ttc" id="aclass_a_q_village_u_i_manager_af0fdc3504bdfb3f5b160acfe652071ad_html_af0fdc3504bdfb3f5b160acfe652071ad"><div class="ttname"><a href="class_a_q_village_u_i_manager_af0fdc3504bdfb3f5b160acfe652071ad.html#af0fdc3504bdfb3f5b160acfe652071ad">AQVillageUIManager::ActiveWidgets</a></div><div class="ttdeci">TMap&lt; EVillageUIType, TObjectPtr&lt; UUserWidget &gt; &gt; ActiveWidgets</div><div class="ttdoc">활성화 된 위젯 관리</div><div class="ttdef"><b>Definition</b> <a href="_q_village_u_i_manager_8h_source.html#l00066">QVillageUIManager.h:66</a></div></div>
+<p class="definition"><a class="el" href="_q_village_u_i_manager_8cpp_source.html">QVillageUIManager.cpp</a> 파일의 <a class="el" href="_q_village_u_i_manager_8cpp_source.html#l00213">213</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  214</span>{</div>
+<div class="line"><span class="lineno">  215</span>    <span class="comment">/*예외처리*/</span></div>
+<div class="line"><span class="lineno">  216</span>    <span class="comment">//키에 매핑되는 클래스목록이 존재하지 않으면</span></div>
+<div class="line"><span class="lineno">  217</span>    <span class="keywordflow">if</span> (!<a class="code hl_variable" href="class_a_q_village_u_i_manager_adc56ad48e1f8dc507e92f6f48619187f.html#adc56ad48e1f8dc507e92f6f48619187f">UIWidgetClasses</a>.Contains(UIType)) {</div>
+<div class="line"><span class="lineno">  218</span>        UE_LOG(LogLogic, Warning, TEXT(<span class="stringliteral">&quot;QVillageUIManager: 키에 매핑되는 클래스목록이 존재하지 않습니다.&quot;</span>));</div>
+<div class="line"><span class="lineno">  219</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  220</span>    }</div>
+<div class="line"><span class="lineno">  221</span> </div>
+<div class="line"><span class="lineno">  222</span>    <span class="comment">/*UI켜기*/</span></div>
+<div class="line"><span class="lineno">  223</span>    <span class="comment">//위젯 이미 만들어져있으면 visible 전환</span></div>
+<div class="line"><span class="lineno">  224</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_village_u_i_manager_ac15ee7f8fb559f7b3b22f3d1097b6de4.html#ac15ee7f8fb559f7b3b22f3d1097b6de4">ActivedVillageWidgets</a>.Contains(UIType)) {</div>
+<div class="line"><span class="lineno">  225</span>        <a class="code hl_variable" href="class_a_q_village_u_i_manager_ac15ee7f8fb559f7b3b22f3d1097b6de4.html#ac15ee7f8fb559f7b3b22f3d1097b6de4">ActivedVillageWidgets</a>[UIType]-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><span class="lineno">  226</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  227</span>    }</div>
+<div class="line"><span class="lineno">  228</span> </div>
+<div class="line"><span class="lineno">  229</span>    <span class="comment">//없으면 위젯 새로 만들기 &amp; visible처리</span></div>
+<div class="line"><span class="lineno">  230</span>    TObjectPtr&lt;UWorld&gt; World = GetWorld();</div>
+<div class="line"><span class="lineno">  231</span>    <span class="keywordflow">if</span> (!World) <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  232</span>    </div>
+<div class="line"><span class="lineno">  233</span>    TObjectPtr&lt;UUserWidget&gt; NewWidget = CreateWidget&lt;UUserWidget&gt;(World, <a class="code hl_variable" href="class_a_q_village_u_i_manager_adc56ad48e1f8dc507e92f6f48619187f.html#adc56ad48e1f8dc507e92f6f48619187f">UIWidgetClasses</a>[UIType]);</div>
+<div class="line"><span class="lineno">  234</span>    <span class="keywordflow">if</span> (NewWidget) {</div>
+<div class="line"><span class="lineno">  235</span>        NewWidget-&gt;AddToViewport();</div>
+<div class="line"><span class="lineno">  236</span>        NewWidget-&gt;SetVisibility(ESlateVisibility::Visible);  </div>
+<div class="line"><span class="lineno">  237</span>        <a class="code hl_variable" href="class_a_q_village_u_i_manager_ac15ee7f8fb559f7b3b22f3d1097b6de4.html#ac15ee7f8fb559f7b3b22f3d1097b6de4">ActivedVillageWidgets</a>.Add(UIType, NewWidget);</div>
+<div class="line"><span class="lineno">  238</span>    }</div>
+<div class="line"><span class="lineno">  239</span>}</div>
+<div class="ttc" id="aclass_a_q_village_u_i_manager_ac15ee7f8fb559f7b3b22f3d1097b6de4_html_ac15ee7f8fb559f7b3b22f3d1097b6de4"><div class="ttname"><a href="class_a_q_village_u_i_manager_ac15ee7f8fb559f7b3b22f3d1097b6de4.html#ac15ee7f8fb559f7b3b22f3d1097b6de4">AQVillageUIManager::ActivedVillageWidgets</a></div><div class="ttdeci">TMap&lt; EVillageUIType, TObjectPtr&lt; UUserWidget &gt; &gt; ActivedVillageWidgets</div><div class="ttdoc">마을 위젯 관리</div><div class="ttdef"><b>Definition</b> <a href="_q_village_u_i_manager_8h_source.html#l00085">QVillageUIManager.h:85</a></div></div>
+<div class="ttc" id="aclass_a_q_village_u_i_manager_adc56ad48e1f8dc507e92f6f48619187f_html_adc56ad48e1f8dc507e92f6f48619187f"><div class="ttname"><a href="class_a_q_village_u_i_manager_adc56ad48e1f8dc507e92f6f48619187f.html#adc56ad48e1f8dc507e92f6f48619187f">AQVillageUIManager::UIWidgetClasses</a></div><div class="ttdeci">TMap&lt; EVillageUIType, TSubclassOf&lt; UUserWidget &gt; &gt; UIWidgetClasses</div><div class="ttdoc">마을 내 존재해야하는 위젯클래스들: UI타입과 위젯클래스 매핑.</div><div class="ttdef"><b>Definition</b> <a href="_q_village_u_i_manager_8h_source.html#l00083">QVillageUIManager.h:83</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_a_q_village_u_i_manager_a4f965786f7f5164e2698e7e0ddd32bdf_a4f965786f7f5164e2698e7e0ddd32bdf_icgraph.png" border="0" usemap="#aclass_a_q_village_u_i_manager_a4f965786f7f5164e2698e7e0ddd32bdf_a4f965786f7f5164e2698e7e0ddd32bdf_icgraph" alt=""/></div>
 <map name="aclass_a_q_village_u_i_manager_a4f965786f7f5164e2698e7e0ddd32bdf_a4f965786f7f5164e2698e7e0ddd32bdf_icgraph" id="aclass_a_q_village_u_i_manager_a4f965786f7f5164e2698e7e0ddd32bdf_a4f965786f7f5164e2698e7e0ddd32bdf_icgraph">
 <area shape="rect" title="UI를 켭니다." alt="" coords="273,5,351,32"/>
-<area shape="rect" href="class_a_q_village_u_i_manager_a509d2bef33e8d17041d5920e9f16cb36.html#a509d2bef33e8d17041d5920e9f16cb36" title="맵 로드 시 실행" alt="" coords="134,5,225,32"/>
+<area shape="rect" href="class_a_q_village_u_i_manager_a509d2bef33e8d17041d5920e9f16cb36.html#a509d2bef33e8d17041d5920e9f16cb36" title="맵 로드 시 실행." alt="" coords="134,5,225,32"/>
 <area shape="poly" title=" " alt="" coords="257,21,226,21,226,16,257,16"/>
 <area shape="rect" href="class_a_q_village_u_i_manager_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c" title=" " alt="" coords="5,5,86,32"/>
 <area shape="poly" title=" " alt="" coords="118,21,86,21,86,16,118,16"/>

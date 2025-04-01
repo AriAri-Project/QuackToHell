@@ -1,5 +1,5 @@
 <map id="AQNPCController" name="AQNPCController">
-<area shape="rect" id="Node000001" title="NPCController 클래스입니다." alt="" coords="5,123,245,416"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="81,5,170,75"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,89,128,123,123,123,123,89"/>
+<area shape="rect" id="Node000001" title="NPCController 클래스입니다." alt="" coords="5,123,120,192"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="18,5,107,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,90,65,123,60,123,60,90"/>
 </map>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['none_0',['None',['../_q_gameplay_tags_8h_a7efa1e73a049a3cd1a71fa548410a0dc.html#a7efa1e73a049a3cd1a71fa548410a0dca6adf97f83acf6453d4a6a4b1070f3754',1,'QGameplayTags.h']]]
+  ['defaultvillageui_0',['DefaultVillageUI',['../_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea32545f0bdca5592cfe3b1fe44760a448',1,'QVillageUIManager.h']]]
 ];

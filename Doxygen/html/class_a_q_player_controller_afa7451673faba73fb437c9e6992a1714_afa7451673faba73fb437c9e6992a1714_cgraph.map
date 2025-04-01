@@ -1,0 +1,14 @@
+<map id="ClientRPCUpdateCanStartConversP2N" name="ClientRPCUpdateCanStartConversP2N">
+<area shape="rect" id="Node000001" title="@breif ServerRPCCanStartConversP2N를 통해 대화시작이 가능한지 체크가 완료된 후 실행되는 클라이언트 RPC 인자로 시작할 수 있는지 없는지에 대한 bool..." alt="" coords="5,39,259,65"/>
+<area shape="poly" id="edge5_Node000001_Node000001" title=" " alt="" coords="90,40,82,30,88,20,104,14,132,12,162,15,178,21,176,26,161,20,132,17,106,19,91,24,88,29,94,37"/>
+<area shape="rect" id="Node000002" href="$class_a_q_player_controller_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c" title=" " alt="" coords="342,13,422,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="259,36,327,30,327,35,259,42"/>
+<area shape="rect" id="Node000006" href="$class_a_q_player_controller_af658bc16067a6ecda0dcccaf068b289b.html#af658bc16067a6ecda0dcccaf068b289b" title=" " alt="" coords="307,64,458,91"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="259,62,291,65,291,71,259,68"/>
+<area shape="rect" id="Node000003" href="$class_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218.html#a14027a8dd3d11d56d004556d8463c218" title="싱글톤 인스턴스 반환." alt="" coords="506,5,649,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="423,24,490,24,490,29,423,29"/>
+<area shape="rect" id="Node000004" href="$class_a_q_village_u_i_manager_ab13fe3650f7027a04e252fdbea6ee43c.html#ab13fe3650f7027a04e252fdbea6ee43c" title="private생성자로 외부에서 객체생성을 막음." alt="" coords="697,5,849,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="650,24,682,24,682,29,650,29"/>
+<area shape="rect" id="Node000005" href="$class_a_q_village_u_i_manager_a1da182c7b2c5dcb13c097d45ccf53526.html#a1da182c7b2c5dcb13c097d45ccf53526" title=" " alt="" coords="897,5,1040,48"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="849,24,881,24,881,29,849,29"/>
+</map>

@@ -1,0 +1,9 @@
+<map id="TurnOnTimerUI" name="TurnOnTimerUI">
+<area shape="rect" id="Node000001" title="타이머 UI를 TimerBox sizebox에 달아줍니다." alt="" coords="5,13,117,40"/>
+<area shape="rect" id="Node000002" href="$class_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218.html#a14027a8dd3d11d56d004556d8463c218" title="싱글톤 인스턴스 반환." alt="" coords="165,5,308,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="117,24,149,24,149,29,117,29"/>
+<area shape="rect" id="Node000003" href="$class_a_q_village_u_i_manager_ab13fe3650f7027a04e252fdbea6ee43c.html#ab13fe3650f7027a04e252fdbea6ee43c" title="private생성자로 외부에서 객체생성을 막음." alt="" coords="356,5,507,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="308,24,341,24,341,29,308,29"/>
+<area shape="rect" id="Node000004" href="$class_a_q_village_u_i_manager_a1da182c7b2c5dcb13c097d45ccf53526.html#a1da182c7b2c5dcb13c097d45ccf53526" title=" " alt="" coords="555,5,699,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="507,24,540,24,540,29,507,29"/>
+</map>

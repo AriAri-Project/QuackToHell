@@ -1,5 +1,5 @@
 <map id="UQP2NWidget" name="UQP2NWidget">
-<area shape="rect" id="Node000001" title="P2N 대화 UI입니다." alt="" coords="5,123,242,619"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="79,5,169,75"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="126,90,126,123,121,123,121,90"/>
+<area shape="rect" id="Node000001" title="P2N 대화 UI입니다." alt="" coords="5,123,268,635"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="92,5,182,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,89,140,123,134,123,134,89"/>
 </map>

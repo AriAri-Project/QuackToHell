@@ -119,44 +119,26 @@ $(function(){initNavTree('class_u_q_p2_n_widget_a17a475cd707db22984696f1438a074c
 
 <p>종료버튼 눌렸을때의 처리; </p>
 
-<p class="definition"><a class="el" href="_q_p2_n_widget_8cpp_source.html">QP2NWidget.cpp</a> 파일의 <a class="el" href="_q_p2_n_widget_8cpp_source.html#l00065">65</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   66</span>{</div>
-<div class="line"><span class="lineno">   67</span>    <span class="comment">//대화마치기 가능 조건</span></div>
-<div class="line"><span class="lineno">   68</span>    <span class="comment">//1. 응답생성중이면 안 됨</span></div>
-<div class="line"><span class="lineno">   69</span>    <span class="comment">//   음... 상태이면 응답생성중이다. </span></div>
-<div class="line"><span class="lineno">   70</span>    <span class="keywordtype">bool</span> bGeneratingResponse = <a class="code hl_function" href="class_u_q_p2_n_widget_a0044bd9e9407814b25f1516eed317afc.html#a0044bd9e9407814b25f1516eed317afc">IsGerneratingResponse</a>();</div>
-<div class="line"><span class="lineno">   71</span>    <span class="comment">//2. 서버로부터 대화마치기 가능하다고 리턴받아야됨</span></div>
-<div class="line"><span class="lineno">   72</span>    TObjectPtr&lt;AQPlayer&gt; _Player = Cast&lt;AQPlayer&gt;(<a class="code hl_variable" href="class_u_q_p2_n_widget_aa4b8c14effa74dacd75fe2cb628ab917.html#aa4b8c14effa74dacd75fe2cb628ab917">ConversingPlayer</a>-&gt;GetPawn());</div>
-<div class="line"><span class="lineno">   73</span>    TObjectPtr&lt;AQNPC&gt; _NPC = Cast&lt;AQNPC&gt;(<a class="code hl_variable" href="class_u_q_p2_n_widget_ae87a000848320ba1f20ec21020948816.html#ae87a000848320ba1f20ec21020948816">ConversingNPC</a>-&gt;GetPawn());</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordtype">bool</span> bCanFinishConversing = _Player-&gt;GetCanFinishConversP2N(_NPC);</div>
-<div class="line"><span class="lineno">   75</span>    </div>
-<div class="line"><span class="lineno">   76</span>    <span class="comment">//대화마칠 수 있으면</span></div>
-<div class="line"><span class="lineno">   77</span>    <span class="comment">//임시주석(풀어야됨): if (!bGeneratingResponse &amp;&amp; bCanFinishConversing) {</span></div>
-<div class="line"><span class="lineno">   78</span>    {</div>
-<div class="line"><span class="lineno">   79</span>        <span class="comment">//1. UI 끈다.</span></div>
-<div class="line"><span class="lineno">   80</span>        <a class="code hl_function" href="class_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218.html#a14027a8dd3d11d56d004556d8463c218">AQVillageUIManager::GetInstance</a>(GetWorld())-&gt;TurnOffUI(<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6ae860c71585153c82dd6cff37048b12">EVillageUIType::P2N</a>);</div>
-<div class="line"><span class="lineno">   81</span>        <span class="comment">//2. 대화 끝 처리한다.</span></div>
-<div class="line"><span class="lineno">   82</span>        <span class="comment">//플레이어</span></div>
-<div class="line"><span class="lineno">   83</span>        <a class="code hl_variable" href="class_u_q_p2_n_widget_aa4b8c14effa74dacd75fe2cb628ab917.html#aa4b8c14effa74dacd75fe2cb628ab917">ConversingPlayer</a>-&gt;ConverseEndProcess(Cast&lt;AQNPC&gt;(<a class="code hl_variable" href="class_u_q_p2_n_widget_ae87a000848320ba1f20ec21020948816.html#ae87a000848320ba1f20ec21020948816">ConversingNPC</a>-&gt;GetPawn()));</div>
-<div class="line"><span class="lineno">   84</span>        <span class="comment">//NPC</span></div>
-<div class="line"><span class="lineno">   85</span>        <a class="code hl_variable" href="class_u_q_p2_n_widget_ae87a000848320ba1f20ec21020948816.html#ae87a000848320ba1f20ec21020948816">ConversingNPC</a>-&gt;EndDialog();</div>
-<div class="line"><span class="lineno">   86</span>    }</div>
-<div class="line"><span class="lineno">   87</span>}</div>
-<div class="ttc" id="a_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e_html_a80a25b4b1f1633b9ee669cc942a17d8ea6ae860c71585153c82dd6cff37048b12"><div class="ttname"><a href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6ae860c71585153c82dd6cff37048b12">EVillageUIType::P2N</a></div><div class="ttdeci">@ P2N</div><div class="ttdef"><b>Definition</b> <a href="_q_village_u_i_manager_8h_source.html#l00012">QVillageUIManager.h:12</a></div></div>
-<div class="ttc" id="aclass_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218_html_a14027a8dd3d11d56d004556d8463c218"><div class="ttname"><a href="class_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218.html#a14027a8dd3d11d56d004556d8463c218">AQVillageUIManager::GetInstance</a></div><div class="ttdeci">static TObjectPtr&lt; AQVillageUIManager &gt; GetInstance(TObjectPtr&lt; UWorld &gt; World)</div><div class="ttdoc">싱글톤 인스턴스 반환.</div><div class="ttdef"><b>Definition</b> <a href="_q_village_u_i_manager_8cpp_source.html#l00040">QVillageUIManager.cpp:40</a></div></div>
-<div class="ttc" id="aclass_u_q_p2_n_widget_a0044bd9e9407814b25f1516eed317afc_html_a0044bd9e9407814b25f1516eed317afc"><div class="ttname"><a href="class_u_q_p2_n_widget_a0044bd9e9407814b25f1516eed317afc.html#a0044bd9e9407814b25f1516eed317afc">UQP2NWidget::IsGerneratingResponse</a></div><div class="ttdeci">bool IsGerneratingResponse()</div><div class="ttdoc">NPC가 응답생성중인지 체크</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8cpp_source.html#l00089">QP2NWidget.cpp:89</a></div></div>
-<div class="ttc" id="aclass_u_q_p2_n_widget_aa4b8c14effa74dacd75fe2cb628ab917_html_aa4b8c14effa74dacd75fe2cb628ab917"><div class="ttname"><a href="class_u_q_p2_n_widget_aa4b8c14effa74dacd75fe2cb628ab917.html#aa4b8c14effa74dacd75fe2cb628ab917">UQP2NWidget::ConversingPlayer</a></div><div class="ttdeci">TObjectPtr&lt; class AQPlayerController &gt; ConversingPlayer</div><div class="ttdoc">대화중인 플레이어정보</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00073">QP2NWidget.h:73</a></div></div>
-<div class="ttc" id="aclass_u_q_p2_n_widget_ae87a000848320ba1f20ec21020948816_html_ae87a000848320ba1f20ec21020948816"><div class="ttname"><a href="class_u_q_p2_n_widget_ae87a000848320ba1f20ec21020948816.html#ae87a000848320ba1f20ec21020948816">UQP2NWidget::ConversingNPC</a></div><div class="ttdeci">TObjectPtr&lt; class AQNPCController &gt; ConversingNPC</div><div class="ttdoc">대화중인 npc정보</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00070">QP2NWidget.h:70</a></div></div>
+<p class="definition"><a class="el" href="_q_p2_n_widget_8cpp_source.html">QP2NWidget.cpp</a> 파일의 <a class="el" href="_q_p2_n_widget_8cpp_source.html#l00061">61</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   62</span>{</div>
+<div class="line"><span class="lineno">   63</span>    <span class="comment">//대화마치기 가능한지 서버에게 물어보기</span></div>
+<div class="line"><span class="lineno">   64</span>    TObjectPtr&lt;AQPlayer&gt; _Player = Cast&lt;AQPlayer&gt;(<a class="code hl_variable" href="class_u_q_p2_n_widget_aa4b8c14effa74dacd75fe2cb628ab917.html#aa4b8c14effa74dacd75fe2cb628ab917">ConversingPlayer</a>-&gt;GetPawn());</div>
+<div class="line"><span class="lineno">   65</span>    TObjectPtr&lt;AQNPC&gt; _NPC = Cast&lt;AQNPC&gt;(<a class="code hl_variable" href="class_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450.html#afd4fc717ac802ea7d5ddd2f173739450">ConversingNPC</a>-&gt;GetPawn());</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>    AQPlayerController* LocalPlayerController = Cast&lt;AQPlayerController&gt;(_Player-&gt;GetController());</div>
+<div class="line"><span class="lineno">   68</span>    _Player-&gt;ServerRPCCanFinishConversP2N_Implementation(LocalPlayerController, _NPC);    </div>
+<div class="line"><span class="lineno">   69</span>}</div>
+<div class="ttc" id="aclass_u_q_p2_n_widget_aa4b8c14effa74dacd75fe2cb628ab917_html_aa4b8c14effa74dacd75fe2cb628ab917"><div class="ttname"><a href="class_u_q_p2_n_widget_aa4b8c14effa74dacd75fe2cb628ab917.html#aa4b8c14effa74dacd75fe2cb628ab917">UQP2NWidget::ConversingPlayer</a></div><div class="ttdeci">TObjectPtr&lt; class AQPlayerController &gt; ConversingPlayer</div><div class="ttdoc">대화중인 플레이어정보</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00081">QP2NWidget.h:81</a></div></div>
+<div class="ttc" id="aclass_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450_html_afd4fc717ac802ea7d5ddd2f173739450"><div class="ttname"><a href="class_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450.html#afd4fc717ac802ea7d5ddd2f173739450">UQP2NWidget::ConversingNPC</a></div><div class="ttdeci">TObjectPtr&lt; class AQDynamicNPCController &gt; ConversingNPC</div><div class="ttdoc">대화중인 npc정보</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00078">QP2NWidget.h:78</a></div></div>
 </div><!-- fragment --><div class="dynheader">
-이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_u_q_p2_n_widget_a17a475cd707db22984696f1438a074ce_a17a475cd707db22984696f1438a074ce_cgraph.png" border="0" usemap="#aclass_u_q_p2_n_widget_a17a475cd707db22984696f1438a074ce_a17a475cd707db22984696f1438a074ce_cgraph" alt=""/></div>
-<map name="aclass_u_q_p2_n_widget_a17a475cd707db22984696f1438a074ce_a17a475cd707db22984696f1438a074ce_cgraph" id="aclass_u_q_p2_n_widget_a17a475cd707db22984696f1438a074ce_a17a475cd707db22984696f1438a074ce_cgraph">
-<area shape="rect" title="종료버튼 눌렸을때의 처리;" alt="" coords="5,43,160,69"/>
-<area shape="rect" href="class_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218.html#a14027a8dd3d11d56d004556d8463c218" title="싱글톤 인스턴스 반환." alt="" coords="215,5,358,48"/>
-<area shape="poly" title=" " alt="" coords="160,42,200,36,201,42,160,48"/>
-<area shape="rect" href="class_u_q_p2_n_widget_a0044bd9e9407814b25f1516eed317afc.html#a0044bd9e9407814b25f1516eed317afc" title="NPC가 응답생성중인지 체크" alt="" coords="208,72,366,99"/>
-<area shape="poly" title=" " alt="" coords="160,64,192,69,192,74,160,70"/>
+<div class="center"><img src="class_u_q_p2_n_widget_a17a475cd707db22984696f1438a074ce_a17a475cd707db22984696f1438a074ce_icgraph.png" border="0" usemap="#aclass_u_q_p2_n_widget_a17a475cd707db22984696f1438a074ce_a17a475cd707db22984696f1438a074ce_icgraph" alt=""/></div>
+<map name="aclass_u_q_p2_n_widget_a17a475cd707db22984696f1438a074ce_a17a475cd707db22984696f1438a074ce_icgraph" id="aclass_u_q_p2_n_widget_a17a475cd707db22984696f1438a074ce_a17a475cd707db22984696f1438a074ce_icgraph">
+<area shape="rect" title="종료버튼 눌렸을때의 처리;" alt="" coords="247,29,401,56"/>
+<area shape="rect" href="class_u_q_p2_n_widget_ae2c035e55eb653e7ccb492fb06ad486e.html#ae2c035e55eb653e7ccb492fb06ad486e" title=" " alt="" coords="5,29,199,56"/>
+<area shape="poly" title=" " alt="" coords="231,45,199,45,199,40,231,40"/>
+<area shape="poly" title=" " alt="" coords="140,16,127,10,102,8,79,10,66,15,63,20,69,27,65,30,58,21,62,11,78,5,102,3,128,5,142,12"/>
 </map>
 </div>
 

@@ -1,0 +1,23 @@
+<map id="QuackToHell/UI/QDefaultVillageWidget.cpp" name="QuackToHell/UI/QDefaultVillageWidget.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="509,5,719,48"/>
+<area shape="rect" id="Node000002" href="$_q_default_village_widget_8h.html" title=" " alt="" coords="242,96,424,123"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="542,51,393,94,391,89,541,46"/>
+<area shape="rect" id="Node000006" href="$_q_village_u_i_manager_8h.html" title=" " alt="" coords="448,96,612,123"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="594,51,556,87,552,83,591,47"/>
+<area shape="rect" id="Node000009" href="$_q_log_categories_8h.html" title=" " alt="" coords="636,96,762,123"/>
+<area shape="poly" id="edge10_Node000001_Node000009" title=" " alt="" coords="638,47,677,83,673,87,634,51"/>
+<area shape="rect" id="Node000010" title=" " alt="" coords="786,96,946,123"/>
+<area shape="poly" id="edge11_Node000001_Node000010" title=" " alt="" coords="680,46,813,88,811,93,678,51"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="435,171,540,197"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="361,121,448,161,446,166,358,126"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="254,171,411,197"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="335,123,335,155,330,155,330,123"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="5,171,231,197"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="296,126,171,168,169,163,294,121"/>
+<area shape="poly" id="edge6_Node000006_Node000003" title=" " alt="" coords="525,125,505,159,500,156,520,122"/>
+<area shape="poly" id="edge8_Node000006_Node000004" title=" " alt="" coords="497,126,383,167,381,162,495,121"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="794,171,962,197"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="592,121,803,164,802,170,590,126"/>
+<area shape="rect" id="Node000008" title=" " alt="" coords="564,171,770,197"/>
+<area shape="poly" id="edge9_Node000006_Node000008" title=" " alt="" coords="555,121,631,161,629,165,553,126"/>
+</map>

@@ -1,0 +1,231 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>QuackToHell: QuackToHell/UI/QRecordWidget.cpp 파일 참조</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">QuackToHell<span id="projectnumber">&#160;0.0.1</span>
+   </div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="검색" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('_q_record_widget_8cpp.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">QRecordWidget.cpp 파일 참조</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &quot;<a class="el" href="_q_record_widget_8h_source.html">UI/QRecordWidget.h</a>&quot;</code><br />
+<code>#include &quot;Components/Overlay.h&quot;</code><br />
+<code>#include &quot;Components/TextBlock.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="_q_log_categories_8h_source.html">QLogCategories.h</a>&quot;</code><br />
+<code>#include &quot;Components/Button.h&quot;</code><br />
+<code>#include &quot;Components/VerticalBox.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="_q_village_u_i_manager_8h_source.html">UI/QVillageUIManager.h</a>&quot;</code><br />
+<code>#include &quot;Algo/Sort.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="_q_default_village_widget_8h_source.html">UI/QDefaultVillageWidget.h</a>&quot;</code><br />
+<code>#include &quot;Components/VerticalBoxSlot.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="_q_chat_box_widget_8h_source.html">UI/QChatBoxWidget.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_q_player_state_8h_source.html">Player/QPlayerState.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+QRecordWidget.cpp에 대한 include 의존 그래프</div>
+<div class="dyncontent">
+<div class="center"><img src="_q_record_widget_8cpp__incl.png" border="0" usemap="#a_quack_to_hell_2_u_i_2_q_record_widget_8cpp" alt=""/></div>
+<map name="a_quack_to_hell_2_u_i_2_q_record_widget_8cpp" id="a_quack_to_hell_2_u_i_2_q_record_widget_8cpp">
+<area shape="rect" title=" " alt="" coords="1997,5,2233,32"/>
+<area shape="rect" href="_q_record_widget_8h.html" title=" " alt="" coords="1100,80,1243,107"/>
+<area shape="poly" title=" " alt="" coords="1997,32,1258,88,1258,83,1996,26"/>
+<area shape="rect" href="_q_chat_box_widget_8h.html" title=" " alt="" coords="1156,155,1290,181"/>
+<area shape="poly" title=" " alt="" coords="2039,35,1306,156,1305,150,2038,30"/>
+<area shape="rect" title=" " alt="" coords="1946,80,2100,107"/>
+<area shape="poly" title=" " alt="" coords="2101,35,2052,73,2049,68,2097,30"/>
+<area shape="rect" title=" " alt="" coords="2124,80,2293,107"/>
+<area shape="poly" title=" " alt="" coords="2133,30,2182,68,2179,73,2130,35"/>
+<area shape="rect" href="_q_log_categories_8h.html" title=" " alt="" coords="2317,80,2444,107"/>
+<area shape="poly" title=" " alt="" coords="2162,30,2320,73,2319,78,2161,35"/>
+<area shape="rect" title=" " alt="" coords="2468,80,2616,107"/>
+<area shape="poly" title=" " alt="" coords="2190,30,2452,74,2452,79,2190,35"/>
+<area shape="rect" title=" " alt="" coords="2640,80,2817,107"/>
+<area shape="poly" title=" " alt="" coords="2225,30,2625,77,2625,82,2224,35"/>
+<area shape="rect" href="_q_village_u_i_manager_8h.html" title=" " alt="" coords="359,155,522,181"/>
+<area shape="poly" title=" " alt="" coords="1996,24,1798,29,1538,39,1246,56,953,83,713,117,516,154,515,148,713,112,952,77,1246,51,1538,34,1798,24,1996,19"/>
+<area shape="rect" title=" " alt="" coords="2841,80,2928,107"/>
+<area shape="poly" title=" " alt="" coords="2234,23,2501,41,2662,56,2827,77,2826,83,2661,62,2501,46,2234,28"/>
+<area shape="rect" href="_q_default_village_widget_8h.html" title=" " alt="" coords="639,155,821,181"/>
+<area shape="poly" title=" " alt="" coords="1997,23,1819,26,1592,35,1340,53,1088,83,1005,97,923,116,786,152,785,147,921,111,1004,92,1087,77,1340,48,1592,30,1819,21,1996,17"/>
+<area shape="rect" title=" " alt="" coords="2952,80,3151,107"/>
+<area shape="poly" title=" " alt="" coords="2234,25,2547,46,2936,77,2936,82,2547,51,2234,30"/>
+<area shape="rect" href="_q_player_state_8h.html" title=" " alt="" coords="1770,80,1922,107"/>
+<area shape="poly" title=" " alt="" coords="2069,35,1908,78,1907,73,2068,30"/>
+<area shape="rect" title=" " alt="" coords="1288,379,1393,405"/>
+<area shape="poly" title=" " alt="" coords="1164,109,1136,145,1095,183,1058,203,1020,217,1006,224,998,232,995,241,1001,255,1027,285,1058,311,1093,332,1130,348,1205,371,1273,383,1272,388,1204,377,1128,353,1090,336,1055,315,1023,289,997,257,990,242,993,229,1003,219,1018,212,1056,198,1092,179,1132,141,1160,106"/>
+<area shape="rect" title=" " alt="" coords="780,229,936,256"/>
+<area shape="poly" title=" " alt="" coords="1099,104,975,123,920,138,900,147,885,157,875,169,868,184,861,215,856,214,863,182,870,166,881,153,897,142,918,133,974,118,1099,99"/>
+<area shape="rect" href="_q_village_game_state_8h.html" title=" " alt="" coords="1571,155,1758,181"/>
+<area shape="poly" title=" " alt="" coords="1244,103,1563,149,1563,154,1243,108"/>
+<area shape="poly" title=" " alt="" coords="1182,106,1208,141,1203,144,1178,109"/>
+<area shape="rect" title=" " alt="" coords="895,155,1082,181"/>
+<area shape="poly" title=" " alt="" coords="1140,110,1036,151,1034,146,1138,105"/>
+<area shape="poly" title=" " alt="" coords="1571,175,1498,181,1423,191,1360,208,1337,219,1321,231,1312,246,1307,262,1307,298,1316,333,1329,364,1324,366,1311,335,1302,299,1302,261,1307,244,1317,228,1334,214,1358,203,1422,186,1497,176,1571,170"/>
+<area shape="rect" href="_q_n_p_c_8h.html" title=" " alt="" coords="1790,229,1923,256"/>
+<area shape="poly" title=" " alt="" coords="1699,179,1810,221,1808,226,1697,184"/>
+<area shape="rect" href="_q_conversation_data_8h.html" title=" " alt="" coords="1961,304,2176,331"/>
+<area shape="poly" title=" " alt="" coords="1758,179,1846,197,1936,227,1995,258,2043,292,2040,296,1992,263,1934,232,1845,203,1757,184"/>
+<area shape="rect" href="_q_evidence_data_8h.html" title=" " alt="" coords="2049,229,2240,256"/>
+<area shape="poly" title=" " alt="" coords="1749,179,2046,224,2045,229,1748,185"/>
+<area shape="rect" title=" " alt="" coords="1563,229,1766,256"/>
+<area shape="poly" title=" " alt="" coords="1667,182,1667,214,1662,214,1662,182"/>
+<area shape="rect" title=" " alt="" coords="1331,229,1539,256"/>
+<area shape="poly" title=" " alt="" coords="1625,184,1491,227,1489,222,1624,179"/>
+<area shape="poly" title=" " alt="" coords="1790,257,1623,284,1507,307,1434,338,1374,372,1371,368,1432,333,1505,301,1622,279,1789,252"/>
+<area shape="rect" href="_q_character_8h.html" title=" " alt="" coords="1776,304,1937,331"/>
+<area shape="poly" title=" " alt="" coords="1859,257,1859,288,1854,288,1854,257"/>
+<area shape="poly" title=" " alt="" coords="1894,254,2018,296,2016,301,1893,259"/>
+<area shape="rect" title=" " alt="" coords="1518,304,1651,331"/>
+<area shape="poly" title=" " alt="" coords="1810,259,1648,302,1646,297,1808,254"/>
+<area shape="poly" title=" " alt="" coords="1776,333,1409,384,1409,378,1776,327"/>
+<area shape="rect" title=" " alt="" coords="1564,379,1757,405"/>
+<area shape="poly" title=" " alt="" coords="1823,334,1710,375,1708,370,1821,329"/>
+<area shape="rect" title=" " alt="" coords="1782,379,1942,405"/>
+<area shape="poly" title=" " alt="" coords="1860,331,1862,363,1857,363,1855,331"/>
+<area shape="poly" title=" " alt="" coords="1961,332,1949,333,1409,387,1409,381,1948,328,1961,327"/>
+<area shape="rect" title=" " alt="" coords="1976,379,2150,405"/>
+<area shape="poly" title=" " alt="" coords="2070,331,2068,363,2063,363,2065,331"/>
+<area shape="rect" title=" " alt="" coords="2175,379,2383,405"/>
+<area shape="poly" title=" " alt="" coords="2106,329,2229,371,2227,376,2104,334"/>
+<area shape="poly" title=" " alt="" coords="2049,254,1913,273,1838,287,1765,307,1737,320,1708,333,1629,354,1548,369,1409,388,1409,382,1548,364,1628,349,1706,328,1735,315,1764,301,1837,282,1912,267,2048,249"/>
+<area shape="rect" title=" " alt="" coords="2200,304,2385,331"/>
+<area shape="poly" title=" " alt="" coords="2171,254,2254,294,2252,299,2169,259"/>
+<area shape="poly" title=" " alt="" coords="1228,181,1242,247,1257,289,1277,329,1294,350,1313,367,1309,371,1290,353,1273,332,1252,291,1237,249,1222,182"/>
+<area shape="poly" title=" " alt="" coords="1160,185,937,228,936,223,1159,179"/>
+<area shape="rect" title=" " alt="" coords="1011,229,1206,256"/>
+<area shape="poly" title=" " alt="" coords="1205,184,1143,223,1140,218,1202,180"/>
+<area shape="poly" title=" " alt="" coords="443,181,448,218,455,238,468,254,494,273,528,290,616,319,725,342,844,359,967,371,1085,379,1272,387,1272,392,1085,385,967,376,844,364,724,347,615,324,526,295,491,277,464,258,451,240,443,219,438,182"/>
+<area shape="poly" title=" " alt="" coords="514,179,770,224,770,229,513,185"/>
+<area shape="rect" title=" " alt="" coords="236,229,403,256"/>
+<area shape="poly" title=" " alt="" coords="421,184,355,223,352,219,418,180"/>
+<area shape="rect" title=" " alt="" coords="5,229,212,256"/>
+<area shape="poly" title=" " alt="" coords="383,185,182,228,181,223,382,179"/>
+<area shape="poly" title=" " alt="" coords="735,181,746,217,755,237,769,254,805,279,858,301,924,320,996,337,1147,364,1273,381,1272,386,1146,369,995,343,922,325,856,306,803,283,765,258,751,240,741,219,729,182"/>
+<area shape="poly" title=" " alt="" coords="753,180,824,219,821,224,751,184"/>
+<area shape="rect" title=" " alt="" coords="478,229,704,256"/>
+<area shape="poly" title=" " alt="" coords="707,184,630,224,628,219,704,180"/>
+<area shape="poly" title=" " alt="" coords="1846,107,1842,142,1845,162,1852,180,1861,190,1871,197,1893,203,1917,209,1928,216,1937,228,1943,243,1937,257,1912,282,1886,295,1860,299,1833,299,1774,294,1742,297,1708,306,1687,320,1664,333,1598,354,1530,370,1409,388,1408,383,1529,365,1596,349,1662,328,1684,315,1706,302,1741,292,1774,289,1833,293,1860,294,1885,290,1909,277,1933,255,1938,243,1933,231,1924,220,1915,214,1892,208,1869,202,1857,194,1848,183,1840,163,1837,142,1840,107"/>
+<area shape="poly" title=" " alt="" coords="1815,110,1711,151,1709,146,1813,105"/>
+<area shape="poly" title=" " alt="" coords="1922,103,1934,104,2054,107,2255,112,2360,116,2453,124,2523,136,2548,143,2562,153,2570,166,2569,178,2561,191,2547,202,2504,224,2446,244,2304,278,2168,304,2167,298,2303,273,2444,239,2502,219,2544,198,2557,187,2564,177,2565,167,2559,157,2545,148,2522,141,2452,129,2360,122,2255,117,2054,113,1934,109,1922,108"/>
+<area shape="poly" title=" " alt="" coords="1849,106,1854,143,1862,163,1874,179,1900,194,1938,207,2034,226,2033,231,1937,212,1897,199,1871,183,1857,165,1849,144,1843,107"/>
+<area shape="rect" title=" " alt="" coords="2624,155,2828,181"/>
+<area shape="poly" title=" " alt="" coords="1922,103,1934,104,2122,121,2269,130,2416,138,2605,152,2608,152,2608,158,2604,157,2416,143,2269,135,2122,126,1934,109,1922,108"/>
+<area shape="rect" title=" " alt="" coords="1884,155,2013,181"/>
+<area shape="poly" title=" " alt="" coords="1865,105,1919,143,1916,147,1862,109"/>
+<area shape="rect" title=" " alt="" coords="2037,155,2161,181"/>
+<area shape="poly" title=" " alt="" coords="1891,105,2041,147,2040,153,1889,110"/>
+<area shape="rect" title=" " alt="" coords="2186,155,2354,181"/>
+<area shape="poly" title=" " alt="" coords="1921,105,2181,149,2180,154,1920,110"/>
+<area shape="rect" title=" " alt="" coords="2378,155,2549,181"/>
+<area shape="poly" title=" " alt="" coords="1922,103,1934,104,2362,152,2362,157,1934,109,1922,108"/>
+</map>
+</div>
+</div>
+<p><a href="_q_record_widget_8cpp_source.html">이 파일의 소스 코드 페이지로 가기</a></p>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_320e33a89b1321a072d50dfb68a1fdef.html">QuackToHell</a></li><li class="navelem"><a class="el" href="dir_0276ba65687389df496b70f4b45c8c17.html">UI</a></li><li class="navelem"><a class="el" href="_q_record_widget_8cpp.html">QRecordWidget.cpp</a></li>
+    <li class="footer">다음에 의해 생성됨 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

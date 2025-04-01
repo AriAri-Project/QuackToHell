@@ -1,7 +1,7 @@
 <map id="AQNPC" name="AQNPC">
-<area shape="rect" id="Node000001" title="NPC 캐릭터 클래스입니다." alt="" coords="18,517,258,939"/>
-<area shape="rect" id="Node000002" href="$class_a_q_character.html" title=" " alt="" coords="5,123,270,469"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,484,140,517,135,517,135,484"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="100,5,176,75"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="140,89,140,123,135,123,135,89"/>
+<area shape="rect" id="Node000001" title="NPC 캐릭터 클래스입니다." alt="" coords="5,603,340,1520"/>
+<area shape="rect" id="Node000002" href="$class_a_q_character.html" title=" " alt="" coords="40,123,305,555"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,570,176,603,170,603,170,570"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="134,5,211,75"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="176,89,176,123,170,123,170,89"/>
 </map>

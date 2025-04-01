@@ -31,9 +31,10 @@ var NAVTREE =
       [ "클래스 색인", "classes.html", null ],
       [ "클래스 계통도", "hierarchy.html", "hierarchy" ],
       [ "클래스 멤버", "functions.html", [
-        [ "모두", "functions.html", null ],
-        [ "함수", "functions_func.html", null ],
-        [ "변수", "functions_vars.html", null ]
+        [ "모두", "functions.html", "functions_dup" ],
+        [ "함수", "functions_func.html", "functions_func" ],
+        [ "변수", "functions_vars.html", null ],
+        [ "관련된 함수들", "functions_rela.html", null ]
       ] ]
     ] ],
     [ "파일들", "files.html", [
@@ -42,6 +43,7 @@ var NAVTREE =
         [ "모두", "globals.html", null ],
         [ "함수", "globals_func.html", null ],
         [ "변수", "globals_vars.html", null ],
+        [ "타입정의", "globals_type.html", null ],
         [ "열거형 타입", "globals_enum.html", null ]
       ] ]
     ] ]
@@ -50,8 +52,10 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_client_test_game_mode_8cpp.html",
-"class_a_q_player_state_a39229675af9ba0f496da559eb3db6e75.html#a39229675af9ba0f496da559eb3db6e75"
+"_a_i_game_mode_test_8cpp.html",
+"_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea4d604dd8f008145471dc845683399189",
+"class_a_q_n_p_c_a2a8976f4593f1f6a6c3e4ed892018fe3.html#a2a8976f4593f1f6a6c3e4ed892018fe3",
+"class_u_q_b_t_t_find_patrol_pos_a79b501dfbd29a964e1495f9ea29161a3.html#a79b501dfbd29a964e1495f9ea29161a3"
 ];
 
 var SYNCONMSG = '패널 동기화를 비활성화하기 위해 클릭하십시오';
