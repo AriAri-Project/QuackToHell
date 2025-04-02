@@ -23,6 +23,9 @@ enum class ECourtDirectionType :uint8 {
 	EvidenceExamStarting,//증거조사
 	ExamDefendantStarting,//피고인심문 시작
 	ExamDefendantResponse,//피고인심문 답변
+	JuryOpinion,//배심원평가
+	FinalJudgement,//최종판결
+
 };
 
 
