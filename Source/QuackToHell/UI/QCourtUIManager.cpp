@@ -99,9 +99,6 @@ bool AQCourtUIManager::IsCourtMap()
 
 
 
-
-
-
 void AQCourtUIManager::TurnOnDirection_Implementation(ECourtDirectionType DirectionType)
 {
 	switch (DirectionType)
@@ -246,4 +243,50 @@ void AQCourtUIManager::Tick(float DeltaTime)
 
 }
 
+
+// -------------------------------------------------------------------------------
+
+void AQCourtUIManager::ServerRPCAlertOpeningEnd_Implementation(bool isSucceeded)
+{
+}
+
+void AQCourtUIManager::ServerRPCAlertOpeningStatementPerformEnd_Implementation(bool isSucceeded)
+{
+}
+
+void AQCourtUIManager::ServerRPCAlerOpeningStatementInputEnd_Implementation(bool isSucceeded)
+{
+}
+
+void AQCourtUIManager::ServerRPCAlertEvidenceExamPerformEnd_Implementation(bool isSucceeded)
+{
+}
+
+void AQCourtUIManager::ServerRPCAlerEvidenceExamInputEnd_Implementation(bool isSucceeded)
+{
+}
+
+void AQCourtUIManager::ServerRPCAlertExamDefendantPerformEnd_Implementation(bool isSucceeded)
+{
+}
+
+void AQCourtUIManager::ServerRPCAlertExamDefendantInputEnd_Implementation(bool isSucceeded)
+{
+}
+
+void AQCourtUIManager::ServerRPCAlertDefendantAnswerEnd_Implementation(bool isSurcceded)
+{
+}
+
+void AQCourtUIManager::ServerRPCAlertJuryOpinionPerformEnd_Implementation(bool isSurcceded)
+{
+}
+
+void AQCourtUIManager::ServerRPCAlertFinalJudgementPerformEnd_Implementation(bool isSurcceded)
+{
+}
+
+void AQCourtUIManager::ServerRPCRemoveUserFromSession_Implementation(APlayerController* LocalPlayerController)
+{
+}
 

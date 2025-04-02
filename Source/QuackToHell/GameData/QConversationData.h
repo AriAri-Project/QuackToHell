@@ -49,11 +49,14 @@ private:
 	UPROPERTY()
 	FString Message;
 
+	UPROPERTY()
+	bool bIsImage = false;
+
 public:
 	FConversationRecord(){}
 	
-	FConversationRecord(int32 ConversationID, EConversationType ConversationType, int32 SpeakerID, int32 ListenerID, FDateTime Timestamp, const FString& Message)
-		: ConversationID(ConversationID), ConversationType(ConversationType), ListenerID(ListenerID), SpeakerID(SpeakerID), Timestamp(Timestamp), Message(Message){}
+	FConversationRecord(int32 ConversationID, EConversationType ConversationType, int32 SpeakerID, int32 ListenerID, FDateTime Timestamp, const FString& Message, bool bIsImage = false)
+		: ConversationID(ConversationID), ConversationType(ConversationType), ListenerID(ListenerID), SpeakerID(SpeakerID), Timestamp(Timestamp), Message(Message), bIsImage(bIsImage){}
 
 	bool operator==(const FConversationRecord& Other) const
 	{

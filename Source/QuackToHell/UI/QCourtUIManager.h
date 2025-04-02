@@ -113,4 +113,62 @@ private:
 	 * @brief.재판장맵인지 체크 (마을맵이 아닐 시 싱글톤생성 x)
 	 */
 	bool IsCourtMap();
+
+	/* Server Interface */
+	/*
+	 * 재판 도입
+	 * 모두진술 연출
+	 * 모두진술 입력
+	 * 증거조사 연출
+	 * 증거조사 입력
+	 * 피고인 신문 연출
+	 * 피고인 신문 입력
+	 * 피고인 답변 연출
+	 * 배심원 평가 연출
+	 * 최종 판결 연출
+	 */
+	
+	/* @breif 서버에게 재판 도입 연출 마쳤음 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlertOpeningEnd(bool isSucceeded);
+
+	/* @breif 서버에게 모두진술 연출 마쳤음 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlertOpeningStatementPerformEnd(bool isSucceeded);
+	
+	/* @breif 서버에게 모두진술 입력 마쳤음 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlerOpeningStatementInputEnd(bool isSucceeded);
+	
+	/* @breif 서버에게 증거조사 연출 마쳤음 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlertEvidenceExamPerformEnd(bool isSucceeded);
+	
+	/* @breif 서버에게 증거조사 입력 마쳤음 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlerEvidenceExamInputEnd(bool isSucceeded);
+	
+	/* @breif 서버에게 피고인 신문 연출 마쳤음 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlertExamDefendantPerformEnd(bool isSucceeded);
+	
+	/* @breif 서버에게 피고인 신문 입력 마쳤음 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlertExamDefendantInputEnd(bool isSucceeded);
+
+	/* @breif 서버에게 피고인 답변 연출 끝났음을 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlertDefendantAnswerEnd(bool isSurcceded);
+	
+	/* @breif 서버에게 배심원 평가 연출 끝났음을 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlertJuryOpinionPerformEnd(bool isSurcceded);
+	
+	/* @breif 서버에게 최종판결 연출 끝났음을 알리기 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAlertFinalJudgementPerformEnd(bool isSurcceded);
+
+	/* @breif 해당 유저를 세션에서 제외 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCRemoveUserFromSession(APlayerController* LocalPlayerController);
 };
