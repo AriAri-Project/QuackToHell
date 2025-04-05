@@ -500,6 +500,10 @@ void UGodFunction::GenerateResidentNPC(UWorld* World, int ResidentIndex)
     if (ResidentIndex > 5)
     {
         UE_LOG(LogTemp, Log, TEXT("모든 주민 생성 완료!"));
+
+        // 증거물 아이템 정보 생성 시작
+        GenerateEvidenceItems(World);
+
         return;
     }
 
@@ -552,4 +556,180 @@ void UGodFunction::GenerateResidentNPC(UWorld* World, int ResidentIndex)
                 GenerateResidentNPC(World, ResidentIndex + 1);
             }
         });
+}
+
+// 증거물 아이템 생성
+void UGodFunction::GenerateEvidenceItems(UWorld* World)
+{
+	if (!World)
+	{
+		UE_LOG(LogTemp, Error, TEXT("GenerateEvidenceItems - World is nullptr!"));
+		return;
+	}
+
+	// FString PromptToGod = ReadFileContent(FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToGod.json"));
+	// FString PromptToDefendant = ReadFileContent(FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToDefendant.json"));
+
+    FString DefendantPath = FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToDefendant.json");
+    FString DefendantJson = ReadFileContent(DefendantPath);
+    if (DefendantJson.IsEmpty())
+    {
+        UE_LOG(LogTemp, Error, TEXT("GenerateEvidenceItems - PromptToDefendant.json이 비어 있음!"));
+        return;
+    }
+
+    // 증거물 생성용 ChatGPT 프롬프트
+    FString EvidencePrompt = FString::Printf(TEXT(
+        "다음은 피고인의 전생 정보입니다:\n%s\n\n"
+        "이 인물의 전생과 관련된 증거물 10개를 생성하세요. 각 증거물은 다음 정보를 포함해야 합니다:\n"
+        "1. name: 증거물 이름\n"
+        "2. description: 이 증거물이 피고인과 어떤 관련이 있는지 설명\n"
+        "3. image_prompt: 해당 증거물에 어울리는 이미지 생성용 프롬프트\n"
+        "결과는 JSON 배열로 반환하세요."),
+        *EscapeJSON(DefendantJson.Left(2000))  // 너무 길지 않게 제한
+    );
+
+    CallOpenAIAsync(EvidencePrompt, [World](FString EvidenceJsonRaw)
+        {
+            if (EvidenceJsonRaw.IsEmpty())
+            {
+                UE_LOG(LogTemp, Error, TEXT("증거물 JSON 생성 실패"));
+                return;
+            }
+
+            // JSON 파싱
+            TSharedPtr<FJsonValue> JsonValue;
+            TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(EvidenceJsonRaw);
+            if (!FJsonSerializer::Deserialize(Reader, JsonValue) || !JsonValue.IsValid())
+            {
+                UE_LOG(LogTemp, Error, TEXT("증거물 JSON 파싱 실패"));
+                return;
+            }
+
+            const TArray<TSharedPtr<FJsonValue>>* EvidenceArray;
+            if (!JsonValue->TryGetArray(EvidenceArray))
+            {
+                UE_LOG(LogTemp, Error, TEXT("JSON 배열 아님"));
+                return;
+            }
+
+            // 각각의 아이템에 대해 파일 생성
+            for (int32 i = 0; i < FMath::Min(10, EvidenceArray->Num()); ++i)
+            {
+                const TSharedPtr<FJsonObject>* ItemObj;
+                if (!(*EvidenceArray)[i]->TryGetObject(ItemObj)) continue;
+
+                FString Name = (*ItemObj)->GetStringField("name");
+                FString Desc = (*ItemObj)->GetStringField("description");
+                FString ImgPrompt = (*ItemObj)->GetStringField("image_prompt");
+
+                // ItemInformationN.json 저장
+                FString FileName = FString::Printf(TEXT("ItemInformation%d.json"), i + 1);
+                FString SavePath = FPaths::ProjectSavedDir() + TEXT("Prompt/") + FileName;
+
+                TSharedPtr<FJsonObject> SaveObject = MakeShareable(new FJsonObject);
+                SaveObject->SetStringField("name", Name);
+                SaveObject->SetStringField("description", Desc);
+                SaveObject->SetStringField("image_prompt", ImgPrompt);
+
+                FString Output;
+                TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Output);
+                FJsonSerializer::Serialize(SaveObject.ToSharedRef(), Writer);
+
+                FFileHelper::SaveStringToFile(Output, *SavePath);
+                UE_LOG(LogTemp, Log, TEXT("%s 저장 완료"), *FileName);
+
+                // 이미지 저장 (Saved/Item/ItemImageN.png)
+                FString ImageFilePath = FPaths::ProjectSavedDir() + FString::Printf(TEXT("Item/ItemImage%d.png"), i + 1);
+                DownloadDalleImage(ImgPrompt, ImageFilePath);
+            }
+
+            UE_LOG(LogTemp, Log, TEXT("모든 증거물 생성 요청 완료"));
+        });
+}
+
+// Dalle 이미지 다운로드
+void UGodFunction::DownloadDalleImage(const FString& Prompt, const FString& SavePath)
+{
+    FString ApiKey = LoadOpenAIKey();
+    if (ApiKey.IsEmpty())
+    {
+        UE_LOG(LogTemp, Error, TEXT("OpenAI API Key가 없습니다!"));
+        return;
+    }
+
+    // 이미지 생성 요청 구성 (OpenAI Image API)
+    TSharedPtr<FJsonObject> RequestObject = MakeShareable(new FJsonObject());
+    RequestObject->SetStringField("prompt", Prompt);
+    RequestObject->SetStringField("model", "dall-e-3");
+    RequestObject->SetStringField("size", "1024x1024");
+    RequestObject->SetStringField("response_format", "url");  // URL 받아서 다시 다운로드
+
+    FString RequestBody;
+    TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&RequestBody);
+    FJsonSerializer::Serialize(RequestObject.ToSharedRef(), Writer);
+
+    TSharedRef<IHttpRequest> Request = FHttpModule::Get().CreateRequest();
+    Request->SetURL("https://api.openai.com/v1/images/generations");
+    Request->SetVerb("POST");
+    Request->SetHeader("Authorization", "Bearer " + ApiKey);
+    Request->SetHeader("Content-Type", "application/json");
+    Request->SetContentAsString(RequestBody);
+
+    Request->OnProcessRequestComplete().BindLambda([SavePath](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+        {
+            if (!bWasSuccessful || !Response.IsValid())
+            {
+                UE_LOG(LogTemp, Error, TEXT("DALL·E 이미지 생성 요청 실패"));
+                return;
+            }
+
+            FString ResponseContent = Response->GetContentAsString();
+            TSharedPtr<FJsonObject> JsonObject;
+            TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(ResponseContent);
+            if (!FJsonSerializer::Deserialize(Reader, JsonObject) || !JsonObject.IsValid())
+            {
+                UE_LOG(LogTemp, Error, TEXT("DALL·E 응답 파싱 실패"));
+                return;
+            }
+
+            const TArray<TSharedPtr<FJsonValue>>* DataArray;
+            if (!JsonObject->TryGetArrayField("data", DataArray) || DataArray->Num() == 0)
+            {
+                UE_LOG(LogTemp, Error, TEXT("DALL·E 응답에 이미지 URL 없음"));
+                return;
+            }
+
+            FString ImageUrl = (*DataArray)[0]->AsObject()->GetStringField("url");
+            UE_LOG(LogTemp, Log, TEXT("이미지 URL: %s"), *ImageUrl);
+
+            // 이미지 다운로드 요청
+            TSharedRef<IHttpRequest> DownloadRequest = FHttpModule::Get().CreateRequest();
+            DownloadRequest->SetURL(ImageUrl);
+            DownloadRequest->SetVerb("GET");
+
+            DownloadRequest->OnProcessRequestComplete().BindLambda([SavePath](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+                {
+                    if (!bWasSuccessful || !Response.IsValid())
+                    {
+                        UE_LOG(LogTemp, Error, TEXT("이미지 다운로드 실패"));
+                        return;
+                    }
+
+                    // PNG 저장
+                    const TArray<uint8>& ImageData = Response->GetContent();
+                    if (FFileHelper::SaveArrayToFile(ImageData, *SavePath))
+                    {
+                        UE_LOG(LogTemp, Log, TEXT("이미지 저장 완료: %s"), *SavePath);
+                    }
+                    else
+                    {
+                        UE_LOG(LogTemp, Error, TEXT("이미지 저장 실패: %s"), *SavePath);
+                    }
+                });
+
+            DownloadRequest->ProcessRequest();
+        });
+
+    Request->ProcessRequest();
 }

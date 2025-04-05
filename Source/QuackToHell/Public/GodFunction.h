@@ -38,6 +38,12 @@ public:
     // JSON 파일 저장
     static bool SavePromptToFile(const FString& FileName, const FString& Content);
 
+    // 증거물 아이템 생성
+    static void GenerateEvidenceItems(UWorld* World);
+
+	// Dalle 이미지 다운로드
+    static void DownloadDalleImage(const FString& Prompt, const FString& SavePath);
+
 private:
     // OpenAI API Key 로드 함수 선언
     static FString LoadOpenAIKey();
