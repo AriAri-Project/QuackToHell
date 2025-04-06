@@ -14,17 +14,14 @@ void UQInventoryWidget::TurnOffUI() const
 
 void UQInventoryWidget::TurnOnRecordUI() const
 {
-	//만약 아직 생성되지 않은 상태이면
-	if (!AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets().Contains(EVillageUIType::Record)) {
-		//생성하고
-		AQVillageUIManager::GetInstance(GetWorld())->TurnOnUI(EVillageUIType::Record);
-		//하위컴포넌트로 달아주기
+	AQVillageUIManager::GetInstance(GetWorld())->TurnOnUI(EVillageUIType::Record);
+
+	//하위컴포넌트가 없으면 하위컴포넌트로 달아주기
+	if (InformationBox->GetChildrenCount()==0) {
+		
 		InformationBox->AddChild(AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets()[EVillageUIType::Record]);
 	}
-	else {
-		//visible로 전환
-		AQVillageUIManager::GetInstance(GetWorld())->TurnOnUI(EVillageUIType::Record);
-	}
+	
 }
 
 void UQInventoryWidget::TurnOffRecordUI() const
