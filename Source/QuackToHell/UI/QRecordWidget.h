@@ -13,7 +13,7 @@
  * @brief 버튼의 정보를 가지는 구조체입니다.
  */
 USTRUCT()
-struct FMyButton {
+struct FRecordButton {
 	GENERATED_BODY()
 private:
 	UPROPERTY()
@@ -55,7 +55,7 @@ private:
 	 * @brief 해당 위젯의 하위컴포넌트인 버튼들의 정보를 갖고있음.
 	 */
 	UPROPERTY()
-	TArray<FMyButton > Buttons;
+	TArray<FRecordButton > Buttons;
 private:
 	/**
 	 * @brief 최대 망자 수.
