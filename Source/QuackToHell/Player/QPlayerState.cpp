@@ -104,6 +104,19 @@ const TArray<FEvidence> AQPlayerState::GetEvidencesWithPlayerID() const
 	return GameState->GetEvidencesWithPlayerID();
 }
 
+const FEvidenceList& AQPlayerState::GetAllEvidences() const
+{
+	return GameState->GetEvidenceList();
+}
+
+void AQPlayerState::ServerRPCAcquireEvidence_Implementation(APlayerController* LocalPlayerController, int32 EvidenceID)
+{
+}
+
+void AQPlayerState::ServerRPCDropEvidence_Implementation(APlayerController* LocalPlayerController, int32 EvidenceID)
+{
+}
+
 // -------------------------------------------------------------------------- //
 /*
 

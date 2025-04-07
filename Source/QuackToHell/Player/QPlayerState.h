@@ -93,6 +93,17 @@ public:
 	const FEvidence* GetEvidenceWithName(FString EvidenceName) const;
 	/** @brief 플레이어가 소유한 증거를 배열 형태로 반환 */
 	const TArray<FEvidence> GetEvidencesWithPlayerID() const;
+	/** @breif 모든 증거 아이템 정보를 반환 */
+	const FEvidenceList& GetAllEvidences() const;
+
+	/** @brief 플레이어가 증거물을 습득했을 때 서버에 정보를 업데이트해주는 함수 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAcquireEvidence(APlayerController* LocalPlayerController, int32 EvidenceID);
+	
+	/** @brief 플레이어가 증거물을 드랍했을 때 서버에 정보를 업데이트해주는 함수 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCDropEvidence(APlayerController* LocalPlayerController, int32 EvidenceID);
+	
 
 	/*
 	// for testing conversation & evidence system -----------------------
