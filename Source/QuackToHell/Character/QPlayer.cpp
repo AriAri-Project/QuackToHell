@@ -238,8 +238,8 @@ void AQPlayer::ServerRPCStartConversation_Implementation(AQNPC* NPC)
 	// OpenAI에게 NPC의 첫 대사 요청하기
 	FString Temp = TEXT("");
 	FOpenAIRequest Request(
-		LocalPlayerState->GetPlayerId(),
 		NPC->FindComponentByClass<UNPCComponent>()->GetNPCID(),
+		LocalPlayerState->GetPlayerId(),
 		EConversationType::PStart,
 		Temp
 	);

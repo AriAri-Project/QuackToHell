@@ -79,9 +79,9 @@ void UQRecordWidget::NativeConstruct()
 void UQRecordWidget::UpdateRecordHistory()
 {
 	/*대화 레코드 정보가져오기*/
-	TObjectPtr<APlayerController> PlayerController = GetOwningPlayer();
+	APlayerController* PlayerController = GetOwningPlayer();
 	if (PlayerController) {
-		TObjectPtr<AQPlayerState> PlayerState = PlayerController->GetPlayerState<AQPlayerState>();
+		AQPlayerState* PlayerState = PlayerController->GetPlayerState<AQPlayerState>();
 		if (PlayerState) {
 			ConversationRecord = PlayerState->GetRecordWithPlayerID();
 		}
