@@ -50,8 +50,8 @@ void UResidentComponent::StartConversation(FOpenAIRequest Request)
 {
     UE_LOG(LogTemp, Log, TEXT("StartConversation 실행됨 - 현재 PromptContent 길이: %d"), PromptContent.Len());
 
-    Request.SpeakerID = FCString::Atoi(*GetPlayerIDAsString());
-    Request.ListenerID = GetNPCID();
+    // Request.SpeakerID = FCString::Atoi(*GetPlayerIDAsString());
+    // Request.ListenerID = GetNPCID();
 
     if (PromptContent.IsEmpty())
     {
@@ -141,6 +141,8 @@ void UResidentComponent::StartConversation(FOpenAIRequest Request)
             }
 
             AIResponse.ConversationType = Request.ConversationType;
+			AIResponse.SpeakerID = Request.SpeakerID;
+			AIResponse.ListenerID = Request.ListenerID;
             ResponseCache.Add(Request.Prompt, AIResponse.ResponseText);
             SendNPCResponseToServer(AIResponse);
             SaveP2NDialogue(Request, AIResponse);

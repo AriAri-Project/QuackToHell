@@ -145,7 +145,8 @@ void AQVillageGameState::RemoveAllEvidence()
 
 const FConversationRecord* AQVillageGameState::GetRecordWithConvID(int32 ConversationID) const
 {
-	return ConversationList.GetRecordWithConvID(ConversationID);
+	const FConversationRecord* record = ConversationList.GetRecordWithConvID(ConversationID);
+	return record;
 }
 
 const TArray<FConversationRecord> AQVillageGameState::GetRecordWithPlayerID(int32 PlayerID) const{
