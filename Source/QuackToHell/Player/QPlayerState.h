@@ -7,6 +7,7 @@
 #include "Containers/Array.h"
 #include "Containers/Map.h"
 #include "GameplayTagContainer.h" // GameplayTagContainer 사용
+#include "Game/QGameInstance.h"
 #include "Game/QVillageGameState.h"
 #include "GameData/QConversationData.h"
 #include "GameData/QEvidenceData.h"
@@ -50,6 +51,9 @@ public:
 private:
 	UPROPERTY(VisibleAnywhere,Category = "GameplayTags")
 	AQVillageGameState* GameState;
+
+	UPROPERTY(VisibleAnywhere,Category = "GameplayTags")
+	UQGameInstance* GameInstance;
 	
 	/** @brief 플레이어의 대화 상태 */
 	UPROPERTY(Replicated)

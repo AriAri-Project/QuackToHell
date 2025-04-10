@@ -734,14 +734,14 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 	}
 	
 	// 대화기록 저장
-	TObjectPtr<AQVillageGameState> VillageGameState = Cast<AQVillageGameState>(GetWorld()->GetGameState());
-	if (VillageGameState == nullptr)
+	SetLastConversationTime(FDateTime::Now());
+	UQGameInstance* GameInstance = Cast<UQGameInstance>(GetWorld()->GetGameInstance());
+	if (GameInstance == nullptr)
 	{
-		UE_LOG(LogTemp, Error, TEXT("OnSuccessStartConversation - VillageGameState is null."));
+		UE_LOG(LogTemp, Error, TEXT("OnSuccessStartConversation - GameInstance is null."));
 		return;
 	}
-	SetLastConversationTime(FDateTime::Now());
-	int32 RecordID = VillageGameState->AddConversationRecord(Response.ConversationType, Response.ListenerID, Response.SpeakerID, LastConversationTime, Response.ResponseText);
+	int32 RecordID = GameInstance->AddConversationRecord(Response.ConversationType, Response.ListenerID, Response.SpeakerID, LastConversationTime, Response.ResponseText);
 	if (RecordID < 0)
 	{
 		return;

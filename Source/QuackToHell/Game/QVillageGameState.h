@@ -40,40 +40,9 @@ private:
 	void MulticastRPCUpdateServerTime();
 
 private:
-	UPROPERTY(EditAnywhere, Replicated)
-	TArray<TObjectPtr<AQNPC>> NPCList;
-
-	UPROPERTY(EditAnywhere, Replicated)
-	FEvidenceList EvidenceList;
-	
-	UPROPERTY(EditAnywhere, Replicated)
-	FConversationList ConversationList;
-
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
-	// 서버에서 실행되는 함수
-	const int32 AddConversationRecord(EConversationType ConversationType, int32 ListenerID, int32 SpeakerID, FDateTime Timestamp, const FString& Message);
-	const int32 AddEvidence(FString EvidenceName, FString EvidenceDescription, FString EvidenceImagePath);
-	void RemoveEvidence(int32 EvidenceID);
-	void RemoveAllEvidence();
-
-	// 클라 접근 함수
-	/* 대화기록 증거 저장 시스템 */
-	const FEvidenceList& GetEvidenceList() const
-	{
-		return EvidenceList;
-	}
-	const FConversationList& GetConversationList() const
-	{
-		return ConversationList;
-	}
-	const FConversationRecord* GetRecordWithConvID(int32 ConversationID) const;
-	const TArray<FConversationRecord> GetRecordWithPlayerID(int32 PlayerID) const;
-	const TArray<FConversationRecord> GetRecordWithNPCID(int32 NPCID) const;
-	const FEvidence* GetEvidenceWithID(int32 EvidenceID) const;
-	const FEvidence* GetEvidenceWithName(FString EvidenceName) const;
-	const TArray<FEvidence> GetEvidencesWithPlayerID() const;
 
 	/* 재판장 이동 */
 	UFUNCTION(Server, Reliable)
