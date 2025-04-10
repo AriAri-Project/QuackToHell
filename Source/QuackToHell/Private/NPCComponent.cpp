@@ -513,14 +513,61 @@ void UNPCComponent::TrialStatement(FOpenAIRequest Request)
 		Request.ListenerID = FCString::Atoi(*GetPlayerIDAsString());
 		
 		SystemMessage->SetStringField("content",
-			FString::Printf(TEXT("당신은 천국행vs지옥행 재판을 받는 피고인입니다. 당신이 기억하는 당신의 전생이 어땠는지, 당신에게 재판이 유리해지도록 진술하세요: %s"),
+			FString::Printf(TEXT("현재 당신은 재판장에 앉아 당신의 판결을 기다리고 있는 입장입니다. 당신에게 재판이 유리해지도록, 당신의 설정을 반영하여 진술하세요: %s"),
 				*ReadablePromptContent));
 		Messages.Add(MakeShareable(new FJsonValueObject(SystemMessage)));
 	}
 		break;
 
+	case EConversationType::EvidenceReview:
+	{
+		SystemMessage->SetStringField("content",
+			FString::Printf(TEXT("당신은 천국과 지옥을 결정하는 재판의 판사입니다. 다음은 당신의 설정입니다: %s"),
+				*ReadablePromptContent));
+		Messages.Add(MakeShareable(new FJsonValueObject(SystemMessage)));
+
+		TSharedPtr<FJsonObject> UserMessage = MakeShareable(new FJsonObject());
+		UserMessage->SetStringField("role", "user");
+		UserMessage->SetStringField("content",
+			FString::Printf(TEXT("다음은 검사와 변호사가 나눈 대화입니다:\n%s\n"
+				"이 대화를 보고 판사의 입장에서 요약해주세요.\n"
+				"형식: '검사측의 주장은 ~이고, 변호사측의 주장은 ~이었습니다.'"), *EscapedPlayerInput));
+		Messages.Add(MakeShareable(new FJsonValueObject(UserMessage)));
+	}
+	break;
+
+	case EConversationType::DefendantInterrogation:
+	{
+		SystemMessage->SetStringField("content",
+			FString::Printf(TEXT("당신은 재판을 받고 있는 피고인입니다. 다음은 당신의 전생 정보입니다:\n%s"),
+				*ReadablePromptContent));
+		Messages.Add(MakeShareable(new FJsonValueObject(SystemMessage)));
+
+		TSharedPtr<FJsonObject> UserMessage = MakeShareable(new FJsonObject());
+		UserMessage->SetStringField("role", "user");
+		UserMessage->SetStringField("content",
+			FString::Printf(TEXT("검사 혹은 변호사의 질문: '%s'\n당신의 성격과 과거에 맞는 대답을 해주세요."), *EscapedPlayerInput));
+		Messages.Add(MakeShareable(new FJsonValueObject(UserMessage)));
+	}
+	break;
+	case EConversationType::JuryFinalOpinion:
+	{
+		SystemMessage->SetStringField("content",
+			FString::Printf(TEXT("당신은 재판을 방청하고 있는 배심원입니다. 다음은 당신의 성격 및 설정입니다:\n%s"),
+				*ReadablePromptContent));
+		Messages.Add(MakeShareable(new FJsonValueObject(SystemMessage)));
+
+		TSharedPtr<FJsonObject> UserMessage = MakeShareable(new FJsonObject());
+		UserMessage->SetStringField("role", "user");
+		UserMessage->SetStringField("content",
+			FString::Printf(TEXT("당신은 마을에서 플레이어들과 나눈 대화와 재판 과정을 모두 지켜봤습니다.\n"
+				"피고인에 대해 당신이 판단한 한 줄 평을 남겨주세요. 이때, 당신이 변호사를 지지하는지, 검사를 지지하는지에 대한 의견이 명백하게 포함되어 있어야 합니다.\n참고할 요약: %s"), *EscapedPlayerInput));
+		Messages.Add(MakeShareable(new FJsonValueObject(UserMessage)));
+	}
+	break;
+
 	default:
-		UE_LOG(LogTemp, Error, TEXT("잘못된 ConversationType 입니다."));
+		UE_LOG(LogTemp, Error, TEXT("TrialStatement: 알 수 없는 ConversationType 입니다."));
 		return;
 	}
 
@@ -734,14 +781,14 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 	}
 	
 	// 대화기록 저장
-	TObjectPtr<AQVillageGameState> VillageGameState = Cast<AQVillageGameState>(GetWorld()->GetGameState());
-	if (VillageGameState == nullptr)
+	SetLastConversationTime(FDateTime::Now());
+	UQGameInstance* GameInstance = Cast<UQGameInstance>(GetWorld()->GetGameInstance());
+	if (GameInstance == nullptr)
 	{
-		UE_LOG(LogTemp, Error, TEXT("OnSuccessStartConversation - VillageGameState is null."));
+		UE_LOG(LogTemp, Error, TEXT("OnSuccessStartConversation - GameInstance is null."));
 		return;
 	}
-	SetLastConversationTime(FDateTime::Now());
-	int32 RecordID = VillageGameState->AddConversationRecord(Response.ConversationType, Response.ListenerID, Response.SpeakerID, LastConversationTime, Response.ResponseText);
+	int32 RecordID = GameInstance->AddConversationRecord(Response.ConversationType, Response.ListenerID, Response.SpeakerID, LastConversationTime, Response.ResponseText);
 	if (RecordID < 0)
 	{
 		return;

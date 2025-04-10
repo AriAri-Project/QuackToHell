@@ -48,7 +48,7 @@ void UQRecordWidget::NativeConstruct()
 		TObjectPtr<UOverlay> Overlay = Cast<UOverlay>(GetWidgetFromName(*OverlayName));
 		
 		if (Button && Overlay) {
-			FMyButton  Temp;
+			FRecordButton  Temp;
 			Temp.Button = Button;
 			Temp.Overlay = Overlay;
 			/*이름블록 가져오기*/
@@ -69,17 +69,24 @@ void UQRecordWidget::NativeConstruct()
 			Buttons.Add(Temp);
 		}
 	}
+
+	/* 녹음기 키기 전 대화할 경우 대비: 대화기록 첨부터 업데이트 */
+	//녹음기 버튼에 바인딩했으므로, 처음 녹음기를 킬 경우 녹음기 인벤 위젯 생성 시점보다 UpdateRecordHistory가 앞서기 때문이다.
+	UpdateRecordHistory();
 	
 }
 
 void UQRecordWidget::UpdateRecordHistory()
 {
-	/*정보가져오기*/
-	AQPlayerState* PlayerState = Cast<AQPlayerState>(GetOwningPlayerState());
-	if (PlayerState)
-	{
-		ConversationRecord = PlayerState->GetRecordWithPlayerID();
+	/*대화 레코드 정보가져오기*/
+	APlayerController* PlayerController = GetOwningPlayer();
+	if (PlayerController) {
+		AQPlayerState* PlayerState = PlayerController->GetPlayerState<AQPlayerState>();
+		if (PlayerState) {
+			ConversationRecord = PlayerState->GetRecordWithPlayerID();
+		}
 	}
+	
 
 	if (ConversationRecord.Num() == 0)
 	{

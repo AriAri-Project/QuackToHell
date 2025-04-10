@@ -24,7 +24,13 @@ void AQPlayerState::BeginPlay()
 	GameState = Cast<AQVillageGameState>(GetWorld()->GetGameState());
 	if (GameState == nullptr)
 	{
-		UE_LOG(LogTemp, Error, TEXT("AQPlayerState::BeginPlay Can't find GameState."));
+		UE_LOG(LogTemp, Error, TEXT("AQPlayerState::BeginPlay - Can't find GameState."));
+	}
+
+	GameInstance = Cast<UQGameInstance>(GetGameInstance());
+	if (GameInstance == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("AQPlayerState::BeginPlay - Can't find GameInstance."))
 	}
 }
 
@@ -56,7 +62,7 @@ void AQPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& 
 const FConversationRecord* AQPlayerState::GetRecordWithConvID(int32 ConversationID) const
 {
 	// GameState에 저장되어 있는 대화기록 리스트에서 ID가 일치하는 대화기록 찾기
-	const FConversationRecord* Record = GameState->GetRecordWithConvID(ConversationID);
+	const FConversationRecord* Record = GameInstance->GetRecordWithConvID(ConversationID);
 	if (Record == nullptr) return nullptr;
 
 	/** @todo  지금은 PlayerID 할당이 제대로 되어있지 않으므로 주석처리. 구현한 이후 다시 주석해제 필요 */
@@ -70,38 +76,51 @@ const TArray<FConversationRecord> AQPlayerState::GetRecordWithPlayerID() const
 {
 	//AQVillageGameState* VillageGameState = GetWorld() ? GetWorld()->GetGameState<AQVillageGameState>() : nullptr;
 
-	if (!GameState)
+	if (!GameInstance)
 	{
-		UE_LOG(LogTemp, Error, TEXT("AQPlayerState GetRecordWithPlayerID: VillageGameState is nullptr!"));
+		UE_LOG(LogTemp, Error, TEXT("AQPlayerState GetRecordWithPlayerID: GameInstance is nullptr!"));
 		return TArray<FConversationRecord>();
 	}
-	if (GameState->GetConversationList().GetConversationList().Num() <= 0)
+	if (GameInstance->GetConversationList().GetConversationList().Num() <= 0)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("AQPlayerState GetRecordWithPlayerID: ConversationList is empty!"));
 		return TArray<FConversationRecord>();
 	}
 	
-	return GameState->GetRecordWithPlayerID(GetPlayerId());
+	return GameInstance->GetRecordWithPlayerID(GetPlayerId());
 }
 
 const TArray<FConversationRecord> AQPlayerState::GetRecrodWithNPCID(int32 NPCID) const
 {
-	return GameState->GetRecordWithNPCID(NPCID);
+	return GameInstance->GetRecordWithNPCID(NPCID);
 }
 
 const FEvidence* AQPlayerState::GetEvidenceWithID(int32 EvidenceID) const
 {
-	return GameState->GetEvidenceWithID(EvidenceID);
+	return GameInstance->GetEvidenceWithID(EvidenceID);
 }
 
 const FEvidence* AQPlayerState::GetEvidenceWithName(FString EvidenceName) const
 {
-	return GameState->GetEvidenceWithName(EvidenceName);
+	return GameInstance->GetEvidenceWithName(EvidenceName);
 }
 
 const TArray<FEvidence> AQPlayerState::GetEvidencesWithPlayerID() const
 {
-	return GameState->GetEvidencesWithPlayerID();
+	return GameInstance->GetEvidencesWithPlayerID(GetPlayerId());
+}
+
+const FEvidenceList& AQPlayerState::GetAllEvidences() const
+{
+	return GameInstance->GetEvidenceList();
+}
+
+void AQPlayerState::ServerRPCAcquireEvidence_Implementation(APlayerController* LocalPlayerController, int32 EvidenceID)
+{
+}
+
+void AQPlayerState::ServerRPCDropEvidence_Implementation(APlayerController* LocalPlayerController, int32 EvidenceID)
+{
 }
 
 // -------------------------------------------------------------------------- //

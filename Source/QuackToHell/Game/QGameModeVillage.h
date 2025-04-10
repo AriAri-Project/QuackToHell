@@ -17,12 +17,6 @@ class QUACKTOHELL_API AQGameModeVillage : public AGameMode
 public:
 	AQGameModeVillage();
 
-	// ID 관리
-	static int32 PlayerIDCount;				const int32 PlayerIDInit = 1000;
-	static int32 NPCIDCount;				const int32 NPCIDInit = 2000;
-	static int32 EvidenceIDCount;			const int32 EvidenceIDInit = 3000;
-	static int32 ConversationIDCount;		const int32 ConversationIDInit = 4000;
-
 	virtual void PostInitializeComponents() override;
 	virtual void BeginPlay() override;
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;

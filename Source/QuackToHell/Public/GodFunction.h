@@ -42,7 +42,7 @@ public:
     static void GenerateEvidenceItems(UWorld* World);
 
 	// Dalle 이미지 다운로드
-    static void DownloadDalleImage(const FString& Prompt, const FString& SavePath);
+    static void DownloadDalleImage(const FString& Prompt, const FString& SavePath, TFunction<void()> OnComplete);
 
 private:
     // OpenAI API Key 로드 함수 선언
