@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "NPCComponent.h"
 #include "QNPC.h"
 #include "Player/QPlayerState.h"
 #include "QPlayer.generated.h"

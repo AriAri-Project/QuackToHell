@@ -7,7 +7,6 @@
 #include "Containers/Array.h"
 #include "Containers/Map.h"
 #include "GameplayTagContainer.h" // GameplayTagContainer 사용
-#include "Character/QPlayer.h"
 #include "Game/QGameInstance.h"
 #include "Game/QVillageGameState.h"
 #include "GameData/QConversationData.h"
@@ -55,9 +54,6 @@ private:
 
 	UPROPERTY(VisibleAnywhere,Category = "Game")
 	UQGameInstance* GameInstance;
-
-	UPROPERTY(VisibleAnywhere,Category = "Player")
-	AQPlayer* Player;
 	
 	/** @brief 플레이어의 대화 상태 */
 	UPROPERTY(Replicated)
@@ -71,11 +67,6 @@ private:
 
 
 public:
-	AQPlayer* GetPlayer() const
-	{
-		return Player;
-	}
-	
 	EConversationType GetPlayerConversationState() const
 	{
 		return PlayerConversationState;
