@@ -13,6 +13,10 @@
 #include "GameFramework/Actor.h"
 #include "Engine/World.h"
 
+#include "JuryComponent.h"
+#include "ResidentComponent.h"
+
+
 AQGameModeVillage::AQGameModeVillage()
 {
 	static ConstructorHelpers::FClassFinder<APawn> PlayerClassRef(TEXT("/Game/Blueprints/Character/BP_QLaywer.BP_QLaywer_C"));
@@ -41,6 +45,12 @@ void AQGameModeVillage::PostInitializeComponents()
 void AQGameModeVillage::BeginPlay()
 {
 	Super::BeginPlay();
+
+	// NPC ID 카운터 리셋
+	UJuryComponent::JuryCount = 0;
+	UResidentComponent::ResidentCount = 0;
+	UE_LOG(LogTemp, Log, TEXT("NPCID 카운터 초기화 완료 (JuryCount = 0, ResidentCount = 0)"));
+
 
 	UE_LOG(LogTemp, Log, TEXT("AAIGameModeTest::BeginPlay() 실행됨"));
 

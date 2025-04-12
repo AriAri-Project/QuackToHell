@@ -19,4 +19,6 @@ public:
       * @param PlayerInput 플레이어의 입력
       */
     virtual void StartConversation(FOpenAIRequest Request) override;
+
+    static int32 JuryCount;
 };
