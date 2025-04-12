@@ -94,23 +94,32 @@ void AQVillageUIManager::TurnOffUI(EVillageUIType UIType)
 
 TObjectPtr<AQVillageUIManager> AQVillageUIManager::GetInstance(TObjectPtr<UWorld> World)
 {
+	ENetMode NetMode = World->GetNetMode();
+	if (NetMode == NM_Client) {
+		UE_LOG(LogLogic, Log, TEXT("클라이언트!"));
+	}
 	if (!Instance)
 	{
-		// ✅ 클라이언트에서도 `AQVillageUIManager` 찾도록 설정
-		for (TActorIterator<AQVillageUIManager> It(World); It; ++It)
+		if (NetMode == NM_DedicatedServer || NetMode == NM_ListenServer)
 		{
-			Instance = *It;
-			break;
-		}
-
-		// ✅ 그래도 없으면 생성 (서버에서만 실행)
-		if (!Instance && World->GetNetMode() != NM_Client)
-		{
+			// 서버에서 Instance 생성
+			UE_LOG(LogLogic, Log, TEXT("서버에서 AQVillageUIManager 생성"));
 			Instance = World->SpawnActor<AQVillageUIManager>(AQVillageUIManager::StaticClass());
+			
+		}
+		else if (NetMode == NM_Client)
+		{
+			// 클라이언트에서 Instance 생성
+			UE_LOG(LogLogic, Log, TEXT("클라이언트에서 AQVillageUIManager 생성"));
+			Instance = World->SpawnActor<AQVillageUIManager>(AQVillageUIManager::StaticClass());
+			
 		}
 	}
+
 	return Instance;
 }
+
+
 
 TMap<EVillageUIType, TObjectPtr<UUserWidget>> AQVillageUIManager::GetActivedVillageWidgets() const
 {
@@ -140,10 +149,8 @@ void AQVillageUIManager::BeginPlay()
 		Instance = this;
 	}
 	//UI초기화
-	if (GetNetMode() == NM_Client || HasAuthority())
-	{
-		OnMapLoad();
-	}
+	OnMapLoad();
+	
 	if (!HasAuthority())
 	{
 		UE_LOG(LogLogic, Log, TEXT("Client -> AQVillageUIManager::BeginPlay()"));
@@ -203,12 +210,6 @@ bool AQVillageUIManager::IsVillageMap()
 }
 
 
-// Called every frame
-void AQVillageUIManager::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
 
 void AQVillageUIManager::TurnOnUI(EVillageUIType UIType)
 {

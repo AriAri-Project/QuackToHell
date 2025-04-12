@@ -83,8 +83,6 @@ void AQDynamicNPCController::UpdateRotation()
     //회전 적용
     GetPawn()->SetActorRotation(NewRotation);
 
-    UE_LOG(LogLogic, Log, TEXT("현재회전값: %f"), NewRotation.Yaw);
-
     if (FMath::Abs(CurrentRotation.Yaw - LookAtRotation.Yaw) < 1.0f) {
         SetActorTickEnabled(false);
         bIsRotating = false;

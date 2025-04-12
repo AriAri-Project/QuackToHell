@@ -31,6 +31,13 @@ void AQPlayerController::BlockInteraction()
 void AQPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+	
+	if (GetNetMode() != NM_DedicatedServer && !HasAuthority()) {
+		UE_LOG(LogTemp, Log, TEXT("💡 Local Client PlayerController BeginPlay - VillageUIManager 생성 시도"));
+
+		// VillageUIManager 싱글톤 생성
+		AQVillageUIManager::GetInstance(GetWorld());
+	}
 
 	//Player로부터 EnhancedInput subsystem을 가져온다. 
 	auto* SubSystem = ULocalPlayer::GetSubsystem<UEnhancedInputLocalPlayerSubsystem>(GetLocalPlayer());
