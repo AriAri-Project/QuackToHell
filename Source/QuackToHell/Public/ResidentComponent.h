@@ -20,4 +20,6 @@ public:
      */
     virtual void StartConversation(FOpenAIRequest Request) override;
 
+    static int32 ResidentCount;
+
 };

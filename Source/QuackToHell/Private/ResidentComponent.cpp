@@ -18,7 +18,7 @@ void UResidentComponent::BeginPlay()
     if (NPCID.IsEmpty())
     {
         // 현재 생성된 Resident 개수를 확인
-        static int32 ResidentCount = 0;
+        // static int32 ResidentCount = 0;
 
         NPCID = FString::FromInt(2004 + ResidentCount);
         ResidentCount++;
@@ -148,3 +148,5 @@ void UResidentComponent::StartConversation(FOpenAIRequest Request)
             SaveP2NDialogue(Request, AIResponse);
         });
 }
+
+int32 UResidentComponent::ResidentCount = 0;
