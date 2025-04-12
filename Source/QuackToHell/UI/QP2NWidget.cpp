@@ -48,6 +48,15 @@ void UQP2NWidget::HandleEnterKeyPress()
     //1 .플레이어 텍스트를 inputbox에 있던거로 업뎃한다.  
     UpdatePlayerText(inputBox->GetText().ToString());
     FString PlayerInput = inputBox->GetText().ToString();
+    //1-2. 서버에 플레이어 대사 저장
+    AQPlayerState* PlayerState = GetOwningLocalPlayer()->PlayerController->GetPlayerState<AQPlayerState>();
+    if (PlayerState == nullptr)
+    {
+        UE_LOG(LogTemp, Error, TEXT("UQP2NWidget::HandleEnterKeyPress - Can't find PlayerState."));
+    }
+    // @todo: 대화하고 있는 NPCID 찾아서 넣어주기만 하면 됨.
+    int32 NPCID;
+    PlayerState->ServerRPCAddP2NPlayerStatement(EConversationType::P2N, NPCID, PlayerState->GetPlayerId(), PlayerInput);
 
     //2. inputbox는 공란으로 만든다.
     inputBox->SetText(FText::FromString(TEXT("")));

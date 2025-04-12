@@ -30,7 +30,13 @@ void AQPlayerState::BeginPlay()
 	GameInstance = Cast<UQGameInstance>(GetGameInstance());
 	if (GameInstance == nullptr)
 	{
-		UE_LOG(LogTemp, Error, TEXT("AQPlayerState::BeginPlay - Can't find GameInstance."))
+		UE_LOG(LogTemp, Error, TEXT("AQPlayerState::BeginPlay - Can't find GameInstance."));
+	}
+
+	Player = Cast<AQPlayer>(GetPlayerController()->GetPawn());
+	if (Player == nullptr)
+	{
+		UE_LOG(LogTemp, Error, TEXT("AQPlayerState::BeginPlay - Can't find Player."));
 	}
 }
 
@@ -57,6 +63,19 @@ void AQPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& 
 
 	DOREPLIFETIME(AQPlayerState, EvidenceIDInHand);
 	DOREPLIFETIME(AQPlayerState, PlayerConversationState);
+}
+
+void AQPlayerState::ServerRPCAddP2NPlayerStatement_Implementation(EConversationType ConversationType, int32 ListenerID,
+	int32 SpeakerID, const FString& Message)
+{
+	UQGameInstance* GameInstance = Cast<UQGameInstance>(GetGameInstance());
+	if (GameInstance == nullptr)
+	{
+		UE_LOG(LogLogic, Log, TEXT("AQPlayerState::ServerRPCAddP2NPlayerStatement_Implementation - GameInstance is nullptr."));
+		return;
+	}
+	FDateTime Timestamp = FDateTime::Now();
+	GameInstance->AddConversationRecord(ConversationType, ListenerID, SpeakerID, Timestamp, Message);
 }
 
 const FConversationRecord* AQPlayerState::GetRecordWithConvID(int32 ConversationID) const

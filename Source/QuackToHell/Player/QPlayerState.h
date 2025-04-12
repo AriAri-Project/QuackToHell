@@ -7,6 +7,7 @@
 #include "Containers/Array.h"
 #include "Containers/Map.h"
 #include "GameplayTagContainer.h" // GameplayTagContainer 사용
+#include "Character/QPlayer.h"
 #include "Game/QGameInstance.h"
 #include "Game/QVillageGameState.h"
 #include "GameData/QConversationData.h"
@@ -49,11 +50,14 @@ public:
 	bool HasStateTag(FGameplayTag StateTag) const;
 
 private:
-	UPROPERTY(VisibleAnywhere,Category = "GameplayTags")
+	UPROPERTY(VisibleAnywhere, Category = "Game")
 	AQVillageGameState* GameState;
 
-	UPROPERTY(VisibleAnywhere,Category = "GameplayTags")
+	UPROPERTY(VisibleAnywhere,Category = "Game")
 	UQGameInstance* GameInstance;
+
+	UPROPERTY(VisibleAnywhere,Category = "Player")
+	AQPlayer* Player;
 	
 	/** @brief 플레이어의 대화 상태 */
 	UPROPERTY(Replicated)
@@ -67,6 +71,11 @@ private:
 
 
 public:
+	AQPlayer* GetPlayer() const
+	{
+		return Player;
+	}
+	
 	EConversationType GetPlayerConversationState() const
 	{
 		return PlayerConversationState;
@@ -84,6 +93,10 @@ public:
 	{
 		return EvidenceIDInHand;
 	}
+
+	/** @brief P2N 대화에서 플레이어의 대사를 대화기록 자료구조에 저장하는 함수 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCAddP2NPlayerStatement(EConversationType ConversationType, int32 ListenerID, int32 SpeakerID, const FString& Message);
 
 	/** @brief 대화기록ID를 이용해 대화기록 조회. 처음 대화기록을 저장할 때 저장한 대화기록에 해당하는 ID를 반환해주므로 그것을 이용하면 됨.*/
 	const FConversationRecord* GetRecordWithConvID(int32 ConversationID) const;
