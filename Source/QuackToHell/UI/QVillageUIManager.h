@@ -27,10 +27,6 @@ UCLASS()
 class QUACKTOHELL_API AQVillageUIManager : public AActor
 {
 	GENERATED_BODY()
-	
-public:
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 public:
 	/**
 	 * @brief UI를 켭니다.
