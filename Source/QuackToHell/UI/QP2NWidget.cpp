@@ -28,7 +28,6 @@ void UQP2NWidget::UpdateNPCText(const FString& Text)
 void UQP2NWidget::SetConversingNPC(const TObjectPtr<class AQDynamicNPCController> NPC)
 {
     ConversingNPC = NPC;
-
 }
 
 void UQP2NWidget::SetConversingPlayer(const TObjectPtr<class AQPlayerController> Player)
@@ -55,7 +54,8 @@ void UQP2NWidget::HandleEnterKeyPress()
         UE_LOG(LogTemp, Error, TEXT("UQP2NWidget::HandleEnterKeyPress - Can't find PlayerState."));
     }
     // @todo: 대화하고 있는 NPCID 찾아서 넣어주기만 하면 됨.
-    int32 NPCID = 2001; // 임시값
+    TObjectPtr<UNPCComponent> NPCComponent = ConversingNPC->GetPawn()->FindComponentByClass<UNPCComponent>();
+    int32 NPCID  = NPCComponent->GetNPCID();
     PlayerState->ServerRPCAddP2NPlayerStatement(EConversationType::P2N, NPCID, PlayerState->GetPlayerId(), PlayerInput);
 
     //2. inputbox는 공란으로 만든다.
