@@ -329,20 +329,20 @@ void UGodFunction::GenerateDefendantPrompt(UWorld* World, TFunction<void()> Call
     FString DefendantFilePath = FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToDefendant.json");
     FString PromptToGodPath = FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToGod.json");
 
-   // if (FPaths::FileExists(DefendantFilePath))
-   // {
-   //    UE_LOG(LogTemp, Warning, TEXT("PromptToDefendant.json 이미 존재하지만, 새로 생성하여 덮어쓰기 진행."));
-   // }
+    // if (FPaths::FileExists(DefendantFilePath))
+    // {
+    //    UE_LOG(LogTemp, Warning, TEXT("PromptToDefendant.json 이미 존재하지만, 새로 생성하여 덮어쓰기 진행."));
+    // }
 
-    // 이미 존재하면 생성하지 않음
-    /*if (FPaths::FileExists(DefendantFilePath))
-    {
-        UE_LOG(LogTemp, Warning, TEXT("PromptToDefendant.json 이미 존재하므로 생성하지 않음."));
-        if (Callback) Callback();
-        return;
-    }*/
+     // 이미 존재하면 생성하지 않음
+     /*if (FPaths::FileExists(DefendantFilePath))
+     {
+         UE_LOG(LogTemp, Warning, TEXT("PromptToDefendant.json 이미 존재하므로 생성하지 않음."));
+         if (Callback) Callback();
+         return;
+     }*/
 
-    // PromptToGod.json이 없으면 재시도
+     // PromptToGod.json이 없으면 재시도
     if (!FPaths::FileExists(PromptToGodPath))
     {
         UE_LOG(LogTemp, Warning, TEXT("PromptToGod.json이 존재하지 않음. 피고인 프롬프트 생성 대기!"));
@@ -561,24 +561,20 @@ void UGodFunction::GenerateResidentNPC(UWorld* World, int ResidentIndex)
 // 증거물 아이템 생성
 void UGodFunction::GenerateEvidenceItems(UWorld* World)
 {
-	if (!World)
-	{
-		UE_LOG(LogTemp, Error, TEXT("GenerateEvidenceItems - World is nullptr!"));
-		return;
-	}
-
-	// FString PromptToGod = ReadFileContent(FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToGod.json"));
-	// FString PromptToDefendant = ReadFileContent(FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToDefendant.json"));
+    if (!World)
+    {
+        UE_LOG(LogTemp, Error, TEXT("GenerateEvidenceItems - World is nullptr!"));
+        return;
+    }
 
     FString DefendantPath = FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToDefendant.json");
     FString PromptToDefendant = ReadFileContent(DefendantPath);
     if (PromptToDefendant.IsEmpty())
     {
-        UE_LOG(LogTemp, Error, TEXT("GenerateEvidenceItems - PromptToDefendant.json이 비어 있음!"));
+        UE_LOG(LogTemp, Error, TEXT("PromptToDefendant.json이 비어 있음!"));
         return;
     }
 
-    // 증거물 생성용 ChatGPT 프롬프트
     FString EvidencePrompt = FString::Printf(TEXT(
         "다음은 피고인의 전생 정보입니다:\n%s\n\n"
         "이 인물의 전생과 관련된 증거물 10개를 생성하세요. 각 증거물은 다음 정보를 포함해야 합니다:\n"
@@ -586,84 +582,77 @@ void UGodFunction::GenerateEvidenceItems(UWorld* World)
         "2. description: 이 증거물이 피고인과 어떤 관련이 있는지 설명\n"
         "3. image_prompt: 해당 증거물에 어울리는 이미지 생성용 프롬프트\n"
         "결과는 JSON 배열로 반환하세요."),
-        *EscapeJSON(PromptToDefendant.Left(2000))  // 너무 길지 않게 제한
+        *EscapeJSON(PromptToDefendant.Left(2000))
     );
 
-    CallOpenAIAsync(EvidencePrompt, [World](FString EvidenceJsonRaw)
+    CallOpenAIAsync(EvidencePrompt, [World](FString Response)
         {
-            if (EvidenceJsonRaw.IsEmpty())
+            if (Response.IsEmpty())
             {
-                UE_LOG(LogTemp, Error, TEXT("증거물 JSON 생성 실패"));
+                UE_LOG(LogTemp, Error, TEXT("증거물 응답이 비어 있음!"));
                 return;
             }
 
-            // JSON 파싱
-            TSharedPtr<FJsonValue> JsonValue;
-            TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(EvidenceJsonRaw);
-            if (!FJsonSerializer::Deserialize(Reader, JsonValue) || !JsonValue.IsValid())
+            TArray<TSharedPtr<FJsonValue>> EvidenceArray;
+            TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(Response);
+            if (!FJsonSerializer::Deserialize(Reader, EvidenceArray) || EvidenceArray.Num() == 0)
             {
-                UE_LOG(LogTemp, Error, TEXT("증거물 JSON 파싱 실패"));
+                UE_LOG(LogTemp, Error, TEXT("증거물 JSON 배열 파싱 실패 또는 비어 있음!"));
                 return;
             }
 
-            const TArray<TSharedPtr<FJsonValue>>* EvidenceArray;
-            if (!JsonValue->TryGetArray(EvidenceArray))
-            {
-                UE_LOG(LogTemp, Error, TEXT("JSON 배열 아님"));
-                return;
-            }
+            UE_LOG(LogTemp, Log, TEXT("증거물 총 %d개 병렬 처리 시작"), EvidenceArray.Num());
 
-            // 각각의 아이템에 대해 파일 생성
-            TFunction<void(int32)> ProcessEvidenceAtIndex;
-            ProcessEvidenceAtIndex = [=](int32 Index) mutable
+            for (int32 Index = 0; Index < EvidenceArray.Num(); ++Index)
+            {
+                const TSharedPtr<FJsonObject>* ItemObj;
+                if (!EvidenceArray[Index]->TryGetObject(ItemObj))
                 {
-                    if (Index >= EvidenceArray->Num())
+                    UE_LOG(LogTemp, Warning, TEXT("[%d] JSON 오브젝트 파싱 실패, 건너뜀"), Index + 1);
+                    continue;
+                }
+
+                FString Name, Desc, ImgPrompt;
+                bool b1 = ItemObj->Get()->TryGetStringField("name", Name);
+                bool b2 = ItemObj->Get()->TryGetStringField("description", Desc);
+                bool b3 = ItemObj->Get()->TryGetStringField("image_prompt", ImgPrompt);
+
+                if (!(b1 && b2 && b3))
+                {
+                    UE_LOG(LogTemp, Warning, TEXT("[%d] 필드 누락, 건너뜀"), Index + 1);
+                    continue;
+                }
+
+                FString InfoFilePath = FPaths::ProjectSavedDir() + FString::Printf(TEXT("Prompt/ItemInformation%d.json"), Index + 1);
+                FString ImageFilePath = FPaths::ProjectSavedDir() + FString::Printf(TEXT("Items/ItemImage%d.png"), Index + 1);
+
+                // JSON 저장
+                TSharedPtr<FJsonObject> SaveObject = MakeShareable(new FJsonObject);
+                SaveObject->SetStringField("name", Name);
+                SaveObject->SetStringField("description", Desc);
+                SaveObject->SetStringField("image_prompt", ImgPrompt);
+
+                FString Output;
+                TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Output);
+                FJsonSerializer::Serialize(SaveObject.ToSharedRef(), Writer);
+
+                UE_LOG(LogTemp, Log, TEXT("[%d] 저장될 JSON 내용: %s"), Index + 1, *Output);
+
+                if (FFileHelper::SaveStringToFile(Output, *InfoFilePath))
+                {
+                    UE_LOG(LogTemp, Log, TEXT("[%d] %s 저장 완료"), Index + 1, *InfoFilePath);
+                }
+                else
+                {
+                    UE_LOG(LogTemp, Error, TEXT("[%d] %s 저장 실패"), Index + 1, *InfoFilePath);
+                }
+
+                // 이미지 비동기 요청 (병렬)
+                DownloadDalleImage(ImgPrompt, ImageFilePath, [Index]()
                     {
-                        UE_LOG(LogTemp, Log, TEXT("모든 증거물 처리 완료!"));
-                        return;
-                    }
-
-                    const TSharedPtr<FJsonObject>* ItemObj;
-                    if (!(*EvidenceArray)[Index]->TryGetObject(ItemObj))
-                    {
-                        UE_LOG(LogTemp, Warning, TEXT("[%d]번 증거물 JSON 파싱 실패, 다음으로 건너뜀"), Index + 1);
-                        ProcessEvidenceAtIndex(Index + 1);
-                        return;
-                    }
-
-                    FString Name = (*ItemObj)->GetStringField("name");
-                    FString Desc = (*ItemObj)->GetStringField("description");
-                    FString ImgPrompt = (*ItemObj)->GetStringField("image_prompt");
-
-                    FString InfoFilePath = FPaths::ProjectSavedDir() + FString::Printf(TEXT("Prompt/ItemInformation%d.json"), Index + 1);
-                    FString ImageFilePath = FPaths::ProjectSavedDir() + FString::Printf(TEXT("Item/ItemImage%d.png"), Index + 1);
-
-                    // JSON 저장
-                    TSharedPtr<FJsonObject> SaveObject = MakeShareable(new FJsonObject);
-                    SaveObject->SetStringField("name", Name);
-                    SaveObject->SetStringField("description", Desc);
-                    SaveObject->SetStringField("image_prompt", ImgPrompt);
-
-                    FString Output;
-                    TSharedRef<TJsonWriter<>> Writer = TJsonWriterFactory<>::Create(&Output);
-                    if (FFileHelper::SaveStringToFile(Output, *InfoFilePath))
-                    {
-                        UE_LOG(LogTemp, Log, TEXT("[%d] %s 저장 완료"), Index + 1, *InfoFilePath);
-                    }
-                    else
-                    {
-                        UE_LOG(LogTemp, Error, TEXT("[%d] %s 저장 실패"), Index + 1, *InfoFilePath);
-                    }
-
-                    // DALLE 이미지 요청 후 완료되면 다음 증거물 처리(순차적으로)
-                    DownloadDalleImage(ImgPrompt, ImageFilePath, [Index, ProcessEvidenceAtIndex]()
-                        {
-                            ProcessEvidenceAtIndex(Index + 1);
-                        });
-                };
-
-            // 0번부터 시작
-            ProcessEvidenceAtIndex(0);
+                        UE_LOG(LogTemp, Log, TEXT("[%d] 이미지 저장 완료"), Index + 1);
+                    });
+            }
         });
 }
 
@@ -678,8 +667,10 @@ void UGodFunction::DownloadDalleImage(const FString& Prompt, const FString& Save
     }
 
     // 이미지 생성 요청 구성 (OpenAI Image API)
+    FString FinalPrompt = Prompt + TEXT(", isolated object on transparent background, icon style, minimal shadows");
+
     TSharedPtr<FJsonObject> RequestObject = MakeShareable(new FJsonObject());
-    RequestObject->SetStringField("prompt", Prompt);
+    RequestObject->SetStringField("prompt", FinalPrompt);
     RequestObject->SetStringField("model", "dall-e-3");
     RequestObject->SetStringField("size", "1024x1024");
     RequestObject->SetStringField("response_format", "url");  // URL 받아서 다시 다운로드
