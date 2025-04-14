@@ -73,12 +73,11 @@ void UQRecordWidget::NativeConstruct()
 	/* 녹음기 키기 전 대화할 경우 대비: 대화기록 첨부터 업데이트 */
 	//녹음기 버튼에 바인딩했으므로, 처음 녹음기를 킬 경우 녹음기 인벤 위젯 생성 시점보다 UpdateRecordHistory가 앞서기 때문이다.
 	UpdateRecordHistory();
-	
 }
 
 void UQRecordWidget::UpdateRecordHistory()
 {
-	/*대화 레코드 정보가져오기*/
+	/*1. PlayerState에서 새로 들어온 대화 레코드 정보가져오기*/
 	APlayerController* PlayerController = GetOwningPlayer();
 	AQPlayerState* PlayerState=nullptr;
 	if (PlayerController) {
@@ -96,56 +95,52 @@ void UQRecordWidget::UpdateRecordHistory()
 
 	/*대화기록 정보 재구성: NPC별로, 시간순정렬*/
 	//대화한 NPC목록들 저장
-	//혹시 기존에 남아있는 게 있으면 초기화
-	ConversedNPC.Empty();
-	for (const auto & Value : ConversationRecord)
+	//2. 기존에 있는 SortedConversationRecord을 덮어쓰기 대신 누적 방식으로 유지
+	for (const FConversationRecord& Record : ConversationRecord) {
+		//누락방지: Speaker나 Listener 둘 중 하나가 NPC면 기록대상
+		int32 PossibleNPCID = -1;
+
+		if (Record.GetSpeakerID() >= 2000) {
+			PossibleNPCID = Record.GetSpeakerID();
+		}
+		else if (Record.GetListenerID() >= 2000) {
+			PossibleNPCID = Record.GetListenerID();
+		}
+		else {
+			continue;//NPC가 안 껴있는대화는 생략
+		}
+
+		//NPC목록에 없으면 추가
+		if (!ConversedNPC.Contains(PossibleNPCID))
+		{
+			ConversedNPC.Add(PossibleNPCID);
+		}
+
+		//NPC에 해당하는 배열이 없으면 새로 생성
+		if (!SortedConversationRecord.Contains(PossibleNPCID))
+		{
+			{
+				SortedConversationRecord.Add(PossibleNPCID, {});
+			}
+		}
+
+		//중복 삽입 방지: 같은 ConversationID가 없을 때만 추가
+		TArray<FConversationRecord>& RecordsForNPC = SortedConversationRecord[PossibleNPCID];
+		bool bAlreadyExists = RecordsForNPC.ContainsByPredicate([&](const FConversationRecord& Existing) {
+			return Existing.GetConversationID() == Record.GetConversationID();
+		});
+		if (!bAlreadyExists){
+			RecordsForNPC.Add(Record);
+		}
+	}
+
+	//3. 모든 NPC기록을 시간순정렬
+	for (auto& Pair : SortedConversationRecord)
 	{
-		/*화자가 NPC인지 확인: 2000이상이면 NPC라고 가정*/
-		if (Value.GetSpeakerID() >= 2000)
-		{
-			int32 SpeakerID = Value.GetSpeakerID();
-			if (!ConversedNPC.Contains(SpeakerID)) {
-				ConversedNPC.Add(SpeakerID);
-			}
-		}
-		else if(Value.GetListenerID()>=2000)
-		{
-			int32 ListenerID = Value.GetListenerID();
-			if (!ConversedNPC.Contains(ListenerID)) {
-				ConversedNPC.Add(ListenerID);
-			}
-		}
-	}
-
-	/* 정렬된 대화기록을 저장할 맵: NPCID->정렬된 대화 배열: 초기화하여 다시 덮어쓰기 */
-	SortedConversationRecord.Empty();
-
-	for (int32 NPCID : ConversedNPC)
-	{	
-		TArray<FConversationRecord> NPCConversation;
-
-		//해당 NPC와 관련된 대화 기록만 추출
-		for (const FConversationRecord& Record : ConversationRecord) {
-			bool bIsRelatedToNPC =
-				(Record.GetSpeakerID() == NPCID || Record.GetListenerID() == NPCID);
-		
-			if (bIsRelatedToNPC) {
-				NPCConversation.Add(Record);
-			}
-		}
-
-		//시간순 정렬 (Sort함수 오버라이딩과 비슷)
-		//A<B 면 A가 앞으로가고, 아니면 B가 앞으로간다
-		//람다 : 익명함수
-		//[]: 바깥변수 안 씀(캡쳐x)
-		//두 인자를 바탕으로, {}안의 함수를 시행하겠다. 
-		NPCConversation.Sort([](const FConversationRecord& A, const FConversationRecord& B) {
+		Pair.Value.Sort([](const FConversationRecord& A, const FConversationRecord& B) {
 			return A.GetTimestamp() < B.GetTimestamp();
-			});
-		//맵에저장
-		SortedConversationRecord.Add(NPCID, NPCConversation);
+		});
 	}
-	
 
 	/*위젯업데이트: 버튼 클릭시 콜백*/
 	/*전체 버튼 모양(8개 버튼들) 업데이트: 대화한 NPC 있을경우 유령모양 + NPC이름 뜨게*/

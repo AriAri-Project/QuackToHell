@@ -53,7 +53,7 @@ void UQP2NWidget::HandleEnterKeyPress()
     {
         UE_LOG(LogTemp, Error, TEXT("UQP2NWidget::HandleEnterKeyPress - Can't find PlayerState."));
     }
-    // @todo: 대화하고 있는 NPCID 찾아서 넣어주기만 하면 됨.
+    // 플레이어 응답 대화기록에 저장
     TObjectPtr<UNPCComponent> NPCComponent = ConversingNPC->GetPawn()->FindComponentByClass<UNPCComponent>();
     int32 NPCID  = NPCComponent->GetNPCID();
     PlayerState->ServerRPCAddP2NPlayerStatement(EConversationType::P2N, NPCID, PlayerState->GetPlayerId(), PlayerInput);
