@@ -113,6 +113,7 @@ void AQDynamicNPCController::FreezePawn()
     //폰 정보 가져오기
     APawn* ControlledPawn = this->GetPawn();
     if (!ControlledPawn) {
+        UE_LOG(LogLogic, Error, TEXT("FreezePawn: ControlledPawn is nullptr"));
         return;
     }
 
@@ -122,6 +123,10 @@ void AQDynamicNPCController::FreezePawn()
         MovementComponent->StopMovementImmediately();//즉시멈춤
         MovementComponent->SetComponentTickEnabled(false);//틱 비활성화
         MovementComponent->Deactivate();//이동 비활성화
+    }
+    else if (!MovementComponent) {
+        UE_LOG(LogLogic, Error, TEXT("FreezePawn: MovementComponent is nullptr"));
+        return;
     }
 
     UE_LOG(LogLogic, Log, TEXT("NPC 멈춤."));

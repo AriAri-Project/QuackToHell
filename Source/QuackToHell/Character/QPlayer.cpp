@@ -289,7 +289,7 @@ void AQPlayer::ServerRPCFinishConversation_Implementation(AQPlayerController* Ta
 
 void AQPlayer::MulticastRPCFinishConversation_Implementation(AQPlayer* Player, AQNPC* NPC)
 {
-	if (HasAuthority() || LocalPlayerState->GetPawn() == Player)
+	if (this == Player)
 	{
 		return;
 	}

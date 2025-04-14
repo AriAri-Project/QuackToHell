@@ -103,6 +103,9 @@ void AQPlayerController::ClientRPCUpdateCanStartConversP2N_Implementation(bool b
 	TObjectPtr<AQDynamicNPC> NPC = Cast<AQDynamicNPC>(_Player->GetClosestNPC());
 	TObjectPtr<AController> NPCController = NPC->GetController();
 	TObjectPtr<AQDynamicNPCController> DynamicNPCController = Cast<AQDynamicNPCController>(NPCController);
+	if (!DynamicNPCController) {
+		UE_LOG(LogLogic, Error, TEXT("DynamicNPCController가 없음"));
+	}
 	/*몸 멈추기*/
 	//내 몸멈추기
 	FreezePawn();
