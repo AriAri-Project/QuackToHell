@@ -111,7 +111,7 @@ void AQDynamicNPCController::UnFreezePawn()
 void AQDynamicNPCController::FreezePawn()
 {
     //폰 정보 가져오기
-    TObjectPtr<APawn> ControlledPawn = this->GetPawn();
+    APawn* ControlledPawn = this->GetPawn();
     if (!ControlledPawn) {
         return;
     }
