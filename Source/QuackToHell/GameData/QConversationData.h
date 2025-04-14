@@ -103,6 +103,8 @@ public:
 	UPROPERTY()
 	TArray<FConversationRecord> ConversationList;
 
+
+	
 	FConversationList()
 	{
 		ConversationList = TArray<FConversationRecord>();  // 강제 초기화

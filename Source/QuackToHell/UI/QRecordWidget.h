@@ -50,6 +50,7 @@ public:
 	UQRecordWidget(const FObjectInitializer& ObjectInitializer);
 protected:
 	virtual void NativeConstruct() override;
+
 private:
 	/**
 	 * @brief 해당 위젯의 하위컴포넌트인 버튼들의 정보를 갖고있음.
@@ -57,12 +58,16 @@ private:
 	UPROPERTY()
 	TArray<FRecordButton > Buttons;
 private:
+	/** @brief 정렬된 대화기록을 저장할 맵: NPCID->정렬된 대화 배열 */
+	TMap<int32, TArray<FConversationRecord>> SortedConversationRecord;
+
+private:
 	/**
 	 * @brief 최대 망자 수.
 	 */
 	const int8 GhostMaxNum = 8;
 	/**
-	 * @brief 대화기록 데이터들
+	 * @brief 원본 대화기록 데이터들
 	 */
 	TArray<FConversationRecord> ConversationRecord;
 	/**
