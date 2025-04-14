@@ -51,8 +51,8 @@ void UJuryComponent::StartConversation(FOpenAIRequest Request)
 {
     UE_LOG(LogTemp, Log, TEXT("🔵 JuryComponent::StartConversation 실행 - NPCID: %s"), *NPCID);
 
-    Request.SpeakerID = FCString::Atoi(*GetPlayerIDAsString());
-    Request.ListenerID = GetNPCID();
+    //Request.SpeakerID = FCString::Atoi(*GetPlayerIDAsString());
+    //Request.ListenerID = GetNPCID();
 
     if (PromptContent.IsEmpty())
     {
@@ -142,6 +142,8 @@ void UJuryComponent::StartConversation(FOpenAIRequest Request)
             }
 
             AIResponse.ConversationType = Request.ConversationType;
+            AIResponse.SpeakerID = Request.SpeakerID;
+            AIResponse.ListenerID = Request.ListenerID;
             ResponseCache.Add(Request.Prompt, AIResponse.ResponseText);
             SendNPCResponseToServer(AIResponse);
             SaveP2NDialogue(Request, AIResponse);

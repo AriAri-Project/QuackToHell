@@ -138,18 +138,6 @@ public:
 	// Player가 소유하고 있는 대화기록에 대한 정보만 반환
 	const TArray<FConversationRecord> GetRecordWithID(int32 ID) const
 	{
-		if (this == nullptr)
-		{
-			UE_LOG(LogTemp, Error, TEXT("FConversationList instance is nullptr!"));
-			return TArray<FConversationRecord>();
-		}
-
-		if (!ensureAlwaysMsgf(ConversationList.GetAllocatedSize() > 0, TEXT("ConversationList is not properly allocated!")))
-		{
-			UE_LOG(LogTemp, Error, TEXT("ConversationList is not initialized!"));
-			return TArray<FConversationRecord>();
-		}
-		
 		// 대화기록이 없다면 바로 return
 		if (ConversationList.Num() == 0)
 		{
