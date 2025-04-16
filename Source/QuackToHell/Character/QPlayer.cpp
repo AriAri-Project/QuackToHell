@@ -65,14 +65,22 @@ AQPlayer::AQPlayer(const FObjectInitializer& ObjectInitializer)
 	this->GetCapsuleComponent()->InitCapsuleSize(42.0f, 42.0f);
 
 	/*허공말풍선 UI 컴포넌트*/
-	this->Player2NSpeechBubbleWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("Player2NSpeechBubbleWidget"));
-	EWidgetSpace WidgetSpace = EWidgetSpace::Screen;
-	this->Player2NSpeechBubbleWidgetComponent->SetWidgetSpace(WidgetSpace);
-	this->Player2NSpeechBubbleWidgetComponent->SetDrawAtDesiredSize(true);
-	this->Player2NSpeechBubbleWidgetComponent->SetupAttachment(RootComponent);
+	Player2NSpeechBubbleWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("Player2NSpeechBubbleWidget"));
+	Player2NSpeechBubbleWidgetComponent->SetWidgetSpace(EWidgetSpace::Screen);
+	Player2NSpeechBubbleWidgetComponent->SetDrawAtDesiredSize(true);
+	Player2NSpeechBubbleWidgetComponent->SetupAttachment(RootComponent);
+	Player2NSpeechBubbleWidgetComponent->SetVisibility(true);
+	Player2NSpeechBubbleWidgetComponent->SetHiddenInGame(false);
 	TSubclassOf<UQPlayer2NSpeechBubbleWidget> _Player2NSpeechBubbleWidget;
-	//UQPlayer2NSpeechBubbleWidget을 상속한 클래스만 담을 수 있도록 강제한다.
 	this->Player2NSpeechBubbleWidgetComponent->SetWidgetClass(_Player2NSpeechBubbleWidget);
+	// 위젯 클래스 설정
+	/*
+	static ConstructorHelpers::FClassFinder<UUserWidget> WidgetClass(TEXT("/Game/Blueprints/UI/WBP_QPlayer2NSpeechBubble.WBP_QPlayer2NSpeechBubble"));
+	if (WidgetClass.Succeeded())
+	{
+		Player2NSpeechBubbleWidgetComponent->SetWidgetClass(WidgetClass.Class);
+	}
+	*/
 }
 
 TObjectPtr<AActor> AQPlayer::GetClosestNPC()
@@ -108,7 +116,7 @@ void AQPlayer::BeginPlay()
 	{
 		FString _Name = LocalPlayerState->GetPlayerName();
 		this->SetCharacterName(_Name);
-		Super::GetNameWidget()->SetNameWidgetText(GetCharacterName());
+		GetNameWidget()->SetNameWidgetText(GetCharacterName());
 	}
 	
 	/*Player2N말풍선 위젯 변수에 객체값 할당*/
@@ -254,14 +262,15 @@ void AQPlayer::MulticastRPCStartConversation_Implementation(AQPlayer* Player, AQ
 		UE_LOG(LogLogic, Log, TEXT("AQPlayer::MulticastRPCStartConversation_Implementation -> LocalPlayerState is null."));
 		return;
 	}
-	AQPlayer* LocalPlayer = Cast<AQPlayer>(LocalPlayerState->GetPawn());
-	if (HasAuthority() || LocalPlayer == Player)
-	{
-		return;
-	}
 	/** @todo 유진 Player2 시점에서 Player1과 NPC 머리위에 공백 말풍선 띄우기 */
+	/*
 	Player->GetPlayer2NSpeechBubbleWidget()->TurnOnSpeechBubble();
-	Cast<AQDynamicNPC>(NPC)->GetPlayer2NSpeechBubbleWidget()->TurnOnSpeechBubble();
+	AQDynamicNPC* DynamicNPC = Cast<AQDynamicNPC>(NPC);
+	if (DynamicNPC)
+	{
+		DynamicNPC->GetPlayer2NSpeechBubbleWidget()->TurnOnSpeechBubble();
+	}
+	*/
 }
 
 void AQPlayer::ServerRPCFinishConversation_Implementation(AQPlayerController* TargetController,  AQNPC* NPC)
