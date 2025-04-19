@@ -40,10 +40,11 @@ protected:
 	 */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	TObjectPtr<class UWidgetComponent>  Player2NSpeechBubbleWidgetComponent;
-
-	TObjectPtr<class UWidgetComponent> GetPlayer2NSpeechBubbleWidgetComponent();
 protected:
+	TObjectPtr<AQPlayerController> MyPlayerController;
+	
 	virtual void BeginPlay() override;
+	virtual void OnRep_PlayerState() override;
 	virtual void PossessedBy(AController* NewController) override;
 
 	/**

@@ -73,14 +73,6 @@ AQPlayer::AQPlayer(const FObjectInitializer& ObjectInitializer)
 	Player2NSpeechBubbleWidgetComponent->SetHiddenInGame(false);
 	TSubclassOf<UQPlayer2NSpeechBubbleWidget> _Player2NSpeechBubbleWidget;
 	this->Player2NSpeechBubbleWidgetComponent->SetWidgetClass(_Player2NSpeechBubbleWidget);
-	// 위젯 클래스 설정
-	/*
-	static ConstructorHelpers::FClassFinder<UUserWidget> WidgetClass(TEXT("/Game/Blueprints/UI/WBP_QPlayer2NSpeechBubble.WBP_QPlayer2NSpeechBubble"));
-	if (WidgetClass.Succeeded())
-	{
-		Player2NSpeechBubbleWidgetComponent->SetWidgetClass(WidgetClass.Class);
-	}
-	*/
 }
 
 TObjectPtr<AActor> AQPlayer::GetClosestNPC()
@@ -110,17 +102,12 @@ void AQPlayer::BeginPlay()
 {
 	Super::BeginPlay();
 	UE_LOG(LogLogic, Log, TEXT("Player의Beginplay호출"));
+
+	// 캐릭터 이름 UI에 플레이어 이름 띄우기
+	GetNameWidget()->SetNameWidgetText(GetCharacterName());
 	
-	/*이름 세팅*/
-	if (LocalPlayerState)
-	{
-		FString _Name = LocalPlayerState->GetPlayerName();
-		this->SetCharacterName(_Name);
-		GetNameWidget()->SetNameWidgetText(GetCharacterName());
-	}
-	
-	/*Player2N말풍선 위젯 변수에 객체값 할당*/
-	if (Player2NSpeechBubbleWidget)
+	// Player2N 말풍선 위젯 변수에 객체값 할당
+	if (Player2NSpeechBubbleWidgetComponent)
 	{
 		UUserWidget* UserWidget = Player2NSpeechBubbleWidgetComponent->GetWidget();
 		if (UserWidget)
@@ -128,15 +115,40 @@ void AQPlayer::BeginPlay()
 			Player2NSpeechBubbleWidget = Cast<UQPlayer2NSpeechBubbleWidget>(UserWidget);
 		}
 	}
-	/*Player2N말풍선 위젯 기본적으로 끈 채로 시작*/
-	//Player2NSpeechBubbleWidget->TurnOffSpeechBubble();
+	// Player2N말풍선 위젯 기본적으로 끈 채로 시작
+	Player2NSpeechBubbleWidget->TurnOffSpeechBubble();
+}
+
+void AQPlayer::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+
+	// 클라이언트 환경 : 플레이어 이름 데이터 가져오기
+	LocalPlayerState = GetPlayerState<AQPlayerState>();
+	if (LocalPlayerState)
+	{
+		FString Name = LocalPlayerState->GetPlayerName();
+		UE_LOG(LogLogic, Log, TEXT("클라이언트에 PlayerState 도착함: %s"), *Name);
+		SetCharacterName(Name);
+	}
 }
 
 void AQPlayer::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
 
-	LocalPlayerState = NewController->GetPlayerState<AQPlayerState>();
+	// 호스트 환경 : 플레이어 이름 데이터 가져오기 
+	MyPlayerController = Cast<AQPlayerController>(NewController);
+	if (MyPlayerController)
+	{
+		LocalPlayerState = MyPlayerController->GetPlayerState<AQPlayerState>();
+		if (LocalPlayerState)
+		{
+			FString _Name = LocalPlayerState->GetPlayerName();
+			UE_LOG(LogLogic, Log, TEXT("playerName : %s, NetMode: %d"), *_Name, this->GetNetMode());
+			this->SetCharacterName(_Name);
+		}
+	}
 }
 
 void AQPlayer::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -257,20 +269,13 @@ void AQPlayer::ServerRPCStartConversation_Implementation(AQNPC* NPC)
 
 void AQPlayer::MulticastRPCStartConversation_Implementation(AQPlayer* Player, AQNPC* NPC)
 {
-	if (LocalPlayerState == nullptr)
-	{
-		UE_LOG(LogLogic, Log, TEXT("AQPlayer::MulticastRPCStartConversation_Implementation -> LocalPlayerState is null."));
-		return;
-	}
 	/** @todo 유진 Player2 시점에서 Player1과 NPC 머리위에 공백 말풍선 띄우기 */
-	/*
 	Player->GetPlayer2NSpeechBubbleWidget()->TurnOnSpeechBubble();
 	AQDynamicNPC* DynamicNPC = Cast<AQDynamicNPC>(NPC);
 	if (DynamicNPC)
 	{
 		DynamicNPC->GetPlayer2NSpeechBubbleWidget()->TurnOnSpeechBubble();
 	}
-	*/
 }
 
 void AQPlayer::ServerRPCFinishConversation_Implementation(AQPlayerController* TargetController,  AQNPC* NPC)
