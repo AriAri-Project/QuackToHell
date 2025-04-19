@@ -32,7 +32,6 @@ TObjectPtr<class UQPlayer2NSpeechBubbleWidget> AQPlayer::GetPlayer2NSpeechBubble
 AQPlayer::AQPlayer(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	
 	/*캡슐 콜라이더 산하 컴포넌트*/
 	RootComponent= this->GetCapsuleComponent();
 	//충돌처리
@@ -94,14 +93,14 @@ TObjectPtr<AActor> AQPlayer::GetClosestNPC()
 			ClosestNPC = NPC;
 		}
 	}
-
 	return ClosestNPC;
 }
 
 void AQPlayer::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogLogic, Log, TEXT("Player의Beginplay호출"));
+	
+	UE_LOG(LogLogic, Log, TEXT("AQPlayer::BeginPlay started - Name: %s, NetMode: %d"), *this->GetName(), this->GetNetMode());
 
 	// 캐릭터 이름 UI에 플레이어 이름 띄우기
 	GetNameWidget()->SetNameWidgetText(GetCharacterName());
@@ -128,8 +127,9 @@ void AQPlayer::OnRep_PlayerState()
 	if (LocalPlayerState)
 	{
 		FString Name = LocalPlayerState->GetPlayerName();
-		UE_LOG(LogLogic, Log, TEXT("클라이언트에 PlayerState 도착함: %s"), *Name);
+		UE_LOG(LogLogic, Log, TEXT("AQPlayer::OnRep_PlayerState- playerName : %s, NetMode: %d"), *Name, this->GetNetMode());
 		SetCharacterName(Name);
+		GetNameWidget()->SetNameWidgetText(Name);
 	}
 }
 
@@ -145,8 +145,12 @@ void AQPlayer::PossessedBy(AController* NewController)
 		if (LocalPlayerState)
 		{
 			FString _Name = LocalPlayerState->GetPlayerName();
-			UE_LOG(LogLogic, Log, TEXT("playerName : %s, NetMode: %d"), *_Name, this->GetNetMode());
+			UE_LOG(LogLogic, Log, TEXT("AQPlayer::PossessedBy - playerName : %s, NewController : %s, NetMode: %d"), *_Name, *NewController->GetName(), this->GetNetMode());
 			this->SetCharacterName(_Name);
+			if (GetNameWidget() != nullptr)
+			{
+				GetNameWidget()->SetNameWidgetText(_Name);
+			}
 		}
 	}
 }
