@@ -110,6 +110,8 @@ void AQDynamicNPCController::UnFreezePawn()
 
 void AQDynamicNPCController::FreezePawn()
 {
+    UE_LOG(LogLogic, Log, TEXT(" QDynamicNPCController::AQDynamicNPCController - NPC FreezePawn start, NetMode: %d"), GetNetMode());
+	
     //폰 정보 가져오기
     APawn* ControlledPawn = this->GetPawn();
     if (!ControlledPawn) {

@@ -70,7 +70,7 @@ protected:
 	float SphereRadius = 200.f;
 protected:
 	UPROPERTY()
-	TObjectPtr<AQPlayerState> LocalPlayerState;
+	TObjectPtr<AQPlayerState> ThisPlayerState;
 	
 	// NPC 대화 관련 check 함수 ------------------------------------------------------
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;

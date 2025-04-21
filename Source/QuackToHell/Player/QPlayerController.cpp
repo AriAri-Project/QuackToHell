@@ -99,35 +99,28 @@ void AQPlayerController::ClientRPCUpdateCanFinishConversP2N_Implementation(bool 
 
 void AQPlayerController::ClientRPCUpdateCanStartConversP2N_Implementation(bool bResult)
 {
+	if (!bResult)
+	{
+		UE_LOG(LogLogic, Log, TEXT("대화시도실패!!"));
+		return;
+	}
 	TObjectPtr<AQPlayer> _Player = Cast<AQPlayer>(this->GetPawn());
 	TObjectPtr<AQDynamicNPC> NPC = Cast<AQDynamicNPC>(_Player->GetClosestNPC());
-	TObjectPtr<AController> NPCController = NPC->GetController();
-	TObjectPtr<AQDynamicNPCController> DynamicNPCController = Cast<AQDynamicNPCController>(NPCController);
+	/*
+	 *TObjectPtr<AQDynamicNPCController> DynamicNPCController = Cast<AQDynamicNPCController>(NPC->GetController());
 	if (!DynamicNPCController) {
 		UE_LOG(LogLogic, Error, TEXT("DynamicNPCController가 없음"));
+		return;
 	}
+	*/
 	/*몸 멈추기*/
 	//내 몸멈추기
 	FreezePawn();
 	//NPC몸멈추기
-	DynamicNPCController->FreezePawn();
-
-	if (bResult)
-	{
-		//플레이어를 대화처리한다. (서버)
-		Cast<AQPlayer>(this->GetPawn())->ServerRPCStartConversation(NPC);
-	}
-	else
-	{
-		/** @todo 유진 : 대화를 시작할 수 없을때 클라이언트에서 실행시켜야하는 함수 여기서 호출 */
-		UE_LOG(LogLogic, Log, TEXT("대화시도실패!!"));
-		/*안된다하면 몸 풀기*/
-		//내 몸 풀기
-		UnFreezePawn();
-		//상대 몸 풀기
-		DynamicNPCController->UnFreezePawn();
-	}
-
+	//DynamicNPCController->FreezePawn();
+	
+	//플레이어를 대화처리한다. (서버)
+	Cast<AQPlayer>(this->GetPawn())->ServerRPCStartConversation(NPC);
 }
 
 void AQPlayerController::ClientRPCStartConversation_Implementation(FOpenAIResponse NPCStartResponse)
