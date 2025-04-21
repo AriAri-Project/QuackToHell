@@ -174,6 +174,13 @@ void AQPlayer::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherAc
 	}
 }
 
+TObjectPtr<AQPlayer> AQPlayer::GetLocalPlayer()
+{
+	APawn* Pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	AQPlayer* LocalPlayer = Cast<AQPlayer>(Pawn);
+	return LocalPlayer;
+}
+
 // -------------------------------------------------------------------------------------------------------- //
 void AQPlayer::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
 {
@@ -309,9 +316,7 @@ void AQPlayer::ServerRPCFinishConversation_Implementation(AQPlayerController* Ta
 
 void AQPlayer::MulticastRPCStartConversation_Implementation(AQPlayer* Player, AQNPC* NPC)
 {
-	APawn* Pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
-	AQPlayer* LocalPlayer = Cast<AQPlayer>(Pawn);
-	if (Player == LocalPlayer)
+	if (Player == GetLocalPlayer())
 	{
 		return;
 	}
@@ -325,9 +330,7 @@ void AQPlayer::MulticastRPCStartConversation_Implementation(AQPlayer* Player, AQ
 
 void AQPlayer::MulticastRPCFinishConversation_Implementation(AQPlayer* Player, AQNPC* NPC)
 {
-	APawn* Pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
-	AQPlayer* LocalPlayer = Cast<AQPlayer>(Pawn);
-	if (Player == LocalPlayer)
+	if (Player == GetLocalPlayer())
 	{
 		return;
 	}
@@ -338,5 +341,3 @@ void AQPlayer::MulticastRPCFinishConversation_Implementation(AQPlayer* Player, A
 		DynamicNPC->GetPlayer2NSpeechBubbleWidget()->TurnOffSpeechBubble();
 	}
 }
-
-

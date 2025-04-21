@@ -71,6 +71,9 @@ protected:
 protected:
 	UPROPERTY()
 	TObjectPtr<AQPlayerState> ThisPlayerState;
+
+	// 로컬 플레이어의 AQPlayer를 가져오는 함수
+	TObjectPtr<AQPlayer> GetLocalPlayer();
 	
 	// NPC 대화 관련 check 함수 ------------------------------------------------------
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
