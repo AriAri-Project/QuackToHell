@@ -30,11 +30,17 @@ public:
 	void EndVillageActivity();
 
 private:
+	/** @breif 재판까지의 총 시간 */
+	UPROPERTY(Replicated)
 	float TimeUntilTrialMax = 60 * 7;
 	
 	/** @brief 재판까지 남은 시간 */
 	UPROPERTY(Replicated)
 	float ServerLeftTimeUntilTrial = 0.0f;
+
+	/** @brief 마을에서의 시간이 끝났는가 */
+	UPROPERTY(Replicated)
+	bool bIsTimeToGoToCourt = false;
 	
 	UFUNCTION(NetMulticast, Unreliable)
 	void MulticastRPCUpdateServerTime();
@@ -43,10 +49,9 @@ private:
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
-
 	/* 재판장 이동 */
 	UFUNCTION(Server, Reliable)
-	void ServerRPCRequestTravelToCourt(APlayerController* LocalPlayerController, bool bTravelToCourt);
+	void ServerRPCRequestTravelToCourt(AQPlayerState* PlayerState, bool bTravelToCourt);
 
 
 	// 테스트 용

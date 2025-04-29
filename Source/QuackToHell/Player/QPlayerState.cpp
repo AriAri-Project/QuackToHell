@@ -57,6 +57,7 @@ void AQPlayerState::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& 
 
 	DOREPLIFETIME(AQPlayerState, EvidenceIDInHand);
 	DOREPLIFETIME(AQPlayerState, PlayerConversationState);
+	DOREPLIFETIME(AQPlayerState, bIsReadyToTravelToCourt);
 }
 
 void AQPlayerState::ServerRPCAddP2NPlayerStatement_Implementation(EConversationType ConversationType, int32 ListenerID,

@@ -2,14 +2,9 @@
 
 
 #include "Game/QVillageGameState.h"
-
-#include <string>
-
 #include "QGameModeVillage.h"
 #include "QLogCategories.h"
 #include "Blueprint/UserWidget.h"
-#include "Engine/World.h"
-#include "GameFramework/PlayerState.h"
 #include "Net/UnrealNetwork.h"
 #include "Player/QPlayerState.h"
 #include "UI/QVillageTimerWidget.h"
@@ -36,16 +31,17 @@ void AQVillageGameState::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 
-	if (HasAuthority()) // 서버에서만 실행
+	if (HasAuthority() || !bIsTimeToGoToCourt) // 서버에서만 실행
 	{
-		ServerLeftTimeUntilTrial += DeltaSeconds;
-		ForceNetUpdate();
-
-		MulticastRPCUpdateServerTime();
-		if (GetNetMode() == NM_ListenServer) // ✅ Listen 서버의 "호스트 클라이언트"에서는 직접 실행
+		// 종료 시간이 다 됐다면 클라이언트들에게 마무리 작업하라고 알림.
+		if (FMath::IsNearlyEqual(ServerLeftTimeUntilTrial, TimeUntilTrialMax, KINDA_SMALL_NUMBER))
 		{
-			MulticastRPCUpdateServerTime_Implementation();
+			bIsTimeToGoToCourt = true;
+			// @todo : 유진의 클라 인터페 여기서 호출
 		}
+		ServerLeftTimeUntilTrial += DeltaSeconds;
+		MulticastRPCUpdateServerTime();
+		MulticastRPCUpdateServerTime_Implementation();
 	}
 }
 
@@ -76,14 +72,22 @@ void AQVillageGameState::GetLifetimeReplicatedProps(TArray<class FLifetimeProper
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	
 	DOREPLIFETIME(AQVillageGameState, ServerLeftTimeUntilTrial);
+	DOREPLIFETIME(AQVillageGameState, TimeUntilTrialMax);
+	DOREPLIFETIME(AQVillageGameState, bIsTimeToGoToCourt);
 }
 
 // 재판장 이동 함수 ------------------------------------------------------------------------------------------
-void AQVillageGameState::ServerRPCRequestTravelToCourt_Implementation(APlayerController* LocalPlayerController, bool bTravelToCourt)
+void AQVillageGameState::ServerRPCRequestTravelToCourt_Implementation(AQPlayerState* PlayerState, bool bTravelToCourt)
 {
-	if (!HasAuthority()) return;
+	// todo: 해당 클라이언트가 재판장으로 이동할 준비가 되었다고 업데이트
+	PlayerState->SetIsReadyToTravelToCourt(bTravelToCourt);
 
-	// todo: 해당 클라이언트가 재판장으로 이동할 준비가 되었다고 Gamemode에 업데이트
+	// Travel 요청
+	TObjectPtr<AQGameModeVillage> GameModeVillage = Cast<AQGameModeVillage>(GetWorld()->GetAuthGameMode());
+	if (GameModeVillage)
+	{
+		GameModeVillage->TravelToCourtMap();
+	}
 }
 
 void AQVillageGameState::BeginPlay()

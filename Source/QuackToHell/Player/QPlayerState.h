@@ -65,6 +65,9 @@ private:
 
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
+	UPROPERTY(Replicated)
+	bool bIsReadyToTravelToCourt = false;
+	
 
 public:
 	EConversationType GetPlayerConversationState() const
@@ -83,6 +86,15 @@ public:
 	TArray<int32> GetEvidenceIDInHand() const
 	{
 		return EvidenceIDInHand;
+	}
+
+	bool GetIsReadyToTravelToCourt() const
+	{
+		return bIsReadyToTravelToCourt;
+	}
+	void SetIsReadyToTravelToCourt(bool bResult)
+	{
+		bIsReadyToTravelToCourt = bResult;
 	}
 
 	/** @brief P2N 대화에서 플레이어의 대사를 대화기록 자료구조에 저장하는 함수 */

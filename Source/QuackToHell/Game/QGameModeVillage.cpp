@@ -3,17 +3,16 @@
 
 #include "Game/QGameModeVillage.h"
 #include "QGameInstanceVillage.h"
-
 #include "QVillageGameState.h"
-#include "Blueprint/WidgetBlueprintLibrary.h"
 #include "Player/QPlayerState.h"
 #include "UObject/ConstructorHelpers.h"
 #include "GodCall.h"
 #include "Kismet/GameplayStatics.h"
 #include "GameFramework/Actor.h"
 #include "Engine/World.h"
-
+#include "EngineUtils.h"
 #include "JuryComponent.h"
+#include "QLogCategories.h"
 #include "ResidentComponent.h"
 
 
@@ -45,7 +44,7 @@ void AQGameModeVillage::PostInitializeComponents()
 void AQGameModeVillage::BeginPlay()
 {
 	Super::BeginPlay();
-
+	
 	// NPC ID 카운터 리셋
 	UJuryComponent::JuryCount = 0;
 	UResidentComponent::ResidentCount = 0;
@@ -99,4 +98,26 @@ void AQGameModeVillage::EndPlay(const EEndPlayReason::Type EndPlayReason)
 		UE_LOG(LogTemp, Error, TEXT("❌ GameInstance를 찾을 수 없음! 프롬프트 재생성 실패"));
 	}
 
+}
+
+void AQGameModeVillage::TravelToCourtMap()
+{
+	if (!HasAuthority()) return;
+
+	// 모든 플레이어가 준비되지 않았다면 return
+	for (TActorIterator<AQPlayerState> IT(GetWorld()); IT; ++IT)
+	{
+		if (!IT->GetIsReadyToTravelToCourt())
+		{
+			UE_LOG(LogLogic, Log, TEXT("AQVillageGameState::ServerRPCRequestTravelToCourt_Implementation - %s is not ready for travel to court."), *IT->GetName());
+			return;
+		}
+	}
+	
+	// 1) GameMode 에서 seamless travel 켜기
+	bUseSeamlessTravel = true;
+
+	// 2) 서버 주도 맵 전환 (listen 모드 유지)
+	FString URL = TEXT("/Game/Maps/NextMap?listen");
+	GetWorld()->ServerTravel(URL);
 }
