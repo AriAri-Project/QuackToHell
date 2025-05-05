@@ -15,6 +15,7 @@
 #include "Player/QPlayerController.h"
 #include "UI/QVillageTimerWidget.h"
 #include "UI/QVillageUIManager.h"
+#include "UI/QDefaultVillageWidget.h"
 #include "UObject/ConstructorHelpers.h"
 
 
@@ -47,7 +48,6 @@ void AQVillageGameState::Tick(float DeltaSeconds)
 		{
 			MulticastRPCUpdateServerTime_Implementation();
 		}
-
 		
 	}
 }
@@ -55,13 +55,23 @@ void AQVillageGameState::Tick(float DeltaSeconds)
 void AQVillageGameState::EndVillageActivity_Implementation()
 {
 	//UE_LOG(LogLogic, Log, TEXT("AQVillageGameState::EndVillageActivity_Implementation : 아직 미구현상태"));
-	//1. UI정리
-	AQVillageUIManager::GetInstance(GetWorld())->EndupUI();
-	//2. 플레이어정리 : 로컬플레이어의 상호작용 차단
+	
+	AQVillageUIManager::GetInstance(GetWorld())->MulticastEndupUI();
+	//플레이어정리 : 로컬플레이어의 상호작용 차단
 	APlayerController* LocalPlayerController = GetWorld()->GetFirstPlayerController();
 	if (LocalPlayerController) {
 		if (AQPlayerController* QPlayerController = Cast<AQPlayerController>(LocalPlayerController)) {
-			QPlayerController->BlockInteraction();
+			QPlayerController->MulticastBlockInteraction();
+			//UI정리
+			//UI상호작용차단
+			TObjectPtr<AQVillageUIManager> VillageUIManager =  QPlayerController->GetVillageUIManager();
+			VillageUIManager->MulticastEndupUI();
+			//안내문구띄우기
+			Cast<UQDefaultVillageWidget>(VillageUIManager->GetActivedVillageWidgets()[EVillageUIType::DefaultVillageUI])->TurnOnGrandTitle();
+			Cast<UQDefaultVillageWidget>(VillageUIManager->GetActivedVillageWidgets()[EVillageUIType::DefaultVillageUI])->TurnOnMiddleTitle();
+			Cast<UQDefaultVillageWidget>(VillageUIManager->GetActivedVillageWidgets()[EVillageUIType::DefaultVillageUI])->SetGrandTitle(FText::FromString(TEXT("시간 종료!")));
+			Cast<UQDefaultVillageWidget>(VillageUIManager->GetActivedVillageWidgets()[EVillageUIType::DefaultVillageUI])->SetMiddleTitle(FText::FromString(TEXT("곧 재판장으로 이동합니다.")));
+			
 		}
 		else {
 			UE_LOG(LogLogic, Error, TEXT("AQVillageGameState::EndVillageActivity_Implementation : QPlayerController 캐스팅 실패"));

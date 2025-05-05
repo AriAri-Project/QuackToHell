@@ -132,7 +132,7 @@ void AQVillageUIManager::CloseUIInteraction()
 	Cast<UQDefaultVillageWidget>(ActivedVillageWidgets[EVillageUIType::DefaultVillageUI])->BlockButtonsInteraction();
 }
 
-void AQVillageUIManager::EndupUI()
+void AQVillageUIManager::MulticastEndupUI_Implementation()
 {
 	UE_LOG(LogLogic, Log, TEXT("AQVillageUIManager::EndupUI: 미구현"));
 	//1. 열린 UI팝업을 닫는다. == default UI빼고 다 turnoff한다. 

@@ -30,8 +30,10 @@ public:
 	void EndVillageActivity();
 
 private:
-
-	float TimeUntilTrialMax = 60 * 7;
+	/**
+	 * @todo 60*7로 되돌리기.
+	 */
+	float TimeUntilTrialMax = 60*7;
 	
 	/** @brief 재판까지 남은 시간 */
 	UPROPERTY(Replicated)

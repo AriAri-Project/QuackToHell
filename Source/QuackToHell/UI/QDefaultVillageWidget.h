@@ -17,6 +17,11 @@ class QUACKTOHELL_API UQDefaultVillageWidget : public UUserWidget
 {
 	GENERATED_BODY()
 public:
+	void TurnOnGrandTitle();
+	void TurnOnMiddleTitle();
+	void SetGrandTitle(const FText& InText); 
+	void SetMiddleTitle(const FText& InText); 
+public:
 	/**
 	 * @ 녹음기 버튼이 눌리는 이벤트에 대한 델리게이트
 	 */
@@ -46,6 +51,18 @@ protected:
 	 */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class UButton> MapButton;
+
+	/**
+	 * @brief 대제목을 바인드.
+	 */
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextBlock> GrandTitle;
+
+	/**
+	 * @brief 중제목을 바인드.
+	 */
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextBlock> MiddleTitle;
 	
 protected:
 	/**
