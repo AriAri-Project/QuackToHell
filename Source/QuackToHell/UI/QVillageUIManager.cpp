@@ -136,7 +136,11 @@ void AQVillageUIManager::EndupUI()
 {
 	UE_LOG(LogLogic, Log, TEXT("AQVillageUIManager::EndupUI: 미구현"));
 	//1. 열린 UI팝업을 닫는다. == default UI빼고 다 turnoff한다. 
-	
+	for (auto& Widget : ActivedVillageWidgets) {
+		if (Widget.Key != EVillageUIType::DefaultVillageUI) {
+			Widget.Value->SetVisibility(ESlateVisibility::Hidden);
+		}
+	}
 	//2. 상호작용을 막는다.
 	CloseUIInteraction();
 }

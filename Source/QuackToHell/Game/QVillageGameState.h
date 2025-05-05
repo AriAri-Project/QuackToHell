@@ -30,6 +30,7 @@ public:
 	void EndVillageActivity();
 
 private:
+
 	float TimeUntilTrialMax = 60 * 7;
 	
 	/** @brief 재판까지 남은 시간 */

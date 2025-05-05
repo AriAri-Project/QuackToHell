@@ -34,6 +34,18 @@ protected:
 	 */
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<class USizeBox> TimerBox;
+
+	/**
+	 * @brief 녹음기 버튼을 바인드.
+	 */
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UButton> WalkieTalkieButton;
+
+	/**
+	 * @brief 지도 버튼을 바인드.
+	 */
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UButton> MapButton;
 	
 protected:
 	/**

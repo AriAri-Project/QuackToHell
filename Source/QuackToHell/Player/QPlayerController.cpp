@@ -25,6 +25,13 @@ void AQPlayerController::BlockInteraction()
 {
 	UE_LOG(LogLogic, Log, TEXT("AQPlayerController::BlockInteraction: 구현됨. "));
 	//상호작용을 block == 이동입력처리x
+	//EnhancedInputComponent 캐스팅
+	auto* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent);
+	if (EnhancedInputComponent) {
+		//바인딩 해제
+		EnhancedInputComponent->ClearActionBindings();
+	}
+	//InputComponent를 비활성화
 	InputComponent = nullptr;
 }
 

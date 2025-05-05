@@ -12,6 +12,7 @@
 #include "GameFramework/PlayerState.h"
 #include "Net/UnrealNetwork.h"
 #include "Player/QPlayerState.h"
+#include "Player/QPlayerController.h"
 #include "UI/QVillageTimerWidget.h"
 #include "UI/QVillageUIManager.h"
 #include "UObject/ConstructorHelpers.h"
@@ -46,16 +47,26 @@ void AQVillageGameState::Tick(float DeltaSeconds)
 		{
 			MulticastRPCUpdateServerTime_Implementation();
 		}
+
+		
 	}
 }
 
 void AQVillageGameState::EndVillageActivity_Implementation()
 {
-	UE_LOG(LogLogic, Log, TEXT("AQVillageGameState::EndVillageActivity_Implementation : 아직 미구현상태"));
+	//UE_LOG(LogLogic, Log, TEXT("AQVillageGameState::EndVillageActivity_Implementation : 아직 미구현상태"));
 	//1. UI정리
 	AQVillageUIManager::GetInstance(GetWorld())->EndupUI();
 	//2. 플레이어정리 : 로컬플레이어의 상호작용 차단
-	//-> BlockInteraction();
+	APlayerController* LocalPlayerController = GetWorld()->GetFirstPlayerController();
+	if (LocalPlayerController) {
+		if (AQPlayerController* QPlayerController = Cast<AQPlayerController>(LocalPlayerController)) {
+			QPlayerController->BlockInteraction();
+		}
+		else {
+			UE_LOG(LogLogic, Error, TEXT("AQVillageGameState::EndVillageActivity_Implementation : QPlayerController 캐스팅 실패"));
+		}
+	}
 }
 
 void AQVillageGameState::MulticastRPCUpdateServerTime_Implementation()

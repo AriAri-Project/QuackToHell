@@ -3,11 +3,14 @@
 
 #include "UI/QDefaultVillageWidget.h"
 #include "UI/QVillageUIManager.h"
+#include "Components/Button.h"
 #include "QLogCategories.h"
 #include "Components/SizeBox.h"
 void UQDefaultVillageWidget::BlockButtonsInteraction()
 {
-	UE_LOG(LogLogic, Log, TEXT("아직 미구현: UQDefaultVillageWidget::BlockButtonsInteraction"));
+	//버튼 상호작용을 막는다.
+	WalkieTalkieButton->SetIsEnabled(false);
+	MapButton->SetIsEnabled(false);
 }
 void UQDefaultVillageWidget::TurnOnTimerUI()
 {
