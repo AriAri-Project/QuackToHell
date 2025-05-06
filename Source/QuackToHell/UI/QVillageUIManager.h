@@ -55,7 +55,8 @@ public:
 	 * .@brief 타이머 종료 시 호출됩니다. 마을 UI를 마무리합니다.
 	 *  @details 내부에서 1. 열린 UI 팝업 닫기 2. UI 상호작용 차단을 구현합니다.
 	 */
-	void EndupUI();
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastEndupUI();
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

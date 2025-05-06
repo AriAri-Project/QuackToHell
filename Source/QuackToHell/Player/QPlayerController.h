@@ -15,11 +15,14 @@ class QUACKTOHELL_API AQPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 public:
+	TObjectPtr<class AQVillageUIManager> GetVillageUIManager() const { return VillageUIManager; }
+public:
 	/**
 	 * @brief 상호작용을 block합니다.
 	 * 
 	 */
-	void BlockInteraction();
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastBlockInteraction();
 public:
 	/** @breif ServerRPCStartConversation을 성공적으로 마치게 되면 실행되는 함수. 이 내부에 클라쪽 StartConversation 구현
 	* @param NPC 대화대상 npc
@@ -41,7 +44,7 @@ public:
 protected:
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
-
+	virtual void Tick(float DeltaTime) override;
 protected:
 	/** @brief IMC입니다. */
 	UPROPERTY(EditAnyWhere, Category = "Input")
@@ -124,7 +127,10 @@ private:
 private:
 	/** @brief VillageUIManager정보를 갖습니다. */
 	TObjectPtr<class AQVillageUIManager> VillageUIManager;
-
+private:
+	/* 재판장이동 타이머 */
+	float MoveToCourtTimer = 0.0f;
+	const float MoveToCourtTimerMax = 3.0f;
 };
 
 

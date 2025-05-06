@@ -21,10 +21,17 @@
 #include "Kismet/KismetMathLibrary.h"
 #include "NPC/QDynamicNPCController.h"
 
-void AQPlayerController::BlockInteraction()
+void AQPlayerController::MulticastBlockInteraction_Implementation()
 {
 	UE_LOG(LogLogic, Log, TEXT("AQPlayerController::BlockInteraction: 구현됨. "));
 	//상호작용을 block == 이동입력처리x
+	//EnhancedInputComponent 캐스팅
+	auto* EnhancedInputComponent = Cast<UEnhancedInputComponent>(InputComponent);
+	if (EnhancedInputComponent) {
+		//바인딩 해제
+		EnhancedInputComponent->ClearActionBindings();
+	}
+	//InputComponent를 비활성화
 	InputComponent = nullptr;
 }
 
@@ -72,6 +79,21 @@ void AQPlayerController::SetupInputComponent()
 
 
 	
+	}
+}
+
+void AQPlayerController::Tick(float DeltaTime)
+{
+	if (InputComponent == nullptr) {
+		MoveToCourtTimer += DeltaTime;
+		if (MoveToCourtTimer >= MoveToCourtTimerMax) {
+			// 현재 월드에서 GameState를 가져옴
+			TObjectPtr<AQVillageGameState> VillageGameState = GetWorld()->GetGameState<AQVillageGameState>();
+			if (!VillageGameState)
+			{
+				VillageGameState->ServerRPCRequestTravelToCourt(this, true);
+			}
+		}
 	}
 }
 
