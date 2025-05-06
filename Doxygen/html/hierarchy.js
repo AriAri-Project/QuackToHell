@@ -53,9 +53,9 @@ var hierarchy =
     [ "FDialogueHistory", "struct_f_dialogue_history.html", null ],
     [ "FEvidence", "struct_f_evidence.html", null ],
     [ "FEvidenceList", "struct_f_evidence_list.html", null ],
-    [ "FMyButton", "struct_f_my_button.html", null ],
     [ "FOpenAIRequest", "struct_f_open_a_i_request.html", null ],
     [ "FOpenAIResponse", "struct_f_open_a_i_response.html", null ],
+    [ "FRecordButton", "struct_f_record_button.html", null ],
     [ "ModuleRules", null, [
       [ "QuackToHell", "class_quack_to_hell.html", null ]
     ] ],

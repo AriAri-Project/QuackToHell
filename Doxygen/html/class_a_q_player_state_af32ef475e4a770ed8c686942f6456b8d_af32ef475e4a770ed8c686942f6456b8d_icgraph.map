@@ -1,0 +1,4 @@
+<map id="ServerRPCAcquireEvidence" name="ServerRPCAcquireEvidence">
+<area shape="rect" id="Node000001" title="플레이어가 증거물을 습득했을 때 서버에 정보를 업데이트해주는 함수" alt="" coords="5,29,192,56"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="130,16,119,10,98,8,79,10,69,15,66,20,71,27,67,30,61,21,65,11,78,5,99,3,121,5,133,12"/>
+</map>

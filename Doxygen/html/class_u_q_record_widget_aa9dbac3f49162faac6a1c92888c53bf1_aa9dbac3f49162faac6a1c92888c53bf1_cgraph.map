@@ -8,10 +8,10 @@
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="315,49,363,40,364,45,316,54"/>
 <area shape="rect" id="Node000004" href="$class_a_q_village_u_i_manager_a1da182c7b2c5dcb13c097d45ccf53526.html#a1da182c7b2c5dcb13c097d45ccf53526" title=" " alt="" coords="592,5,736,48"/>
 <area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="531,24,577,24,577,29,531,29"/>
-<area shape="rect" id="Node000006" href="$class_a_q_player_state_ae888ee9b5cc6aa0aa15b6d4e402f171a.html#ae888ee9b5cc6aa0aa15b6d4e402f171a" title="PlayerID를 이욯해 대화기록 조회." alt="" coords="365,72,544,115"/>
+<area shape="rect" id="Node000006" href="$struct_f_conversation_record_ada1714f59b8d9826f24da5bfc91675d0.html#ada1714f59b8d9826f24da5bfc91675d0" title=" " alt="" coords="380,72,529,115"/>
 <area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="288,143,369,117,371,122,289,149"/>
-<area shape="rect" id="Node000007" href="$struct_f_conversation_record_ab2e31a84eb0623426a5440861c6b1e92.html#ab2e31a84eb0623426a5440861c6b1e92" title=" " alt="" coords="380,139,529,181"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="318,157,365,157,365,163,318,163"/>
+<area shape="rect" id="Node000007" href="$class_a_q_player_state_ae888ee9b5cc6aa0aa15b6d4e402f171a.html#ae888ee9b5cc6aa0aa15b6d4e402f171a" title="PlayerID를 이욯해 대화기록 조회." alt="" coords="365,139,544,181"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="318,157,349,157,349,163,318,163"/>
 <area shape="rect" id="Node000008" href="$struct_f_conversation_record_ae4b7ca6bb9acc162eee02925e1ce73f0.html#ae4b7ca6bb9acc162eee02925e1ce73f0" title=" " alt="" coords="380,205,529,248"/>
 <area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="289,171,371,198,369,203,288,177"/>
 <area shape="rect" id="Node000009" href="$class_u_q_record_widget_af0299cf8720c6b6b500e5d9235f575ff.html#af0299cf8720c6b6b500e5d9235f575ff" title="버튼위젯의 모양을 업데이트한다." alt="" coords="382,272,528,299"/>

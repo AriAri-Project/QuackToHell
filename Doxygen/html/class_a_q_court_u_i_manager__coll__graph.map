@@ -1,5 +1,5 @@
 <map id="AQCourtUIManager" name="AQCourtUIManager">
-<area shape="rect" id="Node000001" title="법원 UI 매니저입니다. 키고끄는 책임이 있습니다. 흐름 덩어리에 대해서도 키고 끌 수 있습니다. (ex. 모두진술, 증거조사 .. )" alt="" coords="5,123,202,821"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="78,5,129,75"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="106,90,106,123,101,123,101,90"/>
+<area shape="rect" id="Node000001" title="법원 UI 매니저입니다. 키고끄는 책임이 있습니다. 흐름 덩어리에 대해서도 키고 끌 수 있습니다. (ex. 모두진술, 증거조사 .. )" alt="" coords="5,123,245,1296"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="100,5,151,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,90,128,123,123,123,123,90"/>
 </map>

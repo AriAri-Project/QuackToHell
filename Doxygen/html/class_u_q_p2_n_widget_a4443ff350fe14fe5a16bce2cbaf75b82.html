@@ -119,25 +119,36 @@ $(function(){initNavTree('class_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b8
 
 <p>엔터키 눌렸을때의 처리; </p>
 
-<p class="definition"><a class="el" href="_q_p2_n_widget_8cpp_source.html">QP2NWidget.cpp</a> 파일의 <a class="el" href="_q_p2_n_widget_8cpp_source.html#l00039">39</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
-<div class="line"><span class="lineno">   41</span>    <span class="comment">/*예외처리*/</span></div>
-<div class="line"><span class="lineno">   42</span>    <span class="comment">//공백문자열이면 무시한다. </span></div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;GetText().ToString() == TEXT(<span class="stringliteral">&quot;&quot;</span>)) {</div>
-<div class="line"><span class="lineno">   44</span>        UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;공백문자열을 input했습니다. 리턴합니다.&quot;</span>));</div>
-<div class="line"><span class="lineno">   45</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   46</span>    }</div>
-<div class="line"><span class="lineno">   48</span>    <span class="comment">//1 .플레이어 텍스트를 inputbox에 있던거로 업뎃한다.  </span></div>
-<div class="line"><span class="lineno">   49</span>    <a class="code hl_function" href="class_u_q_p2_n_widget_aa9750057e825099fb837b1c7ac3bd6b7.html#aa9750057e825099fb837b1c7ac3bd6b7">UpdatePlayerText</a>(<a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;GetText().ToString());</div>
-<div class="line"><span class="lineno">   50</span>    FString PlayerInput = <a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;GetText().ToString();</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>    <span class="comment">//2. inputbox는 공란으로 만든다.</span></div>
-<div class="line"><span class="lineno">   53</span>    <a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;&quot;</span>)));</div>
-<div class="line"><span class="lineno">   54</span>    <span class="comment">//3. NPC Text는 음.. 으로 바꾼다.</span></div>
-<div class="line"><span class="lineno">   55</span>    <a class="code hl_function" href="class_u_q_p2_n_widget_a295cbf313003db73b1ec4d8c916c6cf7.html#a295cbf313003db73b1ec4d8c916c6cf7">UpdateNPCText</a>(<a class="code hl_variable" href="class_u_q_p2_n_widget_a142e8a5800c027b8fadc79f5039a6fd8.html#a142e8a5800c027b8fadc79f5039a6fd8">WhenGenerateResponseText</a>);</div>
-<div class="line"><span class="lineno">   56</span>    <span class="comment">//4. NPC에게 응답을 요청한다.</span></div>
-<div class="line"><span class="lineno">   57</span>    <a class="code hl_variable" href="class_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450.html#afd4fc717ac802ea7d5ddd2f173739450">ConversingNPC</a>-&gt;Response(PlayerInput,EConversationType::P2N);</div>
-<div class="line"><span class="lineno">   58</span>}</div>
+<p class="definition"><a class="el" href="_q_p2_n_widget_8cpp_source.html">QP2NWidget.cpp</a> 파일의 <a class="el" href="_q_p2_n_widget_8cpp_source.html#l00038">38</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   39</span>{</div>
+<div class="line"><span class="lineno">   40</span>    <span class="comment">/*예외처리*/</span></div>
+<div class="line"><span class="lineno">   41</span>    <span class="comment">//공백문자열이면 무시한다. </span></div>
+<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;GetText().ToString() == TEXT(<span class="stringliteral">&quot;&quot;</span>)) {</div>
+<div class="line"><span class="lineno">   43</span>        UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;공백문자열을 input했습니다. 리턴합니다.&quot;</span>));</div>
+<div class="line"><span class="lineno">   44</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">   45</span>    }</div>
+<div class="line"><span class="lineno">   47</span>    <span class="comment">//1 .플레이어 텍스트를 inputbox에 있던거로 업뎃한다.  </span></div>
+<div class="line"><span class="lineno">   48</span>    <a class="code hl_function" href="class_u_q_p2_n_widget_aa9750057e825099fb837b1c7ac3bd6b7.html#aa9750057e825099fb837b1c7ac3bd6b7">UpdatePlayerText</a>(<a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;GetText().ToString());</div>
+<div class="line"><span class="lineno">   49</span>    FString PlayerInput = <a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;GetText().ToString();</div>
+<div class="line"><span class="lineno">   50</span>    <span class="comment">//1-2. 서버에 플레이어 대사 저장</span></div>
+<div class="line"><span class="lineno">   51</span>    AQPlayerState* PlayerState = GetOwningLocalPlayer()-&gt;PlayerController-&gt;GetPlayerState&lt;AQPlayerState&gt;();</div>
+<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">if</span> (PlayerState == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   53</span>    {</div>
+<div class="line"><span class="lineno">   54</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;UQP2NWidget::HandleEnterKeyPress - Can&#39;t find PlayerState.&quot;</span>));</div>
+<div class="line"><span class="lineno">   55</span>    }</div>
+<div class="line"><span class="lineno">   56</span>    <span class="comment">// 플레이어 응답 대화기록에 저장</span></div>
+<div class="line"><span class="lineno">   57</span>    TObjectPtr&lt;UNPCComponent&gt; NPCComponent = <a class="code hl_variable" href="class_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450.html#afd4fc717ac802ea7d5ddd2f173739450">ConversingNPC</a>-&gt;GetPawn()-&gt;FindComponentByClass&lt;UNPCComponent&gt;();</div>
+<div class="line"><span class="lineno">   58</span>    int32 NPCID  = NPCComponent-&gt;GetNPCID();</div>
+<div class="line"><span class="lineno">   59</span>    PlayerState-&gt;<a class="code hl_function" href="class_a_q_player_state_abdfc0b8073f2e2fba2cccf95132bd990.html#abdfc0b8073f2e2fba2cccf95132bd990">ServerRPCAddP2NPlayerStatement</a>(EConversationType::P2N, NPCID, PlayerState-&gt;GetPlayerId(), PlayerInput);</div>
+<div class="line"><span class="lineno">   60</span> </div>
+<div class="line"><span class="lineno">   61</span>    <span class="comment">//2. inputbox는 공란으로 만든다.</span></div>
+<div class="line"><span class="lineno">   62</span>    <a class="code hl_variable" href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">inputBox</a>-&gt;SetText(FText::FromString(TEXT(<span class="stringliteral">&quot;&quot;</span>)));</div>
+<div class="line"><span class="lineno">   63</span>    <span class="comment">//3. NPC Text는 음.. 으로 바꾼다.</span></div>
+<div class="line"><span class="lineno">   64</span>    <a class="code hl_function" href="class_u_q_p2_n_widget_a295cbf313003db73b1ec4d8c916c6cf7.html#a295cbf313003db73b1ec4d8c916c6cf7">UpdateNPCText</a>(<a class="code hl_variable" href="class_u_q_p2_n_widget_a142e8a5800c027b8fadc79f5039a6fd8.html#a142e8a5800c027b8fadc79f5039a6fd8">WhenGenerateResponseText</a>);</div>
+<div class="line"><span class="lineno">   65</span>    <span class="comment">//4. NPC에게 응답을 요청한다.</span></div>
+<div class="line"><span class="lineno">   66</span>    <a class="code hl_variable" href="class_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450.html#afd4fc717ac802ea7d5ddd2f173739450">ConversingNPC</a>-&gt;Response(PlayerInput,EConversationType::P2N);</div>
+<div class="line"><span class="lineno">   67</span>}</div>
+<div class="ttc" id="aclass_a_q_player_state_abdfc0b8073f2e2fba2cccf95132bd990_html_abdfc0b8073f2e2fba2cccf95132bd990"><div class="ttname"><a href="class_a_q_player_state_abdfc0b8073f2e2fba2cccf95132bd990.html#abdfc0b8073f2e2fba2cccf95132bd990">AQPlayerState::ServerRPCAddP2NPlayerStatement</a></div><div class="ttdeci">void ServerRPCAddP2NPlayerStatement(EConversationType ConversationType, int32 ListenerID, int32 SpeakerID, const FString &amp;Message)</div><div class="ttdoc">P2N 대화에서 플레이어의 대사를 대화기록 자료구조에 저장하는 함수</div></div>
 <div class="ttc" id="aclass_u_q_p2_n_widget_a142e8a5800c027b8fadc79f5039a6fd8_html_a142e8a5800c027b8fadc79f5039a6fd8"><div class="ttname"><a href="class_u_q_p2_n_widget_a142e8a5800c027b8fadc79f5039a6fd8.html#a142e8a5800c027b8fadc79f5039a6fd8">UQP2NWidget::WhenGenerateResponseText</a></div><div class="ttdeci">const FString WhenGenerateResponseText</div><div class="ttdoc">응답생성중일때의 멘트</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00084">QP2NWidget.h:84</a></div></div>
 <div class="ttc" id="aclass_u_q_p2_n_widget_a295cbf313003db73b1ec4d8c916c6cf7_html_a295cbf313003db73b1ec4d8c916c6cf7"><div class="ttname"><a href="class_u_q_p2_n_widget_a295cbf313003db73b1ec4d8c916c6cf7.html#a295cbf313003db73b1ec4d8c916c6cf7">UQP2NWidget::UpdateNPCText</a></div><div class="ttdeci">void UpdateNPCText(const FString &amp;Text)</div><div class="ttdoc">대화상자의 글씨를 업데이트합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8cpp_source.html#l00023">QP2NWidget.cpp:23</a></div></div>
 <div class="ttc" id="aclass_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa_html_a450775460af55e653967745961dfc7fa"><div class="ttname"><a href="class_u_q_p2_n_widget_a450775460af55e653967745961dfc7fa.html#a450775460af55e653967745961dfc7fa">UQP2NWidget::inputBox</a></div><div class="ttdeci">TObjectPtr&lt; class UEditableTextBox &gt; inputBox</div><div class="ttdoc">@brie inputBox 컴포넌트 바인드</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00075">QP2NWidget.h:75</a></div></div>
@@ -148,11 +159,28 @@ $(function(){initNavTree('class_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b8
 <div class="dyncontent">
 <div class="center"><img src="class_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b82_a4443ff350fe14fe5a16bce2cbaf75b82_cgraph.png" border="0" usemap="#aclass_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b82_a4443ff350fe14fe5a16bce2cbaf75b82_cgraph" alt=""/></div>
 <map name="aclass_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b82_a4443ff350fe14fe5a16bce2cbaf75b82_cgraph" id="aclass_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b82_a4443ff350fe14fe5a16bce2cbaf75b82_cgraph">
-<area shape="rect" title="엔터키 눌렸을때의 처리;" alt="" coords="5,31,156,57"/>
-<area shape="rect" href="class_u_q_p2_n_widget_a295cbf313003db73b1ec4d8c916c6cf7.html#a295cbf313003db73b1ec4d8c916c6cf7" title="대화상자의 글씨를 업데이트합니다." alt="" coords="208,5,325,32"/>
-<area shape="poly" title=" " alt="" coords="155,31,192,26,193,31,156,36"/>
-<area shape="rect" href="class_u_q_p2_n_widget_aa9750057e825099fb837b1c7ac3bd6b7.html#aa9750057e825099fb837b1c7ac3bd6b7" title="대화상자의 글씨를 업데이트합니다." alt="" coords="204,56,329,83"/>
-<area shape="poly" title=" " alt="" coords="156,52,189,56,188,61,155,57"/>
+<area shape="rect" title="엔터키 눌렸을때의 처리;" alt="" coords="5,256,156,283"/>
+<area shape="rect" href="class_a_q_player_state_abdfc0b8073f2e2fba2cccf95132bd990.html#abdfc0b8073f2e2fba2cccf95132bd990" title="P2N 대화에서 플레이어의 대사를 대화기록 자료구조에 저장하는 함수" alt="" coords="204,189,410,232"/>
+<area shape="poly" title=" " alt="" coords="134,253,207,234,208,239,136,258"/>
+<area shape="rect" href="class_u_q_p2_n_widget_a295cbf313003db73b1ec4d8c916c6cf7.html#a295cbf313003db73b1ec4d8c916c6cf7" title="대화상자의 글씨를 업데이트합니다." alt="" coords="248,256,366,283"/>
+<area shape="poly" title=" " alt="" coords="156,267,232,267,232,272,156,272"/>
+<area shape="rect" href="class_u_q_p2_n_widget_aa9750057e825099fb837b1c7ac3bd6b7.html#aa9750057e825099fb837b1c7ac3bd6b7" title="대화상자의 글씨를 업데이트합니다." alt="" coords="244,307,370,333"/>
+<area shape="poly" title=" " alt="" coords="144,281,230,300,229,305,143,286"/>
+<area shape="poly" title=" " alt="" coords="264,189,262,179,269,170,284,165,307,163,331,165,346,171,343,176,330,170,307,168,285,170,272,175,267,181,269,188"/>
+<area shape="rect" href="class_a_q_player_state_a10afaf77c3f24c13efbaa2b68994eaa8.html#a10afaf77c3f24c13efbaa2b68994eaa8" title="@breif 모든 증거 아이템 정보를 반환" alt="" coords="458,5,671,32"/>
+<area shape="poly" title=" " alt="" coords="319,187,341,155,373,115,412,75,457,42,468,36,470,41,459,46,415,79,377,119,346,158,324,190"/>
+<area shape="rect" href="class_a_q_player_state_a712a70c67af3e281dc229e6ee57d8dcc.html#a712a70c67af3e281dc229e6ee57d8dcc" title="플레이어가 소유한 증거를 배열 형태로 반환" alt="" coords="466,56,664,99"/>
+<area shape="poly" title=" " alt="" coords="334,187,389,147,457,108,470,102,472,107,459,113,392,152,337,191"/>
+<area shape="rect" href="class_a_q_player_state_af5de8591eb5b2aa03fe971b4926f2edf.html#af5de8591eb5b2aa03fe971b4926f2edf" title="증거ID를 이용해 증거 조회." alt="" coords="469,123,660,165"/>
+<area shape="poly" title=" " alt="" coords="391,186,464,167,465,172,393,191"/>
+<area shape="rect" href="class_a_q_player_state_a69c772400936e3044115fc0cdb84ef16.html#a69c772400936e3044115fc0cdb84ef16" title="증거 이름을 이용해 증거 조회" alt="" coords="469,189,660,232"/>
+<area shape="poly" title=" " alt="" coords="410,208,453,208,453,213,410,213"/>
+<area shape="rect" href="class_a_q_player_state_a42d59caa6617569f0f3a4451aab8887a.html#a42d59caa6617569f0f3a4451aab8887a" title="대화기록ID를 이용해 대화기록 조회." alt="" coords="475,256,654,299"/>
+<area shape="poly" title=" " alt="" coords="393,230,465,249,464,254,391,235"/>
+<area shape="rect" href="class_a_q_player_state_ae888ee9b5cc6aa0aa15b6d4e402f171a.html#ae888ee9b5cc6aa0aa15b6d4e402f171a" title="PlayerID를 이욯해 대화기록 조회." alt="" coords="475,323,654,365"/>
+<area shape="poly" title=" " alt="" coords="392,230,412,242,428,259,436,276,444,293,460,309,466,313,463,317,456,313,440,296,432,279,424,262,408,246,389,235"/>
+<area shape="rect" href="class_a_q_player_state_a0c0a12162389a9d4058dfb2f1cc0f445.html#a0c0a12162389a9d4058dfb2f1cc0f445" title="특정 NPCID를 이용해 대화기록 조회." alt="" coords="475,389,654,432"/>
+<area shape="poly" title=" " alt="" coords="396,230,412,242,425,259,433,277,437,310,440,344,447,359,460,375,464,379,461,383,456,379,442,362,435,345,431,311,428,278,421,262,408,246,393,235"/>
 </map>
 </div>
 <div class="dynheader">

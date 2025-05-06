@@ -119,10 +119,14 @@ $(function(){initNavTree('class_u_q_default_village_widget_a7ce0ed614f36bdebce0b
 
 <p>버튼 상호작용을 차단합니다. </p>
 
-<p class="definition"><a class="el" href="_q_default_village_widget_8cpp_source.html">QDefaultVillageWidget.cpp</a> 파일의 <a class="el" href="_q_default_village_widget_8cpp_source.html#l00008">8</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">    9</span>{</div>
-<div class="line"><span class="lineno">   10</span>    UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;아직 미구현: UQDefaultVillageWidget::BlockButtonsInteraction&quot;</span>));</div>
-<div class="line"><span class="lineno">   11</span>}</div>
+<p class="definition"><a class="el" href="_q_default_village_widget_8cpp_source.html">QDefaultVillageWidget.cpp</a> 파일의 <a class="el" href="_q_default_village_widget_8cpp_source.html#l00010">10</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   11</span>{</div>
+<div class="line"><span class="lineno">   12</span>    <span class="comment">//버튼 상호작용을 막는다.</span></div>
+<div class="line"><span class="lineno">   13</span>    <a class="code hl_variable" href="class_u_q_default_village_widget_a2de80ac743403cdb8a31605aea44e26d.html#a2de80ac743403cdb8a31605aea44e26d">WalkieTalkieButton</a>-&gt;SetIsEnabled(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   14</span>    <a class="code hl_variable" href="class_u_q_default_village_widget_a218420635fb19ac067fc65a21174f5f9.html#a218420635fb19ac067fc65a21174f5f9">MapButton</a>-&gt;SetIsEnabled(<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   15</span>}</div>
+<div class="ttc" id="aclass_u_q_default_village_widget_a218420635fb19ac067fc65a21174f5f9_html_a218420635fb19ac067fc65a21174f5f9"><div class="ttname"><a href="class_u_q_default_village_widget_a218420635fb19ac067fc65a21174f5f9.html#a218420635fb19ac067fc65a21174f5f9">UQDefaultVillageWidget::MapButton</a></div><div class="ttdeci">TObjectPtr&lt; class UButton &gt; MapButton</div><div class="ttdoc">지도 버튼을 바인드.</div><div class="ttdef"><b>Definition</b> <a href="_q_default_village_widget_8h_source.html#l00053">QDefaultVillageWidget.h:53</a></div></div>
+<div class="ttc" id="aclass_u_q_default_village_widget_a2de80ac743403cdb8a31605aea44e26d_html_a2de80ac743403cdb8a31605aea44e26d"><div class="ttname"><a href="class_u_q_default_village_widget_a2de80ac743403cdb8a31605aea44e26d.html#a2de80ac743403cdb8a31605aea44e26d">UQDefaultVillageWidget::WalkieTalkieButton</a></div><div class="ttdeci">TObjectPtr&lt; class UButton &gt; WalkieTalkieButton</div><div class="ttdoc">녹음기 버튼을 바인드.</div><div class="ttdef"><b>Definition</b> <a href="_q_default_village_widget_8h_source.html#l00047">QDefaultVillageWidget.h:47</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

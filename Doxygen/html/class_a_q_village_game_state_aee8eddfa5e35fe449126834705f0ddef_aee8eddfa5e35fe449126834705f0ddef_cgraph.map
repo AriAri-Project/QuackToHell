@@ -2,5 +2,9 @@
 <area shape="rect" id="Node000001" title=" " alt="" coords="5,29,52,56"/>
 <area shape="rect" id="Node000002" href="$class_a_q_village_game_state_a660da4360746d51670213e890b9d5801.html#a660da4360746d51670213e890b9d5801" title=" " alt="" coords="100,29,312,56"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="52,40,84,40,84,45,52,45"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="175,30,170,21,174,11,186,5,206,3,227,5,239,12,236,16,225,10,206,8,187,10,178,15,175,20,180,28"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="175,30,170,21,174,11,186,5,206,3,227,5,239,12,236,16,225,10,206,8,187,10,178,15,175,20,180,28"/>
+<area shape="rect" id="Node000003" href="$class_a_q_village_game_state_a688759ffe4cd83ff0873786f3318dc3f.html#a688759ffe4cd83ff0873786f3318dc3f" title=" " alt="" coords="360,29,544,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="313,40,344,40,344,45,313,45"/>
+<area shape="rect" id="Node000004" href="$class_a_q_village_game_state_a0123dbe72e42f5ef9982d99b2b3b6486.html#a0123dbe72e42f5ef9982d99b2b3b6486" title=" " alt="" coords="592,29,738,56"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="544,40,577,40,577,45,544,45"/>
 </map>

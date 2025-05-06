@@ -14,8 +14,8 @@ var searchData=
   ['npccomponent_2ecpp_11',['NPCComponent.cpp',['../_n_p_c_component_8cpp.html',1,'']]],
   ['npccomponent_2eh_12',['NPCComponent.h',['../_n_p_c_component_8h.html',1,'']]],
   ['npcconversationstate_13',['NPCConversationState',['../class_a_q_n_p_c_a7386d09ccfb230350e050fd70502bc8c.html#a7386d09ccfb230350e050fd70502bc8c',1,'AQNPC']]],
-  ['npcidcount_14',['NPCIDCount',['../class_a_q_game_mode_village_aa773ddf05ac3ac90b15b27d51df39aec.html#aa773ddf05ac3ac90b15b27d51df39aec',1,'AQGameModeVillage']]],
-  ['npcidinit_15',['NPCIDInit',['../class_a_q_game_mode_village_ad0fd10a7e617613526306b7bd413517e.html#ad0fd10a7e617613526306b7bd413517e',1,'AQGameModeVillage']]],
-  ['npclist_16',['NPCList',['../class_a_q_village_game_state_a42993f06a710866b784d3feb4e4facfb.html#a42993f06a710866b784d3feb4e4facfb',1,'AQVillageGameState']]],
+  ['npcidcount_14',['NPCIDCount',['../class_u_q_game_instance_a627e602e01b29e3c733ea3ab3d84400d.html#a627e602e01b29e3c733ea3ab3d84400d',1,'UQGameInstance']]],
+  ['npcidinit_15',['NPCIDInit',['../class_u_q_game_instance_ad0fd10a7e617613526306b7bd413517e.html#ad0fd10a7e617613526306b7bd413517e',1,'UQGameInstance']]],
+  ['npclist_16',['NPCList',['../class_u_q_game_instance_a42993f06a710866b784d3feb4e4facfb.html#a42993f06a710866b784d3feb4e4facfb',1,'UQGameInstance']]],
   ['npctext_17',['NPCText',['../class_u_q_p2_n_widget_aadf81eda9272ee4a63f7cc3ec6f4670f.html#aadf81eda9272ee4a63f7cc3ec6f4670f',1,'UQP2NWidget']]]
 ];

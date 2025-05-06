@@ -133,32 +133,32 @@ $(function(){initNavTree('class_a_q_player_controller_adae96a667d7c8bd42bb6800dd
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="_q_player_controller_8cpp_source.html">QPlayerController.cpp</a> 파일의 <a class="el" href="_q_player_controller_8cpp_source.html#l00303">303</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  304</span>{</div>
-<div class="line"><span class="lineno">  305</span>    </div>
-<div class="line"><span class="lineno">  306</span>    FVector2D MovementVector = InputValue.Get&lt;FVector2D&gt;();</div>
-<div class="line"><span class="lineno">  307</span> </div>
-<div class="line"><span class="lineno">  308</span>    <span class="comment">//앞 이동</span></div>
-<div class="line"><span class="lineno">  309</span>    <span class="keywordflow">if</span> (MovementVector.X != 0) {</div>
-<div class="line"><span class="lineno">  310</span>        <span class="comment">/*내가 바라보는 곳 기준의 앞 방향을 구해줌*/</span></div>
-<div class="line"><span class="lineno">  311</span>        <span class="comment">//마우스 방향 회전값 기준</span></div>
-<div class="line"><span class="lineno">  312</span>        FRotator Rotator = this-&gt;GetControlRotation();</div>
-<div class="line"><span class="lineno">  313</span>        <span class="comment">//해당 회전값의 기준의 앞 방향을 구해준다.</span></div>
-<div class="line"><span class="lineno">  314</span>        FVector Direction = UKismetMathLibrary::GetForwardVector(FRotator(0, Rotator.Yaw, 0));</div>
-<div class="line"><span class="lineno">  315</span>        <span class="comment">//방향과 크기를 전달함. (시간마다 거리를 더하는 것은 MovementComponent에서, 속도 세팅은 movementcomponent에서)</span></div>
-<div class="line"><span class="lineno">  316</span>        this-&gt;GetPawn()-&gt;AddMovementInput(Direction, MovementVector.X);</div>
-<div class="line"><span class="lineno">  317</span>    }</div>
-<div class="line"><span class="lineno">  318</span>    <span class="comment">//옆 이동</span></div>
-<div class="line"><span class="lineno">  319</span>    <span class="keywordflow">if</span> (MovementVector.Y != 0) {</div>
-<div class="line"><span class="lineno">  320</span>        <span class="comment">/*내가 바라보는 곳 기준의 옆 방향을 구해줌*/</span></div>
-<div class="line"><span class="lineno">  321</span>        <span class="comment">//마우스 방향 회전값 기준</span></div>
-<div class="line"><span class="lineno">  322</span>        FRotator Rotator = this-&gt;GetControlRotation();</div>
-<div class="line"><span class="lineno">  323</span>        <span class="comment">//해당 회전값의 기준의 옆 방향을 구해준다.</span></div>
-<div class="line"><span class="lineno">  324</span>        FVector Direction = UKismetMathLibrary::GetRightVector(FRotator(0, Rotator.Yaw, 0));</div>
-<div class="line"><span class="lineno">  325</span>        <span class="comment">//방향과 크기를 전달함. (시간마다 거리를 더하는 것은 MovementComponent에서, 속도 세팅은 movementcomponent에서)</span></div>
-<div class="line"><span class="lineno">  326</span>        this-&gt;GetPawn()-&gt;AddMovementInput(Direction, MovementVector.Y);</div>
-<div class="line"><span class="lineno">  327</span>    }</div>
-<div class="line"><span class="lineno">  328</span>}</div>
+<p class="definition"><a class="el" href="_q_player_controller_8cpp_source.html">QPlayerController.cpp</a> 파일의 <a class="el" href="_q_player_controller_8cpp_source.html#l00335">335</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  336</span>{</div>
+<div class="line"><span class="lineno">  337</span>    </div>
+<div class="line"><span class="lineno">  338</span>    FVector2D MovementVector = InputValue.Get&lt;FVector2D&gt;();</div>
+<div class="line"><span class="lineno">  339</span> </div>
+<div class="line"><span class="lineno">  340</span>    <span class="comment">//앞 이동</span></div>
+<div class="line"><span class="lineno">  341</span>    <span class="keywordflow">if</span> (MovementVector.X != 0) {</div>
+<div class="line"><span class="lineno">  342</span>        <span class="comment">/*내가 바라보는 곳 기준의 앞 방향을 구해줌*/</span></div>
+<div class="line"><span class="lineno">  343</span>        <span class="comment">//마우스 방향 회전값 기준</span></div>
+<div class="line"><span class="lineno">  344</span>        FRotator Rotator = this-&gt;GetControlRotation();</div>
+<div class="line"><span class="lineno">  345</span>        <span class="comment">//해당 회전값의 기준의 앞 방향을 구해준다.</span></div>
+<div class="line"><span class="lineno">  346</span>        FVector Direction = UKismetMathLibrary::GetForwardVector(FRotator(0, Rotator.Yaw, 0));</div>
+<div class="line"><span class="lineno">  347</span>        <span class="comment">//방향과 크기를 전달함. (시간마다 거리를 더하는 것은 MovementComponent에서, 속도 세팅은 movementcomponent에서)</span></div>
+<div class="line"><span class="lineno">  348</span>        this-&gt;GetPawn()-&gt;AddMovementInput(Direction, MovementVector.X);</div>
+<div class="line"><span class="lineno">  349</span>    }</div>
+<div class="line"><span class="lineno">  350</span>    <span class="comment">//옆 이동</span></div>
+<div class="line"><span class="lineno">  351</span>    <span class="keywordflow">if</span> (MovementVector.Y != 0) {</div>
+<div class="line"><span class="lineno">  352</span>        <span class="comment">/*내가 바라보는 곳 기준의 옆 방향을 구해줌*/</span></div>
+<div class="line"><span class="lineno">  353</span>        <span class="comment">//마우스 방향 회전값 기준</span></div>
+<div class="line"><span class="lineno">  354</span>        FRotator Rotator = this-&gt;GetControlRotation();</div>
+<div class="line"><span class="lineno">  355</span>        <span class="comment">//해당 회전값의 기준의 옆 방향을 구해준다.</span></div>
+<div class="line"><span class="lineno">  356</span>        FVector Direction = UKismetMathLibrary::GetRightVector(FRotator(0, Rotator.Yaw, 0));</div>
+<div class="line"><span class="lineno">  357</span>        <span class="comment">//방향과 크기를 전달함. (시간마다 거리를 더하는 것은 MovementComponent에서, 속도 세팅은 movementcomponent에서)</span></div>
+<div class="line"><span class="lineno">  358</span>        this-&gt;GetPawn()-&gt;AddMovementInput(Direction, MovementVector.Y);</div>
+<div class="line"><span class="lineno">  359</span>    }</div>
+<div class="line"><span class="lineno">  360</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

@@ -1,7 +1,7 @@
 var struct_f_conversation_record =
 [
     [ "FConversationRecord", "struct_f_conversation_record_a2869763a72ee6a7ba87a9cb1f095f74c.html#a2869763a72ee6a7ba87a9cb1f095f74c", null ],
-    [ "FConversationRecord", "struct_f_conversation_record_a091fe935c38ec4388b5c5c39a93c82c3.html#a091fe935c38ec4388b5c5c39a93c82c3", null ],
+    [ "FConversationRecord", "struct_f_conversation_record_a696789567444cb62c0c228752af55df9.html#a696789567444cb62c0c228752af55df9", null ],
     [ "GetConversationID", "struct_f_conversation_record_ada1714f59b8d9826f24da5bfc91675d0.html#ada1714f59b8d9826f24da5bfc91675d0", null ],
     [ "GetConversationType", "struct_f_conversation_record_a2003705a76986b84c4c41e4d0334e3e7.html#a2003705a76986b84c4c41e4d0334e3e7", null ],
     [ "GetListenerID", "struct_f_conversation_record_ab4c1f87984bbd4cde2126bb5a843896b.html#ab4c1f87984bbd4cde2126bb5a843896b", null ],
@@ -10,6 +10,7 @@ var struct_f_conversation_record =
     [ "GetTimestamp", "struct_f_conversation_record_ae4b7ca6bb9acc162eee02925e1ce73f0.html#ae4b7ca6bb9acc162eee02925e1ce73f0", null ],
     [ "operator=", "struct_f_conversation_record_a15daf9e45cfc323899aac10fb1b39b99.html#a15daf9e45cfc323899aac10fb1b39b99", null ],
     [ "operator==", "struct_f_conversation_record_ad1a72732afc0ec88a2fe976720bc27f0.html#ad1a72732afc0ec88a2fe976720bc27f0", null ],
+    [ "bIsImage", "struct_f_conversation_record_a5dfd79fea70b06aef40383ab5ff836df.html#a5dfd79fea70b06aef40383ab5ff836df", null ],
     [ "ConversationID", "struct_f_conversation_record_aef9c3de36a644ea6b57a9cd33b76d114.html#aef9c3de36a644ea6b57a9cd33b76d114", null ],
     [ "ConversationType", "struct_f_conversation_record_aeaff446838e7ac1a62e038f6a724c7da.html#aeaff446838e7ac1a62e038f6a724c7da", null ],
     [ "ListenerID", "struct_f_conversation_record_a693967d3b1ad02b19c5d4c2c6fe92b84.html#a693967d3b1ad02b19c5d4c2c6fe92b84", null ],

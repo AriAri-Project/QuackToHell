@@ -9,5 +9,6 @@ var searchData=
   ['define_5flog_5fcategory_6',['DEFINE_LOG_CATEGORY',['../_q_log_categories_8cpp_ac1d4874b1a78dcc16942d23705e52a5d.html#ac1d4874b1a78dcc16942d23705e52a5d',1,'DEFINE_LOG_CATEGORY(LogLogic):&#160;QLogCategories.cpp'],['../_q_log_categories_8cpp_afc73ac478ce18b2f28791d8df404b3a4.html#afc73ac478ce18b2f28791d8df404b3a4',1,'DEFINE_LOG_CATEGORY(LogNPC):&#160;QLogCategories.cpp']]],
   ['deleteoldpromptfiles_7',['DeleteOldPromptFiles',['../class_u_god_function_abf4593cac5c9e06435446d6259aff28d.html#abf4593cac5c9e06435446d6259aff28d',1,'UGodFunction']]],
   ['description_8',['Description',['../struct_f_evidence_a1332140fa336ee64a75d47488bd510ff.html#a1332140fa336ee64a75d47488bd510ff',1,'FEvidence']]],
-  ['dialoguelines_9',['DialogueLines',['../struct_f_dialogue_history_a4d410d1ae56aa23bfae513ccb8baf67b.html#a4d410d1ae56aa23bfae513ccb8baf67b',1,'FDialogueHistory']]]
+  ['dialoguelines_9',['DialogueLines',['../struct_f_dialogue_history_a4d410d1ae56aa23bfae513ccb8baf67b.html#a4d410d1ae56aa23bfae513ccb8baf67b',1,'FDialogueHistory']]],
+  ['downloaddalleimage_10',['DownloadDalleImage',['../class_u_god_function_a968456c98a4bca8b8e7212d15e03469e.html#a968456c98a4bca8b8e7212d15e03469e',1,'UGodFunction']]]
 ];

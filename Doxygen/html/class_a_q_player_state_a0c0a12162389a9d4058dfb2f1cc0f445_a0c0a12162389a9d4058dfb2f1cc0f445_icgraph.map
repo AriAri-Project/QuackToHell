@@ -1,0 +1,11 @@
+<map id="GetRecrodWithNPCID" name="GetRecrodWithNPCID">
+<area shape="rect" id="Node000001" title="특정 NPCID를 이용해 대화기록 조회." alt="" coords="772,37,927,64"/>
+<area shape="rect" id="Node000002" href="$class_a_q_player_state_abdfc0b8073f2e2fba2cccf95132bd990.html#abdfc0b8073f2e2fba2cccf95132bd990" title="P2N 대화에서 플레이어의 대사를 대화기록 자료구조에 저장하는 함수" alt="" coords="490,37,724,64"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="757,53,725,53,725,48,757,48"/>
+<area shape="poly" id="edge5_Node000002_Node000002" title=" " alt="" coords="649,25,635,18,607,16,582,18,568,23,564,28,571,35,567,39,559,29,564,19,581,13,607,11,636,13,652,20"/>
+<area shape="rect" id="Node000003" href="$class_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b82.html#a4443ff350fe14fe5a16bce2cbaf75b82" title="엔터키 눌렸을때의 처리;" alt="" coords="254,29,442,72"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="474,53,442,53,442,48,474,48"/>
+<area shape="rect" id="Node000004" href="$class_u_q_p2_n_widget_ae2c035e55eb653e7ccb492fb06ad486e.html#ae2c035e55eb653e7ccb492fb06ad486e" title=" " alt="" coords="5,29,206,72"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="238,53,206,53,206,48,238,48"/>
+<area shape="poly" id="edge4_Node000004_Node000004" title=" " alt="" coords="145,16,130,10,105,8,83,10,68,15,63,21,65,28,60,29,58,19,66,10,81,5,106,3,131,5,147,11"/>
+</map>

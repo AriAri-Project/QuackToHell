@@ -1,5 +1,5 @@
 <map id="UQDefaultVillageWidget" name="UQDefaultVillageWidget">
-<area shape="rect" id="Node000001" title="마을에 기본적으로 존재해야 하는 위젯입니다. (녹음기버튼, .. )" alt="" coords="5,123,204,309"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="60,5,150,75"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="108,89,108,123,102,123,102,89"/>
+<area shape="rect" id="Node000001" title="마을에 기본적으로 존재해야 하는 위젯입니다. (녹음기버튼, .. )" alt="" coords="5,123,207,576"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="62,5,151,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,90,109,123,104,123,104,90"/>
 </map>

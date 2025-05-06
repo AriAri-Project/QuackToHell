@@ -127,25 +127,25 @@ $(function(){initNavTree('class_u_q_record_widget_af0299cf8720c6b6b500e5d9235f57
 
 <p>버튼위젯의 모양을 업데이트한다. </p>
 
-<p class="definition"><a class="el" href="_q_record_widget_8cpp_source.html">QRecordWidget.cpp</a> 파일의 <a class="el" href="_q_record_widget_8cpp_source.html#l00244">244</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  245</span>{</div>
-<div class="line"><span class="lineno">  246</span>    <span class="comment">//대화한 NPC개수만큼 업데이트</span></div>
-<div class="line"><span class="lineno">  247</span>    <span class="keywordflow">for</span> (int8 i = 0; i &lt; <a class="code hl_variable" href="class_u_q_record_widget_aed2b554986128be32c2f35bad27e9d81.html#aed2b554986128be32c2f35bad27e9d81">ConversedNPC</a>.Num(); i++) {</div>
-<div class="line"><span class="lineno">  248</span>        <span class="comment">//오버레이켜주고</span></div>
-<div class="line"><span class="lineno">  249</span>        <a class="code hl_variable" href="class_u_q_record_widget_a9714525aa8e2287f40f4bdc58111f698.html#a9714525aa8e2287f40f4bdc58111f698">Buttons</a>[i].Overlay-&gt;SetVisibility(ESlateVisibility::Visible);</div>
-<div class="line"><span class="lineno">  250</span>        <span class="comment">//텍스트도업데이트</span></div>
-<div class="line"><span class="lineno">  251</span>        int32 SpeakerID = <a class="code hl_variable" href="class_u_q_record_widget_aed2b554986128be32c2f35bad27e9d81.html#aed2b554986128be32c2f35bad27e9d81">ConversedNPC</a>[i];</div>
-<div class="line"><span class="lineno">  252</span>        FText SpeackerIDToText = FText::FromString(FString::FromInt(SpeakerID));</div>
-<div class="line"><span class="lineno">  253</span>        <a class="code hl_variable" href="class_u_q_record_widget_a9714525aa8e2287f40f4bdc58111f698.html#a9714525aa8e2287f40f4bdc58111f698">Buttons</a>[i].GhostName-&gt;SetText(SpeackerIDToText);</div>
-<div class="line"><span class="lineno">  254</span>    }</div>
-<div class="line"><span class="lineno">  255</span>    <span class="comment">//나머지는 overlay끄기</span></div>
-<div class="line"><span class="lineno">  256</span>    <span class="keywordflow">for</span> (int8 i = <a class="code hl_variable" href="class_u_q_record_widget_aed2b554986128be32c2f35bad27e9d81.html#aed2b554986128be32c2f35bad27e9d81">ConversedNPC</a>.Num(); i &lt; <a class="code hl_variable" href="class_u_q_record_widget_aedc89b970a88d8526ebf26724736c038.html#aedc89b970a88d8526ebf26724736c038">GhostMaxNum</a>; i++) {</div>
-<div class="line"><span class="lineno">  257</span>        <a class="code hl_variable" href="class_u_q_record_widget_a9714525aa8e2287f40f4bdc58111f698.html#a9714525aa8e2287f40f4bdc58111f698">Buttons</a>[i].Overlay-&gt;SetVisibility(ESlateVisibility::Hidden);</div>
-<div class="line"><span class="lineno">  258</span>    }</div>
-<div class="line"><span class="lineno">  259</span>}</div>
-<div class="ttc" id="aclass_u_q_record_widget_a9714525aa8e2287f40f4bdc58111f698_html_a9714525aa8e2287f40f4bdc58111f698"><div class="ttname"><a href="class_u_q_record_widget_a9714525aa8e2287f40f4bdc58111f698.html#a9714525aa8e2287f40f4bdc58111f698">UQRecordWidget::Buttons</a></div><div class="ttdeci">TArray&lt; FMyButton &gt; Buttons</div><div class="ttdoc">해당 위젯의 하위컴포넌트인 버튼들의 정보를 갖고있음.</div><div class="ttdef"><b>Definition</b> <a href="_q_record_widget_8h_source.html#l00058">QRecordWidget.h:58</a></div></div>
-<div class="ttc" id="aclass_u_q_record_widget_aed2b554986128be32c2f35bad27e9d81_html_aed2b554986128be32c2f35bad27e9d81"><div class="ttname"><a href="class_u_q_record_widget_aed2b554986128be32c2f35bad27e9d81.html#aed2b554986128be32c2f35bad27e9d81">UQRecordWidget::ConversedNPC</a></div><div class="ttdeci">TArray&lt; int32 &gt; ConversedNPC</div><div class="ttdef"><b>Definition</b> <a href="_q_record_widget_8h_source.html#l00071">QRecordWidget.h:71</a></div></div>
-<div class="ttc" id="aclass_u_q_record_widget_aedc89b970a88d8526ebf26724736c038_html_aedc89b970a88d8526ebf26724736c038"><div class="ttname"><a href="class_u_q_record_widget_aedc89b970a88d8526ebf26724736c038.html#aedc89b970a88d8526ebf26724736c038">UQRecordWidget::GhostMaxNum</a></div><div class="ttdeci">const int8 GhostMaxNum</div><div class="ttdoc">최대 망자 수.</div><div class="ttdef"><b>Definition</b> <a href="_q_record_widget_8h_source.html#l00063">QRecordWidget.h:63</a></div></div>
+<p class="definition"><a class="el" href="_q_record_widget_8cpp_source.html">QRecordWidget.cpp</a> 파일의 <a class="el" href="_q_record_widget_8cpp_source.html#l00210">210</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  211</span>{</div>
+<div class="line"><span class="lineno">  212</span>    <span class="comment">//대화한 NPC개수만큼 업데이트</span></div>
+<div class="line"><span class="lineno">  213</span>    <span class="keywordflow">for</span> (int8 i = 0; i &lt; <a class="code hl_variable" href="class_u_q_record_widget_aed2b554986128be32c2f35bad27e9d81.html#aed2b554986128be32c2f35bad27e9d81">ConversedNPC</a>.Num(); i++) {</div>
+<div class="line"><span class="lineno">  214</span>        <span class="comment">//오버레이켜주고</span></div>
+<div class="line"><span class="lineno">  215</span>        <a class="code hl_variable" href="class_u_q_record_widget_a2106422e427f1273eb4747152c0bd7b5.html#a2106422e427f1273eb4747152c0bd7b5">Buttons</a>[i].Overlay-&gt;SetVisibility(ESlateVisibility::Visible);</div>
+<div class="line"><span class="lineno">  216</span>        <span class="comment">//텍스트도업데이트</span></div>
+<div class="line"><span class="lineno">  217</span>        int32 GhostID = <a class="code hl_variable" href="class_u_q_record_widget_aed2b554986128be32c2f35bad27e9d81.html#aed2b554986128be32c2f35bad27e9d81">ConversedNPC</a>[i];</div>
+<div class="line"><span class="lineno">  218</span>        FText GhostIDToText = FText::FromString(FString::FromInt(GhostID));</div>
+<div class="line"><span class="lineno">  219</span>        <a class="code hl_variable" href="class_u_q_record_widget_a2106422e427f1273eb4747152c0bd7b5.html#a2106422e427f1273eb4747152c0bd7b5">Buttons</a>[i].GhostName-&gt;SetText(GhostIDToText);</div>
+<div class="line"><span class="lineno">  220</span>    }</div>
+<div class="line"><span class="lineno">  221</span>    <span class="comment">//나머지는 overlay끄기</span></div>
+<div class="line"><span class="lineno">  222</span>    <span class="keywordflow">for</span> (int8 i = <a class="code hl_variable" href="class_u_q_record_widget_aed2b554986128be32c2f35bad27e9d81.html#aed2b554986128be32c2f35bad27e9d81">ConversedNPC</a>.Num(); i &lt; <a class="code hl_variable" href="class_u_q_record_widget_aedc89b970a88d8526ebf26724736c038.html#aedc89b970a88d8526ebf26724736c038">GhostMaxNum</a>; i++) {</div>
+<div class="line"><span class="lineno">  223</span>        <a class="code hl_variable" href="class_u_q_record_widget_a2106422e427f1273eb4747152c0bd7b5.html#a2106422e427f1273eb4747152c0bd7b5">Buttons</a>[i].Overlay-&gt;SetVisibility(ESlateVisibility::Hidden);</div>
+<div class="line"><span class="lineno">  224</span>    }</div>
+<div class="line"><span class="lineno">  225</span>}</div>
+<div class="ttc" id="aclass_u_q_record_widget_a2106422e427f1273eb4747152c0bd7b5_html_a2106422e427f1273eb4747152c0bd7b5"><div class="ttname"><a href="class_u_q_record_widget_a2106422e427f1273eb4747152c0bd7b5.html#a2106422e427f1273eb4747152c0bd7b5">UQRecordWidget::Buttons</a></div><div class="ttdeci">TArray&lt; FRecordButton &gt; Buttons</div><div class="ttdoc">해당 위젯의 하위컴포넌트인 버튼들의 정보를 갖고있음.</div><div class="ttdef"><b>Definition</b> <a href="_q_record_widget_8h_source.html#l00059">QRecordWidget.h:59</a></div></div>
+<div class="ttc" id="aclass_u_q_record_widget_aed2b554986128be32c2f35bad27e9d81_html_aed2b554986128be32c2f35bad27e9d81"><div class="ttname"><a href="class_u_q_record_widget_aed2b554986128be32c2f35bad27e9d81.html#aed2b554986128be32c2f35bad27e9d81">UQRecordWidget::ConversedNPC</a></div><div class="ttdeci">TArray&lt; int32 &gt; ConversedNPC</div><div class="ttdef"><b>Definition</b> <a href="_q_record_widget_8h_source.html#l00076">QRecordWidget.h:76</a></div></div>
+<div class="ttc" id="aclass_u_q_record_widget_aedc89b970a88d8526ebf26724736c038_html_aedc89b970a88d8526ebf26724736c038"><div class="ttname"><a href="class_u_q_record_widget_aedc89b970a88d8526ebf26724736c038.html#aedc89b970a88d8526ebf26724736c038">UQRecordWidget::GhostMaxNum</a></div><div class="ttdeci">const int8 GhostMaxNum</div><div class="ttdoc">최대 망자 수.</div><div class="ttdef"><b>Definition</b> <a href="_q_record_widget_8h_source.html#l00068">QRecordWidget.h:68</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div class="dyncontent">

@@ -136,45 +136,45 @@ $(function(){initNavTree('class_a_q_dynamic_n_p_c_controller_ac697069a9876aa5aa8
   </table>
   </dd>
 </dl>
-<p>유진 - </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">할일</a></b></dt><dd>N2N 대화상태 변경하라는 함수를 서버로부터 호출해야함 </dd></dl>
-<p>유진 - </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">할일</a></b></dt><dd>대화끝낼 때 N2N 대화상태 변경하라는 함수를 서버로부터 호출해야함 </dd></dl>
+<p>유진 - </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">할일</a></b></dt><dd>N2N 대화상태 변경하라는 함수를 서버로부터 호출해야함 </dd></dl>
+<p>유진 - </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">할일</a></b></dt><dd>대화끝낼 때 N2N 대화상태 변경하라는 함수를 서버로부터 호출해야함 </dd></dl>
 
-<p class="definition"><a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html">QDynamicNPCController.cpp</a> 파일의 <a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html#l00144">144</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  145</span>{</div>
-<div class="line"><span class="lineno">  146</span>    <span class="comment">//ConversationType에 따라 StartDialog다르게 처리</span></div>
-<div class="line"><span class="lineno">  147</span>    <span class="keywordflow">switch</span> (ConversationType)</div>
-<div class="line"><span class="lineno">  148</span>    {</div>
-<div class="line"><span class="lineno">  149</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea6ae860c71585153c82dd6cff37048b12">ENPCConversationType::P2N</a>:</div>
-<div class="line"><span class="lineno">  150</span>    {</div>
-<div class="line"><span class="lineno">  152</span>        <span class="comment">//FreezePawn();</span></div>
-<div class="line"><span class="lineno">  153</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">RotateToOpponent</a>(_OpponentPawn);</div>
-<div class="line"><span class="lineno">  154</span>        </div>
-<div class="line"><span class="lineno">  155</span>        <span class="comment">//P2N Widget에게 자신의 정보를 넘긴다: 내 정보 넘겨주기</span></div>
-<div class="line"><span class="lineno">  156</span>        TMap&lt;EVillageUIType, TObjectPtr&lt;UUserWidget&gt;&gt; VillageWidgets = <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a>-&gt;GetActivedVillageWidgets();</div>
-<div class="line"><span class="lineno">  157</span>        TObjectPtr&lt;UQP2NWidget&gt; P2NWidget = Cast&lt;UQP2NWidget&gt;(VillageWidgets[<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6ae860c71585153c82dd6cff37048b12">EVillageUIType::P2N</a>]);</div>
-<div class="line"><span class="lineno">  158</span>        P2NWidget-&gt;SetConversingNPC(<span class="keyword">this</span>);</div>
-<div class="line"><span class="lineno">  159</span>    }</div>
-<div class="line"><span class="lineno">  160</span>    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  161</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea719724583f5a01b1507f309191082351">ENPCConversationType::N2N</a>:</div>
-<div class="line"><span class="lineno">  162</span>    {</div>
-<div class="line"><span class="lineno">  164</span> </div>
-<div class="line"><span class="lineno">  165</span>        {</div>
-<div class="line"><span class="lineno">  166</span>            <span class="comment">/*@서버*/</span></div>
-<div class="line"><span class="lineno">  167</span>            <span class="comment">//MyPawn-&gt;GetSpeechBubbleWidget()-&gt;으로 updatetext, turnof/off 접근가능</span></div>
-<div class="line"><span class="lineno">  168</span> </div>
-<div class="line"><span class="lineno">  169</span>        }</div>
-<div class="line"><span class="lineno">  170</span></div>
-<div class="line"><span class="lineno">  172</span>    }</div>
-<div class="line"><span class="lineno">  173</span>    <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  174</span>    <span class="keywordflow">default</span>:</div>
-<div class="line"><span class="lineno">  175</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><span class="lineno">  176</span>    }</div>
-<div class="line"><span class="lineno">  177</span>}</div>
+<p class="definition"><a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html">QDynamicNPCController.cpp</a> 파일의 <a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html#l00147">147</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  148</span>{</div>
+<div class="line"><span class="lineno">  149</span>    <span class="comment">//ConversationType에 따라 StartDialog다르게 처리</span></div>
+<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">switch</span> (ConversationType)</div>
+<div class="line"><span class="lineno">  151</span>    {</div>
+<div class="line"><span class="lineno">  152</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea6ae860c71585153c82dd6cff37048b12">ENPCConversationType::P2N</a>:</div>
+<div class="line"><span class="lineno">  153</span>    {</div>
+<div class="line"><span class="lineno">  155</span>        <span class="comment">//FreezePawn();</span></div>
+<div class="line"><span class="lineno">  156</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">RotateToOpponent</a>(_OpponentPawn);</div>
+<div class="line"><span class="lineno">  157</span>        </div>
+<div class="line"><span class="lineno">  158</span>        <span class="comment">//P2N Widget에게 자신의 정보를 넘긴다: 내 정보 넘겨주기</span></div>
+<div class="line"><span class="lineno">  159</span>        TMap&lt;EVillageUIType, TObjectPtr&lt;UUserWidget&gt;&gt; VillageWidgets = <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a>-&gt;GetActivedVillageWidgets();</div>
+<div class="line"><span class="lineno">  160</span>        TObjectPtr&lt;UQP2NWidget&gt; P2NWidget = Cast&lt;UQP2NWidget&gt;(VillageWidgets[<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6ae860c71585153c82dd6cff37048b12">EVillageUIType::P2N</a>]);</div>
+<div class="line"><span class="lineno">  161</span>        P2NWidget-&gt;SetConversingNPC(<span class="keyword">this</span>);</div>
+<div class="line"><span class="lineno">  162</span>    }</div>
+<div class="line"><span class="lineno">  163</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  164</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea719724583f5a01b1507f309191082351">ENPCConversationType::N2N</a>:</div>
+<div class="line"><span class="lineno">  165</span>    {</div>
+<div class="line"><span class="lineno">  167</span> </div>
+<div class="line"><span class="lineno">  168</span>        {</div>
+<div class="line"><span class="lineno">  169</span>            <span class="comment">/*@서버*/</span></div>
+<div class="line"><span class="lineno">  170</span>            <span class="comment">//MyPawn-&gt;GetSpeechBubbleWidget()-&gt;으로 updatetext, turnof/off 접근가능</span></div>
+<div class="line"><span class="lineno">  171</span> </div>
+<div class="line"><span class="lineno">  172</span>        }</div>
+<div class="line"><span class="lineno">  173</span></div>
+<div class="line"><span class="lineno">  175</span>    }</div>
+<div class="line"><span class="lineno">  176</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  177</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  178</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  179</span>    }</div>
+<div class="line"><span class="lineno">  180</span>}</div>
 <div class="ttc" id="a_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e_html_a424965b009ab6e8759ee632018d6840ea6ae860c71585153c82dd6cff37048b12"><div class="ttname"><a href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea6ae860c71585153c82dd6cff37048b12">ENPCConversationType::P2N</a></div><div class="ttdeci">@ P2N</div><div class="ttdef"><b>Definition</b> <a href="_q_n_p_c_controller_8h_source.html#l00013">QNPCController.h:13</a></div></div>
 <div class="ttc" id="a_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e_html_a424965b009ab6e8759ee632018d6840ea719724583f5a01b1507f309191082351"><div class="ttname"><a href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea719724583f5a01b1507f309191082351">ENPCConversationType::N2N</a></div><div class="ttdeci">@ N2N</div><div class="ttdef"><b>Definition</b> <a href="_q_n_p_c_controller_8h_source.html#l00014">QNPCController.h:14</a></div></div>
 <div class="ttc" id="a_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e_html_a80a25b4b1f1633b9ee669cc942a17d8ea6ae860c71585153c82dd6cff37048b12"><div class="ttname"><a href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6ae860c71585153c82dd6cff37048b12">EVillageUIType::P2N</a></div><div class="ttdeci">@ P2N</div><div class="ttdef"><b>Definition</b> <a href="_q_village_u_i_manager_8h_source.html#l00012">QVillageUIManager.h:12</a></div></div>
 <div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a0c63f34b8d931e6a72aea024036e7b13_html_a0c63f34b8d931e6a72aea024036e7b13"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">AQDynamicNPCController::VillageUIManager</a></div><div class="ttdeci">TObjectPtr&lt; class AQVillageUIManager &gt; VillageUIManager</div><div class="ttdoc">VillageUIManager정보를 갖습니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00061">QDynamicNPCController.h:61</a></div></div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059_html_a3d9641a6e70a40607c740565b6326059"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">AQDynamicNPCController::RotateToOpponent</a></div><div class="ttdeci">void RotateToOpponent(const TObjectPtr&lt; APawn &gt; MyPawn)</div><div class="ttdoc">상대방을 향해 고개를 회전합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8cpp_source.html#l00132">QDynamicNPCController.cpp:132</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059_html_a3d9641a6e70a40607c740565b6326059"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">AQDynamicNPCController::RotateToOpponent</a></div><div class="ttdeci">void RotateToOpponent(const TObjectPtr&lt; APawn &gt; MyPawn)</div><div class="ttdoc">상대방을 향해 고개를 회전합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8cpp_source.html#l00135">QDynamicNPCController.cpp:135</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div class="dyncontent">

@@ -1,0 +1,18 @@
+<map id="ServerRPCAddP2NPlayerStatement" name="ServerRPCAddP2NPlayerStatement">
+<area shape="rect" id="Node000001" title="P2N 대화에서 플레이어의 대사를 대화기록 자료구조에 저장하는 함수" alt="" coords="5,157,240,184"/>
+<area shape="poly" id="edge8_Node000001_Node000001" title=" " alt="" coords="80,159,72,149,77,139,94,133,123,131,153,133,169,140,167,145,152,138,122,136,95,138,81,143,77,148,84,155"/>
+<area shape="rect" id="Node000002" href="$class_a_q_player_state_a10afaf77c3f24c13efbaa2b68994eaa8.html#a10afaf77c3f24c13efbaa2b68994eaa8" title="@breif 모든 증거 아이템 정보를 반환" alt="" coords="319,5,438,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="136,155,198,100,241,69,286,42,303,34,305,39,289,46,244,73,201,104,140,159"/>
+<area shape="rect" id="Node000003" href="$class_a_q_player_state_a712a70c67af3e281dc229e6ee57d8dcc.html#a712a70c67af3e281dc229e6ee57d8dcc" title="플레이어가 소유한 증거를 배열 형태로 반환" alt="" coords="288,56,469,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="149,154,211,124,287,92,307,85,309,90,289,97,214,129,152,159"/>
+<area shape="rect" id="Node000004" href="$class_a_q_player_state_af5de8591eb5b2aa03fe971b4926f2edf.html#af5de8591eb5b2aa03fe971b4926f2edf" title="증거ID를 이용해 증거 조회." alt="" coords="310,107,447,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="193,154,294,134,295,139,194,159"/>
+<area shape="rect" id="Node000005" href="$class_a_q_player_state_a69c772400936e3044115fc0cdb84ef16.html#a69c772400936e3044115fc0cdb84ef16" title="증거 이름을 이용해 증거 조회" alt="" coords="299,157,458,184"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="240,168,284,168,284,173,240,173"/>
+<area shape="rect" id="Node000006" href="$class_a_q_player_state_a42d59caa6617569f0f3a4451aab8887a.html#a42d59caa6617569f0f3a4451aab8887a" title="대화기록ID를 이용해 대화기록 조회." alt="" coords="300,208,456,235"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="194,182,293,202,292,207,193,187"/>
+<area shape="rect" id="Node000007" href="$class_a_q_player_state_ae888ee9b5cc6aa0aa15b6d4e402f171a.html#ae888ee9b5cc6aa0aa15b6d4e402f171a" title="PlayerID를 이욯해 대화기록 조회." alt="" coords="297,259,460,285"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="152,182,214,212,289,244,309,251,307,256,287,249,211,217,149,187"/>
+<area shape="rect" id="Node000008" href="$class_a_q_player_state_a0c0a12162389a9d4058dfb2f1cc0f445.html#a0c0a12162389a9d4058dfb2f1cc0f445" title="특정 NPCID를 이용해 대화기록 조회." alt="" coords="301,309,456,336"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="140,183,201,237,244,268,289,295,302,301,300,306,286,300,241,272,198,241,136,187"/>
+</map>

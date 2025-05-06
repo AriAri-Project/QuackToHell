@@ -1,0 +1,4 @@
+<map id="ServerRPCDropEvidence" name="ServerRPCDropEvidence">
+<area shape="rect" id="Node000001" title="플레이어가 증거물을 드랍했을 때 서버에 정보를 업데이트해주는 함수" alt="" coords="5,29,176,56"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="61,30,56,21,60,11,71,5,91,3,111,5,122,12,119,16,109,10,90,8,73,10,64,15,61,20,66,28"/>
+</map>

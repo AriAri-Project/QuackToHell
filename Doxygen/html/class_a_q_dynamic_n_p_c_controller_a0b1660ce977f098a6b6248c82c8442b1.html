@@ -137,19 +137,19 @@ $(function(){initNavTree('class_a_q_dynamic_n_p_c_controller_a0b1660ce977f098a6b
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html">QDynamicNPCController.cpp</a> 파일의 <a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html#l00189">189</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  190</span>{</div>
-<div class="line"><span class="lineno">  191</span>    <span class="comment">/*정보가져오기*/</span></div>
-<div class="line"><span class="lineno">  192</span>    FOpenAIRequest OpenAIRequest;</div>
-<div class="line"><span class="lineno">  193</span>    OpenAIRequest.<a class="code hl_variable" href="struct_f_open_a_i_request_aeaff446838e7ac1a62e038f6a724c7da.html#aeaff446838e7ac1a62e038f6a724c7da">ConversationType</a> = InputConversationType;</div>
-<div class="line"><span class="lineno">  194</span>    AQPlayerController* PlayerController = Cast&lt;AQPlayerController&gt;(UGameplayStatics::GetPlayerController(<span class="keyword">this</span>, 0));</div>
-<div class="line"><span class="lineno">  195</span>    OpenAIRequest.<a class="code hl_variable" href="struct_f_open_a_i_request_a693967d3b1ad02b19c5d4c2c6fe92b84.html#a693967d3b1ad02b19c5d4c2c6fe92b84">ListenerID</a> = Cast&lt;AQPlayerState&gt; (PlayerController-&gt;PlayerState)-&gt;GetPlayerId();</div>
-<div class="line"><span class="lineno">  196</span>    OpenAIRequest.<a class="code hl_variable" href="struct_f_open_a_i_request_a57b65c17b9cf8db83f1006f26b1700b6.html#a57b65c17b9cf8db83f1006f26b1700b6">Prompt</a> = Text;</div>
-<div class="line"><span class="lineno">  197</span>    OpenAIRequest.<a class="code hl_variable" href="struct_f_open_a_i_request_a6e93d1c037caf84ee14f186346d6cb06.html#a6e93d1c037caf84ee14f186346d6cb06">SpeakerID</a> = <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42.html#a24178d80c1be7064e7157af465e7cc42">NPCComponent</a>-&gt;GetNPCID();</div>
-<div class="line"><span class="lineno">  198</span> </div>
-<div class="line"><span class="lineno">  199</span> </div>
-<div class="line"><span class="lineno">  200</span>    <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42.html#a24178d80c1be7064e7157af465e7cc42">NPCComponent</a>-&gt;ServerRPCGetNPCResponse(OpenAIRequest);</div>
-<div class="line"><span class="lineno">  201</span>}</div>
+<p class="definition"><a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html">QDynamicNPCController.cpp</a> 파일의 <a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html#l00192">192</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  193</span>{</div>
+<div class="line"><span class="lineno">  194</span>    <span class="comment">/*정보가져오기*/</span></div>
+<div class="line"><span class="lineno">  195</span>    FOpenAIRequest OpenAIRequest;</div>
+<div class="line"><span class="lineno">  196</span>    OpenAIRequest.<a class="code hl_variable" href="struct_f_open_a_i_request_aeaff446838e7ac1a62e038f6a724c7da.html#aeaff446838e7ac1a62e038f6a724c7da">ConversationType</a> = InputConversationType;</div>
+<div class="line"><span class="lineno">  197</span>    AQPlayerController* PlayerController = Cast&lt;AQPlayerController&gt;(UGameplayStatics::GetPlayerController(<span class="keyword">this</span>, 0));</div>
+<div class="line"><span class="lineno">  198</span>    OpenAIRequest.<a class="code hl_variable" href="struct_f_open_a_i_request_a693967d3b1ad02b19c5d4c2c6fe92b84.html#a693967d3b1ad02b19c5d4c2c6fe92b84">ListenerID</a> = Cast&lt;AQPlayerState&gt; (PlayerController-&gt;PlayerState)-&gt;GetPlayerId();</div>
+<div class="line"><span class="lineno">  199</span>    OpenAIRequest.<a class="code hl_variable" href="struct_f_open_a_i_request_a57b65c17b9cf8db83f1006f26b1700b6.html#a57b65c17b9cf8db83f1006f26b1700b6">Prompt</a> = Text;</div>
+<div class="line"><span class="lineno">  200</span>    OpenAIRequest.<a class="code hl_variable" href="struct_f_open_a_i_request_a6e93d1c037caf84ee14f186346d6cb06.html#a6e93d1c037caf84ee14f186346d6cb06">SpeakerID</a> = <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42.html#a24178d80c1be7064e7157af465e7cc42">NPCComponent</a>-&gt;GetNPCID();</div>
+<div class="line"><span class="lineno">  201</span> </div>
+<div class="line"><span class="lineno">  202</span> </div>
+<div class="line"><span class="lineno">  203</span>    <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42.html#a24178d80c1be7064e7157af465e7cc42">NPCComponent</a>-&gt;ServerRPCGetNPCResponse(OpenAIRequest);</div>
+<div class="line"><span class="lineno">  204</span>}</div>
 <div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42_html_a24178d80c1be7064e7157af465e7cc42"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42.html#a24178d80c1be7064e7157af465e7cc42">AQDynamicNPCController::NPCComponent</a></div><div class="ttdeci">TObjectPtr&lt; class UNPCComponent &gt; NPCComponent</div><div class="ttdoc">NPCComponent를 멤버변수로 가집니다</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00057">QDynamicNPCController.h:57</a></div></div>
 <div class="ttc" id="astruct_f_open_a_i_request_a57b65c17b9cf8db83f1006f26b1700b6_html_a57b65c17b9cf8db83f1006f26b1700b6"><div class="ttname"><a href="struct_f_open_a_i_request_a57b65c17b9cf8db83f1006f26b1700b6.html#a57b65c17b9cf8db83f1006f26b1700b6">FOpenAIRequest::Prompt</a></div><div class="ttdeci">FString Prompt</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00037">NPCComponent.h:37</a></div></div>
 <div class="ttc" id="astruct_f_open_a_i_request_a693967d3b1ad02b19c5d4c2c6fe92b84_html_a693967d3b1ad02b19c5d4c2c6fe92b84"><div class="ttname"><a href="struct_f_open_a_i_request_a693967d3b1ad02b19c5d4c2c6fe92b84.html#a693967d3b1ad02b19c5d4c2c6fe92b84">FOpenAIRequest::ListenerID</a></div><div class="ttdeci">int32 ListenerID</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00031">NPCComponent.h:31</a></div></div>

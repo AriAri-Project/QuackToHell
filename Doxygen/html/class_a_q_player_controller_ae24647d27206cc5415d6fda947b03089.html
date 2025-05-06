@@ -127,23 +127,23 @@ $(function(){initNavTree('class_a_q_player_controller_ae24647d27206cc5415d6fda94
 
 <p>몸을 얼음땡 합니다. </p>
 
-<p class="definition"><a class="el" href="_q_player_controller_8cpp_source.html">QPlayerController.cpp</a> 파일의 <a class="el" href="_q_player_controller_8cpp_source.html#l00200">200</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  201</span>{</div>
-<div class="line"><span class="lineno">  202</span>    <span class="comment">//폰 정보 가져오기</span></div>
-<div class="line"><span class="lineno">  203</span>    TObjectPtr&lt;APawn&gt; ControlledPawn = this-&gt;GetPawn();</div>
-<div class="line"><span class="lineno">  204</span>    <span class="keywordflow">if</span> (!ControlledPawn) {</div>
-<div class="line"><span class="lineno">  205</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  206</span>    }</div>
-<div class="line"><span class="lineno">  207</span> </div>
-<div class="line"><span class="lineno">  208</span>    <span class="comment">//movement component 가져오기</span></div>
-<div class="line"><span class="lineno">  209</span>    TObjectPtr&lt;UCharacterMovementComponent&gt; MovementComponent = ControlledPawn-&gt;FindComponentByClass&lt;UCharacterMovementComponent&gt;();</div>
-<div class="line"><span class="lineno">  210</span>    <span class="keywordflow">if</span> (MovementComponent) {</div>
-<div class="line"><span class="lineno">  211</span>        MovementComponent-&gt;SetComponentTickEnabled(<span class="keyword">true</span>);<span class="comment">//틱 활성화</span></div>
-<div class="line"><span class="lineno">  212</span>        MovementComponent-&gt;Activate(<span class="keyword">true</span>);<span class="comment">//이동 활성화</span></div>
-<div class="line"><span class="lineno">  213</span>    }</div>
-<div class="line"><span class="lineno">  214</span> </div>
-<div class="line"><span class="lineno">  215</span>    UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;플레이어 이동 재개.&quot;</span>));</div>
-<div class="line"><span class="lineno">  216</span>}</div>
+<p class="definition"><a class="el" href="_q_player_controller_8cpp_source.html">QPlayerController.cpp</a> 파일의 <a class="el" href="_q_player_controller_8cpp_source.html#l00232">232</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  233</span>{</div>
+<div class="line"><span class="lineno">  234</span>    <span class="comment">//폰 정보 가져오기</span></div>
+<div class="line"><span class="lineno">  235</span>    TObjectPtr&lt;APawn&gt; ControlledPawn = this-&gt;GetPawn();</div>
+<div class="line"><span class="lineno">  236</span>    <span class="keywordflow">if</span> (!ControlledPawn) {</div>
+<div class="line"><span class="lineno">  237</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  238</span>    }</div>
+<div class="line"><span class="lineno">  239</span> </div>
+<div class="line"><span class="lineno">  240</span>    <span class="comment">//movement component 가져오기</span></div>
+<div class="line"><span class="lineno">  241</span>    TObjectPtr&lt;UCharacterMovementComponent&gt; MovementComponent = ControlledPawn-&gt;FindComponentByClass&lt;UCharacterMovementComponent&gt;();</div>
+<div class="line"><span class="lineno">  242</span>    <span class="keywordflow">if</span> (MovementComponent) {</div>
+<div class="line"><span class="lineno">  243</span>        MovementComponent-&gt;SetComponentTickEnabled(<span class="keyword">true</span>);<span class="comment">//틱 활성화</span></div>
+<div class="line"><span class="lineno">  244</span>        MovementComponent-&gt;Activate(<span class="keyword">true</span>);<span class="comment">//이동 활성화</span></div>
+<div class="line"><span class="lineno">  245</span>    }</div>
+<div class="line"><span class="lineno">  246</span> </div>
+<div class="line"><span class="lineno">  247</span>    UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;플레이어 이동 재개.&quot;</span>));</div>
+<div class="line"><span class="lineno">  248</span>}</div>
 </div><!-- fragment -->
 </div>
 </div>

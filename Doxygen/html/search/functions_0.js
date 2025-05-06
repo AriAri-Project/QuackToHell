@@ -1,8 +1,8 @@
 var searchData=
 [
   ['addconversation_0',['AddConversation',['../struct_f_conversation_list_a730d4a2c87aaa56abd4acb1afeea4f8f.html#a730d4a2c87aaa56abd4acb1afeea4f8f',1,'FConversationList']]],
-  ['addconversationrecord_1',['AddConversationRecord',['../class_a_q_village_game_state_ad185111ee1f321943cab4c0941c21178.html#ad185111ee1f321943cab4c0941c21178',1,'AQVillageGameState']]],
-  ['addevidence_2',['AddEvidence',['../class_a_q_village_game_state_a53f26af3465df6cfc43b1586dda6de82.html#a53f26af3465df6cfc43b1586dda6de82',1,'AQVillageGameState::AddEvidence()'],['../struct_f_evidence_list_a89571a5624d2cff30cdb24d29057818d.html#a89571a5624d2cff30cdb24d29057818d',1,'FEvidenceList::AddEvidence()']]],
+  ['addconversationrecord_1',['AddConversationRecord',['../class_u_q_game_instance_ad185111ee1f321943cab4c0941c21178.html#ad185111ee1f321943cab4c0941c21178',1,'UQGameInstance']]],
+  ['addevidence_2',['AddEvidence',['../class_u_q_game_instance_a53f26af3465df6cfc43b1586dda6de82.html#a53f26af3465df6cfc43b1586dda6de82',1,'UQGameInstance::AddEvidence()'],['../struct_f_evidence_list_a89571a5624d2cff30cdb24d29057818d.html#a89571a5624d2cff30cdb24d29057818d',1,'FEvidenceList::AddEvidence()']]],
   ['addstatetag_3',['AddStateTag',['../class_a_q_player_state_a39229675af9ba0f496da559eb3db6e75.html#a39229675af9ba0f496da559eb3db6e75',1,'AQPlayerState']]],
   ['aqcharacter_4',['AQCharacter',['../class_a_q_character_abab11df56cf4c60043c7dd87ef299090.html#abab11df56cf4c60043c7dd87ef299090',1,'AQCharacter']]],
   ['aqcourtuimanager_5',['AQCourtUIManager',['../class_a_q_court_u_i_manager_a044d34527924ff47f223aee317205cd5.html#a044d34527924ff47f223aee317205cd5',1,'AQCourtUIManager']]],

@@ -134,33 +134,33 @@ $(function(){initNavTree('class_a_q_player_controller_a0ca1db4e3e8284833c165382f
   </dd>
 </dl>
 
-<p class="definition"><a class="el" href="_q_player_controller_8cpp_source.html">QPlayerController.cpp</a> 파일의 <a class="el" href="_q_player_controller_8cpp_source.html#l00241">241</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  242</span>{</div>
-<div class="line"><span class="lineno">  243</span> </div>
-<div class="line"><span class="lineno">  244</span>    </div>
-<div class="line"><span class="lineno">  245</span> </div>
-<div class="line"><span class="lineno">  246</span>    <span class="comment">//지도가 켜져있는지, 꺼져있는지에 따라 켤지끌지가 결정됨.</span></div>
-<div class="line"><span class="lineno">  247</span>    <span class="comment">//지도가 있는지부터 확인</span></div>
-<div class="line"><span class="lineno">  248</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a>-&gt;GetActivedVillageWidgets().Contains(<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea46f3ea056caa3126b91f3f70beea068c">EVillageUIType::Map</a>)) {</div>
-<div class="line"><span class="lineno">  249</span>        TObjectPtr&lt;UQMapWidget&gt; MapWidget = Cast&lt;UQMapWidget&gt;((<a class="code hl_variable" href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a>-&gt;GetActivedVillageWidgets())[<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea46f3ea056caa3126b91f3f70beea068c">EVillageUIType::Map</a>]);</div>
-<div class="line"><span class="lineno">  250</span> </div>
-<div class="line"><span class="lineno">  251</span>        <span class="comment">//보이는 상태가 아니면 켜기</span></div>
-<div class="line"><span class="lineno">  252</span>        <span class="keywordflow">if</span> (MapWidget-&gt;GetVisibility() != ESlateVisibility::Visible) {</div>
-<div class="line"><span class="lineno">  253</span>            <a class="code hl_variable" href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a>-&gt;TurnOnUI(<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea46f3ea056caa3126b91f3f70beea068c">EVillageUIType::Map</a>);</div>
-<div class="line"><span class="lineno">  254</span>        }</div>
-<div class="line"><span class="lineno">  255</span>        <span class="comment">//보이면 끄기</span></div>
-<div class="line"><span class="lineno">  256</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  257</span>            <a class="code hl_variable" href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a>-&gt;TurnOffUI(<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea46f3ea056caa3126b91f3f70beea068c">EVillageUIType::Map</a>);</div>
-<div class="line"><span class="lineno">  258</span>        }</div>
-<div class="line"><span class="lineno">  259</span>    }</div>
-<div class="line"><span class="lineno">  260</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><span class="lineno">  261</span>        <span class="comment">//지도없으면 UI켜기(생성)</span></div>
-<div class="line"><span class="lineno">  262</span>        <a class="code hl_variable" href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a>-&gt;TurnOnUI(<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea46f3ea056caa3126b91f3f70beea068c">EVillageUIType::Map</a>);</div>
-<div class="line"><span class="lineno">  263</span>    }</div>
-<div class="line"><span class="lineno">  264</span>    </div>
-<div class="line"><span class="lineno">  265</span>}</div>
+<p class="definition"><a class="el" href="_q_player_controller_8cpp_source.html">QPlayerController.cpp</a> 파일의 <a class="el" href="_q_player_controller_8cpp_source.html#l00273">273</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  274</span>{</div>
+<div class="line"><span class="lineno">  275</span> </div>
+<div class="line"><span class="lineno">  276</span>    </div>
+<div class="line"><span class="lineno">  277</span> </div>
+<div class="line"><span class="lineno">  278</span>    <span class="comment">//지도가 켜져있는지, 꺼져있는지에 따라 켤지끌지가 결정됨.</span></div>
+<div class="line"><span class="lineno">  279</span>    <span class="comment">//지도가 있는지부터 확인</span></div>
+<div class="line"><span class="lineno">  280</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a>-&gt;GetActivedVillageWidgets().Contains(<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea46f3ea056caa3126b91f3f70beea068c">EVillageUIType::Map</a>)) {</div>
+<div class="line"><span class="lineno">  281</span>        TObjectPtr&lt;UQMapWidget&gt; MapWidget = Cast&lt;UQMapWidget&gt;((<a class="code hl_variable" href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a>-&gt;GetActivedVillageWidgets())[<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea46f3ea056caa3126b91f3f70beea068c">EVillageUIType::Map</a>]);</div>
+<div class="line"><span class="lineno">  282</span> </div>
+<div class="line"><span class="lineno">  283</span>        <span class="comment">//보이는 상태가 아니면 켜기</span></div>
+<div class="line"><span class="lineno">  284</span>        <span class="keywordflow">if</span> (MapWidget-&gt;GetVisibility() != ESlateVisibility::Visible) {</div>
+<div class="line"><span class="lineno">  285</span>            <a class="code hl_variable" href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a>-&gt;TurnOnUI(<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea46f3ea056caa3126b91f3f70beea068c">EVillageUIType::Map</a>);</div>
+<div class="line"><span class="lineno">  286</span>        }</div>
+<div class="line"><span class="lineno">  287</span>        <span class="comment">//보이면 끄기</span></div>
+<div class="line"><span class="lineno">  288</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  289</span>            <a class="code hl_variable" href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a>-&gt;TurnOffUI(<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea46f3ea056caa3126b91f3f70beea068c">EVillageUIType::Map</a>);</div>
+<div class="line"><span class="lineno">  290</span>        }</div>
+<div class="line"><span class="lineno">  291</span>    }</div>
+<div class="line"><span class="lineno">  292</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><span class="lineno">  293</span>        <span class="comment">//지도없으면 UI켜기(생성)</span></div>
+<div class="line"><span class="lineno">  294</span>        <a class="code hl_variable" href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a>-&gt;TurnOnUI(<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea46f3ea056caa3126b91f3f70beea068c">EVillageUIType::Map</a>);</div>
+<div class="line"><span class="lineno">  295</span>    }</div>
+<div class="line"><span class="lineno">  296</span>    </div>
+<div class="line"><span class="lineno">  297</span>}</div>
 <div class="ttc" id="a_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e_html_a80a25b4b1f1633b9ee669cc942a17d8ea46f3ea056caa3126b91f3f70beea068c"><div class="ttname"><a href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea46f3ea056caa3126b91f3f70beea068c">EVillageUIType::Map</a></div><div class="ttdeci">@ Map</div><div class="ttdef"><b>Definition</b> <a href="_q_village_u_i_manager_8h_source.html#l00014">QVillageUIManager.h:14</a></div></div>
-<div class="ttc" id="aclass_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13_html_a0c63f34b8d931e6a72aea024036e7b13"><div class="ttname"><a href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">AQPlayerController::VillageUIManager</a></div><div class="ttdeci">TObjectPtr&lt; class AQVillageUIManager &gt; VillageUIManager</div><div class="ttdoc">VillageUIManager정보를 갖습니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_player_controller_8h_source.html#l00126">QPlayerController.h:126</a></div></div>
+<div class="ttc" id="aclass_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13_html_a0c63f34b8d931e6a72aea024036e7b13"><div class="ttname"><a href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">AQPlayerController::VillageUIManager</a></div><div class="ttdeci">TObjectPtr&lt; class AQVillageUIManager &gt; VillageUIManager</div><div class="ttdoc">VillageUIManager정보를 갖습니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_player_controller_8h_source.html#l00129">QPlayerController.h:129</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

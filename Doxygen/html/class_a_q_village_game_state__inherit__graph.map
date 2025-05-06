@@ -1,5 +1,5 @@
 <map id="AQVillageGameState" name="AQVillageGameState">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,123,270,955"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="95,5,181,75"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="140,90,140,123,135,123,135,90"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,123,219,555"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="70,5,155,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="115,89,115,123,110,123,110,89"/>
 </map>

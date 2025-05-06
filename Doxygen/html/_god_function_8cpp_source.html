@@ -455,20 +455,20 @@ $(function(){initNavTree('_god_function_8cpp_source.html',''); initResizable(tru
 <div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>    FString DefendantFilePath = FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToDefendant.json&quot;</span>);</div>
 <div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span>    FString PromptToGodPath = FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToGod.json&quot;</span>);</div>
 <div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span> </div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>   <span class="comment">// if (FPaths::FileExists(DefendantFilePath))</span></div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>   <span class="comment">// {</span></div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>   <span class="comment">//    UE_LOG(LogTemp, Warning, TEXT(&quot;PromptToDefendant.json 이미 존재하지만, 새로 생성하여 덮어쓰기 진행.&quot;));</span></div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>   <span class="comment">// }</span></div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>    <span class="comment">// if (FPaths::FileExists(DefendantFilePath))</span></div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>    <span class="comment">// {</span></div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>    <span class="comment">//    UE_LOG(LogTemp, Warning, TEXT(&quot;PromptToDefendant.json 이미 존재하지만, 새로 생성하여 덮어쓰기 진행.&quot;));</span></div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>    <span class="comment">// }</span></div>
 <div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span> </div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>    <span class="comment">// 이미 존재하면 생성하지 않음</span></div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>    <span class="comment">/*if (FPaths::FileExists(DefendantFilePath))</span></div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span><span class="comment">    {</span></div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span><span class="comment">        UE_LOG(LogTemp, Warning, TEXT(&quot;PromptToDefendant.json 이미 존재하므로 생성하지 않음.&quot;));</span></div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span><span class="comment">        if (Callback) Callback();</span></div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="comment">        return;</span></div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span><span class="comment">    }*/</span></div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>     <span class="comment">// 이미 존재하면 생성하지 않음</span></div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>     <span class="comment">/*if (FPaths::FileExists(DefendantFilePath))</span></div>
+<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span><span class="comment">     {</span></div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span><span class="comment">         UE_LOG(LogTemp, Warning, TEXT(&quot;PromptToDefendant.json 이미 존재하므로 생성하지 않음.&quot;));</span></div>
+<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span><span class="comment">         if (Callback) Callback();</span></div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span><span class="comment">         return;</span></div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span><span class="comment">     }*/</span></div>
 <div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span> </div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>    <span class="comment">// PromptToGod.json이 없으면 재시도</span></div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>     <span class="comment">// PromptToGod.json이 없으면 재시도</span></div>
 <div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>    <span class="keywordflow">if</span> (!FPaths::FileExists(PromptToGodPath))</div>
 <div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>    {</div>
 <div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;PromptToGod.json이 존재하지 않음. 피고인 프롬프트 생성 대기!&quot;</span>));</div>
@@ -632,59 +632,253 @@ $(function(){initNavTree('_god_function_8cpp_source.html',''); initResizable(tru
 <div class="line"><a id="l00500" name="l00500"></a><span class="lineno">  500</span>    <span class="keywordflow">if</span> (ResidentIndex &gt; 5)</div>
 <div class="line"><a id="l00501" name="l00501"></a><span class="lineno">  501</span>    {</div>
 <div class="line"><a id="l00502" name="l00502"></a><span class="lineno">  502</span>        UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;모든 주민 생성 완료!&quot;</span>));</div>
-<div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span>    }</div>
-<div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span> </div>
-<div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;GenerateResidentNPC 실행됨 - ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
-<div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span> </div>
-<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span>    FString PromptToGod = <a class="code hl_function" href="class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee">ReadFileContent</a>(FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToGod.json&quot;</span>));</div>
-<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span>    FString PromptToDefendant = <a class="code hl_function" href="class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee">ReadFileContent</a>(FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToDefendant.json&quot;</span>));</div>
-<div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span> </div>
-<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span>    int32 AssignedNPCID = 2003 + ResidentIndex;</div>
-<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>    FString ResidentPrompt = FString::Printf(</div>
-<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>        TEXT(<span class="stringliteral">&quot;{ \&quot;task\&quot;: \&quot;마을 주민%d 정보를 생성하세요.\&quot;, &quot;</span></div>
-<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span>            <span class="stringliteral">&quot;\&quot;instructions\&quot;: [&quot;</span></div>
-<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span>            <span class="stringliteral">&quot;\&quot;PromptToGod.json과 PromptToDefendant.json을 참고하여 한 명의 마을 주민(NPC) 정보를 생성하세요.\&quot;, &quot;</span></div>
-<div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span>            <span class="stringliteral">&quot;\&quot;npcid\&quot;의 값은 %d여야 합니다\&quot;, &quot;</span></div>
-<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span>            <span class="stringliteral">&quot;\&quot;references\&quot;: { \&quot;PromptToGod\&quot;: \&quot;%s\&quot;, \&quot;PromptToDefendant\&quot;: \&quot;%s\&quot; } }&quot;</span>),</div>
-<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span>        ResidentIndex, AssignedNPCID, *<a class="code hl_function" href="class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f">EscapeJSON</a>(PromptToGod.Mid(0, 2000)), *<a class="code hl_function" href="class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f">EscapeJSON</a>(PromptToDefendant.Mid(0, 2000))</div>
-<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>    );</div>
-<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span> </div>
-<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>    FString ResidentFileName = FString::Printf(TEXT(<span class="stringliteral">&quot;PromptToResident%d.json&quot;</span>), ResidentIndex);</div>
-<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Generating Resident NPC %d&quot;</span>), ResidentIndex);</div>
-<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span> </div>
-<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span>    <a class="code hl_function" href="class_u_god_function_a4193e5e1b757eb6f3ff4e387674fb200.html#a4193e5e1b757eb6f3ff4e387674fb200">CallOpenAIAsync</a>(ResidentPrompt, [World, ResidentIndex, ResidentFileName](FString ResidentJson)</div>
-<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span>        {</div>
-<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span>            UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;OpenAI 응답 도착 - ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
+<div class="line"><a id="l00503" name="l00503"></a><span class="lineno">  503</span> </div>
+<div class="line"><a id="l00504" name="l00504"></a><span class="lineno">  504</span>        <span class="comment">// 증거물 아이템 정보 생성 시작</span></div>
+<div class="line"><a id="l00505" name="l00505"></a><span class="lineno">  505</span>        <a class="code hl_function" href="class_u_god_function_afdbda0a36bc5fde8d2410a0f7eb52bc5.html#afdbda0a36bc5fde8d2410a0f7eb52bc5">GenerateEvidenceItems</a>(World);</div>
+<div class="line"><a id="l00506" name="l00506"></a><span class="lineno">  506</span> </div>
+<div class="line"><a id="l00507" name="l00507"></a><span class="lineno">  507</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00508" name="l00508"></a><span class="lineno">  508</span>    }</div>
+<div class="line"><a id="l00509" name="l00509"></a><span class="lineno">  509</span> </div>
+<div class="line"><a id="l00510" name="l00510"></a><span class="lineno">  510</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;GenerateResidentNPC 실행됨 - ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
+<div class="line"><a id="l00511" name="l00511"></a><span class="lineno">  511</span> </div>
+<div class="line"><a id="l00512" name="l00512"></a><span class="lineno">  512</span>    FString PromptToGod = <a class="code hl_function" href="class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee">ReadFileContent</a>(FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToGod.json&quot;</span>));</div>
+<div class="line"><a id="l00513" name="l00513"></a><span class="lineno">  513</span>    FString PromptToDefendant = <a class="code hl_function" href="class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee">ReadFileContent</a>(FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToDefendant.json&quot;</span>));</div>
+<div class="line"><a id="l00514" name="l00514"></a><span class="lineno">  514</span> </div>
+<div class="line"><a id="l00515" name="l00515"></a><span class="lineno">  515</span>    int32 AssignedNPCID = 2003 + ResidentIndex;</div>
+<div class="line"><a id="l00516" name="l00516"></a><span class="lineno">  516</span>    FString ResidentPrompt = FString::Printf(</div>
+<div class="line"><a id="l00517" name="l00517"></a><span class="lineno">  517</span>        TEXT(<span class="stringliteral">&quot;{ \&quot;task\&quot;: \&quot;마을 주민%d 정보를 생성하세요.\&quot;, &quot;</span></div>
+<div class="line"><a id="l00518" name="l00518"></a><span class="lineno">  518</span>            <span class="stringliteral">&quot;\&quot;instructions\&quot;: [&quot;</span></div>
+<div class="line"><a id="l00519" name="l00519"></a><span class="lineno">  519</span>            <span class="stringliteral">&quot;\&quot;PromptToGod.json과 PromptToDefendant.json을 참고하여 한 명의 마을 주민(NPC) 정보를 생성하세요.\&quot;, &quot;</span></div>
+<div class="line"><a id="l00520" name="l00520"></a><span class="lineno">  520</span>            <span class="stringliteral">&quot;\&quot;npcid\&quot;의 값은 %d여야 합니다\&quot;, &quot;</span></div>
+<div class="line"><a id="l00521" name="l00521"></a><span class="lineno">  521</span>            <span class="stringliteral">&quot;\&quot;references\&quot;: { \&quot;PromptToGod\&quot;: \&quot;%s\&quot;, \&quot;PromptToDefendant\&quot;: \&quot;%s\&quot; } }&quot;</span>),</div>
+<div class="line"><a id="l00522" name="l00522"></a><span class="lineno">  522</span>        ResidentIndex, AssignedNPCID, *<a class="code hl_function" href="class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f">EscapeJSON</a>(PromptToGod.Mid(0, 2000)), *<a class="code hl_function" href="class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f">EscapeJSON</a>(PromptToDefendant.Mid(0, 2000))</div>
+<div class="line"><a id="l00523" name="l00523"></a><span class="lineno">  523</span>    );</div>
+<div class="line"><a id="l00524" name="l00524"></a><span class="lineno">  524</span> </div>
+<div class="line"><a id="l00525" name="l00525"></a><span class="lineno">  525</span>    FString ResidentFileName = FString::Printf(TEXT(<span class="stringliteral">&quot;PromptToResident%d.json&quot;</span>), ResidentIndex);</div>
+<div class="line"><a id="l00526" name="l00526"></a><span class="lineno">  526</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Generating Resident NPC %d&quot;</span>), ResidentIndex);</div>
 <div class="line"><a id="l00527" name="l00527"></a><span class="lineno">  527</span> </div>
-<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span>            <span class="keywordflow">if</span> (!World)</div>
-<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>            {</div>
-<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateResidentNPC Callback - World is nullptr! ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
-<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>            }</div>
-<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span> </div>
-<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>            FString CleanResidentJson = <a class="code hl_function" href="class_u_god_function_a941993f5f191f9dc599b55d316ac04f2.html#a941993f5f191f9dc599b55d316ac04f2">UGodFunction::CleanUpJson</a>(ResidentJson);</div>
-<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>            <span class="keywordflow">if</span> (CleanResidentJson.IsEmpty())</div>
-<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>            {</div>
-<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateResidentNPC Callback - Received empty JSON response! ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
-<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span>                <a class="code hl_function" href="class_u_god_function_a99ce1641c91019a763248259829f18bc.html#a99ce1641c91019a763248259829f18bc">GenerateResidentNPC</a>(World, ResidentIndex + 1);</div>
-<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>            }</div>
-<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span> </div>
-<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>            UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Resident JSON 데이터 저장 시도 - 파일명: %s&quot;</span>), *ResidentFileName);</div>
-<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span> </div>
-<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="class_u_god_function_aaac6f0b28b727bc92185ba3fe44117a5.html#aaac6f0b28b727bc92185ba3fe44117a5">UGodFunction::SavePromptToFile</a>(ResidentFileName, CleanResidentJson))</div>
-<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span>            {</div>
-<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span>                UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Successfully saved ResidentPrompt file: %s&quot;</span>), *ResidentFileName);</div>
-<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span>                <a class="code hl_function" href="class_u_god_function_a99ce1641c91019a763248259829f18bc.html#a99ce1641c91019a763248259829f18bc">GenerateResidentNPC</a>(World, ResidentIndex + 1);</div>
-<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span>            }</div>
-<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span>            <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span>            {</div>
-<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;Failed to save ResidentPrompt file: %s&quot;</span>), *ResidentFileName);</div>
-<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span>                <a class="code hl_function" href="class_u_god_function_a99ce1641c91019a763248259829f18bc.html#a99ce1641c91019a763248259829f18bc">GenerateResidentNPC</a>(World, ResidentIndex + 1);</div>
-<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span>            }</div>
-<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span>        });</div>
-<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span>}</div>
+<div class="line"><a id="l00528" name="l00528"></a><span class="lineno">  528</span>    <a class="code hl_function" href="class_u_god_function_a4193e5e1b757eb6f3ff4e387674fb200.html#a4193e5e1b757eb6f3ff4e387674fb200">CallOpenAIAsync</a>(ResidentPrompt, [World, ResidentIndex, ResidentFileName](FString ResidentJson)</div>
+<div class="line"><a id="l00529" name="l00529"></a><span class="lineno">  529</span>        {</div>
+<div class="line"><a id="l00530" name="l00530"></a><span class="lineno">  530</span>            UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;OpenAI 응답 도착 - ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
+<div class="line"><a id="l00531" name="l00531"></a><span class="lineno">  531</span> </div>
+<div class="line"><a id="l00532" name="l00532"></a><span class="lineno">  532</span>            <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><a id="l00533" name="l00533"></a><span class="lineno">  533</span>            {</div>
+<div class="line"><a id="l00534" name="l00534"></a><span class="lineno">  534</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateResidentNPC Callback - World is nullptr! ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
+<div class="line"><a id="l00535" name="l00535"></a><span class="lineno">  535</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00536" name="l00536"></a><span class="lineno">  536</span>            }</div>
+<div class="line"><a id="l00537" name="l00537"></a><span class="lineno">  537</span> </div>
+<div class="line"><a id="l00538" name="l00538"></a><span class="lineno">  538</span>            FString CleanResidentJson = <a class="code hl_function" href="class_u_god_function_a941993f5f191f9dc599b55d316ac04f2.html#a941993f5f191f9dc599b55d316ac04f2">UGodFunction::CleanUpJson</a>(ResidentJson);</div>
+<div class="line"><a id="l00539" name="l00539"></a><span class="lineno">  539</span>            <span class="keywordflow">if</span> (CleanResidentJson.IsEmpty())</div>
+<div class="line"><a id="l00540" name="l00540"></a><span class="lineno">  540</span>            {</div>
+<div class="line"><a id="l00541" name="l00541"></a><span class="lineno">  541</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateResidentNPC Callback - Received empty JSON response! ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
+<div class="line"><a id="l00542" name="l00542"></a><span class="lineno">  542</span>                <a class="code hl_function" href="class_u_god_function_a99ce1641c91019a763248259829f18bc.html#a99ce1641c91019a763248259829f18bc">GenerateResidentNPC</a>(World, ResidentIndex + 1);</div>
+<div class="line"><a id="l00543" name="l00543"></a><span class="lineno">  543</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00544" name="l00544"></a><span class="lineno">  544</span>            }</div>
+<div class="line"><a id="l00545" name="l00545"></a><span class="lineno">  545</span> </div>
+<div class="line"><a id="l00546" name="l00546"></a><span class="lineno">  546</span>            UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Resident JSON 데이터 저장 시도 - 파일명: %s&quot;</span>), *ResidentFileName);</div>
+<div class="line"><a id="l00547" name="l00547"></a><span class="lineno">  547</span> </div>
+<div class="line"><a id="l00548" name="l00548"></a><span class="lineno">  548</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="class_u_god_function_aaac6f0b28b727bc92185ba3fe44117a5.html#aaac6f0b28b727bc92185ba3fe44117a5">UGodFunction::SavePromptToFile</a>(ResidentFileName, CleanResidentJson))</div>
+<div class="line"><a id="l00549" name="l00549"></a><span class="lineno">  549</span>            {</div>
+<div class="line"><a id="l00550" name="l00550"></a><span class="lineno">  550</span>                UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Successfully saved ResidentPrompt file: %s&quot;</span>), *ResidentFileName);</div>
+<div class="line"><a id="l00551" name="l00551"></a><span class="lineno">  551</span>                <a class="code hl_function" href="class_u_god_function_a99ce1641c91019a763248259829f18bc.html#a99ce1641c91019a763248259829f18bc">GenerateResidentNPC</a>(World, ResidentIndex + 1);</div>
+<div class="line"><a id="l00552" name="l00552"></a><span class="lineno">  552</span>            }</div>
+<div class="line"><a id="l00553" name="l00553"></a><span class="lineno">  553</span>            <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00554" name="l00554"></a><span class="lineno">  554</span>            {</div>
+<div class="line"><a id="l00555" name="l00555"></a><span class="lineno">  555</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;Failed to save ResidentPrompt file: %s&quot;</span>), *ResidentFileName);</div>
+<div class="line"><a id="l00556" name="l00556"></a><span class="lineno">  556</span>                <a class="code hl_function" href="class_u_god_function_a99ce1641c91019a763248259829f18bc.html#a99ce1641c91019a763248259829f18bc">GenerateResidentNPC</a>(World, ResidentIndex + 1);</div>
+<div class="line"><a id="l00557" name="l00557"></a><span class="lineno">  557</span>            }</div>
+<div class="line"><a id="l00558" name="l00558"></a><span class="lineno">  558</span>        });</div>
+<div class="line"><a id="l00559" name="l00559"></a><span class="lineno">  559</span>}</div>
+</div>
+<div class="line"><a id="l00560" name="l00560"></a><span class="lineno">  560</span> </div>
+<div class="line"><a id="l00561" name="l00561"></a><span class="lineno">  561</span><span class="comment">// 증거물 아이템 생성</span></div>
+<div class="foldopen" id="foldopen00562" data-start="{" data-end="}">
+<div class="line"><a id="l00562" name="l00562"></a><span class="lineno"><a class="line" href="class_u_god_function_afdbda0a36bc5fde8d2410a0f7eb52bc5.html#afdbda0a36bc5fde8d2410a0f7eb52bc5">  562</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_u_god_function_afdbda0a36bc5fde8d2410a0f7eb52bc5.html#afdbda0a36bc5fde8d2410a0f7eb52bc5">UGodFunction::GenerateEvidenceItems</a>(UWorld* World)</div>
+<div class="line"><a id="l00563" name="l00563"></a><span class="lineno">  563</span>{</div>
+<div class="line"><a id="l00564" name="l00564"></a><span class="lineno">  564</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><a id="l00565" name="l00565"></a><span class="lineno">  565</span>    {</div>
+<div class="line"><a id="l00566" name="l00566"></a><span class="lineno">  566</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateEvidenceItems - World is nullptr!&quot;</span>));</div>
+<div class="line"><a id="l00567" name="l00567"></a><span class="lineno">  567</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00568" name="l00568"></a><span class="lineno">  568</span>    }</div>
+<div class="line"><a id="l00569" name="l00569"></a><span class="lineno">  569</span> </div>
+<div class="line"><a id="l00570" name="l00570"></a><span class="lineno">  570</span>    FString DefendantPath = FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToDefendant.json&quot;</span>);</div>
+<div class="line"><a id="l00571" name="l00571"></a><span class="lineno">  571</span>    FString PromptToDefendant = <a class="code hl_function" href="class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee">ReadFileContent</a>(DefendantPath);</div>
+<div class="line"><a id="l00572" name="l00572"></a><span class="lineno">  572</span>    <span class="keywordflow">if</span> (PromptToDefendant.IsEmpty())</div>
+<div class="line"><a id="l00573" name="l00573"></a><span class="lineno">  573</span>    {</div>
+<div class="line"><a id="l00574" name="l00574"></a><span class="lineno">  574</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;PromptToDefendant.json이 비어 있음!&quot;</span>));</div>
+<div class="line"><a id="l00575" name="l00575"></a><span class="lineno">  575</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00576" name="l00576"></a><span class="lineno">  576</span>    }</div>
+<div class="line"><a id="l00577" name="l00577"></a><span class="lineno">  577</span> </div>
+<div class="line"><a id="l00578" name="l00578"></a><span class="lineno">  578</span>    FString EvidencePrompt = FString::Printf(TEXT(</div>
+<div class="line"><a id="l00579" name="l00579"></a><span class="lineno">  579</span>        <span class="stringliteral">&quot;다음은 피고인의 전생 정보입니다:\n%s\n\n&quot;</span></div>
+<div class="line"><a id="l00580" name="l00580"></a><span class="lineno">  580</span>        <span class="stringliteral">&quot;이 인물의 전생과 관련된 증거물 10개를 생성하세요. 각 증거물은 다음 정보를 포함해야 합니다:\n&quot;</span></div>
+<div class="line"><a id="l00581" name="l00581"></a><span class="lineno">  581</span>        <span class="stringliteral">&quot;1. name: 증거물 이름\n&quot;</span></div>
+<div class="line"><a id="l00582" name="l00582"></a><span class="lineno">  582</span>        <span class="stringliteral">&quot;2. description: 이 증거물이 피고인과 어떤 관련이 있는지 설명\n&quot;</span></div>
+<div class="line"><a id="l00583" name="l00583"></a><span class="lineno">  583</span>        <span class="stringliteral">&quot;3. image_prompt: 해당 증거물에 어울리는 이미지 생성용 프롬프트\n&quot;</span></div>
+<div class="line"><a id="l00584" name="l00584"></a><span class="lineno">  584</span>        <span class="stringliteral">&quot;결과는 JSON 배열로 반환하세요.&quot;</span>),</div>
+<div class="line"><a id="l00585" name="l00585"></a><span class="lineno">  585</span>        *<a class="code hl_function" href="class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f">EscapeJSON</a>(PromptToDefendant.Left(2000))</div>
+<div class="line"><a id="l00586" name="l00586"></a><span class="lineno">  586</span>    );</div>
+<div class="line"><a id="l00587" name="l00587"></a><span class="lineno">  587</span> </div>
+<div class="line"><a id="l00588" name="l00588"></a><span class="lineno">  588</span>    <a class="code hl_function" href="class_u_god_function_a4193e5e1b757eb6f3ff4e387674fb200.html#a4193e5e1b757eb6f3ff4e387674fb200">CallOpenAIAsync</a>(EvidencePrompt, [World](FString Response)</div>
+<div class="line"><a id="l00589" name="l00589"></a><span class="lineno">  589</span>        {</div>
+<div class="line"><a id="l00590" name="l00590"></a><span class="lineno">  590</span>            <span class="keywordflow">if</span> (Response.IsEmpty())</div>
+<div class="line"><a id="l00591" name="l00591"></a><span class="lineno">  591</span>            {</div>
+<div class="line"><a id="l00592" name="l00592"></a><span class="lineno">  592</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;증거물 응답이 비어 있음!&quot;</span>));</div>
+<div class="line"><a id="l00593" name="l00593"></a><span class="lineno">  593</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00594" name="l00594"></a><span class="lineno">  594</span>            }</div>
+<div class="line"><a id="l00595" name="l00595"></a><span class="lineno">  595</span> </div>
+<div class="line"><a id="l00596" name="l00596"></a><span class="lineno">  596</span>            TArray&lt;TSharedPtr&lt;FJsonValue&gt;&gt; EvidenceArray;</div>
+<div class="line"><a id="l00597" name="l00597"></a><span class="lineno">  597</span>            TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(Response);</div>
+<div class="line"><a id="l00598" name="l00598"></a><span class="lineno">  598</span>            <span class="keywordflow">if</span> (!FJsonSerializer::Deserialize(Reader, EvidenceArray) || EvidenceArray.Num() == 0)</div>
+<div class="line"><a id="l00599" name="l00599"></a><span class="lineno">  599</span>            {</div>
+<div class="line"><a id="l00600" name="l00600"></a><span class="lineno">  600</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;증거물 JSON 배열 파싱 실패 또는 비어 있음!&quot;</span>));</div>
+<div class="line"><a id="l00601" name="l00601"></a><span class="lineno">  601</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00602" name="l00602"></a><span class="lineno">  602</span>            }</div>
+<div class="line"><a id="l00603" name="l00603"></a><span class="lineno">  603</span> </div>
+<div class="line"><a id="l00604" name="l00604"></a><span class="lineno">  604</span>            UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;증거물 총 %d개 병렬 처리 시작&quot;</span>), EvidenceArray.Num());</div>
+<div class="line"><a id="l00605" name="l00605"></a><span class="lineno">  605</span> </div>
+<div class="line"><a id="l00606" name="l00606"></a><span class="lineno">  606</span>            <span class="keywordflow">for</span> (int32 Index = 0; Index &lt; EvidenceArray.Num(); ++Index)</div>
+<div class="line"><a id="l00607" name="l00607"></a><span class="lineno">  607</span>            {</div>
+<div class="line"><a id="l00608" name="l00608"></a><span class="lineno">  608</span>                <span class="keyword">const</span> TSharedPtr&lt;FJsonObject&gt;* ItemObj;</div>
+<div class="line"><a id="l00609" name="l00609"></a><span class="lineno">  609</span>                <span class="keywordflow">if</span> (!EvidenceArray[Index]-&gt;TryGetObject(ItemObj))</div>
+<div class="line"><a id="l00610" name="l00610"></a><span class="lineno">  610</span>                {</div>
+<div class="line"><a id="l00611" name="l00611"></a><span class="lineno">  611</span>                    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[%d] JSON 오브젝트 파싱 실패, 건너뜀&quot;</span>), Index + 1);</div>
+<div class="line"><a id="l00612" name="l00612"></a><span class="lineno">  612</span>                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00613" name="l00613"></a><span class="lineno">  613</span>                }</div>
+<div class="line"><a id="l00614" name="l00614"></a><span class="lineno">  614</span> </div>
+<div class="line"><a id="l00615" name="l00615"></a><span class="lineno">  615</span>                FString Name, Desc, ImgPrompt;</div>
+<div class="line"><a id="l00616" name="l00616"></a><span class="lineno">  616</span>                <span class="keywordtype">bool</span> b1 = ItemObj-&gt;Get()-&gt;TryGetStringField(<span class="stringliteral">&quot;name&quot;</span>, Name);</div>
+<div class="line"><a id="l00617" name="l00617"></a><span class="lineno">  617</span>                <span class="keywordtype">bool</span> b2 = ItemObj-&gt;Get()-&gt;TryGetStringField(<span class="stringliteral">&quot;description&quot;</span>, Desc);</div>
+<div class="line"><a id="l00618" name="l00618"></a><span class="lineno">  618</span>                <span class="keywordtype">bool</span> b3 = ItemObj-&gt;Get()-&gt;TryGetStringField(<span class="stringliteral">&quot;image_prompt&quot;</span>, ImgPrompt);</div>
+<div class="line"><a id="l00619" name="l00619"></a><span class="lineno">  619</span> </div>
+<div class="line"><a id="l00620" name="l00620"></a><span class="lineno">  620</span>                <span class="keywordflow">if</span> (!(b1 &amp;&amp; b2 &amp;&amp; b3))</div>
+<div class="line"><a id="l00621" name="l00621"></a><span class="lineno">  621</span>                {</div>
+<div class="line"><a id="l00622" name="l00622"></a><span class="lineno">  622</span>                    UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;[%d] 필드 누락, 건너뜀&quot;</span>), Index + 1);</div>
+<div class="line"><a id="l00623" name="l00623"></a><span class="lineno">  623</span>                    <span class="keywordflow">continue</span>;</div>
+<div class="line"><a id="l00624" name="l00624"></a><span class="lineno">  624</span>                }</div>
+<div class="line"><a id="l00625" name="l00625"></a><span class="lineno">  625</span> </div>
+<div class="line"><a id="l00626" name="l00626"></a><span class="lineno">  626</span>                FString InfoFilePath = FPaths::ProjectSavedDir() + FString::Printf(TEXT(<span class="stringliteral">&quot;Prompt/ItemInformation%d.json&quot;</span>), Index + 1);</div>
+<div class="line"><a id="l00627" name="l00627"></a><span class="lineno">  627</span>                FString ImageFilePath = FPaths::ProjectSavedDir() + FString::Printf(TEXT(<span class="stringliteral">&quot;Items/ItemImage%d.png&quot;</span>), Index + 1);</div>
+<div class="line"><a id="l00628" name="l00628"></a><span class="lineno">  628</span> </div>
+<div class="line"><a id="l00629" name="l00629"></a><span class="lineno">  629</span>                <span class="comment">// JSON 저장</span></div>
+<div class="line"><a id="l00630" name="l00630"></a><span class="lineno">  630</span>                TSharedPtr&lt;FJsonObject&gt; SaveObject = MakeShareable(<span class="keyword">new</span> FJsonObject);</div>
+<div class="line"><a id="l00631" name="l00631"></a><span class="lineno">  631</span>                SaveObject-&gt;SetStringField(<span class="stringliteral">&quot;name&quot;</span>, Name);</div>
+<div class="line"><a id="l00632" name="l00632"></a><span class="lineno">  632</span>                SaveObject-&gt;SetStringField(<span class="stringliteral">&quot;description&quot;</span>, Desc);</div>
+<div class="line"><a id="l00633" name="l00633"></a><span class="lineno">  633</span>                SaveObject-&gt;SetStringField(<span class="stringliteral">&quot;image_prompt&quot;</span>, ImgPrompt);</div>
+<div class="line"><a id="l00634" name="l00634"></a><span class="lineno">  634</span> </div>
+<div class="line"><a id="l00635" name="l00635"></a><span class="lineno">  635</span>                FString Output;</div>
+<div class="line"><a id="l00636" name="l00636"></a><span class="lineno">  636</span>                TSharedRef&lt;TJsonWriter&lt;&gt;&gt; Writer = TJsonWriterFactory&lt;&gt;::Create(&amp;Output);</div>
+<div class="line"><a id="l00637" name="l00637"></a><span class="lineno">  637</span>                FJsonSerializer::Serialize(SaveObject.ToSharedRef(), Writer);</div>
+<div class="line"><a id="l00638" name="l00638"></a><span class="lineno">  638</span> </div>
+<div class="line"><a id="l00639" name="l00639"></a><span class="lineno">  639</span>                UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;[%d] 저장될 JSON 내용: %s&quot;</span>), Index + 1, *Output);</div>
+<div class="line"><a id="l00640" name="l00640"></a><span class="lineno">  640</span> </div>
+<div class="line"><a id="l00641" name="l00641"></a><span class="lineno">  641</span>                <span class="keywordflow">if</span> (FFileHelper::SaveStringToFile(Output, *InfoFilePath))</div>
+<div class="line"><a id="l00642" name="l00642"></a><span class="lineno">  642</span>                {</div>
+<div class="line"><a id="l00643" name="l00643"></a><span class="lineno">  643</span>                    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;[%d] %s 저장 완료&quot;</span>), Index + 1, *InfoFilePath);</div>
+<div class="line"><a id="l00644" name="l00644"></a><span class="lineno">  644</span>                }</div>
+<div class="line"><a id="l00645" name="l00645"></a><span class="lineno">  645</span>                <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00646" name="l00646"></a><span class="lineno">  646</span>                {</div>
+<div class="line"><a id="l00647" name="l00647"></a><span class="lineno">  647</span>                    UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;[%d] %s 저장 실패&quot;</span>), Index + 1, *InfoFilePath);</div>
+<div class="line"><a id="l00648" name="l00648"></a><span class="lineno">  648</span>                }</div>
+<div class="line"><a id="l00649" name="l00649"></a><span class="lineno">  649</span> </div>
+<div class="line"><a id="l00650" name="l00650"></a><span class="lineno">  650</span>                <span class="comment">// 이미지 비동기 요청 (병렬)</span></div>
+<div class="line"><a id="l00651" name="l00651"></a><span class="lineno">  651</span>                <a class="code hl_function" href="class_u_god_function_a968456c98a4bca8b8e7212d15e03469e.html#a968456c98a4bca8b8e7212d15e03469e">DownloadDalleImage</a>(ImgPrompt, ImageFilePath, [Index]()</div>
+<div class="line"><a id="l00652" name="l00652"></a><span class="lineno">  652</span>                    {</div>
+<div class="line"><a id="l00653" name="l00653"></a><span class="lineno">  653</span>                        UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;[%d] 이미지 저장 완료&quot;</span>), Index + 1);</div>
+<div class="line"><a id="l00654" name="l00654"></a><span class="lineno">  654</span>                    });</div>
+<div class="line"><a id="l00655" name="l00655"></a><span class="lineno">  655</span>            }</div>
+<div class="line"><a id="l00656" name="l00656"></a><span class="lineno">  656</span>        });</div>
+<div class="line"><a id="l00657" name="l00657"></a><span class="lineno">  657</span>}</div>
+</div>
+<div class="line"><a id="l00658" name="l00658"></a><span class="lineno">  658</span> </div>
+<div class="line"><a id="l00659" name="l00659"></a><span class="lineno">  659</span><span class="comment">// Dalle 이미지 다운로드</span></div>
+<div class="foldopen" id="foldopen00660" data-start="{" data-end="}">
+<div class="line"><a id="l00660" name="l00660"></a><span class="lineno"><a class="line" href="class_u_god_function_a968456c98a4bca8b8e7212d15e03469e.html#a968456c98a4bca8b8e7212d15e03469e">  660</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_u_god_function_a968456c98a4bca8b8e7212d15e03469e.html#a968456c98a4bca8b8e7212d15e03469e">UGodFunction::DownloadDalleImage</a>(<span class="keyword">const</span> FString&amp; Prompt, <span class="keyword">const</span> FString&amp; SavePath, TFunction&lt;<span class="keywordtype">void</span>()&gt; OnComplete)</div>
+<div class="line"><a id="l00661" name="l00661"></a><span class="lineno">  661</span>{</div>
+<div class="line"><a id="l00662" name="l00662"></a><span class="lineno">  662</span>    FString ApiKey = <a class="code hl_function" href="class_u_god_function_a283cf18abc0d86f40e6813d90c24837b.html#a283cf18abc0d86f40e6813d90c24837b">LoadOpenAIKey</a>();</div>
+<div class="line"><a id="l00663" name="l00663"></a><span class="lineno">  663</span>    <span class="keywordflow">if</span> (ApiKey.IsEmpty())</div>
+<div class="line"><a id="l00664" name="l00664"></a><span class="lineno">  664</span>    {</div>
+<div class="line"><a id="l00665" name="l00665"></a><span class="lineno">  665</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;OpenAI API Key가 없습니다!&quot;</span>));</div>
+<div class="line"><a id="l00666" name="l00666"></a><span class="lineno">  666</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00667" name="l00667"></a><span class="lineno">  667</span>    }</div>
+<div class="line"><a id="l00668" name="l00668"></a><span class="lineno">  668</span> </div>
+<div class="line"><a id="l00669" name="l00669"></a><span class="lineno">  669</span>    <span class="comment">// 이미지 생성 요청 구성 (OpenAI Image API)</span></div>
+<div class="line"><a id="l00670" name="l00670"></a><span class="lineno">  670</span>    FString FinalPrompt = Prompt + TEXT(<span class="stringliteral">&quot;, isolated object on transparent background, icon style, minimal shadows&quot;</span>);</div>
+<div class="line"><a id="l00671" name="l00671"></a><span class="lineno">  671</span> </div>
+<div class="line"><a id="l00672" name="l00672"></a><span class="lineno">  672</span>    TSharedPtr&lt;FJsonObject&gt; RequestObject = MakeShareable(<span class="keyword">new</span> FJsonObject());</div>
+<div class="line"><a id="l00673" name="l00673"></a><span class="lineno">  673</span>    RequestObject-&gt;SetStringField(<span class="stringliteral">&quot;prompt&quot;</span>, FinalPrompt);</div>
+<div class="line"><a id="l00674" name="l00674"></a><span class="lineno">  674</span>    RequestObject-&gt;SetStringField(<span class="stringliteral">&quot;model&quot;</span>, <span class="stringliteral">&quot;dall-e-3&quot;</span>);</div>
+<div class="line"><a id="l00675" name="l00675"></a><span class="lineno">  675</span>    RequestObject-&gt;SetStringField(<span class="stringliteral">&quot;size&quot;</span>, <span class="stringliteral">&quot;1024x1024&quot;</span>);</div>
+<div class="line"><a id="l00676" name="l00676"></a><span class="lineno">  676</span>    RequestObject-&gt;SetStringField(<span class="stringliteral">&quot;response_format&quot;</span>, <span class="stringliteral">&quot;url&quot;</span>);  <span class="comment">// URL 받아서 다시 다운로드</span></div>
+<div class="line"><a id="l00677" name="l00677"></a><span class="lineno">  677</span> </div>
+<div class="line"><a id="l00678" name="l00678"></a><span class="lineno">  678</span>    FString RequestBody;</div>
+<div class="line"><a id="l00679" name="l00679"></a><span class="lineno">  679</span>    TSharedRef&lt;TJsonWriter&lt;&gt;&gt; Writer = TJsonWriterFactory&lt;&gt;::Create(&amp;RequestBody);</div>
+<div class="line"><a id="l00680" name="l00680"></a><span class="lineno">  680</span>    FJsonSerializer::Serialize(RequestObject.ToSharedRef(), Writer);</div>
+<div class="line"><a id="l00681" name="l00681"></a><span class="lineno">  681</span> </div>
+<div class="line"><a id="l00682" name="l00682"></a><span class="lineno">  682</span>    TSharedRef&lt;IHttpRequest&gt; Request = FHttpModule::Get().CreateRequest();</div>
+<div class="line"><a id="l00683" name="l00683"></a><span class="lineno">  683</span>    Request-&gt;SetURL(<span class="stringliteral">&quot;https://api.openai.com/v1/images/generations&quot;</span>);</div>
+<div class="line"><a id="l00684" name="l00684"></a><span class="lineno">  684</span>    Request-&gt;SetVerb(<span class="stringliteral">&quot;POST&quot;</span>);</div>
+<div class="line"><a id="l00685" name="l00685"></a><span class="lineno">  685</span>    Request-&gt;SetHeader(<span class="stringliteral">&quot;Authorization&quot;</span>, <span class="stringliteral">&quot;Bearer &quot;</span> + ApiKey);</div>
+<div class="line"><a id="l00686" name="l00686"></a><span class="lineno">  686</span>    Request-&gt;SetHeader(<span class="stringliteral">&quot;Content-Type&quot;</span>, <span class="stringliteral">&quot;application/json&quot;</span>);</div>
+<div class="line"><a id="l00687" name="l00687"></a><span class="lineno">  687</span>    Request-&gt;SetContentAsString(RequestBody);</div>
+<div class="line"><a id="l00688" name="l00688"></a><span class="lineno">  688</span> </div>
+<div class="line"><a id="l00689" name="l00689"></a><span class="lineno">  689</span>    Request-&gt;OnProcessRequestComplete().BindLambda([SavePath](FHttpRequestPtr Request, FHttpResponsePtr Response, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><a id="l00690" name="l00690"></a><span class="lineno">  690</span>        {</div>
+<div class="line"><a id="l00691" name="l00691"></a><span class="lineno">  691</span>            <span class="keywordflow">if</span> (!bWasSuccessful || !Response.IsValid())</div>
+<div class="line"><a id="l00692" name="l00692"></a><span class="lineno">  692</span>            {</div>
+<div class="line"><a id="l00693" name="l00693"></a><span class="lineno">  693</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;DALL·E 이미지 생성 요청 실패&quot;</span>));</div>
+<div class="line"><a id="l00694" name="l00694"></a><span class="lineno">  694</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00695" name="l00695"></a><span class="lineno">  695</span>            }</div>
+<div class="line"><a id="l00696" name="l00696"></a><span class="lineno">  696</span> </div>
+<div class="line"><a id="l00697" name="l00697"></a><span class="lineno">  697</span>            FString ResponseContent = Response-&gt;GetContentAsString();</div>
+<div class="line"><a id="l00698" name="l00698"></a><span class="lineno">  698</span>            TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
+<div class="line"><a id="l00699" name="l00699"></a><span class="lineno">  699</span>            TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(ResponseContent);</div>
+<div class="line"><a id="l00700" name="l00700"></a><span class="lineno">  700</span>            <span class="keywordflow">if</span> (!FJsonSerializer::Deserialize(Reader, JsonObject) || !JsonObject.IsValid())</div>
+<div class="line"><a id="l00701" name="l00701"></a><span class="lineno">  701</span>            {</div>
+<div class="line"><a id="l00702" name="l00702"></a><span class="lineno">  702</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;DALL·E 응답 파싱 실패&quot;</span>));</div>
+<div class="line"><a id="l00703" name="l00703"></a><span class="lineno">  703</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00704" name="l00704"></a><span class="lineno">  704</span>            }</div>
+<div class="line"><a id="l00705" name="l00705"></a><span class="lineno">  705</span> </div>
+<div class="line"><a id="l00706" name="l00706"></a><span class="lineno">  706</span>            <span class="keyword">const</span> TArray&lt;TSharedPtr&lt;FJsonValue&gt;&gt;* DataArray;</div>
+<div class="line"><a id="l00707" name="l00707"></a><span class="lineno">  707</span>            <span class="keywordflow">if</span> (!JsonObject-&gt;TryGetArrayField(<span class="stringliteral">&quot;data&quot;</span>, DataArray) || DataArray-&gt;Num() == 0)</div>
+<div class="line"><a id="l00708" name="l00708"></a><span class="lineno">  708</span>            {</div>
+<div class="line"><a id="l00709" name="l00709"></a><span class="lineno">  709</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;DALL·E 응답에 이미지 URL 없음&quot;</span>));</div>
+<div class="line"><a id="l00710" name="l00710"></a><span class="lineno">  710</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00711" name="l00711"></a><span class="lineno">  711</span>            }</div>
+<div class="line"><a id="l00712" name="l00712"></a><span class="lineno">  712</span> </div>
+<div class="line"><a id="l00713" name="l00713"></a><span class="lineno">  713</span>            FString ImageUrl = (*DataArray)[0]-&gt;AsObject()-&gt;GetStringField(<span class="stringliteral">&quot;url&quot;</span>);</div>
+<div class="line"><a id="l00714" name="l00714"></a><span class="lineno">  714</span>            UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;이미지 URL: %s&quot;</span>), *ImageUrl);</div>
+<div class="line"><a id="l00715" name="l00715"></a><span class="lineno">  715</span> </div>
+<div class="line"><a id="l00716" name="l00716"></a><span class="lineno">  716</span>            <span class="comment">// 이미지 다운로드 요청</span></div>
+<div class="line"><a id="l00717" name="l00717"></a><span class="lineno">  717</span>            TSharedRef&lt;IHttpRequest&gt; DownloadRequest = FHttpModule::Get().CreateRequest();</div>
+<div class="line"><a id="l00718" name="l00718"></a><span class="lineno">  718</span>            DownloadRequest-&gt;SetURL(ImageUrl);</div>
+<div class="line"><a id="l00719" name="l00719"></a><span class="lineno">  719</span>            DownloadRequest-&gt;SetVerb(<span class="stringliteral">&quot;GET&quot;</span>);</div>
+<div class="line"><a id="l00720" name="l00720"></a><span class="lineno">  720</span> </div>
+<div class="line"><a id="l00721" name="l00721"></a><span class="lineno">  721</span>            DownloadRequest-&gt;OnProcessRequestComplete().BindLambda([SavePath](FHttpRequestPtr Request, FHttpResponsePtr Response, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><a id="l00722" name="l00722"></a><span class="lineno">  722</span>                {</div>
+<div class="line"><a id="l00723" name="l00723"></a><span class="lineno">  723</span>                    <span class="keywordflow">if</span> (!bWasSuccessful || !Response.IsValid())</div>
+<div class="line"><a id="l00724" name="l00724"></a><span class="lineno">  724</span>                    {</div>
+<div class="line"><a id="l00725" name="l00725"></a><span class="lineno">  725</span>                        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;이미지 다운로드 실패&quot;</span>));</div>
+<div class="line"><a id="l00726" name="l00726"></a><span class="lineno">  726</span>                        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00727" name="l00727"></a><span class="lineno">  727</span>                    }</div>
+<div class="line"><a id="l00728" name="l00728"></a><span class="lineno">  728</span> </div>
+<div class="line"><a id="l00729" name="l00729"></a><span class="lineno">  729</span>                    <span class="comment">// PNG 저장</span></div>
+<div class="line"><a id="l00730" name="l00730"></a><span class="lineno">  730</span>                    <span class="keyword">const</span> TArray&lt;uint8&gt;&amp; ImageData = Response-&gt;GetContent();</div>
+<div class="line"><a id="l00731" name="l00731"></a><span class="lineno">  731</span>                    <span class="keywordflow">if</span> (FFileHelper::SaveArrayToFile(ImageData, *SavePath))</div>
+<div class="line"><a id="l00732" name="l00732"></a><span class="lineno">  732</span>                    {</div>
+<div class="line"><a id="l00733" name="l00733"></a><span class="lineno">  733</span>                        UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;이미지 저장 완료: %s&quot;</span>), *SavePath);</div>
+<div class="line"><a id="l00734" name="l00734"></a><span class="lineno">  734</span>                    }</div>
+<div class="line"><a id="l00735" name="l00735"></a><span class="lineno">  735</span>                    <span class="keywordflow">else</span></div>
+<div class="line"><a id="l00736" name="l00736"></a><span class="lineno">  736</span>                    {</div>
+<div class="line"><a id="l00737" name="l00737"></a><span class="lineno">  737</span>                        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;이미지 저장 실패: %s&quot;</span>), *SavePath);</div>
+<div class="line"><a id="l00738" name="l00738"></a><span class="lineno">  738</span>                    }</div>
+<div class="line"><a id="l00739" name="l00739"></a><span class="lineno">  739</span>                });</div>
+<div class="line"><a id="l00740" name="l00740"></a><span class="lineno">  740</span> </div>
+<div class="line"><a id="l00741" name="l00741"></a><span class="lineno">  741</span>            DownloadRequest-&gt;ProcessRequest();</div>
+<div class="line"><a id="l00742" name="l00742"></a><span class="lineno">  742</span>        });</div>
+<div class="line"><a id="l00743" name="l00743"></a><span class="lineno">  743</span> </div>
+<div class="line"><a id="l00744" name="l00744"></a><span class="lineno">  744</span>    Request-&gt;ProcessRequest();</div>
+<div class="line"><a id="l00745" name="l00745"></a><span class="lineno">  745</span>}</div>
 </div>
 <div class="ttc" id="a_god_call_8h_html"><div class="ttname"><a href="_god_call_8h.html">GodCall.h</a></div></div>
 <div class="ttc" id="a_god_function_8h_html"><div class="ttname"><a href="_god_function_8h.html">GodFunction.h</a></div></div>
@@ -698,10 +892,12 @@ $(function(){initNavTree('_god_function_8cpp_source.html',''); initResizable(tru
 <div class="ttc" id="aclass_u_god_function_a5c30132246dec8610cc93cc07a32ee07_html_a5c30132246dec8610cc93cc07a32ee07"><div class="ttname"><a href="class_u_god_function_a5c30132246dec8610cc93cc07a32ee07.html#a5c30132246dec8610cc93cc07a32ee07">UGodFunction::GenerateDefendantPrompt</a></div><div class="ttdeci">static void GenerateDefendantPrompt(UWorld *World, TFunction&lt; void()&gt; Callback)</div><div class="ttdef"><b>Definition</b> <a href="#l00321">GodFunction.cpp:321</a></div></div>
 <div class="ttc" id="aclass_u_god_function_a800687b9234e88341a3ff75a44089a24_html_a800687b9234e88341a3ff75a44089a24"><div class="ttname"><a href="class_u_god_function_a800687b9234e88341a3ff75a44089a24.html#a800687b9234e88341a3ff75a44089a24">UGodFunction::GenerateJuryNPC</a></div><div class="ttdeci">static void GenerateJuryNPC(UWorld *World, int JuryIndex)</div><div class="ttdef"><b>Definition</b> <a href="#l00424">GodFunction.cpp:424</a></div></div>
 <div class="ttc" id="aclass_u_god_function_a941993f5f191f9dc599b55d316ac04f2_html_a941993f5f191f9dc599b55d316ac04f2"><div class="ttname"><a href="class_u_god_function_a941993f5f191f9dc599b55d316ac04f2.html#a941993f5f191f9dc599b55d316ac04f2">UGodFunction::CleanUpJson</a></div><div class="ttdeci">static FString CleanUpJson(FString JsonString)</div><div class="ttdef"><b>Definition</b> <a href="#l00088">GodFunction.cpp:88</a></div></div>
+<div class="ttc" id="aclass_u_god_function_a968456c98a4bca8b8e7212d15e03469e_html_a968456c98a4bca8b8e7212d15e03469e"><div class="ttname"><a href="class_u_god_function_a968456c98a4bca8b8e7212d15e03469e.html#a968456c98a4bca8b8e7212d15e03469e">UGodFunction::DownloadDalleImage</a></div><div class="ttdeci">static void DownloadDalleImage(const FString &amp;Prompt, const FString &amp;SavePath, TFunction&lt; void()&gt; OnComplete)</div><div class="ttdef"><b>Definition</b> <a href="#l00660">GodFunction.cpp:660</a></div></div>
 <div class="ttc" id="aclass_u_god_function_a99ce1641c91019a763248259829f18bc_html_a99ce1641c91019a763248259829f18bc"><div class="ttname"><a href="class_u_god_function_a99ce1641c91019a763248259829f18bc.html#a99ce1641c91019a763248259829f18bc">UGodFunction::GenerateResidentNPC</a></div><div class="ttdeci">static void GenerateResidentNPC(UWorld *World, int ResidentIndex)</div><div class="ttdef"><b>Definition</b> <a href="#l00492">GodFunction.cpp:492</a></div></div>
 <div class="ttc" id="aclass_u_god_function_aaac6f0b28b727bc92185ba3fe44117a5_html_aaac6f0b28b727bc92185ba3fe44117a5"><div class="ttname"><a href="class_u_god_function_aaac6f0b28b727bc92185ba3fe44117a5.html#aaac6f0b28b727bc92185ba3fe44117a5">UGodFunction::SavePromptToFile</a></div><div class="ttdeci">static bool SavePromptToFile(const FString &amp;FileName, const FString &amp;Content)</div><div class="ttdef"><b>Definition</b> <a href="#l00116">GodFunction.cpp:116</a></div></div>
 <div class="ttc" id="aclass_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f_html_abe9739c45ce5e747ddf5f27ac321e59f"><div class="ttname"><a href="class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f">UGodFunction::EscapeJSON</a></div><div class="ttdeci">static FString EscapeJSON(const FString &amp;Input)</div><div class="ttdef"><b>Definition</b> <a href="#l00047">GodFunction.cpp:47</a></div></div>
 <div class="ttc" id="aclass_u_god_function_abf4593cac5c9e06435446d6259aff28d_html_abf4593cac5c9e06435446d6259aff28d"><div class="ttname"><a href="class_u_god_function_abf4593cac5c9e06435446d6259aff28d.html#abf4593cac5c9e06435446d6259aff28d">UGodFunction::DeleteOldPromptFiles</a></div><div class="ttdeci">static void DeleteOldPromptFiles()</div><div class="ttdef"><b>Definition</b> <a href="#l00239">GodFunction.cpp:239</a></div></div>
+<div class="ttc" id="aclass_u_god_function_afdbda0a36bc5fde8d2410a0f7eb52bc5_html_afdbda0a36bc5fde8d2410a0f7eb52bc5"><div class="ttname"><a href="class_u_god_function_afdbda0a36bc5fde8d2410a0f7eb52bc5.html#afdbda0a36bc5fde8d2410a0f7eb52bc5">UGodFunction::GenerateEvidenceItems</a></div><div class="ttdeci">static void GenerateEvidenceItems(UWorld *World)</div><div class="ttdef"><b>Definition</b> <a href="#l00562">GodFunction.cpp:562</a></div></div>
 <div class="ttc" id="aclass_u_q_game_instance_village_html"><div class="ttname"><a href="class_u_q_game_instance_village.html">UQGameInstanceVillage</a></div><div class="ttdef"><b>Definition</b> <a href="_q_game_instance_village_8h_source.html#l00013">QGameInstanceVillage.h:14</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

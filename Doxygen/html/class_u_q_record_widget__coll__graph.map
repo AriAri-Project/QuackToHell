@@ -1,5 +1,5 @@
 <map id="UQRecordWidget" name="UQRecordWidget">
-<area shape="rect" id="Node000001" title="녹음기록 화면의 위젯입니다." alt="" coords="5,123,215,565"/>
+<area shape="rect" id="Node000001" title="녹음기록 화면의 위젯입니다." alt="" coords="5,123,215,619"/>
 <area shape="rect" id="Node000002" title=" " alt="" coords="66,5,155,75"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,89,113,123,108,123,108,89"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,90,113,123,108,123,108,90"/>
 </map>

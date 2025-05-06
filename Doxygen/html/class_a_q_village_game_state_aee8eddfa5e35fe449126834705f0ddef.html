@@ -125,24 +125,25 @@ $(function(){initNavTree('class_a_q_village_game_state_aee8eddfa5e35fe4491268347
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="_q_village_game_state_8cpp_source.html">QVillageGameState.cpp</a> 파일의 <a class="el" href="_q_village_game_state_8cpp_source.html#l00039">39</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
-<div class="line"><span class="lineno">   41</span>    Super::Tick(DeltaSeconds);</div>
-<div class="line"><span class="lineno">   42</span> </div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">if</span> (HasAuthority()) <span class="comment">// 서버에서만 실행</span></div>
-<div class="line"><span class="lineno">   44</span>    {</div>
-<div class="line"><span class="lineno">   45</span>        <a class="code hl_variable" href="class_a_q_village_game_state_aab5c017d2c47e0a79af4e1d3b4f94835.html#aab5c017d2c47e0a79af4e1d3b4f94835">ServerLeftTimeUntilTrial</a> += DeltaSeconds;</div>
-<div class="line"><span class="lineno">   46</span>        ForceNetUpdate();</div>
-<div class="line"><span class="lineno">   47</span> </div>
-<div class="line"><span class="lineno">   48</span>        <a class="code hl_function" href="class_a_q_village_game_state_a660da4360746d51670213e890b9d5801.html#a660da4360746d51670213e890b9d5801">MulticastRPCUpdateServerTime</a>();</div>
-<div class="line"><span class="lineno">   49</span>        <span class="keywordflow">if</span> (GetNetMode() == NM_ListenServer) <span class="comment">// ✅ Listen 서버의 &quot;호스트 클라이언트&quot;에서는 직접 실행</span></div>
-<div class="line"><span class="lineno">   50</span>        {</div>
-<div class="line"><span class="lineno">   51</span>            MulticastRPCUpdateServerTime_Implementation();</div>
-<div class="line"><span class="lineno">   52</span>        }</div>
-<div class="line"><span class="lineno">   53</span>    }</div>
-<div class="line"><span class="lineno">   54</span>}</div>
+<p class="definition"><a class="el" href="_q_village_game_state_8cpp_source.html">QVillageGameState.cpp</a> 파일의 <a class="el" href="_q_village_game_state_8cpp_source.html#l00037">37</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   38</span>{</div>
+<div class="line"><span class="lineno">   39</span>    Super::Tick(DeltaSeconds);</div>
+<div class="line"><span class="lineno">   40</span> </div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">if</span> (HasAuthority()) <span class="comment">// 서버에서만 실행</span></div>
+<div class="line"><span class="lineno">   42</span>    {</div>
+<div class="line"><span class="lineno">   43</span>        <a class="code hl_variable" href="class_a_q_village_game_state_aab5c017d2c47e0a79af4e1d3b4f94835.html#aab5c017d2c47e0a79af4e1d3b4f94835">ServerLeftTimeUntilTrial</a> += DeltaSeconds;</div>
+<div class="line"><span class="lineno">   44</span>        ForceNetUpdate();</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>        <a class="code hl_function" href="class_a_q_village_game_state_a660da4360746d51670213e890b9d5801.html#a660da4360746d51670213e890b9d5801">MulticastRPCUpdateServerTime</a>();</div>
+<div class="line"><span class="lineno">   47</span>        <span class="keywordflow">if</span> (GetNetMode() == NM_ListenServer) <span class="comment">// ✅ Listen 서버의 &quot;호스트 클라이언트&quot;에서는 직접 실행</span></div>
+<div class="line"><span class="lineno">   48</span>        {</div>
+<div class="line"><span class="lineno">   49</span>            MulticastRPCUpdateServerTime_Implementation();</div>
+<div class="line"><span class="lineno">   50</span>        }</div>
+<div class="line"><span class="lineno">   51</span>        </div>
+<div class="line"><span class="lineno">   52</span>    }</div>
+<div class="line"><span class="lineno">   53</span>}</div>
 <div class="ttc" id="aclass_a_q_village_game_state_a660da4360746d51670213e890b9d5801_html_a660da4360746d51670213e890b9d5801"><div class="ttname"><a href="class_a_q_village_game_state_a660da4360746d51670213e890b9d5801.html#a660da4360746d51670213e890b9d5801">AQVillageGameState::MulticastRPCUpdateServerTime</a></div><div class="ttdeci">void MulticastRPCUpdateServerTime()</div></div>
-<div class="ttc" id="aclass_a_q_village_game_state_aab5c017d2c47e0a79af4e1d3b4f94835_html_aab5c017d2c47e0a79af4e1d3b4f94835"><div class="ttname"><a href="class_a_q_village_game_state_aab5c017d2c47e0a79af4e1d3b4f94835.html#aab5c017d2c47e0a79af4e1d3b4f94835">AQVillageGameState::ServerLeftTimeUntilTrial</a></div><div class="ttdeci">float ServerLeftTimeUntilTrial</div><div class="ttdoc">재판까지 남은 시간</div><div class="ttdef"><b>Definition</b> <a href="_q_village_game_state_8h_source.html#l00037">QVillageGameState.h:37</a></div></div>
+<div class="ttc" id="aclass_a_q_village_game_state_aab5c017d2c47e0a79af4e1d3b4f94835_html_aab5c017d2c47e0a79af4e1d3b4f94835"><div class="ttname"><a href="class_a_q_village_game_state_aab5c017d2c47e0a79af4e1d3b4f94835.html#aab5c017d2c47e0a79af4e1d3b4f94835">AQVillageGameState::ServerLeftTimeUntilTrial</a></div><div class="ttdeci">float ServerLeftTimeUntilTrial</div><div class="ttdoc">재판까지 남은 시간</div><div class="ttdef"><b>Definition</b> <a href="_q_village_game_state_8h_source.html#l00040">QVillageGameState.h:40</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div class="dyncontent">
@@ -152,6 +153,10 @@ $(function(){initNavTree('class_a_q_village_game_state_aee8eddfa5e35fe4491268347
 <area shape="rect" href="class_a_q_village_game_state_a660da4360746d51670213e890b9d5801.html#a660da4360746d51670213e890b9d5801" title=" " alt="" coords="100,29,312,56"/>
 <area shape="poly" title=" " alt="" coords="52,40,84,40,84,45,52,45"/>
 <area shape="poly" title=" " alt="" coords="175,30,170,21,174,11,186,5,206,3,227,5,239,12,236,16,225,10,206,8,187,10,178,15,175,20,180,28"/>
+<area shape="rect" href="class_a_q_village_game_state_a688759ffe4cd83ff0873786f3318dc3f.html#a688759ffe4cd83ff0873786f3318dc3f" title=" " alt="" coords="360,29,544,56"/>
+<area shape="poly" title=" " alt="" coords="313,40,344,40,344,45,313,45"/>
+<area shape="rect" href="class_a_q_village_game_state_a0123dbe72e42f5ef9982d99b2b3b6486.html#a0123dbe72e42f5ef9982d99b2b3b6486" title=" " alt="" coords="592,29,738,56"/>
+<area shape="poly" title=" " alt="" coords="544,40,577,40,577,45,544,45"/>
 </map>
 </div>
 

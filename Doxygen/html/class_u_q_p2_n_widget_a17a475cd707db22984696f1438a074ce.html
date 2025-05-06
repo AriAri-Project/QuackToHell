@@ -119,15 +119,15 @@ $(function(){initNavTree('class_u_q_p2_n_widget_a17a475cd707db22984696f1438a074c
 
 <p>종료버튼 눌렸을때의 처리; </p>
 
-<p class="definition"><a class="el" href="_q_p2_n_widget_8cpp_source.html">QP2NWidget.cpp</a> 파일의 <a class="el" href="_q_p2_n_widget_8cpp_source.html#l00061">61</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   62</span>{</div>
-<div class="line"><span class="lineno">   63</span>    <span class="comment">//대화마치기 가능한지 서버에게 물어보기</span></div>
-<div class="line"><span class="lineno">   64</span>    TObjectPtr&lt;AQPlayer&gt; _Player = Cast&lt;AQPlayer&gt;(<a class="code hl_variable" href="class_u_q_p2_n_widget_aa4b8c14effa74dacd75fe2cb628ab917.html#aa4b8c14effa74dacd75fe2cb628ab917">ConversingPlayer</a>-&gt;GetPawn());</div>
-<div class="line"><span class="lineno">   65</span>    TObjectPtr&lt;AQNPC&gt; _NPC = Cast&lt;AQNPC&gt;(<a class="code hl_variable" href="class_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450.html#afd4fc717ac802ea7d5ddd2f173739450">ConversingNPC</a>-&gt;GetPawn());</div>
-<div class="line"><span class="lineno">   66</span> </div>
-<div class="line"><span class="lineno">   67</span>    AQPlayerController* LocalPlayerController = Cast&lt;AQPlayerController&gt;(_Player-&gt;GetController());</div>
-<div class="line"><span class="lineno">   68</span>    _Player-&gt;ServerRPCCanFinishConversP2N_Implementation(LocalPlayerController, _NPC);    </div>
-<div class="line"><span class="lineno">   69</span>}</div>
+<p class="definition"><a class="el" href="_q_p2_n_widget_8cpp_source.html">QP2NWidget.cpp</a> 파일의 <a class="el" href="_q_p2_n_widget_8cpp_source.html#l00070">70</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
+<div class="line"><span class="lineno">   72</span>    <span class="comment">//대화마치기 가능한지 서버에게 물어보기</span></div>
+<div class="line"><span class="lineno">   73</span>    TObjectPtr&lt;AQPlayer&gt; _Player = Cast&lt;AQPlayer&gt;(<a class="code hl_variable" href="class_u_q_p2_n_widget_aa4b8c14effa74dacd75fe2cb628ab917.html#aa4b8c14effa74dacd75fe2cb628ab917">ConversingPlayer</a>-&gt;GetPawn());</div>
+<div class="line"><span class="lineno">   74</span>    TObjectPtr&lt;AQNPC&gt; _NPC = Cast&lt;AQNPC&gt;(<a class="code hl_variable" href="class_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450.html#afd4fc717ac802ea7d5ddd2f173739450">ConversingNPC</a>-&gt;GetPawn());</div>
+<div class="line"><span class="lineno">   75</span> </div>
+<div class="line"><span class="lineno">   76</span>    AQPlayerController* LocalPlayerController = Cast&lt;AQPlayerController&gt;(_Player-&gt;GetController());</div>
+<div class="line"><span class="lineno">   77</span>    _Player-&gt;ServerRPCCanFinishConversP2N_Implementation(LocalPlayerController, _NPC);    </div>
+<div class="line"><span class="lineno">   78</span>}</div>
 <div class="ttc" id="aclass_u_q_p2_n_widget_aa4b8c14effa74dacd75fe2cb628ab917_html_aa4b8c14effa74dacd75fe2cb628ab917"><div class="ttname"><a href="class_u_q_p2_n_widget_aa4b8c14effa74dacd75fe2cb628ab917.html#aa4b8c14effa74dacd75fe2cb628ab917">UQP2NWidget::ConversingPlayer</a></div><div class="ttdeci">TObjectPtr&lt; class AQPlayerController &gt; ConversingPlayer</div><div class="ttdoc">대화중인 플레이어정보</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00081">QP2NWidget.h:81</a></div></div>
 <div class="ttc" id="aclass_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450_html_afd4fc717ac802ea7d5ddd2f173739450"><div class="ttname"><a href="class_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450.html#afd4fc717ac802ea7d5ddd2f173739450">UQP2NWidget::ConversingNPC</a></div><div class="ttdeci">TObjectPtr&lt; class AQDynamicNPCController &gt; ConversingNPC</div><div class="ttdoc">대화중인 npc정보</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00078">QP2NWidget.h:78</a></div></div>
 </div><!-- fragment --><div class="dynheader">

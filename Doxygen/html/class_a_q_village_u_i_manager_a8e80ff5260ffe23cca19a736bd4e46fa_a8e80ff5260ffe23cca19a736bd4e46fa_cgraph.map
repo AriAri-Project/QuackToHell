@@ -1,0 +1,12 @@
+<map id="MulticastEndupUI" name="MulticastEndupUI">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,131,57"/>
+<area shape="poly" id="edge5_Node000001_Node000001" title=" " alt="" coords="42,31,37,22,40,12,51,6,68,4,86,7,96,13,93,18,84,12,68,9,53,11,44,16,42,21,46,29"/>
+<area shape="rect" id="Node000002" href="$class_a_q_village_u_i_manager_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c" title=" " alt="" coords="179,5,259,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="131,31,163,25,163,31,132,36"/>
+<area shape="rect" id="Node000005" href="$class_a_q_village_u_i_manager_aa1e28be0d0b9be7af2a074941a144c65.html#aa1e28be0d0b9be7af2a074941a144c65" title=" " alt="" coords="184,56,254,83"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="132,52,169,58,168,64,131,57"/>
+<area shape="rect" id="Node000003" href="$class_a_q_village_u_i_manager_a509d2bef33e8d17041d5920e9f16cb36.html#a509d2bef33e8d17041d5920e9f16cb36" title="맵 로드 시 실행." alt="" coords="307,5,398,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="260,16,291,16,291,21,260,21"/>
+<area shape="rect" id="Node000004" href="$class_a_q_village_u_i_manager_a4f965786f7f5164e2698e7e0ddd32bdf.html#a4f965786f7f5164e2698e7e0ddd32bdf" title="UI를 켭니다." alt="" coords="446,5,525,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="399,16,431,16,431,21,399,21"/>
+</map>

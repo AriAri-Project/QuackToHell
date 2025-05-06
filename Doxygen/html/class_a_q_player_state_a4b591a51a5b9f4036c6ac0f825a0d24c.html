@@ -132,10 +132,17 @@ $(function(){initNavTree('class_a_q_player_state_a4b591a51a5b9f4036c6ac0f825a0d2
 <div class="line"><span class="lineno">   24</span>    <a class="code hl_variable" href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">GameState</a> = Cast&lt;AQVillageGameState&gt;(GetWorld()-&gt;GetGameState());</div>
 <div class="line"><span class="lineno">   25</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">GameState</a> == <span class="keyword">nullptr</span>)</div>
 <div class="line"><span class="lineno">   26</span>    {</div>
-<div class="line"><span class="lineno">   27</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;AQPlayerState::BeginPlay Can&#39;t find GameState.&quot;</span>));</div>
+<div class="line"><span class="lineno">   27</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;AQPlayerState::BeginPlay - Can&#39;t find GameState.&quot;</span>));</div>
 <div class="line"><span class="lineno">   28</span>    }</div>
-<div class="line"><span class="lineno">   29</span>}</div>
-<div class="ttc" id="aclass_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681_html_aef0cddd55b0c38d7ef18f9188a621681"><div class="ttname"><a href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">AQPlayerState::GameState</a></div><div class="ttdeci">AQVillageGameState * GameState</div><div class="ttdef"><b>Definition</b> <a href="_q_player_state_8h_source.html#l00052">QPlayerState.h:52</a></div></div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>    <a class="code hl_variable" href="class_a_q_player_state_aeef68b25bbc63057bc4e3e9d087112af.html#aeef68b25bbc63057bc4e3e9d087112af">GameInstance</a> = Cast&lt;UQGameInstance&gt;(GetGameInstance());</div>
+<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_player_state_aeef68b25bbc63057bc4e3e9d087112af.html#aeef68b25bbc63057bc4e3e9d087112af">GameInstance</a> == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   32</span>    {</div>
+<div class="line"><span class="lineno">   33</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;AQPlayerState::BeginPlay - Can&#39;t find GameInstance.&quot;</span>));</div>
+<div class="line"><span class="lineno">   34</span>    }</div>
+<div class="line"><span class="lineno">   35</span>}</div>
+<div class="ttc" id="aclass_a_q_player_state_aeef68b25bbc63057bc4e3e9d087112af_html_aeef68b25bbc63057bc4e3e9d087112af"><div class="ttname"><a href="class_a_q_player_state_aeef68b25bbc63057bc4e3e9d087112af.html#aeef68b25bbc63057bc4e3e9d087112af">AQPlayerState::GameInstance</a></div><div class="ttdeci">UQGameInstance * GameInstance</div><div class="ttdef"><b>Definition</b> <a href="_q_player_state_8h_source.html#l00056">QPlayerState.h:56</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681_html_aef0cddd55b0c38d7ef18f9188a621681"><div class="ttname"><a href="class_a_q_player_state_aef0cddd55b0c38d7ef18f9188a621681.html#aef0cddd55b0c38d7ef18f9188a621681">AQPlayerState::GameState</a></div><div class="ttdeci">AQVillageGameState * GameState</div><div class="ttdef"><b>Definition</b> <a href="_q_player_state_8h_source.html#l00053">QPlayerState.h:53</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>
