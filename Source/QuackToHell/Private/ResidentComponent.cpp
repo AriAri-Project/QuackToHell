@@ -46,7 +46,7 @@ void UResidentComponent::BeginPlay()
 }
 
 
-void UResidentComponent::StartConversation(FOpenAIRequest Request)
+void UResidentComponent::StartConversation(AQPlayerController* ClientPC, FOpenAIRequest Request)
 {
     UE_LOG(LogTemp, Log, TEXT("StartConversation 실행됨 - 현재 PromptContent 길이: %d"), PromptContent.Len());
 
@@ -133,7 +133,7 @@ void UResidentComponent::StartConversation(FOpenAIRequest Request)
 
     UE_LOG(LogTemp, Log, TEXT("OpenAI 최종 요청 데이터(JSON): %s"), *RequestBody);
 
-    RequestOpenAIResponse(AIRequest, [this, Request](FOpenAIResponse AIResponse)
+    RequestOpenAIResponse(AIRequest, [this, Request, ClientPC](FOpenAIResponse AIResponse)
         {
             if (AIResponse.ResponseText.IsEmpty())
             {
@@ -144,7 +144,7 @@ void UResidentComponent::StartConversation(FOpenAIRequest Request)
 			AIResponse.SpeakerID = Request.SpeakerID;
 			AIResponse.ListenerID = Request.ListenerID;
             ResponseCache.Add(Request.Prompt, AIResponse.ResponseText);
-            SendNPCResponseToServer(AIResponse);
+            SendNPCResponseToServer(AIResponse, ClientPC);
             SaveP2NDialogue(Request, AIResponse);
         });
 }

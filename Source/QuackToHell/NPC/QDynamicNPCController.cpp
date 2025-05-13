@@ -154,13 +154,8 @@ void AQDynamicNPCController::StartDialog(TObjectPtr<APawn> _OpponentPawn, ENPCCo
     case ENPCConversationType::P2N:
     {
         ////몸멈추기 & 상대방을 향해 회전하기
-        //FreezePawn();
+        FreezePawn();
         RotateToOpponent(_OpponentPawn);
-        
-        //P2N Widget에게 자신의 정보를 넘긴다: 내 정보 넘겨주기
-        TMap<EVillageUIType, TObjectPtr<UUserWidget>> VillageWidgets = VillageUIManager->GetActivedVillageWidgets();
-        TObjectPtr<UQP2NWidget> P2NWidget = Cast<UQP2NWidget>(VillageWidgets[EVillageUIType::P2N]);
-        P2NWidget->SetConversingNPC(this);
     }
     break;
     case ENPCConversationType::N2N:
@@ -184,23 +179,19 @@ void AQDynamicNPCController::StartDialog(TObjectPtr<APawn> _OpponentPawn, ENPCCo
 
 void AQDynamicNPCController::EndDialog()
 {
-
     UnFreezePawn();
-
 }
 
-
-
+/*
 void AQDynamicNPCController::Response(FString& Text, EConversationType InputConversationType)
 {
-    /*정보가져오기*/
+    //정보가져오기
     FOpenAIRequest OpenAIRequest;
     OpenAIRequest.ConversationType = InputConversationType;
     AQPlayerController* PlayerController = Cast<AQPlayerController>(UGameplayStatics::GetPlayerController(this, 0));
     OpenAIRequest.ListenerID = Cast<AQPlayerState> (PlayerController->PlayerState)->GetPlayerId();
     OpenAIRequest.Prompt = Text;
     OpenAIRequest.SpeakerID = NPCComponent->GetNPCID();
-
-
     NPCComponent->ServerRPCGetNPCResponse(OpenAIRequest);
 }
+*/

@@ -188,6 +188,11 @@ void AQPlayer::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLi
 
 }
 
+void AQPlayer::ActivateClientStartConversation(AQPlayerController* ClientPC, FOpenAIResponse Response, AQNPC* NPC)
+{
+	ClientPC->ClientRPCStartConversation(Response, NPC);
+}
+
 void AQPlayer::ServerRPCCanStartConversP2N_Implementation(AQPlayerController* TargetController,  AQNPC* NPC)
 {
     bool bResult = true;
@@ -254,18 +259,20 @@ void AQPlayer::ServerRPCCanFinishConversP2N_Implementation(AQPlayerController* T
 }
 
 
-void AQPlayer::ServerRPCStartConversation_Implementation(AQNPC* NPC)
+void AQPlayer::ServerRPCStartConversation_Implementation(AQPlayerController* ClientPC, AQNPC* NPC)
 {
 	// 상태 업데이트
 	ThisPlayerState->SetPlayerConverstationState(EConversationType::P2N);
 	NPC->SetNPCConversationState(EConversationType::P2N);
 
-	// NPC Freeze
-	TObjectPtr<AQDynamicNPCController> NPCController = Cast<AQDynamicNPCController>(NPC->GetController());
-	if (NPCController)
+	// NPC에게 대화 시작 알림
+	TObjectPtr<AQDynamicNPCController> DynamicNPCController = Cast<AQDynamicNPCController>(NPC->GetController());
+	if (DynamicNPCController == nullptr)
 	{
-		NPCController->FreezePawn();
+		UE_LOG(LogLogic, Error, TEXT("AQPlayer::ServerRPCFinishConversation_Implementation - DynamicNPCController is nullptr."));
+		return;
 	}
+	DynamicNPCController->StartDialog(this, ENPCConversationType::P2N);
 	
 	// 다른 플레이어들 시점 처리
 	for (TActorIterator<AQPlayer> It(GetWorld()); It; ++It)
@@ -282,7 +289,7 @@ void AQPlayer::ServerRPCStartConversation_Implementation(AQNPC* NPC)
 		EConversationType::PStart,
 		Temp
 	);
-	NPC->FindComponentByClass<UNPCComponent>()->ServerRPCGetNPCResponse(Request);
+	NPC->FindComponentByClass<UNPCComponent>()->ServerRPCGetNPCResponse(ClientPC,Request);
 }
 
 void AQPlayer::ServerRPCFinishConversation_Implementation(AQPlayerController* TargetController,  AQNPC* NPC)
@@ -296,12 +303,14 @@ void AQPlayer::ServerRPCFinishConversation_Implementation(AQPlayerController* Ta
 	ThisPlayerState->SetPlayerConverstationState(EConversationType::None);
 	NPC->SetNPCConversationState(EConversationType::None);
 	
-	// NPC Pawn UnFreeze
-	TObjectPtr<AQDynamicNPCController> NPCController = Cast<AQDynamicNPCController>(NPC->GetController());
-	if (NPCController)
+	// NPC에게 대화 종료 알림
+	TObjectPtr<AQDynamicNPCController> DynamicNPCController = Cast<AQDynamicNPCController>(NPC->GetController());
+	if (DynamicNPCController == nullptr)
 	{
-		NPCController->UnFreezePawn();
+		UE_LOG(LogLogic, Error, TEXT("AQPlayer::ServerRPCFinishConversation_Implementation - DynamicNPCController is nullptr."));
+		return;
 	}
+	DynamicNPCController->EndDialog();
 	
 	// 다른 플레이어들 시점 처리
 	for (TActorIterator<AQPlayer> It(GetWorld()); It; ++It)

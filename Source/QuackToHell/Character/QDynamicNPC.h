@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Character/QNPC.h"
+#include "Player/QPlayerController.h"
 #include "QDynamicNPC.generated.h"
 
 /**
@@ -17,26 +18,37 @@ class QUACKTOHELL_API AQDynamicNPC : public AQNPC
 public:
 	AQDynamicNPC(const FObjectInitializer& ObjectInitializer);
 
-public:
 	/**
 	 * @brief Player2N 스피치버블 위젯을 리턴합니다. NPCController에서 접근하기 위함입니다.
 	 *
 	 * @return Player2Nspeechbubblewidget
 	 */
 	TObjectPtr<class UQPlayer2NSpeechBubbleWidget> GetPlayer2NSpeechBubbleWidget() const;
-public:
 	/**
 	 * @brief 캐릭터 기준으로 가장 가까이 있는 npc를 반환합니다.
 	 *
 	 * @return 캐릭터 기준 가장 가까이 있는 npc
 	 */
 	TObjectPtr<AActor> GetClosestNPC();
+
+	/**
+	 * 
+	 * @param Text 플레이어 입력
+	 * @param InputConversationType 대화 타입
+	 * @return bool 성공 여부
+	 */
+	UFUNCTION(BlueprintCallable)
+	bool GetResponse(AQPlayerController* ClientPC, FString& Text, EConversationType InputConversationType);
+
+	/** @brief NPCComponent를 멤버변수로 가집니다 */
+	TObjectPtr<class UNPCComponent> NPCComponent;
 protected:
 
 	virtual void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) override;
 
 	virtual void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex) override;
 	virtual void BeginPlay() override;
+	virtual void PostInitializeComponents() override;
 protected:
 	/**
 	 * @brief E UI 컴포넌트입니다.

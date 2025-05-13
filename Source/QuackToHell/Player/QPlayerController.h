@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "UI/QVillageUIManager.h"
 #include "QPlayerController.generated.h"
 struct FInputActionValue;
 /**
@@ -20,13 +21,25 @@ public:
 	 * 
 	 */
 	void BlockInteraction();
-public:
+
+	/**
+	 * @return 플레이어의 마을 UI 매니저 반환
+	 */
+	AQVillageUIManager* GetVillageUIManager()
+	{
+		return VillageUIManager;
+	}
+	
 	/** @breif ServerRPCStartConversation을 성공적으로 마치게 되면 실행되는 함수. 이 내부에 클라쪽 StartConversation 구현
 	* @param NPC 대화대상 npc
 	* @param NPCStartResponse NPC 시작 메세지
 	*/
 	UFUNCTION(Client, Reliable)
-	void ClientRPCStartConversation(FOpenAIResponse NPCStartResponse);
+	void ClientRPCStartConversation(FOpenAIResponse NPCStartResponse, AQNPC* NPC);
+
+	UFUNCTION(Client, Reliable)
+	void ClientRPCUpdateP2NResponse(FOpenAIResponse Response);
+	
 	UFUNCTION(Client, Reliable)
 	void ClientRPCFinishConversation(AQNPC* NPC);
 	/** @breif ServerRPCCanFinishConversP2N를 통해 대화마무리가 가능한지 체크가 완료된 후 실행되는 클라이언트 RPC

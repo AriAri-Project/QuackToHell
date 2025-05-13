@@ -25,7 +25,7 @@ void UQP2NWidget::UpdateNPCText(const FString& Text)
     NPCText->SetText(FText::FromString(Text));
 }
 
-void UQP2NWidget::SetConversingNPC(const TObjectPtr<class AQDynamicNPCController> NPC)
+void UQP2NWidget::SetConversingNPC(const TObjectPtr<AQDynamicNPC> NPC)
 {
     ConversingNPC = NPC;
 }
@@ -48,13 +48,14 @@ void UQP2NWidget::HandleEnterKeyPress()
     UpdatePlayerText(inputBox->GetText().ToString());
     FString PlayerInput = inputBox->GetText().ToString();
     //1-2. 서버에 플레이어 대사 저장
-    AQPlayerState* PlayerState = GetOwningLocalPlayer()->PlayerController->GetPlayerState<AQPlayerState>();
+    TObjectPtr<AQPlayerController> ClientPC = Cast<AQPlayerController>(GetOwningLocalPlayer()->GetPlayerController(GetWorld()));
+    AQPlayerState* PlayerState = ClientPC->GetPlayerState<AQPlayerState>();
     if (PlayerState == nullptr)
     {
         UE_LOG(LogTemp, Error, TEXT("UQP2NWidget::HandleEnterKeyPress - Can't find PlayerState."));
     }
     // 플레이어 응답 대화기록에 저장
-    TObjectPtr<UNPCComponent> NPCComponent = ConversingNPC->GetPawn()->FindComponentByClass<UNPCComponent>();
+    TObjectPtr<UNPCComponent> NPCComponent = ConversingNPC->FindComponentByClass<UNPCComponent>();
     int32 NPCID  = NPCComponent->GetNPCID();
     PlayerState->ServerRPCAddP2NPlayerStatement(EConversationType::P2N, NPCID, PlayerState->GetPlayerId(), PlayerInput);
 
@@ -63,7 +64,8 @@ void UQP2NWidget::HandleEnterKeyPress()
     //3. NPC Text는 음.. 으로 바꾼다.
     UpdateNPCText(WhenGenerateResponseText);
     //4. NPC에게 응답을 요청한다.
-    ConversingNPC->Response(PlayerInput,EConversationType::P2N);
+    /** @todo 이부분 AIController 사용하지 않도록 고치기 */
+    ConversingNPC->GetResponse(ClientPC, PlayerInput, EConversationType::P2N);
 }
 
 
@@ -71,7 +73,12 @@ void UQP2NWidget::HandleEnterEndButton()
 {
     //대화마치기 가능한지 서버에게 물어보기
     TObjectPtr<AQPlayer> _Player = Cast<AQPlayer>(ConversingPlayer->GetPawn());
-    TObjectPtr<AQNPC> _NPC = Cast<AQNPC>(ConversingNPC->GetPawn());
+    TObjectPtr<AQNPC> _NPC = Cast<AQNPC>(ConversingNPC);
+    
+    if (_Player == nullptr && _NPC == nullptr)
+    {
+        UE_LOG(LogTemp, Error, TEXT("UQP2NWidget::HandleEnterEndButton - Can't find _Player, _NPC."));
+    }
 
     AQPlayerController* LocalPlayerController = Cast<AQPlayerController>(_Player->GetController());
     _Player->ServerRPCCanFinishConversP2N_Implementation(LocalPlayerController, _NPC);    
@@ -79,9 +86,10 @@ void UQP2NWidget::HandleEnterEndButton()
 
 
 
-void UQP2NWidget::ClientRPCGetNPCResponse_Implementation(FOpenAIResponse NPCStartResponse)
+void UQP2NWidget::DisplayNPCResponse(FOpenAIResponse NPCStartResponse)
 {
     /** @todo 유진 : 서버측에서 NPC응답 왔을 때 실행할 함수 여기서 호출*/
+    UE_LOG(LogTemp, Warning, TEXT("✅ DisplayNPCResponse : %s"), *NPCStartResponse.ResponseText);
     FString Response = NPCStartResponse.ResponseText;
     UpdateNPCText(Response);
 }

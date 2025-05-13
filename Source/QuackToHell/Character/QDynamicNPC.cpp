@@ -2,11 +2,15 @@
 
 
 #include "Character/QDynamicNPC.h"
+
+#include "NPCComponent.h"
 #include "UI/QEKeyWidget.h"
 #include "Character/QPlayer.h"
 #include "Components/WidgetComponent.h"
 #include "Components/SphereComponent.h"
 #include "QLogCategories.h"
+#include "Kismet/GameplayStatics.h"
+#include "Player/QPlayerController.h"
 #include "UI/QPlayer2NSpeechBubbleWidget.h"
 AQDynamicNPC::AQDynamicNPC(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
@@ -54,6 +58,25 @@ TObjectPtr<AActor> AQDynamicNPC::GetClosestNPC()
 	return ClosestNPC;
 }
 
+bool AQDynamicNPC::GetResponse(AQPlayerController* ClientPC, FString& Text, EConversationType InputConversationType)
+{
+	// 응답 요청을 위한 FOpenAIRequest 구조체 구성
+	FOpenAIRequest OpenAIRequest;
+	OpenAIRequest.ConversationType = InputConversationType;
+	AQPlayerController* PlayerController = Cast<AQPlayerController>(UGameplayStatics::GetPlayerController(this, 0));
+	if (PlayerController == nullptr)
+	{
+		UE_LOG(LogLogic, Error, TEXT("AQDynamicNPC::GetResponse - PlayerController is nullptr."));
+		return false;
+	}
+	OpenAIRequest.ListenerID = Cast<AQPlayerState> (PlayerController->PlayerState)->GetPlayerId();
+	OpenAIRequest.Prompt = Text;
+	OpenAIRequest.SpeakerID = NPCComponent->GetNPCID();
+
+	// 서버에게 AI 응답 요청 보내기
+	NPCComponent->ServerRPCGetNPCResponse(ClientPC, OpenAIRequest);
+	return true;
+}
 
 TObjectPtr<class UQPlayer2NSpeechBubbleWidget> AQDynamicNPC::GetPlayer2NSpeechBubbleWidget() const
 {
@@ -115,14 +138,19 @@ void AQDynamicNPC::BeginPlay()
 	}
 }
 
+void AQDynamicNPC::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+
+	NPCComponent = FindComponentByClass<UNPCComponent>();
+}
+
 void AQDynamicNPC::TurnOnEKeyUI()
 {
-	UE_LOG(LogLogic, Log, TEXT("UI켜기시도"));
 	EKeyWidget->SetVisibility(ESlateVisibility::Visible);
 }
 
 void AQDynamicNPC::TurnOffEKeyUI()
 {
-	UE_LOG(LogLogic, Log, TEXT("UI끄기시도"));
 	EKeyWidget->SetVisibility(ESlateVisibility::Hidden);
 }
