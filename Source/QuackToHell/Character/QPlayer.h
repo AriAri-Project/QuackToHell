@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "NPCComponent.h"
 #include "QNPC.h"
 #include "Player/QPlayerState.h"
 #include "QPlayer.generated.h"
@@ -41,7 +42,10 @@ protected:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	TObjectPtr<class UWidgetComponent>  Player2NSpeechBubbleWidgetComponent;
 protected:
+	TObjectPtr<AQPlayerController> MyPlayerController;
+	
 	virtual void BeginPlay() override;
+	virtual void OnRep_PlayerState() override;
 	virtual void PossessedBy(AController* NewController) override;
 
 	/**
@@ -67,7 +71,10 @@ protected:
 	float SphereRadius = 200.f;
 protected:
 	UPROPERTY()
-	TObjectPtr<AQPlayerState> LocalPlayerState;
+	TObjectPtr<AQPlayerState> ThisPlayerState;
+
+	// 로컬 플레이어의 AQPlayer를 가져오는 함수
+	TObjectPtr<AQPlayer> GetLocalPlayer();
 	
 	// NPC 대화 관련 check 함수 ------------------------------------------------------
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
@@ -84,7 +91,10 @@ protected:
 	// NPC 대화 관련 대화 실행/마무리 함수 ---------------------------------------------------
 	/** @brief NPC와의 대화 시작.*/
 	UFUNCTION(Server, Reliable)
-	void ServerRPCStartConversation(AQNPC* NPC);
+	void ServerRPCStartConversation(AQPlayerController* ClientPC, AQNPC* NPC);
+
+	UFUNCTION()
+	void ActivateClientStartConversation(AQPlayerController* ClientPC, FOpenAIResponse Response, AQNPC* NPC);
 	
 	/** @brief NPC와의 대화 마무리*/
 	UFUNCTION(Server, Reliable)

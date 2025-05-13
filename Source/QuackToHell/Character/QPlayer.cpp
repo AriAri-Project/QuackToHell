@@ -8,8 +8,7 @@
 #include "QLogCategories.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Character/QDynamicNPC.h"
-#include "UI/QVillageUIManager.h"
-#include "UI/QP2NWidget.h"
+#include "EngineUtils.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/SphereComponent.h"
 #include "Components/PrimitiveComponent.h"
@@ -19,8 +18,10 @@
 #include "Player/QPlayerController.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Blueprint/UserWidget.h"
+#include "Kismet/GameplayStatics.h"
 #include "UI/QPlayer2NSpeechBubbleWidget.h"
 #include "Net/UnrealNetwork.h"
+#include "NPC/QDynamicNPCController.h"
 #include "Player/QPlayerState.h"
 
 
@@ -32,7 +33,6 @@ TObjectPtr<class UQPlayer2NSpeechBubbleWidget> AQPlayer::GetPlayer2NSpeechBubble
 AQPlayer::AQPlayer(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
 {
-	
 	/*캡슐 콜라이더 산하 컴포넌트*/
 	RootComponent= this->GetCapsuleComponent();
 	//충돌처리
@@ -65,13 +65,13 @@ AQPlayer::AQPlayer(const FObjectInitializer& ObjectInitializer)
 	this->GetCapsuleComponent()->InitCapsuleSize(42.0f, 42.0f);
 
 	/*허공말풍선 UI 컴포넌트*/
-	this->Player2NSpeechBubbleWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("Player2NSpeechBubbleWidget"));
-	EWidgetSpace WidgetSpace = EWidgetSpace::Screen;
-	this->Player2NSpeechBubbleWidgetComponent->SetWidgetSpace(WidgetSpace);
-	this->Player2NSpeechBubbleWidgetComponent->SetDrawAtDesiredSize(true);
-	this->Player2NSpeechBubbleWidgetComponent->SetupAttachment(RootComponent);
+	Player2NSpeechBubbleWidgetComponent = CreateDefaultSubobject<UWidgetComponent>(TEXT("Player2NSpeechBubbleWidget"));
+	Player2NSpeechBubbleWidgetComponent->SetWidgetSpace(EWidgetSpace::Screen);
+	Player2NSpeechBubbleWidgetComponent->SetDrawAtDesiredSize(true);
+	Player2NSpeechBubbleWidgetComponent->SetupAttachment(RootComponent);
+	Player2NSpeechBubbleWidgetComponent->SetVisibility(true);
+	Player2NSpeechBubbleWidgetComponent->SetHiddenInGame(false);
 	TSubclassOf<UQPlayer2NSpeechBubbleWidget> _Player2NSpeechBubbleWidget;
-	//UQPlayer2NSpeechBubbleWidget을 상속한 클래스만 담을 수 있도록 강제한다.
 	this->Player2NSpeechBubbleWidgetComponent->SetWidgetClass(_Player2NSpeechBubbleWidget);
 }
 
@@ -94,25 +94,20 @@ TObjectPtr<AActor> AQPlayer::GetClosestNPC()
 			ClosestNPC = NPC;
 		}
 	}
-
 	return ClosestNPC;
 }
 
 void AQPlayer::BeginPlay()
 {
 	Super::BeginPlay();
-	UE_LOG(LogLogic, Log, TEXT("Player의Beginplay호출"));
 	
-	/*이름 세팅*/
-	if (LocalPlayerState)
-	{
-		FString _Name = LocalPlayerState->GetPlayerName();
-		this->SetCharacterName(_Name);
-		Super::GetNameWidget()->SetNameWidgetText(GetCharacterName());
-	}
+	UE_LOG(LogLogic, Log, TEXT("AQPlayer::BeginPlay started - Name: %s, NetMode: %d"), *this->GetName(), this->GetNetMode());
+
+	// 캐릭터 이름 UI에 플레이어 이름 띄우기
+	GetNameWidget()->SetNameWidgetText(GetCharacterName());
 	
-	/*Player2N말풍선 위젯 변수에 객체값 할당*/
-	if (Player2NSpeechBubbleWidget)
+	// Player2N 말풍선 위젯 변수에 객체값 할당
+	if (Player2NSpeechBubbleWidgetComponent)
 	{
 		UUserWidget* UserWidget = Player2NSpeechBubbleWidgetComponent->GetWidget();
 		if (UserWidget)
@@ -120,15 +115,45 @@ void AQPlayer::BeginPlay()
 			Player2NSpeechBubbleWidget = Cast<UQPlayer2NSpeechBubbleWidget>(UserWidget);
 		}
 	}
-	/*Player2N말풍선 위젯 기본적으로 끈 채로 시작*/
-	//Player2NSpeechBubbleWidget->TurnOffSpeechBubble();
+	// Player2N말풍선 위젯 기본적으로 끈 채로 시작
+	Player2NSpeechBubbleWidget->TurnOffSpeechBubble();
+}
+
+void AQPlayer::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+	
+	// 클라이언트 환경 : 플레이어 이름 데이터 가져오기
+	ThisPlayerState = GetPlayerState<AQPlayerState>();
+	if (ThisPlayerState)
+	{
+		FString Name = ThisPlayerState->GetPlayerName();
+		UE_LOG(LogLogic, Log, TEXT("AQPlayer::OnRep_PlayerState- playerName : %s, NetMode: %d"), *Name, this->GetNetMode());
+		SetCharacterName(Name);
+		GetNameWidget()->SetNameWidgetText(Name);
+	}
 }
 
 void AQPlayer::PossessedBy(AController* NewController)
 {
 	Super::PossessedBy(NewController);
 
-	LocalPlayerState = NewController->GetPlayerState<AQPlayerState>();
+	// 호스트 환경 : 플레이어 이름 데이터 가져오기 
+	MyPlayerController = Cast<AQPlayerController>(NewController);
+	if (MyPlayerController)
+	{
+		ThisPlayerState = MyPlayerController->GetPlayerState<AQPlayerState>();
+		if (ThisPlayerState)
+		{
+			FString _Name = ThisPlayerState->GetPlayerName();
+			UE_LOG(LogLogic, Log, TEXT("AQPlayer::PossessedBy - playerName : %s, NewController : %s, NetMode: %d"), *_Name, *NewController->GetName(), this->GetNetMode());
+			this->SetCharacterName(_Name);
+			if (GetNameWidget() != nullptr)
+			{
+				GetNameWidget()->SetNameWidgetText(_Name);
+			}
+		}
+	}
 }
 
 void AQPlayer::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
@@ -149,6 +174,13 @@ void AQPlayer::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherAc
 	}
 }
 
+TObjectPtr<AQPlayer> AQPlayer::GetLocalPlayer()
+{
+	APawn* Pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);
+	AQPlayer* LocalPlayer = Cast<AQPlayer>(Pawn);
+	return LocalPlayer;
+}
+
 // -------------------------------------------------------------------------------------------------------- //
 void AQPlayer::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const
 {
@@ -156,12 +188,17 @@ void AQPlayer::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLi
 
 }
 
+void AQPlayer::ActivateClientStartConversation(AQPlayerController* ClientPC, FOpenAIResponse Response, AQNPC* NPC)
+{
+	ClientPC->ClientRPCStartConversation(Response, NPC);
+}
+
 void AQPlayer::ServerRPCCanStartConversP2N_Implementation(AQPlayerController* TargetController,  AQNPC* NPC)
 {
     bool bResult = true;
 	TObjectPtr<UNPCComponent> NPCComponent = NPC->FindComponentByClass<UNPCComponent>();
 
-	if (LocalPlayerState == nullptr || NPCComponent == nullptr)
+	if (ThisPlayerState == nullptr || NPCComponent == nullptr)
 	{
 		UE_LOG(LogLogic, Log, TEXT("ServerRPCCanStartConversP2N_Implementation -> LocalPlayerState or NPCComponent is null."));
 		bResult = false;
@@ -174,9 +211,9 @@ void AQPlayer::ServerRPCCanStartConversP2N_Implementation(AQPlayerController* Ta
 		bResult = false;
 	}
 	// Player ConversationState가 None인지 확인
-	else if (LocalPlayerState->GetPlayerConversationState() != EConversationType::None)
+	else if (ThisPlayerState->GetPlayerConversationState() != EConversationType::None)
 	{
-		UE_LOG(LogLogic, Log, TEXT("ServerRPCCanStartConversP2N_Implementation -> Player ConversationState is not None but %s"), *UEnum::GetValueAsString(LocalPlayerState->GetPlayerConversationState()) );
+		UE_LOG(LogLogic, Log, TEXT("ServerRPCCanStartConversP2N_Implementation -> Player ConversationState is not None but %s"), *UEnum::GetValueAsString(ThisPlayerState->GetPlayerConversationState()) );
 		bResult = false;
 	}
 	// NPC ConversationState가 None인지 확인
@@ -201,7 +238,7 @@ void AQPlayer::ServerRPCCanFinishConversP2N_Implementation(AQPlayerController* T
 	TObjectPtr<UNPCComponent> NPCComponent = NPC->FindComponentByClass<UNPCComponent>();
 
 	// Player ConversationState가 None인지 확인
-	if (LocalPlayerState->GetPlayerConversationState() == EConversationType::None)
+	if (ThisPlayerState->GetPlayerConversationState() == EConversationType::None)
 	{
 		bResult = false;
 	}
@@ -222,80 +259,94 @@ void AQPlayer::ServerRPCCanFinishConversP2N_Implementation(AQPlayerController* T
 }
 
 
-void AQPlayer::ServerRPCStartConversation_Implementation(AQNPC* NPC)
+void AQPlayer::ServerRPCStartConversation_Implementation(AQPlayerController* ClientPC, AQNPC* NPC)
 {
 	// 상태 업데이트
-	LocalPlayerState->SetPlayerConverstationState(EConversationType::P2N);
+	ThisPlayerState->SetPlayerConverstationState(EConversationType::P2N);
 	NPC->SetNPCConversationState(EConversationType::P2N);
+
+	// NPC에게 대화 시작 알림
+	TObjectPtr<AQDynamicNPCController> DynamicNPCController = Cast<AQDynamicNPCController>(NPC->GetController());
+	if (DynamicNPCController == nullptr)
+	{
+		UE_LOG(LogLogic, Error, TEXT("AQPlayer::ServerRPCFinishConversation_Implementation - DynamicNPCController is nullptr."));
+		return;
+	}
+	DynamicNPCController->StartDialog(this, ENPCConversationType::P2N);
 	
 	// 다른 플레이어들 시점 처리
-	AQPlayer* LocalPlayer = Cast<AQPlayer>(LocalPlayerState->GetPawn());
-	if (LocalPlayer)
+	for (TActorIterator<AQPlayer> It(GetWorld()); It; ++It)
 	{
-		MulticastRPCStartConversation(LocalPlayer, NPC);
+		AQPlayer* Peer = *It;
+		Peer->MulticastRPCStartConversation(this, NPC);
 	}
 
 	// OpenAI에게 NPC의 첫 대사 요청하기
 	FString Temp = TEXT("");
 	FOpenAIRequest Request(
 		NPC->FindComponentByClass<UNPCComponent>()->GetNPCID(),
-		LocalPlayerState->GetPlayerId(),
+		ThisPlayerState->GetPlayerId(),
 		EConversationType::PStart,
 		Temp
 	);
-	NPC->FindComponentByClass<UNPCComponent>()->ServerRPCGetNPCResponse(Request);
-}
-
-
-void AQPlayer::MulticastRPCStartConversation_Implementation(AQPlayer* Player, AQNPC* NPC)
-{
-	if (LocalPlayerState == nullptr)
-	{
-		UE_LOG(LogLogic, Log, TEXT("AQPlayer::MulticastRPCStartConversation_Implementation -> LocalPlayerState is null."));
-		return;
-	}
-	AQPlayer* LocalPlayer = Cast<AQPlayer>(LocalPlayerState->GetPawn());
-	if (HasAuthority() || LocalPlayer == Player)
-	{
-		return;
-	}
-	/** @todo 유진 Player2 시점에서 Player1과 NPC 머리위에 공백 말풍선 띄우기 */
-	Player->GetPlayer2NSpeechBubbleWidget()->TurnOnSpeechBubble();
-	Cast<AQDynamicNPC>(NPC)->GetPlayer2NSpeechBubbleWidget()->TurnOnSpeechBubble();
+	NPC->FindComponentByClass<UNPCComponent>()->ServerRPCGetNPCResponse(ClientPC,Request);
 }
 
 void AQPlayer::ServerRPCFinishConversation_Implementation(AQPlayerController* TargetController,  AQNPC* NPC)
 {
 	bool bResult = false;
 	// 상태 업데이트
-	if (LocalPlayerState == nullptr || NPC == nullptr)
+	if (ThisPlayerState == nullptr || NPC == nullptr)
 	{
 		return;
 	}
-	LocalPlayerState->SetPlayerConverstationState(EConversationType::None);
+	ThisPlayerState->SetPlayerConverstationState(EConversationType::None);
 	NPC->SetNPCConversationState(EConversationType::None);
-
-
-	// 다른 플레이어들 시점 처리
-	AQPlayer* LocalPlayer = Cast<AQPlayer>(LocalPlayerState->GetPawn());
-	if (LocalPlayer)
+	
+	// NPC에게 대화 종료 알림
+	TObjectPtr<AQDynamicNPCController> DynamicNPCController = Cast<AQDynamicNPCController>(NPC->GetController());
+	if (DynamicNPCController == nullptr)
 	{
-		MulticastRPCFinishConversation(LocalPlayer, NPC);
+		UE_LOG(LogLogic, Error, TEXT("AQPlayer::ServerRPCFinishConversation_Implementation - DynamicNPCController is nullptr."));
+		return;
+	}
+	DynamicNPCController->EndDialog();
+	
+	// 다른 플레이어들 시점 처리
+	for (TActorIterator<AQPlayer> It(GetWorld()); It; ++It)
+	{
+		AQPlayer* Peer = *It;
+		Peer->MulticastRPCFinishConversation(this, NPC);
 	}
 
 	//클라이언트에게 대화끝내기 처리 요청
 	TargetController->ClientRPCFinishConversation(NPC);
 }
 
-void AQPlayer::MulticastRPCFinishConversation_Implementation(AQPlayer* Player, AQNPC* NPC)
+void AQPlayer::MulticastRPCStartConversation_Implementation(AQPlayer* Player, AQNPC* NPC)
 {
-	if (this == Player)
+	if (Player == GetLocalPlayer())
 	{
 		return;
 	}
-	/** @todo 유진 Player2 시점에서 Player1과 NPC 머리위에 공백 말풍선 제거*/
-	Player->GetPlayer2NSpeechBubbleWidget()->TurnOffSpeechBubble();
-	Cast<AQDynamicNPC>(NPC)->GetPlayer2NSpeechBubbleWidget()->TurnOffSpeechBubble();
+	Player->GetPlayer2NSpeechBubbleWidget()->TurnOnSpeechBubble();
+	TObjectPtr<AQDynamicNPC> DynamicNPC = Cast<AQDynamicNPC>(NPC);
+	if (DynamicNPC)
+	{
+		DynamicNPC->GetPlayer2NSpeechBubbleWidget()->TurnOnSpeechBubble();
+	}
 }
 
-
+void AQPlayer::MulticastRPCFinishConversation_Implementation(AQPlayer* Player, AQNPC* NPC)
+{
+	if (Player == GetLocalPlayer())
+	{
+		return;
+	}
+	Player->GetPlayer2NSpeechBubbleWidget()->TurnOffSpeechBubble();
+	TObjectPtr<AQDynamicNPC> DynamicNPC = Cast<AQDynamicNPC>(NPC);
+	if (DynamicNPC)
+	{
+		DynamicNPC->GetPlayer2NSpeechBubbleWidget()->TurnOffSpeechBubble();
+	}
+}

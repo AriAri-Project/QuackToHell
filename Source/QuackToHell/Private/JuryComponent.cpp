@@ -47,7 +47,7 @@ void UJuryComponent::BeginPlay()
 
 }
 
-void UJuryComponent::StartConversation(FOpenAIRequest Request)
+void UJuryComponent::StartConversation(AQPlayerController* ClientPC, FOpenAIRequest Request)
 {
     UE_LOG(LogTemp, Log, TEXT("🔵 JuryComponent::StartConversation 실행 - NPCID: %s"), *NPCID);
 
@@ -134,7 +134,7 @@ void UJuryComponent::StartConversation(FOpenAIRequest Request)
 
     UE_LOG(LogTemp, Log, TEXT("OpenAI 최종 요청 데이터(JSON): %s"), *RequestBody);
 
-    RequestOpenAIResponse(AIRequest, [this, Request](FOpenAIResponse AIResponse)
+    RequestOpenAIResponse(AIRequest, [this, Request, ClientPC](FOpenAIResponse AIResponse)
         {
             if (AIResponse.ResponseText.IsEmpty())
             {
@@ -145,7 +145,7 @@ void UJuryComponent::StartConversation(FOpenAIRequest Request)
             AIResponse.SpeakerID = Request.SpeakerID;
             AIResponse.ListenerID = Request.ListenerID;
             ResponseCache.Add(Request.Prompt, AIResponse.ResponseText);
-            SendNPCResponseToServer(AIResponse);
+            SendNPCResponseToServer(AIResponse, ClientPC);
             SaveP2NDialogue(Request, AIResponse);
         });
 

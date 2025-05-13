@@ -21,8 +21,8 @@ public:
 	/**
 	 * @brief. NPC에게 답장올 시 처리해야되는 로직이 실행된다.
 	 */
-	UFUNCTION(Client, Reliable)
-	void ClientRPCGetNPCResponse(FOpenAIResponse NPCStartResponse);
+	UFUNCTION()
+	void DisplayNPCResponse(FOpenAIResponse NPCStartResponse);
 public:
 	/**
 	 * @brief 대화상자의 글씨를 업데이트합니다.
@@ -41,7 +41,7 @@ public:
 	 * 
 	 * @param NPC
 	 */
-	void SetConversingNPC(const TObjectPtr<class AQDynamicNPCController> NPC);
+	void SetConversingNPC(const TObjectPtr<class AQDynamicNPC> NPC);
 	/**
 	 * @brief 대화중인 player정보를 세팅합니다..
 	 *
@@ -75,7 +75,7 @@ private:
 	TObjectPtr<class UEditableTextBox> inputBox;
 	/** @brief 대화중인 npc정보 */
 	UPROPERTY()
-	TObjectPtr<class AQDynamicNPCController> ConversingNPC;
+	TObjectPtr<class AQDynamicNPC> ConversingNPC;
 	/** @brief 대화중인 플레이어정보 */
 	UPROPERTY()
 	TObjectPtr<class AQPlayerController> ConversingPlayer;

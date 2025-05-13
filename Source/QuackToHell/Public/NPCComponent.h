@@ -87,10 +87,17 @@ USTRUCT(BlueprintType)
 struct FOpenAIResponse
 {
 	GENERATED_BODY()
-
+	
+	UPROPERTY(BlueprintReadWrite, Category = "AI")
 	FString ResponseText;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "AI")
 	int32 SpeakerID;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "AI")
 	int32 ListenerID;
+	
+	UPROPERTY(BlueprintReadWrite, Category = "AI")
 	EConversationType ConversationType;
 
 	static FOpenAIResponse FromJson(const FString& JsonContent)
@@ -235,7 +242,7 @@ public:
 	 * @param PlayerInput 플레이어의 입력 대사
 	 */
 	UFUNCTION(BlueprintCallable, Category = "NPC")
-	virtual void StartConversation(FOpenAIRequest Request);
+	virtual void StartConversation(AQPlayerController* ClientPC, FOpenAIRequest Request);
 
 	/**
 	 * @author 박시언
@@ -390,26 +397,8 @@ public:
 	 *
 	 * @param NPCResponse OpenAI로부터 생성된 NPC의 대사
 	 */
-	UFUNCTION(Server, Reliable, WithValidation)
-	void SendNPCResponseToServer(const FOpenAIResponse& AIResponse);
-
-protected:
-	/**
-	 * @author 박시언
-	 * @brief SendNPCResponseToServer의 실제 구현입니다.
-	 *
-	 * @param NPCResponse OpenAI로부터 생성된 NPC의 대사
-	 */
-	void SendNPCResponseToServer_Implementation(const FOpenAIResponse& AIResponse);
-
-	/**
-	 * @author 박시언
-	 * @brief SendNPCResponseToServer의 유효성 검증 함수입니다.
-	 *
-	 * @param NPCResponse 전송될 NPC 대사
-	 * @return true면 유효한 데이터로 간주
-	 */
-	bool SendNPCResponseToServer_Validate(const FOpenAIResponse& AIResponse);
+	UFUNCTION(Server, Reliable)
+	void SendNPCResponseToServer(const FOpenAIResponse& Response, AQPlayerController* ClientPC = nullptr);
 
 public:
 	/**
@@ -440,6 +429,6 @@ public:
 	// 공용 인터페이스
 	/** @brief */
 	UFUNCTION(Server, Reliable)
-	void ServerRPCGetNPCResponse(FOpenAIRequest Request);
+	void ServerRPCGetNPCResponse(AQPlayerController* ClientPC, FOpenAIRequest Request);
 
 };

@@ -20,6 +20,10 @@ public:
 	virtual void PostInitializeComponents() override;
 	virtual void BeginPlay() override;
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+	
+	/** @brief 재판장 Travel 함수 */
+	UFUNCTION()
+	void TravelToCourtMap();
 
 private:
 	// 3초 후 Prompt 생성 시작

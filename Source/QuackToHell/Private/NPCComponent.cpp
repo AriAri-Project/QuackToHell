@@ -4,6 +4,7 @@
 #include "NPCComponent.h"
 #include "HttpModule.h"
 #include "QLogCategories.h"
+#include "Character/QDynamicNPC.h"
 #include "Character/QPlayer.h"
 #include "FramePro/FramePro.h"
 #include "Game/QVillageGameState.h"
@@ -15,6 +16,7 @@
 #include "Templates/Function.h"
 #include "GameFramework/PlayerState.h"
 #include "GameFramework/PlayerController.h"
+#include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
 
 // Sets default values for this component's properties
@@ -280,7 +282,7 @@ FString UNPCComponent::ConvertJsonToReadableText(const FString& JsonString)
 
 
 // P2N 대화 시작
-void UNPCComponent::StartConversation(FOpenAIRequest Request)
+void UNPCComponent::StartConversation(AQPlayerController* ClientPC, FOpenAIRequest Request)
 {
 	UE_LOG(LogTemp, Log, TEXT("NPCComponent::StartConversation 실행 - NPCID: %s"), *NPCID);
 	UE_LOG(LogTemp, Log, TEXT("StartConversation 실행됨 - 현재 PromptContent 길이: %d"), PromptContent.Len());
@@ -332,7 +334,7 @@ void UNPCComponent::StartConversation(FOpenAIRequest Request)
 
 	UE_LOG(LogTemp, Log, TEXT("OpenAI 최종 요청 데이터(JSON): %s"), *AIRequest.Prompt);
 
-	RequestOpenAIResponse(AIRequest, [this, Request](FOpenAIResponse AIResponse)
+	RequestOpenAIResponse(AIRequest, [this, Request, ClientPC](FOpenAIResponse AIResponse)
 		{
 			if (AIResponse.ResponseText.IsEmpty())
 			{
@@ -340,7 +342,7 @@ void UNPCComponent::StartConversation(FOpenAIRequest Request)
 			}
 
 			ResponseCache.Add(Request.Prompt, AIResponse.ResponseText);
-			SendNPCResponseToServer(AIResponse);
+			SendNPCResponseToServer(AIResponse, ClientPC);
 			SaveP2NDialogue(Request, AIResponse);
 		});
 }
@@ -740,13 +742,21 @@ TArray<FString> UNPCComponent::GetP2NDialogueHistory() const
 
 // 서버로 NPC의 응답을 보내는 RPC 함수
 // 서버로 NPC의 응답을 보내는 RPC 함수 (FOpenAIResponse 전체 전달)
-void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse& Response)
+void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse& Response, AQPlayerController* ClientPC)
 {
 	UE_LOG(LogLogic, Log, TEXT("SendNPCResponseToServer_Implementation Started"));
 	if (!Response.ResponseText.IsEmpty() && Response.ResponseText != TEXT("죄송합니다, 답변할 수 없습니다."))
 	{
 		UE_LOG(LogTemp, Log, TEXT("Sending NPC response to server: %s"), *Response.ResponseText);
 	}
+
+	if (ClientPC->GetNetConnection() == nullptr)
+	{
+		UE_LOG(LogLogic, Log, TEXT("ClientPC %s NetConnection is nullptr."), *ClientPC->GetName());
+		return;
+	}
+	
+	UE_LOG(LogLogic, Log, TEXT("ClientPC Name : %s, NetConnection : %s"), *ClientPC->GetName(), *ClientPC->GetNetConnection()->GetName());
 
 	switch (Response.ConversationType)
 	{
@@ -793,46 +803,28 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 	{
 		return;
 	}
-
 	AQPlayerState* PlayerState = GetWorld()->GetFirstPlayerController()->GetPlayerState<AQPlayerState>();
 	const FConversationRecord* Record = PlayerState->GetRecordWithConvID(RecordID);
 	UE_LOG(LogLogic, Log, TEXT("New Record - %d to %d : %s"), Record->GetSpeakerID(), Record->GetListenerID(), *Record->GetMessage());
 
 	
-	AActor* OwnerActor = GetOwner();	// QNPC
-	APlayerController* LocalPlayerController = Cast<APlayerController>(OwnerActor->GetOwner());
-	if (LocalPlayerController->GetNetConnection())
+	TObjectPtr<AQNPC> NPC = Cast<AQNPC>(GetOwner());	// QNPC
+	if (NPC == nullptr)
 	{
-		UE_LOG(LogLogic, Log, TEXT("%s has NetConnection."), *this->GetName());
+		UE_LOG(LogLogic, Error, TEXT("NPC Component's owner is not QNPC"));
+		return;
 	}
-	else
-	{
-		UE_LOG(LogLogic, Log, TEXT("%s has not NetConnection."), *this->GetName());
-	}
-	
-	TObjectPtr<UQP2NWidget> P2NWidget;
+
+	// 이후 클라이언트 action 호출>
 	switch (Response.ConversationType)
 	{
 	case EConversationType::PStart:
 		UE_LOG(LogLogic, Log, TEXT("Server - PStart NPCResponse received"));
-		if (LocalPlayerController)
-		{
-			UE_LOG(LogLogic, Log, TEXT("Server - Found Owner & Activate ClientRPCStartConversation"));
-			Cast<AQPlayerController>(LocalPlayerController)->ClientRPCStartConversation(Response);
-			P2NWidget = Cast<UQP2NWidget>(AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets()[EVillageUIType::P2N]);
-			if (P2NWidget)
-			{
-				P2NWidget->ClientRPCGetNPCResponse(Response);
-			}
-		}
+		ClientPC->ClientRPCStartConversation(Response, NPC);
 		break;
 	case EConversationType::P2N: 
 		UE_LOG(LogLogic, Log, TEXT("Server - P2N NPCResponse received"));
-		P2NWidget = Cast<UQP2NWidget>(AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets()[EVillageUIType::P2N]);			
-		if (P2NWidget)
-		{
-			P2NWidget->ClientRPCGetNPCResponse(Response);
-		}
+		ClientPC->ClientRPCUpdateP2NResponse(Response);
 		break;
 	case EConversationType::N2N:
 		break;
@@ -848,11 +840,6 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 	}
 }
 
-bool UNPCComponent::SendNPCResponseToServer_Validate(const FOpenAIResponse& AIResponse)
-{
-	return true; // 기본적으로 항상 유효한 메시지라고 가정
-}
-
 // Called every frame
 void UNPCComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
 {
@@ -863,7 +850,7 @@ void UNPCComponent::TickComponent(float DeltaTime, ELevelTick TickType, FActorCo
 
 // -------------------------------------------------------------------------------------- //
 
-void UNPCComponent::ServerRPCGetNPCResponse_Implementation(FOpenAIRequest Request)
+void UNPCComponent::ServerRPCGetNPCResponse_Implementation(AQPlayerController* ClientPC, FOpenAIRequest Request)
 {
 	/*
 	 *	PStart, P2N : StartConversation, SendNPCResponseToServer()
@@ -894,7 +881,7 @@ void UNPCComponent::ServerRPCGetNPCResponse_Implementation(FOpenAIRequest Reques
 		break;
 	default:	// type이 PStart나 P2N이라면
 		UE_LOG(LogLogic, Log, TEXT("Server - PStart/P2N GetNPCResponse Started"));
-		StartConversation(Request);
+		StartConversation(ClientPC, Request);
 		break;
 	}
 }
