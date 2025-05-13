@@ -35,6 +35,38 @@ void AQPlayerController::MulticastBlockInteraction_Implementation()
 	InputComponent = nullptr;
 }
 
+void AQPlayerController::ServerRPCStartMatchMaking_Implementation(AQPlayerController* ClientPC)
+{
+}
+
+void AQPlayerController::ServerRPCGetProsecutorStatement_Implementation(AQPlayerController* ClientPC)
+{
+}
+
+void AQPlayerController::ClientRPCGetProsecutorStatement_Implementation(FOpenAIResponse Response)
+{
+}
+
+void AQPlayerController::ServerRPCGetLawyerStatement_Implementation(AQPlayerController* ClientPC)
+{
+}
+
+void AQPlayerController::ClientRPCGetLawyerStatement_Implementation(FOpenAIResponse Response)
+{
+}
+
+void AQPlayerController::ServerRPCGetFinalJudgement_Implementation(AQPlayerController* ClientPC)
+{
+}
+
+void AQPlayerController::ClientRPCGetFinalJudgement_Implementation(FOpenAIResponse Response)
+{
+}
+
+void AQPlayerController::ServerRPCTravelToMain_Implementation(AQPlayerController* ClientPC)
+{
+}
+
 void AQPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
