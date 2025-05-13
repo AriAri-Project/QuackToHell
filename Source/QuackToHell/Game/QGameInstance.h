@@ -20,6 +20,10 @@ class QUACKTOHELL_API UQGameInstance : public UGameInstance
 public:
 	UQGameInstance();
 
+	// 프롬프트 삭제 및 3초 후 재생성 실행
+	void SchedulePromptRegeneration();
+	void StartPromptGeneration();
+
 private:
 	// ID 관리
 	static int32 PlayerIDCount;				const int32 PlayerIDInit = 1000;
@@ -38,6 +42,8 @@ private:
 
 	// NetMode 체크 함수
 	ENetMode GetLocalNetMode();
+
+	FTimerHandle TimerHandle_PromptRegeneration;
 	
 	// 프로퍼티 리플레이케이션을 위한 변수 관리
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
