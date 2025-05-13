@@ -44,7 +44,13 @@ class QUACKTOHELL_API AQCourtUIManager : public AActor
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
+public:
+	/**
+	 * @details 캡스톤용.
+	 * @brief 캡스톤용_재판 도입부 연출용 인터페이스
+	 * @param 판사 멘트, 피고인 멘트
+	 */
+	void TurnOnCourtOpening(const FString& JudgeStatement, const FString& DefendantStatement);
 public:
 	/*깔끔 ver: 연출켜기*/
 	/**

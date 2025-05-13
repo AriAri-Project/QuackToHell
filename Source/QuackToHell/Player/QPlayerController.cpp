@@ -120,7 +120,8 @@ void AQPlayerController::Tick(float DeltaTime)
 			TObjectPtr<AQVillageGameState> VillageGameState = GetWorld()->GetGameState<AQVillageGameState>();
 			if (!VillageGameState)
 			{
-				VillageGameState->ServerRPCRequestTravelToCourt(this, true);
+				/** @todo 인수 형식맞게 변환하기. */
+				//VillageGameState->ServerRPCRequestTravelToCourt(this, true);
 			}
 		}
 	}
