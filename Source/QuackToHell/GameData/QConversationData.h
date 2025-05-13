@@ -26,7 +26,8 @@ enum class EConversationType : uint8
 	OpeningStatement UMETA(DisplayName = "OpeningStatement"), // 피고인 모두진술
 	EvidenceReview UMETA(DisplayName = "EvidenceReview"),
 	DefendantInterrogation UMETA(DisplayName = "DefendantInterrogation"),
-	JuryFinalOpinion UMETA(DisplayName = "JuryFinalOpinion")
+	JuryFinalOpinion UMETA(DisplayName = "JuryFinalOpinion"),
+	FinalVerdict UMETA(DisplayName = "FinalVerdict")
 };
 
 USTRUCT(BlueprintType)
