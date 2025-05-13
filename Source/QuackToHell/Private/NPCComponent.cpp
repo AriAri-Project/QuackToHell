@@ -568,6 +568,35 @@ void UNPCComponent::TrialStatement(FOpenAIRequest Request)
 	}
 	break;
 
+	case EConversationType::FinalVerdict:
+	{
+		SystemMessage->SetStringField("content",
+			FString::Printf(TEXT(
+				"당신은 천국과 지옥을 결정하는 재판의 판사입니다. 다음은 당신의 성격 및 세계관 설정입니다:\n%s"),
+				*ReadablePromptContent));
+		Messages.Add(MakeShareable(new FJsonValueObject(SystemMessage)));
+
+		FString DummyJurySummary = TEXT("- 배심원1: 피고인의 태도가 진심 같았다\n- 배심원2: 증거는 부족하지만 의도가 중요하다고 생각한다");
+		FString DummyEvidenceSummary = TEXT("- 증거물: 피고인이 범행 현장에서 발견된 단검\n- 진술: 피고인은 정당방위를 주장함");
+
+		TSharedPtr<FJsonObject> UserMessage = MakeShareable(new FJsonObject());
+		UserMessage->SetStringField("role", "user");
+
+		UserMessage->SetStringField("content", FString::Printf(TEXT(
+			"당신은 지금까지 재판 과정을 모두 지켜보았습니다.\n"
+			"다음은 배심원들의 발언 요약입니다:\n%s\n\n"
+			"다음은 피고인의 모두진술과 증거 요약입니다:\n%s\n\n"
+			"이 모든 정보를 종합하여, 당신의 판단을 내려주세요. 반드시 다음 형식을 지켜야 합니다:\n\n"
+			"1. 판결 요약: (예시: '검사측의 논리는 설득력이 부족했고, 변호사의 주장이 더 타당했다.')\n"
+			"2. 최종 판결: (예시: '나는 변호사의 손을 들어줍니다.')"),
+			*DummyJurySummary,
+			*DummyEvidenceSummary // 증거 및 모두진술 요약
+		));
+
+		Messages.Add(MakeShareable(new FJsonValueObject(UserMessage)));
+	}
+	break;
+
 	default:
 		UE_LOG(LogTemp, Error, TEXT("TrialStatement: 알 수 없는 ConversationType 입니다."));
 		return;
