@@ -56,6 +56,73 @@ public:
 	UFUNCTION(Client, Reliable)
 	void ClientRPCUpdateCanStartConversP2N(bool bResult);
 
+public:
+	// -- 재판장 관련 RPC 함수 -- //
+	/**
+	 * @brief 서버에 매치메이킹 시작을 요청하는 RPC 함수
+	 * @details [캡스톤] 클라이언트가 매치메이킹(세션 생성 또는 참가)을 요청할 때 호출되며, 서버에서 매치메이킹 로직을 실행함
+	 * @param ClientPC 매치메이킹을 요청한 클라이언트의 PlayerController
+	 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCStartMatchMaking(AQPlayerController* ClientPC);
+	
+	/**
+	 * @brief 검사측 진술을 요청하는 서버 RPC 함수
+	 * @details [캡스톤] 클라이언트가 검사측 진술을 요청하면, 서버에서 관련 AI 응답 또는 대사를 처리함
+	 * @param ClientPC 요청을 보낸 클라이언트의 PlayerController
+	 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCGetProsecutorStatement(AQPlayerController* ClientPC);
+
+	/**
+	 * @brief 클라이언트에게 검사측 진술을 전달하는 RPC 함수
+	 * @details [캡스톤] 서버에서 생성된 검사측 진술 응답을 클라이언트에게 전달하여 UI에 반영함
+	 * @param Response 검사측 진술에 대한 AI 응답 데이터
+	 */
+	UFUNCTION(Server, Reliable)
+	void ClientRPCGetProsecutorStatement(FOpenAIResponse Response);
+
+	/**
+	 * @brief 변호인측 진술을 요청하는 서버 RPC 함수
+	 * @details [캡스톤] 클라이언트가 변호인측 진술을 요청하면, 서버에서 관련 AI 응답 또는 대사를 처리함
+	 * @param ClientPC 요청을 보낸 클라이언트의 PlayerController
+	 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCGetLawyerStatement(AQPlayerController* ClientPC);
+
+	/**
+	 * @brief 클라이언트에게 변호인측 진술을 전달하는 RPC 함수
+	 * @details [캡스톤] 서버에서 생성된 변호인측 진술 응답을 클라이언트에게 전달하여 UI에 반영함
+	 * @param Response 변호인측 진술에 대한 AI 응답 데이터
+	 */
+	UFUNCTION(Server, Reliable)
+	void ClientRPCGetLawyerStatement(FOpenAIResponse Response);
+
+	/**
+	 * @brief 최종 판결 요청을 서버에 전달하는 RPC 함수
+	 * @details [캡스톤] 클라이언트가 재판 결과(최종 판단)를 요청하면, 서버가 AI 응답 또는 로직 처리 후 결과를 생성함
+	 * @param ClientPC 요청을 보낸 클라이언트의 PlayerController
+	 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCGetFinalJudgement(AQPlayerController* ClientPC);
+
+	/**
+	 * @brief 클라이언트에게 최종 판결을 전달하는 RPC 함수
+	 * @details [캡스톤] 서버가 생성한 최종 판결 결과를 클라이언트에 전달하여 UI에 출력되도록 함
+	 * @param Response 최종 판결에 대한 AI 응답 데이터
+	 */
+	UFUNCTION(Server, Reliable)
+	void ClientRPCGetFinalJudgement(FOpenAIResponse Response);
+
+	/**
+	 * @brief 클라이언트를 메인 맵으로 이동시키는 서버 RPC 함수
+	 * @details [캡스톤] 재판 종료 등 특정 조건에서 클라이언트를 메인 씬으로 Seamless Travel 방식으로 전환시킴
+	 * @param ClientPC 메인 맵으로 이동시킬 대상 클라이언트의 PlayerController
+	 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCTravelToMain(AQPlayerController* ClientPC);
+
+
 protected:
 	virtual void BeginPlay() override;
 	virtual void SetupInputComponent() override;
