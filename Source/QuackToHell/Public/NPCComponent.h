@@ -22,19 +22,19 @@ struct FOpenAIRequest
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite, Category = "AI")
-	FString ResponseText;
+	FString ResponseText = "";
 
 	UPROPERTY(BlueprintReadWrite, Category = "AI")
-	int32 SpeakerID;
+	int32 SpeakerID = -1;
 
 	UPROPERTY(BlueprintReadWrite, Category = "AI")
-	int32 ListenerID;
+	int32 ListenerID = -1;
 
 	UPROPERTY(BlueprintReadWrite, Category = "AI")
-	EConversationType ConversationType;
+	EConversationType ConversationType = EConversationType::None;
 
 	UPROPERTY(BlueprintReadWrite, Category = "AI")
-	FString Prompt;
+	FString Prompt = "";
 
 	UPROPERTY(BlueprintReadWrite, Category = "AI")
 	int32 MaxTokens = 150;
@@ -89,16 +89,16 @@ struct FOpenAIResponse
 	GENERATED_BODY()
 	
 	UPROPERTY(BlueprintReadWrite, Category = "AI")
-	FString ResponseText;
+	FString ResponseText = "";
 	
 	UPROPERTY(BlueprintReadWrite, Category = "AI")
-	int32 SpeakerID;
+	int32 SpeakerID = -1;
 	
 	UPROPERTY(BlueprintReadWrite, Category = "AI")
-	int32 ListenerID;
+	int32 ListenerID = -1;
 	
 	UPROPERTY(BlueprintReadWrite, Category = "AI")
-	EConversationType ConversationType;
+	EConversationType ConversationType = EConversationType::None;
 
 	static FOpenAIResponse FromJson(const FString& JsonContent)
 {

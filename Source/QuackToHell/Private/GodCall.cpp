@@ -12,6 +12,13 @@ UGodCall::UGodCall()
 void UGodCall::PostInitProperties()
 {
     Super::PostInitProperties();
+}
+
+void UGodCall::BeginPlay()
+{
+    Super::BeginPlay();
+
+    UE_LOG(LogTemp, Log, TEXT("GodCall::BeginPlay() 실행됨. 프롬프트 생성 여부 확인"));
     UE_LOG(LogTemp, Log, TEXT("UGodCall::PostInitProperties() 실행됨. 프롬프트 생성 시작"));
 
     UWorld* World = GetWorld();
@@ -29,14 +36,6 @@ void UGodCall::PostInitProperties()
                     UGodFunction::GenerateJuryNPC(World, 1);
                 });
         });
-}
-
-void UGodCall::BeginPlay()
-{
-    Super::BeginPlay();
-
-    UE_LOG(LogTemp, Log, TEXT("GodCall::BeginPlay() 실행됨. 프롬프트 생성 여부 확인"));
-
 }
 
 //void UGodCall::EndPlay(const EEndPlayReason::Type EndPlayReason)
