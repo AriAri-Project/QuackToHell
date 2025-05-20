@@ -28,6 +28,7 @@ public:
 	// N2N
 	int32 N2NConversationCoolTime = 0;
 	const int32 N2NConversationCoolTimeInit = 60;
+	FTimerHandle N2NTimerHandle;
 	
 	bool CheckCanStartConversN2N();
 	bool CheckCanFinishConversN2N();
@@ -36,7 +37,15 @@ public:
 	void StartConversationN2N(AQNPC* TargetNPC, FOpenAIResponse FirstResponse);
 	void ReplyConversationN2N(AQNPC* TargetNPC, FOpenAIResponse ReplyResponse);
 	void FinishConversationN2N(AQNPC* TargetNPC);
+	
+	// NMono
+	const int32 NMonoCoolTimeInit = 80;
+	int32 NMonoCoolTime = NMonoCoolTimeInit;
+	FTimerHandle NMonoTimerHandle;
 
+	void CheckCanStartNMonologue();
+	void StartNMonologue(FOpenAIResponse Monologue);
+	void FinishNMonologue();
 protected:
 	/**
 	 * @brief Sphere 컴포넌트입니다. 플레이어를 기준으로 원형을 그려 트리거를 탐지합니다.
@@ -105,7 +114,3 @@ public:
 		NPCConversationState = NewState;
 	}
 };
-
-
-
-
