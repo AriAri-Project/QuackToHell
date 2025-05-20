@@ -157,6 +157,47 @@ void AQNPC::FinishConversationN2N(AQNPC* TargetNPC)
 	//  @todo 3. 플레이어 시점 처리 (multicast)
 }
 
+// ---------------------------------------------------------------------------------- //
+
+void AQNPC::CheckCanStartNMonologue()
+{
+	if (!HasAuthority())
+	{
+		return;
+	}
+	
+	if (NMonoCoolTime <= 0)
+	{
+		// 혼잣말이가능하다면 AI에게 혼잣말 대사 요청
+	}
+}
+
+void AQNPC::StartNMonologue(FOpenAIResponse Monologue)
+{
+	if (!HasAuthority())
+	{
+		return;
+	}
+
+	// @todo 플레이어 시점 처리 (multicast)
+
+	// 6초 뒤에 Finish
+	GetWorldTimerManager().SetTimer(NMonoTimerHandle, this, &AQNPC::FinishNMonologue, 6.0f, false);
+}
+
+void AQNPC::FinishNMonologue()
+{
+	if (!HasAuthority())
+	{
+		return;
+	}
+
+	// @todo 플레이어 시점 처리 (multicast)
+
+	// NMonoCoolTime 초기화
+	NMonoCoolTime = NMonoCoolTimeInit;
+}
+
 
 // ---------------------------------------------------------------------------------- //
 
