@@ -43,6 +43,121 @@ AQNPC::AQNPC(const FObjectInitializer& ObjectInitializer)
 	InteractionSphereComponent->OnComponentEndOverlap.AddDynamic(this, &AQNPC::OnOverlapEnd);
 }
 
+bool AQNPC::CheckCanStartConversN2N()
+{
+	if (!HasAuthority())
+	{
+		return false;
+	}
+	// NPC가 P2N, N2N 상호작용 중일 경우 N2N 대화 불가능
+	if (this->GetNPCConversationState() == EConversationType::N2N || this->GetNPCConversationState() == EConversationType::P2N || this->GetNPCConversationState() == EConversationType::PStart)
+	{
+		return false;
+	}
+	
+	// N2N 대화 쿨타임이 아직 지나지 않았다면 N2N 대화 불가능
+	if (this->N2NConversationCoolTime > 0)
+	{
+		return false;
+	}
+	return true;
+}
+
+bool AQNPC::CheckCanFinishConversN2N()
+{
+	if (!HasAuthority())
+	{
+		false;
+	}
+	return true;
+}
+
+void AQNPC::RequestConversationN2N(AQNPC* TargetNPC)
+{
+	if (!HasAuthority())
+	{
+		return;
+	}
+	/* 체크할 것
+	*	1. 대화에 참여하는 NPC가 P2N, N2N 상호작용 중일 경우 바로 종료
+	*	2. NPC A 가 N2N 쿨타임이 60초 미만일 경우: 대화요청을 호출하지 않는다.
+	*   3. NPC B 가 N2N 쿨타임이 60초 미만일 경우: 대화요청을 수락하지 않는다.
+	*/
+
+	// 상대 NPC가 nullptr이라면 바로 종료
+	if (TargetNPC == nullptr)
+	{
+		UE_LOG(LogLogic, Error, TEXT("AQNPC::RequestConversationN2N - TargetNPC is nullptr."));
+		return;
+	}
+	// @todo 둘 중 NPC ID가 더 낮은 쪽이 말을 건다.
+
+
+	// 두 NPC가 모두 N2N 대화가 가능한 지 check
+	if (this->CheckCanStartConversN2N() && TargetNPC->CheckCanStartConversN2N())
+	{
+		// @todo 가능하다면 AI에게 N2N의 첫번째 대화 생성 요청
+	}
+	else
+	{
+		UE_LOG(LogLogic, Log, TEXT("AQNPC::RequestConversationN2N - NPC can't start N2N Conversation."));
+	}
+
+	// @todo 첫 N2N 대사 AI에게 요청
+}
+
+void AQNPC::StartConversationN2N(AQNPC* TargetNPC, FOpenAIResponse FirstResponse)
+{
+	if (!HasAuthority())
+	{
+		return;
+	}
+	// 1. 두 NPC Freeze 시키기
+	TObjectPtr<AQDynamicNPCController> DynamicNPCController;
+	DynamicNPCController = Cast<AQDynamicNPCController>(this->GetController());
+	DynamicNPCController->FreezePawn();
+	DynamicNPCController = Cast<AQDynamicNPCController>(TargetNPC->GetController());
+	DynamicNPCController->FreezePawn();
+
+	// @todo 2.플레이어 시점 처리 (multicast)
+
+	// @todo 3. Reply N2N 대사 AI에게 요청
+}
+
+void AQNPC::ReplyConversationN2N(AQNPC* TargetNPC, FOpenAIResponse ReplyResponse)
+{
+	if (!HasAuthority())
+	{
+		return;
+	}
+	// @todo 1.플레이어 시점 처리 (multicast)
+
+	// 2. 대화 끝내기
+	FinishConversationN2N(TargetNPC);
+}
+
+void AQNPC::FinishConversationN2N(AQNPC* TargetNPC)
+{
+	if (!HasAuthority())
+	{
+		return;
+	}
+	
+	// 1. 두 NPC UnFreeze 시키기
+	TObjectPtr<AQDynamicNPCController> DynamicNPCController;
+	DynamicNPCController = Cast<AQDynamicNPCController>(this->GetController());
+	DynamicNPCController->UnFreezePawn();
+	DynamicNPCController = Cast<AQDynamicNPCController>(TargetNPC->GetController());
+	DynamicNPCController->UnFreezePawn();
+	
+	// 2. 두 NPC N2N Conversation 쿨타임 기본값으로 초기화
+	this->N2NConversationCoolTime = N2NConversationCoolTimeInit;
+	TargetNPC->N2NConversationCoolTime = N2NConversationCoolTimeInit;
+
+	//  @todo 3. 플레이어 시점 처리 (multicast)
+}
+
+
 // ---------------------------------------------------------------------------------- //
 
 
@@ -91,20 +206,6 @@ UQSpeechBubbleWidget* AQNPC::GetSpeechBubbleWidget() const
 
 }
 
-
-
-
-bool AQNPC::GetCanStartConversN2N(const AQNPC* NPC)
-{
-	ServerRPCCanCanStartConversN2N_Implementation(NPC);
-	return bCanStartConversN2N;
-}
-
-bool AQNPC::GetCanFinishConversN2N(const AQNPC* NPC)
-{
-	ServerRPCCanCanFinishConversN2N_Implementation(NPC);
-	return bCanFinishConversN2N;
-}
 // ---------------------------------------------------------------------------------- //
 
 void AQNPC::BeginPlay()

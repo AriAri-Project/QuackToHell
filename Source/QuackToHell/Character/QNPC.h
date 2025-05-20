@@ -18,21 +18,24 @@ class QUACKTOHELL_API AQNPC : public AQCharacter
 
 public:
 	AQNPC(const FObjectInitializer& ObjectInitializer);
-public:
 	/**
 	 * @brief 스피치버블 위젯을 리턴합니다. NPCController에서 접근하기 위함입니다.
-	 *
 	 * @return speechbubblewidget
 	 */
 	class UQSpeechBubbleWidget* GetSpeechBubbleWidget() const;
 
 public:
-	// 공용 인터페이스
-	/** @brief N2N 대화가 가능한지에 대한 Getter*/
-	bool GetCanStartConversN2N(const AQNPC* NPC);
-	/** @brief NPC와의 대화를 마칠 수 있는지에 대한 Getter*/
-	bool GetCanFinishConversN2N(const AQNPC* NPC);
-
+	// N2N
+	int32 N2NConversationCoolTime = 0;
+	const int32 N2NConversationCoolTimeInit = 60;
+	
+	bool CheckCanStartConversN2N();
+	bool CheckCanFinishConversN2N();
+	
+	void RequestConversationN2N(AQNPC* TargetNPC);
+	void StartConversationN2N(AQNPC* TargetNPC, FOpenAIResponse FirstResponse);
+	void ReplyConversationN2N(AQNPC* TargetNPC, FOpenAIResponse ReplyResponse);
+	void FinishConversationN2N(AQNPC* TargetNPC);
 
 protected:
 	/**
