@@ -19,6 +19,6 @@ public:
 	 * @brief 입력을 저장합니다.
 	 */
 	UFUNCTION(NetMulticast, Reliable)
-	void SaveInput();
+	void MulticastSaveInput();
 	
 };

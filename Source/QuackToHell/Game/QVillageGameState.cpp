@@ -76,15 +76,25 @@ void AQVillageGameState::EndVillageActivity_Implementation()
 
 void AQVillageGameState::MulticastRPCUpdateServerTime_Implementation()
 {
-	TObjectPtr<UQVillageTimerWidget> VillageTimerUI = Cast<UQVillageTimerWidget>(AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets()[EVillageUIType::VillageTimer]);
-	if (VillageTimerUI)
-	{
-		VillageTimerUI->UpdateServerTimeToUITime(ServerLeftTimeUntilTrial, TimeUntilTrialMax);
+	//있는지 먼저 확인하고, 없으면 생성. 
+	if (!AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets().Contains(EVillageUIType::VillageTimer)) {
+		AQVillageUIManager::GetInstance(GetWorld())->TurnOnUI(EVillageUIType::VillageTimer);
 	}
-	else
+	
 	{
-		UE_LOG(LogLogic, Log, TEXT("Get VillageTimerUI failed"));
+		//위젯 가져오고, 시간 업데이트.
+		TObjectPtr<UQVillageTimerWidget> VillageTimerUI = Cast<UQVillageTimerWidget>(AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets()[EVillageUIType::VillageTimer]);
+		if (VillageTimerUI)
+		{
+			VillageTimerUI->UpdateServerTimeToUITime(ServerLeftTimeUntilTrial, TimeUntilTrialMax);
+		}
+		else
+		{
+			UE_LOG(LogLogic, Log, TEXT("Get VillageTimerUI failed"));
+		}
 	}
+
+	
 }
 
 void AQVillageGameState::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const

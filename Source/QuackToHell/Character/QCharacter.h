@@ -50,7 +50,7 @@ protected:
 	TObjectPtr<class UQNameWidget> GetNameWidget() const;
 
 private:
-	/** @brief 네임위젯 클래스 정보를 담습니다. */
+	/** @brief 네임위젯 입니다. */
 	UPROPERTY()
 	TObjectPtr<class UQNameWidget> NameWidget;
 	

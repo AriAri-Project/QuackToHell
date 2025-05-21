@@ -215,6 +215,7 @@ bool AQVillageUIManager::IsVillageMap()
 
 
 
+
 void AQVillageUIManager::TurnOnUI(EVillageUIType UIType)
 {
 	/*예외처리*/

@@ -29,7 +29,7 @@ void UQSpeechBubbleWidget::TurnOffSpeechBubble()
 	this->SetVisibility(ESlateVisibility::Hidden);
 }
 
-void UQSpeechBubbleWidget::UpdateText(FString& Text)
+void UQSpeechBubbleWidget::UpdateText(const FString& Text)
 {
 	TextBlock->SetText(FText::FromString(Text));
 }

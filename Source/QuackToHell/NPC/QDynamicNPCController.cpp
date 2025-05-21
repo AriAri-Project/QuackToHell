@@ -41,6 +41,8 @@ void AQDynamicNPCController::BeginPlay()
     VillageUIManager = AQVillageUIManager::GetInstance(GetWorld());
     //mypawn대입하기
     MyPawn = Cast<AQNPC>(GetPawn());
+
+
 }
 
 
@@ -87,6 +89,33 @@ void AQDynamicNPCController::UpdateRotation()
         SetActorTickEnabled(false);
         bIsRotating = false;
         OpponentPawn = nullptr;
+    }
+}
+
+
+
+void AQDynamicNPCController::MulticastShowSpeechBubbleWithText_Implementation(const FString& Text) const
+{
+    //MyPawn->GetSpeechBubbleWidget()->으로 updatetext, turnof/off 접근가능
+    if (MyPawn) {
+		MyPawn->GetSpeechBubbleWidget()->TurnOnSpeechBubble();
+        MyPawn->GetSpeechBubbleWidget()->UpdateText(Text);
+    }
+    else {
+        UE_LOG(LogLogic, Error, TEXT("AQDynamicNPCController::MulticastShowSpeechBubbleWithText_Implementation - MyPawn is nullptr"));
+        return;
+    }
+}
+
+void AQDynamicNPCController::MulticastTurnOffSpeechBubble_Implementation()
+{
+    //MyPawn->GetSpeechBubbleWidget()->으로 updatetext, turnof/off 접근가능
+    if (MyPawn) {
+		MyPawn->GetSpeechBubbleWidget()->TurnOffSpeechBubble();
+    }
+    else {
+        UE_LOG(LogLogic, Error, TEXT("AQDynamicNPCController::MulticastTurnOffSpeechBubble_Implementation - MyPawn is nullptr"));
+        return;
     }
 }
 
