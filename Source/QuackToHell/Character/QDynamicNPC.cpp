@@ -11,6 +11,7 @@
 #include "QLogCategories.h"
 #include "Kismet/GameplayStatics.h"
 #include "Player/QPlayerController.h"
+#include "NPC/QDynamicNPCController.h"
 #include "UI/QPlayer2NSpeechBubbleWidget.h"
 AQDynamicNPC::AQDynamicNPC(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)

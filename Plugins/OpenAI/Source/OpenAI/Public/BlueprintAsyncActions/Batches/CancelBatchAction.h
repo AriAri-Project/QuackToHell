@@ -8,7 +8,11 @@
 #include "CancelBatchAction.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_ThreeParams(
-    FOnCancelBatch, const FCancelBatchResponse&, Response, const FOpenAIResponseMetadata&, ResponseMetadata, const FOpenAIError&, RawError);
+    FOnCancelBatch,
+    const FCancelBatchResponse&, Response,
+    const FOpenAIResponseMetadata&, ResponseMetadata,
+    const FOpenAIError&, RawError
+);
 
 class UOpenAIProvider;
 

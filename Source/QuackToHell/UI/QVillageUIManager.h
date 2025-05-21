@@ -27,6 +27,7 @@ UCLASS()
 class QUACKTOHELL_API AQVillageUIManager : public AActor
 {
 	GENERATED_BODY()
+
 public:
 	/**
 	 * @brief UI를 켭니다.

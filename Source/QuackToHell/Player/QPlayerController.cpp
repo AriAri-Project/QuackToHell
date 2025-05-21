@@ -282,6 +282,7 @@ void AQPlayerController::InputInteraction(const FInputActionValue& InputValue)
 	Cast<AQPlayer>(GetPawn())->ServerRPCCanStartConversP2N(this, NPC);
 	UE_LOG(LogLogic, Log, TEXT("E버튼 누름!"));
 	
+
 }
 
 void AQPlayerController::InputTurnOnOffMap(const FInputActionValue& InputValue)

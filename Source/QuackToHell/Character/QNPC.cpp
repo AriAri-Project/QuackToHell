@@ -10,7 +10,9 @@
 #include "NPCComponent.h"
 #include "UI/QSpeechBubbleWidget.h"
 #include "Net/UnrealNetwork.h"
+#include "NPC/QDynamicNPCController.h"
 #include "UI/QNameWidget.h"
+#include "QLogCategories.h"
 
 AQNPC::AQNPC(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
@@ -27,11 +29,9 @@ AQNPC::AQNPC(const FObjectInitializer& ObjectInitializer)
 	this->SpeechBubbleWidgetComponent->SetWidgetSpace(WidgetSpace);
 	this->SpeechBubbleWidgetComponent->SetDrawAtDesiredSize(true);
 	this->SpeechBubbleWidgetComponent->SetupAttachment(RootComponent);
-	TSubclassOf<UQSpeechBubbleWidget> _SpeechBubbleWidget;
-	//UQSpeechBubbleWidget을 상속한 클래스만 담을 수 있도록 강제한다.
-	this->SpeechBubbleWidgetComponent->SetWidgetClass(_SpeechBubbleWidget);
-
-
+	// **위젯 클래스는 블루프린트 에디터에서**:
+	// 해당 컴포넌트의 Details → Widget Class 에 WBP_QSpeechBubble을 드래그해서 지정.
+	// 언리얼이 클라이언트에서 알아서 BP 위젯을 생성해 줍니다.
 
 	/*충돌처리*/
 	InteractionSphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("InteractionSphere"));
@@ -76,9 +76,19 @@ void AQNPC::ServerRPCCanCanFinishConversN2N_Implementation(const AQNPC* NPC)
 
 // ---------------------------------------------------------------------------------- //
 
-TObjectPtr<class UQSpeechBubbleWidget> AQNPC::GetSpeechBubbleWidget() const
+UQSpeechBubbleWidget* AQNPC::GetSpeechBubbleWidget() const
 {
-	return SpeechBubbleWidget;
+	/**
+	 * @todo SpeechBubbleWidget이 null이 아니게가져오기.
+	 */
+	if (SpeechBubbleWidget) {
+		return SpeechBubbleWidget;
+	}
+	else {
+		UE_LOG(LogLogic, Error, TEXT("AQNPC::GetSpeechBubbleWidget - SpeechBubbleWidget is nullptr"));
+		return nullptr;
+	}
+
 }
 
 
@@ -103,7 +113,7 @@ void AQNPC::BeginPlay()
 	/*이름 세팅*/
 	FString _Name = (NPCComponent && !NPCComponent->GetNPCName().IsEmpty())
 		? NPCComponent->GetNPCName()
-		: TEXT("이름비었음");	
+		: TEXT("이름비었음");
 	this->SetCharacterName(_Name);
 	Super::GetNameWidget()->SetNameWidgetText(GetCharacterName());
 	/*말풍선 위젯 변수에 객체값 할당*/
@@ -116,5 +126,6 @@ void AQNPC::BeginPlay()
 		}
 	}
 
+	
 }
 

@@ -38,7 +38,7 @@ public:
 	 * @brief 말풍선의 글씨를 업데이트합니다.
 	 * @param 새로 띄울 텍스트를 인자로 넣습니다.
 	 */
-	void UpdateText(FString& Text);
+	void UpdateText(const FString& Text);
 private:
 	/**
 	 * @brie Text 컴포넌트 바인드

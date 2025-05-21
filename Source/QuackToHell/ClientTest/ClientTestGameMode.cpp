@@ -12,7 +12,7 @@ void AClientTestGameMode::BeginPlay()
 	
 	//접근해보기
 	TObjectPtr<UQCourtInputBoxWidget> InputBox = Cast<UQCourtInputBoxWidget>(AQCourtUIManager::GetInstance(GetWorld())->GetActivedCourtWidgets()[ECourtUIType::InputBox]);
-	InputBox->SaveInput();
+	InputBox->MulticastSaveInput();
 
 	TObjectPtr<UQCourtTimerWidget> Timer = Cast<UQCourtTimerWidget>(AQCourtUIManager::GetInstance(GetWorld())->GetActivedCourtWidgets()[ECourtUIType::CourtTimer]);
 	Timer->UpdateServerTimeToUITime(1.f,5.f);

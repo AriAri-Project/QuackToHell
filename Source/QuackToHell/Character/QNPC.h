@@ -24,7 +24,7 @@ public:
 	 *
 	 * @return speechbubblewidget
 	 */
-	TObjectPtr<class UQSpeechBubbleWidget> GetSpeechBubbleWidget() const;
+	class UQSpeechBubbleWidget* GetSpeechBubbleWidget() const;
 
 public:
 	// 공용 인터페이스
@@ -53,17 +53,17 @@ protected:
 	TObjectPtr<class UNPCComponent> NPCComponent;
 protected:
 	/**
-	 * @brief SpeechBubble UI 컴포넌트입니다.
+	 * @brief 
+	 * 말풍선 UI를 붙일 컴포넌트 
 	 */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite)
 	TObjectPtr<class UWidgetComponent> SpeechBubbleWidgetComponent;
 
 
 private:
-	/** @brief 스피치버블 위젯 클래스 정보를 담습니다. */
+	/** @brief 런타임에 캐스트해 쓸 실제 위젯: 말풍선  */
 	UPROPERTY()
-	TObjectPtr<class UQSpeechBubbleWidget> SpeechBubbleWidget;
-
+	class UQSpeechBubbleWidget* SpeechBubbleWidget;
 	
 private:
 	// NPC 대화

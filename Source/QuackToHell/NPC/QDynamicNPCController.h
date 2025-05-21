@@ -17,6 +17,21 @@ class QUACKTOHELL_API AQDynamicNPCController : public AQNPCController
 	GENERATED_BODY()
 public:
     /**
+     * @brief N2N, NMonolog상황에서 호출됩니다. 
+	 * 말풍선을 켜고, 대사 내용을 넣습니다.
+	 * @param Text 대사 내용
+     */
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastShowSpeechBubbleWithText(const FString& Text) const;
+    /**
+	 * @brief N2N, NMonolog상황에서 호출됩니다. 
+	 * 말풍선을 끕니다.
+     */
+    UFUNCTION(NetMulticast, Reliable)
+    void MulticastTurnOffSpeechBubble();
+
+public:
+    /**
      * @brief. 얼음땡
      */
     void UnFreezePawn();
@@ -73,6 +88,7 @@ private:
      * @param 상대방의 pawn
      */
     void UpdateRotation();
+
 
 private:
     TObjectPtr<class AQNPC> MyPawn;
