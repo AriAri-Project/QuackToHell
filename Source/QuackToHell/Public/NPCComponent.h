@@ -12,6 +12,8 @@
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnNPCResponseReceived, const FString&, ResponseText);
 
+class AQNPC;
+
 /**
  * @author 박시언
  * @brief OpenAI API 요청을 위한 구조체
@@ -252,7 +254,7 @@ public:
 	 * @param SecondNPCID 대화를 받는 NPC의 ID입니다.
 	 */
 	UFUNCTION(BlueprintCallable, Category = "NPC")
-	void StartNPCToNPCDialog(const FOpenAIRequest& Request);
+	void StartNPCToNPCDialog(AQNPC* TargetNPC, const FOpenAIRequest& Request);
 
 	/**
 	 * @author 박시언
@@ -263,7 +265,7 @@ public:
 	 * @param ReceivedMessage 상대 NPC가 보낸 대사입니다.
 	 * @param RemainingTurns 남은 대화 턴 수입니다.
 	 */
-	void ContinueNPCToNPCDialog(const FOpenAIRequest& Request);
+	void ContinueNPCToNPCDialog(AQNPC* TargetNPC, const FOpenAIRequest& Request);
 
 	/**
 	 * @author 박시언
@@ -431,4 +433,6 @@ public:
 	UFUNCTION(Server, Reliable)
 	void ServerRPCGetNPCResponse(AQPlayerController* ClientPC, FOpenAIRequest Request);
 
+	void GetNPCResponse(AQNPC* TargetNPC, const FOpenAIRequest Request);
+	void GetNPCResponse(const FOpenAIRequest& Request);
 };
