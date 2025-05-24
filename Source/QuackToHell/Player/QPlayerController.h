@@ -79,7 +79,7 @@ public:
 	 * @details [캡스톤] 서버에서 생성된 검사측 진술 응답을 클라이언트에게 전달하여 UI에 반영함
 	 * @param Response 검사측 진술에 대한 AI 응답 데이터
 	 */
-	UFUNCTION(Server, Reliable)
+	UFUNCTION(Client, Reliable)
 	void ClientRPCGetProsecutorStatement(FOpenAIResponse Response);
 
 	/**
@@ -95,7 +95,7 @@ public:
 	 * @details [캡스톤] 서버에서 생성된 변호인측 진술 응답을 클라이언트에게 전달하여 UI에 반영함
 	 * @param Response 변호인측 진술에 대한 AI 응답 데이터
 	 */
-	UFUNCTION(Server, Reliable)
+	UFUNCTION(Client, Reliable)
 	void ClientRPCGetLawyerStatement(FOpenAIResponse Response);
 
 	/**
@@ -111,7 +111,7 @@ public:
 	 * @details [캡스톤] 서버가 생성한 최종 판결 결과를 클라이언트에 전달하여 UI에 출력되도록 함
 	 * @param Response 최종 판결에 대한 AI 응답 데이터
 	 */
-	UFUNCTION(Server, Reliable)
+	UFUNCTION(Client, Reliable)
 	void ClientRPCGetFinalJudgement(FOpenAIResponse Response);
 
 	/**
