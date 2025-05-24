@@ -43,6 +43,16 @@ AQNPC::AQNPC(const FObjectInitializer& ObjectInitializer)
 	InteractionSphereComponent->OnComponentEndOverlap.AddDynamic(this, &AQNPC::OnOverlapEnd);
 }
 
+void AQNPC::CountDownN2N()
+{
+	FTimerDelegate TimerDel;
+	TimerDel.BindLambda([this]()
+	{
+		N2NCoolTimeCharged = true;
+	});
+	GetWorldTimerManager().SetTimer(N2NTimerHandle, TimerDel, 1.0f, false);
+}
+
 bool AQNPC::CheckCanStartConversN2N()
 {
 	if (!HasAuthority())
@@ -54,9 +64,7 @@ bool AQNPC::CheckCanStartConversN2N()
 	{
 		return false;
 	}
-	
-	// N2N 대화 쿨타임이 아직 지나지 않았다면 N2N 대화 불가능
-	if (this->N2NConversationCoolTime > 0)
+	if (!N2NCoolTimeCharged)
 	{
 		return false;
 	}
@@ -96,14 +104,26 @@ void AQNPC::RequestConversationN2N(AQNPC* TargetNPC)
 	// 두 NPC가 모두 N2N 대화가 가능한 지 check
 	if (this->CheckCanStartConversN2N() && TargetNPC->CheckCanStartConversN2N())
 	{
-		// @todo 가능하다면 AI에게 N2N의 첫번째 대화 생성 요청
+		// 두 NPC Freeze
+		TObjectPtr<AQDynamicNPCController> DynamicNPCController;
+		DynamicNPCController = Cast<AQDynamicNPCController>(this->GetController());
+		DynamicNPCController->FreezePawn();
+		DynamicNPCController = Cast<AQDynamicNPCController>(TargetNPC->GetController());
+		DynamicNPCController->FreezePawn();
+
+		// @todo AI에게 N2N의 첫번째 대화 생성 요청
+		FOpenAIRequest Request(
+		this->FindComponentByClass<UNPCComponent>()->GetNPCID(),
+		TargetNPC->FindComponentByClass<UNPCComponent>()->GetNPCID(),
+		EConversationType::N2NStart,
+		""
+		);
+		this->FindComponentByClass<UNPCComponent>()->GetNPCResponse(this, Request);
 	}
 	else
 	{
 		UE_LOG(LogLogic, Log, TEXT("AQNPC::RequestConversationN2N - NPC can't start N2N Conversation."));
 	}
-
-	// @todo 첫 N2N 대사 AI에게 요청
 }
 
 void AQNPC::StartConversationN2N(AQNPC* TargetNPC, FOpenAIResponse FirstResponse)
@@ -112,16 +132,18 @@ void AQNPC::StartConversationN2N(AQNPC* TargetNPC, FOpenAIResponse FirstResponse
 	{
 		return;
 	}
-	// 1. 두 NPC Freeze 시키기
-	TObjectPtr<AQDynamicNPCController> DynamicNPCController;
-	DynamicNPCController = Cast<AQDynamicNPCController>(this->GetController());
-	DynamicNPCController->FreezePawn();
-	DynamicNPCController = Cast<AQDynamicNPCController>(TargetNPC->GetController());
-	DynamicNPCController->FreezePawn();
+	// 1. 플레이어 시점 말풍선 처리
+	TObjectPtr<AQDynamicNPCController> DynamicNPCController = Cast<AQDynamicNPCController>(this->GetController());
+	DynamicNPCController->MulticastShowSpeechBubbleWithText(FirstResponse.ResponseText);
 
-	// @todo 2.플레이어 시점 처리 (multicast)
-
-	// @todo 3. Reply N2N 대사 AI에게 요청
+	// @todo 2. Reply N2N 대사 AI에게 요청
+	FOpenAIRequest Request(
+		TargetNPC->FindComponentByClass<UNPCComponent>()->GetNPCID(),
+		this->FindComponentByClass<UNPCComponent>()->GetNPCID(),
+		EConversationType::N2N,
+		FirstResponse.ResponseText
+	);
+	TargetNPC->FindComponentByClass<UNPCComponent>()->GetNPCResponse(TargetNPC, Request);
 }
 
 void AQNPC::ReplyConversationN2N(AQNPC* TargetNPC, FOpenAIResponse ReplyResponse)
@@ -130,46 +152,61 @@ void AQNPC::ReplyConversationN2N(AQNPC* TargetNPC, FOpenAIResponse ReplyResponse
 	{
 		return;
 	}
-	// @todo 1.플레이어 시점 처리 (multicast)
+	// 1.플레이어 시점 처리 (multicast)
+	TObjectPtr<AQDynamicNPCController> DynamicNPCController;
+		// 1-1. this npc 대사 띄우기
+	DynamicNPCController = Cast<AQDynamicNPCController>(this->GetController());
+	DynamicNPCController->MulticastShowSpeechBubbleWithText(ReplyResponse.ResponseText);
+		// 1-2. 상대 npc 말풍선 끄기
+	DynamicNPCController = Cast<AQDynamicNPCController>(TargetNPC->GetController());
+	DynamicNPCController->MulticastTurnOffSpeechBubble();
 
 	// 2. 대화 끝내기
-	FinishConversationN2N(TargetNPC);
+	FTimerDelegate TimerDel;
+	TimerDel.BindLambda([this, TargetNPC]()
+	{
+		if (IsValid(this)) this->FinishConversationN2N();
+		if (IsValid(TargetNPC)) TargetNPC->FinishConversationN2N();
+	});
+	GetWorldTimerManager().SetTimer(N2NTimerHandle, TimerDel, 6.0f, false);
 }
 
-void AQNPC::FinishConversationN2N(AQNPC* TargetNPC)
+void AQNPC::FinishConversationN2N()
 {
 	if (!HasAuthority())
 	{
 		return;
 	}
 	
-	// 1. 두 NPC UnFreeze 시키기
+	// NPC UnFreeze & 대화창 끄기
 	TObjectPtr<AQDynamicNPCController> DynamicNPCController;
 	DynamicNPCController = Cast<AQDynamicNPCController>(this->GetController());
 	DynamicNPCController->UnFreezePawn();
-	DynamicNPCController = Cast<AQDynamicNPCController>(TargetNPC->GetController());
-	DynamicNPCController->UnFreezePawn();
-	
-	// 2. 두 NPC N2N Conversation 쿨타임 기본값으로 초기화
-	this->N2NConversationCoolTime = N2NConversationCoolTimeInit;
-	TargetNPC->N2NConversationCoolTime = N2NConversationCoolTimeInit;
-
-	//  @todo 3. 플레이어 시점 처리 (multicast)
+	DynamicNPCController->MulticastTurnOffSpeechBubble();
 }
 
 // ---------------------------------------------------------------------------------- //
 
-void AQNPC::CheckCanStartNMonologue()
+void AQNPC::CountDownNMonologue()
+{
+	GetWorldTimerManager().SetTimer(NMonoTimerHandle, this, &AQNPC::RequestNMonologueText, 1.0f, false);
+}
+
+void AQNPC::RequestNMonologueText()
 {
 	if (!HasAuthority())
 	{
 		return;
 	}
 	
-	if (NMonoCoolTime <= 0)
-	{
-		// 혼잣말이가능하다면 AI에게 혼잣말 대사 요청
-	}
+	// AI에게 혼잣말 대사 요청
+	FOpenAIRequest Request(
+	this->FindComponentByClass<UNPCComponent>()->GetNPCID(),
+	this->FindComponentByClass<UNPCComponent>()->GetNPCID(),
+	EConversationType::NMonologue,
+	""
+	);
+	this->FindComponentByClass<UNPCComponent>()->GetNPCResponse(this, Request);
 }
 
 void AQNPC::StartNMonologue(FOpenAIResponse Monologue)
@@ -179,7 +216,9 @@ void AQNPC::StartNMonologue(FOpenAIResponse Monologue)
 		return;
 	}
 
-	// @todo 플레이어 시점 처리 (multicast)
+	// 플레이어 시점 처리 (multicast)
+	TObjectPtr<AQDynamicNPCController> DynamicNPCController = Cast<AQDynamicNPCController>(this->GetController());
+	DynamicNPCController->MulticastShowSpeechBubbleWithText(Monologue.ResponseText);
 
 	// 6초 뒤에 Finish
 	GetWorldTimerManager().SetTimer(NMonoTimerHandle, this, &AQNPC::FinishNMonologue, 6.0f, false);
@@ -192,7 +231,9 @@ void AQNPC::FinishNMonologue()
 		return;
 	}
 
-	// @todo 플레이어 시점 처리 (multicast)
+	// 플레이어 시점 처리 (multicast)
+	TObjectPtr<AQDynamicNPCController> DynamicNPCController = Cast<AQDynamicNPCController>(this->GetController());
+	DynamicNPCController->MulticastTurnOffSpeechBubble();
 
 	// NMonoCoolTime 초기화
 	NMonoCoolTime = NMonoCoolTimeInit;
@@ -267,7 +308,4 @@ void AQNPC::BeginPlay()
 			SpeechBubbleWidget = Cast<UQSpeechBubbleWidget>(UserWidget);
 		}
 	}
-
-	
 }
-

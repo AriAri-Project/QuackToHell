@@ -349,7 +349,7 @@ void UNPCComponent::StartConversation(AQPlayerController* ClientPC, FOpenAIReque
 
 
 // N2N 대화 시작
-void UNPCComponent::StartNPCToNPCDialog(const FOpenAIRequest& Request)
+void UNPCComponent::StartNPCToNPCDialog(AQNPC* TargetNPC, const FOpenAIRequest& Request)
 {
 	FString SpeakerNPCID = FString::FromInt(Request.SpeakerID);
 	FString ListenerNPCID = FString::FromInt(Request.ListenerID);
@@ -386,10 +386,10 @@ void UNPCComponent::StartNPCToNPCDialog(const FOpenAIRequest& Request)
 	AIRequest.ListenerID = Request.ListenerID;
 	AIRequest.ConversationType = EConversationType::N2N;
 
-	RequestOpenAIResponse(AIRequest, [this, ListenerNPCID, SpeakerNPCID](FOpenAIResponse AIResponse)
+	RequestOpenAIResponse(AIRequest, [this, TargetNPC,ListenerNPCID, SpeakerNPCID](FOpenAIResponse AIResponse)
 		{
 			SendNPCResponseToServer(AIResponse);
-			ContinueNPCToNPCDialog(FOpenAIRequest(AIResponse.ListenerID, AIResponse.SpeakerID, EConversationType::N2N, AIResponse.ResponseText, 4));
+			ContinueNPCToNPCDialog(TargetNPC, FOpenAIRequest(AIResponse.ListenerID, AIResponse.SpeakerID, EConversationType::N2N, AIResponse.ResponseText, 4));
 		});
 
 	UE_LOG(LogTemp, Log, TEXT("NPC-to-NPC 대화 요청 전송 완료"));
@@ -397,7 +397,7 @@ void UNPCComponent::StartNPCToNPCDialog(const FOpenAIRequest& Request)
 
 
 // N2N 대화 이어나감
-void UNPCComponent::ContinueNPCToNPCDialog(const FOpenAIRequest& Request)
+void UNPCComponent::ContinueNPCToNPCDialog(AQNPC* TargetNPC, const FOpenAIRequest& Request)
 {
 	if (Request.MaxTokens <= 0)
 	{
@@ -428,14 +428,14 @@ void UNPCComponent::ContinueNPCToNPCDialog(const FOpenAIRequest& Request)
 
 
 	// OpenAI API 호출 후, 대화 이어나가기 (남은 턴 수 감소)
-	RequestOpenAIResponse(AIRequest, [this, Request](FOpenAIResponse AIResponse)
+	RequestOpenAIResponse(AIRequest, [this, TargetNPC, Request](FOpenAIResponse AIResponse)
 		{
 			SendNPCResponseToServer(AIResponse);
 			FOpenAIRequest NextRequest = Request;
 			NextRequest.Prompt = AIResponse.ResponseText;  // AI 응답을 다음 메시지로 설정
 			NextRequest.MaxTokens -= 1;  // 남은 턴 감소
 
-			ContinueNPCToNPCDialog(NextRequest);
+			ContinueNPCToNPCDialog(TargetNPC, NextRequest);
 		});
 }
 
@@ -889,28 +889,48 @@ void UNPCComponent::ServerRPCGetNPCResponse_Implementation(AQPlayerController* C
 	 */
 	switch (Request.ConversationType)
 	{
-	case EConversationType::None:
-		UE_LOG(LogTemp, Error, TEXT("GetNPCResponse -> Invaild ConversationType"));
-		break;
-	case EConversationType::N2N:
-		UE_LOG(LogLogic, Log, TEXT("Server - N2N GetNPCResponse Started"));
-		ContinueNPCToNPCDialog(Request);
-		break;
-	case EConversationType::N2NStart:
-		UE_LOG(LogLogic, Log, TEXT("Server - N2NStart GetNPCResponse Started"));	
-		StartNPCToNPCDialog(Request);
-		break;
-	case EConversationType::NMonologue:
-		UE_LOG(LogLogic, Log, TEXT("Server - NMonologue GetNPCResponse Started"));
-		PerformNPCMonologue(Request);
-		break;
-	case EConversationType::OpeningStatement:
-		UE_LOG(LogLogic, Log, TEXT("Server - OpeningStatement GetNPCResponse Started"));
-		PerformNPCMonologue(Request);
-		break;
-	default:	// type이 PStart나 P2N이라면
-		UE_LOG(LogLogic, Log, TEXT("Server - PStart/P2N GetNPCResponse Started"));
-		StartConversation(ClientPC, Request);
-		break;
+		case EConversationType::PStart:
+			StartConversation(ClientPC, Request);
+		case EConversationType::P2N:
+			StartConversation(ClientPC, Request);
+		default:	
+			UE_LOG(LogLogic, Log, TEXT("Server - N2N GetNPCResponse Started"));
+			break;
+	}
+}
+
+void UNPCComponent::GetNPCResponse(AQNPC* TargetNPC, const FOpenAIRequest Request)
+{
+	switch (Request.ConversationType)
+	{
+		case EConversationType::N2N:
+			UE_LOG(LogLogic, Log, TEXT("Server - N2N GetNPCResponse Started"));
+			ContinueNPCToNPCDialog(TargetNPC, Request);
+			break;
+		case EConversationType::N2NStart:
+			UE_LOG(LogLogic, Log, TEXT("Server - N2NStart GetNPCResponse Started"));	
+			StartNPCToNPCDialog(TargetNPC, Request);
+			break;
+		default:
+			UE_LOG(LogTemp, Error, TEXT("GetNPCResponse -> Invaild ConversationType"));
+			break;
+	}
+}
+
+void UNPCComponent::GetNPCResponse(const FOpenAIRequest& Request)
+{
+	switch (Request.ConversationType)
+	{
+		case EConversationType::NMonologue:
+			UE_LOG(LogLogic, Log, TEXT("Server - NMonologue GetNPCResponse Started"));
+			PerformNPCMonologue(Request);
+			break;
+		case EConversationType::OpeningStatement:
+			UE_LOG(LogLogic, Log, TEXT("Server - OpeningStatement GetNPCResponse Started"));
+			PerformNPCMonologue(Request);
+			break;
+		default:
+			UE_LOG(LogTemp, Error, TEXT("GetNPCResponse -> Invaild ConversationType"));
+			break;
 	}
 }

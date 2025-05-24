@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Character/QCharacter.h"
 #include "GameData/QConversationData.h"
+#include "Public/NPCComponent.h"
 #include "QNPC.generated.h"
 
 /**
@@ -26,24 +27,25 @@ public:
 
 public:
 	// N2N
-	int32 N2NConversationCoolTime = 0;
-	const int32 N2NConversationCoolTimeInit = 60;
 	FTimerHandle N2NTimerHandle;
+	bool N2NCoolTimeCharged = false;
 	
+	void CountDownN2N();
 	bool CheckCanStartConversN2N();
 	bool CheckCanFinishConversN2N();
 	
 	void RequestConversationN2N(AQNPC* TargetNPC);
 	void StartConversationN2N(AQNPC* TargetNPC, FOpenAIResponse FirstResponse);
 	void ReplyConversationN2N(AQNPC* TargetNPC, FOpenAIResponse ReplyResponse);
-	void FinishConversationN2N(AQNPC* TargetNPC);
+	void FinishConversationN2N();
 	
 	// NMono
 	const int32 NMonoCoolTimeInit = 80;
 	int32 NMonoCoolTime = NMonoCoolTimeInit;
 	FTimerHandle NMonoTimerHandle;
 
-	void CheckCanStartNMonologue();
+	void CountDownNMonologue();
+	void RequestNMonologueText();
 	void StartNMonologue(FOpenAIResponse Monologue);
 	void FinishNMonologue();
 protected:
