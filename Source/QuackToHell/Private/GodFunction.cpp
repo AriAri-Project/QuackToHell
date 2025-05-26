@@ -238,6 +238,7 @@ void UGodFunction::CallOpenAIAsync(const FString& Prompt, TFunction<void(FString
 
 void UGodFunction::DeleteOldPromptFiles()
 {
+    /*
 
     static bool bAlreadyDeleted = false;  // ✅ 중복 실행 방지
     if (bAlreadyDeleted)
@@ -284,6 +285,7 @@ void UGodFunction::DeleteOldPromptFiles()
     {
         GameInstance->StartPromptGeneration();
     }
+    */
 }
 
 void UGodFunction::GeneratePromptWithDelay(UWorld* World, const FString& FileName, const FString& Prompt, float Delay)
@@ -320,6 +322,7 @@ void UGodFunction::GeneratePromptWithDelay(UWorld* World, const FString& FileNam
 
 void UGodFunction::GenerateDefendantPrompt(UWorld* World, TFunction<void()> Callback)
 {
+    /*
     if (!World)
     {
         UE_LOG(LogTemp, Error, TEXT("GenerateDefendantPrompt - World is nullptr!"));
@@ -333,14 +336,6 @@ void UGodFunction::GenerateDefendantPrompt(UWorld* World, TFunction<void()> Call
     // {
     //    UE_LOG(LogTemp, Warning, TEXT("PromptToDefendant.json 이미 존재하지만, 새로 생성하여 덮어쓰기 진행."));
     // }
-
-     // 이미 존재하면 생성하지 않음
-     /*if (FPaths::FileExists(DefendantFilePath))
-     {
-         UE_LOG(LogTemp, Warning, TEXT("PromptToDefendant.json 이미 존재하므로 생성하지 않음."));
-         if (Callback) Callback();
-         return;
-     }*/
 
      // PromptToGod.json이 없으면 재시도
     if (!FPaths::FileExists(PromptToGodPath))
@@ -388,6 +383,7 @@ void UGodFunction::GenerateDefendantPrompt(UWorld* World, TFunction<void()> Call
                 GenerateDefendantPrompt(World, nullptr);
             }
         });
+    */
 }
 
 void UGodFunction::GenerateNPCPrompts(UWorld* World)
