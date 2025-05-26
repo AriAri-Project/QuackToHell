@@ -189,15 +189,27 @@ void AQDynamicNPCController::StartDialog(TObjectPtr<APawn> _OpponentPawn, ENPCCo
     break;
     case ENPCConversationType::N2N:
     {
-        /** 유진 - @todo N2N 대화상태 변경하라는 함수를 서버로부터 호출해야함 */
+        //몸멈추기 & 상대방을 향해 회전하기
+        FreezePawn();
+        RotateToOpponent(_OpponentPawn);
+        /**
+        * @todo 서버: 대화 시작 로직 전개하기 : 상태관리, 기타조건 .. 처리하기
+        * //조건 : 처음 나타나는 텍스트는 “(상대 망자NPC 이름), 아까(가장 마지막으로 대화한	플레이어 닉네임)과 대화를 나누었습니다.”이다.
+        * 더 자세한 조건 : 컨플루언스 확인하기 https://ariari-ewha.atlassian.net/wiki/spaces/~712020e9509d1767994750b2ca1d1e408ddb2d/pages/42893472
+        */
 
-        {
-            /*@서버*/
-            //MyPawn->GetSpeechBubbleWidget()->으로 updatetext, turnof/off 접근가능
+        /* test code임. 되는 것 확인함 https://ariari-ewha.atlassian.net/browse/SCRUM-593?atlOrigin=eyJpIjoiNDY1NDI0ZGNjNTMwNDJjYjg5ODdiMmEzODQyM2IyM2MiLCJwIjoiaiJ9*/
+        AQPlayerState* _PlayerState = GetWorld()->GetFirstPlayerController()->GetPlayerState<AQPlayerState>();
+        FString NPCName = NPCComponent->GetNPCName();
+        FString PlayerName = _PlayerState->GetPlayerName();
+        FString SpeechText = FString::Printf(TEXT("%s, 아까 %s과 대화를 나누었습니다."), *NPCName, *PlayerName);
+        MulticastShowSpeechBubbleWithText(SpeechText);
 
-        }
-
-        /** 유진 - @todo 대화끝낼 때 N2N 대화상태 변경하라는 함수를 서버로부터 호출해야함 */
+        /**
+        * .
+        * @todo 서버: 대화 끝난 후, EndDialog호출해 UnFreezePawn()수행되게 한다.
+        *              대화 끝난 후, MulticastTurnOffSpeechBubble() 호출해 말풍선 끈다.
+        */
     }
     break;
     default:

@@ -44,11 +44,13 @@ public:
 	TObjectPtr<class UNPCComponent> NPCComponent;
 protected:
 
+	/* Helper Methods */
 	virtual void OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult) override;
 
 	virtual void OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex) override;
 	virtual void BeginPlay() override;
 	virtual void PostInitializeComponents() override;
+	virtual void Tick(float DeltaTime) override;
 protected:
 	/**
 	 * @brief E UI 컴포넌트입니다.
@@ -82,7 +84,13 @@ private:
 	 */
 	void TurnOffEKeyUI();
 
-
+private:
+	/*대화 시작 조건 - 타이머*/
+	/**
+	 * @brief 60초를 맥스로, 60초를 초과하면 대화를 시작하는 로직이 실행되게끔 합니다.
+	 */
+	const float StartDialogMaxTime = 60.f;
+	float StartDialogTimer = 0.f;
 };
 
 

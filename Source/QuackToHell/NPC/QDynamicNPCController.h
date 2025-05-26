@@ -37,9 +37,9 @@ public:
     void UnFreezePawn();
     /**
      * @brief NPC와의 대화시작 요청을 처리하는 함수입니다. npc-npc, player-npc 대화시스템에 활용됩니다.
-     * @param 대화거는 주체의 폰 정보를 넘깁니다.
+     * @param 상대방의 폰 정보를 넘깁니다.
      */
-    void StartDialog(TObjectPtr<APawn> MyPawn, ENPCConversationType ConversationType);
+    void StartDialog(TObjectPtr<APawn> Pawn, ENPCConversationType ConversationType);
     /** @brief NPC의 몸을 멈춥니다. */
     void FreezePawn();
     /** @brief 상대방을 향해 고개를 회전합니다. */

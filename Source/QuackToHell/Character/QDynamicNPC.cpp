@@ -59,6 +59,8 @@ TObjectPtr<AActor> AQDynamicNPC::GetClosestNPC()
 	return ClosestNPC;
 }
 
+
+
 bool AQDynamicNPC::GetResponse(AQPlayerController* ClientPC, FString& Text, EConversationType InputConversationType)
 {
 	// 응답 요청을 위한 FOpenAIRequest 구조체 구성
@@ -91,13 +93,53 @@ void AQDynamicNPC::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* O
 	if (OpponentPlayer) {
 		TurnOnEKeyUI();
 	}
-	
 
 	//캐스팅 미성공시 nullptr
 	TObjectPtr<AQDynamicNPC> OpponentNPC = Cast<AQDynamicNPC>(OtherActor);
 	if (OpponentNPC) {
+		//ClosestNPC를 찾기 위해 OverlappingNPCs에 추가
 		OverlappingNPCs.Add(OpponentNPC);
 	}
+
+	//N2N : 만약 NPC가 다가왔을 시, 대화 시작하기
+	//몇 초 뒤에 실행하도록 조치 취하기. : 1분  
+	if (StartDialogTimer > StartDialogMaxTime) {
+		OpponentNPC = Cast<AQDynamicNPC>(GetClosestNPC());
+		if (OpponentNPC) {
+
+			//조건 
+			// 내가 대화기록 있으면 : 플레이어와 대화한 기록이 있는 망자NPC가 먼저[망자 NPC – 망자 NPC 대화말풍선 UI]를 나타낸다
+			AQPlayerState* _PlayerState = GetWorld()->GetFirstPlayerController()->GetPlayerState<AQPlayerState>();
+			TArray<FConversationRecord> ConversationRecords = {};
+			//플레이어스테이트로 대화기록 조회
+			int32 NPCID = NPCComponent->GetNPCID();
+			if (_PlayerState != nullptr)
+			{
+				ConversationRecords = _PlayerState->GetRecrodWithNPCID(NPCID);
+			}
+			else {
+				UE_LOG(LogLogic, Error, TEXT("AQDynamicNPCController::StartDialog - PlayerState is nullptr"));
+			}
+
+			//대화기록이 있는지없는지 확인
+			if (!ConversationRecords.IsEmpty()) {
+				//대화기록 있는 애이니, 먼저 말 건다.
+				AQDynamicNPCController* MyController = Cast<AQDynamicNPCController>(GetController());
+				if (MyController == nullptr)
+				{
+					UE_LOG(LogLogic, Error, TEXT("AQDynamicNPC::OnOverlapBegin - Controller is nullptr."));
+					return;
+				}
+				else {
+					MyController->StartDialog(OpponentNPC, ENPCConversationType::N2N);
+				}
+			}
+			else {
+				UE_LOG(LogLogic, Log, TEXT("AQDynamicNPCController::StartDialog - 플레이어와 대화기록이 없어 말을 걸 수 없습니다."));
+			}
+		}
+	}
+
 }
 
 void AQDynamicNPC::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
@@ -144,6 +186,15 @@ void AQDynamicNPC::PostInitializeComponents()
 	Super::PostInitializeComponents();
 
 	NPCComponent = FindComponentByClass<UNPCComponent>();
+}
+
+void AQDynamicNPC::Tick(float DeltaTime)
+{
+	/*대화시작 타이머*/
+	if (StartDialogTimer <= StartDialogMaxTime) {
+		StartDialogTimer += DeltaTime;
+	}
+
 }
 
 void AQDynamicNPC::TurnOnEKeyUI()
