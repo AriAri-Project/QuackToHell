@@ -123,18 +123,4 @@ public:
 	/** @brief 플레이어가 증거물을 드랍했을 때 서버에 정보를 업데이트해주는 함수 */
 	UFUNCTION(Server, Reliable)
 	void ServerRPCDropEvidence(APlayerController* LocalPlayerController, int32 EvidenceID);
-	
-
-	/*
-	// for testing conversation & evidence system -----------------------
-	void PrintEvidence(int32 EvidenceID, FString EvidenceName) const;
-	void PrintAllEvidence() const;
-	void PrintConversation(int32 ConversationID) const;
-	void PrintAllConversation(int32 SpeakerID) const;
-
-	UFUNCTION(BlueprintCallable)
-	void TestAddConversation();
-	UFUNCTION(BlueprintCallable)
-	void TestAddEvidence();
-	*/
 };
