@@ -197,6 +197,8 @@ void AQDynamicNPCController::StartDialog(TObjectPtr<APawn> _OpponentPawn, ENPCCo
         * //조건 : 처음 나타나는 텍스트는 “(상대 망자NPC 이름), 아까(가장 마지막으로 대화한	플레이어 닉네임)과 대화를 나누었습니다.”이다.
         * 더 자세한 조건 : 컨플루언스 확인하기 https://ariari-ewha.atlassian.net/wiki/spaces/~712020e9509d1767994750b2ca1d1e408ddb2d/pages/42893472
         */
+
+        /* test code임. 되는 것 확인함 https://ariari-ewha.atlassian.net/browse/SCRUM-593?atlOrigin=eyJpIjoiNDY1NDI0ZGNjNTMwNDJjYjg5ODdiMmEzODQyM2IyM2MiLCJwIjoiaiJ9*/
         AQPlayerState* _PlayerState = GetWorld()->GetFirstPlayerController()->GetPlayerState<AQPlayerState>();
         FString NPCName = NPCComponent->GetNPCName();
         FString PlayerName = _PlayerState->GetPlayerName();
