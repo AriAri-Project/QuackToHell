@@ -205,10 +205,8 @@ void AQDynamicNPCController::StartDialog(TObjectPtr<APawn> _OpponentPawn, ENPCCo
         FString SpeechText = FString::Printf(TEXT("%s, 아까 %s과 대화를 나누었습니다."), *NPCName, *PlayerName);
         MulticastShowSpeechBubbleWithText(SpeechText);
 
-        /**
-        * .
-        * @todo 서버: 대화 끝난 후, EndDialog호출해 UnFreezePawn()수행되게 한다.
-        *              대화 끝난 후, MulticastTurnOffSpeechBubble() 호출해 말풍선 끈다.
+        /*
+        * 대화 끝난 후, EndDialog가 알아서 호출됨 신경 x: UnFreezePawn() 및 turnoffspeechbubble이 수행되는 함수
         */
     }
     break;
@@ -221,6 +219,12 @@ void AQDynamicNPCController::StartDialog(TObjectPtr<APawn> _OpponentPawn, ENPCCo
 void AQDynamicNPCController::EndDialog()
 {
     UnFreezePawn();
+ 
+    //만약 말풍선 켜져있는 상태면
+    if (MyPawn->GetSpeechBubbleWidget()->Visibility == ESlateVisibility::Visible) {
+        //말풍선 끄기
+        MulticastTurnOffSpeechBubble();
+    }    
 }
 
 /*
