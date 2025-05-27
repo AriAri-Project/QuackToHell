@@ -1,17 +1,17 @@
 <map id="AQPlayerState" name="AQPlayerState">
-<area shape="rect" id="Node000001" title="player state클래스입니다." alt="" coords="91,1456,356,2107"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="5,848,93,917"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="54,932,70,1133,86,1262,108,1391,123,1456,117,1457,103,1393,80,1263,65,1134,49,932"/>
-<area shape="rect" id="Node000003" href="$class_a_q_village_game_state.html" title=" " alt="" coords="117,667,331,1099"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="226,1099,226,1439,221,1439,221,1099"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="166,123,252,192"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="213,206,222,667,217,667,207,206"/>
-<area shape="rect" id="Node000005" href="$class_u_q_game_instance.html" title=" " alt="" coords="371,373,636,1392"/>
-<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="374,1309,333,1441,328,1439,369,1307"/>
-<area shape="rect" id="Node000006" title=" " alt="" coords="276,123,382,192"/>
-<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="343,205,384,373,378,374,338,207"/>
-<area shape="rect" id="Node000007" href="$struct_f_evidence_list.html" title=" " alt="" coords="406,5,660,309"/>
-<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="530,309,528,356,522,356,524,309"/>
-<area shape="rect" id="Node000008" href="$struct_f_conversation_list.html" title=" " alt="" coords="685,8,899,307"/>
-<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="735,308,645,534,640,532,730,306"/>
+<area shape="rect" id="Node000001" title="player state클래스입니다." alt="" coords="106,1536,371,2192"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,888,93,957"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="53,972,67,1190,83,1330,108,1471,124,1536,119,1537,103,1473,78,1331,61,1190,48,972"/>
+<area shape="rect" id="Node000003" href="$class_a_q_village_game_state.html" title=" " alt="" coords="118,704,360,1141"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="241,1141,241,1519,236,1519,236,1141"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="184,123,269,192"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="230,207,238,704,232,704,225,207"/>
+<area shape="rect" id="Node000005" href="$class_u_q_game_instance.html" title=" " alt="" coords="395,373,660,1472"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="398,1396,374,1473,359,1521,354,1519,369,1471,393,1394"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="294,123,399,192"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="361,206,400,373,395,374,355,207"/>
+<area shape="rect" id="Node000007" href="$struct_f_evidence_list.html" title=" " alt="" coords="424,5,678,309"/>
+<area shape="poly" id="edge6_Node000005_Node000007" title=" " alt="" coords="549,309,547,356,542,356,543,309"/>
+<area shape="rect" id="Node000008" href="$struct_f_conversation_list.html" title=" " alt="" coords="702,8,916,307"/>
+<area shape="poly" id="edge7_Node000005_Node000008" title=" " alt="" coords="757,308,669,547,664,545,752,306"/>
 </map>

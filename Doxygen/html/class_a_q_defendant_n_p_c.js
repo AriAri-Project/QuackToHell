@@ -8,7 +8,7 @@ var class_a_q_defendant_n_p_c =
     [ "GetLifetimeReplicatedProps", "class_a_q_defendant_n_p_c.html#a688759ffe4cd83ff0873786f3318dc3f", null ],
     [ "GetNameWidget", "class_a_q_defendant_n_p_c.html#a8698ea6799d83a8cd95c2323bb6332a0", null ],
     [ "GetNPCConversationState", "class_a_q_defendant_n_p_c.html#af3b663d936f24d69036e9b595ee0c87f", null ],
-    [ "GetSpeechBubbleWidget", "class_a_q_defendant_n_p_c.html#a7ba6092e93eada45563ccb748e750215", null ],
+    [ "GetSpeechBubbleWidget", "class_a_q_defendant_n_p_c.html#a286736d9553d06536c26e1c7e9a6d42c", null ],
     [ "OnOverlapBegin", "class_a_q_defendant_n_p_c_af1174c23d75243e6bf38b5016e448165.html#af1174c23d75243e6bf38b5016e448165", null ],
     [ "OnOverlapEnd", "class_a_q_defendant_n_p_c_a532d65b038ad883e6455df6fce0f13e1.html#a532d65b038ad883e6455df6fce0f13e1", null ],
     [ "ServerRPCCanCanFinishConversN2N", "class_a_q_defendant_n_p_c.html#af7e6f652038c54bcf609da6c75102c72", null ],
@@ -25,7 +25,7 @@ var class_a_q_defendant_n_p_c =
     [ "NameWidgetComponent", "class_a_q_defendant_n_p_c.html#a7e2c2c9c4ed915d9b3d5ab875c71d53f", null ],
     [ "NPCComponent", "class_a_q_defendant_n_p_c.html#a24178d80c1be7064e7157af465e7cc42", null ],
     [ "NPCConversationState", "class_a_q_defendant_n_p_c.html#a7386d09ccfb230350e050fd70502bc8c", null ],
-    [ "SpeechBubbleWidget", "class_a_q_defendant_n_p_c.html#af0cb8e90b33278a86c56060e2b569888", null ],
+    [ "SpeechBubbleWidget", "class_a_q_defendant_n_p_c.html#aae83dce8910f84fb710c4ce27906368a", null ],
     [ "SpeechBubbleWidgetComponent", "class_a_q_defendant_n_p_c.html#a1997032cfce2b0cef43c178fa87267f5", null ],
     [ "SphereRadius", "class_a_q_defendant_n_p_c.html#a2a8976f4593f1f6a6c3e4ed892018fe3", null ],
     [ "TalkMyselfText", "class_a_q_defendant_n_p_c_a23c34cd1a998c09dfddd27149e59115b.html#a23c34cd1a998c09dfddd27149e59115b", null ]

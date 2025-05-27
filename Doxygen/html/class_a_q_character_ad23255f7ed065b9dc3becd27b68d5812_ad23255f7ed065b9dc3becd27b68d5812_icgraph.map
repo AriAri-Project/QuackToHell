@@ -1,7 +1,9 @@
 <map id="SetCharacterName" name="SetCharacterName">
-<area shape="rect" id="Node000001" title="이름 설정 함수" alt="" coords="198,31,331,57"/>
-<area shape="rect" id="Node000002" href="$class_a_q_n_p_c_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c" title=" " alt="" coords="9,5,146,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="182,36,146,31,147,25,182,30"/>
-<area shape="rect" id="Node000003" href="$class_a_q_player_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c" title=" " alt="" coords="5,56,150,83"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="182,58,150,62,150,57,182,52"/>
+<area shape="rect" id="Node000001" title="이름 설정 함수" alt="" coords="255,56,388,83"/>
+<area shape="rect" id="Node000002" href="$class_a_q_n_p_c_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c" title=" " alt="" coords="38,5,174,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="246,54,165,35,166,30,247,49"/>
+<area shape="rect" id="Node000003" href="$class_a_q_player_a054ca8f2a86bc87e26ff8e2a117fbfe8.html#a054ca8f2a86bc87e26ff8e2a117fbfe8" title=" " alt="" coords="5,56,207,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="239,72,207,72,207,67,239,67"/>
+<area shape="rect" id="Node000004" href="$class_a_q_player_abf5f29afa6e9f1b88164694fc12d46b0.html#abf5f29afa6e9f1b88164694fc12d46b0" title=" " alt="" coords="23,107,189,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="247,89,166,109,165,103,246,84"/>
 </map>

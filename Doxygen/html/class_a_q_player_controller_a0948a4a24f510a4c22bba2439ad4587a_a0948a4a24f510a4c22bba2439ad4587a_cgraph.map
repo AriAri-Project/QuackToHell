@@ -1,0 +1,16 @@
+<map id="ServerRPCTravelToMain" name="ServerRPCTravelToMain">
+<area shape="rect" id="Node000001" title="클라이언트를 메인 맵으로 이동시키는 서버 RPC 함수" alt="" coords="5,64,172,91"/>
+<area shape="poly" id="edge5_Node000001_Node000001" title=" " alt="" coords="53,65,47,55,51,46,66,39,89,37,113,40,126,46,124,51,112,45,88,43,67,45,55,49,52,55,58,62"/>
+<area shape="rect" id="Node000002" href="$class_a_q_player_controller_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c" title=" " alt="" coords="255,13,336,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,61,239,38,240,43,147,66"/>
+<area shape="rect" id="Node000006" href="$class_a_q_player_controller_af658bc16067a6ecda0dcccaf068b289b.html#af658bc16067a6ecda0dcccaf068b289b" title=" " alt="" coords="220,64,371,91"/>
+<area shape="poly" id="edge6_Node000001_Node000006" title=" " alt="" coords="172,75,204,75,204,80,172,80"/>
+<area shape="rect" id="Node000007" href="$class_a_q_player_controller_a2fb3c0ec625280bd51ca1c64770ae425.html#a2fb3c0ec625280bd51ca1c64770ae425" title=" " alt="" coords="272,115,318,141"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="147,89,258,116,256,121,146,94"/>
+<area shape="rect" id="Node000003" href="$class_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218.html#a14027a8dd3d11d56d004556d8463c218" title="싱글톤 인스턴스 반환." alt="" coords="419,5,562,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="336,24,403,24,403,29,336,29"/>
+<area shape="rect" id="Node000004" href="$class_a_q_village_u_i_manager_ab13fe3650f7027a04e252fdbea6ee43c.html#ab13fe3650f7027a04e252fdbea6ee43c" title="private생성자로 외부에서 객체생성을 막음." alt="" coords="610,5,762,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="563,24,595,24,595,29,563,29"/>
+<area shape="rect" id="Node000005" href="$class_a_q_village_u_i_manager_a1da182c7b2c5dcb13c097d45ccf53526.html#a1da182c7b2c5dcb13c097d45ccf53526" title=" " alt="" coords="810,5,953,48"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="762,24,794,24,794,29,762,29"/>
+</map>

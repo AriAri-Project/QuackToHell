@@ -119,29 +119,23 @@ $(function(){initNavTree('class_u_q_p2_n_widget_a17a475cd707db22984696f1438a074c
 
 <p>종료버튼 눌렸을때의 처리; </p>
 
-<p class="definition"><a class="el" href="_q_p2_n_widget_8cpp_source.html">QP2NWidget.cpp</a> 파일의 <a class="el" href="_q_p2_n_widget_8cpp_source.html#l00070">70</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
-<div class="line"><span class="lineno">   72</span>    <span class="comment">//대화마치기 가능한지 서버에게 물어보기</span></div>
-<div class="line"><span class="lineno">   73</span>    TObjectPtr&lt;AQPlayer&gt; _Player = Cast&lt;AQPlayer&gt;(<a class="code hl_variable" href="class_u_q_p2_n_widget_aa4b8c14effa74dacd75fe2cb628ab917.html#aa4b8c14effa74dacd75fe2cb628ab917">ConversingPlayer</a>-&gt;GetPawn());</div>
-<div class="line"><span class="lineno">   74</span>    TObjectPtr&lt;AQNPC&gt; _NPC = Cast&lt;AQNPC&gt;(<a class="code hl_variable" href="class_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450.html#afd4fc717ac802ea7d5ddd2f173739450">ConversingNPC</a>-&gt;GetPawn());</div>
-<div class="line"><span class="lineno">   75</span> </div>
-<div class="line"><span class="lineno">   76</span>    AQPlayerController* LocalPlayerController = Cast&lt;AQPlayerController&gt;(_Player-&gt;GetController());</div>
-<div class="line"><span class="lineno">   77</span>    _Player-&gt;ServerRPCCanFinishConversP2N_Implementation(LocalPlayerController, _NPC);    </div>
-<div class="line"><span class="lineno">   78</span>}</div>
+<p class="definition"><a class="el" href="_q_p2_n_widget_8cpp_source.html">QP2NWidget.cpp</a> 파일의 <a class="el" href="_q_p2_n_widget_8cpp_source.html#l00072">72</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   73</span>{</div>
+<div class="line"><span class="lineno">   74</span>    <span class="comment">//대화마치기 가능한지 서버에게 물어보기</span></div>
+<div class="line"><span class="lineno">   75</span>    TObjectPtr&lt;AQPlayer&gt; _Player = Cast&lt;AQPlayer&gt;(<a class="code hl_variable" href="class_u_q_p2_n_widget_aa4b8c14effa74dacd75fe2cb628ab917.html#aa4b8c14effa74dacd75fe2cb628ab917">ConversingPlayer</a>-&gt;GetPawn());</div>
+<div class="line"><span class="lineno">   76</span>    TObjectPtr&lt;AQNPC&gt; _NPC = Cast&lt;AQNPC&gt;(<a class="code hl_variable" href="class_u_q_p2_n_widget_ac3aafb83e20f763c704754811ee8fe93.html#ac3aafb83e20f763c704754811ee8fe93">ConversingNPC</a>);</div>
+<div class="line"><span class="lineno">   77</span>    </div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">if</span> (_Player == <span class="keyword">nullptr</span> &amp;&amp; _NPC == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   79</span>    {</div>
+<div class="line"><span class="lineno">   80</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;UQP2NWidget::HandleEnterEndButton - Can&#39;t find _Player, _NPC.&quot;</span>));</div>
+<div class="line"><span class="lineno">   81</span>    }</div>
+<div class="line"><span class="lineno">   82</span> </div>
+<div class="line"><span class="lineno">   83</span>    AQPlayerController* LocalPlayerController = Cast&lt;AQPlayerController&gt;(_Player-&gt;GetController());</div>
+<div class="line"><span class="lineno">   84</span>    _Player-&gt;ServerRPCCanFinishConversP2N_Implementation(LocalPlayerController, _NPC);    </div>
+<div class="line"><span class="lineno">   85</span>}</div>
 <div class="ttc" id="aclass_u_q_p2_n_widget_aa4b8c14effa74dacd75fe2cb628ab917_html_aa4b8c14effa74dacd75fe2cb628ab917"><div class="ttname"><a href="class_u_q_p2_n_widget_aa4b8c14effa74dacd75fe2cb628ab917.html#aa4b8c14effa74dacd75fe2cb628ab917">UQP2NWidget::ConversingPlayer</a></div><div class="ttdeci">TObjectPtr&lt; class AQPlayerController &gt; ConversingPlayer</div><div class="ttdoc">대화중인 플레이어정보</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00081">QP2NWidget.h:81</a></div></div>
-<div class="ttc" id="aclass_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450_html_afd4fc717ac802ea7d5ddd2f173739450"><div class="ttname"><a href="class_u_q_p2_n_widget_afd4fc717ac802ea7d5ddd2f173739450.html#afd4fc717ac802ea7d5ddd2f173739450">UQP2NWidget::ConversingNPC</a></div><div class="ttdeci">TObjectPtr&lt; class AQDynamicNPCController &gt; ConversingNPC</div><div class="ttdoc">대화중인 npc정보</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00078">QP2NWidget.h:78</a></div></div>
-</div><!-- fragment --><div class="dynheader">
-이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_u_q_p2_n_widget_a17a475cd707db22984696f1438a074ce_a17a475cd707db22984696f1438a074ce_icgraph.png" border="0" usemap="#aclass_u_q_p2_n_widget_a17a475cd707db22984696f1438a074ce_a17a475cd707db22984696f1438a074ce_icgraph" alt=""/></div>
-<map name="aclass_u_q_p2_n_widget_a17a475cd707db22984696f1438a074ce_a17a475cd707db22984696f1438a074ce_icgraph" id="aclass_u_q_p2_n_widget_a17a475cd707db22984696f1438a074ce_a17a475cd707db22984696f1438a074ce_icgraph">
-<area shape="rect" title="종료버튼 눌렸을때의 처리;" alt="" coords="247,29,401,56"/>
-<area shape="rect" href="class_u_q_p2_n_widget_ae2c035e55eb653e7ccb492fb06ad486e.html#ae2c035e55eb653e7ccb492fb06ad486e" title=" " alt="" coords="5,29,199,56"/>
-<area shape="poly" title=" " alt="" coords="231,45,199,45,199,40,231,40"/>
-<area shape="poly" title=" " alt="" coords="140,16,127,10,102,8,79,10,66,15,63,20,69,27,65,30,58,21,62,11,78,5,102,3,128,5,142,12"/>
-</map>
-</div>
-
+<div class="ttc" id="aclass_u_q_p2_n_widget_ac3aafb83e20f763c704754811ee8fe93_html_ac3aafb83e20f763c704754811ee8fe93"><div class="ttname"><a href="class_u_q_p2_n_widget_ac3aafb83e20f763c704754811ee8fe93.html#ac3aafb83e20f763c704754811ee8fe93">UQP2NWidget::ConversingNPC</a></div><div class="ttdeci">TObjectPtr&lt; class AQDynamicNPC &gt; ConversingNPC</div><div class="ttdoc">대화중인 npc정보</div><div class="ttdef"><b>Definition</b> <a href="_q_p2_n_widget_8h_source.html#l00078">QP2NWidget.h:78</a></div></div>
+</div><!-- fragment -->
 </div>
 </div>
 </div><!-- contents -->

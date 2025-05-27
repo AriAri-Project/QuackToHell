@@ -1,9 +1,13 @@
 <map id="AQDefendantNPC" name="AQDefendantNPC">
-<area shape="rect" id="Node000001" title="Defendant 캐릭터 클래스입니다." alt="" coords="5,1568,390,1893"/>
-<area shape="rect" id="Node000002" href="$class_a_q_n_p_c.html" title="NPC 캐릭터 클래스입니다." alt="" coords="30,603,365,1520"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="200,1535,200,1569,195,1569,195,1535"/>
-<area shape="rect" id="Node000003" href="$class_a_q_character.html" title=" " alt="" coords="65,123,330,555"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="200,570,200,603,195,603,195,570"/>
-<area shape="rect" id="Node000004" title=" " alt="" coords="160,5,236,75"/>
-<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="200,89,200,123,195,123,195,89"/>
+<area shape="rect" id="Node000001" title="Defendant 캐릭터 클래스입니다." alt="" coords="73,1549,458,1875"/>
+<area shape="rect" id="Node000002" href="$class_a_q_n_p_c.html" title="NPC 캐릭터 클래스입니다." alt="" coords="98,620,433,1500"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="268,1515,268,1549,263,1549,263,1515"/>
+<area shape="rect" id="Node000003" href="$class_a_q_character.html" title=" " alt="" coords="5,124,270,556"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="181,570,190,620,185,621,176,571"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="100,5,176,75"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="140,90,140,124,135,124,135,90"/>
+<area shape="rect" id="Node000005" href="$class_u_q_speech_bubble_widget.html" title="말풍선 위젯입니다." alt="" coords="294,268,496,412"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="385,412,351,604,345,603,380,411"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="350,5,440,75"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="398,90,398,268,392,268,392,90"/>
 </map>

@@ -129,81 +129,81 @@ $(function(){initNavTree('class_u_god_function_a99ce1641c91019a763248259829f18bc
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="_god_function_8cpp_source.html">GodFunction.cpp</a> 파일의 <a class="el" href="_god_function_8cpp_source.html#l00492">492</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  493</span>{</div>
-<div class="line"><span class="lineno">  494</span>    <span class="keywordflow">if</span> (!World)</div>
-<div class="line"><span class="lineno">  495</span>    {</div>
-<div class="line"><span class="lineno">  496</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateResidentNPC - World is nullptr! ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
-<div class="line"><span class="lineno">  497</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  498</span>    }</div>
+<p class="definition"><a class="el" href="_god_function_8cpp_source.html">GodFunction.cpp</a> 파일의 <a class="el" href="_god_function_8cpp_source.html#l00488">488</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  489</span>{</div>
+<div class="line"><span class="lineno">  490</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">  491</span>    {</div>
+<div class="line"><span class="lineno">  492</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateResidentNPC - World is nullptr! ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
+<div class="line"><span class="lineno">  493</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  494</span>    }</div>
+<div class="line"><span class="lineno">  495</span> </div>
+<div class="line"><span class="lineno">  496</span>    <span class="keywordflow">if</span> (ResidentIndex &gt; 5)</div>
+<div class="line"><span class="lineno">  497</span>    {</div>
+<div class="line"><span class="lineno">  498</span>        UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;모든 주민 생성 완료!&quot;</span>));</div>
 <div class="line"><span class="lineno">  499</span> </div>
-<div class="line"><span class="lineno">  500</span>    <span class="keywordflow">if</span> (ResidentIndex &gt; 5)</div>
-<div class="line"><span class="lineno">  501</span>    {</div>
-<div class="line"><span class="lineno">  502</span>        UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;모든 주민 생성 완료!&quot;</span>));</div>
-<div class="line"><span class="lineno">  503</span> </div>
-<div class="line"><span class="lineno">  504</span>        <span class="comment">// 증거물 아이템 정보 생성 시작</span></div>
-<div class="line"><span class="lineno">  505</span>        <a class="code hl_function" href="class_u_god_function_afdbda0a36bc5fde8d2410a0f7eb52bc5.html#afdbda0a36bc5fde8d2410a0f7eb52bc5">GenerateEvidenceItems</a>(World);</div>
-<div class="line"><span class="lineno">  506</span> </div>
-<div class="line"><span class="lineno">  507</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  508</span>    }</div>
-<div class="line"><span class="lineno">  509</span> </div>
-<div class="line"><span class="lineno">  510</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;GenerateResidentNPC 실행됨 - ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
-<div class="line"><span class="lineno">  511</span> </div>
-<div class="line"><span class="lineno">  512</span>    FString PromptToGod = <a class="code hl_function" href="class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee">ReadFileContent</a>(FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToGod.json&quot;</span>));</div>
-<div class="line"><span class="lineno">  513</span>    FString PromptToDefendant = <a class="code hl_function" href="class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee">ReadFileContent</a>(FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToDefendant.json&quot;</span>));</div>
-<div class="line"><span class="lineno">  514</span> </div>
-<div class="line"><span class="lineno">  515</span>    int32 AssignedNPCID = 2003 + ResidentIndex;</div>
-<div class="line"><span class="lineno">  516</span>    FString ResidentPrompt = FString::Printf(</div>
-<div class="line"><span class="lineno">  517</span>        TEXT(<span class="stringliteral">&quot;{ \&quot;task\&quot;: \&quot;마을 주민%d 정보를 생성하세요.\&quot;, &quot;</span></div>
-<div class="line"><span class="lineno">  518</span>            <span class="stringliteral">&quot;\&quot;instructions\&quot;: [&quot;</span></div>
-<div class="line"><span class="lineno">  519</span>            <span class="stringliteral">&quot;\&quot;PromptToGod.json과 PromptToDefendant.json을 참고하여 한 명의 마을 주민(NPC) 정보를 생성하세요.\&quot;, &quot;</span></div>
-<div class="line"><span class="lineno">  520</span>            <span class="stringliteral">&quot;\&quot;npcid\&quot;의 값은 %d여야 합니다\&quot;, &quot;</span></div>
-<div class="line"><span class="lineno">  521</span>            <span class="stringliteral">&quot;\&quot;references\&quot;: { \&quot;PromptToGod\&quot;: \&quot;%s\&quot;, \&quot;PromptToDefendant\&quot;: \&quot;%s\&quot; } }&quot;</span>),</div>
-<div class="line"><span class="lineno">  522</span>        ResidentIndex, AssignedNPCID, *<a class="code hl_function" href="class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f">EscapeJSON</a>(PromptToGod.Mid(0, 2000)), *<a class="code hl_function" href="class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f">EscapeJSON</a>(PromptToDefendant.Mid(0, 2000))</div>
-<div class="line"><span class="lineno">  523</span>    );</div>
-<div class="line"><span class="lineno">  524</span> </div>
-<div class="line"><span class="lineno">  525</span>    FString ResidentFileName = FString::Printf(TEXT(<span class="stringliteral">&quot;PromptToResident%d.json&quot;</span>), ResidentIndex);</div>
-<div class="line"><span class="lineno">  526</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Generating Resident NPC %d&quot;</span>), ResidentIndex);</div>
+<div class="line"><span class="lineno">  500</span>        <span class="comment">// 증거물 아이템 정보 생성 시작</span></div>
+<div class="line"><span class="lineno">  501</span>        <a class="code hl_function" href="class_u_god_function_afdbda0a36bc5fde8d2410a0f7eb52bc5.html#afdbda0a36bc5fde8d2410a0f7eb52bc5">GenerateEvidenceItems</a>(World);</div>
+<div class="line"><span class="lineno">  502</span> </div>
+<div class="line"><span class="lineno">  503</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  504</span>    }</div>
+<div class="line"><span class="lineno">  505</span> </div>
+<div class="line"><span class="lineno">  506</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;GenerateResidentNPC 실행됨 - ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
+<div class="line"><span class="lineno">  507</span> </div>
+<div class="line"><span class="lineno">  508</span>    FString PromptToGod = <a class="code hl_function" href="class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee">ReadFileContent</a>(FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToGod.json&quot;</span>));</div>
+<div class="line"><span class="lineno">  509</span>    FString PromptToDefendant = <a class="code hl_function" href="class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee">ReadFileContent</a>(FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToDefendant.json&quot;</span>));</div>
+<div class="line"><span class="lineno">  510</span> </div>
+<div class="line"><span class="lineno">  511</span>    int32 AssignedNPCID = 2003 + ResidentIndex;</div>
+<div class="line"><span class="lineno">  512</span>    FString ResidentPrompt = FString::Printf(</div>
+<div class="line"><span class="lineno">  513</span>        TEXT(<span class="stringliteral">&quot;{ \&quot;task\&quot;: \&quot;마을 주민%d 정보를 생성하세요.\&quot;, &quot;</span></div>
+<div class="line"><span class="lineno">  514</span>            <span class="stringliteral">&quot;\&quot;instructions\&quot;: [&quot;</span></div>
+<div class="line"><span class="lineno">  515</span>            <span class="stringliteral">&quot;\&quot;PromptToGod.json과 PromptToDefendant.json을 참고하여 한 명의 마을 주민(NPC) 정보를 생성하세요.\&quot;, &quot;</span></div>
+<div class="line"><span class="lineno">  516</span>            <span class="stringliteral">&quot;\&quot;npcid\&quot;의 값은 %d여야 합니다\&quot;, &quot;</span></div>
+<div class="line"><span class="lineno">  517</span>            <span class="stringliteral">&quot;\&quot;references\&quot;: { \&quot;PromptToGod\&quot;: \&quot;%s\&quot;, \&quot;PromptToDefendant\&quot;: \&quot;%s\&quot; } }&quot;</span>),</div>
+<div class="line"><span class="lineno">  518</span>        ResidentIndex, AssignedNPCID, *<a class="code hl_function" href="class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f">EscapeJSON</a>(PromptToGod.Mid(0, 2000)), *<a class="code hl_function" href="class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f">EscapeJSON</a>(PromptToDefendant.Mid(0, 2000))</div>
+<div class="line"><span class="lineno">  519</span>    );</div>
+<div class="line"><span class="lineno">  520</span> </div>
+<div class="line"><span class="lineno">  521</span>    FString ResidentFileName = FString::Printf(TEXT(<span class="stringliteral">&quot;PromptToResident%d.json&quot;</span>), ResidentIndex);</div>
+<div class="line"><span class="lineno">  522</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Generating Resident NPC %d&quot;</span>), ResidentIndex);</div>
+<div class="line"><span class="lineno">  523</span> </div>
+<div class="line"><span class="lineno">  524</span>    <a class="code hl_function" href="class_u_god_function_a4193e5e1b757eb6f3ff4e387674fb200.html#a4193e5e1b757eb6f3ff4e387674fb200">CallOpenAIAsync</a>(ResidentPrompt, [World, ResidentIndex, ResidentFileName](FString ResidentJson)</div>
+<div class="line"><span class="lineno">  525</span>        {</div>
+<div class="line"><span class="lineno">  526</span>            UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;OpenAI 응답 도착 - ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
 <div class="line"><span class="lineno">  527</span> </div>
-<div class="line"><span class="lineno">  528</span>    <a class="code hl_function" href="class_u_god_function_a4193e5e1b757eb6f3ff4e387674fb200.html#a4193e5e1b757eb6f3ff4e387674fb200">CallOpenAIAsync</a>(ResidentPrompt, [World, ResidentIndex, ResidentFileName](FString ResidentJson)</div>
-<div class="line"><span class="lineno">  529</span>        {</div>
-<div class="line"><span class="lineno">  530</span>            UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;OpenAI 응답 도착 - ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
-<div class="line"><span class="lineno">  531</span> </div>
-<div class="line"><span class="lineno">  532</span>            <span class="keywordflow">if</span> (!World)</div>
-<div class="line"><span class="lineno">  533</span>            {</div>
-<div class="line"><span class="lineno">  534</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateResidentNPC Callback - World is nullptr! ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
-<div class="line"><span class="lineno">  535</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  536</span>            }</div>
-<div class="line"><span class="lineno">  537</span> </div>
-<div class="line"><span class="lineno">  538</span>            FString CleanResidentJson = <a class="code hl_function" href="class_u_god_function_a941993f5f191f9dc599b55d316ac04f2.html#a941993f5f191f9dc599b55d316ac04f2">UGodFunction::CleanUpJson</a>(ResidentJson);</div>
-<div class="line"><span class="lineno">  539</span>            <span class="keywordflow">if</span> (CleanResidentJson.IsEmpty())</div>
-<div class="line"><span class="lineno">  540</span>            {</div>
-<div class="line"><span class="lineno">  541</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateResidentNPC Callback - Received empty JSON response! ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
-<div class="line"><span class="lineno">  542</span>                <a class="code hl_function" href="#a99ce1641c91019a763248259829f18bc">GenerateResidentNPC</a>(World, ResidentIndex + 1);</div>
-<div class="line"><span class="lineno">  543</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  544</span>            }</div>
-<div class="line"><span class="lineno">  545</span> </div>
-<div class="line"><span class="lineno">  546</span>            UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Resident JSON 데이터 저장 시도 - 파일명: %s&quot;</span>), *ResidentFileName);</div>
-<div class="line"><span class="lineno">  547</span> </div>
-<div class="line"><span class="lineno">  548</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="class_u_god_function_aaac6f0b28b727bc92185ba3fe44117a5.html#aaac6f0b28b727bc92185ba3fe44117a5">UGodFunction::SavePromptToFile</a>(ResidentFileName, CleanResidentJson))</div>
-<div class="line"><span class="lineno">  549</span>            {</div>
-<div class="line"><span class="lineno">  550</span>                UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Successfully saved ResidentPrompt file: %s&quot;</span>), *ResidentFileName);</div>
-<div class="line"><span class="lineno">  551</span>                <a class="code hl_function" href="#a99ce1641c91019a763248259829f18bc">GenerateResidentNPC</a>(World, ResidentIndex + 1);</div>
-<div class="line"><span class="lineno">  552</span>            }</div>
-<div class="line"><span class="lineno">  553</span>            <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  554</span>            {</div>
-<div class="line"><span class="lineno">  555</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;Failed to save ResidentPrompt file: %s&quot;</span>), *ResidentFileName);</div>
-<div class="line"><span class="lineno">  556</span>                <a class="code hl_function" href="#a99ce1641c91019a763248259829f18bc">GenerateResidentNPC</a>(World, ResidentIndex + 1);</div>
-<div class="line"><span class="lineno">  557</span>            }</div>
-<div class="line"><span class="lineno">  558</span>        });</div>
-<div class="line"><span class="lineno">  559</span>}</div>
+<div class="line"><span class="lineno">  528</span>            <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">  529</span>            {</div>
+<div class="line"><span class="lineno">  530</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateResidentNPC Callback - World is nullptr! ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
+<div class="line"><span class="lineno">  531</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  532</span>            }</div>
+<div class="line"><span class="lineno">  533</span> </div>
+<div class="line"><span class="lineno">  534</span>            FString CleanResidentJson = <a class="code hl_function" href="class_u_god_function_a941993f5f191f9dc599b55d316ac04f2.html#a941993f5f191f9dc599b55d316ac04f2">UGodFunction::CleanUpJson</a>(ResidentJson);</div>
+<div class="line"><span class="lineno">  535</span>            <span class="keywordflow">if</span> (CleanResidentJson.IsEmpty())</div>
+<div class="line"><span class="lineno">  536</span>            {</div>
+<div class="line"><span class="lineno">  537</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateResidentNPC Callback - Received empty JSON response! ResidentIndex: %d&quot;</span>), ResidentIndex);</div>
+<div class="line"><span class="lineno">  538</span>                <a class="code hl_function" href="#a99ce1641c91019a763248259829f18bc">GenerateResidentNPC</a>(World, ResidentIndex + 1);</div>
+<div class="line"><span class="lineno">  539</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  540</span>            }</div>
+<div class="line"><span class="lineno">  541</span> </div>
+<div class="line"><span class="lineno">  542</span>            UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Resident JSON 데이터 저장 시도 - 파일명: %s&quot;</span>), *ResidentFileName);</div>
+<div class="line"><span class="lineno">  543</span> </div>
+<div class="line"><span class="lineno">  544</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="class_u_god_function_aaac6f0b28b727bc92185ba3fe44117a5.html#aaac6f0b28b727bc92185ba3fe44117a5">UGodFunction::SavePromptToFile</a>(ResidentFileName, CleanResidentJson))</div>
+<div class="line"><span class="lineno">  545</span>            {</div>
+<div class="line"><span class="lineno">  546</span>                UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;Successfully saved ResidentPrompt file: %s&quot;</span>), *ResidentFileName);</div>
+<div class="line"><span class="lineno">  547</span>                <a class="code hl_function" href="#a99ce1641c91019a763248259829f18bc">GenerateResidentNPC</a>(World, ResidentIndex + 1);</div>
+<div class="line"><span class="lineno">  548</span>            }</div>
+<div class="line"><span class="lineno">  549</span>            <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">  550</span>            {</div>
+<div class="line"><span class="lineno">  551</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;Failed to save ResidentPrompt file: %s&quot;</span>), *ResidentFileName);</div>
+<div class="line"><span class="lineno">  552</span>                <a class="code hl_function" href="#a99ce1641c91019a763248259829f18bc">GenerateResidentNPC</a>(World, ResidentIndex + 1);</div>
+<div class="line"><span class="lineno">  553</span>            }</div>
+<div class="line"><span class="lineno">  554</span>        });</div>
+<div class="line"><span class="lineno">  555</span>}</div>
 <div class="ttc" id="aclass_u_god_function_a4193e5e1b757eb6f3ff4e387674fb200_html_a4193e5e1b757eb6f3ff4e387674fb200"><div class="ttname"><a href="class_u_god_function_a4193e5e1b757eb6f3ff4e387674fb200.html#a4193e5e1b757eb6f3ff4e387674fb200">UGodFunction::CallOpenAIAsync</a></div><div class="ttdeci">static void CallOpenAIAsync(const FString &amp;Prompt, TFunction&lt; void(FString)&gt; Callback, int RetryCount=0)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00169">GodFunction.cpp:169</a></div></div>
 <div class="ttc" id="aclass_u_god_function_a4241f80dfacb777b42502aa8cca25cee_html_a4241f80dfacb777b42502aa8cca25cee"><div class="ttname"><a href="class_u_god_function_a4241f80dfacb777b42502aa8cca25cee.html#a4241f80dfacb777b42502aa8cca25cee">UGodFunction::ReadFileContent</a></div><div class="ttdeci">static FString ReadFileContent(const FString &amp;FilePath)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00016">GodFunction.cpp:16</a></div></div>
 <div class="ttc" id="aclass_u_god_function_a941993f5f191f9dc599b55d316ac04f2_html_a941993f5f191f9dc599b55d316ac04f2"><div class="ttname"><a href="class_u_god_function_a941993f5f191f9dc599b55d316ac04f2.html#a941993f5f191f9dc599b55d316ac04f2">UGodFunction::CleanUpJson</a></div><div class="ttdeci">static FString CleanUpJson(FString JsonString)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00088">GodFunction.cpp:88</a></div></div>
-<div class="ttc" id="aclass_u_god_function_a99ce1641c91019a763248259829f18bc_html_a99ce1641c91019a763248259829f18bc"><div class="ttname"><a href="#a99ce1641c91019a763248259829f18bc">UGodFunction::GenerateResidentNPC</a></div><div class="ttdeci">static void GenerateResidentNPC(UWorld *World, int ResidentIndex)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00492">GodFunction.cpp:492</a></div></div>
+<div class="ttc" id="aclass_u_god_function_a99ce1641c91019a763248259829f18bc_html_a99ce1641c91019a763248259829f18bc"><div class="ttname"><a href="#a99ce1641c91019a763248259829f18bc">UGodFunction::GenerateResidentNPC</a></div><div class="ttdeci">static void GenerateResidentNPC(UWorld *World, int ResidentIndex)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00488">GodFunction.cpp:488</a></div></div>
 <div class="ttc" id="aclass_u_god_function_aaac6f0b28b727bc92185ba3fe44117a5_html_aaac6f0b28b727bc92185ba3fe44117a5"><div class="ttname"><a href="class_u_god_function_aaac6f0b28b727bc92185ba3fe44117a5.html#aaac6f0b28b727bc92185ba3fe44117a5">UGodFunction::SavePromptToFile</a></div><div class="ttdeci">static bool SavePromptToFile(const FString &amp;FileName, const FString &amp;Content)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00116">GodFunction.cpp:116</a></div></div>
 <div class="ttc" id="aclass_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f_html_abe9739c45ce5e747ddf5f27ac321e59f"><div class="ttname"><a href="class_u_god_function_abe9739c45ce5e747ddf5f27ac321e59f.html#abe9739c45ce5e747ddf5f27ac321e59f">UGodFunction::EscapeJSON</a></div><div class="ttdeci">static FString EscapeJSON(const FString &amp;Input)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00047">GodFunction.cpp:47</a></div></div>
-<div class="ttc" id="aclass_u_god_function_afdbda0a36bc5fde8d2410a0f7eb52bc5_html_afdbda0a36bc5fde8d2410a0f7eb52bc5"><div class="ttname"><a href="class_u_god_function_afdbda0a36bc5fde8d2410a0f7eb52bc5.html#afdbda0a36bc5fde8d2410a0f7eb52bc5">UGodFunction::GenerateEvidenceItems</a></div><div class="ttdeci">static void GenerateEvidenceItems(UWorld *World)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00562">GodFunction.cpp:562</a></div></div>
+<div class="ttc" id="aclass_u_god_function_afdbda0a36bc5fde8d2410a0f7eb52bc5_html_afdbda0a36bc5fde8d2410a0f7eb52bc5"><div class="ttname"><a href="class_u_god_function_afdbda0a36bc5fde8d2410a0f7eb52bc5.html#afdbda0a36bc5fde8d2410a0f7eb52bc5">UGodFunction::GenerateEvidenceItems</a></div><div class="ttdeci">static void GenerateEvidenceItems(UWorld *World)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00558">GodFunction.cpp:558</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div class="dyncontent">
@@ -242,23 +242,19 @@ $(function(){initNavTree('class_u_god_function_a99ce1641c91019a763248259829f18bc
 <div class="dyncontent">
 <div class="center"><img src="class_u_god_function_a99ce1641c91019a763248259829f18bc_a99ce1641c91019a763248259829f18bc_icgraph.png" border="0" usemap="#aclass_u_god_function_a99ce1641c91019a763248259829f18bc_a99ce1641c91019a763248259829f18bc_icgraph" alt=""/></div>
 <map name="aclass_u_god_function_a99ce1641c91019a763248259829f18bc_a99ce1641c91019a763248259829f18bc_icgraph" id="aclass_u_god_function_a99ce1641c91019a763248259829f18bc_a99ce1641c91019a763248259829f18bc_icgraph">
-<area shape="rect" title=" " alt="" coords="1272,55,1428,81"/>
-<area shape="poly" title=" " alt="" coords="1382,42,1371,36,1350,33,1330,35,1320,40,1317,45,1322,53,1318,56,1312,46,1316,36,1329,30,1350,28,1373,31,1385,37"/>
-<area shape="rect" href="class_u_god_function_a800687b9234e88341a3ff75a44089a24.html#a800687b9234e88341a3ff75a44089a24" title=" " alt="" coords="1096,55,1224,81"/>
-<area shape="poly" title=" " alt="" coords="1257,71,1225,71,1225,65,1257,65"/>
-<area shape="poly" title=" " alt="" coords="1192,42,1181,36,1160,33,1141,35,1130,40,1128,45,1133,53,1128,56,1122,46,1126,36,1139,30,1160,28,1183,31,1195,37"/>
-<area shape="rect" href="class_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc.html#a4de9f6ddf1cbfb26fe4f0529d8dbbadc" title=" " alt="" coords="896,29,1048,56"/>
-<area shape="poly" title=" " alt="" coords="1080,60,1048,56,1049,50,1081,55"/>
-<area shape="rect" href="class_u_q_game_instance_village_a1ee5ca1a4c7d06fd8d5a3cd9a3d27587.html#a1ee5ca1a4c7d06fd8d5a3cd9a3d27587" title=" " alt="" coords="458,47,623,89"/>
-<area shape="poly" title=" " alt="" coords="1081,71,624,71,624,65,1081,65"/>
-<area shape="rect" href="class_u_god_function_a5c30132246dec8610cc93cc07a32ee07.html#a5c30132246dec8610cc93cc07a32ee07" title=" " alt="" coords="671,29,848,56"/>
-<area shape="poly" title=" " alt="" coords="880,45,848,45,848,40,880,40"/>
-<area shape="poly" title=" " alt="" coords="796,16,783,10,759,8,737,10,725,15,722,20,728,27,724,30,717,21,722,11,736,5,760,3,785,5,798,12"/>
-<area shape="poly" title=" " alt="" coords="656,57,624,61,623,56,655,52"/>
-<area shape="rect" href="class_u_q_game_instance_village_a5a7c0c3e2f26533acb1dfdd30cb430f3.html#a5a7c0c3e2f26533acb1dfdd30cb430f3" title=" " alt="" coords="208,47,410,89"/>
-<area shape="poly" title=" " alt="" coords="443,71,411,71,411,65,443,65"/>
-<area shape="rect" href="class_a_q_game_mode_village_aa1e28be0d0b9be7af2a074941a144c65.html#aa1e28be0d0b9be7af2a074941a144c65" title=" " alt="" coords="5,47,160,89"/>
-<area shape="poly" title=" " alt="" coords="192,71,160,71,160,65,192,65"/>
+<area shape="rect" title=" " alt="" coords="848,35,1003,61"/>
+<area shape="poly" title=" " alt="" coords="958,22,946,16,925,13,906,15,895,20,892,25,897,33,893,36,887,26,891,16,904,10,925,8,948,11,960,17"/>
+<area shape="rect" href="class_u_god_function_a800687b9234e88341a3ff75a44089a24.html#a800687b9234e88341a3ff75a44089a24" title=" " alt="" coords="671,35,800,61"/>
+<area shape="poly" title=" " alt="" coords="832,51,800,51,800,45,832,45"/>
+<area shape="poly" title=" " alt="" coords="768,22,757,16,735,13,716,15,705,20,703,25,708,33,703,36,697,26,701,16,714,10,736,8,758,11,770,17"/>
+<area shape="rect" href="class_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc.html#a4de9f6ddf1cbfb26fe4f0529d8dbbadc" title=" " alt="" coords="464,5,617,32"/>
+<area shape="poly" title=" " alt="" coords="655,39,617,33,618,28,656,33"/>
+<area shape="rect" href="class_u_q_game_instance_village_a1ee5ca1a4c7d06fd8d5a3cd9a3d27587.html#a1ee5ca1a4c7d06fd8d5a3cd9a3d27587" title=" " alt="" coords="458,56,623,99"/>
+<area shape="poly" title=" " alt="" coords="656,63,624,67,623,62,655,57"/>
+<area shape="rect" href="class_u_q_game_instance_village_a5a7c0c3e2f26533acb1dfdd30cb430f3.html#a5a7c0c3e2f26533acb1dfdd30cb430f3" title=" " alt="" coords="208,56,410,99"/>
+<area shape="poly" title=" " alt="" coords="443,80,411,80,411,75,443,75"/>
+<area shape="rect" href="class_a_q_game_mode_village_aa1e28be0d0b9be7af2a074941a144c65.html#aa1e28be0d0b9be7af2a074941a144c65" title=" " alt="" coords="5,56,160,99"/>
+<area shape="poly" title=" " alt="" coords="192,80,160,80,160,75,192,75"/>
 </map>
 </div>
 

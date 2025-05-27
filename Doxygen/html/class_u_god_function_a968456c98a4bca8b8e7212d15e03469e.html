@@ -134,92 +134,92 @@ $(function(){initNavTree('class_u_god_function_a968456c98a4bca8b8e7212d15e03469e
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="_god_function_8cpp_source.html">GodFunction.cpp</a> 파일의 <a class="el" href="_god_function_8cpp_source.html#l00660">660</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  661</span>{</div>
-<div class="line"><span class="lineno">  662</span>    FString ApiKey = <a class="code hl_function" href="class_u_god_function_a283cf18abc0d86f40e6813d90c24837b.html#a283cf18abc0d86f40e6813d90c24837b">LoadOpenAIKey</a>();</div>
-<div class="line"><span class="lineno">  663</span>    <span class="keywordflow">if</span> (ApiKey.IsEmpty())</div>
-<div class="line"><span class="lineno">  664</span>    {</div>
-<div class="line"><span class="lineno">  665</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;OpenAI API Key가 없습니다!&quot;</span>));</div>
-<div class="line"><span class="lineno">  666</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  667</span>    }</div>
-<div class="line"><span class="lineno">  668</span> </div>
-<div class="line"><span class="lineno">  669</span>    <span class="comment">// 이미지 생성 요청 구성 (OpenAI Image API)</span></div>
-<div class="line"><span class="lineno">  670</span>    FString FinalPrompt = Prompt + TEXT(<span class="stringliteral">&quot;, isolated object on transparent background, icon style, minimal shadows&quot;</span>);</div>
-<div class="line"><span class="lineno">  671</span> </div>
-<div class="line"><span class="lineno">  672</span>    TSharedPtr&lt;FJsonObject&gt; RequestObject = MakeShareable(<span class="keyword">new</span> FJsonObject());</div>
-<div class="line"><span class="lineno">  673</span>    RequestObject-&gt;SetStringField(<span class="stringliteral">&quot;prompt&quot;</span>, FinalPrompt);</div>
-<div class="line"><span class="lineno">  674</span>    RequestObject-&gt;SetStringField(<span class="stringliteral">&quot;model&quot;</span>, <span class="stringliteral">&quot;dall-e-3&quot;</span>);</div>
-<div class="line"><span class="lineno">  675</span>    RequestObject-&gt;SetStringField(<span class="stringliteral">&quot;size&quot;</span>, <span class="stringliteral">&quot;1024x1024&quot;</span>);</div>
-<div class="line"><span class="lineno">  676</span>    RequestObject-&gt;SetStringField(<span class="stringliteral">&quot;response_format&quot;</span>, <span class="stringliteral">&quot;url&quot;</span>);  <span class="comment">// URL 받아서 다시 다운로드</span></div>
+<p class="definition"><a class="el" href="_god_function_8cpp_source.html">GodFunction.cpp</a> 파일의 <a class="el" href="_god_function_8cpp_source.html#l00656">656</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  657</span>{</div>
+<div class="line"><span class="lineno">  658</span>    FString ApiKey = <a class="code hl_function" href="class_u_god_function_a283cf18abc0d86f40e6813d90c24837b.html#a283cf18abc0d86f40e6813d90c24837b">LoadOpenAIKey</a>();</div>
+<div class="line"><span class="lineno">  659</span>    <span class="keywordflow">if</span> (ApiKey.IsEmpty())</div>
+<div class="line"><span class="lineno">  660</span>    {</div>
+<div class="line"><span class="lineno">  661</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;OpenAI API Key가 없습니다!&quot;</span>));</div>
+<div class="line"><span class="lineno">  662</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  663</span>    }</div>
+<div class="line"><span class="lineno">  664</span> </div>
+<div class="line"><span class="lineno">  665</span>    <span class="comment">// 이미지 생성 요청 구성 (OpenAI Image API)</span></div>
+<div class="line"><span class="lineno">  666</span>    FString FinalPrompt = Prompt + TEXT(<span class="stringliteral">&quot;, isolated object on transparent background, icon style, minimal shadows&quot;</span>);</div>
+<div class="line"><span class="lineno">  667</span> </div>
+<div class="line"><span class="lineno">  668</span>    TSharedPtr&lt;FJsonObject&gt; RequestObject = MakeShareable(<span class="keyword">new</span> FJsonObject());</div>
+<div class="line"><span class="lineno">  669</span>    RequestObject-&gt;SetStringField(<span class="stringliteral">&quot;prompt&quot;</span>, FinalPrompt);</div>
+<div class="line"><span class="lineno">  670</span>    RequestObject-&gt;SetStringField(<span class="stringliteral">&quot;model&quot;</span>, <span class="stringliteral">&quot;dall-e-3&quot;</span>);</div>
+<div class="line"><span class="lineno">  671</span>    RequestObject-&gt;SetStringField(<span class="stringliteral">&quot;size&quot;</span>, <span class="stringliteral">&quot;1024x1024&quot;</span>);</div>
+<div class="line"><span class="lineno">  672</span>    RequestObject-&gt;SetStringField(<span class="stringliteral">&quot;response_format&quot;</span>, <span class="stringliteral">&quot;url&quot;</span>);  <span class="comment">// URL 받아서 다시 다운로드</span></div>
+<div class="line"><span class="lineno">  673</span> </div>
+<div class="line"><span class="lineno">  674</span>    FString RequestBody;</div>
+<div class="line"><span class="lineno">  675</span>    TSharedRef&lt;TJsonWriter&lt;&gt;&gt; Writer = TJsonWriterFactory&lt;&gt;::Create(&amp;RequestBody);</div>
+<div class="line"><span class="lineno">  676</span>    FJsonSerializer::Serialize(RequestObject.ToSharedRef(), Writer);</div>
 <div class="line"><span class="lineno">  677</span> </div>
-<div class="line"><span class="lineno">  678</span>    FString RequestBody;</div>
-<div class="line"><span class="lineno">  679</span>    TSharedRef&lt;TJsonWriter&lt;&gt;&gt; Writer = TJsonWriterFactory&lt;&gt;::Create(&amp;RequestBody);</div>
-<div class="line"><span class="lineno">  680</span>    FJsonSerializer::Serialize(RequestObject.ToSharedRef(), Writer);</div>
-<div class="line"><span class="lineno">  681</span> </div>
-<div class="line"><span class="lineno">  682</span>    TSharedRef&lt;IHttpRequest&gt; Request = FHttpModule::Get().CreateRequest();</div>
-<div class="line"><span class="lineno">  683</span>    Request-&gt;SetURL(<span class="stringliteral">&quot;https://api.openai.com/v1/images/generations&quot;</span>);</div>
-<div class="line"><span class="lineno">  684</span>    Request-&gt;SetVerb(<span class="stringliteral">&quot;POST&quot;</span>);</div>
-<div class="line"><span class="lineno">  685</span>    Request-&gt;SetHeader(<span class="stringliteral">&quot;Authorization&quot;</span>, <span class="stringliteral">&quot;Bearer &quot;</span> + ApiKey);</div>
-<div class="line"><span class="lineno">  686</span>    Request-&gt;SetHeader(<span class="stringliteral">&quot;Content-Type&quot;</span>, <span class="stringliteral">&quot;application/json&quot;</span>);</div>
-<div class="line"><span class="lineno">  687</span>    Request-&gt;SetContentAsString(RequestBody);</div>
-<div class="line"><span class="lineno">  688</span> </div>
-<div class="line"><span class="lineno">  689</span>    Request-&gt;OnProcessRequestComplete().BindLambda([SavePath](FHttpRequestPtr Request, FHttpResponsePtr Response, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><span class="lineno">  690</span>        {</div>
-<div class="line"><span class="lineno">  691</span>            <span class="keywordflow">if</span> (!bWasSuccessful || !Response.IsValid())</div>
-<div class="line"><span class="lineno">  692</span>            {</div>
-<div class="line"><span class="lineno">  693</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;DALL·E 이미지 생성 요청 실패&quot;</span>));</div>
-<div class="line"><span class="lineno">  694</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  695</span>            }</div>
-<div class="line"><span class="lineno">  696</span> </div>
-<div class="line"><span class="lineno">  697</span>            FString ResponseContent = Response-&gt;GetContentAsString();</div>
-<div class="line"><span class="lineno">  698</span>            TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
-<div class="line"><span class="lineno">  699</span>            TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(ResponseContent);</div>
-<div class="line"><span class="lineno">  700</span>            <span class="keywordflow">if</span> (!FJsonSerializer::Deserialize(Reader, JsonObject) || !JsonObject.IsValid())</div>
-<div class="line"><span class="lineno">  701</span>            {</div>
-<div class="line"><span class="lineno">  702</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;DALL·E 응답 파싱 실패&quot;</span>));</div>
-<div class="line"><span class="lineno">  703</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  704</span>            }</div>
-<div class="line"><span class="lineno">  705</span> </div>
-<div class="line"><span class="lineno">  706</span>            <span class="keyword">const</span> TArray&lt;TSharedPtr&lt;FJsonValue&gt;&gt;* DataArray;</div>
-<div class="line"><span class="lineno">  707</span>            <span class="keywordflow">if</span> (!JsonObject-&gt;TryGetArrayField(<span class="stringliteral">&quot;data&quot;</span>, DataArray) || DataArray-&gt;Num() == 0)</div>
-<div class="line"><span class="lineno">  708</span>            {</div>
-<div class="line"><span class="lineno">  709</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;DALL·E 응답에 이미지 URL 없음&quot;</span>));</div>
-<div class="line"><span class="lineno">  710</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  711</span>            }</div>
-<div class="line"><span class="lineno">  712</span> </div>
-<div class="line"><span class="lineno">  713</span>            FString ImageUrl = (*DataArray)[0]-&gt;AsObject()-&gt;GetStringField(<span class="stringliteral">&quot;url&quot;</span>);</div>
-<div class="line"><span class="lineno">  714</span>            UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;이미지 URL: %s&quot;</span>), *ImageUrl);</div>
-<div class="line"><span class="lineno">  715</span> </div>
-<div class="line"><span class="lineno">  716</span>            <span class="comment">// 이미지 다운로드 요청</span></div>
-<div class="line"><span class="lineno">  717</span>            TSharedRef&lt;IHttpRequest&gt; DownloadRequest = FHttpModule::Get().CreateRequest();</div>
-<div class="line"><span class="lineno">  718</span>            DownloadRequest-&gt;SetURL(ImageUrl);</div>
-<div class="line"><span class="lineno">  719</span>            DownloadRequest-&gt;SetVerb(<span class="stringliteral">&quot;GET&quot;</span>);</div>
-<div class="line"><span class="lineno">  720</span> </div>
-<div class="line"><span class="lineno">  721</span>            DownloadRequest-&gt;OnProcessRequestComplete().BindLambda([SavePath](FHttpRequestPtr Request, FHttpResponsePtr Response, <span class="keywordtype">bool</span> bWasSuccessful)</div>
-<div class="line"><span class="lineno">  722</span>                {</div>
-<div class="line"><span class="lineno">  723</span>                    <span class="keywordflow">if</span> (!bWasSuccessful || !Response.IsValid())</div>
-<div class="line"><span class="lineno">  724</span>                    {</div>
-<div class="line"><span class="lineno">  725</span>                        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;이미지 다운로드 실패&quot;</span>));</div>
-<div class="line"><span class="lineno">  726</span>                        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  727</span>                    }</div>
-<div class="line"><span class="lineno">  728</span> </div>
-<div class="line"><span class="lineno">  729</span>                    <span class="comment">// PNG 저장</span></div>
-<div class="line"><span class="lineno">  730</span>                    <span class="keyword">const</span> TArray&lt;uint8&gt;&amp; ImageData = Response-&gt;GetContent();</div>
-<div class="line"><span class="lineno">  731</span>                    <span class="keywordflow">if</span> (FFileHelper::SaveArrayToFile(ImageData, *SavePath))</div>
+<div class="line"><span class="lineno">  678</span>    TSharedRef&lt;IHttpRequest&gt; Request = FHttpModule::Get().CreateRequest();</div>
+<div class="line"><span class="lineno">  679</span>    Request-&gt;SetURL(<span class="stringliteral">&quot;https://api.openai.com/v1/images/generations&quot;</span>);</div>
+<div class="line"><span class="lineno">  680</span>    Request-&gt;SetVerb(<span class="stringliteral">&quot;POST&quot;</span>);</div>
+<div class="line"><span class="lineno">  681</span>    Request-&gt;SetHeader(<span class="stringliteral">&quot;Authorization&quot;</span>, <span class="stringliteral">&quot;Bearer &quot;</span> + ApiKey);</div>
+<div class="line"><span class="lineno">  682</span>    Request-&gt;SetHeader(<span class="stringliteral">&quot;Content-Type&quot;</span>, <span class="stringliteral">&quot;application/json&quot;</span>);</div>
+<div class="line"><span class="lineno">  683</span>    Request-&gt;SetContentAsString(RequestBody);</div>
+<div class="line"><span class="lineno">  684</span> </div>
+<div class="line"><span class="lineno">  685</span>    Request-&gt;OnProcessRequestComplete().BindLambda([SavePath](FHttpRequestPtr Request, FHttpResponsePtr Response, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><span class="lineno">  686</span>        {</div>
+<div class="line"><span class="lineno">  687</span>            <span class="keywordflow">if</span> (!bWasSuccessful || !Response.IsValid())</div>
+<div class="line"><span class="lineno">  688</span>            {</div>
+<div class="line"><span class="lineno">  689</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;DALL·E 이미지 생성 요청 실패&quot;</span>));</div>
+<div class="line"><span class="lineno">  690</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  691</span>            }</div>
+<div class="line"><span class="lineno">  692</span> </div>
+<div class="line"><span class="lineno">  693</span>            FString ResponseContent = Response-&gt;GetContentAsString();</div>
+<div class="line"><span class="lineno">  694</span>            TSharedPtr&lt;FJsonObject&gt; JsonObject;</div>
+<div class="line"><span class="lineno">  695</span>            TSharedRef&lt;TJsonReader&lt;&gt;&gt; Reader = TJsonReaderFactory&lt;&gt;::Create(ResponseContent);</div>
+<div class="line"><span class="lineno">  696</span>            <span class="keywordflow">if</span> (!FJsonSerializer::Deserialize(Reader, JsonObject) || !JsonObject.IsValid())</div>
+<div class="line"><span class="lineno">  697</span>            {</div>
+<div class="line"><span class="lineno">  698</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;DALL·E 응답 파싱 실패&quot;</span>));</div>
+<div class="line"><span class="lineno">  699</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  700</span>            }</div>
+<div class="line"><span class="lineno">  701</span> </div>
+<div class="line"><span class="lineno">  702</span>            <span class="keyword">const</span> TArray&lt;TSharedPtr&lt;FJsonValue&gt;&gt;* DataArray;</div>
+<div class="line"><span class="lineno">  703</span>            <span class="keywordflow">if</span> (!JsonObject-&gt;TryGetArrayField(<span class="stringliteral">&quot;data&quot;</span>, DataArray) || DataArray-&gt;Num() == 0)</div>
+<div class="line"><span class="lineno">  704</span>            {</div>
+<div class="line"><span class="lineno">  705</span>                UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;DALL·E 응답에 이미지 URL 없음&quot;</span>));</div>
+<div class="line"><span class="lineno">  706</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  707</span>            }</div>
+<div class="line"><span class="lineno">  708</span> </div>
+<div class="line"><span class="lineno">  709</span>            FString ImageUrl = (*DataArray)[0]-&gt;AsObject()-&gt;GetStringField(<span class="stringliteral">&quot;url&quot;</span>);</div>
+<div class="line"><span class="lineno">  710</span>            UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;이미지 URL: %s&quot;</span>), *ImageUrl);</div>
+<div class="line"><span class="lineno">  711</span> </div>
+<div class="line"><span class="lineno">  712</span>            <span class="comment">// 이미지 다운로드 요청</span></div>
+<div class="line"><span class="lineno">  713</span>            TSharedRef&lt;IHttpRequest&gt; DownloadRequest = FHttpModule::Get().CreateRequest();</div>
+<div class="line"><span class="lineno">  714</span>            DownloadRequest-&gt;SetURL(ImageUrl);</div>
+<div class="line"><span class="lineno">  715</span>            DownloadRequest-&gt;SetVerb(<span class="stringliteral">&quot;GET&quot;</span>);</div>
+<div class="line"><span class="lineno">  716</span> </div>
+<div class="line"><span class="lineno">  717</span>            DownloadRequest-&gt;OnProcessRequestComplete().BindLambda([SavePath](FHttpRequestPtr Request, FHttpResponsePtr Response, <span class="keywordtype">bool</span> bWasSuccessful)</div>
+<div class="line"><span class="lineno">  718</span>                {</div>
+<div class="line"><span class="lineno">  719</span>                    <span class="keywordflow">if</span> (!bWasSuccessful || !Response.IsValid())</div>
+<div class="line"><span class="lineno">  720</span>                    {</div>
+<div class="line"><span class="lineno">  721</span>                        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;이미지 다운로드 실패&quot;</span>));</div>
+<div class="line"><span class="lineno">  722</span>                        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  723</span>                    }</div>
+<div class="line"><span class="lineno">  724</span> </div>
+<div class="line"><span class="lineno">  725</span>                    <span class="comment">// PNG 저장</span></div>
+<div class="line"><span class="lineno">  726</span>                    <span class="keyword">const</span> TArray&lt;uint8&gt;&amp; ImageData = Response-&gt;GetContent();</div>
+<div class="line"><span class="lineno">  727</span>                    <span class="keywordflow">if</span> (FFileHelper::SaveArrayToFile(ImageData, *SavePath))</div>
+<div class="line"><span class="lineno">  728</span>                    {</div>
+<div class="line"><span class="lineno">  729</span>                        UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;이미지 저장 완료: %s&quot;</span>), *SavePath);</div>
+<div class="line"><span class="lineno">  730</span>                    }</div>
+<div class="line"><span class="lineno">  731</span>                    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">  732</span>                    {</div>
-<div class="line"><span class="lineno">  733</span>                        UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;이미지 저장 완료: %s&quot;</span>), *SavePath);</div>
+<div class="line"><span class="lineno">  733</span>                        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;이미지 저장 실패: %s&quot;</span>), *SavePath);</div>
 <div class="line"><span class="lineno">  734</span>                    }</div>
-<div class="line"><span class="lineno">  735</span>                    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  736</span>                    {</div>
-<div class="line"><span class="lineno">  737</span>                        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;이미지 저장 실패: %s&quot;</span>), *SavePath);</div>
-<div class="line"><span class="lineno">  738</span>                    }</div>
-<div class="line"><span class="lineno">  739</span>                });</div>
-<div class="line"><span class="lineno">  740</span> </div>
-<div class="line"><span class="lineno">  741</span>            DownloadRequest-&gt;ProcessRequest();</div>
-<div class="line"><span class="lineno">  742</span>        });</div>
-<div class="line"><span class="lineno">  743</span> </div>
-<div class="line"><span class="lineno">  744</span>    Request-&gt;ProcessRequest();</div>
-<div class="line"><span class="lineno">  745</span>}</div>
+<div class="line"><span class="lineno">  735</span>                });</div>
+<div class="line"><span class="lineno">  736</span> </div>
+<div class="line"><span class="lineno">  737</span>            DownloadRequest-&gt;ProcessRequest();</div>
+<div class="line"><span class="lineno">  738</span>        });</div>
+<div class="line"><span class="lineno">  739</span> </div>
+<div class="line"><span class="lineno">  740</span>    Request-&gt;ProcessRequest();</div>
+<div class="line"><span class="lineno">  741</span>}</div>
 <div class="ttc" id="aclass_u_god_function_a283cf18abc0d86f40e6813d90c24837b_html_a283cf18abc0d86f40e6813d90c24837b"><div class="ttname"><a href="class_u_god_function_a283cf18abc0d86f40e6813d90c24837b.html#a283cf18abc0d86f40e6813d90c24837b">UGodFunction::LoadOpenAIKey</a></div><div class="ttdeci">static FString LoadOpenAIKey()</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00027">GodFunction.cpp:27</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
@@ -236,27 +236,23 @@ $(function(){initNavTree('class_u_god_function_a968456c98a4bca8b8e7212d15e03469e
 <div class="dyncontent">
 <div class="center"><img src="class_u_god_function_a968456c98a4bca8b8e7212d15e03469e_a968456c98a4bca8b8e7212d15e03469e_icgraph.png" border="0" usemap="#aclass_u_god_function_a968456c98a4bca8b8e7212d15e03469e_a968456c98a4bca8b8e7212d15e03469e_icgraph" alt=""/></div>
 <map name="aclass_u_god_function_a968456c98a4bca8b8e7212d15e03469e_a968456c98a4bca8b8e7212d15e03469e_icgraph" id="aclass_u_god_function_a968456c98a4bca8b8e7212d15e03469e_a968456c98a4bca8b8e7212d15e03469e_icgraph">
-<area shape="rect" title=" " alt="" coords="1685,55,1830,81"/>
-<area shape="rect" href="class_u_god_function_afdbda0a36bc5fde8d2410a0f7eb52bc5.html#afdbda0a36bc5fde8d2410a0f7eb52bc5" title=" " alt="" coords="1476,55,1637,81"/>
-<area shape="poly" title=" " alt="" coords="1669,71,1637,71,1637,65,1669,65"/>
-<area shape="rect" href="class_u_god_function_a99ce1641c91019a763248259829f18bc.html#a99ce1641c91019a763248259829f18bc" title=" " alt="" coords="1272,55,1428,81"/>
-<area shape="poly" title=" " alt="" coords="1460,71,1428,71,1428,65,1460,65"/>
-<area shape="poly" title=" " alt="" coords="1382,42,1371,36,1350,33,1330,35,1320,40,1317,45,1322,53,1318,56,1312,46,1316,36,1329,30,1350,28,1373,31,1385,37"/>
-<area shape="rect" href="class_u_god_function_a800687b9234e88341a3ff75a44089a24.html#a800687b9234e88341a3ff75a44089a24" title=" " alt="" coords="1096,55,1224,81"/>
-<area shape="poly" title=" " alt="" coords="1257,71,1225,71,1225,65,1257,65"/>
-<area shape="poly" title=" " alt="" coords="1192,42,1181,36,1160,33,1141,35,1130,40,1128,45,1133,53,1128,56,1122,46,1126,36,1139,30,1160,28,1183,31,1195,37"/>
-<area shape="rect" href="class_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc.html#a4de9f6ddf1cbfb26fe4f0529d8dbbadc" title=" " alt="" coords="896,29,1048,56"/>
-<area shape="poly" title=" " alt="" coords="1080,60,1048,56,1049,50,1081,55"/>
-<area shape="rect" href="class_u_q_game_instance_village_a1ee5ca1a4c7d06fd8d5a3cd9a3d27587.html#a1ee5ca1a4c7d06fd8d5a3cd9a3d27587" title=" " alt="" coords="458,47,623,89"/>
-<area shape="poly" title=" " alt="" coords="1081,71,624,71,624,65,1081,65"/>
-<area shape="rect" href="class_u_god_function_a5c30132246dec8610cc93cc07a32ee07.html#a5c30132246dec8610cc93cc07a32ee07" title=" " alt="" coords="671,29,848,56"/>
-<area shape="poly" title=" " alt="" coords="880,45,848,45,848,40,880,40"/>
-<area shape="poly" title=" " alt="" coords="796,16,783,10,759,8,737,10,725,15,722,20,728,27,724,30,717,21,722,11,736,5,760,3,785,5,798,12"/>
-<area shape="poly" title=" " alt="" coords="656,57,624,61,623,56,655,52"/>
-<area shape="rect" href="class_u_q_game_instance_village_a5a7c0c3e2f26533acb1dfdd30cb430f3.html#a5a7c0c3e2f26533acb1dfdd30cb430f3" title=" " alt="" coords="208,47,410,89"/>
-<area shape="poly" title=" " alt="" coords="443,71,411,71,411,65,443,65"/>
-<area shape="rect" href="class_a_q_game_mode_village_aa1e28be0d0b9be7af2a074941a144c65.html#aa1e28be0d0b9be7af2a074941a144c65" title=" " alt="" coords="5,47,160,89"/>
-<area shape="poly" title=" " alt="" coords="192,71,160,71,160,65,192,65"/>
+<area shape="rect" title=" " alt="" coords="1260,35,1406,61"/>
+<area shape="rect" href="class_u_god_function_afdbda0a36bc5fde8d2410a0f7eb52bc5.html#afdbda0a36bc5fde8d2410a0f7eb52bc5" title=" " alt="" coords="1051,35,1212,61"/>
+<area shape="poly" title=" " alt="" coords="1245,51,1213,51,1213,45,1245,45"/>
+<area shape="rect" href="class_u_god_function_a99ce1641c91019a763248259829f18bc.html#a99ce1641c91019a763248259829f18bc" title=" " alt="" coords="848,35,1003,61"/>
+<area shape="poly" title=" " alt="" coords="1035,51,1003,51,1003,45,1035,45"/>
+<area shape="poly" title=" " alt="" coords="958,22,946,16,925,13,906,15,895,20,892,25,897,33,893,36,887,26,891,16,904,10,925,8,948,11,960,17"/>
+<area shape="rect" href="class_u_god_function_a800687b9234e88341a3ff75a44089a24.html#a800687b9234e88341a3ff75a44089a24" title=" " alt="" coords="671,35,800,61"/>
+<area shape="poly" title=" " alt="" coords="832,51,800,51,800,45,832,45"/>
+<area shape="poly" title=" " alt="" coords="768,22,757,16,735,13,716,15,705,20,703,25,708,33,703,36,697,26,701,16,714,10,736,8,758,11,770,17"/>
+<area shape="rect" href="class_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc.html#a4de9f6ddf1cbfb26fe4f0529d8dbbadc" title=" " alt="" coords="464,5,617,32"/>
+<area shape="poly" title=" " alt="" coords="655,39,617,33,618,28,656,33"/>
+<area shape="rect" href="class_u_q_game_instance_village_a1ee5ca1a4c7d06fd8d5a3cd9a3d27587.html#a1ee5ca1a4c7d06fd8d5a3cd9a3d27587" title=" " alt="" coords="458,56,623,99"/>
+<area shape="poly" title=" " alt="" coords="656,63,624,67,623,62,655,57"/>
+<area shape="rect" href="class_u_q_game_instance_village_a5a7c0c3e2f26533acb1dfdd30cb430f3.html#a5a7c0c3e2f26533acb1dfdd30cb430f3" title=" " alt="" coords="208,56,410,99"/>
+<area shape="poly" title=" " alt="" coords="443,80,411,80,411,75,443,75"/>
+<area shape="rect" href="class_a_q_game_mode_village_aa1e28be0d0b9be7af2a074941a144c65.html#aa1e28be0d0b9be7af2a074941a144c65" title=" " alt="" coords="5,56,160,99"/>
+<area shape="poly" title=" " alt="" coords="192,80,160,80,160,75,192,75"/>
 </map>
 </div>
 

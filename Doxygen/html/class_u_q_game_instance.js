@@ -15,6 +15,8 @@ var class_u_q_game_instance =
     [ "GetRecordWithPlayerID", "class_u_q_game_instance_ae7f376fdc350d8894a8ad8d9c47e3cdb.html#ae7f376fdc350d8894a8ad8d9c47e3cdb", null ],
     [ "RemoveAllEvidence", "class_u_q_game_instance_a33f88f62cbddf2a1580276f91f8c62e7.html#a33f88f62cbddf2a1580276f91f8c62e7", null ],
     [ "RemoveEvidence", "class_u_q_game_instance_a4420659a715b111933a717e73f511f65.html#a4420659a715b111933a717e73f511f65", null ],
+    [ "SchedulePromptRegeneration", "class_u_q_game_instance_a5a7c0c3e2f26533acb1dfdd30cb430f3.html#a5a7c0c3e2f26533acb1dfdd30cb430f3", null ],
+    [ "StartPromptGeneration", "class_u_q_game_instance_a1ee5ca1a4c7d06fd8d5a3cd9a3d27587.html#a1ee5ca1a4c7d06fd8d5a3cd9a3d27587", null ],
     [ "ConversationIDCount", "class_u_q_game_instance_abccd195411b6018303625cfcf1e693e9.html#abccd195411b6018303625cfcf1e693e9", null ],
     [ "ConversationIDInit", "class_u_q_game_instance_aa2c74f50af0894bfd04f7cc2782c4e6e.html#aa2c74f50af0894bfd04f7cc2782c4e6e", null ],
     [ "ConversationList", "class_u_q_game_instance_a0db7d45e12b27396ed2a55eca70e6597.html#a0db7d45e12b27396ed2a55eca70e6597", null ],
@@ -25,5 +27,6 @@ var class_u_q_game_instance =
     [ "NPCIDInit", "class_u_q_game_instance_ad0fd10a7e617613526306b7bd413517e.html#ad0fd10a7e617613526306b7bd413517e", null ],
     [ "NPCList", "class_u_q_game_instance_a42993f06a710866b784d3feb4e4facfb.html#a42993f06a710866b784d3feb4e4facfb", null ],
     [ "PlayerIDCount", "class_u_q_game_instance_a519c8fab40c9dfc9ba1a16056224d69c.html#a519c8fab40c9dfc9ba1a16056224d69c", null ],
-    [ "PlayerIDInit", "class_u_q_game_instance_a76f3f163183636a36f952c6b23354048.html#a76f3f163183636a36f952c6b23354048", null ]
+    [ "PlayerIDInit", "class_u_q_game_instance_a76f3f163183636a36f952c6b23354048.html#a76f3f163183636a36f952c6b23354048", null ],
+    [ "TimerHandle_PromptRegeneration", "class_u_q_game_instance_a3387dd6115897e1cc08cc18ea04eb764.html#a3387dd6115897e1cc08cc18ea04eb764", null ]
 ];

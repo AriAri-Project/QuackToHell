@@ -1,0 +1,14 @@
+<map id="FreezePawn" name="FreezePawn">
+<area shape="rect" id="Node000001" title="NPC의 몸을 멈춥니다." alt="" coords="541,55,636,81"/>
+<area shape="rect" id="Node000002" href="$class_a_q_dynamic_n_p_c_controller_ae758c53fe5b59f4c04156d1115383b97.html#ae758c53fe5b59f4c04156d1115383b97" title="N2N, NMonolog상황에서 호출됩니다." alt="" coords="146,29,348,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="525,66,348,53,348,47,526,61"/>
+<area shape="rect" id="Node000004" href="$class_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a.html#ab3e669df6f85181d0c0e4632a4f3674a" title="NPC와의 대화시작 요청을 처리하는 함수입니다." alt="" coords="407,80,493,107"/>
+<area shape="poly" id="edge5_Node000001_Node000004" title=" " alt="" coords="526,82,494,88,493,83,525,77"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="281,16,269,10,247,8,226,10,215,15,212,20,217,27,213,30,207,21,211,11,225,5,247,3,271,5,284,12"/>
+<area shape="rect" id="Node000003" href="$class_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d.html#afd156935d4f1dc9acab4e7095922240d" title="NPC와의 대화중단 요청을 처리하는 함수입니다." alt="" coords="5,29,87,56"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="131,54,87,53,87,47,131,49"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="102,32,146,31,146,36,102,37"/>
+<area shape="poly" id="edge6_Node000004_Node000002" title=" " alt="" coords="391,79,358,71,311,59,312,54,360,65,393,74"/>
+<area shape="rect" id="Node000005" href="$class_a_q_dynamic_n_p_c_ae9cb47ef10ab2cc1fad7cd2c522892b6.html#ae9cb47ef10ab2cc1fad7cd2c522892b6" title=" " alt="" coords="135,80,359,107"/>
+<area shape="poly" id="edge7_Node000004_Node000005" title=" " alt="" coords="392,96,360,96,360,91,392,91"/>
+</map>

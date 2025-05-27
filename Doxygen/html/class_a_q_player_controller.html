@@ -122,7 +122,7 @@ AQPlayerController에 대한 상속 다이어그램 : </div>
 <div class="dyncontent">
 <div class="center"><img src="class_a_q_player_controller__inherit__graph.png" border="0" usemap="#a_a_q_player_controller_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_a_q_player_controller_inherit__map" id="a_a_q_player_controller_inherit__map">
-<area shape="rect" title="플레이어 컨트롤러 클래스입니다." alt="" coords="5,123,268,1195"/>
+<area shape="rect" title="플레이어 컨트롤러 클래스입니다." alt="" coords="5,123,268,1381"/>
 <area shape="rect" title=" " alt="" coords="80,5,193,75"/>
 <area shape="poly" title=" " alt="" coords="140,90,140,123,134,123,134,90"/>
 </map>
@@ -132,7 +132,7 @@ AQPlayerController에 대한 협력 다이어그램:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_a_q_player_controller__coll__graph.png" border="0" usemap="#a_a_q_player_controller_coll__map" alt="Collaboration graph"/></div>
 <map name="a_a_q_player_controller_coll__map" id="a_a_q_player_controller_coll__map">
-<area shape="rect" title="플레이어 컨트롤러 클래스입니다." alt="" coords="5,123,268,1195"/>
+<area shape="rect" title="플레이어 컨트롤러 클래스입니다." alt="" coords="5,123,268,1381"/>
 <area shape="rect" title=" " alt="" coords="80,5,193,75"/>
 <area shape="poly" title=" " alt="" coords="140,90,140,123,134,123,134,90"/>
 </map>
@@ -140,22 +140,52 @@ AQPlayerController에 대한 협력 다이어그램:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public 멤버 함수</h2></td></tr>
+<tr class="memitem:a6b01b948183637e332a20190c48a0417" id="r_a6b01b948183637e332a20190c48a0417"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_a6b01b948183637e332a20190c48a0417.html#a6b01b948183637e332a20190c48a0417">BlockInteraction</a> ()</td></tr>
+<tr class="separator:a6b01b948183637e332a20190c48a0417"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3819bd4f76139f70d71eeea36f64c931" id="r_a3819bd4f76139f70d71eeea36f64c931"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_a3819bd4f76139f70d71eeea36f64c931.html#a3819bd4f76139f70d71eeea36f64c931">ClientRPCFinishConversation</a> (<a class="el" href="class_a_q_n_p_c.html">AQNPC</a> *NPC)</td></tr>
 <tr class="separator:a3819bd4f76139f70d71eeea36f64c931"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63438448189c8ba33fd22c7ee6ca3a5e" id="r_a63438448189c8ba33fd22c7ee6ca3a5e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_a63438448189c8ba33fd22c7ee6ca3a5e.html#a63438448189c8ba33fd22c7ee6ca3a5e">ClientRPCStartConversation</a> (<a class="el" href="struct_f_open_a_i_response.html">FOpenAIResponse</a> NPCStartResponse)</td></tr>
-<tr class="memdesc:a63438448189c8ba33fd22c7ee6ca3a5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">@breif ServerRPCStartConversation을 성공적으로 마치게 되면 실행되는 함수.  <br /></td></tr>
-<tr class="separator:a63438448189c8ba33fd22c7ee6ca3a5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22bc0c7fc6f4c2c57b748914994d291d" id="r_a22bc0c7fc6f4c2c57b748914994d291d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_a22bc0c7fc6f4c2c57b748914994d291d.html#a22bc0c7fc6f4c2c57b748914994d291d">ClientRPCGetFinalJudgement</a> (<a class="el" href="struct_f_open_a_i_response.html">FOpenAIResponse</a> Response)</td></tr>
+<tr class="memdesc:a22bc0c7fc6f4c2c57b748914994d291d"><td class="mdescLeft">&#160;</td><td class="mdescRight">클라이언트에게 최종 판결을 전달하는 RPC 함수  <br /></td></tr>
+<tr class="separator:a22bc0c7fc6f4c2c57b748914994d291d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a310602f6338c43b5c78e2e775b267345" id="r_a310602f6338c43b5c78e2e775b267345"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_a310602f6338c43b5c78e2e775b267345.html#a310602f6338c43b5c78e2e775b267345">ClientRPCGetLawyerStatement</a> (<a class="el" href="struct_f_open_a_i_response.html">FOpenAIResponse</a> Response)</td></tr>
+<tr class="memdesc:a310602f6338c43b5c78e2e775b267345"><td class="mdescLeft">&#160;</td><td class="mdescRight">클라이언트에게 변호인측 진술을 전달하는 RPC 함수  <br /></td></tr>
+<tr class="separator:a310602f6338c43b5c78e2e775b267345"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c640270ece8f1526a08a259a60220df" id="r_a0c640270ece8f1526a08a259a60220df"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_a0c640270ece8f1526a08a259a60220df.html#a0c640270ece8f1526a08a259a60220df">ClientRPCGetProsecutorStatement</a> (<a class="el" href="struct_f_open_a_i_response.html">FOpenAIResponse</a> Response)</td></tr>
+<tr class="memdesc:a0c640270ece8f1526a08a259a60220df"><td class="mdescLeft">&#160;</td><td class="mdescRight">클라이언트에게 검사측 진술을 전달하는 RPC 함수  <br /></td></tr>
+<tr class="separator:a0c640270ece8f1526a08a259a60220df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a928e262f824556ca197c105f3ec1225e" id="r_a928e262f824556ca197c105f3ec1225e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_a928e262f824556ca197c105f3ec1225e.html#a928e262f824556ca197c105f3ec1225e">ClientRPCStartConversation</a> (<a class="el" href="struct_f_open_a_i_response.html">FOpenAIResponse</a> NPCStartResponse, <a class="el" href="class_a_q_n_p_c.html">AQNPC</a> *NPC)</td></tr>
+<tr class="memdesc:a928e262f824556ca197c105f3ec1225e"><td class="mdescLeft">&#160;</td><td class="mdescRight">@breif ServerRPCStartConversation을 성공적으로 마치게 되면 실행되는 함수.  <br /></td></tr>
+<tr class="separator:a928e262f824556ca197c105f3ec1225e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a2a591160cccda4b791164ac248e64f" id="r_a6a2a591160cccda4b791164ac248e64f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_a6a2a591160cccda4b791164ac248e64f.html#a6a2a591160cccda4b791164ac248e64f">ClientRPCUpdateCanFinishConversP2N</a> (bool bResult)</td></tr>
 <tr class="memdesc:a6a2a591160cccda4b791164ac248e64f"><td class="mdescLeft">&#160;</td><td class="mdescRight">@breif ServerRPCCanFinishConversP2N를 통해 대화마무리가 가능한지 체크가 완료된 후 실행되는 클라이언트 RPC 인자로 마무리할 수 있는지 없는지에 대한 bool값이 들어오게 된다.  <br /></td></tr>
 <tr class="separator:a6a2a591160cccda4b791164ac248e64f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa7451673faba73fb437c9e6992a1714" id="r_afa7451673faba73fb437c9e6992a1714"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_afa7451673faba73fb437c9e6992a1714.html#afa7451673faba73fb437c9e6992a1714">ClientRPCUpdateCanStartConversP2N</a> (bool bResult)</td></tr>
 <tr class="memdesc:afa7451673faba73fb437c9e6992a1714"><td class="mdescLeft">&#160;</td><td class="mdescRight">@breif ServerRPCCanStartConversP2N를 통해 대화시작이 가능한지 체크가 완료된 후 실행되는 클라이언트 RPC 인자로 시작할 수 있는지 없는지에 대한 bool값이 들어오게 된다.  <br /></td></tr>
 <tr class="separator:afa7451673faba73fb437c9e6992a1714"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae756e5d4388886c38425bea25b591b32" id="r_ae756e5d4388886c38425bea25b591b32"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_ae756e5d4388886c38425bea25b591b32.html#ae756e5d4388886c38425bea25b591b32">ClientRPCUpdateP2NResponse</a> (<a class="el" href="struct_f_open_a_i_response.html">FOpenAIResponse</a> Response)</td></tr>
+<tr class="separator:ae756e5d4388886c38425bea25b591b32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a553e7cf81dfbeff8262efb4200fe5f4d" id="r_a553e7cf81dfbeff8262efb4200fe5f4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_a_q_village_u_i_manager.html">AQVillageUIManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_a553e7cf81dfbeff8262efb4200fe5f4d.html#a553e7cf81dfbeff8262efb4200fe5f4d">GetVillageUIManager</a> ()</td></tr>
+<tr class="separator:a553e7cf81dfbeff8262efb4200fe5f4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02ffcdb37f27d459a1aa34679ccf43bd" id="r_a02ffcdb37f27d459a1aa34679ccf43bd"><td class="memItemLeft" align="right" valign="top">TObjectPtr&lt; class <a class="el" href="class_a_q_village_u_i_manager.html">AQVillageUIManager</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_a02ffcdb37f27d459a1aa34679ccf43bd.html#a02ffcdb37f27d459a1aa34679ccf43bd">GetVillageUIManager</a> () const</td></tr>
 <tr class="separator:a02ffcdb37f27d459a1aa34679ccf43bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad26e56fc92e843d3d822c2e01e784b27" id="r_ad26e56fc92e843d3d822c2e01e784b27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_ad26e56fc92e843d3d822c2e01e784b27.html#ad26e56fc92e843d3d822c2e01e784b27">MulticastBlockInteraction</a> ()</td></tr>
 <tr class="memdesc:ad26e56fc92e843d3d822c2e01e784b27"><td class="mdescLeft">&#160;</td><td class="mdescRight">상호작용을 block합니다.  <br /></td></tr>
 <tr class="separator:ad26e56fc92e843d3d822c2e01e784b27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ad55c35ed2f265160c70849d03c17a2" id="r_a6ad55c35ed2f265160c70849d03c17a2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_a6ad55c35ed2f265160c70849d03c17a2.html#a6ad55c35ed2f265160c70849d03c17a2">ServerRPCGetFinalJudgement</a> (<a class="el" href="class_a_q_player_controller.html">AQPlayerController</a> *ClientPC)</td></tr>
+<tr class="memdesc:a6ad55c35ed2f265160c70849d03c17a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">최종 판결 요청을 서버에 전달하는 RPC 함수  <br /></td></tr>
+<tr class="separator:a6ad55c35ed2f265160c70849d03c17a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04c6130ddb97280adffbea129749d6e2" id="r_a04c6130ddb97280adffbea129749d6e2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_a04c6130ddb97280adffbea129749d6e2.html#a04c6130ddb97280adffbea129749d6e2">ServerRPCGetLawyerStatement</a> (<a class="el" href="class_a_q_player_controller.html">AQPlayerController</a> *ClientPC)</td></tr>
+<tr class="memdesc:a04c6130ddb97280adffbea129749d6e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">변호인측 진술을 요청하는 서버 RPC 함수  <br /></td></tr>
+<tr class="separator:a04c6130ddb97280adffbea129749d6e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af631449a77f2714c5b244f8873eee75d" id="r_af631449a77f2714c5b244f8873eee75d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_af631449a77f2714c5b244f8873eee75d.html#af631449a77f2714c5b244f8873eee75d">ServerRPCGetProsecutorStatement</a> (<a class="el" href="class_a_q_player_controller.html">AQPlayerController</a> *ClientPC)</td></tr>
+<tr class="memdesc:af631449a77f2714c5b244f8873eee75d"><td class="mdescLeft">&#160;</td><td class="mdescRight">검사측 진술을 요청하는 서버 RPC 함수  <br /></td></tr>
+<tr class="separator:af631449a77f2714c5b244f8873eee75d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab18e845c41934a1a143667e805f0349" id="r_aab18e845c41934a1a143667e805f0349"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_aab18e845c41934a1a143667e805f0349.html#aab18e845c41934a1a143667e805f0349">ServerRPCStartMatchMaking</a> (<a class="el" href="class_a_q_player_controller.html">AQPlayerController</a> *ClientPC)</td></tr>
+<tr class="memdesc:aab18e845c41934a1a143667e805f0349"><td class="mdescLeft">&#160;</td><td class="mdescRight">서버에 매치메이킹 시작을 요청하는 RPC 함수  <br /></td></tr>
+<tr class="separator:aab18e845c41934a1a143667e805f0349"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0948a4a24f510a4c22bba2439ad4587a" id="r_a0948a4a24f510a4c22bba2439ad4587a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_player_controller_a0948a4a24f510a4c22bba2439ad4587a.html#a0948a4a24f510a4c22bba2439ad4587a">ServerRPCTravelToMain</a> (<a class="el" href="class_a_q_player_controller.html">AQPlayerController</a> *ClientPC)</td></tr>
+<tr class="memdesc:a0948a4a24f510a4c22bba2439ad4587a"><td class="mdescLeft">&#160;</td><td class="mdescRight">클라이언트를 메인 맵으로 이동시키는 서버 RPC 함수  <br /></td></tr>
+<tr class="separator:a0948a4a24f510a4c22bba2439ad4587a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected 멤버 함수</h2></td></tr>
@@ -234,7 +264,7 @@ Private 속성</h2></td></tr>
 <div class="textblock"><p>플레이어 컨트롤러 클래스입니다. </p>
 <dl class="section author"><dt>작성자</dt><dd>전유진 </dd></dl>
 
-<p class="definition"><a class="el" href="_q_player_controller_8h_source.html">QPlayerController.h</a> 파일의 <a class="el" href="_q_player_controller_8h_source.html#l00014">14</a> 번째 라인에서 정의되었습니다.</p>
+<p class="definition"><a class="el" href="_q_player_controller_8h_source.html">QPlayerController.h</a> 파일의 <a class="el" href="_q_player_controller_8h_source.html#l00015">15</a> 번째 라인에서 정의되었습니다.</p>
 </div><hr/>이 클래스에 대한 문서화 페이지는 다음의 파일들로부터 생성되었습니다.:<ul>
 <li>QuackToHell/Player/<a class="el" href="_q_player_controller_8h_source.html">QPlayerController.h</a></li>
 <li>QuackToHell/Player/<a class="el" href="_q_player_controller_8cpp_source.html">QPlayerController.cpp</a></li>

@@ -92,6 +92,7 @@ var hierarchy =
       [ "UQEKeyWidget", "class_u_q_e_key_widget.html", null ],
       [ "UQEvidenceExamWidget", "class_u_q_evidence_exam_widget.html", null ],
       [ "UQExamDefendantWidget", "class_u_q_exam_defendant_widget.html", null ],
+      [ "UQHomeWidget", "class_u_q_home_widget.html", null ],
       [ "UQInventoryWidget", "class_u_q_inventory_widget.html", null ],
       [ "UQMapWidget", "class_u_q_map_widget.html", null ],
       [ "UQNameWidget", "class_u_q_name_widget.html", null ],
@@ -99,6 +100,7 @@ var hierarchy =
       [ "UQP2NWidget", "class_u_q_p2_n_widget.html", null ],
       [ "UQPlayer2NSpeechBubbleWidget", "class_u_q_player2_n_speech_bubble_widget.html", null ],
       [ "UQRecordWidget", "class_u_q_record_widget.html", null ],
+      [ "UQRobbyWidget", "class_u_q_robby_widget.html", null ],
       [ "UQSpeechBubbleWidget", "class_u_q_speech_bubble_widget.html", null ],
       [ "UQVillageTimerWidget", "class_u_q_village_timer_widget.html", null ]
     ] ]

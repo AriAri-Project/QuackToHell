@@ -1,0 +1,13 @@
+<map id="ServerRPCStartConversation" name="ServerRPCStartConversation">
+<area shape="rect" id="Node000001" title="NPC와의 대화 시작." alt="" coords="5,55,199,81"/>
+<area shape="poly" id="edge7_Node000001_Node000001" title=" " alt="" coords="60,56,53,46,58,36,75,30,102,28,132,31,148,37,145,42,131,36,102,33,76,35,61,40,58,45,65,53"/>
+<area shape="rect" id="Node000002" href="$class_a_q_player_a8033f21841acfca4541c152a736c9bb9.html#a8033f21841acfca4541c152a736c9bb9" title=" " alt="" coords="247,80,455,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="199,75,231,78,231,84,199,81"/>
+<area shape="rect" id="Node000003" href="$class_a_q_player_ab2e99b9a8b7d9caa43b1b572da049bea.html#ab2e99b9a8b7d9caa43b1b572da049bea" title=" " alt="" coords="535,29,668,56"/>
+<area shape="poly" id="edge6_Node000001_Node000003" title=" " alt="" coords="199,60,519,44,519,49,199,66"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="420,77,519,56,520,62,421,82"/>
+<area shape="rect" id="Node000004" href="$class_a_q_player_controller_a928e262f824556ca197c105f3ec1225e.html#a928e262f824556ca197c105f3ec1225e" title="@breif ServerRPCStartConversation을 성공적으로 마치게 되면 실행되는 함수." alt="" coords="503,104,700,147"/>
+<area shape="poly" id="edge4_Node000002_Node000004" title=" " alt="" coords="456,104,488,108,487,113,455,109"/>
+<area shape="poly" id="edge3_Node000003_Node000003" title=" " alt="" coords="560,31,552,21,557,11,574,5,602,3,632,5,648,12,645,17,631,10,602,8,575,10,561,15,557,20,564,27"/>
+<area shape="poly" id="edge5_Node000004_Node000004" title=" " alt="" coords="554,104,552,94,560,85,577,79,602,77,628,80,644,86,643,91,627,85,602,83,578,85,563,89,558,95,559,103"/>
+</map>

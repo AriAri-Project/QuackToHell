@@ -128,30 +128,40 @@ $(function(){initNavTree('class_a_q_dynamic_n_p_c_ac87905fa54ad3f9108eaf3ff44f28
 <p>캐릭터 기준으로 가장 가까이 있는 npc를 반환합니다. </p>
 <dl class="section return"><dt>반환값</dt><dd>캐릭터 기준 가장 가까이 있는 npc </dd></dl>
 
-<p class="definition"><a class="el" href="_q_dynamic_n_p_c_8cpp_source.html">QDynamicNPC.cpp</a> 파일의 <a class="el" href="_q_dynamic_n_p_c_8cpp_source.html#l00034">34</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   35</span>{</div>
-<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_dynamic_n_p_c_a38f60d50b11950f351ce29d9b4634a45.html#a38f60d50b11950f351ce29d9b4634a45">OverlappingNPCs</a>.Num() == 0) {</div>
-<div class="line"><span class="lineno">   37</span>        <span class="comment">//대화 대상 없음</span></div>
-<div class="line"><span class="lineno">   38</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   39</span>    }</div>
-<div class="line"><span class="lineno">   40</span> </div>
-<div class="line"><span class="lineno">   41</span>    TObjectPtr&lt;AActor&gt; ClosestNPC = <span class="keyword">nullptr</span>;</div>
-<div class="line"><span class="lineno">   42</span>    <span class="keywordtype">float</span> MinDistance = FLT_MAX;</div>
-<div class="line"><span class="lineno">   43</span> </div>
-<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">for</span> (TObjectPtr&lt;AActor&gt; NPC : <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_a38f60d50b11950f351ce29d9b4634a45.html#a38f60d50b11950f351ce29d9b4634a45">OverlappingNPCs</a>) {</div>
-<div class="line"><span class="lineno">   45</span>        <span class="comment">//캐릭터와 NPC간 거리</span></div>
-<div class="line"><span class="lineno">   46</span>        <span class="keywordtype">float</span> Distance = FVector::Dist(this-&gt;GetActorLocation(), NPC-&gt;GetActorLocation());</div>
-<div class="line"><span class="lineno">   47</span>        <span class="comment">//최소거리찾기</span></div>
-<div class="line"><span class="lineno">   48</span>        <span class="keywordflow">if</span> (Distance &lt; MinDistance) {</div>
-<div class="line"><span class="lineno">   49</span>            MinDistance = Distance;</div>
-<div class="line"><span class="lineno">   50</span>            ClosestNPC = NPC;</div>
-<div class="line"><span class="lineno">   51</span>        }</div>
-<div class="line"><span class="lineno">   52</span>    }</div>
-<div class="line"><span class="lineno">   53</span> </div>
-<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">return</span> ClosestNPC;</div>
-<div class="line"><span class="lineno">   55</span>}</div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_a38f60d50b11950f351ce29d9b4634a45_html_a38f60d50b11950f351ce29d9b4634a45"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_a38f60d50b11950f351ce29d9b4634a45.html#a38f60d50b11950f351ce29d9b4634a45">AQDynamicNPC::OverlappingNPCs</a></div><div class="ttdeci">TArray&lt; TObjectPtr&lt; class AQDynamicNPC &gt; &gt; OverlappingNPCs</div><div class="ttdoc">overlap에 들어온 대상을 담습니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_8h_source.html#l00062">QDynamicNPC.h:62</a></div></div>
-</div><!-- fragment -->
+<p class="definition"><a class="el" href="_q_dynamic_n_p_c_8cpp_source.html">QDynamicNPC.cpp</a> 파일의 <a class="el" href="_q_dynamic_n_p_c_8cpp_source.html#l00039">39</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   40</span>{</div>
+<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_dynamic_n_p_c_a38f60d50b11950f351ce29d9b4634a45.html#a38f60d50b11950f351ce29d9b4634a45">OverlappingNPCs</a>.Num() == 0) {</div>
+<div class="line"><span class="lineno">   42</span>        <span class="comment">//대화 대상 없음</span></div>
+<div class="line"><span class="lineno">   43</span>        <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   44</span>    }</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>    TObjectPtr&lt;AActor&gt; ClosestNPC = <span class="keyword">nullptr</span>;</div>
+<div class="line"><span class="lineno">   47</span>    <span class="keywordtype">float</span> MinDistance = FLT_MAX;</div>
+<div class="line"><span class="lineno">   48</span> </div>
+<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">for</span> (TObjectPtr&lt;AActor&gt; NPC : <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_a38f60d50b11950f351ce29d9b4634a45.html#a38f60d50b11950f351ce29d9b4634a45">OverlappingNPCs</a>) {</div>
+<div class="line"><span class="lineno">   50</span>        <span class="comment">//캐릭터와 NPC간 거리</span></div>
+<div class="line"><span class="lineno">   51</span>        <span class="keywordtype">float</span> Distance = FVector::Dist(this-&gt;GetActorLocation(), NPC-&gt;GetActorLocation());</div>
+<div class="line"><span class="lineno">   52</span>        <span class="comment">//최소거리찾기</span></div>
+<div class="line"><span class="lineno">   53</span>        <span class="keywordflow">if</span> (Distance &lt; MinDistance) {</div>
+<div class="line"><span class="lineno">   54</span>            MinDistance = Distance;</div>
+<div class="line"><span class="lineno">   55</span>            ClosestNPC = NPC;</div>
+<div class="line"><span class="lineno">   56</span>        }</div>
+<div class="line"><span class="lineno">   57</span>    }</div>
+<div class="line"><span class="lineno">   58</span> </div>
+<div class="line"><span class="lineno">   59</span>    <span class="keywordflow">return</span> ClosestNPC;</div>
+<div class="line"><span class="lineno">   60</span>}</div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_a38f60d50b11950f351ce29d9b4634a45_html_a38f60d50b11950f351ce29d9b4634a45"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_a38f60d50b11950f351ce29d9b4634a45.html#a38f60d50b11950f351ce29d9b4634a45">AQDynamicNPC::OverlappingNPCs</a></div><div class="ttdeci">TArray&lt; TObjectPtr&lt; class AQDynamicNPC &gt; &gt; OverlappingNPCs</div><div class="ttdoc">overlap에 들어온 대상을 담습니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_8h_source.html#l00076">QDynamicNPC.h:76</a></div></div>
+</div><!-- fragment --><div class="dynheader">
+이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_a_q_dynamic_n_p_c_ac87905fa54ad3f9108eaf3ff44f28679_ac87905fa54ad3f9108eaf3ff44f28679_icgraph.png" border="0" usemap="#aclass_a_q_dynamic_n_p_c_ac87905fa54ad3f9108eaf3ff44f28679_ac87905fa54ad3f9108eaf3ff44f28679_icgraph" alt=""/></div>
+<map name="aclass_a_q_dynamic_n_p_c_ac87905fa54ad3f9108eaf3ff44f28679_ac87905fa54ad3f9108eaf3ff44f28679_icgraph" id="aclass_a_q_dynamic_n_p_c_ac87905fa54ad3f9108eaf3ff44f28679_ac87905fa54ad3f9108eaf3ff44f28679_icgraph">
+<area shape="rect" title="캐릭터 기준으로 가장 가까이 있는 npc를 반환합니다." alt="" coords="170,5,286,32"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_ae9cb47ef10ab2cc1fad7cd2c522892b6.html#ae9cb47ef10ab2cc1fad7cd2c522892b6" title=" " alt="" coords="5,5,122,32"/>
+<area shape="poly" title=" " alt="" coords="154,21,122,21,122,16,154,16"/>
+</map>
+</div>
+
 </div>
 </div>
 </div><!-- contents -->

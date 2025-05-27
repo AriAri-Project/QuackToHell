@@ -118,9 +118,9 @@ AQVillageGameState에 대한 상속 다이어그램 : </div>
 <div class="dyncontent">
 <div class="center"><img src="class_a_q_village_game_state__inherit__graph.png" border="0" usemap="#a_a_q_village_game_state_inherit__map" alt="Inheritance graph"/></div>
 <map name="a_a_q_village_game_state_inherit__map" id="a_a_q_village_game_state_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,123,219,555"/>
-<area shape="rect" title=" " alt="" coords="70,5,155,75"/>
-<area shape="poly" title=" " alt="" coords="115,89,115,123,110,123,110,89"/>
+<area shape="rect" title=" " alt="" coords="5,123,247,560"/>
+<area shape="rect" title=" " alt="" coords="84,5,169,75"/>
+<area shape="poly" title=" " alt="" coords="129,90,129,123,124,123,124,90"/>
 </map>
 </div>
 <div class="dynheader">
@@ -128,9 +128,9 @@ AQVillageGameState에 대한 협력 다이어그램:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_a_q_village_game_state__coll__graph.png" border="0" usemap="#a_a_q_village_game_state_coll__map" alt="Collaboration graph"/></div>
 <map name="a_a_q_village_game_state_coll__map" id="a_a_q_village_game_state_coll__map">
-<area shape="rect" title=" " alt="" coords="5,123,219,555"/>
-<area shape="rect" title=" " alt="" coords="70,5,155,75"/>
-<area shape="poly" title=" " alt="" coords="115,89,115,123,110,123,110,89"/>
+<area shape="rect" title=" " alt="" coords="5,123,247,560"/>
+<area shape="rect" title=" " alt="" coords="84,5,169,75"/>
+<area shape="poly" title=" " alt="" coords="129,90,129,123,124,123,124,90"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -143,8 +143,8 @@ Public 멤버 함수</h2></td></tr>
 <tr class="memitem:a9c8aaa972b259aa1aaaba101d8e91ac8" id="r_a9c8aaa972b259aa1aaaba101d8e91ac8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_village_game_state_a9c8aaa972b259aa1aaaba101d8e91ac8.html#a9c8aaa972b259aa1aaaba101d8e91ac8">EndVillageActivity</a> ()</td></tr>
 <tr class="memdesc:a9c8aaa972b259aa1aaaba101d8e91ac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">타이머가 울린 뒤, 마을활동을 마무리하는 함수입니다.  <br /></td></tr>
 <tr class="separator:a9c8aaa972b259aa1aaaba101d8e91ac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1b04d94ad04e97b80641340591e176d8" id="r_a1b04d94ad04e97b80641340591e176d8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_village_game_state_a1b04d94ad04e97b80641340591e176d8.html#a1b04d94ad04e97b80641340591e176d8">ServerRPCRequestTravelToCourt</a> (APlayerController *LocalPlayerController, bool bTravelToCourt)</td></tr>
-<tr class="separator:a1b04d94ad04e97b80641340591e176d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abdd87fead73e0fc1e93f94dc1219a530" id="r_abdd87fead73e0fc1e93f94dc1219a530"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_village_game_state_abdd87fead73e0fc1e93f94dc1219a530.html#abdd87fead73e0fc1e93f94dc1219a530">ServerRPCRequestTravelToCourt</a> (<a class="el" href="class_a_q_player_state.html">AQPlayerState</a> *PlayerState, bool bTravelToCourt)</td></tr>
+<tr class="separator:abdd87fead73e0fc1e93f94dc1219a530"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee8eddfa5e35fe449126834705f0ddef" id="r_aee8eddfa5e35fe449126834705f0ddef"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_village_game_state_aee8eddfa5e35fe449126834705f0ddef.html#aee8eddfa5e35fe449126834705f0ddef">Tick</a> (float DeltaSeconds) override</td></tr>
 <tr class="separator:aee8eddfa5e35fe449126834705f0ddef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -162,10 +162,14 @@ Private 멤버 함수</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
 Private 속성</h2></td></tr>
+<tr class="memitem:a9d12700f6c50a44acbec070e09ba470e" id="r_a9d12700f6c50a44acbec070e09ba470e"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_village_game_state_a9d12700f6c50a44acbec070e09ba470e.html#a9d12700f6c50a44acbec070e09ba470e">bIsTimeToGoToCourt</a> = false</td></tr>
+<tr class="memdesc:a9d12700f6c50a44acbec070e09ba470e"><td class="mdescLeft">&#160;</td><td class="mdescRight">마을에서의 시간이 끝났는가  <br /></td></tr>
+<tr class="separator:a9d12700f6c50a44acbec070e09ba470e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aab5c017d2c47e0a79af4e1d3b4f94835" id="r_aab5c017d2c47e0a79af4e1d3b4f94835"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_village_game_state_aab5c017d2c47e0a79af4e1d3b4f94835.html#aab5c017d2c47e0a79af4e1d3b4f94835">ServerLeftTimeUntilTrial</a> = 0.0f</td></tr>
 <tr class="memdesc:aab5c017d2c47e0a79af4e1d3b4f94835"><td class="mdescLeft">&#160;</td><td class="mdescRight">재판까지 남은 시간  <br /></td></tr>
 <tr class="separator:aab5c017d2c47e0a79af4e1d3b4f94835"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad11c27418d5b4dd4f34789582cd6ee95" id="r_ad11c27418d5b4dd4f34789582cd6ee95"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_village_game_state_ad11c27418d5b4dd4f34789582cd6ee95.html#ad11c27418d5b4dd4f34789582cd6ee95">TimeUntilTrialMax</a> = 60*7</td></tr>
+<tr class="memitem:ad11c27418d5b4dd4f34789582cd6ee95" id="r_ad11c27418d5b4dd4f34789582cd6ee95"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_a_q_village_game_state_ad11c27418d5b4dd4f34789582cd6ee95.html#ad11c27418d5b4dd4f34789582cd6ee95">TimeUntilTrialMax</a> = 60 * 7</td></tr>
+<tr class="memdesc:ad11c27418d5b4dd4f34789582cd6ee95"><td class="mdescLeft">&#160;</td><td class="mdescRight">@breif 재판까지의 총 시간  <br /></td></tr>
 <tr class="separator:ad11c27418d5b4dd4f34789582cd6ee95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">상세한 설명</h2>

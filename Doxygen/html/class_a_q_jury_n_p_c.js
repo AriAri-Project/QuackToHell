@@ -10,9 +10,11 @@ var class_a_q_jury_n_p_c =
     [ "GetNameWidget", "class_a_q_jury_n_p_c.html#a8698ea6799d83a8cd95c2323bb6332a0", null ],
     [ "GetNPCConversationState", "class_a_q_jury_n_p_c.html#af3b663d936f24d69036e9b595ee0c87f", null ],
     [ "GetPlayer2NSpeechBubbleWidget", "class_a_q_jury_n_p_c.html#a59cdb7312b7742f76cdb3798d0309c1b", null ],
-    [ "GetSpeechBubbleWidget", "class_a_q_jury_n_p_c.html#a7ba6092e93eada45563ccb748e750215", null ],
+    [ "GetResponse", "class_a_q_jury_n_p_c.html#af49d0c6fa68a6e38e20c3536d6ec8952", null ],
+    [ "GetSpeechBubbleWidget", "class_a_q_jury_n_p_c.html#a286736d9553d06536c26e1c7e9a6d42c", null ],
     [ "OnOverlapBegin", "class_a_q_jury_n_p_c.html#ae9cb47ef10ab2cc1fad7cd2c522892b6", null ],
     [ "OnOverlapEnd", "class_a_q_jury_n_p_c.html#aa47961ada7c35442071f4dd747bb5c49", null ],
+    [ "PostInitializeComponents", "class_a_q_jury_n_p_c.html#a9c0a2473cbf6e01a2e3818dcd748d2e8", null ],
     [ "ServerRPCCanCanFinishConversN2N", "class_a_q_jury_n_p_c.html#af7e6f652038c54bcf609da6c75102c72", null ],
     [ "ServerRPCCanCanStartConversN2N", "class_a_q_jury_n_p_c.html#ae51e766903b74e2ebb84e6254ab5dfa8", null ],
     [ "SetCharacterName", "class_a_q_jury_n_p_c.html#ad23255f7ed065b9dc3becd27b68d5812", null ],
@@ -34,7 +36,9 @@ var class_a_q_jury_n_p_c =
     [ "OverlappingNPCs", "class_a_q_jury_n_p_c.html#a38f60d50b11950f351ce29d9b4634a45", null ],
     [ "Player2NSpeechBubbleWidget", "class_a_q_jury_n_p_c.html#a750cf101877cff12990ba42c4de89d0c", null ],
     [ "Player2NSpeechBubbleWidgetComponent", "class_a_q_jury_n_p_c.html#aecfb676d074b56dc0818f849fcfa2d30", null ],
-    [ "SpeechBubbleWidget", "class_a_q_jury_n_p_c.html#af0cb8e90b33278a86c56060e2b569888", null ],
+    [ "SpeechBubbleWidget", "class_a_q_jury_n_p_c.html#aae83dce8910f84fb710c4ce27906368a", null ],
     [ "SpeechBubbleWidgetComponent", "class_a_q_jury_n_p_c.html#a1997032cfce2b0cef43c178fa87267f5", null ],
-    [ "SphereRadius", "class_a_q_jury_n_p_c.html#a2a8976f4593f1f6a6c3e4ed892018fe3", null ]
+    [ "SphereRadius", "class_a_q_jury_n_p_c.html#a2a8976f4593f1f6a6c3e4ed892018fe3", null ],
+    [ "StartDialogMaxTime", "class_a_q_jury_n_p_c.html#ae701b4b519622aa9b09c747b02cb3c28", null ],
+    [ "StartDialogTimer", "class_a_q_jury_n_p_c.html#a17b33ac7fbf3cc587d149a2f92030fbe", null ]
 ];

@@ -1,5 +1,5 @@
 <map id="UQCourtInputBoxWidget" name="UQCourtInputBoxWidget">
-<area shape="rect" id="Node000001" title="법원 내 입력 박스(플레이어가 메세지를 입력하는 곳)입니다." alt="" coords="5,123,161,192"/>
-<area shape="rect" id="Node000002" title=" " alt="" coords="38,5,128,75"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="86,90,86,123,80,123,80,90"/>
+<area shape="rect" id="Node000001" title="법원 내 입력 박스(플레이어가 메세지를 입력하는 곳)입니다." alt="" coords="5,123,177,192"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="46,5,136,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="94,90,94,123,89,123,89,90"/>
 </map>

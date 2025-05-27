@@ -1,6 +1,6 @@
 <map id="BeginPlay" name="BeginPlay">
 <area shape="rect" id="Node000001" title=" " alt="" coords="241,37,321,64"/>
-<area shape="rect" id="Node000002" href="$class_a_q_village_game_state_a1b04d94ad04e97b80641340591e176d8.html#a1b04d94ad04e97b80641340591e176d8" title=" " alt="" coords="5,29,193,72"/>
+<area shape="rect" id="Node000002" href="$class_a_q_village_game_state_abdd87fead73e0fc1e93f94dc1219a530.html#abdd87fead73e0fc1e93f94dc1219a530" title=" " alt="" coords="5,29,193,72"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="225,53,193,53,193,48,225,48"/>
 <area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="128,16,117,10,99,8,82,10,72,14,68,21,69,28,64,29,63,19,68,10,81,5,99,3,119,5,131,11"/>
 </map>

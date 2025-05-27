@@ -1,35 +1,39 @@
 <map id="그래픽컬한 클래스 계통도" name="그래픽컬한 클래스 계통도">
-<area shape="rect" id="Node000000" title=" " alt="" coords="5,385,106,412"/>
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,436,106,463"/>
 <area shape="rect" id="Node000001" href="$class_u_q_chat_box_widget.html" title="녹음기위젯에서, 채팅 블록 하나하나의 위젯 (카카오톡 말풍선)" alt="" coords="197,5,330,32"/>
-<area shape="poly" id="edge36_Node000000_Node000001" title=" " alt="" coords="58,370,71,293,91,195,118,103,134,67,152,42,173,28,196,20,198,25,175,33,156,46,139,69,123,105,96,196,76,294,63,370"/>
+<area shape="poly" id="edge36_Node000000_Node000001" title=" " alt="" coords="57,420,68,334,87,221,115,113,132,71,152,42,172,28,196,20,198,25,175,33,156,46,137,73,120,115,93,222,73,334,62,421"/>
 <area shape="rect" id="Node000002" href="$class_u_q_court_input_box_widget.html" title="법원 내 입력 박스(플레이어가 메세지를 입력하는 곳)입니다." alt="" coords="181,56,347,83"/>
-<area shape="poly" id="edge37_Node000000_Node000002" title=" " alt="" coords="54,370,59,312,73,237,86,198,103,159,124,124,152,93,179,76,182,81,155,97,129,127,107,162,91,200,79,238,64,313,60,371"/>
+<area shape="poly" id="edge37_Node000000_Node000002" title=" " alt="" coords="58,420,71,344,91,246,118,153,134,117,152,93,179,76,182,80,155,97,139,120,123,155,96,247,76,345,63,421"/>
 <area shape="rect" id="Node000003" href="$class_u_q_court_timer_widget.html" title="재판장 타이머 위젯 클래스" alt="" coords="190,107,338,133"/>
-<area shape="poly" id="edge38_Node000000_Node000003" title=" " alt="" coords="57,370,64,320,81,259,109,197,128,168,152,143,169,132,189,124,191,129,172,136,155,147,132,172,113,199,86,261,70,322,62,370"/>
+<area shape="poly" id="edge38_Node000000_Node000003" title=" " alt="" coords="54,421,59,363,73,288,86,248,103,210,124,174,152,143,169,131,189,123,191,128,172,136,155,147,129,178,107,213,91,250,79,289,64,363,60,421"/>
 <area shape="rect" id="Node000004" href="$class_u_q_default_village_widget.html" title="마을에 기본적으로 존재해야 하는 위젯입니다. (녹음기버튼, .. )" alt="" coords="182,157,346,184"/>
-<area shape="poly" id="edge39_Node000000_Node000004" title=" " alt="" coords="60,369,70,330,88,282,115,234,132,213,152,194,181,178,183,183,155,198,136,216,119,237,93,284,75,331,65,371"/>
+<area shape="poly" id="edge39_Node000000_Node000004" title=" " alt="" coords="57,420,64,371,81,310,109,247,128,219,152,194,181,178,183,182,155,198,132,222,113,250,86,312,70,372,62,421"/>
 <area shape="rect" id="Node000005" href="$class_u_q_e_key_widget.html" title="E대화하기 키 UI입니다." alt="" coords="207,208,321,235"/>
-<area shape="poly" id="edge40_Node000000_Node000005" title=" " alt="" coords="65,369,97,306,122,273,152,244,178,231,206,223,207,228,180,236,155,249,125,276,101,309,69,372"/>
+<area shape="poly" id="edge40_Node000000_Node000005" title=" " alt="" coords="60,420,70,380,88,333,115,285,132,263,152,245,178,230,206,222,207,227,180,235,155,249,136,267,119,288,93,335,75,382,65,421"/>
 <area shape="rect" id="Node000006" href="$class_u_q_evidence_exam_widget.html" title="증거조사 UI입니다. 최종적으로 선택 한 증거를 가지고 상대방과 의견논쟁을 하는 UI입니다." alt="" coords="179,259,349,285"/>
-<area shape="poly" id="edge41_Node000000_Node000006" title=" " alt="" coords="73,371,107,331,128,312,152,295,179,283,181,288,155,300,132,316,111,335,77,374"/>
+<area shape="poly" id="edge41_Node000000_Node000006" title=" " alt="" coords="65,420,97,357,122,323,152,295,177,282,179,287,155,300,125,327,101,359,69,423"/>
 <area shape="rect" id="Node000007" href="$class_u_q_exam_defendant_widget.html" title="피고인심문 UI입니다." alt="" coords="176,309,352,336"/>
-<area shape="poly" id="edge42_Node000000_Node000007" title=" " alt="" coords="92,375,153,346,190,334,192,339,155,350,94,379"/>
-<area shape="rect" id="Node000008" href="$class_u_q_inventory_widget.html" title="인벤토리 위젯입니다." alt="" coords="196,360,332,387"/>
-<area shape="poly" id="edge43_Node000000_Node000008" title=" " alt="" coords="121,388,195,379,196,384,121,393"/>
-<area shape="rect" id="Node000009" href="$class_u_q_map_widget.html" title="지도위젯입니다." alt="" coords="210,411,318,437"/>
-<area shape="poly" id="edge44_Node000000_Node000009" title=" " alt="" coords="121,404,210,415,209,420,121,409"/>
-<area shape="rect" id="Node000010" href="$class_u_q_name_widget.html" title="이름 UI 클래스" alt="" coords="205,461,322,488"/>
-<area shape="poly" id="edge45_Node000000_Node000010" title=" " alt="" coords="94,418,155,447,205,461,204,467,153,452,92,423"/>
-<area shape="rect" id="Node000011" href="$class_u_q_opening_statement_widget.html" title="재판장 모두진술 UI입니다." alt="" coords="169,512,359,539"/>
-<area shape="poly" id="edge46_Node000000_Node000011" title=" " alt="" coords="77,423,111,462,132,482,155,498,181,509,179,514,152,502,128,486,107,466,73,427"/>
-<area shape="rect" id="Node000012" href="$class_u_q_p2_n_widget.html" title="P2N 대화 UI입니다." alt="" coords="210,563,318,589"/>
-<area shape="poly" id="edge47_Node000000_Node000012" title=" " alt="" coords="69,425,101,489,125,521,155,548,181,562,210,569,209,575,179,567,152,553,122,525,97,491,65,428"/>
-<area shape="rect" id="Node000013" href="$class_u_q_player2_n_speech_bubble_widget.html" title="공백 말풍선에 대한 widget 입니다. 상대방 플레이어가 npc와 대화 시 해당 말풍선이 대화 대상들의 머리 위에 뜹니다." alt="" coords="154,613,374,640"/>
-<area shape="poly" id="edge48_Node000000_Node000013" title=" " alt="" coords="65,427,75,466,93,513,119,560,136,581,155,599,174,611,171,615,152,603,132,585,115,563,88,515,70,468,60,428"/>
-<area shape="rect" id="Node000014" href="$class_u_q_record_widget.html" title="녹음기록 화면의 위젯입니다." alt="" coords="202,664,326,691"/>
-<area shape="poly" id="edge49_Node000000_Node000014" title=" " alt="" coords="62,427,70,476,86,536,113,598,132,626,155,650,177,663,202,671,200,676,175,668,152,654,128,629,109,601,81,538,64,477,57,428"/>
-<area shape="rect" id="Node000015" href="$class_u_q_speech_bubble_widget.html" title="말풍선 위젯입니다." alt="" coords="181,715,347,741"/>
-<area shape="poly" id="edge50_Node000000_Node000015" title=" " alt="" coords="60,427,64,485,79,559,91,598,107,635,129,670,155,701,182,717,179,721,152,705,124,674,103,638,86,600,73,560,59,485,54,427"/>
-<area shape="rect" id="Node000016" href="$class_u_q_village_timer_widget.html" title="마을 타이머 위젯입니다." alt="" coords="187,765,341,792"/>
-<area shape="poly" id="edge51_Node000000_Node000016" title=" " alt="" coords="63,427,76,503,96,601,123,693,139,728,156,751,170,762,187,770,185,774,168,767,152,755,134,731,118,695,91,602,71,504,58,428"/>
+<area shape="poly" id="edge42_Node000000_Node000007" title=" " alt="" coords="73,421,107,382,128,362,152,346,179,334,181,339,155,350,132,366,111,386,77,425"/>
+<area shape="rect" id="Node000008" href="$class_u_q_home_widget.html" title="홈 씬의 UI에 관련된 기능이 모아져있는 클래스입니다." alt="" coords="205,360,322,387"/>
+<area shape="poly" id="edge43_Node000000_Node000008" title=" " alt="" coords="92,425,153,396,204,381,205,387,155,401,94,430"/>
+<area shape="rect" id="Node000009" href="$class_u_q_inventory_widget.html" title="인벤토리 위젯입니다." alt="" coords="196,411,332,437"/>
+<area shape="poly" id="edge44_Node000000_Node000009" title=" " alt="" coords="121,439,195,430,196,435,121,444"/>
+<area shape="rect" id="Node000010" href="$class_u_q_map_widget.html" title="지도위젯입니다." alt="" coords="210,461,318,488"/>
+<area shape="poly" id="edge45_Node000000_Node000010" title=" " alt="" coords="121,455,210,466,209,471,121,460"/>
+<area shape="rect" id="Node000011" href="$class_u_q_name_widget.html" title="이름 UI 클래스" alt="" coords="205,512,322,539"/>
+<area shape="poly" id="edge46_Node000000_Node000011" title=" " alt="" coords="94,469,155,498,205,512,204,517,153,502,92,473"/>
+<area shape="rect" id="Node000012" href="$class_u_q_opening_statement_widget.html" title="재판장 모두진술 UI입니다." alt="" coords="169,563,359,589"/>
+<area shape="poly" id="edge47_Node000000_Node000012" title=" " alt="" coords="77,474,111,513,132,532,155,548,181,560,179,565,152,553,128,536,107,517,73,477"/>
+<area shape="rect" id="Node000013" href="$class_u_q_p2_n_widget.html" title="P2N 대화 UI입니다." alt="" coords="210,613,318,640"/>
+<area shape="poly" id="edge48_Node000000_Node000013" title=" " alt="" coords="69,476,101,539,125,572,155,599,181,612,210,620,209,625,179,617,152,604,122,575,97,542,65,479"/>
+<area shape="rect" id="Node000014" href="$class_u_q_player2_n_speech_bubble_widget.html" title="공백 말풍선에 대한 widget 입니다. 상대방 플레이어가 npc와 대화 시 해당 말풍선이 대화 대상들의 머리 위에 뜹니다." alt="" coords="154,664,374,691"/>
+<area shape="poly" id="edge49_Node000000_Node000014" title=" " alt="" coords="65,477,75,517,93,564,119,611,136,632,155,650,174,661,171,666,152,654,132,635,115,614,88,566,70,518,60,479"/>
+<area shape="rect" id="Node000015" href="$class_u_q_record_widget.html" title="녹음기록 화면의 위젯입니다." alt="" coords="202,715,326,741"/>
+<area shape="poly" id="edge50_Node000000_Node000015" title=" " alt="" coords="62,478,70,526,86,587,113,649,132,676,155,701,177,714,202,722,200,727,175,719,152,705,128,680,109,651,81,589,64,528,57,478"/>
+<area shape="rect" id="Node000016" href="$class_u_q_robby_widget.html" title="로비 씬의 UI에 관련된 기능이 모아져있는 클래스입니다." alt="" coords="204,765,324,792"/>
+<area shape="poly" id="edge51_Node000000_Node000016" title=" " alt="" coords="60,477,64,535,79,610,91,648,107,686,129,721,155,751,178,766,204,773,202,778,176,770,152,755,124,724,103,689,86,650,73,611,59,536,54,478"/>
+<area shape="rect" id="Node000017" href="$class_u_q_speech_bubble_widget.html" title="말풍선 위젯입니다." alt="" coords="181,816,347,843"/>
+<area shape="poly" id="edge52_Node000000_Node000017" title=" " alt="" coords="63,478,76,554,96,652,123,743,139,779,155,802,182,818,179,823,152,806,134,781,118,745,91,653,71,555,58,478"/>
+<area shape="rect" id="Node000018" href="$class_u_q_village_timer_widget.html" title="마을 타이머 위젯입니다." alt="" coords="187,867,341,893"/>
+<area shape="poly" id="edge53_Node000000_Node000018" title=" " alt="" coords="62,478,73,564,93,677,120,784,137,825,156,853,170,864,187,871,185,876,167,868,152,857,132,828,115,786,87,678,68,565,57,478"/>
 </map>

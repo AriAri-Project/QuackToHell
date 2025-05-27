@@ -1,5 +1,9 @@
 <map id="OnOverlapBegin" name="OnOverlapBegin">
-<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,122,32"/>
-<area shape="rect" id="Node000002" href="$class_a_q_n_p_c_a7ba6092e93eada45563ccb748e750215.html#a7ba6092e93eada45563ccb748e750215" title="스피치버블 위젯을 리턴합니다." alt="" coords="170,5,393,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="122,16,154,16,154,21,122,21"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,64,122,91"/>
+<area shape="rect" id="Node000002" href="$class_a_q_n_p_c_a286736d9553d06536c26e1c7e9a6d42c.html#a286736d9553d06536c26e1c7e9a6d42c" title="스피치버블 위젯을 리턴합니다." alt="" coords="170,5,393,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,61,169,41,199,34,201,39,170,47,107,66"/>
+<area shape="rect" id="Node000003" href="$class_u_q_speech_bubble_widget_a38cf5386a026a5759530430f949865a9.html#a38cf5386a026a5759530430f949865a9" title="항상 카메라 기준으로 말풍선이 자연스럽게 보이도록합니다." alt="" coords="198,56,364,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="122,75,183,75,183,80,122,80"/>
+<area shape="rect" id="Node000004" href="$class_u_q_speech_bubble_widget_a350e80c5b142db22ab820dbd1da860ba.html#a350e80c5b142db22ab820dbd1da860ba" title="말풍선의 글씨를 업데이트합니다." alt="" coords="198,123,364,165"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="109,89,170,108,193,115,191,120,169,113,107,94"/>
 </map>

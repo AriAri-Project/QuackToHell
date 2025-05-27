@@ -128,31 +128,36 @@ $(function(){initNavTree('class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415
 <p></p>
 <p>얼음땡 </p>
 
-<p class="definition"><a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html">QDynamicNPCController.cpp</a> 파일의 <a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html#l00093">93</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   94</span>{</div>
-<div class="line"><span class="lineno">   95</span>    <span class="comment">//폰 정보 가져오기</span></div>
-<div class="line"><span class="lineno">   96</span>    TObjectPtr&lt;APawn&gt; ControlledPawn = this-&gt;GetPawn();</div>
-<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">if</span> (!ControlledPawn) {</div>
-<div class="line"><span class="lineno">   98</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">   99</span>    }</div>
-<div class="line"><span class="lineno">  100</span> </div>
-<div class="line"><span class="lineno">  101</span>    <span class="comment">//movement component 가져오기</span></div>
-<div class="line"><span class="lineno">  102</span>    TObjectPtr&lt;UCharacterMovementComponent&gt; MovementComponent = ControlledPawn-&gt;FindComponentByClass&lt;UCharacterMovementComponent&gt;();</div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">if</span> (MovementComponent) {</div>
-<div class="line"><span class="lineno">  104</span>        MovementComponent-&gt;SetComponentTickEnabled(<span class="keyword">true</span>);<span class="comment">//틱 활성화</span></div>
-<div class="line"><span class="lineno">  105</span>        MovementComponent-&gt;Activate(<span class="keyword">true</span>);<span class="comment">//이동 활성화</span></div>
-<div class="line"><span class="lineno">  106</span>    }</div>
-<div class="line"><span class="lineno">  107</span> </div>
-<div class="line"><span class="lineno">  108</span>    UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;NPC 이동 재개.&quot;</span>));</div>
-<div class="line"><span class="lineno">  109</span>}</div>
+<p class="definition"><a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html">QDynamicNPCController.cpp</a> 파일의 <a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html#l00122">122</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  123</span>{</div>
+<div class="line"><span class="lineno">  124</span>    <span class="comment">//폰 정보 가져오기</span></div>
+<div class="line"><span class="lineno">  125</span>    TObjectPtr&lt;APawn&gt; ControlledPawn = this-&gt;GetPawn();</div>
+<div class="line"><span class="lineno">  126</span>    <span class="keywordflow">if</span> (!ControlledPawn) {</div>
+<div class="line"><span class="lineno">  127</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  128</span>    }</div>
+<div class="line"><span class="lineno">  129</span> </div>
+<div class="line"><span class="lineno">  130</span>    <span class="comment">//movement component 가져오기</span></div>
+<div class="line"><span class="lineno">  131</span>    TObjectPtr&lt;UCharacterMovementComponent&gt; MovementComponent = ControlledPawn-&gt;FindComponentByClass&lt;UCharacterMovementComponent&gt;();</div>
+<div class="line"><span class="lineno">  132</span>    <span class="keywordflow">if</span> (MovementComponent) {</div>
+<div class="line"><span class="lineno">  133</span>        MovementComponent-&gt;SetComponentTickEnabled(<span class="keyword">true</span>);<span class="comment">//틱 활성화</span></div>
+<div class="line"><span class="lineno">  134</span>        MovementComponent-&gt;Activate(<span class="keyword">true</span>);<span class="comment">//이동 활성화</span></div>
+<div class="line"><span class="lineno">  135</span>    }</div>
+<div class="line"><span class="lineno">  136</span> </div>
+<div class="line"><span class="lineno">  137</span>    UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;NPC 이동 재개.&quot;</span>));</div>
+<div class="line"><span class="lineno">  138</span>}</div>
 </div><!-- fragment --><div class="dynheader">
 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089_ae24647d27206cc5415d6fda947b03089_icgraph.png" border="0" usemap="#aclass_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089_ae24647d27206cc5415d6fda947b03089_icgraph" alt=""/></div>
 <map name="aclass_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089_ae24647d27206cc5415d6fda947b03089_icgraph" id="aclass_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089_ae24647d27206cc5415d6fda947b03089_icgraph">
-<area shape="rect" title=" " alt="" coords="135,5,246,32"/>
-<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d.html#afd156935d4f1dc9acab4e7095922240d" title="NPC와의 대화중단 요청을 처리하는 함수입니다." alt="" coords="5,5,87,32"/>
-<area shape="poly" title=" " alt="" coords="119,21,87,21,87,16,119,16"/>
+<area shape="rect" title=" " alt="" coords="384,55,495,81"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d.html#afd156935d4f1dc9acab4e7095922240d" title="NPC와의 대화중단 요청을 처리하는 함수입니다." alt="" coords="255,29,336,56"/>
+<area shape="poly" title=" " alt="" coords="368,58,336,52,337,47,369,53"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_ae758c53fe5b59f4c04156d1115383b97.html#ae758c53fe5b59f4c04156d1115383b97" title="N2N, NMonolog상황에서 호출됩니다." alt="" coords="5,29,207,56"/>
+<area shape="poly" title=" " alt="" coords="368,73,254,71,174,59,175,54,255,65,368,68"/>
+<area shape="poly" title=" " alt="" coords="239,54,207,54,207,49,239,48"/>
+<area shape="poly" title=" " alt="" coords="222,31,255,32,254,38,222,37"/>
+<area shape="poly" title=" " alt="" coords="138,16,127,10,106,8,86,10,76,15,73,20,78,27,74,30,68,21,72,11,85,5,106,3,129,5,141,12"/>
 </map>
 </div>
 

@@ -125,27 +125,27 @@ $(function(){initNavTree('struct_f_conversation_list_a443438de24cbb6cd552c13b289
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="_q_conversation_data_8h_source.html">QConversationData.h</a> 파일의 <a class="el" href="_q_conversation_data_8h_source.html#l00139">139</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  140</span>    {</div>
-<div class="line"><span class="lineno">  141</span>        <span class="comment">// 대화기록이 없다면 바로 return</span></div>
-<div class="line"><span class="lineno">  142</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="struct_f_conversation_list_a12c6320ad5f5abae49f874ece59ec0bc.html#a12c6320ad5f5abae49f874ece59ec0bc">ConversationList</a>.Num() == 0)</div>
-<div class="line"><span class="lineno">  143</span>        {</div>
-<div class="line"><span class="lineno">  144</span>            UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;ConversationList is empty in GetRecordWithID!&quot;</span>));</div>
-<div class="line"><span class="lineno">  145</span>            <span class="keywordflow">return</span> TArray&lt;FConversationRecord&gt;();</div>
-<div class="line"><span class="lineno">  146</span>        }</div>
-<div class="line"><span class="lineno">  147</span>        </div>
-<div class="line"><span class="lineno">  148</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="struct_f_conversation_list_a12c6320ad5f5abae49f874ece59ec0bc.html#a12c6320ad5f5abae49f874ece59ec0bc">ConversationList</a>.FilterByPredicate([ID](<span class="keyword">const</span> FConversationRecord&amp; <a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36">Record</a>)</div>
-<div class="line"><span class="lineno">  149</span>        {</div>
-<div class="line"><span class="lineno">  150</span>            <span class="comment">// Player와 관련된 대화가 아니라면 제외</span></div>
-<div class="line"><span class="lineno">  151</span>            <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36">Record</a>.GetConversationType() != EConversationType::P2N &amp;&amp; <a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36">Record</a>.GetConversationType() != EConversationType::PStart)</div>
-<div class="line"><span class="lineno">  152</span>            {</div>
-<div class="line"><span class="lineno">  153</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><span class="lineno">  154</span>            }</div>
-<div class="line"><span class="lineno">  155</span>            <span class="keywordflow">return</span> (<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36">Record</a>.GetSpeakerID() == ID || <a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36">Record</a>.GetListenerID() == ID);</div>
-<div class="line"><span class="lineno">  156</span>        });</div>
-<div class="line"><span class="lineno">  157</span>    }</div>
+<p class="definition"><a class="el" href="_q_conversation_data_8h_source.html">QConversationData.h</a> 파일의 <a class="el" href="_q_conversation_data_8h_source.html#l00140">140</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  141</span>    {</div>
+<div class="line"><span class="lineno">  142</span>        <span class="comment">// 대화기록이 없다면 바로 return</span></div>
+<div class="line"><span class="lineno">  143</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="struct_f_conversation_list_a12c6320ad5f5abae49f874ece59ec0bc.html#a12c6320ad5f5abae49f874ece59ec0bc">ConversationList</a>.Num() == 0)</div>
+<div class="line"><span class="lineno">  144</span>        {</div>
+<div class="line"><span class="lineno">  145</span>            UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;ConversationList is empty in GetRecordWithID!&quot;</span>));</div>
+<div class="line"><span class="lineno">  146</span>            <span class="keywordflow">return</span> TArray&lt;FConversationRecord&gt;();</div>
+<div class="line"><span class="lineno">  147</span>        }</div>
+<div class="line"><span class="lineno">  148</span>        </div>
+<div class="line"><span class="lineno">  149</span>        <span class="keywordflow">return</span> <a class="code hl_variable" href="struct_f_conversation_list_a12c6320ad5f5abae49f874ece59ec0bc.html#a12c6320ad5f5abae49f874ece59ec0bc">ConversationList</a>.FilterByPredicate([ID](<span class="keyword">const</span> FConversationRecord&amp; <a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36">Record</a>)</div>
+<div class="line"><span class="lineno">  150</span>        {</div>
+<div class="line"><span class="lineno">  151</span>            <span class="comment">// Player와 관련된 대화가 아니라면 제외</span></div>
+<div class="line"><span class="lineno">  152</span>            <span class="keywordflow">if</span> (<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36">Record</a>.GetConversationType() != EConversationType::P2N &amp;&amp; <a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36">Record</a>.GetConversationType() != EConversationType::PStart)</div>
+<div class="line"><span class="lineno">  153</span>            {</div>
+<div class="line"><span class="lineno">  154</span>                <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><span class="lineno">  155</span>            }</div>
+<div class="line"><span class="lineno">  156</span>            <span class="keywordflow">return</span> (<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36">Record</a>.GetSpeakerID() == ID || <a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36">Record</a>.GetListenerID() == ID);</div>
+<div class="line"><span class="lineno">  157</span>        });</div>
+<div class="line"><span class="lineno">  158</span>    }</div>
 <div class="ttc" id="a_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e_html_a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36"><div class="ttname"><a href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6a0d9eaee314c567fd72fb97ee707a36">EVillageUIType::Record</a></div><div class="ttdeci">@ Record</div><div class="ttdef"><b>Definition</b> <a href="_q_village_u_i_manager_8h_source.html#l00018">QVillageUIManager.h:18</a></div></div>
-<div class="ttc" id="astruct_f_conversation_list_a12c6320ad5f5abae49f874ece59ec0bc_html_a12c6320ad5f5abae49f874ece59ec0bc"><div class="ttname"><a href="struct_f_conversation_list_a12c6320ad5f5abae49f874ece59ec0bc.html#a12c6320ad5f5abae49f874ece59ec0bc">FConversationList::ConversationList</a></div><div class="ttdeci">TArray&lt; FConversationRecord &gt; ConversationList</div><div class="ttdef"><b>Definition</b> <a href="_q_conversation_data_8h_source.html#l00104">QConversationData.h:104</a></div></div>
+<div class="ttc" id="astruct_f_conversation_list_a12c6320ad5f5abae49f874ece59ec0bc_html_a12c6320ad5f5abae49f874ece59ec0bc"><div class="ttname"><a href="struct_f_conversation_list_a12c6320ad5f5abae49f874ece59ec0bc.html#a12c6320ad5f5abae49f874ece59ec0bc">FConversationList::ConversationList</a></div><div class="ttdeci">TArray&lt; FConversationRecord &gt; ConversationList</div><div class="ttdef"><b>Definition</b> <a href="_q_conversation_data_8h_source.html#l00105">QConversationData.h:105</a></div></div>
 </div><!-- fragment -->
 </div>
 </div>

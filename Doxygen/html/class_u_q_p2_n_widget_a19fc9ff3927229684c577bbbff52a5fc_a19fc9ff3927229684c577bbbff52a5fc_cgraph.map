@@ -1,0 +1,5 @@
+<map id="DisplayNPCResponse" name="DisplayNPCResponse">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,159,32"/>
+<area shape="rect" id="Node000002" href="$class_u_q_p2_n_widget_a295cbf313003db73b1ec4d8c916c6cf7.html#a295cbf313003db73b1ec4d8c916c6cf7" title="대화상자의 글씨를 업데이트합니다." alt="" coords="207,5,324,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="159,16,191,16,191,21,159,21"/>
+</map>

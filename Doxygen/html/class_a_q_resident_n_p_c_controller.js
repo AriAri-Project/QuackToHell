@@ -2,9 +2,10 @@ var class_a_q_resident_n_p_c_controller =
 [
     [ "EndDialog", "class_a_q_resident_n_p_c_controller.html#afd156935d4f1dc9acab4e7095922240d", null ],
     [ "FreezePawn", "class_a_q_resident_n_p_c_controller.html#a47d70e05956f914b4d9e8949fc200efe", null ],
-    [ "Response", "class_a_q_resident_n_p_c_controller.html#a0b1660ce977f098a6b6248c82c8442b1", null ],
+    [ "MulticastShowSpeechBubbleWithText", "class_a_q_resident_n_p_c_controller.html#aee1b6397d4c724bc9cbc06eb7686bb7a", null ],
+    [ "MulticastTurnOffSpeechBubble", "class_a_q_resident_n_p_c_controller.html#ae758c53fe5b59f4c04156d1115383b97", null ],
     [ "RotateToOpponent", "class_a_q_resident_n_p_c_controller.html#a3d9641a6e70a40607c740565b6326059", null ],
-    [ "StartDialog", "class_a_q_resident_n_p_c_controller.html#ac697069a9876aa5aa865779f60917d86", null ],
+    [ "StartDialog", "class_a_q_resident_n_p_c_controller.html#ab3e669df6f85181d0c0e4632a4f3674a", null ],
     [ "UnFreezePawn", "class_a_q_resident_n_p_c_controller.html#ae24647d27206cc5415d6fda947b03089", null ],
     [ "UpdateRotation", "class_a_q_resident_n_p_c_controller.html#acef2e8431680d8a7062f863e5d4f8411", null ],
     [ "BehaviorTree", "class_a_q_resident_n_p_c_controller.html#a0920ee7121b600027bc33e4afc53cdea", null ],

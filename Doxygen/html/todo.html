@@ -107,19 +107,23 @@ $(function(){initNavTree('todo.html',''); initResizable(true); });
 <div class="contents">
 <div class="textblock"><dl class="reflist">
 <dt>멤버 <a class="el" href="class_a_q_court_u_i_manager_a9bb13a3863cd9093dba0fb880eec820d.html#a9bb13a3863cd9093dba0fb880eec820d">AQCourtUIManager::IsCourtMap</a>  ()</dt>
-<dd><a class="anchor" id="_todo000013"></a>재판장맵으로 변경. </dd>
-<dt>멤버 <a class="el" href="class_a_q_dynamic_n_p_c_controller_ac697069a9876aa5aa865779f60917d86.html#ac697069a9876aa5aa865779f60917d86">AQDynamicNPCController::StartDialog</a>  (TObjectPtr&lt; APawn &gt; MyPawn, <a class="el" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840e" title="대화 유형">ENPCConversationType</a> ConversationType)</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000004"></a>N2N 대화상태 변경하라는 함수를 서버로부터 호출해야함 </p>
-<p class="enddd"><a class="anchor" id="_todo000005"></a>대화끝낼 때 N2N 대화상태 변경하라는 함수를 서버로부터 호출해야함  </p>
-</dd>
+<dd><a class="anchor" id="_todo000010"></a>재판장맵으로 변경. </dd>
+<dt>멤버 <a class="el" href="class_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a.html#ab3e669df6f85181d0c0e4632a4f3674a">AQDynamicNPCController::StartDialog</a>  (TObjectPtr&lt; APawn &gt; Pawn, <a class="el" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840e" title="대화 유형">ENPCConversationType</a> ConversationType)</dt>
+<dd><a class="anchor" id="_todo000002"></a>서버: 대화 시작 로직 전개하기 : 상태관리, 기타조건 .. 처리하기 //조건 : 처음 나타나는 텍스트는 “(상대 망자NPC 이름), 아까(가장 마지막으로 대화한 플레이어 닉네임)과 대화를 나누었습니다.”이다. 더 자세한 조건 : 컨플루언스 확인하기 <a href="https://ariari-ewha.atlassian.net/wiki/spaces/~712020e9509d1767994750b2ca1d1e408ddb2d/pages/42893472">https://ariari-ewha.atlassian.net/wiki/spaces/~712020e9509d1767994750b2ca1d1e408ddb2d/pages/42893472</a>  </dd>
+<dt>멤버 <a class="el" href="class_a_q_n_p_c_a286736d9553d06536c26e1c7e9a6d42c.html#a286736d9553d06536c26e1c7e9a6d42c">AQNPC::GetSpeechBubbleWidget</a>  () const</dt>
+<dd><a class="anchor" id="_todo000001"></a>SpeechBubbleWidget이 null이 아니게가져오기.  </dd>
+<dt>멤버 <a class="el" href="class_a_q_player_controller_a2fb3c0ec625280bd51ca1c64770ae425.html#a2fb3c0ec625280bd51ca1c64770ae425">AQPlayerController::Tick</a>  (float DeltaTime) override</dt>
+<dd><a class="anchor" id="_todo000003"></a>인수 형식맞게 변환하기.  </dd>
 <dt>멤버 <a class="el" href="class_a_q_player_state_a42d59caa6617569f0f3a4451aab8887a.html#a42d59caa6617569f0f3a4451aab8887a">AQPlayerState::GetRecordWithConvID</a>  (int32 ConversationID) const</dt>
-<dd><a class="anchor" id="_todo000012"></a>지금은 PlayerID 할당이 제대로 되어있지 않으므로 주석처리. 구현한 이후 다시 주석해제 필요  </dd>
-<dt>멤버 <a class="el" href="class_a_q_village_game_state_ad11c27418d5b4dd4f34789582cd6ee95.html#ad11c27418d5b4dd4f34789582cd6ee95">AQVillageGameState::TimeUntilTrialMax</a>  </dt>
-<dd><a class="anchor" id="_todo000003"></a>60*7로 되돌리기.  </dd>
+<dd><a class="anchor" id="_todo000009"></a>지금은 PlayerID 할당이 제대로 되어있지 않으므로 주석처리. 구현한 이후 다시 주석해제 필요  </dd>
 <dt>멤버 <a class="el" href="class_a_q_village_u_i_manager_a1da182c7b2c5dcb13c097d45ccf53526.html#a1da182c7b2c5dcb13c097d45ccf53526">AQVillageUIManager::IsVillageMap</a>  ()</dt>
-<dd><a class="anchor" id="_todo000016"></a>마을맵으로 변경. </dd>
+<dd><a class="anchor" id="_todo000014"></a>마을맵으로 변경. </dd>
+<dt>멤버 <a class="el" href="class_u_q_p2_n_widget_a19fc9ff3927229684c577bbbff52a5fc.html#a19fc9ff3927229684c577bbbff52a5fc">UQP2NWidget::DisplayNPCResponse</a>  (<a class="el" href="struct_f_open_a_i_response.html" title="OpenAI API 응답을 위한 구조체">FOpenAIResponse</a> NPCStartResponse)</dt>
+<dd><a class="anchor" id="_todo000012"></a>유진 : 서버측에서 NPC응답 왔을 때 실행할 함수 여기서 호출  </dd>
+<dt>멤버 <a class="el" href="class_u_q_p2_n_widget_a4443ff350fe14fe5a16bce2cbaf75b82.html#a4443ff350fe14fe5a16bce2cbaf75b82">UQP2NWidget::HandleEnterKeyPress</a>  ()</dt>
+<dd><a class="anchor" id="_todo000011"></a>이부분 AIController 사용하지 않도록 고치기  </dd>
 <dt>멤버 <a class="el" href="class_u_q_record_widget_a26041dc84f7a8a8dd29e0df7ac4b42c0.html#a26041dc84f7a8a8dd29e0df7ac4b42c0">UQRecordWidget::UQRecordWidget</a>  (const FObjectInitializer &amp;ObjectInitializer)</dt>
-<dd><a class="anchor" id="_todo000015"></a>id말고 이름으로 띄우도록 </dd>
+<dd><a class="anchor" id="_todo000013"></a>id말고 이름으로 띄우도록 </dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
