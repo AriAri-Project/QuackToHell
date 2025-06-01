@@ -62,10 +62,10 @@ void AQVillageGameState::EndVillageActivity_Implementation()
 			TObjectPtr<AQVillageUIManager> VillageUIManager =  QPlayerController->GetVillageUIManager();
 			VillageUIManager->MulticastEndupUI();
 			//안내문구띄우기
-			Cast<UQDefaultVillageWidget>(VillageUIManager->GetActivedVillageWidgets()[EVillageUIType::DefaultVillageUI])->TurnOnGrandTitle();
-			Cast<UQDefaultVillageWidget>(VillageUIManager->GetActivedVillageWidgets()[EVillageUIType::DefaultVillageUI])->TurnOnMiddleTitle();
-			Cast<UQDefaultVillageWidget>(VillageUIManager->GetActivedVillageWidgets()[EVillageUIType::DefaultVillageUI])->SetGrandTitle(FText::FromString(TEXT("시간 종료!")));
-			Cast<UQDefaultVillageWidget>(VillageUIManager->GetActivedVillageWidgets()[EVillageUIType::DefaultVillageUI])->SetMiddleTitle(FText::FromString(TEXT("곧 재판장으로 이동합니다.")));
+			Cast<UQDefaultVillageWidget>(VillageUIManager->GetActivedWidget(EVillageUIType::DefaultVillageUI))->TurnOnGrandTitle();
+			Cast<UQDefaultVillageWidget>(VillageUIManager->GetActivedWidget(EVillageUIType::DefaultVillageUI))->TurnOnMiddleTitle();
+			Cast<UQDefaultVillageWidget>(VillageUIManager->GetActivedWidget(EVillageUIType::DefaultVillageUI))->SetGrandTitle(FText::FromString(TEXT("시간 종료!")));
+			Cast<UQDefaultVillageWidget>(VillageUIManager->GetActivedWidget(EVillageUIType::DefaultVillageUI))->SetMiddleTitle(FText::FromString(TEXT("곧 재판장으로 이동합니다.")));
 			
 		}
 		else {
@@ -76,24 +76,17 @@ void AQVillageGameState::EndVillageActivity_Implementation()
 
 void AQVillageGameState::MulticastRPCUpdateServerTime_Implementation()
 {
-	//있는지 먼저 확인하고, 없으면 생성. 
-	if (!AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets().Contains(EVillageUIType::VillageTimer)) {
-		AQVillageUIManager::GetInstance(GetWorld())->TurnOnUI(EVillageUIType::VillageTimer);
-	}
 	
+	//위젯 가져오고, 시간 업데이트.
+	TObjectPtr<UQVillageTimerWidget> VillageTimerUI = Cast<UQVillageTimerWidget>(AQVillageUIManager::GetInstance(GetWorld())->GetActivedWidget(EVillageUIType::VillageTimer));
+	if (VillageTimerUI)
 	{
-		//위젯 가져오고, 시간 업데이트.
-		TObjectPtr<UQVillageTimerWidget> VillageTimerUI = Cast<UQVillageTimerWidget>(AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets()[EVillageUIType::VillageTimer]);
-		if (VillageTimerUI)
-		{
-			VillageTimerUI->UpdateServerTimeToUITime(ServerLeftTimeUntilTrial, TimeUntilTrialMax);
-		}
-		else
-		{
-			UE_LOG(LogLogic, Log, TEXT("Get VillageTimerUI failed"));
-		}
+		VillageTimerUI->UpdateServerTimeToUITime(ServerLeftTimeUntilTrial, TimeUntilTrialMax);
 	}
-
+	else
+	{
+		UE_LOG(LogLogic, Log, TEXT("Get VillageTimerUI failed"));
+	}
 	
 }
 

@@ -47,11 +47,12 @@ public:
 	 */
 	static TObjectPtr<AQVillageUIManager> GetInstance(TObjectPtr<UWorld> World);
 	/**
-	 * @brief 마을의 위젯들을 리턴합니다..
+	 * @brief 마을의 위젯들을 리턴합니다.
 	 * 
-	 * @return 마을 위젯들의 map 
+	 * @param 리턴받을 위젯의 key를 대입합니다.
+	 * @return 위젯을 반드시 반환합니다.  
 	 */
-	TMap<EVillageUIType, TObjectPtr<UUserWidget>> GetActivedVillageWidgets() const;
+	UUserWidget* GetActivedWidget(EVillageUIType UIType) ;
 	/**
 	 * .@brief 타이머 종료 시 호출됩니다. 마을 UI를 마무리합니다.
 	 *  @details 내부에서 1. 열린 UI 팝업 닫기 2. UI 상호작용 차단을 구현합니다.
@@ -96,6 +97,15 @@ private:
 	 * @brief UI상호작용을 닫습니다. 즉, 상호작용이 안되도록 블락처리합니다.
 	 */
 	void CloseUIInteraction();
+private:
+	/* 헬퍼 메서드들 */
+	/**
+	 * @brief 내부 헬퍼: 위젯이 없으면 생성하고, 있으면 nullptr 반환하는 함수.
+	 * 
+	 * @param 검사할 UIType
+	 * @return 위젯이 없으면 UserWidget반환, 위젯이 있으면 nullptr반환 
+	 */
+	UUserWidget* CreateWidgetIfNotExists(EVillageUIType UIType);
 };
 
 

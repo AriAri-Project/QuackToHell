@@ -19,7 +19,7 @@ void UQInventoryWidget::TurnOnRecordUI() const
 	//하위컴포넌트가 없으면 하위컴포넌트로 달아주기
 	if (InformationBox->GetChildrenCount()==0) {
 		
-		InformationBox->AddChild(AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets()[EVillageUIType::Record]);
+		InformationBox->AddChild(AQVillageUIManager::GetInstance(GetWorld())->GetActivedWidget(EVillageUIType::Record));
 	}
 	
 }

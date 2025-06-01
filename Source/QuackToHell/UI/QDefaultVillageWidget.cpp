@@ -15,17 +15,14 @@ void UQDefaultVillageWidget::BlockButtonsInteraction()
 }
 void UQDefaultVillageWidget::TurnOnTimerUI()
 {
-	//만약 아직 생성되지 않은 상태이면
-	if (!AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets().Contains(EVillageUIType::VillageTimer)) {
-		//생성하고
-		AQVillageUIManager::GetInstance(GetWorld())->TurnOnUI(EVillageUIType::VillageTimer);
-		//하위컴포넌트로 달아주기
-		TimerBox->AddChild(AQVillageUIManager::GetInstance(GetWorld())->GetActivedVillageWidgets()[EVillageUIType::VillageTimer]);
+	/* 아직 타이머 박스에 없으면 */
+	if(!TimerBox->HasAnyChildren())
+	{	//하위컴포넌트로 달아주기
+		TimerBox->AddChild(AQVillageUIManager::GetInstance(GetWorld())->GetActivedWidget(EVillageUIType::VillageTimer));
 	}
-	else {
-		//visible로 전환
-		AQVillageUIManager::GetInstance(GetWorld())->TurnOnUI(EVillageUIType::VillageTimer);
-	}
+	
+	//visible로 전환
+	AQVillageUIManager::GetInstance(GetWorld())->TurnOnUI(EVillageUIType::VillageTimer);
 }
 void UQDefaultVillageWidget::TurnOnMapUI()
 {
