@@ -29,7 +29,7 @@ void UQRecordWidget::NativeConstruct()
 	ChatHistories.SetNum(GhostMaxNum);
 
 	/*델리게이트 바인딩*/
-	TObjectPtr<UQDefaultVillageWidget> DefaultVillageWidet = Cast<UQDefaultVillageWidget>((AQVillageUIManager::GetInstance(GetWorld()))->GetActivedVillageWidgets()[EVillageUIType::DefaultVillageUI]);
+	TObjectPtr<UQDefaultVillageWidget> DefaultVillageWidet = Cast<UQDefaultVillageWidget>((AQVillageUIManager::GetInstance(GetWorld()))->GetActivedWidget(EVillageUIType::DefaultVillageUI));
 	UE_LOG(LogLogic, Log, TEXT("RecordWidget - 디폴트위젯: %s"), *DefaultVillageWidet.GetName());
 	DefaultVillageWidet->OnRecordButtonPressed.AddDynamic(this, &UQRecordWidget::UpdateRecordHistory);
 	UE_LOG(LogLogic, Log, TEXT("RecordWidget - UpdateRecordHistory 바인딩 완료! 현재 바인딩 개수: %d"),
