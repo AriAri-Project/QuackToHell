@@ -216,9 +216,9 @@ void AQPlayerController::ClientRPCFinishConversation_Implementation(AQNPC* NPC)
 	UE_LOG(LogTemp, Log, TEXT("%s Conversation State Updated. -> %hhd"), *NPC->GetName(), NPC->GetNPCConversationState());
 
 		/** @todo 유진 : 서버측에서 대화 마무리 로직이 성공적으로 마무리 되었을 때 실행할 함수 여기서 호출 */
-		/** @todo 유진 : 대화를 끝낼 수 있을때 클라이언트에서 실행시켜야하는 함수 여기서 호출 */
-		TObjectPtr<AQPlayer> _Player = Cast<AQPlayer>(this->GetPawn());
-
+		/** @todo 유진 : 대화를 끝낼 수 있을때 클라이언트에서 실행시켜야하는 함수 여기서 호출 */	
+		UnFreezePawn();
+		
 		//5. UI끈다.
 		AQVillageUIManager::GetInstance(GetWorld())->TurnOffUI(EVillageUIType::P2N);
 }
