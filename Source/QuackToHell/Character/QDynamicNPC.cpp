@@ -59,8 +59,6 @@ TObjectPtr<AActor> AQDynamicNPC::GetClosestNPC()
 	return ClosestNPC;
 }
 
-
-
 bool AQDynamicNPC::GetResponse(AQPlayerController* ClientPC, FString& Text, EConversationType InputConversationType)
 {
 	// 응답 요청을 위한 FOpenAIRequest 구조체 구성
@@ -102,9 +100,23 @@ void AQDynamicNPC::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* O
 	}
 
 	//N2N : 만약 NPC가 다가왔을 시, 대화 시작하기
-	//몇 초 뒤에 실행하도록 조치 취하기. : 1분  
+	//몇 초 뒤에 실행하도록 조치 취하기. : 1분
+	OpponentNPC = Cast<AQDynamicNPC>(GetClosestNPC());
+	if (OpponentNPC == nullptr)
+	{
+		UE_LOG(LogLogic, Log, TEXT("AQDynamicNPCController::StartDialog - Opponent NPC is nullptr."));
+		return;
+	}
+	if (HasAuthority())
+	{
+		RequestConversationN2N(OpponentNPC);
+		OpponentNPC->RequestConversationN2N(this);
+	}
+	
+	
+	/**
 	if (StartDialogTimer > StartDialogMaxTime) {
-		OpponentNPC = Cast<AQDynamicNPC>(GetClosestNPC());
+		
 		if (OpponentNPC) {
 
 			//조건 
@@ -130,16 +142,14 @@ void AQDynamicNPC::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* O
 					UE_LOG(LogLogic, Error, TEXT("AQDynamicNPC::OnOverlapBegin - Controller is nullptr."));
 					return;
 				}
-				else {
-					MyController->StartDialog(OpponentNPC, ENPCConversationType::N2N);
-				}
+				MyController->StartDialog(OpponentNPC, ENPCConversationType::N2N);
 			}
 			else {
 				UE_LOG(LogLogic, Log, TEXT("AQDynamicNPCController::StartDialog - 플레이어와 대화기록이 없어 말을 걸 수 없습니다."));
 			}
 		}
 	}
-
+	**/
 }
 
 void AQDynamicNPC::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
@@ -205,4 +215,205 @@ void AQDynamicNPC::TurnOnEKeyUI()
 void AQDynamicNPC::TurnOffEKeyUI()
 {
 	EKeyWidget->SetVisibility(ESlateVisibility::Hidden);
+}
+
+// ========================================================= //
+
+void AQDynamicNPC::CountDownN2N()
+{
+	FTimerDelegate TimerDel;
+	TimerDel.BindLambda([this]()
+	{
+		N2NCoolTimeCharged = true;
+	});
+	GetWorldTimerManager().SetTimer(N2NTimerHandle, TimerDel, 1.0f, false);
+}
+
+bool AQDynamicNPC::CheckCanStartConversN2N()
+{
+	if (!HasAuthority())
+	{
+		return false;
+	}
+	// NPC가 P2N, N2N 상호작용 중일 경우 N2N 대화 불가능
+	if (this->GetNPCConversationState() == EConversationType::N2N || this->GetNPCConversationState() == EConversationType::P2N || this->GetNPCConversationState() == EConversationType::PStart)
+	{
+		return false;
+	}
+	if (!N2NCoolTimeCharged)
+	{
+		return false;
+	}
+	return true;
+}
+
+bool AQDynamicNPC::CheckCanFinishConversN2N()
+{
+	if (!HasAuthority())
+	{
+		false;
+	}
+	return true;
+}
+
+void AQDynamicNPC::RequestConversationN2N(AQDynamicNPC* TargetNPC)
+{
+	if (!HasAuthority())
+	{
+		return;
+	}
+	/* 체크할 것
+	*	1. 대화에 참여하는 NPC가 P2N, N2N 상호작용 중일 경우 바로 종료
+	*	2. NPC A 가 N2N 쿨타임이 60초 미만일 경우: 대화요청을 호출하지 않는다.
+	*   3. NPC B 가 N2N 쿨타임이 60초 미만일 경우: 대화요청을 수락하지 않는다.
+	*/
+
+	// 상대 NPC가 nullptr이라면 바로 종료
+	if (TargetNPC == nullptr)
+	{
+		UE_LOG(LogLogic, Error, TEXT("AQNPC::RequestConversationN2N - TargetNPC is nullptr."));
+		return;
+	}
+	// @todo 둘 중 NPC ID가 더 낮은 쪽이 말을 건다.
+	int32 MyNPCID = FindComponentByClass<UNPCComponent>()->GetNPCID();
+	int32 TargetNPCID = TargetNPC->FindComponentByClass<UNPCComponent>()->GetNPCID();
+
+	if (MyNPCID > TargetNPCID)
+	{
+		return;
+	}
+
+	// 두 NPC가 모두 N2N 대화가 가능한 지 check 후 가능하다면 AI에게 첫번째 대사 요청
+	if (this->CheckCanStartConversN2N() && TargetNPC->CheckCanStartConversN2N())
+	{
+		// 두 NPC Freeze
+		TObjectPtr<AQDynamicNPCController> DynamicNPCController;
+		DynamicNPCController = Cast<AQDynamicNPCController>(this->GetController());
+		DynamicNPCController->FreezePawn();
+		DynamicNPCController = Cast<AQDynamicNPCController>(TargetNPC->GetController());
+		DynamicNPCController->FreezePawn();
+	
+		// @todo AI에게 N2N의 첫번째 대화 생성 요청
+		FOpenAIRequest Request(
+		this->FindComponentByClass<UNPCComponent>()->GetNPCID(),
+		TargetNPC->FindComponentByClass<UNPCComponent>()->GetNPCID(),
+		EConversationType::N2NStart,
+		""
+		);
+		this->FindComponentByClass<UNPCComponent>()->GetNPCResponse(DynamicNPCController, Request);
+	}
+	else
+	{
+		UE_LOG(LogLogic, Log, TEXT("AQNPC::RequestConversationN2N - NPC can't start N2N Conversation."));
+	}
+}
+
+void AQDynamicNPC::StartConversationN2N(AQDynamicNPC* TargetNPC, FOpenAIResponse FirstResponse)
+{
+	if (!HasAuthority())
+	{
+		return;
+	}
+	// 1. 플레이어 시점 말풍선 처리
+	TObjectPtr<AQDynamicNPCController> DynamicNPCController = Cast<AQDynamicNPCController>(this->GetController());
+	DynamicNPCController->MulticastShowSpeechBubbleWithText(FirstResponse.ResponseText);
+	
+	// @todo 2. Reply N2N 대사 AI에게 요청
+	DynamicNPCController = Cast<AQDynamicNPCController>(TargetNPC->GetController());
+	FOpenAIRequest Request(
+		TargetNPC->FindComponentByClass<UNPCComponent>()->GetNPCID(),
+		this->FindComponentByClass<UNPCComponent>()->GetNPCID(),
+		EConversationType::N2N,
+		FirstResponse.ResponseText
+	);
+	TargetNPC->FindComponentByClass<UNPCComponent>()->GetNPCResponse(DynamicNPCController, Request);
+}
+
+void AQDynamicNPC::ReplyConversationN2N(AQDynamicNPC* TargetNPC, FOpenAIResponse ReplyResponse)
+{
+	if (!HasAuthority())
+	{
+		return;
+	}
+	// 1.플레이어 시점 처리 (multicast)
+	TObjectPtr<AQDynamicNPCController> DynamicNPCController;
+	DynamicNPCController = Cast<AQDynamicNPCController>(this->GetController());
+	DynamicNPCController->MulticastShowSpeechBubbleWithText(ReplyResponse.ResponseText);
+
+	// 2. 대화 끝내기
+	FTimerDelegate TimerDel;
+	TimerDel.BindLambda([this, TargetNPC]()
+	{
+		this->FinishConversationN2N();
+		TargetNPC->FinishConversationN2N();
+	});
+	GetWorldTimerManager().SetTimer(N2NTimerHandle, TimerDel, 6.0f, false);
+}
+
+void AQDynamicNPC::FinishConversationN2N()
+{
+	if (!HasAuthority())
+	{
+		return;
+	}
+	
+	// NPC UnFreeze & 대화창 끄기
+	TObjectPtr<AQDynamicNPCController> DynamicNPCController;
+	DynamicNPCController = Cast<AQDynamicNPCController>(this->GetController());
+	DynamicNPCController->UnFreezePawn();
+	DynamicNPCController->MulticastTurnOffSpeechBubble();
+}
+
+// ---------------------------------------------------------------------------------- //
+
+void AQDynamicNPC::CountDownNMonologue()
+{
+	GetWorldTimerManager().SetTimer(NMonoTimerHandle, this, &AQDynamicNPC::RequestNMonologueText, 1.0f, false);
+}
+
+void AQDynamicNPC::RequestNMonologueText()
+{
+	if (!HasAuthority())
+	{
+		return;
+	}
+	AQDynamicNPCController* NPCController = Cast<AQDynamicNPCController>(GetController());
+	// AI에게 혼잣말 대사 요청
+	FOpenAIRequest Request(
+	this->FindComponentByClass<UNPCComponent>()->GetNPCID(),
+	this->FindComponentByClass<UNPCComponent>()->GetNPCID(),
+	EConversationType::NMonologue,
+	""
+	);
+	this->FindComponentByClass<UNPCComponent>()->GetNPCResponse(NPCController, Request);
+}
+
+void AQDynamicNPC::StartNMonologue(FOpenAIResponse Monologue)
+{
+	if (!HasAuthority())
+	{
+		return;
+	}
+
+	// 플레이어 시점 처리 (multicast)
+	TObjectPtr<AQDynamicNPCController> DynamicNPCController = Cast<AQDynamicNPCController>(this->GetController());
+	DynamicNPCController->MulticastShowSpeechBubbleWithText(Monologue.ResponseText);
+
+	// 6초 뒤에 Finish
+	GetWorldTimerManager().SetTimer(NMonoTimerHandle, this, &AQDynamicNPC::FinishNMonologue, 6.0f, false);
+}
+
+void AQDynamicNPC::FinishNMonologue()
+{
+	if (!HasAuthority())
+	{
+		return;
+	}
+
+	// 플레이어 시점 처리 (multicast)
+	TObjectPtr<AQDynamicNPCController> DynamicNPCController = Cast<AQDynamicNPCController>(this->GetController());
+	DynamicNPCController->MulticastTurnOffSpeechBubble();
+
+	// NMonoCoolTime 초기화
+	NMonoCoolTime = NMonoCoolTimeInit;
 }

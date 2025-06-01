@@ -294,7 +294,6 @@ void AQPlayer::ServerRPCStartConversation_Implementation(AQPlayerController* Cli
 
 void AQPlayer::ServerRPCFinishConversation_Implementation(AQPlayerController* TargetController,  AQNPC* NPC)
 {
-	bool bResult = false;
 	// 상태 업데이트
 	if (ThisPlayerState == nullptr || NPC == nullptr)
 	{

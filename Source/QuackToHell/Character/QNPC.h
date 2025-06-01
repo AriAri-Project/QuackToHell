@@ -8,6 +8,7 @@
 #include "Public/NPCComponent.h"
 #include "QNPC.generated.h"
 
+class AQDynamicNPC;
 /**
  * @author 전유진 유서현
  * @brief NPC 캐릭터 클래스입니다.
@@ -25,29 +26,6 @@ public:
 	 */
 	class UQSpeechBubbleWidget* GetSpeechBubbleWidget() const;
 
-public:
-	// N2N
-	FTimerHandle N2NTimerHandle;
-	bool N2NCoolTimeCharged = false;
-	
-	void CountDownN2N();
-	bool CheckCanStartConversN2N();
-	bool CheckCanFinishConversN2N();
-	
-	void RequestConversationN2N(AQNPC* TargetNPC);
-	void StartConversationN2N(AQNPC* TargetNPC, FOpenAIResponse FirstResponse);
-	void ReplyConversationN2N(AQNPC* TargetNPC, FOpenAIResponse ReplyResponse);
-	void FinishConversationN2N();
-	
-	// NMono
-	const int32 NMonoCoolTimeInit = 80;
-	int32 NMonoCoolTime = NMonoCoolTimeInit;
-	FTimerHandle NMonoTimerHandle;
-
-	void CountDownNMonologue();
-	void RequestNMonologueText();
-	void StartNMonologue(FOpenAIResponse Monologue);
-	void FinishNMonologue();
 protected:
 	/**
 	 * @brief Sphere 컴포넌트입니다. 플레이어를 기준으로 원형을 그려 트리거를 탐지합니다.

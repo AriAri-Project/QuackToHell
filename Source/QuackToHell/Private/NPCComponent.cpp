@@ -18,6 +18,7 @@
 #include "GameFramework/PlayerController.h"
 #include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
+#include "NPC/QDynamicNPCController.h"
 
 // Sets default values for this component's properties
 UNPCComponent::UNPCComponent()
@@ -349,7 +350,7 @@ void UNPCComponent::StartConversation(AQPlayerController* ClientPC, FOpenAIReque
 
 
 // N2N 대화 시작
-void UNPCComponent::StartNPCToNPCDialog(AQNPC* TargetNPC, const FOpenAIRequest& Request)
+void UNPCComponent::StartNPCToNPCDialog(AQDynamicNPCController* TargetNPC, const FOpenAIRequest& Request)
 {
 	FString SpeakerNPCID = FString::FromInt(Request.SpeakerID);
 	FString ListenerNPCID = FString::FromInt(Request.ListenerID);
@@ -397,7 +398,7 @@ void UNPCComponent::StartNPCToNPCDialog(AQNPC* TargetNPC, const FOpenAIRequest& 
 
 
 // N2N 대화 이어나감
-void UNPCComponent::ContinueNPCToNPCDialog(AQNPC* TargetNPC, const FOpenAIRequest& Request)
+void UNPCComponent::ContinueNPCToNPCDialog(AQDynamicNPCController* TargetNPC, const FOpenAIRequest& Request)
 {
 	if (Request.MaxTokens <= 0)
 	{
@@ -771,42 +772,12 @@ TArray<FString> UNPCComponent::GetP2NDialogueHistory() const
 
 // 서버로 NPC의 응답을 보내는 RPC 함수
 // 서버로 NPC의 응답을 보내는 RPC 함수 (FOpenAIResponse 전체 전달)
-void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse& Response, AQPlayerController* ClientPC)
+void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse& Response, AController* Controller)
 {
 	UE_LOG(LogLogic, Log, TEXT("SendNPCResponseToServer_Implementation Started"));
 	if (!Response.ResponseText.IsEmpty() && Response.ResponseText != TEXT("죄송합니다, 답변할 수 없습니다."))
 	{
 		UE_LOG(LogTemp, Log, TEXT("Sending NPC response to server: %s"), *Response.ResponseText);
-	}
-
-	if (ClientPC->GetNetConnection() == nullptr)
-	{
-		UE_LOG(LogLogic, Log, TEXT("ClientPC %s NetConnection is nullptr."), *ClientPC->GetName());
-		return;
-	}
-	
-	UE_LOG(LogLogic, Log, TEXT("ClientPC Name : %s, NetConnection : %s"), *ClientPC->GetName(), *ClientPC->GetNetConnection()->GetName());
-
-	switch (Response.ConversationType)
-	{
-	case EConversationType::PStart:
-		UE_LOG(LogTemp, Log, TEXT("NPC의 첫 인사(PStart) 응답 처리"));
-		break;
-	case EConversationType::P2N:
-		UE_LOG(LogTemp, Log, TEXT("P2N 대화 응답 처리"));
-		break;
-	case EConversationType::N2N:
-		UE_LOG(LogTemp, Log, TEXT("N2N 대화 응답 처리"));
-		break;
-	case EConversationType::NMonologue:
-		UE_LOG(LogTemp, Log, TEXT("NMonologue 대화 응답 처리"));
-		break;
-	case EConversationType::OpeningStatement:
-		UE_LOG(LogTemp, Log, TEXT("OpeningStatement 모두진술 응답 처리"));
-		break;
-	default:
-		UE_LOG(LogTemp, Error, TEXT("알 수 없는 ConversationType 처리 불가"));
-		return;
 	}
 
 	if (Response.SpeakerID == 0 && Response.ListenerID == 0)
@@ -837,7 +808,7 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 	UE_LOG(LogLogic, Log, TEXT("New Record - %d to %d : %s"), Record->GetSpeakerID(), Record->GetListenerID(), *Record->GetMessage());
 
 	
-	TObjectPtr<AQNPC> NPC = Cast<AQNPC>(GetOwner());	// QNPC
+	TObjectPtr<AQDynamicNPC> NPC = Cast<AQDynamicNPC>(GetOwner());	// QNPC
 	if (NPC == nullptr)
 	{
 		UE_LOG(LogLogic, Error, TEXT("NPC Component's owner is not QNPC"));
@@ -848,19 +819,39 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 	switch (Response.ConversationType)
 	{
 	case EConversationType::PStart:
-		UE_LOG(LogLogic, Log, TEXT("Server - PStart NPCResponse received"));
-		ClientPC->ClientRPCStartConversation(Response, NPC);
-		break;
-	case EConversationType::P2N: 
-		UE_LOG(LogLogic, Log, TEXT("Server - P2N NPCResponse received"));
-		ClientPC->ClientRPCUpdateP2NResponse(Response);
-		break;
+		{
+			UE_LOG(LogLogic, Log, TEXT("Server - PStart NPCResponse received"));
+			TObjectPtr<AQPlayerController> ClientPC = Cast<AQPlayerController>(Controller);
+			ClientPC->ClientRPCStartConversation(Response, NPC);
+			break;
+		}
+	case EConversationType::P2N:
+		{
+			UE_LOG(LogLogic, Log, TEXT("Server - P2N NPCResponse received"));
+			TObjectPtr<AQPlayerController> ClientPC = Cast<AQPlayerController>(Controller);
+			ClientPC->ClientRPCUpdateP2NResponse(Response);
+			break;
+		}
 	case EConversationType::N2N:
-		break;
+		{
+			UE_LOG(LogLogic, Log, TEXT("Server - N2N NPCResponse received"));
+			TObjectPtr<AQDynamicNPC> TargetNPC = Cast<AQDynamicNPC>(Controller->GetPawn());
+			NPC->StartConversationN2N(TargetNPC, Response);
+			break;
+		}
 	case EConversationType::N2NStart:
-		break;
+		{
+			UE_LOG(LogLogic, Log, TEXT("Server - NStart NPCResponse received"));
+			TObjectPtr<AQDynamicNPC> TargetNPC = Cast<AQDynamicNPC>(Controller->GetPawn());
+			NPC->StartConversationN2N(TargetNPC, Response);
+			break;
+		}
 	case EConversationType::NMonologue:
-		break;
+		{
+			UE_LOG(LogLogic, Log, TEXT("Server - Nmono NPCResponse received"));
+			NPC->StartNMonologue(Response);
+			break;
+		}
 	case EConversationType::OpeningStatement:
 		break;
 	default:
@@ -899,17 +890,17 @@ void UNPCComponent::ServerRPCGetNPCResponse_Implementation(AQPlayerController* C
 	}
 }
 
-void UNPCComponent::GetNPCResponse(AQNPC* TargetNPC, const FOpenAIRequest Request)
+void UNPCComponent::GetNPCResponse(AQDynamicNPCController* NPCController, const FOpenAIRequest Request)
 {
 	switch (Request.ConversationType)
 	{
 		case EConversationType::N2N:
 			UE_LOG(LogLogic, Log, TEXT("Server - N2N GetNPCResponse Started"));
-			ContinueNPCToNPCDialog(TargetNPC, Request);
+			ContinueNPCToNPCDialog(NPCController, Request);
 			break;
 		case EConversationType::N2NStart:
 			UE_LOG(LogLogic, Log, TEXT("Server - N2NStart GetNPCResponse Started"));	
-			StartNPCToNPCDialog(TargetNPC, Request);
+			StartNPCToNPCDialog(NPCController, Request);
 			break;
 		default:
 			UE_LOG(LogTemp, Error, TEXT("GetNPCResponse -> Invaild ConversationType"));

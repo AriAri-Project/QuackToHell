@@ -53,11 +53,6 @@ void AQDynamicNPCController::Tick(float DeltaTime)
     if (bIsRotating) {
         UpdateRotation();
     }
-
-    //가장 가까운 NPC가 있다면 서버에게 대화가능한지 체크
-    if (TObjectPtr<AQNPC> OpponentNPC = Cast<AQNPC>(Cast<AQDynamicNPC>(MyPawn)->GetClosestNPC())) {
-        MyPawn->RequestConversationN2N(OpponentNPC);
-    }
 }
 
 void AQDynamicNPCController::UpdateRotation()
@@ -222,7 +217,6 @@ void AQDynamicNPCController::EndDialog()
         //말풍선 끄기
         MulticastTurnOffSpeechBubble();
     }    
-    MyPawn->CountDownNMonologue();
 }
 
 /*

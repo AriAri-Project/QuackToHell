@@ -42,6 +42,30 @@ public:
 
 	/** @brief NPCComponent를 멤버변수로 가집니다 */
 	TObjectPtr<class UNPCComponent> NPCComponent;
+
+
+	// N2N
+	FTimerHandle N2NTimerHandle;
+	bool N2NCoolTimeCharged = false;
+	
+	void CountDownN2N();
+	bool CheckCanStartConversN2N();
+	bool CheckCanFinishConversN2N();
+	
+	void RequestConversationN2N(AQDynamicNPC* TargetNPC);
+	void StartConversationN2N(AQDynamicNPC* TargetNPC, FOpenAIResponse FirstResponse);
+	void ReplyConversationN2N(AQDynamicNPC* TargetNPC, FOpenAIResponse ReplyResponse);
+	void FinishConversationN2N();
+	
+	// NMono
+	const int32 NMonoCoolTimeInit = 80;
+	int32 NMonoCoolTime = NMonoCoolTimeInit;
+	FTimerHandle NMonoTimerHandle;
+
+	void CountDownNMonologue();
+	void RequestNMonologueText();
+	void StartNMonologue(FOpenAIResponse Monologue);
+	void FinishNMonologue();
 protected:
 
 	/* Helper Methods */
