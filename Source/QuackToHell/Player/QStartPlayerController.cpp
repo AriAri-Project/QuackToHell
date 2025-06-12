@@ -1,13 +1,14 @@
 // Copyright_Team_AriAri
 
 
-#include "Game/QStartPlayerController.h"
+#include "Player/QStartPlayerController.h"
 #include "Blueprint/UserWidget.h"
 #include "OnlineSubsystem.h"
 #include "OnlineSessionSettings.h"
 #include "Engine/Engine.h"
 #include "Interfaces/OnlineSessionInterface.h"
 #include "OnlineSubsystemUtils.h"
+#include "QPlayerState.h"
 #include "Interfaces/OnlineIdentityInterface.h"
 #include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
@@ -19,19 +20,14 @@ AQStartPlayerController::AQStartPlayerController()
 
 {
 	bShowMouseCursor = true;
-
-	static ConstructorHelpers::FClassFinder<UUserWidget> WidgetFinder(TEXT("/Game/Blueprints/UI/Lobby/WBP_StartLevel"));
-	if (WidgetFinder.Succeeded())
-	{
-		StartLevelWidget = WidgetFinder.Class;
-	}
+	bActorSeamlessTraveled = true;
 }
 
 void AQStartPlayerController::PostInitializeComponents()
 {
 	Super::PostInitializeComponents();
 
-	//IOnlineSubsystem* OnlineSubsystem = Online::GetSubsystem(GetWorld(), FName("Steam"));;
+	//IOnlineSubsystem* OnlineSubsystem = Online::GetSubsystem(GetWorld(), STEAM_SUBSYSTEM);;
 	IOnlineSubsystem* OnlineSubsystem = IOnlineSubsystem::Get();
 	if (OnlineSubsystem)
 	{
@@ -51,19 +47,23 @@ void AQStartPlayerController::BeginPlay()
 	FInputModeUIOnly InputMode;
 	InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
 	SetInputMode(InputMode);
-
 	
-
-	//테스트용 위젯 띄우기
-	if (StartLevelWidget)
+	OnlineIdentity = Online::GetIdentityInterface(GetWorld(), STEAM_SUBSYSTEM);
+	if (OnlineIdentity.IsValid())
 	{
-		UUserWidget* StartWidget = CreateWidget<UUserWidget>(GetWorld()->GetFirstPlayerController(), StartLevelWidget);
-		if (StartWidget)
+		PlayerNickName = OnlineIdentity->GetPlayerNickname(0);
+		GetPlayerState<AQPlayerState>()->SetPlayerName(PlayerNickName);
+		if (GEngine)
 		{
-			// 위젯을 화면에 추가
-			StartWidget->AddToViewport();
+			GEngine->AddOnScreenDebugMessage(-1, 15.0f, FColor::Blue,
+				FString::Printf(TEXT("PlayerNickName: %s"), *GetPlayerState<AQPlayerState>()->GetPlayerName()));
 		}
 	}
+}
+
+void AQStartPlayerController::SetSessionName(FString SessionName)
+{
+	NewSessionName = SessionName;
 }
 
 void AQStartPlayerController::CreateSession()
@@ -98,7 +98,7 @@ void AQStartPlayerController::CreateSession()
 	SessionSettings->Set(FName(TEXT("SessionName")), NewSessionName, EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
 	SessionSettings->Set(FName(TEXT("Map")), FString(TEXT("Forest")), EOnlineDataAdvertisementType::ViaOnlineServiceAndPing);
 
-	FString HostName = TEXT("Unknown");
+	FString HostName = PlayerNickName;
 
 	// LocalPlayer가 존재하고, Online Identity가 있으면 닉네임 가져오기
 	IOnlineSubsystem* OnlineSubsystem = IOnlineSubsystem::Get();

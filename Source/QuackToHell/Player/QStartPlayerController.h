@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
+#include "Interfaces/OnlineIdentityInterface.h"
 #include "Interfaces/OnlineSessionInterface.h"
 #include "QStartPlayerController.generated.h"
 
@@ -22,17 +23,20 @@ private:
 	virtual void BeginPlay() override;
 	virtual void PostInitializeComponents() override;
 
-	TSubclassOf<UUserWidget> StartLevelWidget;
-
-	FString NewSessionName = "new session name yeah!";
+	FString NewSessionName = "Default Session Name";
+	FString PlayerNickName = "Default Player";
 	
 	IOnlineSessionPtr OnlineSessionInterface;
+	IOnlineIdentityPtr OnlineIdentity;
 	TSharedPtr<FOnlineSessionSearch> SessionSearch;
 	
 	// delegate 선언
 	FOnCreateSessionCompleteDelegate CreateSessionCompleteDelegate;
 	FOnFindSessionsCompleteDelegate FindSessionsCompleteDelegate;
 	FOnJoinSessionCompleteDelegate JoinSessionCompleteDelegate;
+
+	UFUNCTION(BlueprintCallable)
+	void SetSessionName(FString SessionName);
 	
 	UFUNCTION(BlueprintCallable)
 	void CreateSession();

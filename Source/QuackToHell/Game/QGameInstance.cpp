@@ -77,6 +77,12 @@ void UQGameInstance::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>&
 	DOREPLIFETIME(UQGameInstance, EvidenceList);
 }
 
+FOnlineSession UQGameInstance::SetCurrentSessionInfo(FOnlineSession SessionInfo)
+{
+	CurrentSessionInfo = SessionInfo;
+	return CurrentSessionInfo;
+}
+
 const int32 UQGameInstance::AddConversationRecord
 (EConversationType ConversationType, int32 ListenerID, int32 SpeakerID, FDateTime Timestamp, const FString& Message)
 {
