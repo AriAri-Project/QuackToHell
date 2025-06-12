@@ -1,13 +1,12 @@
 // Copyright_Team_AriAri
 
 
-#include "Game/QGameModeStart.h"
-#include "Player/QStartPlayerController.h"
-#include "Engine/Engine.h"
+#include "Game/QGameModeLobby.h"
+#include "Blueprint/UserWidget.h"
 #include "Player/QPlayerState.h"
-#include "UObject/ConstructorHelpers.h"
+#include "Player/QStartPlayerController.h"
 
-AQGameModeStart::AQGameModeStart()
+AQGameModeLobby::AQGameModeLobby()
 {
 	PlayerControllerClass = AQStartPlayerController::StaticClass();
 	PlayerStateClass = AQPlayerState::StaticClass();
@@ -16,21 +15,23 @@ AQGameModeStart::AQGameModeStart()
 	{
 		DefaultPawnClass = PawnClassRef.Class;
 	}
-	static ConstructorHelpers::FClassFinder<UUserWidget> WidgetFinder(TEXT("/Game/Blueprints/UI/Lobby/WBP_StartLevel"));
+	static ConstructorHelpers::FClassFinder<UUserWidget> WidgetFinder(TEXT("/Game/Blueprints/UI/Lobby/WBP_LobbyLevel"));
 	if (WidgetFinder.Succeeded())
 	{
-		StartLevelWidget = WidgetFinder.Class;
+		LobbyLevelWidget = WidgetFinder.Class;
 	}
 }
 
-void AQGameModeStart::BeginPlay()
+void AQGameModeLobby::BeginPlay()
 {
 	Super::BeginPlay();
 
+	Super::BeginPlay();
+
 	//테스트용 위젯 띄우기
-	if (StartLevelWidget)
+	if (LobbyLevelWidget)
 	{
-		UUserWidget* StartWidget = CreateWidget<UUserWidget>(GetWorld()->GetFirstPlayerController(), StartLevelWidget);
+		UUserWidget* StartWidget = CreateWidget<UUserWidget>(GetWorld()->GetFirstPlayerController(), LobbyLevelWidget);
 		if (StartWidget)
 		{
 			// 위젯을 화면에 추가
@@ -38,4 +39,3 @@ void AQGameModeStart::BeginPlay()
 		}
 	}
 }
-

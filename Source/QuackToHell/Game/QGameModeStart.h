@@ -20,4 +20,6 @@ class QUACKTOHELL_API AQGameModeStart : public AGameModeBase
 public:
 	AQGameModeStart();
 	virtual void BeginPlay() override;
+	
+	TSubclassOf<UUserWidget> StartLevelWidget;
 };
