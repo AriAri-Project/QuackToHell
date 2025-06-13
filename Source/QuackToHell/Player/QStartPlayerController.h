@@ -8,6 +8,7 @@
 #include "Interfaces/OnlineSessionInterface.h"
 #include "QStartPlayerController.generated.h"
 
+class AGameMode;
 /**
  * 
  */
@@ -37,6 +38,9 @@ private:
 
 	UFUNCTION(BlueprintCallable)
 	void SetSessionName(FString SessionName);
+
+	UFUNCTION()
+	const FString GetTravelURL(bool bIsHost, const FString& NewMapName, TSubclassOf<AGameMode> NewGameMode, TSubclassOf<APlayerController> NewPCClass);
 	
 	UFUNCTION(BlueprintCallable)
 	void CreateSession();

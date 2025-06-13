@@ -21,12 +21,6 @@ void AQPlayerState::BeginPlay()
 {
 	Super::BeginPlay();
 
-	GameState = Cast<AQVillageGameState>(GetWorld()->GetGameState());
-	if (GameState == nullptr)
-	{
-		UE_LOG(LogTemp, Error, TEXT("AQPlayerState::BeginPlay - Can't find GameState."));
-	}
-
 	GameInstance = Cast<UQGameInstance>(GetGameInstance());
 	if (GameInstance == nullptr)
 	{

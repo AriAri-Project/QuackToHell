@@ -3,15 +3,21 @@
 
 #include "Player/QStartPlayerController.h"
 #include "Blueprint/UserWidget.h"
+#include "GameFramework/GameMode.h"
 #include "OnlineSubsystem.h"
 #include "OnlineSessionSettings.h"
 #include "Engine/Engine.h"
 #include "Interfaces/OnlineSessionInterface.h"
 #include "OnlineSubsystemUtils.h"
+#include "QLogCategories.h"
 #include "QPlayerState.h"
+#include "Game/QGameModeLobby.h"
+#include "Game/QGameModeVillage.h"
 #include "Interfaces/OnlineIdentityInterface.h"
 #include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
+
+class AGameMode;
 
 AQStartPlayerController::AQStartPlayerController()
 :	CreateSessionCompleteDelegate(FOnCreateSessionCompleteDelegate::CreateUObject(this, &ThisClass::OnCreateSessionComplete)), // delegate와 콜백 함수 바인딩
@@ -44,6 +50,11 @@ void AQStartPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 
+	if (IsLocalController())
+	{
+		UE_LOG(LogLogic, Log, TEXT("✔ PlayerController class: %s"), *GetClass()->GetName());
+	}
+
 	FInputModeUIOnly InputMode;
 	InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
 	SetInputMode(InputMode);
@@ -59,11 +70,33 @@ void AQStartPlayerController::BeginPlay()
 				FString::Printf(TEXT("PlayerNickName: %s"), *GetPlayerState<AQPlayerState>()->GetPlayerName()));
 		}
 	}
+	
+	// Player NickName PlayerState에 업데이트
+	GetPlayerState<AQPlayerState>()->SetPlayerName(OnlineIdentity->GetPlayerNickname(0));
 }
 
 void AQStartPlayerController::SetSessionName(FString SessionName)
 {
 	NewSessionName = SessionName;
+}
+
+const FString AQStartPlayerController::GetTravelURL(bool bIsHost, const FString& NewMapName, TSubclassOf<AGameMode> NewGameMode, TSubclassOf<APlayerController> NewPCClass)
+{
+	// 1) 맵 경로 만들기
+	const FString MapPath = FString::Printf(TEXT("/Game/Maps/%s"), *NewMapName);
+
+	// 2) 모듈 이름 하드코딩 (프로젝트 모듈명이 QuackToHell 인 경우)
+	const FString ModuleName = TEXT("QuackToHell");
+	const FString Listen = bIsHost ? TEXT("listen&") : TEXT("");
+	// 3) URL 생성
+	return FString::Printf(
+		TEXT("%s?%sSeamless")                                 // Listen Server + Seamless
+		TEXT("?Game=/Script/%s.%s")                               // GameMode
+		TEXT("?PlayerController=/Script/%s.%s"),                  // PlayerController
+		*MapPath, *Listen,                                                 // "/Game/Maps/Lobby" 등
+		*ModuleName, *NewGameMode->GetName(),              // "QuackToHell.QGameModeVillage"
+		*ModuleName, *NewPCClass->GetName()                // "QuackToHell.QStartPlayerController"
+	);
 }
 
 void AQStartPlayerController::CreateSession()
@@ -130,7 +163,8 @@ void AQStartPlayerController::OnCreateSessionComplete(FName SessionName, bool bW
 		UWorld* World = GetWorld();
 		if (World)
 		{
-			World->ServerTravel(FString("/Game/Maps/Lobby?listen"));
+			FString URL = GetTravelURL(true, TEXT("Lobby"), AQGameModeLobby::StaticClass(), StaticClass());
+			World->ServerTravel(URL);
 		}
 	}
 	else
@@ -222,10 +256,16 @@ void AQStartPlayerController::OnJoinSessionComplete(FName SessionName, EOnJoinSe
 {
 	if (!OnlineSessionInterface.IsValid()) return;
 
-	// Returns the platform specific connection information for joining the match
+	// Client Travel
 	FString Address;
 	if (OnlineSessionInterface->GetResolvedConnectString(SessionName, Address))
 	{
-		this->ClientTravel(Address, TRAVEL_Absolute);
+		FString URL = GetTravelURL(false, TEXT("Lobby"), AQGameModeLobby::StaticClass(), StaticClass());
+		this->ClientTravel(URL, TRAVEL_Absolute);
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue,
+				FString::Printf(TEXT("Travel to %s"), *URL));
+		}
 	}
 }
