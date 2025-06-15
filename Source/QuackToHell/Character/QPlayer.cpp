@@ -18,6 +18,7 @@
 #include "Player/QPlayerController.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Blueprint/UserWidget.h"
+#include "Actors/AQEvidenceActor.h"
 #include "Kismet/GameplayStatics.h"
 #include "UI/QPlayer2NSpeechBubbleWidget.h"
 #include "Net/UnrealNetwork.h"
@@ -97,6 +98,28 @@ TObjectPtr<AActor> AQPlayer::GetClosestNPC()
 	return ClosestNPC;
 }
 
+TObjectPtr<AActor> AQPlayer::GetClosestEvidence()
+{
+	if (OverlappingEvidences.Num() == 0) {
+		//대화 대상 없음
+		return nullptr;
+	}
+
+	TObjectPtr<AActor> ClosestEvidence = nullptr;
+	float MinDistance = FLT_MAX;
+
+	for (TObjectPtr<AActor> Evidence : OverlappingEvidences) {
+		//플레이어와 NPC간 거리
+		float Distance = FVector::Dist(this->GetActorLocation(), Evidence->GetActorLocation());
+		//최소거리찾기
+		if (Distance < MinDistance) {
+			MinDistance = Distance;
+			ClosestEvidence = Evidence;
+		}
+	}
+	return ClosestEvidence;
+}
+
 void AQPlayer::BeginPlay()
 {
 	Super::BeginPlay();
@@ -163,6 +186,11 @@ void AQPlayer::OnOverlapBegin(UPrimitiveComponent* OverlappedComp, AActor* Other
 	if (OpponentNPC) {
 		OverlappingNPCs.Add(OtherActor);
 	}
+
+	TObjectPtr<AAQEvidenceActor> OpponentEvidence= Cast<AAQEvidenceActor>(OtherActor);
+	if (OpponentEvidence) {
+		OverlappingEvidences.Add(OtherActor);
+	}
 }
 
 void AQPlayer::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
@@ -171,6 +199,11 @@ void AQPlayer::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherAc
 	TObjectPtr<AQNPC> OpponentNPC = Cast<AQNPC>(OtherActor);
 	if (OpponentNPC) {
 		OverlappingNPCs.Remove(OtherActor);
+	}
+
+	TObjectPtr<AAQEvidenceActor> OpponentEvidence = Cast<AAQEvidenceActor>(OtherActor);
+	if (OpponentEvidence) {
+		OverlappingEvidences.Remove(OtherActor);
 	}
 }
 

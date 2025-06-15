@@ -43,7 +43,6 @@ void AQVillageGameState::Tick(float DeltaSeconds)
 		}
 		ServerLeftTimeUntilTrial += DeltaSeconds;
 		MulticastRPCUpdateServerTime();
-		MulticastRPCUpdateServerTime_Implementation();
 	}
 }
 

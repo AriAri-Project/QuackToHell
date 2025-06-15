@@ -8,6 +8,12 @@
 #include "GameData/QEvidenceData.h"
 #include "QGameInstance.generated.h"
 
+/**
+* @author 전유진.
+* @brief 증거물 생성완료시점 감지 이벤트
+*/
+DECLARE_MULTICAST_DELEGATE(FOnEvidenceDataGenerated);
+
 class AQNPC;
 /**
  * 
@@ -16,7 +22,12 @@ UCLASS()
 class QUACKTOHELL_API UQGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
-
+public:
+	/**
+	 * @author 전유진.
+	 * @brief 증거물 생성완료시점 감지 이벤트
+	 */
+	FOnEvidenceDataGenerated OnEvidenceJsonGenerated;
 public:
 	UQGameInstance();
 

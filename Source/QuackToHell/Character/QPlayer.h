@@ -34,6 +34,13 @@ public:
 	 * @return 캐릭터 기준 가장 가까이 있는 npc
 	 */
 	TObjectPtr<AActor> GetClosestNPC();
+public:
+	/**
+	 * @brief 캐릭터 기준으로 가장 가까이 있는 증거물를 반환합니다.
+	 *
+	 * @return 캐릭터 기준 가장 가까이 있는 증거물
+	 */
+	TObjectPtr<AActor> GetClosestEvidence();
 
 protected:
 	/**
@@ -112,8 +119,10 @@ private:
 
 	UFUNCTION()
 	void OnOverlapEnd(class UPrimitiveComponent* OverlappedComp, class AActor* OtherActor, class UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
-	/** @brief overlap에 들어온 대상을 담습니다. */
+	/** @brief overlap에 들어온 대상(NPC)을 담습니다. */
 	TArray<TObjectPtr<AActor>> OverlappingNPCs;
+	/** @brief overlap에 들어온 대상(Evidence)을 담습니다. */
+	TArray<TObjectPtr<AActor>> OverlappingEvidences;
 private:
 	/** @brief 허공말풍선 위젯 클래스 정보를 담습니다. */
 	UPROPERTY()

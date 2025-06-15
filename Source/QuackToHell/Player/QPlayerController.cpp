@@ -14,6 +14,7 @@
 #include "Character/QDynamicNPC.h"
 #include "NPC/QDynamicNPCController.h"
 #include "Character/QNPC.h"
+#include "Actors/AQEvidenceActor.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "NPC/QNPCController.h"
 #include "Player/QPlayerState.h"
@@ -271,21 +272,29 @@ void AQPlayerController::InputEnableTurn(const FInputActionValue& InputValue)
 
 void AQPlayerController::InputInteraction(const FInputActionValue& InputValue)
 {
-	
-	//대화시작해도돼? 
-	//0. 상대방 NPC를 불러옴
 	TObjectPtr<AQPlayer> _Player = Cast<AQPlayer>(this->GetPawn());
-	TObjectPtr<AQDynamicNPC> NPC = Cast<AQDynamicNPC>(_Player->GetClosestNPC());
-	//1. 물어봄
-	Cast<AQPlayer>(GetPawn())->ServerRPCCanStartConversP2N(this, NPC);
-	UE_LOG(LogLogic, Log, TEXT("E버튼 누름!"));
 	
-
+	/*대화시작해도돼? */	
+	//0. 상대방 NPC를 불러옴
+	TObjectPtr<AQDynamicNPC> NPC = Cast<AQDynamicNPC>(_Player->GetClosestNPC());
+	if (NPC != NULL) {
+		//1. 물어봄
+		Cast<AQPlayer>(GetPawn())->ServerRPCCanStartConversP2N(this, NPC);
+		return;
+	}
+	
+	/* 증거물 줍기 */
+	TObjectPtr<AAQEvidenceActor> Evidence = Cast<AAQEvidenceActor>(_Player->GetClosestEvidence());
+	//증거물데이터 로그에 찍어보기
+	if (Evidence != NULL) {
+		Evidence->GetEvidenceData();
+		return;
+	}
 }
 
 void AQPlayerController::InputTurnOnOffMap(const FInputActionValue& InputValue)
 {
-	
+	 
 	TObjectPtr<UQMapWidget> MapWidget = Cast<UQMapWidget>((VillageUIManager->GetActivedWidget(EVillageUIType::Map)));
 
 	//보이는 상태가 아니면 켜기
