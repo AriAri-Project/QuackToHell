@@ -673,6 +673,8 @@ void UGodFunction::DownloadDalleImage(const FString& Prompt, const FString& Save
         return;
     }
 
+    FString StartTime = FDateTime::Now().ToString(); UE_LOG(LogTemp, Log, TEXT("Evidence Generating Prompts : %s"), *StartTime);
+
     // 이미지 생성 요청 구성 (OpenAI Image API)
     FString FinalPrompt = Prompt + TEXT(", isolated object on transparent background, icon style, minimal shadows");
 
@@ -749,4 +751,6 @@ void UGodFunction::DownloadDalleImage(const FString& Prompt, const FString& Save
         });
 
     Request->ProcessRequest();
+
+    FString FinishTime = FDateTime::Now().ToString(); UE_LOG(LogTemp, Log, TEXT("Evidence generation completed: %s"), *FinishTime);
 }
