@@ -35,9 +35,7 @@ AQVillageUIManager::AQVillageUIManager()
 	bAlwaysRelevant = true;
 
 	//UI타입과 UI클래스 매핑
-	/**
-	 * @TODO: 마을 내 유아이들 전부 추가해주기
-	 */
+
 	static ConstructorHelpers::FClassFinder<UQP2NWidget> P2NWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_QP2NWidget.WBP_QP2NWidget_C'"));
 	static ConstructorHelpers::FClassFinder<UQDefaultVillageWidget> DefaultVillageWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_QDefailtVillageWidgets.WBP_QDefailtVillageWidgets_C'"));
 	static ConstructorHelpers::FClassFinder<UQMapWidget> MapWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_QMap.WBP_QMap_C'"));
@@ -120,10 +118,52 @@ TObjectPtr<AQVillageUIManager> AQVillageUIManager::GetInstance(TObjectPtr<UWorld
 }
 
 
-
-TMap<EVillageUIType, TObjectPtr<UUserWidget>> AQVillageUIManager::GetActivedVillageWidgets() const
+UUserWidget* AQVillageUIManager::CreateWidgetIfNotExists(EVillageUIType UIType)
 {
-	return ActivedVillageWidgets;
+	/*예외처리*/
+	//키에 매핑되는 클래스목록이 존재하지 않으면 강제종료
+	if (!UIWidgetClasses.Contains(UIType)) {
+		UE_LOG(LogLogic, Warning, TEXT("QVillageUIManager: 키에 매핑되는 클래스목록이 존재하지 않습니다."));
+		FGenericPlatformMisc::RequestExit(true);
+	}
+
+	//이미 있으면, nullptr 리턴
+	if (ActivedVillageWidgets.Contains(UIType))
+	{
+		return nullptr;
+	}
+
+	//World 없으면 강제종료
+	TObjectPtr<UWorld> World = GetWorld();
+	if (!World) {
+		UE_LOG(LogLogic, Warning, TEXT("QVillageUIManager: World가 존재하지 않습니다."));
+		FGenericPlatformMisc::RequestExit(true);
+	}
+
+	/*위젯 없으면 새로 만들기 */
+	TObjectPtr<UUserWidget> NewWidget = CreateWidget<UUserWidget>(World, UIWidgetClasses[UIType]);
+	if (NewWidget) {
+		NewWidget->AddToViewport();
+		NewWidget->SetVisibility(ESlateVisibility::Visible);
+		ActivedVillageWidgets.Add(UIType, NewWidget);
+		return NewWidget;
+	}
+
+	// 위젯 생성 실패 시 
+	UE_LOG(LogLogic, Warning, TEXT("QVillageUIManager: 위젯 생성에 실패했습니다."));
+	FGenericPlatformMisc::RequestExit(true);
+	return nullptr;
+
+}
+
+
+UUserWidget* AQVillageUIManager::GetActivedWidget(EVillageUIType UIType)
+{
+	/* 위젯이 없을때만 만들도록 : 반드시 유효한 UI 접근하게 보장 */
+	CreateWidgetIfNotExists(UIType);
+	// 위에 따라 있는거 보장되니, 리턴해주면 됨
+	return ActivedVillageWidgets[UIType];
+
 }
 
 void AQVillageUIManager::CloseUIInteraction()
@@ -131,6 +171,7 @@ void AQVillageUIManager::CloseUIInteraction()
 	//defaultUI에서 열어준 함수를 호출한다: 버튼 상호작용 막기
 	Cast<UQDefaultVillageWidget>(ActivedVillageWidgets[EVillageUIType::DefaultVillageUI])->BlockButtonsInteraction();
 }
+
 
 void AQVillageUIManager::MulticastEndupUI_Implementation()
 {
@@ -218,30 +259,10 @@ bool AQVillageUIManager::IsVillageMap()
 
 void AQVillageUIManager::TurnOnUI(EVillageUIType UIType)
 {
-	/*예외처리*/
-	//키에 매핑되는 클래스목록이 존재하지 않으면
-	if (!UIWidgetClasses.Contains(UIType)) {
-		UE_LOG(LogLogic, Warning, TEXT("QVillageUIManager: 키에 매핑되는 클래스목록이 존재하지 않습니다."));
-		return;
-	}
-
-	/*UI켜기*/
-	//위젯 이미 만들어져있으면 visible 전환
-	if (ActivedVillageWidgets.Contains(UIType)) {
-		ActivedVillageWidgets[UIType]->SetVisibility(ESlateVisibility::Visible);
-		return;
-	}
-
-	//없으면 위젯 새로 만들기 & visible처리
-	TObjectPtr<UWorld> World = GetWorld();
-	if (!World) return;
-	
-	TObjectPtr<UUserWidget> NewWidget = CreateWidget<UUserWidget>(World, UIWidgetClasses[UIType]);
-	if (NewWidget) {
-		NewWidget->AddToViewport();
-		NewWidget->SetVisibility(ESlateVisibility::Visible);  
-		ActivedVillageWidgets.Add(UIType, NewWidget);
-	}
+	/* 위젯이 없을때만 만들도록 : 반드시 유효한 UI 접근하게 보장 */
+	CreateWidgetIfNotExists(UIType);
+	// 위에 따라 있는 거 보장되니 visible 처리하면 됨
+	ActivedVillageWidgets[UIType]->SetVisibility(ESlateVisibility::Visible);
 }
 
 

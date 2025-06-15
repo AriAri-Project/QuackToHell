@@ -195,18 +195,16 @@ void AQPlayerController::ClientRPCStartConversation_Implementation(FOpenAIRespon
 	
 		//2. P2N Widget에게 자신의 정보를 넘긴다.
 		//내 정보 넘겨주기
-		Cast<UQP2NWidget>((VillageUIManager->GetActivedVillageWidgets())[EVillageUIType::P2N])->SetConversingPlayer(this);
+		Cast<UQP2NWidget>((VillageUIManager->GetActivedWidget(EVillageUIType::P2N)))->SetConversingPlayer(this);
 		//3. P2N Widget에게 NPC의 정보를 넘긴다.
-		TMap<EVillageUIType, TObjectPtr<UUserWidget>> VillageWidgets = VillageUIManager->GetActivedVillageWidgets();
-		TObjectPtr<UQP2NWidget> P2NWidget = Cast<UQP2NWidget>(VillageWidgets[EVillageUIType::P2N]);
+		TObjectPtr<UQP2NWidget> P2NWidget = Cast<UQP2NWidget>(Cast<UQP2NWidget>(VillageUIManager->GetActivedWidget(EVillageUIType::P2N)));
 		P2NWidget->SetConversingNPC(_NPC);
 		P2NWidget->DisplayNPCResponse(NPCStartResponse);
 }
 
 void AQPlayerController::ClientRPCUpdateP2NResponse_Implementation(FOpenAIResponse Response)
 {
-	TMap<EVillageUIType, TObjectPtr<UUserWidget>> VillageWidgets = VillageUIManager->GetActivedVillageWidgets();
-	TObjectPtr<UQP2NWidget> P2NWidget = Cast<UQP2NWidget>(VillageWidgets[EVillageUIType::P2N]);
+	TObjectPtr<UQP2NWidget> P2NWidget = Cast<UQP2NWidget>(VillageUIManager->GetActivedWidget(EVillageUIType::P2N));
 	P2NWidget->DisplayNPCResponse(Response);
 }
 
@@ -287,50 +285,35 @@ void AQPlayerController::InputInteraction(const FInputActionValue& InputValue)
 
 void AQPlayerController::InputTurnOnOffMap(const FInputActionValue& InputValue)
 {
-
 	
+	TObjectPtr<UQMapWidget> MapWidget = Cast<UQMapWidget>((VillageUIManager->GetActivedWidget(EVillageUIType::Map)));
 
-	//지도가 켜져있는지, 꺼져있는지에 따라 켤지끌지가 결정됨.
-	//지도가 있는지부터 확인
-	if (VillageUIManager->GetActivedVillageWidgets().Contains(EVillageUIType::Map)) {
-		TObjectPtr<UQMapWidget> MapWidget = Cast<UQMapWidget>((VillageUIManager->GetActivedVillageWidgets())[EVillageUIType::Map]);
-
-		//보이는 상태가 아니면 켜기
-		if (MapWidget->GetVisibility() != ESlateVisibility::Visible) {
-			VillageUIManager->TurnOnUI(EVillageUIType::Map);
-		}
-		//보이면 끄기
-		else {
-			VillageUIManager->TurnOffUI(EVillageUIType::Map);
-		}
-	}
-	else {
-		//지도없으면 UI켜기(생성)
+	//보이는 상태가 아니면 켜기
+	if (MapWidget->GetVisibility() != ESlateVisibility::Visible) {
 		VillageUIManager->TurnOnUI(EVillageUIType::Map);
+	}
+	//보이면 끄기
+	else {
+		VillageUIManager->TurnOffUI(EVillageUIType::Map);
 	}
 	
 }
 
 void AQPlayerController::InputTurnOnOffInventory(const FInputActionValue& InputValue)
 {
-	//인벤토리가 켜져있는지, 꺼져있는지에 따라 켤지끌지가 결정됨.
-	//인벤토리가 있는지부터 확인
-	if (VillageUIManager->GetActivedVillageWidgets().Contains(EVillageUIType::Inventory)) {
-		TObjectPtr<UQInventoryWidget> InventoryWidget = Cast<UQInventoryWidget>((VillageUIManager->GetActivedVillageWidgets())[EVillageUIType::Inventory]);
 
-		//보이는 상태가 아니면 켜기
-		if (InventoryWidget->GetVisibility() != ESlateVisibility::Visible) {
-			VillageUIManager->TurnOnUI(EVillageUIType::Inventory);
-		}
-		//보이면 끄기
-		else {
-			VillageUIManager->TurnOffUI(EVillageUIType::Inventory);
-		}
-	}
-	else {
-		//지도없으면 UI켜기(생성)
+	
+	TObjectPtr<UQInventoryWidget> InventoryWidget = Cast<UQInventoryWidget>((VillageUIManager->GetActivedWidget(EVillageUIType::Inventory)));
+
+	//보이는 상태가 아니면 켜기
+	if (InventoryWidget->GetVisibility() != ESlateVisibility::Visible) {
 		VillageUIManager->TurnOnUI(EVillageUIType::Inventory);
 	}
+	//보이면 끄기
+	else {
+		VillageUIManager->TurnOffUI(EVillageUIType::Inventory);
+	}
+	
 }
 
 void AQPlayerController::InputTurn(const FInputActionValue& InputValue)
