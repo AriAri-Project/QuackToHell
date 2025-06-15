@@ -2,6 +2,7 @@
 
 #include "GodFunction.h"
 #include "GodCall.h"
+#include "Game/QGameInstance.h"
 #include "QGameInstanceVillage.h"
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
@@ -238,7 +239,6 @@ void UGodFunction::CallOpenAIAsync(const FString& Prompt, TFunction<void(FString
 
 void UGodFunction::DeleteOldPromptFiles()
 {
-    /*
 
     static bool bAlreadyDeleted = false;  // ✅ 중복 실행 방지
     if (bAlreadyDeleted)
@@ -285,7 +285,6 @@ void UGodFunction::DeleteOldPromptFiles()
     {
         GameInstance->StartPromptGeneration();
     }
-    */
 }
 
 void UGodFunction::GeneratePromptWithDelay(UWorld* World, const FString& FileName, const FString& Prompt, float Delay)
@@ -322,7 +321,6 @@ void UGodFunction::GeneratePromptWithDelay(UWorld* World, const FString& FileNam
 
 void UGodFunction::GenerateDefendantPrompt(UWorld* World, TFunction<void()> Callback)
 {
-    /*
     if (!World)
     {
         UE_LOG(LogTemp, Error, TEXT("GenerateDefendantPrompt - World is nullptr!"));
@@ -383,7 +381,6 @@ void UGodFunction::GenerateDefendantPrompt(UWorld* World, TFunction<void()> Call
                 GenerateDefendantPrompt(World, nullptr);
             }
         });
-    */
 }
 
 void UGodFunction::GenerateNPCPrompts(UWorld* World)
@@ -637,6 +634,16 @@ void UGodFunction::GenerateEvidenceItems(UWorld* World)
                 if (FFileHelper::SaveStringToFile(Output, *InfoFilePath))
                 {
                     UE_LOG(LogTemp, Log, TEXT("[%d] %s 저장 완료"), Index + 1, *InfoFilePath);
+
+                    // 증거물 등록
+                    if (UQGameInstance* GameInstance = Cast<UQGameInstance>(World->GetGameInstance()))
+                    {
+                        GameInstance->AddEvidence(Name, Desc, ImageFilePath);
+                    }
+                    else
+                    {
+                        UE_LOG(LogTemp, Error, TEXT("GameInstance 캐스팅 실패 - 증거물 추가 불가"));
+                    }
                 }
                 else
                 {

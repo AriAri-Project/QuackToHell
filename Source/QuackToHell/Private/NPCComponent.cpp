@@ -559,11 +559,46 @@ void UNPCComponent::TrialStatement(FOpenAIRequest Request)
 				*ReadablePromptContent));
 		Messages.Add(MakeShareable(new FJsonValueObject(SystemMessage)));
 
+		UQGameInstance* GameInstance = Cast<UQGameInstance>(GetWorld()->GetGameInstance());
+		FString DialogueSummary;
+
+		if (GameInstance)
+		{
+			const int32 NPCID = GetNPCID();
+			TArray<FConversationRecord> Records = GameInstance->GetRecordWithNPCID(NPCID);
+
+			if (Records.Num() > 0)
+			{
+				DialogueSummary = TEXT("당신이 플레이어들과 나눈 대화:\n");
+
+				for (const FConversationRecord& Record : Records)
+				{
+					DialogueSummary += FString::Printf(TEXT("- %s\n"), *Record.GetMessage());
+				}
+			}
+
+			/*
+			if (Records.Num() > 0)
+			{
+				DialogueSummary = TEXT("다음은 당신이 플레이어들과 나눈 대화 요약입니다:\n");
+				for (const FConversationRecord& Record : Records)
+				{
+					FString Role = (Record.GetSpeakerID() == NPCID) ? TEXT("당신") : TEXT("플레이어");
+					DialogueSummary += FString::Printf(TEXT("[%s] %s\n"), *Role, *Record.GetMessage());
+				}
+			}
+			*/
+		}
+
 		TSharedPtr<FJsonObject> UserMessage = MakeShareable(new FJsonObject());
 		UserMessage->SetStringField("role", "user");
-		UserMessage->SetStringField("content",
-			FString::Printf(TEXT("당신은 마을에서 플레이어들과 나눈 대화와 재판 과정을 모두 지켜봤습니다.\n"
-				"피고인에 대해 당신이 판단한 한 줄 평을 남겨주세요. 이때, 당신이 변호사를 지지하는지, 검사를 지지하는지에 대한 의견이 명백하게 포함되어 있어야 합니다.\n참고할 요약: %s"), *EscapedPlayerInput));
+		UserMessage->SetStringField("content", FString::Printf(TEXT(
+			"%s\n"
+			"이제 플레이어에 대한 당신의 판단을 한 문장으로 정리해주세요. 반드시 다음 항목을 포함해야 합니다:\n"
+			"1. 피고인의 태도나 말투에 대한 감상\n"
+			"2. 당신이 변호사와 검사 중 누구의 주장을 더 신뢰하는지\n"
+			"3. 당신의 판단 이유 (간단히)\n\n"
+			"4. 당신의 캐릭터성을 반영하여, 명확히 '나는 변호사를 지지한다' 혹은 '검사를 지지한다'는 의미의 문장을 포함하세요."), *DialogueSummary));
 		Messages.Add(MakeShareable(new FJsonValueObject(UserMessage)));
 	}
 	break;
