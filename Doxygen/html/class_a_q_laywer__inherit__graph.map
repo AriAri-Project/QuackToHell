@@ -1,7 +1,7 @@
 <map id="AQLaywer" name="AQLaywer">
-<area shape="rect" id="Node000001" title="Laywer 캐릭터 클래스" alt="" coords="108,1771,179,1840"/>
-<area shape="rect" id="Node000002" href="$class_a_q_player.html" title="플레이어 캐릭터 클래스입니다." alt="" coords="5,603,281,1723"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,1737,146,1771,141,1771,141,1737"/>
+<area shape="rect" id="Node000001" title="Laywer 캐릭터 클래스" alt="" coords="108,1968,179,2037"/>
+<area shape="rect" id="Node000002" href="$class_a_q_player.html" title="플레이어 캐릭터 클래스입니다." alt="" coords="5,603,281,1920"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,1935,146,1968,141,1968,141,1935"/>
 <area shape="rect" id="Node000003" href="$class_a_q_character.html" title=" " alt="" coords="11,123,276,555"/>
 <area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="146,570,146,603,141,603,141,570"/>
 <area shape="rect" id="Node000004" title=" " alt="" coords="105,5,182,75"/>

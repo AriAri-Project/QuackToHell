@@ -1,0 +1,4 @@
+<map id="ServerRPCGetProsecutorStatement" name="ServerRPCGetProsecutorStatement">
+<area shape="rect" id="Node000001" title="검사측 진술을 요청하는 서버 RPC 함수" alt="" coords="5,29,238,56"/>
+<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="82,31,75,21,80,11,96,5,122,3,150,5,164,12,162,17,148,10,121,8,97,10,84,15,81,20,87,27"/>
+</map>

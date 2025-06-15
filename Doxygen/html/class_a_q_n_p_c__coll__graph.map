@@ -1,7 +1,11 @@
 <map id="AQNPC" name="AQNPC">
-<area shape="rect" id="Node000001" title="NPC 캐릭터 클래스입니다." alt="" coords="5,603,340,1520"/>
-<area shape="rect" id="Node000002" href="$class_a_q_character.html" title=" " alt="" coords="40,123,305,555"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="176,570,176,603,170,603,170,570"/>
-<area shape="rect" id="Node000003" title=" " alt="" coords="134,5,211,75"/>
-<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="176,89,176,123,170,123,170,89"/>
+<area shape="rect" id="Node000001" title="NPC 캐릭터 클래스입니다." alt="" coords="98,620,433,1500"/>
+<area shape="rect" id="Node000002" href="$class_a_q_character.html" title=" " alt="" coords="5,124,270,556"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="181,570,190,620,185,621,176,571"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="100,5,176,75"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="140,90,140,124,135,124,135,90"/>
+<area shape="rect" id="Node000004" href="$class_u_q_speech_bubble_widget.html" title="말풍선 위젯입니다." alt="" coords="294,268,496,412"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="385,412,351,604,345,603,380,411"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="350,5,440,75"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="398,90,398,268,392,268,392,90"/>
 </map>

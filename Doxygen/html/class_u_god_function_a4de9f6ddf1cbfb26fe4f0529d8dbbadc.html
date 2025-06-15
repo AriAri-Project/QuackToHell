@@ -125,28 +125,28 @@ $(function(){initNavTree('class_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="_god_function_8cpp_source.html">GodFunction.cpp</a> 파일의 <a class="el" href="_god_function_8cpp_source.html#l00393">393</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  394</span>{</div>
-<div class="line"><span class="lineno">  395</span>    <span class="keywordflow">if</span> (!World)</div>
-<div class="line"><span class="lineno">  396</span>    {</div>
-<div class="line"><span class="lineno">  397</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateNPCPrompts - World is nullptr!&quot;</span>));</div>
-<div class="line"><span class="lineno">  398</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  399</span>    }</div>
+<p class="definition"><a class="el" href="_god_function_8cpp_source.html">GodFunction.cpp</a> 파일의 <a class="el" href="_god_function_8cpp_source.html#l00389">389</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  390</span>{</div>
+<div class="line"><span class="lineno">  391</span>    <span class="keywordflow">if</span> (!World)</div>
+<div class="line"><span class="lineno">  392</span>    {</div>
+<div class="line"><span class="lineno">  393</span>        UE_LOG(LogTemp, Error, TEXT(<span class="stringliteral">&quot;GenerateNPCPrompts - World is nullptr!&quot;</span>));</div>
+<div class="line"><span class="lineno">  394</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  395</span>    }</div>
+<div class="line"><span class="lineno">  396</span> </div>
+<div class="line"><span class="lineno">  397</span>    FString PromptToDefendantPath = FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToDefendant.json&quot;</span>);</div>
+<div class="line"><span class="lineno">  398</span>    FString PromptToGodPath = FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToGod.json&quot;</span>);</div>
+<div class="line"><span class="lineno">  399</span> </div>
 <div class="line"><span class="lineno">  400</span> </div>
-<div class="line"><span class="lineno">  401</span>    FString PromptToDefendantPath = FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToDefendant.json&quot;</span>);</div>
-<div class="line"><span class="lineno">  402</span>    FString PromptToGodPath = FPaths::ProjectSavedDir() + TEXT(<span class="stringliteral">&quot;Prompt/PromptToGod.json&quot;</span>);</div>
-<div class="line"><span class="lineno">  403</span> </div>
-<div class="line"><span class="lineno">  404</span> </div>
-<div class="line"><span class="lineno">  405</span>    <span class="keywordflow">if</span> (!FPaths::FileExists(PromptToDefendantPath) || !FPaths::FileExists(PromptToGodPath))</div>
-<div class="line"><span class="lineno">  406</span>    {</div>
-<div class="line"><span class="lineno">  407</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;PromptToGod.json 또는 PromptToDefendant.json이 존재하지 않음. NPC 생성 불가.&quot;</span>));</div>
-<div class="line"><span class="lineno">  408</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><span class="lineno">  409</span>    }</div>
-<div class="line"><span class="lineno">  410</span> </div>
-<div class="line"><span class="lineno">  411</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;PromptToGod.json 및 PromptToDefendant.json 존재 확인됨. NPC 프롬프트 순차적 생성 시작.&quot;</span>));</div>
-<div class="line"><span class="lineno">  412</span>    <a class="code hl_function" href="class_u_god_function_a800687b9234e88341a3ff75a44089a24.html#a800687b9234e88341a3ff75a44089a24">GenerateJuryNPC</a>(World, 1);</div>
-<div class="line"><span class="lineno">  413</span>}</div>
-<div class="ttc" id="aclass_u_god_function_a800687b9234e88341a3ff75a44089a24_html_a800687b9234e88341a3ff75a44089a24"><div class="ttname"><a href="class_u_god_function_a800687b9234e88341a3ff75a44089a24.html#a800687b9234e88341a3ff75a44089a24">UGodFunction::GenerateJuryNPC</a></div><div class="ttdeci">static void GenerateJuryNPC(UWorld *World, int JuryIndex)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00424">GodFunction.cpp:424</a></div></div>
+<div class="line"><span class="lineno">  401</span>    <span class="keywordflow">if</span> (!FPaths::FileExists(PromptToDefendantPath) || !FPaths::FileExists(PromptToGodPath))</div>
+<div class="line"><span class="lineno">  402</span>    {</div>
+<div class="line"><span class="lineno">  403</span>        UE_LOG(LogTemp, Warning, TEXT(<span class="stringliteral">&quot;PromptToGod.json 또는 PromptToDefendant.json이 존재하지 않음. NPC 생성 불가.&quot;</span>));</div>
+<div class="line"><span class="lineno">  404</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><span class="lineno">  405</span>    }</div>
+<div class="line"><span class="lineno">  406</span> </div>
+<div class="line"><span class="lineno">  407</span>    UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;PromptToGod.json 및 PromptToDefendant.json 존재 확인됨. NPC 프롬프트 순차적 생성 시작.&quot;</span>));</div>
+<div class="line"><span class="lineno">  408</span>    <a class="code hl_function" href="class_u_god_function_a800687b9234e88341a3ff75a44089a24.html#a800687b9234e88341a3ff75a44089a24">GenerateJuryNPC</a>(World, 1);</div>
+<div class="line"><span class="lineno">  409</span>}</div>
+<div class="ttc" id="aclass_u_god_function_a800687b9234e88341a3ff75a44089a24_html_a800687b9234e88341a3ff75a44089a24"><div class="ttname"><a href="class_u_god_function_a800687b9234e88341a3ff75a44089a24.html#a800687b9234e88341a3ff75a44089a24">UGodFunction::GenerateJuryNPC</a></div><div class="ttdeci">static void GenerateJuryNPC(UWorld *World, int JuryIndex)</div><div class="ttdef"><b>Definition</b> <a href="_god_function_8cpp_source.html#l00420">GodFunction.cpp:420</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div class="dyncontent">
@@ -188,23 +188,6 @@ $(function(){initNavTree('class_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc
 <area shape="poly" title=" " alt="" coords="723,169,797,188,796,193,721,174"/>
 <area shape="poly" title=" " alt="" coords="711,169,748,187,763,199,773,210,782,220,796,231,806,236,803,241,793,236,778,224,769,213,759,203,745,192,709,174"/>
 <area shape="poly" title=" " alt="" coords="940,195,974,190,975,196,941,200"/>
-</map>
-</div>
-<div class="dynheader">
-이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
-<div class="dyncontent">
-<div class="center"><img src="class_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_icgraph.png" border="0" usemap="#aclass_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_icgraph" alt=""/></div>
-<map name="aclass_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_icgraph" id="aclass_u_god_function_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_a4de9f6ddf1cbfb26fe4f0529d8dbbadc_icgraph">
-<area shape="rect" title=" " alt="" coords="896,29,1048,56"/>
-<area shape="rect" href="class_u_god_function_a5c30132246dec8610cc93cc07a32ee07.html#a5c30132246dec8610cc93cc07a32ee07" title=" " alt="" coords="671,29,848,56"/>
-<area shape="poly" title=" " alt="" coords="880,45,848,45,848,40,880,40"/>
-<area shape="poly" title=" " alt="" coords="796,16,783,10,759,8,737,10,725,15,722,20,728,27,724,30,717,21,722,11,736,5,760,3,785,5,798,12"/>
-<area shape="rect" href="class_u_q_game_instance_village_a1ee5ca1a4c7d06fd8d5a3cd9a3d27587.html#a1ee5ca1a4c7d06fd8d5a3cd9a3d27587" title=" " alt="" coords="458,21,623,64"/>
-<area shape="poly" title=" " alt="" coords="656,45,624,45,624,40,656,40"/>
-<area shape="rect" href="class_u_q_game_instance_village_a5a7c0c3e2f26533acb1dfdd30cb430f3.html#a5a7c0c3e2f26533acb1dfdd30cb430f3" title=" " alt="" coords="208,21,410,64"/>
-<area shape="poly" title=" " alt="" coords="443,45,411,45,411,40,443,40"/>
-<area shape="rect" href="class_a_q_game_mode_village_aa1e28be0d0b9be7af2a074941a144c65.html#aa1e28be0d0b9be7af2a074941a144c65" title=" " alt="" coords="5,21,160,64"/>
-<area shape="poly" title=" " alt="" coords="192,45,160,45,160,40,192,40"/>
 </map>
 </div>
 

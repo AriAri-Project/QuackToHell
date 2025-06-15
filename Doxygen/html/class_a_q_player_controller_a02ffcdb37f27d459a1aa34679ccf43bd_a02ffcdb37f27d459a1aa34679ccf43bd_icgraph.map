@@ -1,0 +1,5 @@
+<map id="GetVillageUIManager" name="GetVillageUIManager">
+<area shape="rect" id="Node000001" title=" " alt="" coords="199,5,344,32"/>
+<area shape="rect" id="Node000002" href="$class_a_q_player_controller_a553e7cf81dfbeff8262efb4200fe5f4d.html#a553e7cf81dfbeff8262efb4200fe5f4d" title=" " alt="" coords="5,5,151,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="183,21,151,21,151,16,183,16"/>
+</map>

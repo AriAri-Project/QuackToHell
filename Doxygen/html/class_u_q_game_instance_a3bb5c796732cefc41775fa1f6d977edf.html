@@ -125,16 +125,16 @@ $(function(){initNavTree('class_u_q_game_instance_a3bb5c796732cefc41775fa1f6d977
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="_q_game_instance_8cpp_source.html">QGameInstance.cpp</a> 파일의 <a class="el" href="_q_game_instance_8cpp_source.html#l00028">28</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   29</span>{</div>
-<div class="line"><span class="lineno">   30</span>    UWorld* World = GetWorld();</div>
-<div class="line"><span class="lineno">   31</span>    <span class="keywordflow">if</span> (World == <span class="keyword">nullptr</span>)</div>
-<div class="line"><span class="lineno">   32</span>    {</div>
-<div class="line"><span class="lineno">   33</span>        UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;UQGameInstance::GetLocalNetMode - World is nullptr&quot;</span>));</div>
-<div class="line"><span class="lineno">   34</span>        <span class="keywordflow">return</span> NM_MAX;</div>
-<div class="line"><span class="lineno">   35</span>    }</div>
-<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">return</span> World-&gt;GetNetMode();</div>
-<div class="line"><span class="lineno">   37</span>}</div>
+<p class="definition"><a class="el" href="_q_game_instance_8cpp_source.html">QGameInstance.cpp</a> 파일의 <a class="el" href="_q_game_instance_8cpp_source.html#l00031">31</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   32</span>{</div>
+<div class="line"><span class="lineno">   33</span>    UWorld* World = GetWorld();</div>
+<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">if</span> (World == <span class="keyword">nullptr</span>)</div>
+<div class="line"><span class="lineno">   35</span>    {</div>
+<div class="line"><span class="lineno">   36</span>        UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;UQGameInstance::GetLocalNetMode - World is nullptr&quot;</span>));</div>
+<div class="line"><span class="lineno">   37</span>        <span class="keywordflow">return</span> NM_MAX;</div>
+<div class="line"><span class="lineno">   38</span>    }</div>
+<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">return</span> World-&gt;GetNetMode();</div>
+<div class="line"><span class="lineno">   40</span>}</div>
 </div><!-- fragment --><div class="dynheader">
 이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
 <div class="dyncontent">

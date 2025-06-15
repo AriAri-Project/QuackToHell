@@ -128,21 +128,55 @@ $(function(){initNavTree('class_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9aca
 <p>NPC와의 대화중단 요청을 처리하는 함수입니다. </p>
 <p>npc-npc, player-npc 대화시스템에 활용됩니다. </p>
 
-<p class="definition"><a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html">QDynamicNPCController.cpp</a> 파일의 <a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html#l00183">183</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">  184</span>{</div>
-<div class="line"><span class="lineno">  185</span> </div>
-<div class="line"><span class="lineno">  186</span>    <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089">UnFreezePawn</a>();</div>
-<div class="line"><span class="lineno">  187</span> </div>
-<div class="line"><span class="lineno">  188</span>}</div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089_html_ae24647d27206cc5415d6fda947b03089"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089">AQDynamicNPCController::UnFreezePawn</a></div><div class="ttdeci">void UnFreezePawn()</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8cpp_source.html#l00093">QDynamicNPCController.cpp:93</a></div></div>
+<p class="definition"><a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html">QDynamicNPCController.cpp</a> 파일의 <a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html#l00219">219</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  220</span>{</div>
+<div class="line"><span class="lineno">  221</span>    <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089">UnFreezePawn</a>();</div>
+<div class="line"><span class="lineno">  222</span> </div>
+<div class="line"><span class="lineno">  223</span>    <span class="comment">//만약 말풍선 켜져있는 상태면</span></div>
+<div class="line"><span class="lineno">  224</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec.html#a478fa0f35d5118e7ae7a27cf0c841eec">MyPawn</a>-&gt;GetSpeechBubbleWidget()-&gt;Visibility == ESlateVisibility::Visible) {</div>
+<div class="line"><span class="lineno">  225</span>        <span class="comment">//말풍선 끄기</span></div>
+<div class="line"><span class="lineno">  226</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_ae758c53fe5b59f4c04156d1115383b97.html#ae758c53fe5b59f4c04156d1115383b97">MulticastTurnOffSpeechBubble</a>();</div>
+<div class="line"><span class="lineno">  227</span>    }    </div>
+<div class="line"><span class="lineno">  228</span>}</div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec_html_a478fa0f35d5118e7ae7a27cf0c841eec"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec.html#a478fa0f35d5118e7ae7a27cf0c841eec">AQDynamicNPCController::MyPawn</a></div><div class="ttdeci">TObjectPtr&lt; class AQNPC &gt; MyPawn</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00094">QDynamicNPCController.h:94</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089_html_ae24647d27206cc5415d6fda947b03089"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089">AQDynamicNPCController::UnFreezePawn</a></div><div class="ttdeci">void UnFreezePawn()</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8cpp_source.html#l00122">QDynamicNPCController.cpp:122</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_ae758c53fe5b59f4c04156d1115383b97_html_ae758c53fe5b59f4c04156d1115383b97"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_ae758c53fe5b59f4c04156d1115383b97.html#ae758c53fe5b59f4c04156d1115383b97">AQDynamicNPCController::MulticastTurnOffSpeechBubble</a></div><div class="ttdeci">void MulticastTurnOffSpeechBubble()</div><div class="ttdoc">N2N, NMonolog상황에서 호출됩니다.</div></div>
 </div><!-- fragment --><div class="dynheader">
 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d_afd156935d4f1dc9acab4e7095922240d_cgraph.png" border="0" usemap="#aclass_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d_afd156935d4f1dc9acab4e7095922240d_cgraph" alt=""/></div>
 <map name="aclass_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d_afd156935d4f1dc9acab4e7095922240d_cgraph" id="aclass_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d_afd156935d4f1dc9acab4e7095922240d_cgraph">
-<area shape="rect" title="NPC와의 대화중단 요청을 처리하는 함수입니다." alt="" coords="5,5,87,32"/>
-<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089" title=" " alt="" coords="135,5,246,32"/>
-<area shape="poly" title=" " alt="" coords="87,16,119,16,119,21,87,21"/>
+<area shape="rect" title="NPC와의 대화중단 요청을 처리하는 함수입니다." alt="" coords="5,139,87,165"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_ae758c53fe5b59f4c04156d1115383b97.html#ae758c53fe5b59f4c04156d1115383b97" title="N2N, NMonolog상황에서 호출됩니다." alt="" coords="135,139,336,165"/>
+<area shape="poly" title=" " alt="" coords="87,157,119,158,119,163,87,162"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089" title=" " alt="" coords="384,189,495,216"/>
+<area shape="poly" title=" " alt="" coords="88,163,135,175,258,191,369,198,368,203,258,196,134,180,86,168"/>
+<area shape="poly" title=" " alt="" coords="134,146,102,146,102,141,134,140"/>
+<area shape="poly" title=" " alt="" coords="203,140,197,130,201,120,214,114,235,112,258,115,270,121,268,126,256,120,235,117,216,119,205,124,203,129,208,137"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe" title="NPC의 몸을 멈춥니다." alt="" coords="592,5,686,32"/>
+<area shape="poly" title=" " alt="" coords="258,136,313,105,383,73,484,44,576,25,577,31,485,49,385,79,316,110,260,141"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059" title="상대방을 향해 고개를 회전합니다." alt="" coords="574,147,704,173"/>
+<area shape="poly" title=" " alt="" coords="336,151,558,156,558,161,336,157"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a.html#ab3e669df6f85181d0c0e4632a4f3674a" title="NPC와의 대화시작 요청을 처리하는 함수입니다." alt="" coords="396,88,483,115"/>
+<area shape="poly" title=" " alt="" coords="292,135,381,113,382,118,293,141"/>
+<area shape="poly" title=" " alt="" coords="293,163,369,183,368,188,292,169"/>
+<area shape="poly" title=" " alt="" coords="461,85,498,63,542,42,576,30,578,35,544,46,501,68,464,90"/>
+<area shape="poly" title=" " alt="" coords="483,113,544,132,570,139,568,145,543,137,481,118"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_aee1b6397d4c724bc9cbc06eb7686bb7a.html#aee1b6397d4c724bc9cbc06eb7686bb7a" title="N2N, NMonolog상황에서 호출됩니다." alt="" coords="543,80,735,123"/>
+<area shape="poly" title=" " alt="" coords="483,99,528,99,528,104,483,104"/>
+<area shape="poly" title=" " alt="" coords="601,80,599,70,606,61,619,55,639,53,661,56,673,62,671,67,659,61,639,59,620,61,609,65,604,71,606,79"/>
+</map>
+</div>
+<div class="dynheader">
+이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d_afd156935d4f1dc9acab4e7095922240d_icgraph.png" border="0" usemap="#aclass_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d_afd156935d4f1dc9acab4e7095922240d_icgraph" alt=""/></div>
+<map name="aclass_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d_afd156935d4f1dc9acab4e7095922240d_icgraph" id="aclass_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d_afd156935d4f1dc9acab4e7095922240d_icgraph">
+<area shape="rect" title="NPC와의 대화중단 요청을 처리하는 함수입니다." alt="" coords="255,29,336,56"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_ae758c53fe5b59f4c04156d1115383b97.html#ae758c53fe5b59f4c04156d1115383b97" title="N2N, NMonolog상황에서 호출됩니다." alt="" coords="5,29,207,56"/>
+<area shape="poly" title=" " alt="" coords="239,54,207,54,207,49,239,48"/>
+<area shape="poly" title=" " alt="" coords="222,31,255,32,254,38,222,37"/>
+<area shape="poly" title=" " alt="" coords="138,16,127,10,106,8,86,10,76,15,73,20,78,27,74,30,68,21,72,11,85,5,106,3,129,5,141,12"/>
 </map>
 </div>
 

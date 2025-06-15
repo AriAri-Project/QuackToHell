@@ -148,180 +148,212 @@ $(function(){initNavTree('_q_dynamic_n_p_c_controller_8cpp_source.html',''); ini
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a> = <a class="code hl_function" href="class_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218.html#a14027a8dd3d11d56d004556d8463c218">AQVillageUIManager::GetInstance</a>(GetWorld());</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="comment">//mypawn대입하기</span></div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec.html#a478fa0f35d5118e7ae7a27cf0c841eec">MyPawn</a> = Cast&lt;AQNPC&gt;(GetPawn());</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>}</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span><span class="keywordtype">void</span> AQDynamicNPCController::Tick(<span class="keywordtype">float</span> DeltaTime)</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>{</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    Super::Tick(DeltaTime);</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">//회전 업데이트 처리</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_ae12750869980d27af1f4e701d1ea59a9.html#ae12750869980d27af1f4e701d1ea59a9">bIsRotating</a>) {</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_acef2e8431680d8a7062f863e5d4f8411.html#acef2e8431680d8a7062f863e5d4f8411">UpdateRotation</a>();</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    <span class="comment">//가장 가까운 NPC가 있다면 서버에게 대화가능한지 체크</span></div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">if</span> (TObjectPtr&lt;AQNPC&gt; OpponentNPC = Cast&lt;AQNPC&gt;(Cast&lt;AQDynamicNPC&gt;(<a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec.html#a478fa0f35d5118e7ae7a27cf0c841eec">MyPawn</a>)-&gt;GetClosestNPC())) {</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec.html#a478fa0f35d5118e7ae7a27cf0c841eec">MyPawn</a>-&gt;GetCanStartConversN2N(OpponentNPC)) {</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="comment">//@서버: 대화시작하라고 함수호출하기</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>            <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_ac697069a9876aa5aa865779f60917d86.html#ac697069a9876aa5aa865779f60917d86">StartDialog</a>(OpponentNPC, <a class="code hl_enumvalue" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea719724583f5a01b1507f309191082351">ENPCConversationType::N2N</a>);</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        }</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    }</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>}</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_controller_acef2e8431680d8a7062f863e5d4f8411.html#acef2e8431680d8a7062f863e5d4f8411">   64</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_acef2e8431680d8a7062f863e5d4f8411.html#acef2e8431680d8a7062f863e5d4f8411">AQDynamicNPCController::UpdateRotation</a>()</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>{</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">//현재 NPC 위치</span></div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    FVector NPCPosition = GetPawn()-&gt;GetActorLocation();</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="comment">//상대방의 위치</span></div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    FVector OpponentPosition = <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a27d77c460e9c75f62f8793778d6aa2ce.html#a27d77c460e9c75f62f8793778d6aa2ce">OpponentPawn</a>-&gt;GetActorLocation();</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="comment">//목표 방향으로 회전 계산</span></div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    FRotator LookAtRotation = UKismetMathLibrary::FindLookAtRotation(NPCPosition, OpponentPosition);</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    <span class="comment">//현재 Rotation 가져오기</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    FRotator CurrentRotation = GetPawn()-&gt;GetActorRotation();</div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="comment">//부드러운 회전 적용 (보간)</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    FRotator NewRotation = FMath::RInterpTo(CurrentRotation, LookAtRotation, GetWorld()-&gt;GetDeltaSeconds(), 5.0f);</div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    NewRotation = FRotator(CurrentRotation.Pitch, NewRotation.Yaw, CurrentRotation.Roll);</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="comment">//회전 적용</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    GetPawn()-&gt;SetActorRotation(NewRotation);</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span> </div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    <span class="keywordflow">if</span> (FMath::Abs(CurrentRotation.Yaw - LookAtRotation.Yaw) &lt; 1.0f) {</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>        SetActorTickEnabled(<span class="keyword">false</span>);</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>        <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_ae12750869980d27af1f4e701d1ea59a9.html#ae12750869980d27af1f4e701d1ea59a9">bIsRotating</a> = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a27d77c460e9c75f62f8793778d6aa2ce.html#a27d77c460e9c75f62f8793778d6aa2ce">OpponentPawn</a> = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>    }</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>}</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keywordtype">void</span> AQDynamicNPCController::Tick(<span class="keywordtype">float</span> DeltaTime)</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>{</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    Super::Tick(DeltaTime);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="comment">//회전 업데이트 처리</span></div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_ae12750869980d27af1f4e701d1ea59a9.html#ae12750869980d27af1f4e701d1ea59a9">bIsRotating</a>) {</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_acef2e8431680d8a7062f863e5d4f8411.html#acef2e8431680d8a7062f863e5d4f8411">UpdateRotation</a>();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    }</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">//가장 가까운 NPC가 있다면 서버에게 대화가능한지 체크</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">if</span> (TObjectPtr&lt;AQNPC&gt; OpponentNPC = Cast&lt;AQNPC&gt;(Cast&lt;AQDynamicNPC&gt;(<a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec.html#a478fa0f35d5118e7ae7a27cf0c841eec">MyPawn</a>)-&gt;GetClosestNPC())) {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec.html#a478fa0f35d5118e7ae7a27cf0c841eec">MyPawn</a>-&gt;GetCanStartConversN2N(OpponentNPC)) {</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            <span class="comment">//@서버: 대화시작하라고 함수호출하기</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a.html#ab3e669df6f85181d0c0e4632a4f3674a">StartDialog</a>(OpponentNPC, <a class="code hl_enumvalue" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea719724583f5a01b1507f309191082351">ENPCConversationType::N2N</a>);</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    }</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>}</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="foldopen" id="foldopen00066" data-start="{" data-end="}">
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_controller_acef2e8431680d8a7062f863e5d4f8411.html#acef2e8431680d8a7062f863e5d4f8411">   66</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_acef2e8431680d8a7062f863e5d4f8411.html#acef2e8431680d8a7062f863e5d4f8411">AQDynamicNPCController::UpdateRotation</a>()</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>{</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">//현재 NPC 위치</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    FVector NPCPosition = GetPawn()-&gt;GetActorLocation();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">//상대방의 위치</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    FVector OpponentPosition = <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a27d77c460e9c75f62f8793778d6aa2ce.html#a27d77c460e9c75f62f8793778d6aa2ce">OpponentPawn</a>-&gt;GetActorLocation();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>    <span class="comment">//목표 방향으로 회전 계산</span></div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>    FRotator LookAtRotation = UKismetMathLibrary::FindLookAtRotation(NPCPosition, OpponentPosition);</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="comment">//현재 Rotation 가져오기</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    FRotator CurrentRotation = GetPawn()-&gt;GetActorRotation();</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="comment">//부드러운 회전 적용 (보간)</span></div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    FRotator NewRotation = FMath::RInterpTo(CurrentRotation, LookAtRotation, GetWorld()-&gt;GetDeltaSeconds(), 5.0f);</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    NewRotation = FRotator(CurrentRotation.Pitch, NewRotation.Yaw, CurrentRotation.Roll);</div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span> </div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="comment">//회전 적용</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    GetPawn()-&gt;SetActorRotation(NewRotation);</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordflow">if</span> (FMath::Abs(CurrentRotation.Yaw - LookAtRotation.Yaw) &lt; 1.0f) {</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        SetActorTickEnabled(<span class="keyword">false</span>);</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_ae12750869980d27af1f4e701d1ea59a9.html#ae12750869980d27af1f4e701d1ea59a9">bIsRotating</a> = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a27d77c460e9c75f62f8793778d6aa2ce.html#a27d77c460e9c75f62f8793778d6aa2ce">OpponentPawn</a> = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    }</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>}</div>
 </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
-<div class="foldopen" id="foldopen00093" data-start="{" data-end="}">
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089">   93</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089">AQDynamicNPCController::UnFreezePawn</a>()</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>{</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="comment">//폰 정보 가져오기</span></div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    TObjectPtr&lt;APawn&gt; ControlledPawn = this-&gt;GetPawn();</div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>    <span class="keywordflow">if</span> (!ControlledPawn) {</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    }</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span> </div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    <span class="comment">//movement component 가져오기</span></div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    TObjectPtr&lt;UCharacterMovementComponent&gt; MovementComponent = ControlledPawn-&gt;FindComponentByClass&lt;UCharacterMovementComponent&gt;();</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    <span class="keywordflow">if</span> (MovementComponent) {</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        MovementComponent-&gt;SetComponentTickEnabled(<span class="keyword">true</span>);<span class="comment">//틱 활성화</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        MovementComponent-&gt;Activate(<span class="keyword">true</span>);<span class="comment">//이동 활성화</span></div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>    }</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;NPC 이동 재개.&quot;</span>));</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>}</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="keywordtype">void</span> AQDynamicNPCController::MulticastShowSpeechBubbleWithText_Implementation(<span class="keyword">const</span> FString&amp; Text)<span class="keyword"> const</span></div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span><span class="keyword"></span>{</div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>    <span class="comment">//MyPawn-&gt;GetSpeechBubbleWidget()-&gt;으로 updatetext, turnof/off 접근가능</span></div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec.html#a478fa0f35d5118e7ae7a27cf0c841eec">MyPawn</a>) {</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec.html#a478fa0f35d5118e7ae7a27cf0c841eec">MyPawn</a>-&gt;GetSpeechBubbleWidget()-&gt;TurnOnSpeechBubble();</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec.html#a478fa0f35d5118e7ae7a27cf0c841eec">MyPawn</a>-&gt;GetSpeechBubbleWidget()-&gt;UpdateText(Text);</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    }</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        UE_LOG(LogLogic, Error, TEXT(<span class="stringliteral">&quot;AQDynamicNPCController::MulticastShowSpeechBubbleWithText_Implementation - MyPawn is nullptr&quot;</span>));</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    }</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>}</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span> </div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="keywordtype">void</span> AQDynamicNPCController::MulticastTurnOffSpeechBubble_Implementation()</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>{</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="comment">//MyPawn-&gt;GetSpeechBubbleWidget()-&gt;으로 updatetext, turnof/off 접근가능</span></div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec.html#a478fa0f35d5118e7ae7a27cf0c841eec">MyPawn</a>) {</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec.html#a478fa0f35d5118e7ae7a27cf0c841eec">MyPawn</a>-&gt;GetSpeechBubbleWidget()-&gt;TurnOffSpeechBubble();</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    }</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        UE_LOG(LogLogic, Error, TEXT(<span class="stringliteral">&quot;AQDynamicNPCController::MulticastTurnOffSpeechBubble_Implementation - MyPawn is nullptr&quot;</span>));</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    }</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>}</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span> </div>
+<div class="foldopen" id="foldopen00122" data-start="{" data-end="}">
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089">  122</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089">AQDynamicNPCController::UnFreezePawn</a>()</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>{</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="comment">//폰 정보 가져오기</span></div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    TObjectPtr&lt;APawn&gt; ControlledPawn = this-&gt;GetPawn();</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    <span class="keywordflow">if</span> (!ControlledPawn) {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    }</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="comment">//movement component 가져오기</span></div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    TObjectPtr&lt;UCharacterMovementComponent&gt; MovementComponent = ControlledPawn-&gt;FindComponentByClass&lt;UCharacterMovementComponent&gt;();</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keywordflow">if</span> (MovementComponent) {</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>        MovementComponent-&gt;SetComponentTickEnabled(<span class="keyword">true</span>);<span class="comment">//틱 활성화</span></div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        MovementComponent-&gt;Activate(<span class="keyword">true</span>);<span class="comment">//이동 활성화</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    }</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span> </div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>    UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;NPC 이동 재개.&quot;</span>));</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>}</div>
 </div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span> </div>
-<div class="foldopen" id="foldopen00111" data-start="{" data-end="}">
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe">  111</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe">AQDynamicNPCController::FreezePawn</a>()</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>{</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="comment">//폰 정보 가져오기</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>    APawn* ControlledPawn = this-&gt;GetPawn();</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keywordflow">if</span> (!ControlledPawn) {</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        UE_LOG(LogLogic, Error, TEXT(<span class="stringliteral">&quot;FreezePawn: ControlledPawn is nullptr&quot;</span>));</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>    }</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span> </div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="comment">//movement component 가져오기</span></div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    TObjectPtr&lt;UCharacterMovementComponent&gt; MovementComponent = ControlledPawn-&gt;FindComponentByClass&lt;UCharacterMovementComponent&gt;();</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>    <span class="keywordflow">if</span> (MovementComponent) {</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        MovementComponent-&gt;StopMovementImmediately();<span class="comment">//즉시멈춤</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        MovementComponent-&gt;SetComponentTickEnabled(<span class="keyword">false</span>);<span class="comment">//틱 비활성화</span></div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        MovementComponent-&gt;Deactivate();<span class="comment">//이동 비활성화</span></div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>    }</div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!MovementComponent) {</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        UE_LOG(LogLogic, Error, TEXT(<span class="stringliteral">&quot;FreezePawn: MovementComponent is nullptr&quot;</span>));</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    }</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span> </div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;NPC 멈춤.&quot;</span>));</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>}</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span> </div>
+<div class="foldopen" id="foldopen00140" data-start="{" data-end="}">
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe">  140</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe">AQDynamicNPCController::FreezePawn</a>()</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>{</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot; QDynamicNPCController::AQDynamicNPCController - NPC FreezePawn start, NetMode: %d&quot;</span>), GetNetMode());</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    </div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    <span class="comment">//폰 정보 가져오기</span></div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>    APawn* ControlledPawn = this-&gt;GetPawn();</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keywordflow">if</span> (!ControlledPawn) {</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>        UE_LOG(LogLogic, Error, TEXT(<span class="stringliteral">&quot;FreezePawn: ControlledPawn is nullptr&quot;</span>));</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    }</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    <span class="comment">//movement component 가져오기</span></div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    TObjectPtr&lt;UCharacterMovementComponent&gt; MovementComponent = ControlledPawn-&gt;FindComponentByClass&lt;UCharacterMovementComponent&gt;();</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    <span class="keywordflow">if</span> (MovementComponent) {</div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>        MovementComponent-&gt;StopMovementImmediately();<span class="comment">//즉시멈춤</span></div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        MovementComponent-&gt;SetComponentTickEnabled(<span class="keyword">false</span>);<span class="comment">//틱 비활성화</span></div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        MovementComponent-&gt;Deactivate();<span class="comment">//이동 비활성화</span></div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>    }</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (!MovementComponent) {</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        UE_LOG(LogLogic, Error, TEXT(<span class="stringliteral">&quot;FreezePawn: MovementComponent is nullptr&quot;</span>));</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    }</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span> </div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;NPC 멈춤.&quot;</span>));</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>}</div>
 </div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="foldopen" id="foldopen00135" data-start="{" data-end="}">
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">  135</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">AQDynamicNPCController::RotateToOpponent</a>(<span class="keyword">const</span> TObjectPtr&lt;APawn&gt; InputOpponentPawn) {</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keywordflow">if</span> (!InputOpponentPawn) {</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;AQNPCController: StartDialog에서 유효한 Pawn정보를 넘겨주지 않았습니다.&quot;</span>));</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>    }</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span> </div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="comment">//회전 업데이트 시작</span></div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>    <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a27d77c460e9c75f62f8793778d6aa2ce.html#a27d77c460e9c75f62f8793778d6aa2ce">OpponentPawn</a> = InputOpponentPawn;</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>    <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_ae12750869980d27af1f4e701d1ea59a9.html#ae12750869980d27af1f4e701d1ea59a9">bIsRotating</a> = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>    SetActorTickEnabled(<span class="keyword">true</span>);</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>}</div>
-</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
-<div class="foldopen" id="foldopen00147" data-start="{" data-end="}">
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_controller_ac697069a9876aa5aa865779f60917d86.html#ac697069a9876aa5aa865779f60917d86">  147</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_ac697069a9876aa5aa865779f60917d86.html#ac697069a9876aa5aa865779f60917d86">AQDynamicNPCController::StartDialog</a>(TObjectPtr&lt;APawn&gt; _OpponentPawn, <a class="code hl_enumeration" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840e">ENPCConversationType</a>  ConversationType)</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>{</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="comment">//ConversationType에 따라 StartDialog다르게 처리</span></div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordflow">switch</span> (ConversationType)</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>    {</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea6ae860c71585153c82dd6cff37048b12">ENPCConversationType::P2N</a>:</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>    {</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>        <span class="comment">//FreezePawn();</span></div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">RotateToOpponent</a>(_OpponentPawn);</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        </div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="comment">//P2N Widget에게 자신의 정보를 넘긴다: 내 정보 넘겨주기</span></div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>        TMap&lt;EVillageUIType, TObjectPtr&lt;UUserWidget&gt;&gt; VillageWidgets = <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a>-&gt;GetActivedVillageWidgets();</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        TObjectPtr&lt;UQP2NWidget&gt; P2NWidget = Cast&lt;UQP2NWidget&gt;(VillageWidgets[<a class="code hl_enumvalue" href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6ae860c71585153c82dd6cff37048b12">EVillageUIType::P2N</a>]);</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>        P2NWidget-&gt;SetConversingNPC(<span class="keyword">this</span>);</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    }</div>
-<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>    <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea719724583f5a01b1507f309191082351">ENPCConversationType::N2N</a>:</div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>    {</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span> </div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        {</div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>            <span class="comment">/*@서버*/</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>            <span class="comment">//MyPawn-&gt;GetSpeechBubbleWidget()-&gt;으로 updatetext, turnof/off 접근가능</span></div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
+<div class="foldopen" id="foldopen00166" data-start="{" data-end="}">
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">  166</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">AQDynamicNPCController::RotateToOpponent</a>(<span class="keyword">const</span> TObjectPtr&lt;APawn&gt; InputOpponentPawn) {</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <span class="keywordflow">if</span> (!InputOpponentPawn) {</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        UE_LOG(LogLogic, Log, TEXT(<span class="stringliteral">&quot;AQNPCController: StartDialog에서 유효한 Pawn정보를 넘겨주지 않았습니다.&quot;</span>));</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    }</div>
 <div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span> </div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        }</div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span></div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    }</div>
-<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>    <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>    <span class="keywordflow">default</span>:</div>
-<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>    }</div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>}</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>    <span class="comment">//회전 업데이트 시작</span></div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a27d77c460e9c75f62f8793778d6aa2ce.html#a27d77c460e9c75f62f8793778d6aa2ce">OpponentPawn</a> = InputOpponentPawn;</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_ae12750869980d27af1f4e701d1ea59a9.html#ae12750869980d27af1f4e701d1ea59a9">bIsRotating</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    SetActorTickEnabled(<span class="keyword">true</span>);</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>}</div>
 </div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span> </div>
-<div class="foldopen" id="foldopen00183" data-start="{" data-end="}">
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d.html#afd156935d4f1dc9acab4e7095922240d">  183</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d.html#afd156935d4f1dc9acab4e7095922240d">AQDynamicNPCController::EndDialog</a>()</div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>{</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089">UnFreezePawn</a>();</div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>}</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
+<div class="foldopen" id="foldopen00178" data-start="{" data-end="}">
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a.html#ab3e669df6f85181d0c0e4632a4f3674a">  178</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a.html#ab3e669df6f85181d0c0e4632a4f3674a">AQDynamicNPCController::StartDialog</a>(TObjectPtr&lt;APawn&gt; _OpponentPawn, <a class="code hl_enumeration" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840e">ENPCConversationType</a>  ConversationType)</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>{</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>    <span class="comment">//ConversationType에 따라 StartDialog다르게 처리</span></div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>    <span class="keywordflow">switch</span> (ConversationType)</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    {</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea6ae860c71585153c82dd6cff37048b12">ENPCConversationType::P2N</a>:</div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    {</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe">FreezePawn</a>();</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">RotateToOpponent</a>(_OpponentPawn);</div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    }</div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea719724583f5a01b1507f309191082351">ENPCConversationType::N2N</a>:</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>    {</div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        <span class="comment">//몸멈추기 &amp; 상대방을 향해 회전하기</span></div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe">FreezePawn</a>();</div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">RotateToOpponent</a>(_OpponentPawn);</div>
+<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span> </div>
+<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>        <span class="comment">/* test code임. 되는 것 확인함 https://ariari-ewha.atlassian.net/browse/SCRUM-593?atlOrigin=eyJpIjoiNDY1NDI0ZGNjNTMwNDJjYjg5ODdiMmEzODQyM2IyM2MiLCJwIjoiaiJ9*/</span></div>
+<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span>        <a class="code hl_class" href="class_a_q_player_state.html">AQPlayerState</a>* _PlayerState = GetWorld()-&gt;GetFirstPlayerController()-&gt;GetPlayerState&lt;<a class="code hl_class" href="class_a_q_player_state.html">AQPlayerState</a>&gt;();</div>
+<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>        FString NPCName = <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42.html#a24178d80c1be7064e7157af465e7cc42">NPCComponent</a>-&gt;GetNPCName();</div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>        FString PlayerName = _PlayerState-&gt;GetPlayerName();</div>
+<div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span>        FString SpeechText = FString::Printf(TEXT(<span class="stringliteral">&quot;%s, 아까 %s과 대화를 나누었습니다.&quot;</span>), *NPCName, *PlayerName);</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_aee1b6397d4c724bc9cbc06eb7686bb7a.html#aee1b6397d4c724bc9cbc06eb7686bb7a">MulticastShowSpeechBubbleWithText</a>(SpeechText);</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>        <span class="comment">/*</span></div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span><span class="comment">        * 대화 끝난 후, EndDialog가 알아서 호출됨 신경 x: UnFreezePawn() 및 turnoffspeechbubble이 수행되는 함수</span></div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span><span class="comment">        */</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    }</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>    }</div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>}</div>
 </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span> </div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span> </div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="foldopen" id="foldopen00192" data-start="{" data-end="}">
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_controller_a0b1660ce977f098a6b6248c82c8442b1.html#a0b1660ce977f098a6b6248c82c8442b1">  192</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a0b1660ce977f098a6b6248c82c8442b1.html#a0b1660ce977f098a6b6248c82c8442b1">AQDynamicNPCController::Response</a>(FString&amp; Text, <a class="code hl_enumeration" href="_q_conversation_data_8h_a5a3dc02e2290664f11dc2f3220970e09.html#a5a3dc02e2290664f11dc2f3220970e09">EConversationType</a> InputConversationType)</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>{</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="comment">/*정보가져오기*/</span></div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>    <a class="code hl_struct" href="struct_f_open_a_i_request.html">FOpenAIRequest</a> OpenAIRequest;</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>    OpenAIRequest.<a class="code hl_variable" href="struct_f_open_a_i_request_aeaff446838e7ac1a62e038f6a724c7da.html#aeaff446838e7ac1a62e038f6a724c7da">ConversationType</a> = InputConversationType;</div>
-<div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span>    <a class="code hl_class" href="class_a_q_player_controller.html">AQPlayerController</a>* PlayerController = Cast&lt;AQPlayerController&gt;(UGameplayStatics::GetPlayerController(<span class="keyword">this</span>, 0));</div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>    OpenAIRequest.<a class="code hl_variable" href="struct_f_open_a_i_request_a693967d3b1ad02b19c5d4c2c6fe92b84.html#a693967d3b1ad02b19c5d4c2c6fe92b84">ListenerID</a> = Cast&lt;AQPlayerState&gt; (PlayerController-&gt;PlayerState)-&gt;GetPlayerId();</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span>    OpenAIRequest.<a class="code hl_variable" href="struct_f_open_a_i_request_a57b65c17b9cf8db83f1006f26b1700b6.html#a57b65c17b9cf8db83f1006f26b1700b6">Prompt</a> = Text;</div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>    OpenAIRequest.<a class="code hl_variable" href="struct_f_open_a_i_request_a6e93d1c037caf84ee14f186346d6cb06.html#a6e93d1c037caf84ee14f186346d6cb06">SpeakerID</a> = <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42.html#a24178d80c1be7064e7157af465e7cc42">NPCComponent</a>-&gt;GetNPCID();</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span> </div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>    <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42.html#a24178d80c1be7064e7157af465e7cc42">NPCComponent</a>-&gt;ServerRPCGetNPCResponse(OpenAIRequest);</div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>}</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span> </div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
+<div class="foldopen" id="foldopen00219" data-start="{" data-end="}">
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno"><a class="line" href="class_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d.html#afd156935d4f1dc9acab4e7095922240d">  219</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d.html#afd156935d4f1dc9acab4e7095922240d">AQDynamicNPCController::EndDialog</a>()</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>{</div>
+<div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span>    <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089">UnFreezePawn</a>();</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span> </div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    <span class="comment">//만약 말풍선 켜져있는 상태면</span></div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>    <span class="keywordflow">if</span> (<a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec.html#a478fa0f35d5118e7ae7a27cf0c841eec">MyPawn</a>-&gt;GetSpeechBubbleWidget()-&gt;Visibility == ESlateVisibility::Visible) {</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="comment">//말풍선 끄기</span></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_ae758c53fe5b59f4c04156d1115383b97.html#ae758c53fe5b59f4c04156d1115383b97">MulticastTurnOffSpeechBubble</a>();</div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    }    </div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>}</div>
 </div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span><span class="comment">/*</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span><span class="comment">void AQDynamicNPCController::Response(FString&amp; Text, EConversationType InputConversationType)</span></div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span><span class="comment">{</span></div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span><span class="comment">    //정보가져오기</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span><span class="comment">    FOpenAIRequest OpenAIRequest;</span></div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span><span class="comment">    OpenAIRequest.ConversationType = InputConversationType;</span></div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span><span class="comment">    AQPlayerController* PlayerController = Cast&lt;AQPlayerController&gt;(UGameplayStatics::GetPlayerController(this, 0));</span></div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span><span class="comment">    OpenAIRequest.ListenerID = Cast&lt;AQPlayerState&gt; (PlayerController-&gt;PlayerState)-&gt;GetPlayerId();</span></div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span><span class="comment">    OpenAIRequest.Prompt = Text;</span></div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span><span class="comment">    OpenAIRequest.SpeakerID = NPCComponent-&gt;GetNPCID();</span></div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span><span class="comment">    NPCComponent-&gt;ServerRPCGetNPCResponse(OpenAIRequest);</span></div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span><span class="comment">}</span></div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span><span class="comment">*/</span></div>
 <div class="ttc" id="a_n_p_c_component_8h_html"><div class="ttname"><a href="_n_p_c_component_8h.html">NPCComponent.h</a></div></div>
-<div class="ttc" id="a_q_conversation_data_8h_a5a3dc02e2290664f11dc2f3220970e09_html_a5a3dc02e2290664f11dc2f3220970e09"><div class="ttname"><a href="_q_conversation_data_8h_a5a3dc02e2290664f11dc2f3220970e09.html#a5a3dc02e2290664f11dc2f3220970e09">EConversationType</a></div><div class="ttdeci">EConversationType</div><div class="ttdoc">대화 기록 데이터 저장을 위한 자료구조 및 열거형이 정의되어있는 헤더파일입니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_conversation_data_8h_source.html#l00018">QConversationData.h:19</a></div></div>
 <div class="ttc" id="a_q_dynamic_n_p_c_8h_html"><div class="ttname"><a href="_q_dynamic_n_p_c_8h.html">QDynamicNPC.h</a></div></div>
 <div class="ttc" id="a_q_dynamic_n_p_c_controller_8h_html"><div class="ttname"><a href="_q_dynamic_n_p_c_controller_8h.html">QDynamicNPCController.h</a></div></div>
 <div class="ttc" id="a_q_log_categories_8h_html"><div class="ttname"><a href="_q_log_categories_8h.html">QLogCategories.h</a></div></div>
@@ -334,29 +366,24 @@ $(function(){initNavTree('_q_dynamic_n_p_c_controller_8cpp_source.html',''); ini
 <div class="ttc" id="a_q_player_controller_8h_html"><div class="ttname"><a href="_q_player_controller_8h.html">QPlayerController.h</a></div></div>
 <div class="ttc" id="a_q_player_state_8h_html"><div class="ttname"><a href="_q_player_state_8h.html">QPlayerState.h</a></div></div>
 <div class="ttc" id="a_q_speech_bubble_widget_8h_html"><div class="ttname"><a href="_q_speech_bubble_widget_8h.html">QSpeechBubbleWidget.h</a></div></div>
-<div class="ttc" id="a_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e_html_a80a25b4b1f1633b9ee669cc942a17d8ea6ae860c71585153c82dd6cff37048b12"><div class="ttname"><a href="_q_village_u_i_manager_8h_a80a25b4b1f1633b9ee669cc942a17d8e.html#a80a25b4b1f1633b9ee669cc942a17d8ea6ae860c71585153c82dd6cff37048b12">EVillageUIType::P2N</a></div><div class="ttdeci">@ P2N</div><div class="ttdef"><b>Definition</b> <a href="_q_village_u_i_manager_8h_source.html#l00012">QVillageUIManager.h:12</a></div></div>
 <div class="ttc" id="a_q_village_u_i_manager_8h_html"><div class="ttname"><a href="_q_village_u_i_manager_8h.html">QVillageUIManager.h</a></div></div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a0920ee7121b600027bc33e4afc53cdea_html_a0920ee7121b600027bc33e4afc53cdea"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a0920ee7121b600027bc33e4afc53cdea.html#a0920ee7121b600027bc33e4afc53cdea">AQDynamicNPCController::BehaviorTree</a></div><div class="ttdeci">TObjectPtr&lt; UBehaviorTree &gt; BehaviorTree</div><div class="ttdoc">응답완료의 처리를 위해 델리게이트를 public으로 열어놓습니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00051">QDynamicNPCController.h:51</a></div></div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a0b1660ce977f098a6b6248c82c8442b1_html_a0b1660ce977f098a6b6248c82c8442b1"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a0b1660ce977f098a6b6248c82c8442b1.html#a0b1660ce977f098a6b6248c82c8442b1">AQDynamicNPCController::Response</a></div><div class="ttdeci">void Response(FString &amp;Text, EConversationType ConversationType)</div><div class="ttdoc">입력에 대해 대답하라는 요구를 처리합니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00192">QDynamicNPCController.cpp:192</a></div></div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a0c63f34b8d931e6a72aea024036e7b13_html_a0c63f34b8d931e6a72aea024036e7b13"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">AQDynamicNPCController::VillageUIManager</a></div><div class="ttdeci">TObjectPtr&lt; class AQVillageUIManager &gt; VillageUIManager</div><div class="ttdoc">VillageUIManager정보를 갖습니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00061">QDynamicNPCController.h:61</a></div></div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42_html_a24178d80c1be7064e7157af465e7cc42"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42.html#a24178d80c1be7064e7157af465e7cc42">AQDynamicNPCController::NPCComponent</a></div><div class="ttdeci">TObjectPtr&lt; class UNPCComponent &gt; NPCComponent</div><div class="ttdoc">NPCComponent를 멤버변수로 가집니다</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00057">QDynamicNPCController.h:57</a></div></div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a27d77c460e9c75f62f8793778d6aa2ce_html_a27d77c460e9c75f62f8793778d6aa2ce"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a27d77c460e9c75f62f8793778d6aa2ce.html#a27d77c460e9c75f62f8793778d6aa2ce">AQDynamicNPCController::OpponentPawn</a></div><div class="ttdeci">TObjectPtr&lt; APawn &gt; OpponentPawn</div><div class="ttdoc">상대방 정보.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00066">QDynamicNPCController.h:66</a></div></div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059_html_a3d9641a6e70a40607c740565b6326059"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">AQDynamicNPCController::RotateToOpponent</a></div><div class="ttdeci">void RotateToOpponent(const TObjectPtr&lt; APawn &gt; MyPawn)</div><div class="ttdoc">상대방을 향해 고개를 회전합니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00135">QDynamicNPCController.cpp:135</a></div></div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec_html_a478fa0f35d5118e7ae7a27cf0c841eec"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec.html#a478fa0f35d5118e7ae7a27cf0c841eec">AQDynamicNPCController::MyPawn</a></div><div class="ttdeci">TObjectPtr&lt; class AQNPC &gt; MyPawn</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00078">QDynamicNPCController.h:78</a></div></div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe_html_a47d70e05956f914b4d9e8949fc200efe"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe">AQDynamicNPCController::FreezePawn</a></div><div class="ttdeci">void FreezePawn()</div><div class="ttdoc">NPC의 몸을 멈춥니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00111">QDynamicNPCController.cpp:111</a></div></div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a7f6e9139a53a6f69539e3fd06dca095e_html_a7f6e9139a53a6f69539e3fd06dca095e"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a7f6e9139a53a6f69539e3fd06dca095e.html#a7f6e9139a53a6f69539e3fd06dca095e">AQDynamicNPCController::BlackboardComp</a></div><div class="ttdeci">UBlackboardComponent * BlackboardComp</div><div class="ttdoc">blackboard를 지정합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00055">QDynamicNPCController.h:55</a></div></div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_ac697069a9876aa5aa865779f60917d86_html_ac697069a9876aa5aa865779f60917d86"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_ac697069a9876aa5aa865779f60917d86.html#ac697069a9876aa5aa865779f60917d86">AQDynamicNPCController::StartDialog</a></div><div class="ttdeci">void StartDialog(TObjectPtr&lt; APawn &gt; MyPawn, ENPCConversationType ConversationType)</div><div class="ttdoc">NPC와의 대화시작 요청을 처리하는 함수입니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00147">QDynamicNPCController.cpp:147</a></div></div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_acef2e8431680d8a7062f863e5d4f8411_html_acef2e8431680d8a7062f863e5d4f8411"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_acef2e8431680d8a7062f863e5d4f8411.html#acef2e8431680d8a7062f863e5d4f8411">AQDynamicNPCController::UpdateRotation</a></div><div class="ttdeci">void UpdateRotation()</div><div class="ttdoc">상대방을 향해 회전량 업데이트 함수.</div><div class="ttdef"><b>Definition</b> <a href="#l00064">QDynamicNPCController.cpp:64</a></div></div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_ae12750869980d27af1f4e701d1ea59a9_html_ae12750869980d27af1f4e701d1ea59a9"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_ae12750869980d27af1f4e701d1ea59a9.html#ae12750869980d27af1f4e701d1ea59a9">AQDynamicNPCController::bIsRotating</a></div><div class="ttdeci">bool bIsRotating</div><div class="ttdoc">회전시작 시 on, 회전 끝날 시 off.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00070">QDynamicNPCController.h:70</a></div></div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089_html_ae24647d27206cc5415d6fda947b03089"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089">AQDynamicNPCController::UnFreezePawn</a></div><div class="ttdeci">void UnFreezePawn()</div><div class="ttdef"><b>Definition</b> <a href="#l00093">QDynamicNPCController.cpp:93</a></div></div>
-<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d_html_afd156935d4f1dc9acab4e7095922240d"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d.html#afd156935d4f1dc9acab4e7095922240d">AQDynamicNPCController::EndDialog</a></div><div class="ttdeci">void EndDialog()</div><div class="ttdoc">NPC와의 대화중단 요청을 처리하는 함수입니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00183">QDynamicNPCController.cpp:183</a></div></div>
-<div class="ttc" id="aclass_a_q_player_controller_html"><div class="ttname"><a href="class_a_q_player_controller.html">AQPlayerController</a></div><div class="ttdoc">플레이어 컨트롤러 클래스입니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_player_controller_8h_source.html#l00014">QPlayerController.h:15</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a0920ee7121b600027bc33e4afc53cdea_html_a0920ee7121b600027bc33e4afc53cdea"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a0920ee7121b600027bc33e4afc53cdea.html#a0920ee7121b600027bc33e4afc53cdea">AQDynamicNPCController::BehaviorTree</a></div><div class="ttdeci">TObjectPtr&lt; UBehaviorTree &gt; BehaviorTree</div><div class="ttdoc">입력에 대해 대답하라는 요구를 처리합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00066">QDynamicNPCController.h:66</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a0c63f34b8d931e6a72aea024036e7b13_html_a0c63f34b8d931e6a72aea024036e7b13"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">AQDynamicNPCController::VillageUIManager</a></div><div class="ttdeci">TObjectPtr&lt; class AQVillageUIManager &gt; VillageUIManager</div><div class="ttdoc">VillageUIManager정보를 갖습니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00076">QDynamicNPCController.h:76</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42_html_a24178d80c1be7064e7157af465e7cc42"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42.html#a24178d80c1be7064e7157af465e7cc42">AQDynamicNPCController::NPCComponent</a></div><div class="ttdeci">TObjectPtr&lt; class UNPCComponent &gt; NPCComponent</div><div class="ttdoc">NPCComponent를 멤버변수로 가집니다</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00072">QDynamicNPCController.h:72</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a27d77c460e9c75f62f8793778d6aa2ce_html_a27d77c460e9c75f62f8793778d6aa2ce"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a27d77c460e9c75f62f8793778d6aa2ce.html#a27d77c460e9c75f62f8793778d6aa2ce">AQDynamicNPCController::OpponentPawn</a></div><div class="ttdeci">TObjectPtr&lt; APawn &gt; OpponentPawn</div><div class="ttdoc">상대방 정보.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00081">QDynamicNPCController.h:81</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059_html_a3d9641a6e70a40607c740565b6326059"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">AQDynamicNPCController::RotateToOpponent</a></div><div class="ttdeci">void RotateToOpponent(const TObjectPtr&lt; APawn &gt; MyPawn)</div><div class="ttdoc">상대방을 향해 고개를 회전합니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00166">QDynamicNPCController.cpp:166</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec_html_a478fa0f35d5118e7ae7a27cf0c841eec"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a478fa0f35d5118e7ae7a27cf0c841eec.html#a478fa0f35d5118e7ae7a27cf0c841eec">AQDynamicNPCController::MyPawn</a></div><div class="ttdeci">TObjectPtr&lt; class AQNPC &gt; MyPawn</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00094">QDynamicNPCController.h:94</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe_html_a47d70e05956f914b4d9e8949fc200efe"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe">AQDynamicNPCController::FreezePawn</a></div><div class="ttdeci">void FreezePawn()</div><div class="ttdoc">NPC의 몸을 멈춥니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00140">QDynamicNPCController.cpp:140</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a7f6e9139a53a6f69539e3fd06dca095e_html_a7f6e9139a53a6f69539e3fd06dca095e"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a7f6e9139a53a6f69539e3fd06dca095e.html#a7f6e9139a53a6f69539e3fd06dca095e">AQDynamicNPCController::BlackboardComp</a></div><div class="ttdeci">UBlackboardComponent * BlackboardComp</div><div class="ttdoc">blackboard를 지정합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00070">QDynamicNPCController.h:70</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a_html_ab3e669df6f85181d0c0e4632a4f3674a"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a.html#ab3e669df6f85181d0c0e4632a4f3674a">AQDynamicNPCController::StartDialog</a></div><div class="ttdeci">void StartDialog(TObjectPtr&lt; APawn &gt; Pawn, ENPCConversationType ConversationType)</div><div class="ttdoc">NPC와의 대화시작 요청을 처리하는 함수입니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00178">QDynamicNPCController.cpp:178</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_acef2e8431680d8a7062f863e5d4f8411_html_acef2e8431680d8a7062f863e5d4f8411"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_acef2e8431680d8a7062f863e5d4f8411.html#acef2e8431680d8a7062f863e5d4f8411">AQDynamicNPCController::UpdateRotation</a></div><div class="ttdeci">void UpdateRotation()</div><div class="ttdoc">상대방을 향해 회전량 업데이트 함수.</div><div class="ttdef"><b>Definition</b> <a href="#l00066">QDynamicNPCController.cpp:66</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_ae12750869980d27af1f4e701d1ea59a9_html_ae12750869980d27af1f4e701d1ea59a9"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_ae12750869980d27af1f4e701d1ea59a9.html#ae12750869980d27af1f4e701d1ea59a9">AQDynamicNPCController::bIsRotating</a></div><div class="ttdeci">bool bIsRotating</div><div class="ttdoc">회전시작 시 on, 회전 끝날 시 off.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00085">QDynamicNPCController.h:85</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089_html_ae24647d27206cc5415d6fda947b03089"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089">AQDynamicNPCController::UnFreezePawn</a></div><div class="ttdeci">void UnFreezePawn()</div><div class="ttdef"><b>Definition</b> <a href="#l00122">QDynamicNPCController.cpp:122</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_ae758c53fe5b59f4c04156d1115383b97_html_ae758c53fe5b59f4c04156d1115383b97"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_ae758c53fe5b59f4c04156d1115383b97.html#ae758c53fe5b59f4c04156d1115383b97">AQDynamicNPCController::MulticastTurnOffSpeechBubble</a></div><div class="ttdeci">void MulticastTurnOffSpeechBubble()</div><div class="ttdoc">N2N, NMonolog상황에서 호출됩니다.</div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_aee1b6397d4c724bc9cbc06eb7686bb7a_html_aee1b6397d4c724bc9cbc06eb7686bb7a"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_aee1b6397d4c724bc9cbc06eb7686bb7a.html#aee1b6397d4c724bc9cbc06eb7686bb7a">AQDynamicNPCController::MulticastShowSpeechBubbleWithText</a></div><div class="ttdeci">void MulticastShowSpeechBubbleWithText(const FString &amp;Text) const</div><div class="ttdoc">N2N, NMonolog상황에서 호출됩니다.</div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d_html_afd156935d4f1dc9acab4e7095922240d"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d.html#afd156935d4f1dc9acab4e7095922240d">AQDynamicNPCController::EndDialog</a></div><div class="ttdeci">void EndDialog()</div><div class="ttdoc">NPC와의 대화중단 요청을 처리하는 함수입니다.</div><div class="ttdef"><b>Definition</b> <a href="#l00219">QDynamicNPCController.cpp:219</a></div></div>
+<div class="ttc" id="aclass_a_q_player_state_html"><div class="ttname"><a href="class_a_q_player_state.html">AQPlayerState</a></div><div class="ttdoc">player state클래스입니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_player_state_8h_source.html#l00023">QPlayerState.h:24</a></div></div>
 <div class="ttc" id="aclass_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218_html_a14027a8dd3d11d56d004556d8463c218"><div class="ttname"><a href="class_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218.html#a14027a8dd3d11d56d004556d8463c218">AQVillageUIManager::GetInstance</a></div><div class="ttdeci">static TObjectPtr&lt; AQVillageUIManager &gt; GetInstance(TObjectPtr&lt; UWorld &gt; World)</div><div class="ttdoc">싱글톤 인스턴스 반환.</div><div class="ttdef"><b>Definition</b> <a href="_q_village_u_i_manager_8cpp_source.html#l00095">QVillageUIManager.cpp:95</a></div></div>
-<div class="ttc" id="astruct_f_open_a_i_request_a57b65c17b9cf8db83f1006f26b1700b6_html_a57b65c17b9cf8db83f1006f26b1700b6"><div class="ttname"><a href="struct_f_open_a_i_request_a57b65c17b9cf8db83f1006f26b1700b6.html#a57b65c17b9cf8db83f1006f26b1700b6">FOpenAIRequest::Prompt</a></div><div class="ttdeci">FString Prompt</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00037">NPCComponent.h:37</a></div></div>
-<div class="ttc" id="astruct_f_open_a_i_request_a693967d3b1ad02b19c5d4c2c6fe92b84_html_a693967d3b1ad02b19c5d4c2c6fe92b84"><div class="ttname"><a href="struct_f_open_a_i_request_a693967d3b1ad02b19c5d4c2c6fe92b84.html#a693967d3b1ad02b19c5d4c2c6fe92b84">FOpenAIRequest::ListenerID</a></div><div class="ttdeci">int32 ListenerID</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00031">NPCComponent.h:31</a></div></div>
-<div class="ttc" id="astruct_f_open_a_i_request_a6e93d1c037caf84ee14f186346d6cb06_html_a6e93d1c037caf84ee14f186346d6cb06"><div class="ttname"><a href="struct_f_open_a_i_request_a6e93d1c037caf84ee14f186346d6cb06.html#a6e93d1c037caf84ee14f186346d6cb06">FOpenAIRequest::SpeakerID</a></div><div class="ttdeci">int32 SpeakerID</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00028">NPCComponent.h:28</a></div></div>
-<div class="ttc" id="astruct_f_open_a_i_request_aeaff446838e7ac1a62e038f6a724c7da_html_aeaff446838e7ac1a62e038f6a724c7da"><div class="ttname"><a href="struct_f_open_a_i_request_aeaff446838e7ac1a62e038f6a724c7da.html#aeaff446838e7ac1a62e038f6a724c7da">FOpenAIRequest::ConversationType</a></div><div class="ttdeci">EConversationType ConversationType</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00034">NPCComponent.h:34</a></div></div>
-<div class="ttc" id="astruct_f_open_a_i_request_html"><div class="ttname"><a href="struct_f_open_a_i_request.html">FOpenAIRequest</a></div><div class="ttdoc">OpenAI API 요청을 위한 구조체</div><div class="ttdef"><b>Definition</b> <a href="_n_p_c_component_8h_source.html#l00020">NPCComponent.h:21</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

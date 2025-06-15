@@ -1,0 +1,11 @@
+<map id="QuackToHell/UI/QRobbyWidget.cpp" name="QuackToHell/UI/QRobbyWidget.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="96,5,329,32"/>
+<area shape="rect" id="Node000002" href="$_q_robby_widget_8h.html" title=" " alt="" coords="143,80,282,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="215,33,215,64,210,64,210,33"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,155,111,181"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="187,110,100,150,98,145,185,105"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="134,155,291,181"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="215,107,215,139,210,139,210,107"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="315,155,497,181"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="247,105,359,146,357,151,245,110"/>
+</map>

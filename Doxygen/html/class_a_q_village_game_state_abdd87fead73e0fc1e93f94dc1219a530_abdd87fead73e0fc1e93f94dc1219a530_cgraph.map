@@ -1,0 +1,6 @@
+<map id="ServerRPCRequestTravelToCourt" name="ServerRPCRequestTravelToCourt">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,29,193,72"/>
+<area shape="poly" id="edge2_Node000001_Node000001" title=" " alt="" coords="64,29,63,19,68,10,81,5,99,3,119,5,131,11,128,16,117,10,99,8,82,10,72,14,68,21,69,28"/>
+<area shape="rect" id="Node000002" href="$class_a_q_village_game_state_a4b591a51a5b9f4036c6ac0f825a0d24c.html#a4b591a51a5b9f4036c6ac0f825a0d24c" title=" " alt="" coords="241,37,321,64"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,48,225,48,225,53,193,53"/>
+</map>

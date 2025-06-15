@@ -109,36 +109,53 @@ $(function(){initNavTree('_q_dynamic_n_p_c_8h.html',''); initResizable(true); })
 <div class="contents">
 <div class="textblock"><code>#include &quot;CoreMinimal.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="_q_n_p_c_8h_source.html">Character/QNPC.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_q_player_controller_8h_source.html">Player/QPlayerController.h</a>&quot;</code><br />
 <code>#include &quot;QDynamicNPC.generated.h&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 QDynamicNPC.h에 대한 include 의존 그래프</div>
 <div class="dyncontent">
 <div class="center"><img src="_q_dynamic_n_p_c_8h__incl.png" border="0" usemap="#a_quack_to_hell_2_character_2_q_dynamic_n_p_c_8h" alt=""/></div>
 <map name="a_quack_to_hell_2_character_2_q_dynamic_n_p_c_8h" id="a_quack_to_hell_2_character_2_q_dynamic_n_p_c_8h">
-<area shape="rect" title=" " alt="" coords="523,5,680,48"/>
-<area shape="rect" title=" " alt="" coords="497,245,602,272"/>
-<area shape="poly" title=" " alt="" coords="600,49,559,231,553,230,595,48"/>
-<area shape="rect" href="_q_n_p_c_8h.html" title=" " alt="" coords="432,96,564,123"/>
-<area shape="poly" title=" " alt="" coords="577,51,528,88,524,84,573,46"/>
-<area shape="rect" title=" " alt="" coords="639,96,823,123"/>
-<area shape="poly" title=" " alt="" coords="637,46,699,85,696,90,634,51"/>
-<area shape="poly" title=" " alt="" coords="507,122,528,170,546,229,541,231,523,172,502,124"/>
-<area shape="rect" href="_q_character_8h.html" title=" " alt="" coords="642,171,802,197"/>
-<area shape="poly" title=" " alt="" coords="538,121,669,163,667,168,536,126"/>
-<area shape="rect" href="_q_conversation_data_8h.html" title=" " alt="" coords="143,171,357,197"/>
-<area shape="poly" title=" " alt="" coords="455,126,309,168,307,163,454,121"/>
-<area shape="rect" title=" " alt="" coords="381,171,513,197"/>
-<area shape="poly" title=" " alt="" coords="491,125,467,160,462,157,487,122"/>
-<area shape="poly" title=" " alt="" coords="693,200,595,241,593,236,691,195"/>
-<area shape="rect" title=" " alt="" coords="626,245,820,272"/>
-<area shape="poly" title=" " alt="" coords="725,198,725,230,720,230,719,198"/>
-<area shape="rect" title=" " alt="" coords="844,245,1005,272"/>
-<area shape="poly" title=" " alt="" coords="758,195,876,237,874,242,756,200"/>
-<area shape="poly" title=" " alt="" coords="303,195,483,239,482,244,302,201"/>
-<area shape="rect" title=" " alt="" coords="5,245,180,272"/>
-<area shape="poly" title=" " alt="" coords="224,200,135,241,133,236,221,195"/>
-<area shape="rect" title=" " alt="" coords="204,245,413,272"/>
-<area shape="poly" title=" " alt="" coords="262,196,291,231,287,235,258,200"/>
+<area shape="rect" title=" " alt="" coords="859,5,1017,48"/>
+<area shape="rect" title=" " alt="" coords="840,245,945,272"/>
+<area shape="poly" title=" " alt="" coords="933,49,914,104,898,171,894,230,889,230,893,170,909,102,928,48"/>
+<area shape="rect" href="_q_n_p_c_8h.html" title=" " alt="" coords="609,96,742,123"/>
+<area shape="poly" title=" " alt="" coords="871,51,732,94,730,88,870,46"/>
+<area shape="rect" href="_q_player_controller_8h.html" title=" " alt="" coords="986,96,1162,123"/>
+<area shape="poly" title=" " alt="" coords="974,46,1041,85,1038,90,972,51"/>
+<area shape="rect" title=" " alt="" coords="1186,96,1370,123"/>
+<area shape="poly" title=" " alt="" coords="1018,44,1211,89,1209,95,1017,49"/>
+<area shape="poly" title=" " alt="" coords="706,121,749,142,795,168,837,201,872,233,868,237,834,205,793,173,747,146,704,126"/>
+<area shape="rect" href="_q_character_8h.html" title=" " alt="" coords="383,171,544,197"/>
+<area shape="poly" title=" " alt="" coords="639,126,516,168,514,163,638,121"/>
+<area shape="rect" href="_q_conversation_data_8h.html" title=" " alt="" coords="568,171,782,197"/>
+<area shape="poly" title=" " alt="" coords="678,123,678,155,673,155,673,123"/>
+<area shape="rect" title=" " alt="" coords="226,171,359,197"/>
+<area shape="poly" title=" " alt="" coords="609,126,375,170,374,165,608,121"/>
+<area shape="poly" title=" " alt="" coords="543,195,825,242,824,248,542,201"/>
+<area shape="rect" title=" " alt="" coords="5,245,199,272"/>
+<area shape="poly" title=" " alt="" coords="401,201,181,244,180,239,399,195"/>
+<area shape="rect" title=" " alt="" coords="223,245,384,272"/>
+<area shape="poly" title=" " alt="" coords="437,200,346,241,344,236,434,195"/>
+<area shape="poly" title=" " alt="" coords="714,195,841,237,839,242,712,200"/>
+<area shape="rect" title=" " alt="" coords="408,245,582,272"/>
+<area shape="poly" title=" " alt="" coords="645,200,542,242,540,237,643,195"/>
+<area shape="rect" title=" " alt="" coords="607,245,816,272"/>
+<area shape="poly" title=" " alt="" coords="684,197,701,230,696,232,679,199"/>
+<area shape="poly" title=" " alt="" coords="1090,121,1105,137,1119,157,1125,178,1119,199,1094,217,1054,231,961,251,960,246,1053,226,1091,212,1115,196,1120,178,1114,159,1101,141,1087,125"/>
+<area shape="rect" title=" " alt="" coords="1366,171,1595,197"/>
+<area shape="poly" title=" " alt="" coords="1146,121,1395,165,1394,170,1145,126"/>
+<area shape="rect" href="_q_village_u_i_manager_8h.html" title=" " alt="" coords="1179,171,1342,197"/>
+<area shape="poly" title=" " alt="" coords="1107,121,1215,162,1213,167,1106,126"/>
+<area shape="rect" title=" " alt="" coords="908,171,1104,197"/>
+<area shape="poly" title=" " alt="" coords="1064,125,1030,161,1026,157,1060,121"/>
+<area shape="poly" title=" " alt="" coords="1197,201,961,247,960,241,1196,195"/>
+<area shape="rect" title=" " alt="" coords="992,245,1159,272"/>
+<area shape="poly" title=" " alt="" coords="1229,200,1123,242,1121,237,1227,195"/>
+<area shape="rect" title=" " alt="" coords="1182,245,1339,272"/>
+<area shape="poly" title=" " alt="" coords="1263,198,1263,230,1258,230,1258,198"/>
+<area shape="rect" title=" " alt="" coords="1363,245,1569,272"/>
+<area shape="poly" title=" " alt="" coords="1297,195,1417,237,1415,242,1296,200"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -146,21 +163,23 @@ QDynamicNPC.h에 대한 include 의존 그래프</div>
 <div class="dyncontent">
 <div class="center"><img src="_q_dynamic_n_p_c_8h__dep__incl.png" border="0" usemap="#a_quack_to_hell_2_character_2_q_dynamic_n_p_c_8hdep" alt=""/></div>
 <map name="a_quack_to_hell_2_character_2_q_dynamic_n_p_c_8hdep" id="a_quack_to_hell_2_character_2_q_dynamic_n_p_c_8hdep">
-<area shape="rect" title=" " alt="" coords="549,5,707,48"/>
+<area shape="rect" title=" " alt="" coords="649,5,807,48"/>
 <area shape="rect" href="_q_dynamic_n_p_c_8cpp.html" title=" " alt="" coords="5,96,163,139"/>
-<area shape="poly" title=" " alt="" coords="534,43,367,67,175,99,164,101,163,96,174,93,366,62,533,38"/>
+<area shape="poly" title=" " alt="" coords="634,39,423,63,175,99,164,101,163,95,174,93,423,58,634,34"/>
 <area shape="rect" href="_q_jury_n_p_c_8h.html" title=" " alt="" coords="187,96,344,139"/>
-<area shape="poly" title=" " alt="" coords="535,53,345,99,344,94,534,48"/>
+<area shape="poly" title=" " alt="" coords="634,47,357,99,345,101,344,96,355,93,633,42"/>
 <area shape="rect" href="_q_player_8cpp.html" title=" " alt="" coords="368,96,525,139"/>
-<area shape="poly" title=" " alt="" coords="573,58,490,98,488,93,571,53"/>
+<area shape="poly" title=" " alt="" coords="649,56,513,98,512,93,647,51"/>
 <area shape="rect" href="_q_resident_n_p_c_8h.html" title=" " alt="" coords="549,96,707,139"/>
-<area shape="poly" title=" " alt="" coords="631,64,631,96,625,96,625,64"/>
+<area shape="poly" title=" " alt="" coords="695,60,653,97,650,93,692,56"/>
 <area shape="rect" href="_q_dynamic_n_p_c_controller_8cpp.html" title=" " alt="" coords="730,96,926,139"/>
-<area shape="poly" title=" " alt="" coords="690,52,782,93,780,98,688,57"/>
+<area shape="poly" title=" " alt="" coords="764,56,806,93,803,97,761,60"/>
 <area shape="rect" href="_q_player_controller_8cpp.html" title=" " alt="" coords="950,96,1103,139"/>
-<area shape="poly" title=" " alt="" coords="722,46,938,93,950,96,949,101,937,99,721,51"/>
-<area shape="rect" href="_q_p2_n_widget_8cpp.html" title=" " alt="" coords="1127,104,1348,131"/>
-<area shape="poly" title=" " alt="" coords="722,38,1116,93,1163,101,1163,106,1116,99,721,43"/>
+<area shape="poly" title=" " alt="" coords="813,50,957,93,956,98,812,55"/>
+<area shape="rect" href="_n_p_c_component_8cpp.html" title=" " alt="" coords="1127,96,1273,139"/>
+<area shape="poly" title=" " alt="" coords="822,40,1117,93,1127,96,1126,101,1115,99,821,45"/>
+<area shape="rect" href="_q_p2_n_widget_8cpp.html" title=" " alt="" coords="1298,104,1518,131"/>
+<area shape="poly" title=" " alt="" coords="822,36,1035,60,1286,93,1334,101,1333,106,1285,99,1034,66,822,41"/>
 <area shape="rect" href="_q_jury_n_p_c_8cpp.html" title=" " alt="" coords="187,187,344,229"/>
 <area shape="poly" title=" " alt="" coords="268,154,268,186,263,186,263,154"/>
 <area shape="rect" href="_q_resident_n_p_c_8cpp.html" title=" " alt="" coords="549,187,707,229"/>

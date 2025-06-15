@@ -1,5 +1,21 @@
 <map id="EndDialog" name="EndDialog">
-<area shape="rect" id="Node000001" title="NPC와의 대화중단 요청을 처리하는 함수입니다." alt="" coords="5,5,87,32"/>
-<area shape="rect" id="Node000002" href="$class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089" title=" " alt="" coords="135,5,246,32"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,16,119,16,119,21,87,21"/>
+<area shape="rect" id="Node000001" title="NPC와의 대화중단 요청을 처리하는 함수입니다." alt="" coords="5,139,87,165"/>
+<area shape="rect" id="Node000002" href="$class_a_q_dynamic_n_p_c_controller_ae758c53fe5b59f4c04156d1115383b97.html#ae758c53fe5b59f4c04156d1115383b97" title="N2N, NMonolog상황에서 호출됩니다." alt="" coords="135,139,336,165"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="87,157,119,158,119,163,87,162"/>
+<area shape="rect" id="Node000007" href="$class_a_q_dynamic_n_p_c_controller_ae24647d27206cc5415d6fda947b03089.html#ae24647d27206cc5415d6fda947b03089" title=" " alt="" coords="384,189,495,216"/>
+<area shape="poly" id="edge12_Node000001_Node000007" title=" " alt="" coords="88,163,135,175,258,191,369,198,368,203,258,196,134,180,86,168"/>
+<area shape="poly" id="edge2_Node000002_Node000001" title=" " alt="" coords="134,146,102,146,102,141,134,140"/>
+<area shape="poly" id="edge4_Node000002_Node000002" title=" " alt="" coords="203,140,197,130,201,120,214,114,235,112,258,115,270,121,268,126,256,120,235,117,216,119,205,124,203,129,208,137"/>
+<area shape="rect" id="Node000003" href="$class_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe" title="NPC의 몸을 멈춥니다." alt="" coords="592,5,686,32"/>
+<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="258,136,313,105,383,73,484,44,576,25,577,31,485,49,385,79,316,110,260,141"/>
+<area shape="rect" id="Node000004" href="$class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059" title="상대방을 향해 고개를 회전합니다." alt="" coords="574,147,704,173"/>
+<area shape="poly" id="edge5_Node000002_Node000004" title=" " alt="" coords="336,151,558,156,558,161,336,157"/>
+<area shape="rect" id="Node000005" href="$class_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a.html#ab3e669df6f85181d0c0e4632a4f3674a" title="NPC와의 대화시작 요청을 처리하는 함수입니다." alt="" coords="396,88,483,115"/>
+<area shape="poly" id="edge6_Node000002_Node000005" title=" " alt="" coords="292,135,381,113,382,118,293,141"/>
+<area shape="poly" id="edge11_Node000002_Node000007" title=" " alt="" coords="293,163,369,183,368,188,292,169"/>
+<area shape="poly" id="edge7_Node000005_Node000003" title=" " alt="" coords="461,85,498,63,542,42,576,30,578,35,544,46,501,68,464,90"/>
+<area shape="poly" id="edge10_Node000005_Node000004" title=" " alt="" coords="483,113,544,132,570,139,568,145,543,137,481,118"/>
+<area shape="rect" id="Node000006" href="$class_a_q_dynamic_n_p_c_controller_aee1b6397d4c724bc9cbc06eb7686bb7a.html#aee1b6397d4c724bc9cbc06eb7686bb7a" title="N2N, NMonolog상황에서 호출됩니다." alt="" coords="543,80,735,123"/>
+<area shape="poly" id="edge8_Node000005_Node000006" title=" " alt="" coords="483,99,528,99,528,104,483,104"/>
+<area shape="poly" id="edge9_Node000006_Node000006" title=" " alt="" coords="601,80,599,70,606,61,619,55,639,53,661,56,673,62,671,67,659,61,639,59,620,61,609,65,604,71,606,79"/>
 </map>

@@ -10,5 +10,6 @@ var searchData=
   ['deleteoldpromptfiles_7',['DeleteOldPromptFiles',['../class_u_god_function_abf4593cac5c9e06435446d6259aff28d.html#abf4593cac5c9e06435446d6259aff28d',1,'UGodFunction']]],
   ['description_8',['Description',['../struct_f_evidence_a1332140fa336ee64a75d47488bd510ff.html#a1332140fa336ee64a75d47488bd510ff',1,'FEvidence']]],
   ['dialoguelines_9',['DialogueLines',['../struct_f_dialogue_history_a4d410d1ae56aa23bfae513ccb8baf67b.html#a4d410d1ae56aa23bfae513ccb8baf67b',1,'FDialogueHistory']]],
-  ['downloaddalleimage_10',['DownloadDalleImage',['../class_u_god_function_a968456c98a4bca8b8e7212d15e03469e.html#a968456c98a4bca8b8e7212d15e03469e',1,'UGodFunction']]]
+  ['displaynpcresponse_10',['DisplayNPCResponse',['../class_u_q_p2_n_widget_a19fc9ff3927229684c577bbbff52a5fc.html#a19fc9ff3927229684c577bbbff52a5fc',1,'UQP2NWidget']]],
+  ['downloaddalleimage_11',['DownloadDalleImage',['../class_u_god_function_a968456c98a4bca8b8e7212d15e03469e.html#a968456c98a4bca8b8e7212d15e03469e',1,'UGodFunction']]]
 ];

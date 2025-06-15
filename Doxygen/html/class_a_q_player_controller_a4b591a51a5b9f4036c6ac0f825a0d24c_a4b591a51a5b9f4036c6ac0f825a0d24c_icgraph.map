@@ -1,6 +1,6 @@
 <map id="BeginPlay" name="BeginPlay">
-<area shape="rect" id="Node000001" title=" " alt="" coords="307,29,387,56"/>
-<area shape="rect" id="Node000002" href="$class_a_q_player_controller_afa7451673faba73fb437c9e6992a1714.html#afa7451673faba73fb437c9e6992a1714" title="@breif ServerRPCCanStartConversP2N를 통해 대화시작이 가능한지 체크가 완료된 후 실행되는 클라이언트 RPC 인자로 시작할 수 있는지 없는지에 대한 bool..." alt="" coords="5,29,259,56"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="291,45,259,45,259,40,291,40"/>
-<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="169,16,156,10,132,8,109,10,97,15,94,20,100,27,96,30,89,21,94,11,108,5,132,3,158,5,171,12"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="220,29,300,56"/>
+<area shape="rect" id="Node000002" href="$class_a_q_player_controller_a0948a4a24f510a4c22bba2439ad4587a.html#a0948a4a24f510a4c22bba2439ad4587a" title="클라이언트를 메인 맵으로 이동시키는 서버 RPC 함수" alt="" coords="5,29,172,56"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="204,45,172,45,172,40,204,40"/>
+<area shape="poly" id="edge2_Node000002_Node000002" title=" " alt="" coords="117,16,107,10,88,8,71,10,61,15,59,20,64,28,59,30,54,21,57,11,69,5,89,3,109,5,120,12"/>
 </map>

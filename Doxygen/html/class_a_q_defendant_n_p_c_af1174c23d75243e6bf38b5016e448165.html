@@ -156,21 +156,27 @@ $(function(){initNavTree('class_a_q_defendant_n_p_c_af1174c23d75243e6bf38b5016e4
 <div class="line"><span class="lineno">   37</span>    TObjectPtr&lt;AQPlayer&gt; OpponentPawn = Cast&lt;AQPlayer&gt;(OtherActor);</div>
 <div class="line"><span class="lineno">   38</span>    <span class="keywordflow">if</span> (OpponentPawn) {</div>
 <div class="line"><span class="lineno">   39</span>        <span class="comment">//1. 말풍선킨다.</span></div>
-<div class="line"><span class="lineno">   40</span>        <a class="code hl_function" href="class_a_q_n_p_c_a7ba6092e93eada45563ccb748e750215.html#a7ba6092e93eada45563ccb748e750215">GetSpeechBubbleWidget</a>()-&gt;TurnOnSpeechBubble();</div>
+<div class="line"><span class="lineno">   40</span>        <a class="code hl_function" href="class_a_q_n_p_c_a286736d9553d06536c26e1c7e9a6d42c.html#a286736d9553d06536c26e1c7e9a6d42c">GetSpeechBubbleWidget</a>()-&gt;<a class="code hl_function" href="class_u_q_speech_bubble_widget_a38cf5386a026a5759530430f949865a9.html#a38cf5386a026a5759530430f949865a9">TurnOnSpeechBubble</a>();</div>
 <div class="line"><span class="lineno">   41</span>        <span class="comment">//2. 혼잣말한다. </span></div>
-<div class="line"><span class="lineno">   42</span>        <a class="code hl_function" href="class_a_q_n_p_c_a7ba6092e93eada45563ccb748e750215.html#a7ba6092e93eada45563ccb748e750215">GetSpeechBubbleWidget</a>()-&gt;UpdateText(<a class="code hl_variable" href="class_a_q_defendant_n_p_c_a23c34cd1a998c09dfddd27149e59115b.html#a23c34cd1a998c09dfddd27149e59115b">TalkMyselfText</a>);</div>
+<div class="line"><span class="lineno">   42</span>        <a class="code hl_function" href="class_a_q_n_p_c_a286736d9553d06536c26e1c7e9a6d42c.html#a286736d9553d06536c26e1c7e9a6d42c">GetSpeechBubbleWidget</a>()-&gt;<a class="code hl_function" href="class_u_q_speech_bubble_widget_a350e80c5b142db22ab820dbd1da860ba.html#a350e80c5b142db22ab820dbd1da860ba">UpdateText</a>(<a class="code hl_variable" href="class_a_q_defendant_n_p_c_a23c34cd1a998c09dfddd27149e59115b.html#a23c34cd1a998c09dfddd27149e59115b">TalkMyselfText</a>);</div>
 <div class="line"><span class="lineno">   43</span>    }</div>
 <div class="line"><span class="lineno">   44</span>}</div>
 <div class="ttc" id="aclass_a_q_defendant_n_p_c_a23c34cd1a998c09dfddd27149e59115b_html_a23c34cd1a998c09dfddd27149e59115b"><div class="ttname"><a href="class_a_q_defendant_n_p_c_a23c34cd1a998c09dfddd27149e59115b.html#a23c34cd1a998c09dfddd27149e59115b">AQDefendantNPC::TalkMyselfText</a></div><div class="ttdeci">FString TalkMyselfText</div><div class="ttdoc">혼잣말멘트.</div><div class="ttdef"><b>Definition</b> <a href="_q_defendant_n_p_c_8h_source.html#l00028">QDefendantNPC.h:28</a></div></div>
-<div class="ttc" id="aclass_a_q_n_p_c_a7ba6092e93eada45563ccb748e750215_html_a7ba6092e93eada45563ccb748e750215"><div class="ttname"><a href="class_a_q_n_p_c_a7ba6092e93eada45563ccb748e750215.html#a7ba6092e93eada45563ccb748e750215">AQNPC::GetSpeechBubbleWidget</a></div><div class="ttdeci">TObjectPtr&lt; class UQSpeechBubbleWidget &gt; GetSpeechBubbleWidget() const</div><div class="ttdoc">스피치버블 위젯을 리턴합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_n_p_c_8cpp_source.html#l00079">QNPC.cpp:79</a></div></div>
+<div class="ttc" id="aclass_a_q_n_p_c_a286736d9553d06536c26e1c7e9a6d42c_html_a286736d9553d06536c26e1c7e9a6d42c"><div class="ttname"><a href="class_a_q_n_p_c_a286736d9553d06536c26e1c7e9a6d42c.html#a286736d9553d06536c26e1c7e9a6d42c">AQNPC::GetSpeechBubbleWidget</a></div><div class="ttdeci">class UQSpeechBubbleWidget * GetSpeechBubbleWidget() const</div><div class="ttdoc">스피치버블 위젯을 리턴합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_n_p_c_8cpp_source.html#l00079">QNPC.cpp:79</a></div></div>
+<div class="ttc" id="aclass_u_q_speech_bubble_widget_a350e80c5b142db22ab820dbd1da860ba_html_a350e80c5b142db22ab820dbd1da860ba"><div class="ttname"><a href="class_u_q_speech_bubble_widget_a350e80c5b142db22ab820dbd1da860ba.html#a350e80c5b142db22ab820dbd1da860ba">UQSpeechBubbleWidget::UpdateText</a></div><div class="ttdeci">void UpdateText(const FString &amp;Text)</div><div class="ttdoc">말풍선의 글씨를 업데이트합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_speech_bubble_widget_8cpp_source.html#l00032">QSpeechBubbleWidget.cpp:32</a></div></div>
+<div class="ttc" id="aclass_u_q_speech_bubble_widget_a38cf5386a026a5759530430f949865a9_html_a38cf5386a026a5759530430f949865a9"><div class="ttname"><a href="class_u_q_speech_bubble_widget_a38cf5386a026a5759530430f949865a9.html#a38cf5386a026a5759530430f949865a9">UQSpeechBubbleWidget::TurnOnSpeechBubble</a></div><div class="ttdeci">void TurnOnSpeechBubble()</div><div class="ttdoc">항상 카메라 기준으로 말풍선이 자연스럽게 보이도록합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_speech_bubble_widget_8cpp_source.html#l00022">QSpeechBubbleWidget.cpp:22</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_a_q_defendant_n_p_c_af1174c23d75243e6bf38b5016e448165_af1174c23d75243e6bf38b5016e448165_cgraph.png" border="0" usemap="#aclass_a_q_defendant_n_p_c_af1174c23d75243e6bf38b5016e448165_af1174c23d75243e6bf38b5016e448165_cgraph" alt=""/></div>
 <map name="aclass_a_q_defendant_n_p_c_af1174c23d75243e6bf38b5016e448165_af1174c23d75243e6bf38b5016e448165_cgraph" id="aclass_a_q_defendant_n_p_c_af1174c23d75243e6bf38b5016e448165_af1174c23d75243e6bf38b5016e448165_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,122,32"/>
-<area shape="rect" href="class_a_q_n_p_c_a7ba6092e93eada45563ccb748e750215.html#a7ba6092e93eada45563ccb748e750215" title="스피치버블 위젯을 리턴합니다." alt="" coords="170,5,393,32"/>
-<area shape="poly" title=" " alt="" coords="122,16,154,16,154,21,122,21"/>
+<area shape="rect" title=" " alt="" coords="5,64,122,91"/>
+<area shape="rect" href="class_a_q_n_p_c_a286736d9553d06536c26e1c7e9a6d42c.html#a286736d9553d06536c26e1c7e9a6d42c" title="스피치버블 위젯을 리턴합니다." alt="" coords="170,5,393,32"/>
+<area shape="poly" title=" " alt="" coords="105,61,169,41,199,34,201,39,170,47,107,66"/>
+<area shape="rect" href="class_u_q_speech_bubble_widget_a38cf5386a026a5759530430f949865a9.html#a38cf5386a026a5759530430f949865a9" title="항상 카메라 기준으로 말풍선이 자연스럽게 보이도록합니다." alt="" coords="198,56,364,99"/>
+<area shape="poly" title=" " alt="" coords="122,75,183,75,183,80,122,80"/>
+<area shape="rect" href="class_u_q_speech_bubble_widget_a350e80c5b142db22ab820dbd1da860ba.html#a350e80c5b142db22ab820dbd1da860ba" title="말풍선의 글씨를 업데이트합니다." alt="" coords="198,123,364,165"/>
+<area shape="poly" title=" " alt="" coords="109,89,170,108,193,115,191,120,169,113,107,94"/>
 </map>
 </div>
 

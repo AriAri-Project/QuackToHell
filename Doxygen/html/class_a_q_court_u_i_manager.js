@@ -21,6 +21,7 @@ var class_a_q_court_u_i_manager =
     [ "ServerRPCRemoveUserFromSession", "class_a_q_court_u_i_manager_a9bf8235070fb9869d5a39accebceb6f8.html#a9bf8235070fb9869d5a39accebceb6f8", null ],
     [ "Tick", "class_a_q_court_u_i_manager_a2fb3c0ec625280bd51ca1c64770ae425.html#a2fb3c0ec625280bd51ca1c64770ae425", null ],
     [ "TurnOffUI", "class_a_q_court_u_i_manager_accd7fa7768e2386e741f16c942739375.html#accd7fa7768e2386e741f16c942739375", null ],
+    [ "TurnOnCourtOpening", "class_a_q_court_u_i_manager_a17a5d8a534887bc06559ee6f08634e7f.html#a17a5d8a534887bc06559ee6f08634e7f", null ],
     [ "TurnOnDirection", "class_a_q_court_u_i_manager_a7da404bea5af4c7b6dbe3bcca3a72417.html#a7da404bea5af4c7b6dbe3bcca3a72417", null ],
     [ "TurnOnUI", "class_a_q_court_u_i_manager_a1cc412d3a5ec97dbc4490696a4a06459.html#a1cc412d3a5ec97dbc4490696a4a06459", null ],
     [ "ActivedCourtWidgets", "class_a_q_court_u_i_manager_a34010f7b87327eb8b7ff6027baa7406c.html#a34010f7b87327eb8b7ff6027baa7406c", null ],

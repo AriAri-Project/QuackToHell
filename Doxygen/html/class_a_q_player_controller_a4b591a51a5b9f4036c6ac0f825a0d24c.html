@@ -125,33 +125,33 @@ $(function(){initNavTree('class_a_q_player_controller_a4b591a51a5b9f4036c6ac0f82
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="_q_player_controller_8cpp_source.html">QPlayerController.cpp</a> 파일의 <a class="el" href="_q_player_controller_8cpp_source.html#l00038">38</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   39</span>{</div>
-<div class="line"><span class="lineno">   40</span>    Super::BeginPlay();</div>
-<div class="line"><span class="lineno">   41</span>    </div>
-<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">if</span> (GetNetMode() != NM_DedicatedServer &amp;&amp; !HasAuthority()) {</div>
-<div class="line"><span class="lineno">   43</span>        UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;💡 Local Client PlayerController BeginPlay - VillageUIManager 생성 시도&quot;</span>));</div>
-<div class="line"><span class="lineno">   44</span> </div>
-<div class="line"><span class="lineno">   45</span>        <span class="comment">// VillageUIManager 싱글톤 생성</span></div>
-<div class="line"><span class="lineno">   46</span>        <a class="code hl_function" href="class_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218.html#a14027a8dd3d11d56d004556d8463c218">AQVillageUIManager::GetInstance</a>(GetWorld());</div>
-<div class="line"><span class="lineno">   47</span>    }</div>
-<div class="line"><span class="lineno">   48</span> </div>
-<div class="line"><span class="lineno">   49</span>    <span class="comment">//Player로부터 EnhancedInput subsystem을 가져온다. </span></div>
-<div class="line"><span class="lineno">   50</span>    <span class="keyword">auto</span>* SubSystem = ULocalPlayer::GetSubsystem&lt;UEnhancedInputLocalPlayerSubsystem&gt;(GetLocalPlayer());</div>
-<div class="line"><span class="lineno">   51</span> </div>
-<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">if</span> (SubSystem) {</div>
-<div class="line"><span class="lineno">   53</span>        <span class="comment">//mapping context를 추가해주는데, priority는 0</span></div>
-<div class="line"><span class="lineno">   54</span>        SubSystem-&gt;AddMappingContext(<a class="code hl_variable" href="class_a_q_player_controller_a4e1956959b4f8cdf1908458186c613c3.html#a4e1956959b4f8cdf1908458186c613c3">InputMappingContext</a>, 0);</div>
-<div class="line"><span class="lineno">   55</span>    }</div>
-<div class="line"><span class="lineno">   56</span> </div>
-<div class="line"><span class="lineno">   57</span>    <span class="comment">//villagemanager를 가져온다</span></div>
-<div class="line"><span class="lineno">   58</span>    <a class="code hl_variable" href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a> = <a class="code hl_function" href="class_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218.html#a14027a8dd3d11d56d004556d8463c218">AQVillageUIManager::GetInstance</a>(GetWorld());</div>
-<div class="line"><span class="lineno">   59</span> </div>
-<div class="line"><span class="lineno">   60</span>    <span class="comment">//기본적으로 마우스커서 보이게</span></div>
-<div class="line"><span class="lineno">   61</span>    this-&gt;bShowMouseCursor = <span class="keyword">true</span>;</div>
-<div class="line"><span class="lineno">   62</span>}</div>
-<div class="ttc" id="aclass_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13_html_a0c63f34b8d931e6a72aea024036e7b13"><div class="ttname"><a href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">AQPlayerController::VillageUIManager</a></div><div class="ttdeci">TObjectPtr&lt; class AQVillageUIManager &gt; VillageUIManager</div><div class="ttdoc">VillageUIManager정보를 갖습니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_player_controller_8h_source.html#l00129">QPlayerController.h:129</a></div></div>
-<div class="ttc" id="aclass_a_q_player_controller_a4e1956959b4f8cdf1908458186c613c3_html_a4e1956959b4f8cdf1908458186c613c3"><div class="ttname"><a href="class_a_q_player_controller_a4e1956959b4f8cdf1908458186c613c3.html#a4e1956959b4f8cdf1908458186c613c3">AQPlayerController::InputMappingContext</a></div><div class="ttdeci">TObjectPtr&lt; class UInputMappingContext &gt; InputMappingContext</div><div class="ttdoc">IMC입니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_player_controller_8h_source.html#l00051">QPlayerController.h:51</a></div></div>
+<p class="definition"><a class="el" href="_q_player_controller_8cpp_source.html">QPlayerController.cpp</a> 파일의 <a class="el" href="_q_player_controller_8cpp_source.html#l00070">70</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   71</span>{</div>
+<div class="line"><span class="lineno">   72</span>    Super::BeginPlay();</div>
+<div class="line"><span class="lineno">   73</span>    </div>
+<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">if</span> (GetNetMode() != NM_DedicatedServer &amp;&amp; !HasAuthority()) {</div>
+<div class="line"><span class="lineno">   75</span>        UE_LOG(LogTemp, Log, TEXT(<span class="stringliteral">&quot;💡 Local Client PlayerController BeginPlay - VillageUIManager 생성 시도&quot;</span>));</div>
+<div class="line"><span class="lineno">   76</span> </div>
+<div class="line"><span class="lineno">   77</span>        <span class="comment">// VillageUIManager 싱글톤 생성</span></div>
+<div class="line"><span class="lineno">   78</span>        <a class="code hl_function" href="class_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218.html#a14027a8dd3d11d56d004556d8463c218">AQVillageUIManager::GetInstance</a>(GetWorld());</div>
+<div class="line"><span class="lineno">   79</span>    }</div>
+<div class="line"><span class="lineno">   80</span> </div>
+<div class="line"><span class="lineno">   81</span>    <span class="comment">//Player로부터 EnhancedInput subsystem을 가져온다. </span></div>
+<div class="line"><span class="lineno">   82</span>    <span class="keyword">auto</span>* SubSystem = ULocalPlayer::GetSubsystem&lt;UEnhancedInputLocalPlayerSubsystem&gt;(GetLocalPlayer());</div>
+<div class="line"><span class="lineno">   83</span> </div>
+<div class="line"><span class="lineno">   84</span>    <span class="keywordflow">if</span> (SubSystem) {</div>
+<div class="line"><span class="lineno">   85</span>        <span class="comment">//mapping context를 추가해주는데, priority는 0</span></div>
+<div class="line"><span class="lineno">   86</span>        SubSystem-&gt;AddMappingContext(<a class="code hl_variable" href="class_a_q_player_controller_a4e1956959b4f8cdf1908458186c613c3.html#a4e1956959b4f8cdf1908458186c613c3">InputMappingContext</a>, 0);</div>
+<div class="line"><span class="lineno">   87</span>    }</div>
+<div class="line"><span class="lineno">   88</span> </div>
+<div class="line"><span class="lineno">   89</span>    <span class="comment">//villagemanager를 가져온다</span></div>
+<div class="line"><span class="lineno">   90</span>    <a class="code hl_variable" href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">VillageUIManager</a> = <a class="code hl_function" href="class_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218.html#a14027a8dd3d11d56d004556d8463c218">AQVillageUIManager::GetInstance</a>(GetWorld());</div>
+<div class="line"><span class="lineno">   91</span> </div>
+<div class="line"><span class="lineno">   92</span>    <span class="comment">//기본적으로 마우스커서 보이게</span></div>
+<div class="line"><span class="lineno">   93</span>    this-&gt;bShowMouseCursor = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   94</span>}</div>
+<div class="ttc" id="aclass_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13_html_a0c63f34b8d931e6a72aea024036e7b13"><div class="ttname"><a href="class_a_q_player_controller_a0c63f34b8d931e6a72aea024036e7b13.html#a0c63f34b8d931e6a72aea024036e7b13">AQPlayerController::VillageUIManager</a></div><div class="ttdeci">TObjectPtr&lt; class AQVillageUIManager &gt; VillageUIManager</div><div class="ttdoc">VillageUIManager정보를 갖습니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_player_controller_8h_source.html#l00211">QPlayerController.h:211</a></div></div>
+<div class="ttc" id="aclass_a_q_player_controller_a4e1956959b4f8cdf1908458186c613c3_html_a4e1956959b4f8cdf1908458186c613c3"><div class="ttname"><a href="class_a_q_player_controller_a4e1956959b4f8cdf1908458186c613c3.html#a4e1956959b4f8cdf1908458186c613c3">AQPlayerController::InputMappingContext</a></div><div class="ttdeci">TObjectPtr&lt; class UInputMappingContext &gt; InputMappingContext</div><div class="ttdoc">IMC입니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_player_controller_8h_source.html#l00133">QPlayerController.h:133</a></div></div>
 <div class="ttc" id="aclass_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218_html_a14027a8dd3d11d56d004556d8463c218"><div class="ttname"><a href="class_a_q_village_u_i_manager_a14027a8dd3d11d56d004556d8463c218.html#a14027a8dd3d11d56d004556d8463c218">AQVillageUIManager::GetInstance</a></div><div class="ttdeci">static TObjectPtr&lt; AQVillageUIManager &gt; GetInstance(TObjectPtr&lt; UWorld &gt; World)</div><div class="ttdoc">싱글톤 인스턴스 반환.</div><div class="ttdef"><b>Definition</b> <a href="_q_village_u_i_manager_8cpp_source.html#l00095">QVillageUIManager.cpp:95</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
@@ -172,10 +172,10 @@ $(function(){initNavTree('class_a_q_player_controller_a4b591a51a5b9f4036c6ac0f82
 <div class="dyncontent">
 <div class="center"><img src="class_a_q_player_controller_a4b591a51a5b9f4036c6ac0f825a0d24c_a4b591a51a5b9f4036c6ac0f825a0d24c_icgraph.png" border="0" usemap="#aclass_a_q_player_controller_a4b591a51a5b9f4036c6ac0f825a0d24c_a4b591a51a5b9f4036c6ac0f825a0d24c_icgraph" alt=""/></div>
 <map name="aclass_a_q_player_controller_a4b591a51a5b9f4036c6ac0f825a0d24c_a4b591a51a5b9f4036c6ac0f825a0d24c_icgraph" id="aclass_a_q_player_controller_a4b591a51a5b9f4036c6ac0f825a0d24c_a4b591a51a5b9f4036c6ac0f825a0d24c_icgraph">
-<area shape="rect" title=" " alt="" coords="307,29,387,56"/>
-<area shape="rect" href="class_a_q_player_controller_afa7451673faba73fb437c9e6992a1714.html#afa7451673faba73fb437c9e6992a1714" title="@breif ServerRPCCanStartConversP2N를 통해 대화시작이 가능한지 체크가 완료된 후 실행되는 클라이언트 RPC 인자로 시작할 수 있는지 없는지에 대한 bool..." alt="" coords="5,29,259,56"/>
-<area shape="poly" title=" " alt="" coords="291,45,259,45,259,40,291,40"/>
-<area shape="poly" title=" " alt="" coords="169,16,156,10,132,8,109,10,97,15,94,20,100,27,96,30,89,21,94,11,108,5,132,3,158,5,171,12"/>
+<area shape="rect" title=" " alt="" coords="220,29,300,56"/>
+<area shape="rect" href="class_a_q_player_controller_a0948a4a24f510a4c22bba2439ad4587a.html#a0948a4a24f510a4c22bba2439ad4587a" title="클라이언트를 메인 맵으로 이동시키는 서버 RPC 함수" alt="" coords="5,29,172,56"/>
+<area shape="poly" title=" " alt="" coords="204,45,172,45,172,40,204,40"/>
+<area shape="poly" title=" " alt="" coords="117,16,107,10,88,8,71,10,61,15,59,20,64,28,59,30,54,21,57,11,69,5,89,3,109,5,120,12"/>
 </map>
 </div>
 

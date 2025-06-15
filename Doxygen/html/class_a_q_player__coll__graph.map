@@ -1,5 +1,5 @@
 <map id="AQPlayer" name="AQPlayer">
-<area shape="rect" id="Node000001" title="플레이어 캐릭터 클래스입니다." alt="" coords="5,603,281,1723"/>
+<area shape="rect" id="Node000001" title="플레이어 캐릭터 클래스입니다." alt="" coords="5,603,281,1920"/>
 <area shape="rect" id="Node000002" href="$class_a_q_character.html" title=" " alt="" coords="11,123,276,555"/>
 <area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="146,570,146,603,141,603,141,570"/>
 <area shape="rect" id="Node000003" title=" " alt="" coords="105,5,182,75"/>

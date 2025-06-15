@@ -125,25 +125,27 @@ $(function(){initNavTree('class_a_q_village_game_state_aee8eddfa5e35fe4491268347
 </table>
 </div><div class="memdoc">
 
-<p class="definition"><a class="el" href="_q_village_game_state_8cpp_source.html">QVillageGameState.cpp</a> 파일의 <a class="el" href="_q_village_game_state_8cpp_source.html#l00037">37</a> 번째 라인에서 정의되었습니다.</p>
-<div class="fragment"><div class="line"><span class="lineno">   38</span>{</div>
-<div class="line"><span class="lineno">   39</span>    Super::Tick(DeltaSeconds);</div>
-<div class="line"><span class="lineno">   40</span> </div>
-<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">if</span> (HasAuthority()) <span class="comment">// 서버에서만 실행</span></div>
-<div class="line"><span class="lineno">   42</span>    {</div>
-<div class="line"><span class="lineno">   43</span>        <a class="code hl_variable" href="class_a_q_village_game_state_aab5c017d2c47e0a79af4e1d3b4f94835.html#aab5c017d2c47e0a79af4e1d3b4f94835">ServerLeftTimeUntilTrial</a> += DeltaSeconds;</div>
-<div class="line"><span class="lineno">   44</span>        ForceNetUpdate();</div>
-<div class="line"><span class="lineno">   45</span> </div>
-<div class="line"><span class="lineno">   46</span>        <a class="code hl_function" href="class_a_q_village_game_state_a660da4360746d51670213e890b9d5801.html#a660da4360746d51670213e890b9d5801">MulticastRPCUpdateServerTime</a>();</div>
-<div class="line"><span class="lineno">   47</span>        <span class="keywordflow">if</span> (GetNetMode() == NM_ListenServer) <span class="comment">// ✅ Listen 서버의 &quot;호스트 클라이언트&quot;에서는 직접 실행</span></div>
-<div class="line"><span class="lineno">   48</span>        {</div>
-<div class="line"><span class="lineno">   49</span>            MulticastRPCUpdateServerTime_Implementation();</div>
-<div class="line"><span class="lineno">   50</span>        }</div>
-<div class="line"><span class="lineno">   51</span>        </div>
-<div class="line"><span class="lineno">   52</span>    }</div>
-<div class="line"><span class="lineno">   53</span>}</div>
+<p class="definition"><a class="el" href="_q_village_game_state_8cpp_source.html">QVillageGameState.cpp</a> 파일의 <a class="el" href="_q_village_game_state_8cpp_source.html#l00032">32</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">   33</span>{</div>
+<div class="line"><span class="lineno">   34</span>    Super::Tick(DeltaSeconds);</div>
+<div class="line"><span class="lineno">   35</span> </div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">if</span> (HasAuthority() || !<a class="code hl_variable" href="class_a_q_village_game_state_a9d12700f6c50a44acbec070e09ba470e.html#a9d12700f6c50a44acbec070e09ba470e">bIsTimeToGoToCourt</a>) <span class="comment">// 서버에서만 실행</span></div>
+<div class="line"><span class="lineno">   37</span>    {</div>
+<div class="line"><span class="lineno">   38</span>        <span class="comment">// 종료 시간이 다 됐다면 클라이언트들에게 마무리 작업하라고 알림.</span></div>
+<div class="line"><span class="lineno">   39</span>        <span class="keywordflow">if</span> (FMath::IsNearlyEqual(<a class="code hl_variable" href="class_a_q_village_game_state_aab5c017d2c47e0a79af4e1d3b4f94835.html#aab5c017d2c47e0a79af4e1d3b4f94835">ServerLeftTimeUntilTrial</a>, <a class="code hl_variable" href="class_a_q_village_game_state_ad11c27418d5b4dd4f34789582cd6ee95.html#ad11c27418d5b4dd4f34789582cd6ee95">TimeUntilTrialMax</a>, KINDA_SMALL_NUMBER))</div>
+<div class="line"><span class="lineno">   40</span>        {</div>
+<div class="line"><span class="lineno">   41</span>            <a class="code hl_variable" href="class_a_q_village_game_state_a9d12700f6c50a44acbec070e09ba470e.html#a9d12700f6c50a44acbec070e09ba470e">bIsTimeToGoToCourt</a> = <span class="keyword">true</span>;</div>
+<div class="line"><span class="lineno">   42</span>            <span class="comment">// @todo : 유진의 클라 인터페 여기서 호출</span></div>
+<div class="line"><span class="lineno">   43</span>        }</div>
+<div class="line"><span class="lineno">   44</span>        <a class="code hl_variable" href="class_a_q_village_game_state_aab5c017d2c47e0a79af4e1d3b4f94835.html#aab5c017d2c47e0a79af4e1d3b4f94835">ServerLeftTimeUntilTrial</a> += DeltaSeconds;</div>
+<div class="line"><span class="lineno">   45</span>        <a class="code hl_function" href="class_a_q_village_game_state_a660da4360746d51670213e890b9d5801.html#a660da4360746d51670213e890b9d5801">MulticastRPCUpdateServerTime</a>();</div>
+<div class="line"><span class="lineno">   46</span>        MulticastRPCUpdateServerTime_Implementation();</div>
+<div class="line"><span class="lineno">   47</span>    }</div>
+<div class="line"><span class="lineno">   48</span>}</div>
 <div class="ttc" id="aclass_a_q_village_game_state_a660da4360746d51670213e890b9d5801_html_a660da4360746d51670213e890b9d5801"><div class="ttname"><a href="class_a_q_village_game_state_a660da4360746d51670213e890b9d5801.html#a660da4360746d51670213e890b9d5801">AQVillageGameState::MulticastRPCUpdateServerTime</a></div><div class="ttdeci">void MulticastRPCUpdateServerTime()</div></div>
-<div class="ttc" id="aclass_a_q_village_game_state_aab5c017d2c47e0a79af4e1d3b4f94835_html_aab5c017d2c47e0a79af4e1d3b4f94835"><div class="ttname"><a href="class_a_q_village_game_state_aab5c017d2c47e0a79af4e1d3b4f94835.html#aab5c017d2c47e0a79af4e1d3b4f94835">AQVillageGameState::ServerLeftTimeUntilTrial</a></div><div class="ttdeci">float ServerLeftTimeUntilTrial</div><div class="ttdoc">재판까지 남은 시간</div><div class="ttdef"><b>Definition</b> <a href="_q_village_game_state_8h_source.html#l00040">QVillageGameState.h:40</a></div></div>
+<div class="ttc" id="aclass_a_q_village_game_state_a9d12700f6c50a44acbec070e09ba470e_html_a9d12700f6c50a44acbec070e09ba470e"><div class="ttname"><a href="class_a_q_village_game_state_a9d12700f6c50a44acbec070e09ba470e.html#a9d12700f6c50a44acbec070e09ba470e">AQVillageGameState::bIsTimeToGoToCourt</a></div><div class="ttdeci">bool bIsTimeToGoToCourt</div><div class="ttdoc">마을에서의 시간이 끝났는가</div><div class="ttdef"><b>Definition</b> <a href="_q_village_game_state_8h_source.html#l00043">QVillageGameState.h:43</a></div></div>
+<div class="ttc" id="aclass_a_q_village_game_state_aab5c017d2c47e0a79af4e1d3b4f94835_html_aab5c017d2c47e0a79af4e1d3b4f94835"><div class="ttname"><a href="class_a_q_village_game_state_aab5c017d2c47e0a79af4e1d3b4f94835.html#aab5c017d2c47e0a79af4e1d3b4f94835">AQVillageGameState::ServerLeftTimeUntilTrial</a></div><div class="ttdeci">float ServerLeftTimeUntilTrial</div><div class="ttdoc">재판까지 남은 시간</div><div class="ttdef"><b>Definition</b> <a href="_q_village_game_state_8h_source.html#l00039">QVillageGameState.h:39</a></div></div>
+<div class="ttc" id="aclass_a_q_village_game_state_ad11c27418d5b4dd4f34789582cd6ee95_html_ad11c27418d5b4dd4f34789582cd6ee95"><div class="ttname"><a href="class_a_q_village_game_state_ad11c27418d5b4dd4f34789582cd6ee95.html#ad11c27418d5b4dd4f34789582cd6ee95">AQVillageGameState::TimeUntilTrialMax</a></div><div class="ttdeci">float TimeUntilTrialMax</div><div class="ttdoc">@breif 재판까지의 총 시간</div><div class="ttdef"><b>Definition</b> <a href="_q_village_game_state_8h_source.html#l00035">QVillageGameState.h:35</a></div></div>
 </div><!-- fragment --><div class="dynheader">
 이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
 <div class="dyncontent">

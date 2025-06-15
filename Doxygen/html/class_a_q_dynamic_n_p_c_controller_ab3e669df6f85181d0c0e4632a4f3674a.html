@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.13.2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>QuackToHell: AQDynamicNPCController::StartDialog</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+  $(function() { init_search(); });
+/* @license-end */
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">QuackToHell<span id="projectnumber">&#160;0.0.1</span>
+   </div>
+  </td>
+    <td>        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <span id="MSearchSelect"                onmouseover="return searchBox.OnSearchSelectShow()"                onmouseout="return searchBox.OnSearchSelectHide()">&#160;</span>
+          <input type="text" id="MSearchField" value="" placeholder="검색" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.svg" alt=""/></a>
+          </span>
+        </div>
+</td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 다음에 의해 생성됨 :  Doxygen 1.13.2 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){initNavTree('class_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a.html',''); initResizable(true); });
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">로딩중...</div>
+<div class="SRStatus" id="Searching">검색중...</div>
+<div class="SRStatus" id="NoMatches">일치하는것 없음</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="contents">
+<a id="ab3e669df6f85181d0c0e4632a4f3674a" name="ab3e669df6f85181d0c0e4632a4f3674a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3e669df6f85181d0c0e4632a4f3674a">&#9670;&#160;</a></span>StartDialog()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void StartDialog </td>
+          <td>(</td>
+          <td class="paramtype">TObjectPtr&lt; APawn &gt;</td>          <td class="paramname"><span class="paramname"><em>Pawn</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840e">ENPCConversationType</a></td>          <td class="paramname"><span class="paramname"><em>ConversationType</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inherited">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>NPC와의 대화시작 요청을 처리하는 함수입니다. </p>
+<p>npc-npc, player-npc 대화시스템에 활용됩니다. </p><dl class="params"><dt>매개변수</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">상대방의</td><td>폰 정보를 넘깁니다. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">할일</a></b></dt><dd>서버: 대화 시작 로직 전개하기 : 상태관리, 기타조건 .. 처리하기 //조건 : 처음 나타나는 텍스트는 “(상대 망자NPC 이름), 아까(가장 마지막으로 대화한 플레이어 닉네임)과 대화를 나누었습니다.”이다. 더 자세한 조건 : 컨플루언스 확인하기 <a href="https://ariari-ewha.atlassian.net/wiki/spaces/~712020e9509d1767994750b2ca1d1e408ddb2d/pages/42893472">https://ariari-ewha.atlassian.net/wiki/spaces/~712020e9509d1767994750b2ca1d1e408ddb2d/pages/42893472</a> </dd></dl>
+
+<p class="definition"><a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html">QDynamicNPCController.cpp</a> 파일의 <a class="el" href="_q_dynamic_n_p_c_controller_8cpp_source.html#l00178">178</a> 번째 라인에서 정의되었습니다.</p>
+<div class="fragment"><div class="line"><span class="lineno">  179</span>{</div>
+<div class="line"><span class="lineno">  180</span>    <span class="comment">//ConversationType에 따라 StartDialog다르게 처리</span></div>
+<div class="line"><span class="lineno">  181</span>    <span class="keywordflow">switch</span> (ConversationType)</div>
+<div class="line"><span class="lineno">  182</span>    {</div>
+<div class="line"><span class="lineno">  183</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea6ae860c71585153c82dd6cff37048b12">ENPCConversationType::P2N</a>:</div>
+<div class="line"><span class="lineno">  184</span>    {</div>
+<div class="line"><span class="lineno">  186</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe">FreezePawn</a>();</div>
+<div class="line"><span class="lineno">  187</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">RotateToOpponent</a>(_OpponentPawn);</div>
+<div class="line"><span class="lineno">  188</span>    }</div>
+<div class="line"><span class="lineno">  189</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  190</span>    <span class="keywordflow">case</span> <a class="code hl_enumvalue" href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea719724583f5a01b1507f309191082351">ENPCConversationType::N2N</a>:</div>
+<div class="line"><span class="lineno">  191</span>    {</div>
+<div class="line"><span class="lineno">  192</span>        <span class="comment">//몸멈추기 &amp; 상대방을 향해 회전하기</span></div>
+<div class="line"><span class="lineno">  193</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe">FreezePawn</a>();</div>
+<div class="line"><span class="lineno">  194</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">RotateToOpponent</a>(_OpponentPawn);</div>
+<div class="line"><span class="lineno">  200</span> </div>
+<div class="line"><span class="lineno">  201</span>        <span class="comment">/* test code임. 되는 것 확인함 https://ariari-ewha.atlassian.net/browse/SCRUM-593?atlOrigin=eyJpIjoiNDY1NDI0ZGNjNTMwNDJjYjg5ODdiMmEzODQyM2IyM2MiLCJwIjoiaiJ9*/</span></div>
+<div class="line"><span class="lineno">  202</span>        AQPlayerState* _PlayerState = GetWorld()-&gt;GetFirstPlayerController()-&gt;GetPlayerState&lt;AQPlayerState&gt;();</div>
+<div class="line"><span class="lineno">  203</span>        FString NPCName = <a class="code hl_variable" href="class_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42.html#a24178d80c1be7064e7157af465e7cc42">NPCComponent</a>-&gt;GetNPCName();</div>
+<div class="line"><span class="lineno">  204</span>        FString PlayerName = _PlayerState-&gt;GetPlayerName();</div>
+<div class="line"><span class="lineno">  205</span>        FString SpeechText = FString::Printf(TEXT(<span class="stringliteral">&quot;%s, 아까 %s과 대화를 나누었습니다.&quot;</span>), *NPCName, *PlayerName);</div>
+<div class="line"><span class="lineno">  206</span>        <a class="code hl_function" href="class_a_q_dynamic_n_p_c_controller_aee1b6397d4c724bc9cbc06eb7686bb7a.html#aee1b6397d4c724bc9cbc06eb7686bb7a">MulticastShowSpeechBubbleWithText</a>(SpeechText);</div>
+<div class="line"><span class="lineno">  207</span> </div>
+<div class="line"><span class="lineno">  208</span>        <span class="comment">/*</span></div>
+<div class="line"><span class="lineno">  209</span><span class="comment">        * 대화 끝난 후, EndDialog가 알아서 호출됨 신경 x: UnFreezePawn() 및 turnoffspeechbubble이 수행되는 함수</span></div>
+<div class="line"><span class="lineno">  210</span><span class="comment">        */</span></div>
+<div class="line"><span class="lineno">  211</span>    }</div>
+<div class="line"><span class="lineno">  212</span>    <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  213</span>    <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  214</span>        <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  215</span>    }</div>
+<div class="line"><span class="lineno">  216</span>}</div>
+<div class="ttc" id="a_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e_html_a424965b009ab6e8759ee632018d6840ea6ae860c71585153c82dd6cff37048b12"><div class="ttname"><a href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea6ae860c71585153c82dd6cff37048b12">ENPCConversationType::P2N</a></div><div class="ttdeci">@ P2N</div><div class="ttdef"><b>Definition</b> <a href="_q_n_p_c_controller_8h_source.html#l00013">QNPCController.h:13</a></div></div>
+<div class="ttc" id="a_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e_html_a424965b009ab6e8759ee632018d6840ea719724583f5a01b1507f309191082351"><div class="ttname"><a href="_q_n_p_c_controller_8h_a424965b009ab6e8759ee632018d6840e.html#a424965b009ab6e8759ee632018d6840ea719724583f5a01b1507f309191082351">ENPCConversationType::N2N</a></div><div class="ttdeci">@ N2N</div><div class="ttdef"><b>Definition</b> <a href="_q_n_p_c_controller_8h_source.html#l00014">QNPCController.h:14</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42_html_a24178d80c1be7064e7157af465e7cc42"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a24178d80c1be7064e7157af465e7cc42.html#a24178d80c1be7064e7157af465e7cc42">AQDynamicNPCController::NPCComponent</a></div><div class="ttdeci">TObjectPtr&lt; class UNPCComponent &gt; NPCComponent</div><div class="ttdoc">NPCComponent를 멤버변수로 가집니다</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8h_source.html#l00072">QDynamicNPCController.h:72</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059_html_a3d9641a6e70a40607c740565b6326059"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059">AQDynamicNPCController::RotateToOpponent</a></div><div class="ttdeci">void RotateToOpponent(const TObjectPtr&lt; APawn &gt; MyPawn)</div><div class="ttdoc">상대방을 향해 고개를 회전합니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8cpp_source.html#l00166">QDynamicNPCController.cpp:166</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe_html_a47d70e05956f914b4d9e8949fc200efe"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe">AQDynamicNPCController::FreezePawn</a></div><div class="ttdeci">void FreezePawn()</div><div class="ttdoc">NPC의 몸을 멈춥니다.</div><div class="ttdef"><b>Definition</b> <a href="_q_dynamic_n_p_c_controller_8cpp_source.html#l00140">QDynamicNPCController.cpp:140</a></div></div>
+<div class="ttc" id="aclass_a_q_dynamic_n_p_c_controller_aee1b6397d4c724bc9cbc06eb7686bb7a_html_aee1b6397d4c724bc9cbc06eb7686bb7a"><div class="ttname"><a href="class_a_q_dynamic_n_p_c_controller_aee1b6397d4c724bc9cbc06eb7686bb7a.html#aee1b6397d4c724bc9cbc06eb7686bb7a">AQDynamicNPCController::MulticastShowSpeechBubbleWithText</a></div><div class="ttdeci">void MulticastShowSpeechBubbleWithText(const FString &amp;Text) const</div><div class="ttdoc">N2N, NMonolog상황에서 호출됩니다.</div></div>
+</div><!-- fragment --><div class="dynheader">
+이 함수 내부에서 호출하는 함수들에 대한 그래프입니다.:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a_ab3e669df6f85181d0c0e4632a4f3674a_cgraph.png" border="0" usemap="#aclass_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a_ab3e669df6f85181d0c0e4632a4f3674a_cgraph" alt=""/></div>
+<map name="aclass_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a_ab3e669df6f85181d0c0e4632a4f3674a_cgraph" id="aclass_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a_ab3e669df6f85181d0c0e4632a4f3674a_cgraph">
+<area shape="rect" title="NPC와의 대화시작 요청을 처리하는 함수입니다." alt="" coords="5,88,92,115"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_a47d70e05956f914b4d9e8949fc200efe.html#a47d70e05956f914b4d9e8949fc200efe" title="NPC의 몸을 멈춥니다." alt="" coords="188,5,282,32"/>
+<area shape="poly" title=" " alt="" coords="66,85,99,63,139,42,172,30,174,35,141,46,102,68,69,90"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_aee1b6397d4c724bc9cbc06eb7686bb7a.html#aee1b6397d4c724bc9cbc06eb7686bb7a" title="N2N, NMonolog상황에서 호출됩니다." alt="" coords="140,80,331,123"/>
+<area shape="poly" title=" " alt="" coords="92,99,124,99,124,104,92,104"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_a3d9641a6e70a40607c740565b6326059.html#a3d9641a6e70a40607c740565b6326059" title="상대방을 향해 고개를 회전합니다." alt="" coords="170,147,300,173"/>
+<area shape="poly" title=" " alt="" coords="86,113,140,132,165,139,163,145,139,137,84,118"/>
+<area shape="poly" title=" " alt="" coords="199,80,198,70,204,61,217,55,235,53,256,56,268,62,265,67,254,61,235,59,218,61,207,65,203,71,205,79"/>
+</map>
+</div>
+<div class="dynheader">
+이 함수를 호출하는 함수들에 대한 그래프입니다.:</div>
+<div class="dyncontent">
+<div class="center"><img src="class_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a_ab3e669df6f85181d0c0e4632a4f3674a_icgraph.png" border="0" usemap="#aclass_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a_ab3e669df6f85181d0c0e4632a4f3674a_icgraph" alt=""/></div>
+<map name="aclass_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a_ab3e669df6f85181d0c0e4632a4f3674a_icgraph" id="aclass_a_q_dynamic_n_p_c_controller_ab3e669df6f85181d0c0e4632a4f3674a_ab3e669df6f85181d0c0e4632a4f3674a_icgraph">
+<area shape="rect" title="NPC와의 대화시작 요청을 처리하는 함수입니다." alt="" coords="407,55,493,81"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_ae758c53fe5b59f4c04156d1115383b97.html#ae758c53fe5b59f4c04156d1115383b97" title="N2N, NMonolog상황에서 호출됩니다." alt="" coords="146,29,348,56"/>
+<area shape="poly" title=" " alt="" coords="392,63,348,58,348,53,392,58"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_ae9cb47ef10ab2cc1fad7cd2c522892b6.html#ae9cb47ef10ab2cc1fad7cd2c522892b6" title=" " alt="" coords="135,80,359,107"/>
+<area shape="poly" title=" " alt="" coords="392,78,359,82,358,77,391,73"/>
+<area shape="poly" title=" " alt="" coords="281,16,269,10,247,8,226,10,215,15,212,20,217,27,213,30,207,21,211,11,225,5,247,3,271,5,284,12"/>
+<area shape="rect" href="class_a_q_dynamic_n_p_c_controller_afd156935d4f1dc9acab4e7095922240d.html#afd156935d4f1dc9acab4e7095922240d" title="NPC와의 대화중단 요청을 처리하는 함수입니다." alt="" coords="5,29,87,56"/>
+<area shape="poly" title=" " alt="" coords="131,54,87,53,87,47,131,49"/>
+<area shape="poly" title=" " alt="" coords="102,32,146,31,146,36,102,37"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="class_a_q_resident_n_p_c_controller.html">AQResidentNPCController</a></li>
+    <li class="footer">다음에 의해 생성됨 :  <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.13.2 </li>
+  </ul>
+</div>
+</body>
+</html>

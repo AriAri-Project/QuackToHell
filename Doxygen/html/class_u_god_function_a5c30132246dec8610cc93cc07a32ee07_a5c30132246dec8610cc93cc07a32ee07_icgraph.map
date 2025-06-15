@@ -1,10 +1,9 @@
 <map id="GenerateDefendantPrompt" name="GenerateDefendantPrompt">
-<area shape="rect" id="Node000001" title=" " alt="" coords="671,29,848,56"/>
-<area shape="poly" id="edge1_Node000001_Node000001" title=" " alt="" coords="797,16,784,10,759,8,737,10,724,15,721,20,727,27,723,30,716,21,720,11,735,5,760,3,785,5,799,12"/>
-<area shape="rect" id="Node000002" href="$class_u_q_game_instance_village_a1ee5ca1a4c7d06fd8d5a3cd9a3d27587.html#a1ee5ca1a4c7d06fd8d5a3cd9a3d27587" title=" " alt="" coords="458,21,623,64"/>
-<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="656,45,624,45,624,40,656,40"/>
-<area shape="rect" id="Node000003" href="$class_u_q_game_instance_village_a5a7c0c3e2f26533acb1dfdd30cb430f3.html#a5a7c0c3e2f26533acb1dfdd30cb430f3" title=" " alt="" coords="208,21,410,64"/>
-<area shape="poly" id="edge3_Node000002_Node000003" title=" " alt="" coords="443,45,411,45,411,40,443,40"/>
-<area shape="rect" id="Node000004" href="$class_a_q_game_mode_village_aa1e28be0d0b9be7af2a074941a144c65.html#aa1e28be0d0b9be7af2a074941a144c65" title=" " alt="" coords="5,21,160,64"/>
-<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="192,45,160,45,160,40,192,40"/>
+<area shape="rect" id="Node000001" title=" " alt="" coords="671,13,848,40"/>
+<area shape="rect" id="Node000002" href="$class_u_q_game_instance_village_a1ee5ca1a4c7d06fd8d5a3cd9a3d27587.html#a1ee5ca1a4c7d06fd8d5a3cd9a3d27587" title=" " alt="" coords="458,5,623,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="656,29,624,29,624,24,656,24"/>
+<area shape="rect" id="Node000003" href="$class_u_q_game_instance_village_a5a7c0c3e2f26533acb1dfdd30cb430f3.html#a5a7c0c3e2f26533acb1dfdd30cb430f3" title=" " alt="" coords="208,5,410,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="443,29,411,29,411,24,443,24"/>
+<area shape="rect" id="Node000004" href="$class_a_q_game_mode_village_aa1e28be0d0b9be7af2a074941a144c65.html#aa1e28be0d0b9be7af2a074941a144c65" title=" " alt="" coords="5,5,160,48"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="192,29,160,29,160,24,192,24"/>
 </map>

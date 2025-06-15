@@ -52,6 +52,7 @@ var annotated_dup =
     [ "UQExamDefendantWidget", "class_u_q_exam_defendant_widget.html", "class_u_q_exam_defendant_widget" ],
     [ "UQGameInstance", "class_u_q_game_instance.html", "class_u_q_game_instance" ],
     [ "UQGameInstanceVillage", "class_u_q_game_instance_village.html", "class_u_q_game_instance_village" ],
+    [ "UQHomeWidget", "class_u_q_home_widget.html", null ],
     [ "UQInventoryWidget", "class_u_q_inventory_widget.html", "class_u_q_inventory_widget" ],
     [ "UQMapWidget", "class_u_q_map_widget.html", "class_u_q_map_widget" ],
     [ "UQNameWidget", "class_u_q_name_widget.html", "class_u_q_name_widget" ],
@@ -60,6 +61,7 @@ var annotated_dup =
     [ "UQPlayer2NSpeechBubbleWidget", "class_u_q_player2_n_speech_bubble_widget.html", "class_u_q_player2_n_speech_bubble_widget" ],
     [ "UQPlayerAnimInstance", "class_u_q_player_anim_instance.html", "class_u_q_player_anim_instance" ],
     [ "UQRecordWidget", "class_u_q_record_widget.html", "class_u_q_record_widget" ],
+    [ "UQRobbyWidget", "class_u_q_robby_widget.html", "class_u_q_robby_widget" ],
     [ "UQSpeechBubbleWidget", "class_u_q_speech_bubble_widget.html", "class_u_q_speech_bubble_widget" ],
     [ "UQVillageTimerWidget", "class_u_q_village_timer_widget.html", "class_u_q_village_timer_widget" ]
 ];
