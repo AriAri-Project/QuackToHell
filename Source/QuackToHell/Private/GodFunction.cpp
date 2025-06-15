@@ -343,7 +343,8 @@ void UGodFunction::GenerateDefendantPrompt(UWorld* World, TFunction<void()> Call
     }
 
     // 프롬프트 생성 시작
-    UE_LOG(LogTemp, Log, TEXT("PromptToDefendant.json 생성 시작!"));
+    FString StartTime = FDateTime::Now().ToString();
+    UE_LOG(LogTemp, Log, TEXT("Start Generating Prompts : %s"), *StartTime);
 
     FString PromptToGod = ReadFileContent(PromptToGodPath);
     FString DefendantPrompt = FString::Printf(
@@ -657,6 +658,9 @@ void UGodFunction::GenerateEvidenceItems(UWorld* World)
                     });
             }
         });
+
+    FString FinishTime = FDateTime::Now().ToString();
+    UE_LOG(LogTemp, Log, TEXT("Prompt generation completed: %s"), *FinishTime);
 }
 
 // Dalle 이미지 다운로드
