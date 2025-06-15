@@ -4,9 +4,12 @@
 #include "GodCall.h"
 #include "Game/QGameInstance.h"
 #include "QGameInstanceVillage.h"
+#include "Game/QGameInstance.h"
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
 #include "HAL/PlatformFilemanager.h"
+#include "Kismet/GameplayStatics.h"
+#include "Engine/World.h"
 #include "Json.h"
 #include "HttpModule.h"
 #include "Interfaces/IHttpRequest.h"
@@ -183,8 +186,13 @@ void UGodFunction::CallOpenAIAsync(const FString& Prompt, TFunction<void(FString
     Request->SetHeader("Authorization", "Bearer " + ApiKey);
     Request->SetHeader("Content-Type", "application/json");
 
+    /**
+     * @author 전유진
+     * 
+     * @todo 모델 4o mini로 임시로바꿈(돈이슈) -> 다시 4o로 원상복구하기
+     */
     FString PostData = FString::Printf(
-        TEXT("{ \"model\": \"gpt-4o\", \"messages\": [{ \"role\": \"user\", \"content\": \"%s\" }], \"max_tokens\": 2048 }"),
+        TEXT("{ \"model\": \"gpt-4o-mini\", \"messages\": [{ \"role\": \"user\", \"content\": \"%s\" }], \"max_tokens\": 2048 }"),
         *EscapeJSON(Prompt)
     );
 
@@ -734,6 +742,15 @@ void UGodFunction::DownloadDalleImage(const FString& Prompt, const FString& Save
                     if (FFileHelper::SaveArrayToFile(ImageData, *SavePath))
                     {
                         UE_LOG(LogTemp, Log, TEXT("이미지 저장 완료: %s"), *SavePath);
+                        /* @author : 유진 */
+                        // 이미지 생성되었다고 브로드캐스팅 해주기
+                        UWorld* World = GEngine->GetWorldContextFromGameViewport(GEngine->GameViewport)->World();
+                        UQGameInstance* GameInstance = Cast<UQGameInstance>(
+                            UGameplayStatics::GetGameInstance(World));
+                        if (GameInstance) {
+							GameInstance->OnEvidenceJsonGenerated.Broadcast();
+                        }
+                        /* ------------------------------------- */
                     }
                     else
                     {

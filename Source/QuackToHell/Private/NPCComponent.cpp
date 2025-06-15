@@ -564,8 +564,8 @@ void UNPCComponent::TrialStatement(FOpenAIRequest Request)
 
 		if (GameInstance)
 		{
-			const int32 NPCID = GetNPCID();
-			TArray<FConversationRecord> Records = GameInstance->GetRecordWithNPCID(NPCID);
+			const int32 _NPCID = GetNPCID();
+			TArray<FConversationRecord> Records = GameInstance->GetRecordWithNPCID(_NPCID);
 
 			if (Records.Num() > 0)
 			{
