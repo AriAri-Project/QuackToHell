@@ -37,10 +37,16 @@ protected:
 	 */
 	UFUNCTION(BlueprintCallable)
 	void TurnOnRecordUI() const;
+
 	/**
-	 * @brief. 녹음기록 위젯을 끕니다.
+	 * @brief. 증거물 위젯을 켭니다.
 	 */
 	UFUNCTION(BlueprintCallable)
-	void TurnOffRecordUI() const;
+	void TurnOnEvidenceUI() const;
+	/**
+	 * @brief. 인포박스를 비웁니다.
+	 */
+	UFUNCTION(BlueprintCallable)
+	void ClearInformationBox() const;
 
 };

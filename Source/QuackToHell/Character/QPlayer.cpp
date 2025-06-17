@@ -26,6 +26,12 @@
 #include "Player/QPlayerState.h"
 
 
+
+void AQPlayer::ServerRPCPickUpEvidence_Implementation(AAQEvidenceActor* EvidenceActor)
+{
+	EvidenceActor->Destroy();	
+}
+
 TObjectPtr<class UQPlayer2NSpeechBubbleWidget> AQPlayer::GetPlayer2NSpeechBubbleWidget() const
 {
 	return Player2NSpeechBubbleWidget;

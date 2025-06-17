@@ -55,6 +55,12 @@ private:
 	TArray<FEvidence> EvidenceList;
 
 public:
+	//author: 유진
+	int32 GetEvidenceCount() const
+	{
+		return EvidenceList.Num();
+	}
+
 	// 증거Map에 새로운 증거 추가
 	void AddEvidence(FEvidence& NewEvidence)
 	{
@@ -79,6 +85,8 @@ public:
 
 		EvidenceList.Empty();
 	}
+
+	
 
 	// ID로 증거 검색 
 	const FEvidence* GetEvidenceWithID(const int32& EvidenceID) const

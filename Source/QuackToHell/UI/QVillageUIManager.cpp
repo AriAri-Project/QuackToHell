@@ -7,6 +7,7 @@
 #include "UI/QP2NWidget.h"
 #include "QLogCategories.h"
 #include "UI/QDefaultVillageWidget.h"
+#include "UI/QEvidenceWidget.h"
 #include "UI/QRecordWidget.h"
 #include "UI/QVillageTimerWidget.h"
 #include "Kismet/GameplayStatics.h"
@@ -41,6 +42,7 @@ AQVillageUIManager::AQVillageUIManager()
 	static ConstructorHelpers::FClassFinder<UQInventoryWidget> InventoryWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_QInventory.WBP_QInventory_C'"));
 	static ConstructorHelpers::FClassFinder<UQRecordWidget> RecordWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_Record.WBP_Record_C'"));
 	static ConstructorHelpers::FClassFinder<UQVillageTimerWidget> VillageTimerWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_VillageTimer.WBP_VillageTimer_C'"));
+	static ConstructorHelpers::FClassFinder<UQEvidenceWidget> EvidenceWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_EvidenceInventory.WBP_EvidenceInventory_C'"));
 
 
 	// TSubclassOf 템플릿 클래스 객체에 블루프린트 클래스를 넣어준다
@@ -76,6 +78,10 @@ AQVillageUIManager::AQVillageUIManager()
 	{
 		UIWidgetClasses.Add(EVillageUIType::VillageTimer, VillageTimerWidgetAsset.Class);
 	}
+	if (EvidenceWidgetAsset.Succeeded())
+	{
+		UIWidgetClasses.Add(EVillageUIType::Evidence, EvidenceWidgetAsset.Class);
+	}
 
 	if (!IsVillageMap()) {
 		UE_LOG(LogLogic, Warning, TEXT("마을맵이 아니어서 VillageUIManager를 생성할 수 없습니다."));
@@ -93,25 +99,34 @@ void AQVillageUIManager::TurnOffUI(EVillageUIType UIType)
 
 TObjectPtr<AQVillageUIManager> AQVillageUIManager::GetInstance(TObjectPtr<UWorld> World)
 {
-	ENetMode NetMode = World->GetNetMode();
-	if (NetMode == NM_Client) {
-		UE_LOG(LogLogic, Log, TEXT("클라이언트!"));
+	if (!World)
+	{
+		UE_LOG(LogLogic, Warning, TEXT("AQVillageUIManager::GetInstance - World is null"));
+		return nullptr;
 	}
+
+	ENetMode NetMode = World->GetNetMode();
+	// 디버그용 로그
+	//UE_LOG(LogLogic, Log, TEXT("AQVillageUIManager::GetInstance - NetMode=%d"), NetMode);
+
 	if (!Instance)
 	{
-		if (NetMode == NM_DedicatedServer || NetMode == NM_ListenServer)
+		// DedicatedServer, ListenServer, Client, Standalone 모두 허용
+		if (NetMode == NM_DedicatedServer
+			|| NetMode == NM_ListenServer
+			|| NetMode == NM_Client
+			|| NetMode == NM_Standalone)
 		{
-			// 서버에서 Instance 생성
-			UE_LOG(LogLogic, Log, TEXT("서버에서 AQVillageUIManager 생성"));
+			//UE_LOG(LogLogic, Log, TEXT("AQVillageUIManager 생성 (NetMode=%d)"), NetMode);
 			Instance = World->SpawnActor<AQVillageUIManager>(AQVillageUIManager::StaticClass());
-			
+			if (!Instance)
+			{
+				UE_LOG(LogLogic, Error, TEXT("AQVillageUIManager 생성 실패!"));
+			}
 		}
-		else if (NetMode == NM_Client)
+		else
 		{
-			// 클라이언트에서 Instance 생성
-			UE_LOG(LogLogic, Log, TEXT("클라이언트에서 AQVillageUIManager 생성"));
-			Instance = World->SpawnActor<AQVillageUIManager>(AQVillageUIManager::StaticClass());
-			
+			UE_LOG(LogLogic, Warning, TEXT("AQVillageUIManager::GetInstance - 생성 불가 NetMode=%d"), NetMode);
 		}
 	}
 
@@ -145,7 +160,7 @@ UUserWidget* AQVillageUIManager::CreateWidgetIfNotExists(EVillageUIType UIType)
 	TObjectPtr<UUserWidget> NewWidget = CreateWidget<UUserWidget>(World, UIWidgetClasses[UIType]);
 	if (NewWidget) {
 		NewWidget->AddToViewport();
-		NewWidget->SetVisibility(ESlateVisibility::Visible);
+		NewWidget->SetVisibility(ESlateVisibility::Hidden);
 		ActivedVillageWidgets.Add(UIType, NewWidget);
 		return NewWidget;
 	}

@@ -29,18 +29,24 @@ public:
 	 * @brief 증거물 데이터 설정 함수.
 	 * @param NewEvidenceData 설정할 증거물 데이터.
 	 */
-	void SetEvidenceData(const FEvidence* NewEvidenceData) { EvidenceData = NewEvidenceData; }
+	void SetEvidenceData(const FEvidence NewEvidenceData) { EvidenceData = NewEvidenceData; ForceNetUpdate(); }
 	/**
 	 * @brief 증거물 데이터 가져오기 함수.
 	 * @return 현재 설정된 증거물 데이터.
 	 */
-	const FEvidence* GetEvidenceData() const;
+	FEvidence GetEvidenceData() const;
+	/**
+	 * @brief EvidenceData 데이터 리플리케이션 관련함수.
+	 */
+	UFUNCTION()
+	void OnRep_EvidenceData();
 /* -------------------------------------------------------------- */
 
 protected:
 	/* 자체 함수 */
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const ;
 	/* 외관 관련 변수들 */
 	/**
 	 * @brief 이 오브젝트는 동그란 외관을 갖습니다.
@@ -57,5 +63,6 @@ private:
 	/**
 	 * @brief 증거물 데이터 속성값.
 	 */
-	const FEvidence* EvidenceData;
+	UPROPERTY(ReplicatedUsing = OnRep_EvidenceData)
+	FEvidence EvidenceData;
 };

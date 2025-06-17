@@ -8,6 +8,8 @@
 #include "UI/QVillageUIManager.h"
 #include "UI/QMapWidget.h"
 #include "UI/QP2NWidget.h"
+#include "Engine/Engine.h"  
+#include "UI/QEvidenceWidget.h"
 #include "EnhancedInputComponent.h"
 #include "UI/QInventoryWidget.h"
 #include "Character/QPlayer.h"
@@ -132,14 +134,10 @@ void AQPlayerController::ClientRPCUpdateCanFinishConversP2N_Implementation(bool 
 {
 	if (bResult)
 	{
+		UE_LOG(LogLogic, Log, TEXT("b대화끝내기  = true"));
 		TObjectPtr<AQPlayer> _Player = Cast<AQPlayer>(this->GetPawn());
-
-		//1. 상대방 NPC를 불러옴
-		//2. 상대방 NPC의 컨트롤러를 불러옴
-		TObjectPtr<AQDynamicNPC> NPC = Cast<AQDynamicNPC>(_Player->GetClosestNPC());
-
-		//서버 대화로직 실행
-		Cast<AQPlayer>(this->GetPawn())->ServerRPCFinishConversation(this, NPC);
+		TObjectPtr<AQDynamicNPC> _NPC = Cast<AQDynamicNPC>(_Player->GetClosestNPC());
+		Cast<AQPlayer>(this->GetPawn())->ServerRPCFinishConversation(this, _NPC);
 	}
 	else
 	{
@@ -216,9 +214,10 @@ void AQPlayerController::ClientRPCFinishConversation_Implementation(AQNPC* NPC)
 
 		/** @todo 유진 : 서버측에서 대화 마무리 로직이 성공적으로 마무리 되었을 때 실행할 함수 여기서 호출 */
 		/** @todo 유진 : 대화를 끝낼 수 있을때 클라이언트에서 실행시켜야하는 함수 여기서 호출 */
-		TObjectPtr<AQPlayer> _Player = Cast<AQPlayer>(this->GetPawn());
-
-		//5. UI끈다.
+		
+		//몸 푼다.
+		UnFreezePawn();
+		//UI끈다.
 		AQVillageUIManager::GetInstance(GetWorld())->TurnOffUI(EVillageUIType::P2N);
 }
 
@@ -274,6 +273,42 @@ void AQPlayerController::InputInteraction(const FInputActionValue& InputValue)
 {
 	TObjectPtr<AQPlayer> _Player = Cast<AQPlayer>(this->GetPawn());
 	
+	/* 증거물 줍기 */
+	AAQEvidenceActor* Evidence = Cast<AAQEvidenceActor>(_Player->GetClosestEvidence());
+	//증거물데이터 로그에 찍어보기
+	if (Evidence)
+	{
+		// 값 복사
+		FEvidence Data = Evidence->GetEvidenceData();
+		FString Name = Data.GetName();
+		FString Description = Data.GetDescription();
+		FString Message = FString::Printf(TEXT("Picked up evidence: %s\n%s"), *Name, *Description);
+
+
+		// ① 화면에 초록색으로 5초 동안 메시지 띄우기
+		if (GEngine)
+		{
+			GEngine->AddOnScreenDebugMessage(
+				/* Key */    -1,           // -1 이면 매번 새 메시지
+				/* Time */    5.0f,         // 초 단위 표시 시간
+				/* Color */   FColor::Green,
+				/* Message */ Message
+			);
+		}
+
+		// ② 기존 로그도 남기고 싶으면
+		UE_LOG(LogLogic, Log, TEXT("%s"), *Message);
+
+		/////////////////////////////////////////////////
+		// 인벤토리에 Data넘기기
+		Cast<UQEvidenceWidget>(VillageUIManager->GetActivedWidget(EVillageUIType::Evidence))->AddEvidence(Data);
+
+		// !! 오브젝트 삭제하기
+		Cast<AQPlayer>(GetPawn())->ServerRPCPickUpEvidence(Evidence);
+
+		return;
+	}
+
 	/*대화시작해도돼? */	
 	//0. 상대방 NPC를 불러옴
 	TObjectPtr<AQDynamicNPC> NPC = Cast<AQDynamicNPC>(_Player->GetClosestNPC());
@@ -283,13 +318,7 @@ void AQPlayerController::InputInteraction(const FInputActionValue& InputValue)
 		return;
 	}
 	
-	/* 증거물 줍기 */
-	TObjectPtr<AAQEvidenceActor> Evidence = Cast<AAQEvidenceActor>(_Player->GetClosestEvidence());
-	//증거물데이터 로그에 찍어보기
-	if (Evidence != NULL) {
-		Evidence->GetEvidenceData();
-		return;
-	}
+	
 }
 
 void AQPlayerController::InputTurnOnOffMap(const FInputActionValue& InputValue)

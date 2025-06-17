@@ -7,6 +7,7 @@
 #include "QDefaultVillageWidget.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnRecordButtonPressed);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnEvidenceButtonPressed);
 
 /**
  * @author 전유진
@@ -23,9 +24,13 @@ public:
 	void SetMiddleTitle(const FText& InText); 
 public:
 	/**
-	 * @ 녹음기 버튼이 눌리는 이벤트에 대한 델리게이트
+	 * @brief  녹음기 버튼이 눌리는 이벤트에 대한 델리게이트
 	 */
 	FOnRecordButtonPressed OnRecordButtonPressed;
+	/**
+	 * @brief 증거물 버튼이 눌리는 이벤트에 대한 델리게이트
+	 */
+	FOnRecordButtonPressed OnEvidenceButtonPressed;
 public:
 	/**
 	 * @brief 버튼 상호작용을 차단합니다.

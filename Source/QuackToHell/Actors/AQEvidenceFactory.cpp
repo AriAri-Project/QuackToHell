@@ -46,15 +46,23 @@ void AAQEvidenceFactory::SpawnAndInitializeEvidenceActors()
 		return;
 	}
 	int EvidenceID = 4000;
-	EvidenceList;
-	EvidenceList.Add(GameInstance->GetEvidenceList().GetEvidenceWithID(EvidenceID++));
-	int32 EvidenceCount = EvidenceList.Num();
-	if (EvidenceCount == 0)
+	int _EvidenceCount = GameInstance->GetEvidenceList().GetEvidenceCount();
+	
+	if (_EvidenceCount > SpawnLocations.Num()) {
+		_EvidenceCount = SpawnLocations.Num();
+	}
+	
+	for (int i = 0; i < _EvidenceCount; i++) {
+		EvidenceList.Add(GameInstance->GetEvidenceList().GetEvidenceWithID(EvidenceID++));
+	}
+	
+	
+	if (_EvidenceCount == 0)
 	{
 		UE_LOG(LogLogic, Warning, TEXT("AAQEvidenceFactory::SpawnAndInitializeEvidenceActors - No evidence found"));
 		return;
 	}
-	for (int32 i = 0; i < EvidenceCount; i++) {
+	for (int32 i = 0; i < _EvidenceCount; i++) {
 		FVector Location = (SpawnLocations.IsValidIndex(i) ? SpawnLocations[i] : GetActorLocation());
 		FRotator Rotation =  FRotator::ZeroRotator;
 		FActorSpawnParameters Params;
@@ -67,7 +75,7 @@ void AAQEvidenceFactory::SpawnAndInitializeEvidenceActors()
 		
 		if (Actor) {
 			//3. 데이터 초기화
-			Actor->SetEvidenceData(EvidenceList[i]);
+			Actor->SetEvidenceData(*EvidenceList[i]);
 		}
 		else {
 			UE_LOG(LogLogic, Error, TEXT("EvidenceFactory: [%d] 증거물 생성 실패"), i);

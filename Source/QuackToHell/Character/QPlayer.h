@@ -21,6 +21,13 @@ class QUACKTOHELL_API AQPlayer : public AQCharacter
 	friend class UQP2NWidget;
 public:
 	/**
+	 * @author 전유진.
+	 * @brief 클라이언트가 증거 줍기를 서버에 요청 
+	 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCPickUpEvidence(AAQEvidenceActor* EvidenceActor);
+public:
+	/**
 	 * @brief Player2N 스피치버블 위젯을 리턴합니다. NPCController에서 접근하기 위함입니다.
 	 *
 	 * @return Player2Nspeechbubblewidget
