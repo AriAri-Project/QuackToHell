@@ -7,6 +7,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "UI/QVillageUIManager.h"
 #include "UI/QMapWidget.h"
+#include "Game/QVillageGameState.h"
 #include "UI/QP2NWidget.h"
 #include "Engine/Engine.h"  
 #include "UI/QEvidenceWidget.h"
@@ -259,6 +260,21 @@ void AQPlayerController::UnFreezePawn()
 	UE_LOG(LogLogic, Log, TEXT("플레이어 이동 재개."));
 }
 
+void AQPlayerController::GoToCourt()
+{
+	AQVillageGameState* VillageGameState = GetWorld()->GetGameState<AQVillageGameState>();
+	if (VillageGameState)
+	{
+		AQPlayerState* _PlayerState = GetPlayerState<AQPlayerState>();
+		// 재판장으로 이동 요청
+		VillageGameState->ServerRPCRequestTravelToCourt(_PlayerState, true);
+	}
+	else
+	{
+		UE_LOG(LogLogic, Error, TEXT("AQPlayerController::GoToCourt - VillageGameState is nullptr."));
+	}
+}
+
 
 
 
@@ -301,7 +317,7 @@ void AQPlayerController::InputInteraction(const FInputActionValue& InputValue)
 
 		/////////////////////////////////////////////////
 		// 인벤토리에 Data넘기기
-		Cast<UQEvidenceWidget>(VillageUIManager->GetActivedWidget(EVillageUIType::Evidence))->AddEvidence(Data);
+		Cast<AQPlayer>(GetPawn())->AddEvidence(Data);
 
 		// !! 오브젝트 삭제하기
 		Cast<AQPlayer>(GetPawn())->ServerRPCPickUpEvidence(Evidence);

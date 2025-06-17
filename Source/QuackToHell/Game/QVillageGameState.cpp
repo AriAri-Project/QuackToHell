@@ -7,6 +7,7 @@
 #include "Blueprint/UserWidget.h"
 #include "Net/UnrealNetwork.h"
 #include "Player/QPlayerState.h"
+#include "Kismet/GameplayStatics.h"
 #include "Player/QPlayerController.h"
 #include "UI/QVillageTimerWidget.h"
 #include "UI/QVillageUIManager.h"
@@ -33,14 +34,18 @@ void AQVillageGameState::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 
-	if (HasAuthority() || !bIsTimeToGoToCourt) // 서버에서만 실행
+	if (HasAuthority()) // 서버에서만 실행
 	{
-		// 종료 시간이 다 됐다면 클라이언트들에게 마무리 작업하라고 알림.
-		if (FMath::IsNearlyEqual(ServerLeftTimeUntilTrial, TimeUntilTrialMax, KINDA_SMALL_NUMBER))
-		{
-			bIsTimeToGoToCourt = true;
-			// @todo : 유진의 클라 인터페 여기서 호출
+		if (!bIsTimeToGoToCourt) {
+			// 종료 시간이 다 됐다면 클라이언트들에게 마무리 작업하라고 알림.
+			if (ServerLeftTimeUntilTrial > TimeUntilTrialMax)
+			{
+				bIsTimeToGoToCourt = true;
+				// @todo : 유진의 클라 인터페 여기서 호출
+				EndVillageActivity();
+			}
 		}
+		
 		ServerLeftTimeUntilTrial += DeltaSeconds;
 		MulticastRPCUpdateServerTime();
 	}
@@ -52,7 +57,7 @@ void AQVillageGameState::EndVillageActivity_Implementation()
 	
 	AQVillageUIManager::GetInstance(GetWorld())->MulticastEndupUI();
 	//플레이어정리 : 로컬플레이어의 상호작용 차단
-	APlayerController* LocalPlayerController = GetWorld()->GetFirstPlayerController();
+	APlayerController* LocalPlayerController = UGameplayStatics::GetPlayerController(GetWorld(), 0);
 	if (LocalPlayerController) {
 		if (AQPlayerController* QPlayerController = Cast<AQPlayerController>(LocalPlayerController)) {
 			QPlayerController->MulticastBlockInteraction();
@@ -66,6 +71,19 @@ void AQVillageGameState::EndVillageActivity_Implementation()
 			Cast<UQDefaultVillageWidget>(VillageUIManager->GetActivedWidget(EVillageUIType::DefaultVillageUI))->SetGrandTitle(FText::FromString(TEXT("시간 종료!")));
 			Cast<UQDefaultVillageWidget>(VillageUIManager->GetActivedWidget(EVillageUIType::DefaultVillageUI))->SetMiddleTitle(FText::FromString(TEXT("곧 재판장으로 이동합니다.")));
 			
+			FTimerHandle TravelTimerHandle;
+			FTimerDelegate Delegate;
+			Delegate.BindLambda([QPlayerController]()
+				{
+					QPlayerController->GoToCourt();
+				});
+
+			GetWorld()->GetTimerManager().SetTimer(
+				TravelTimerHandle,
+				Delegate,
+				3.0f,   // Delay 3초
+				false   // 반복 없음
+			);
 		}
 		else {
 			UE_LOG(LogLogic, Error, TEXT("AQVillageGameState::EndVillageActivity_Implementation : QPlayerController 캐스팅 실패"));

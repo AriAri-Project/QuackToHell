@@ -32,7 +32,7 @@ public:
 private:
 	/** @breif 재판까지의 총 시간 */
 	UPROPERTY(Replicated)
-	float TimeUntilTrialMax = 60 * 7;
+	float TimeUntilTrialMax = 20; // 60 * 7;
 	
 	/** @brief 재판까지 남은 시간 */
 	UPROPERTY(Replicated)

@@ -41,18 +41,18 @@ ENetMode UQGameInstance::GetLocalNetMode()
 
 void UQGameInstance::SchedulePromptRegeneration()
 {
-	UE_LOG(LogTemp, Log, TEXT("🔄 프롬프트 삭제 후 3초 후 재생성 예약"));
+	//UE_LOG(LogTemp, Log, TEXT("🔄 프롬프트 삭제 후 3초 후 재생성 예약"));
 
-	// 기존 프롬프트 삭제
-	UGodFunction::DeleteOldPromptFiles();
+	//// 기존 프롬프트 삭제
+	//UGodFunction::DeleteOldPromptFiles();
 
-	// ✅ 즉시 프롬프트 생성 시작
-	StartPromptGeneration();
+	//// ✅ 즉시 프롬프트 생성 시작
+	//StartPromptGeneration();
 }
 
 void UQGameInstance::StartPromptGeneration()
 {
-	UE_LOG(LogTemp, Log, TEXT("🕒 PromptToDefendant.json 생성 시작"));
+	/*UE_LOG(LogTemp, Log, TEXT("🕒 PromptToDefendant.json 생성 시작"));
 
 	UWorld* World = GetWorld();
 	if (!World)
@@ -65,7 +65,7 @@ void UQGameInstance::StartPromptGeneration()
 		{
 			UE_LOG(LogTemp, Log, TEXT("✅ PromptToDefendant.json 생성 완료! NPC 프롬프트 생성 시작"));
 			UGodFunction::GenerateJuryNPC(GetWorld(), 1);
-		});
+		});*/
 }
 
 void UQGameInstance::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const

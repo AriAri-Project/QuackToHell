@@ -16,6 +16,9 @@ class QUACKTOHELL_API AQPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 public:
+	/** @brief 재판장 이동 */
+	void GoToCourt();
+public:
 	TObjectPtr<class AQVillageUIManager> GetVillageUIManager() const { return VillageUIManager; }
 public:
 	/**
@@ -213,6 +216,7 @@ private:
 	/* 재판장이동 타이머 */
 	float MoveToCourtTimer = 0.0f;
 	const float MoveToCourtTimerMax = 3.0f;
+
 };
 
 

@@ -21,6 +21,29 @@ class QUACKTOHELL_API AQPlayer : public AQCharacter
 	friend class UQP2NWidget;
 public:
 	/**
+	 * @brief 인벤.
+	 * @author 유진
+	 */
+	void AddEvidence(const FEvidence& InputEvidence)
+	{
+		// 이미 있는 ID인지 검사…
+		for (const auto& E : EvidenceList)
+		{
+			if (E.GetID() == InputEvidence.GetID())
+			{
+				return;
+			}
+		}
+		// 배열에 복사 삽입
+		EvidenceList.Add(InputEvidence);
+	}
+private:
+	/**
+	 * @brief 증거물 데이터.
+	 */
+	TArray<FEvidence> EvidenceList;
+public:
+	/**
 	 * @author 전유진.
 	 * @brief 클라이언트가 증거 줍기를 서버에 요청 
 	 */
