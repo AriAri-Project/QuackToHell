@@ -816,11 +816,16 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 
 	if (ClientPC->GetNetConnection() == nullptr)
 	{
-		UE_LOG(LogLogic, Log, TEXT("ClientPC %s NetConnection is nullptr."), *ClientPC->GetName());
-		return;
+		UE_LOG(LogLogic, Warning, TEXT("ClientPC %s NetConnection is nullptr (host). skipping NetConnection log."), *ClientPC->GetName());
 	}
-	
-	UE_LOG(LogLogic, Log, TEXT("ClientPC Name : %s, NetConnection : %s"), *ClientPC->GetName(), *ClientPC->GetNetConnection()->GetName());
+	else
+	{
+		UE_LOG(LogLogic, Log,
+			TEXT("ClientPC Name : %s, NetConnection : %s"),
+			*ClientPC->GetName(),
+			*ClientPC->GetNetConnection()->GetName()
+		);
+	}
 
 	switch (Response.ConversationType)
 	{

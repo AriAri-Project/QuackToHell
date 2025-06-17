@@ -16,7 +16,8 @@ enum class EVillageUIType :uint8 {
 	SpeechBubble,
 	Inventory, 
 	Record,
-	VillageTimer
+	VillageTimer,
+	Evidence, // 증거물 인벤토리
 
 };
 UCLASS()

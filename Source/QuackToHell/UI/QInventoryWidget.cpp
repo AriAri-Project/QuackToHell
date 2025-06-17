@@ -24,7 +24,19 @@ void UQInventoryWidget::TurnOnRecordUI() const
 	
 }
 
-void UQInventoryWidget::TurnOffRecordUI() const
+
+
+void UQInventoryWidget::TurnOnEvidenceUI() const
 {
-	AQVillageUIManager::GetInstance(GetWorld())->TurnOffUI(EVillageUIType::Record);
+	AQVillageUIManager::GetInstance(GetWorld())->TurnOnUI(EVillageUIType::Evidence);
+
+	//하위컴포넌트가 없으면 하위컴포넌트로 달아주기
+	if (InformationBox->GetChildrenCount() == 0) {
+		InformationBox->AddChild(AQVillageUIManager::GetInstance(GetWorld())->GetActivedWidget(EVillageUIType::Evidence));
+	}
+}
+
+void UQInventoryWidget::ClearInformationBox() const
+{
+	InformationBox->ClearChildren();
 }
