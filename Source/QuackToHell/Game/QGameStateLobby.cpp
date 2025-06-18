@@ -5,6 +5,15 @@
 #include "UI/Lobby/QLobbyLevelWidget.h"
 #include "Blueprint/UserWidget.h"
 
+AQGameStateLobby::AQGameStateLobby()
+{
+	static ConstructorHelpers::FClassFinder<UQLobbyLevelWidget> LobbyWidgetAsset(TEXT("/Game/Blueprints/UI/Lobby/WBP_LobbyLevel"));
+	if (LobbyWidgetAsset.Succeeded())
+	{
+		LobbyLevelWidget = LobbyWidgetAsset.Class;
+	}
+}
+
 void AQGameStateLobby::BeginPlay()
 {
 	Super::BeginPlay();

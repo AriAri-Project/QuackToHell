@@ -226,6 +226,11 @@ void AQStartPlayerController::OnJoinSessionComplete(FName SessionName, EOnJoinSe
 	FString Address;
 	if (OnlineSessionInterface->GetResolvedConnectString(SessionName, Address))
 	{
+		UE_LOG(LogTemp, Warning, TEXT("JoinSession: Resolved Address = %s"), *Address);
 		this->ClientTravel(Address, TRAVEL_Absolute);
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("JoinSession: Failed to resolve connect string for session: %s"), *SessionName.ToString());
 	}
 }

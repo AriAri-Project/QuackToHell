@@ -14,7 +14,7 @@ UCLASS()
 class QUACKTOHELL_API AQGameStateLobby : public AGameState
 {
 	GENERATED_BODY()
-	
+	AQGameStateLobby();
 	virtual void BeginPlay() override;
 	
 public:
