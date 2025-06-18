@@ -15,6 +15,4 @@ class QUACKTOHELL_API AQGameModeLobby : public AGameMode
 	GENERATED_BODY()
 
 	AQGameModeLobby();
-	virtual void BeginPlay() override;
-	TSubclassOf<UUserWidget> LobbyLevelWidget;
 };
