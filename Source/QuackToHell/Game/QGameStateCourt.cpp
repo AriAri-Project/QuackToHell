@@ -2,11 +2,9 @@
 
 
 #include "Game/QGameStateCourt.h"
+#include <Net/UnrealNetwork.h>
 
-void AQGameStateCourt::ServerRPCConverseToEnterStatement_Implementation(APlayerController* LocalPlayerController, bool bEnterStatement)
-{
-	
-}
+
 
 void AQGameStateCourt::MultiRPCStartDirection_Implementation(ECourtDirectionType DirectionType)
 {
@@ -99,6 +97,10 @@ AQGameStateCourt::AQGameStateCourt()
     :Super()
 {
     bReplicates = true;
+
+    OpeningStatements.SetNum(2);
+    OpeningStatements[0].bServer = true;
+    OpeningStatements[1].bServer = false;
 }    
 
 void AQGameStateCourt::BeginPlay()
@@ -106,9 +108,17 @@ void AQGameStateCourt::BeginPlay()
     Super::BeginPlay();
 }
 
+ TArray<FStatementEntry>& AQGameStateCourt::GetOpeningStatements() 
+{
+    // TODO: 여기에 return 문을 삽입합니다.
+    return OpeningStatements;
+}
+
 void AQGameStateCourt::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+    DOREPLIFETIME(AQGameStateCourt, OpeningStatements);
 }
 
 

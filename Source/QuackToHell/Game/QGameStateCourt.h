@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "UI/QCourtUIManager.h"
+#include "QGameInstance.h"
 #include "GameFramework/GameState.h"
 #include "QGameStateCourt.generated.h"
 
@@ -14,6 +15,15 @@ UCLASS()
 class QUACKTOHELL_API AQGameStateCourt : public AGameState
 {
 	GENERATED_BODY()
+
+public:
+	TArray<FStatementEntry>& GetOpeningStatements() ;
+private:
+	/**
+	 * @brief 서버, 클라 모두의 모두진술 대사를 보관함.
+	 */
+	UPROPERTY(Replicated)
+	TArray<FStatementEntry> OpeningStatements;
 public:
 	AQGameStateCourt();
 protected:
@@ -29,10 +39,10 @@ public:
 	
 	UFUNCTION(NetMulticast, Reliable)
 	void MultiRPCStartUI(ECourtUIType UIType);
-public:
-	/** @brief 모두 진술 입력창으로 전환할 수 있음을 서버에게 알리는 ServerRPC 함수 */
-	UFUNCTION(NetMulticast, Reliable)
-	void ServerRPCConverseToEnterStatement(APlayerController* LocalPlayerController, bool bEnterStatement);
+//public:
+//	/** @brief 모두 진술 입력창으로 전환할 수 있음을 서버에게 알리는 ServerRPC 함수 */
+//	UFUNCTION(NetMulticast, Reliable)
+//	void ServerRPCConverseToEnterStatement(APlayerController* LocalPlayerController, bool bEnterStatement);
 
 
 };
