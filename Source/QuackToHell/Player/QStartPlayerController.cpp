@@ -2,7 +2,6 @@
 
 
 #include "Player/QStartPlayerController.h"
-#include "Blueprint/UserWidget.h"
 #include "OnlineSubsystem.h"
 #include "OnlineSessionSettings.h"
 #include "Engine/Engine.h"
@@ -10,7 +9,6 @@
 #include "OnlineSubsystemUtils.h"
 #include "QPlayerState.h"
 #include "Interfaces/OnlineIdentityInterface.h"
-#include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
 
 AQStartPlayerController::AQStartPlayerController()
@@ -73,6 +71,8 @@ void AQStartPlayerController::CreateSession()
 		return;
 	}
 	// NAME_GameSession : 전역변수
+	// 예: 플레이어 닉네임 기반 고유 세션 이름 설정
+	NewSessionName = FString::Printf(TEXT("Session_%s"), *PlayerNickName);
 	auto ExistingSession = OnlineSessionInterface->GetNamedSession(*NewSessionName);
 	if (ExistingSession != nullptr)
 	{
@@ -184,16 +184,12 @@ void AQStartPlayerController::OnFindSessionComplete(bool bWasSuccessful)
 		}
 		return;
 	}
-	for (auto Result : SessionSearch->SearchResults)
+	for (const FOnlineSessionSearchResult&  Result : SessionSearch->SearchResults)
 	{
-		FString Id = Result.GetSessionIdStr();
 		FString OwningUser = Result.Session.OwningUserName;
 		int32 MaxConnectionNum = Result.Session.SessionSettings.NumPublicConnections;
 		int32 AvailableConnectionNum = Result.Session.NumOpenPublicConnections;
-		FString SessionName;
-		Result.Session.SessionSettings.Get(FName("SessionName"), SessionName);
-		FString Address;
-		OnlineSessionInterface->GetResolvedConnectString(FName("SessionName"), Address);
+		FName SessionName = FName(*Result.GetSessionIdStr());
 
 		/** @todo 조건에 따라 리스트에 보여줄 세션 거르기 */
 		if (AvailableConnectionNum <= 0)
@@ -203,8 +199,8 @@ void AQStartPlayerController::OnFindSessionComplete(bool bWasSuccessful)
 		if (GEngine)
 		{
 			GEngine->AddOnScreenDebugMessage(-1, 15.f, FColor::Blue,
-				FString::Printf(TEXT("Found Session - id : %s host : %s \n Session Name : %s \n Player num : %d/%d \n Address : %s"),
-					*Id, *OwningUser, *SessionName, MaxConnectionNum-AvailableConnectionNum, MaxConnectionNum, *Address));
+				FString::Printf(TEXT("Found Session - host : %s \n Session Name : %s \n Player num : %d/%d"),
+					*OwningUser, *SessionName.ToString(), MaxConnectionNum-AvailableConnectionNum, MaxConnectionNum));
 		}
 
 		// Join 관련 delegate 등록
@@ -213,7 +209,7 @@ void AQStartPlayerController::OnFindSessionComplete(bool bWasSuccessful)
 
 		// JoinSession
 		const ULocalPlayer* LocalPlayer = GetWorld()->GetFirstLocalPlayerFromController();
-		OnlineSessionInterface->JoinSession(*LocalPlayer->GetPreferredUniqueNetId(), *SessionName, Result);
+		OnlineSessionInterface->JoinSession(*LocalPlayer->GetPreferredUniqueNetId(), SessionName, Result);
 		break;
 	}
 }

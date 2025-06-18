@@ -19,3 +19,12 @@ void UQLobbyLevelWidget::SetClientNames(const FString& Client)
 		ClientName->SetText(FText::FromString(Client));
 	}
 }
+
+void UQLobbyLevelWidget::AppendLogMessage(const FString& Message)
+{
+	if (LogText)
+	{
+		FString Current = LogText->GetText().ToString();
+		LogText->SetText(FText::FromString(Current + TEXT("\n") + Message));
+	}
+}

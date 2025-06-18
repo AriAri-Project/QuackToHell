@@ -21,11 +21,15 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void SetClientNames(const FString& Client);
 
-protected:
 	// TextBlock들 바인딩. 반드시 UMG에서 IsVariable 체크되어 있어야 함
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* HostName;
 
 	UPROPERTY(meta = (BindWidget))
 	UTextBlock* ClientName;
+
+	UPROPERTY(meta = (BindWidget))
+	UTextBlock* LogText;
+
+	void AppendLogMessage(const FString& Message);
 };

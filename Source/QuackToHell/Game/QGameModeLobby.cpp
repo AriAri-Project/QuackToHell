@@ -5,12 +5,14 @@
 
 #include "QGameStateLobby.h"
 #include "Blueprint/UserWidget.h"
+#include "Player/QLobbyPlayerController.h"
 #include "Player/QPlayerState.h"
-#include "Player/QStartPlayerController.h"
 
 AQGameModeLobby::AQGameModeLobby()
 {
-	PlayerControllerClass = AQStartPlayerController::StaticClass();
+	bReplicates = true;
+	
+	PlayerControllerClass = AQLobbyPlayerController::StaticClass();
 	PlayerStateClass = AQPlayerState::StaticClass();
 	GameStateClass = AQGameStateLobby::StaticClass();
 	static ConstructorHelpers::FClassFinder<APawn> PawnClassRef(TEXT("/Game/Blueprints/Character/BP_StartPlayer.BP_StartPlayer_C"));
@@ -18,4 +20,19 @@ AQGameModeLobby::AQGameModeLobby()
 	{
 		DefaultPawnClass = PawnClassRef.Class;
 	}
+}
+
+void AQGameModeLobby::PostLogin(APlayerController* NewPlayer)
+{
+	Super::PostLogin(NewPlayer);
+	
+	AQPlayerState* PlayerState = Cast<AQPlayerState>(NewPlayer->PlayerState);
+	if (!PlayerState)
+	{
+		return;
+	}
+	
+	TObjectPtr<AQLobbyPlayerController> LobbyPC = Cast<AQLobbyPlayerController>(NewPlayer);
+	LobbyPC->ClientRPC_ShowLobbyUI();
+	LobbyPC->ClientRPC_NewPlayerAlert(PlayerState->GetPlayerName());
 }

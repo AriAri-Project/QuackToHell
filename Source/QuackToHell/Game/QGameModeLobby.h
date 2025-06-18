@@ -15,4 +15,6 @@ class QUACKTOHELL_API AQGameModeLobby : public AGameMode
 	GENERATED_BODY()
 
 	AQGameModeLobby();
+
+	virtual void PostLogin(APlayerController* NewPlayer) override;
 };

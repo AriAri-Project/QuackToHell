@@ -4,14 +4,11 @@
 #include "Game/QGameStateLobby.h"
 #include "UI/Lobby/QLobbyLevelWidget.h"
 #include "Blueprint/UserWidget.h"
+#include "Net/UnrealNetwork.h"
 
 AQGameStateLobby::AQGameStateLobby()
 {
-	static ConstructorHelpers::FClassFinder<UQLobbyLevelWidget> LobbyWidgetAsset(TEXT("/Game/Blueprints/UI/Lobby/WBP_LobbyLevel"));
-	if (LobbyWidgetAsset.Succeeded())
-	{
-		LobbyLevelWidget = LobbyWidgetAsset.Class;
-	}
+	
 }
 
 void AQGameStateLobby::BeginPlay()
@@ -19,13 +16,35 @@ void AQGameStateLobby::BeginPlay()
 	Super::BeginPlay();
 
 	//테스트용 위젯 띄우기
-	if (LobbyLevelWidget)
+	
+}
+
+void AQGameStateLobby::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AQGameStateLobby, bIsClientReady);
+	DOREPLIFETIME(AQGameStateLobby, bIsGameStarted);
+}
+
+void AQGameStateLobby::OnRep_bIsClientReady()
+{
+}
+
+void AQGameStateLobby::OnRep_bIsGameStarted()
+{
+}
+
+void AQGameStateLobby::ServerRPCChangeClientReadyState_Implementation()
+{
+}
+
+void AQGameStateLobby::HostGameStart()
+{
+	if (!HasAuthority())
 	{
-		UQLobbyLevelWidget* StartWidget = CreateWidget<UQLobbyLevelWidget>(GetWorld()->GetFirstPlayerController(), LobbyLevelWidget);
-		if (StartWidget)
-		{
-			// 위젯을 화면에 추가
-			StartWidget->AddToViewport();
-		}
+		return;
 	}
+
+	
 }
