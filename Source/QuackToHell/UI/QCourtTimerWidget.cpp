@@ -6,23 +6,28 @@
 
 static float InternalAccum = 0.0f;
 
-void UQCourtTimerWidget::AlertFinishTimer()
+
+
+void UQCourtTimerWidget::UpdateServerTimeToUITime(float DeltaTime, const float MaxTime)
 {
-    if (UWorld* World = GetWorld())
-    {
-        AQCourtUIManager* UIManager = AQCourtUIManager::GetInstance(World);
-        if (UIManager)
+    if (bHasCalledFinishTimer) {
+        return;
+    }
+    if (InternalAccum >= MaxTime) {
+        bHasCalledFinishTimer = true;
+        //서버RPC호출
+        if (UWorld* World = GetWorld())
         {
-            UIManager->ServerRPCAlertOpeningStatementPerformEnd(true);
+            AQCourtUIManager* UIManager = AQCourtUIManager::GetInstance(World);
+            if (UIManager)
+            {
+                UIManager->ServerRPCAlertOpeningStatementPerformEnd(true);
+            }
         }
     }
-    
-}
 
-void UQCourtTimerWidget::UpdateServerTimeToUITime(float AccumulatedTime, const float MaxTime)
-{
     // 1) 내부 누적 변수에 델타를 계속 더한다.
-    InternalAccum += AccumulatedTime;
+    InternalAccum += DeltaTime;
 
     // 2) 최대값을 넘어가지 않도록 클램프
     if (InternalAccum > MaxTime)

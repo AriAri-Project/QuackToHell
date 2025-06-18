@@ -19,6 +19,7 @@ UENUM()
 /** @brief 법원 내 존재해야하는 연출 목록들 */
 enum class ECourtDirectionType :uint8 {
 	Opening,//도입부
+	Finish //증거조사~판결
 };
 
 
@@ -144,6 +145,15 @@ public:
 	 * @param UIType
 	 */
 	void TurnOffUI(ECourtUIType UIType);
+
+	/**
+	 * @brief UI를 끕니다.
+	 *
+	 * @param UIType
+	 */
+	UFUNCTION(NetMulticast, Reliable)
+
+	void MultiRPCTurnOffUI(ECourtUIType UIType);
 	/**
 	 * @brief 연출을 끕니다.
 	 * @param DirectionType

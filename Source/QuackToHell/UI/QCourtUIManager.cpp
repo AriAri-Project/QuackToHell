@@ -5,6 +5,7 @@
 #include "Kismet/GameplayStatics.h"
 #include "QLogCategories.h"
 #include "UI/QCourtTimerWidget.h"
+#include "UI/QFinishDirectionWidget.h"
 #include "UI/QEvidenceExamWidget.h"
 #include "UI/QCourtInputBoxWidget.h"
 #include "UI/CourtOpeningDirection.h"
@@ -41,6 +42,7 @@ AQCourtUIManager::AQCourtUIManager()
 	 * @TODO: 재판장 내 연출들 전부 추가해주기
 	 */
 	static ConstructorHelpers::FClassFinder<UCourtOpeningDirection> OpeningDirectionWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_CourtOpeningDirection.WBP_CourtOpeningDirection_C'"));
+	static ConstructorHelpers::FClassFinder<UQFinishDirectionWidget> FinishDirectionWidgetAsset(TEXT("WidgetBlueprint'/Game/Blueprints/UI/WBP_QFinishDirection.WBP_QFinishDirection_C'"));
 
 
 
@@ -71,6 +73,10 @@ AQCourtUIManager::AQCourtUIManager()
 	if (OpeningDirectionWidgetAsset.Succeeded())
 	{
 		DirectionWidgetClasses.Add(ECourtDirectionType::Opening, OpeningDirectionWidgetAsset.Class);
+	}
+	if (FinishDirectionWidgetAsset.Succeeded())
+	{
+		DirectionWidgetClasses.Add(ECourtDirectionType::Finish, FinishDirectionWidgetAsset.Class);
 	}
 }
 
@@ -191,6 +197,14 @@ void AQCourtUIManager::MultiRPCTurnOnUI_Implementation(ECourtUIType UIType)
 }
 
 void AQCourtUIManager::TurnOffUI(ECourtUIType UIType)
+{
+	if (ActivedCourtUIWidgets.Contains(UIType)) {
+		//안 보이게 바꾼다.
+		ActivedCourtUIWidgets[UIType]->SetVisibility(ESlateVisibility::Hidden);
+	}
+}
+
+void AQCourtUIManager::MultiRPCTurnOffUI_Implementation(ECourtUIType UIType)
 {
 	if (ActivedCourtUIWidgets.Contains(UIType)) {
 		//안 보이게 바꾼다.
@@ -360,14 +374,9 @@ void AQCourtUIManager::ServerRPCAlertOpeningStatementPerformEnd_Implementation(b
 {
 	if (!HasAuthority() || !isSucceeded) return;
 
-	if (UWorld* World = GetWorld())
-	{
-		// GameState 에 “증거조사 도입” 연출 요청
-		if (AQGameStateCourt* GS = World->GetGameState<AQGameStateCourt>())
-		{
-			//GS->ServerRPCStartDirection(ECourtDirectionType::EvidenceExamStarting);
-		}
-	}
+	
+	MultiRPCTurnOnDirection(ECourtDirectionType::Finish);
+	MultiRPCTurnOffUI(ECourtUIType::OpeningStatement);
 }
 
 // 증거조사 연출 끝났다고 서버가 받았을 때
