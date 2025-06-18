@@ -1,8 +1,9 @@
 {
-  "error": {
-    "message": null,
-    "type": "image_generation_user_error",
-    "param": null,
-    "code": null
-  }
+  "created": 1750250220,
+  "data": [
+    {
+      "revised_prompt": "An image of a detailed financial report icon showing a variety of graphs and numerical figures. The graphs highlight the ill-gotten gains acquired through illegal activities, presented in stark contrast with the economic damages felt by the affected communities. The report is neatly isolated on a transparent background with minimal shadows, styled in an icon-driven design.",
+      "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-c56Me2RW0cmFH4PCMNd6kFO7/user-9cvUrDExQOL7h2oLoAd3TnMG/img-qpfoyiyZY74b5DFJiZnbS4UY.png?st=2025-06-18T11%3A37%3A00Z&se=2025-06-18T13%3A37%3A00Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-18T06%3A27%3A58Z&ske=2025-06-19T06%3A27%3A58Z&sks=b&skv=2024-08-04&sig=wqnRXkNguJ5lFpisspgj5UkPQI3CUL/5fBuTPxH8Nfc%3D"
+    }
+  ]
 }

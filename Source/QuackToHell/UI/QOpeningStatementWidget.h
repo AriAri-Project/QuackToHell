@@ -14,6 +14,11 @@ UCLASS()
 class QUACKTOHELL_API UQOpeningStatementWidget : public UUserWidget
 {
 	GENERATED_BODY()
+public:
+
+	/** 인벤토리에서 불러온 증거 이미지들로 그리드를 채웁니다 */
+	UFUNCTION(BlueprintCallable)
+	void PopulateEvidenceGrid();
 protected:
 	/**
 	 * @brief 타이머 sizebox를 바인드
@@ -41,4 +46,10 @@ protected:
 	 */
 	UFUNCTION(BlueprintCallable)
 	void TurnOnInputBoxUI();
+
+private:
+	/** 블루프린트에서 BindWidget 해 두세요 */
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UUniformGridPanel> EvidenceGrid;
+
 };

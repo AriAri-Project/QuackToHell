@@ -23,6 +23,28 @@ class QUACKTOHELL_API UQGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
 public:
+	void SetOpeningStetementText(FString NewText);
+private:
+	FString OpeningStatementText = "";
+	/*             */
+	/**
+	 * @author 전유진.
+	 */
+private:
+	/** 플레이어가 습득한 증거 ID 리스트 */
+	UPROPERTY()
+	TArray<FEvidence> PlayerInventoryEvidences;
+
+public:
+	/** @brief 플레이어가 증거를 인벤토리에 추가합니다 */
+	UFUNCTION(BlueprintCallable, Category = "Evidence")
+	void AddInventoryEvidence(FEvidence NewEvidence);
+
+	/** @brief 플레이어 인벤토리 내 증거 ID 목록을 반환합니다 */
+	UFUNCTION(BlueprintCallable, Category = "Evidence")
+	const TArray<FEvidence>& GetInventoryEvidences() const;
+	/*             */
+public:
 	/**
 	 * @author 전유진.
 	 * @brief 증거물 생성완료시점 감지 이벤트

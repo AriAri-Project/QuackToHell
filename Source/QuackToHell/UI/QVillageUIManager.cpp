@@ -26,7 +26,11 @@ TObjectPtr<AQVillageUIManager> AQVillageUIManager::Instance = nullptr;
 // Sets default values
 AQVillageUIManager::AQVillageUIManager()
 {
-	
+	if (!IsVillageMap()) {
+		UE_LOG(LogLogic, Warning, TEXT("마을맵이 아니어서 VillageUIManager를 생성할 수 없습니다."));
+		return;
+	}
+
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = false;
 	bReplicates = true;
@@ -83,10 +87,7 @@ AQVillageUIManager::AQVillageUIManager()
 		UIWidgetClasses.Add(EVillageUIType::Evidence, EvidenceWidgetAsset.Class);
 	}
 
-	if (!IsVillageMap()) {
-		UE_LOG(LogLogic, Warning, TEXT("마을맵이 아니어서 VillageUIManager를 생성할 수 없습니다."));
-		return;
-	}
+
 }
 
 void AQVillageUIManager::TurnOffUI(EVillageUIType UIType)

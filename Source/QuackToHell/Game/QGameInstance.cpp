@@ -15,6 +15,38 @@ int UQGameInstance::NPCIDCount;
 int UQGameInstance::ConversationIDCount;
 int UQGameInstance::EvidenceIDCount;
 
+void UQGameInstance::SetOpeningStetementText(FString NewText)
+{
+	OpeningStatementText = NewText;
+}
+
+void UQGameInstance::AddInventoryEvidence(FEvidence NewEvidence)
+{
+	// 새 증거의 ID 가져오기
+	const int32 NewID = NewEvidence.GetID();
+
+	// PlayerInventoryEvidences 에 이미 같은 ID가 있는지 확인
+	for (const FEvidence& Evidence : PlayerInventoryEvidences)
+	{
+		if (Evidence.GetID() == NewID)
+		{
+			// 이미 인벤토리에 존재하면 바로 리턴
+			return;
+		}
+	}
+
+	// 중복 없으면 추가
+	PlayerInventoryEvidences.Add(NewEvidence);
+}
+
+const TArray<FEvidence>& UQGameInstance::GetInventoryEvidences() const
+{
+	// TODO: 여기에 return 문을 삽입합니다.
+	return PlayerInventoryEvidences;
+}
+
+
+
 UQGameInstance::UQGameInstance()
 {
 	// 데이터 초기화

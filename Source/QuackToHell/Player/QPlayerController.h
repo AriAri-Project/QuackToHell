@@ -15,6 +15,15 @@ UCLASS()
 class QUACKTOHELL_API AQPlayerController : public APlayerController
 {
 	GENERATED_BODY()
+private:
+	/* 재판장 이동 */
+	UFUNCTION(Server, Reliable)
+	void ServerRPCRequestTravelToCourt( bool bTravelToCourt);
+
+public:
+	// AQPlayerController.h
+	UFUNCTION(Client, Reliable)
+	void Client_StartCourtTravelTimer();
 public:
 	/** @brief 재판장 이동 */
 	void GoToCourt();

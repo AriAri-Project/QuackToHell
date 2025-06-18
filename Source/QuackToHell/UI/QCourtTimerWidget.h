@@ -15,6 +15,9 @@ class QUACKTOHELL_API UQCourtTimerWidget : public UUserWidget
 {
 	GENERATED_BODY()
 public:
+	UFUNCTION(BlueprintCallable)
+	void AlertFinishTimer();
+public:
 	/**
 	 * @brief 서버에서 누적된 시간을 넣어주면, 함수 내에서 정규화된(0~1사이의값) 값으로 변경한다.
 	 *
@@ -23,4 +26,10 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable)
 	void UpdateServerTimeToUITime(float AccumulatedTime, const float MaxTime);
+private:
+	/**
+	 * @brie text Box 컴포넌트 바인드
+	 */
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<class UTextBlock> TextBox;
 };

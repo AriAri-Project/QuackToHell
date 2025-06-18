@@ -1,8 +1,9 @@
 {
-  "error": {
-    "message": null,
-    "type": "image_generation_user_error",
-    "param": null,
-    "code": null
-  }
+  "created": 1750250222,
+  "data": [
+    {
+      "revised_prompt": "Picture an isolated laboratory scene in minimalistic icon style with subtle shadows. At the center, there is a specimen of toxic waste sourced from a contaminated river. The sample itself is marked with multiple hazard symbols, illustrating its danger to the environment and health. The background is completely transparent, emphasizing the stand-alone nature of the detailed object.",
+      "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-c56Me2RW0cmFH4PCMNd6kFO7/user-9cvUrDExQOL7h2oLoAd3TnMG/img-U3p1vKzEQSReFlcEtWVlULic.png?st=2025-06-18T11%3A37%3A02Z&se=2025-06-18T13%3A37%3A02Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-18T07%3A45%3A47Z&ske=2025-06-19T07%3A45%3A47Z&sks=b&skv=2024-08-04&sig=NbqkMiz7njLwUVvlL/bkEUxFRkderGvRMB/gMpvwFPU%3D"
+    }
+  ]
 }

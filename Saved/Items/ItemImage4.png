@@ -1,8 +1,9 @@
 {
-  "error": {
-    "message": null,
-    "type": "image_generation_user_error",
-    "param": null,
-    "code": null
-  }
+  "created": 1750250223,
+  "data": [
+    {
+      "revised_prompt": "An icon-style illustrative scene on a transparent background depicting interviews with residents of varied descents and genders. The residents include a Middle-Eastern woman, a South Asian man, a Black woman, and a Caucasian man, all exuding signs of economic and health struggles. Industrial pollution forms the backdrop with dark, ominous factory chimneys spewing out smoke. The scene has minimal shadows, accentuating each figure and their expressions of hardship.",
+      "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-c56Me2RW0cmFH4PCMNd6kFO7/user-9cvUrDExQOL7h2oLoAd3TnMG/img-7IUAOSFWSoMCKagLeIzBtrbZ.png?st=2025-06-18T11%3A37%3A03Z&se=2025-06-18T13%3A37%3A03Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-18T04%3A18%3A01Z&ske=2025-06-19T04%3A18%3A01Z&sks=b&skv=2024-08-04&sig=F2PzUYEe3%2Bs3SUY8rnIiqeBiKmnuHJVEHgkyyYEEAKo%3D"
+    }
+  ]
 }

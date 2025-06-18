@@ -1,8 +1,9 @@
 {
-  "error": {
-    "message": null,
-    "type": "image_generation_user_error",
-    "param": null,
-    "code": null
-  }
+  "created": 1750250220,
+  "data": [
+    {
+      "revised_prompt": "A handwritten letter of apology with a distinctly solemn tone, meant for those impacted by industrial negligence. The letter is an isolated object situated on a transparent background. It is presented in a simplistic icon style, and minimal shadows are used to give a touch of depth to the imagery.",
+      "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-c56Me2RW0cmFH4PCMNd6kFO7/user-9cvUrDExQOL7h2oLoAd3TnMG/img-lFiDfQiF7092I4mmAON7f3w0.png?st=2025-06-18T11%3A37%3A00Z&se=2025-06-18T13%3A37%3A00Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-18T07%3A27%3A33Z&ske=2025-06-19T07%3A27%3A33Z&sks=b&skv=2024-08-04&sig=6ZLfZrkjj6bA1eMyIA2IXv9qDma5Z6XWeovY%2BpwSmR4%3D"
+    }
+  ]
 }

@@ -54,6 +54,8 @@ private:
 
 	UPROPERTY(VisibleAnywhere,Category = "Game")
 	UQGameInstance* GameInstance;
+
+	
 	
 	/** @brief 플레이어의 대화 상태 */
 	UPROPERTY(Replicated)

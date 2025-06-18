@@ -32,7 +32,7 @@ public:
 private:
 	/** @breif 재판까지의 총 시간 */
 	UPROPERTY(Replicated)
-	float TimeUntilTrialMax = 20; // 60 * 7;
+	float TimeUntilTrialMax = 60*4; // 60 * 7;
 	
 	/** @brief 재판까지 남은 시간 */
 	UPROPERTY(Replicated)
@@ -49,9 +49,6 @@ private:
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
-	/* 재판장 이동 */
-	UFUNCTION(Server, Reliable)
-	void ServerRPCRequestTravelToCourt(AQPlayerState* PlayerState, bool bTravelToCourt);
 
 
 	// 테스트 용
