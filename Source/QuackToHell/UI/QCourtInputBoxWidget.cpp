@@ -2,6 +2,7 @@
 #include "UI/QCourtInputBoxWidget.h"
 #include "QLogCategories.h"
 #include "QCourtUIManager.h"
+#include <Game/QGameInstance.h>
 
 
 void UQCourtInputBoxWidget::MulticastSaveInput_Implementation()
@@ -10,14 +11,17 @@ void UQCourtInputBoxWidget::MulticastSaveInput_Implementation()
 	UE_LOG(LogLogic, Log, TEXT("UQCourtInputBoxWidget::SaveInput_Implementation 미구현"));
 }
 
-void UQCourtInputBoxWidget::AlertFinishInput(FString NewText)
+void UQCourtInputBoxWidget::AlertFinishInput(const FText& NewText)
 {
-    if (UWorld* World = GetWorld())
+	Cast<UQGameInstance>(GetGameInstance())->SetOpeningStetementText(NewText.ToString());
+    if (GEngine)
     {
-        AQCourtUIManager* UIManager = AQCourtUIManager::GetInstance(World);
-        if (UIManager)
-        {
-            UIManager->ServerRPCAlerOpeningStatementInputEnd(true);
-        }
+       
+        GEngine->AddOnScreenDebugMessage(
+            /*Key*/ -1,
+            /*Time*/ 0.5f,
+            /*Color*/ FColor::Yellow,
+            FString::Printf(TEXT("saved text=%s"), *NewText.ToString())
+        );
     }
 }
