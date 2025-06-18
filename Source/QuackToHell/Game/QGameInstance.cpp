@@ -2,22 +2,96 @@
 
 
 #include "Game/QGameInstance.h"
-
+#include "GameFramework/Actor.h"
 #include "QLogCategories.h"
 #include "Engine/World.h"
 #include "Net/UnrealNetwork.h"
 
 #include "GodFunction.h"
 #include "TimerManager.h"
+#include "QGameStateCourt.h"
+#include <UObject/FastReferenceCollector.h>
 
 int UQGameInstance::PlayerIDCount;
 int UQGameInstance::NPCIDCount;
 int UQGameInstance::ConversationIDCount;
 int UQGameInstance::EvidenceIDCount;
 
+void UQGameInstance::ServerRPCSaveServerAndClientStatement_Implementation(const FString& InputText, bool bServer)
+{
+	AQGameStateCourt* GS = GetWorld()->GetGameState<AQGameStateCourt>();
+
+	if (bServer) {
+		GS->GetOpeningStatements()[0].bServer = true;
+		GS->GetOpeningStatements()[0].Statement= InputText;
+	}
+	else {
+		GS->GetOpeningStatements()[1].bServer = false;
+		GS->GetOpeningStatements()[1].Statement = InputText;
+	}
+}
+
+void UQGameInstance::Init()
+{
+	Super::Init();
+	// 맵 로드 직후 호출될 델리게이트 바인딩
+	FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(this, &UQGameInstance::OnPostLoadMap);
+}
+
+void UQGameInstance::RegisterPersistentActor(AActor* Actor)
+{
+	if (!Actor)
+	{
+		return;
+	}
+
+	if (!PersistentActors.Contains(Actor))
+	{
+		PersistentActors.Add(Actor);
+	}
+}
+
+void UQGameInstance::OnPostLoadMap(UWorld* LoadedWorld)
+{
+	if (!LoadedWorld)
+	{
+		return;
+	}
+
+	ULevel* PersistentLevel = LoadedWorld->PersistentLevel;
+	// 뒤에서부터 순회하며 제거/이동
+	for (int32 Index = PersistentActors.Num() - 1; Index >= 0; --Index)
+	{
+		TWeakObjectPtr<AActor> WeakPtr = PersistentActors[Index];
+		AActor* Actor = WeakPtr.Get();
+
+		if (!Actor || !IsValid(Actor) || Actor->IsActorBeingDestroyed())
+		{
+			// 이미 파괴된 액터는 리스트에서 제거
+			PersistentActors.RemoveAt(Index);
+			continue;
+		}
+
+		// Persistent Level이 아닌 레벨에 있으면 이동
+		ULevel* CurrentLevel = Actor->GetLevel();
+		if (CurrentLevel && CurrentLevel != PersistentLevel)
+		{
+			// 서브레벨의 액터 배열에서 제거
+			CurrentLevel->Actors.Remove(Actor);
+			// PersistentLevel의 배열에 추가
+			PersistentLevel->Actors.Add(Actor);
+			// 액터의 Outer를 PersistentLevel로 변경 (Rename)
+			Actor->Rename(nullptr, PersistentLevel);
+		}
+	}
+}
+
+
 void UQGameInstance::SetOpeningStetementText(FString NewText)
 {
-	OpeningStatementText = NewText;
+	//서버에저장
+	ServerRPCSaveServerAndClientStatement(NewText, IsServer());
+	
 }
 
 void UQGameInstance::AddInventoryEvidence(FEvidence NewEvidence)
@@ -54,6 +128,8 @@ UQGameInstance::UQGameInstance()
 	NPCIDCount = NPCIDInit;
 	ConversationIDCount = ConversationIDInit;
 	EvidenceIDCount = EvidenceIDInit;
+
+
 
 	NPCList = {};
 	ConversationList = FConversationList(); // 명시적 초기화
@@ -105,6 +181,7 @@ void UQGameInstance::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>&
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	
 	DOREPLIFETIME(UQGameInstance, NPCList);
+
 	DOREPLIFETIME(UQGameInstance, ConversationList);
 	DOREPLIFETIME(UQGameInstance, EvidenceList);
 }

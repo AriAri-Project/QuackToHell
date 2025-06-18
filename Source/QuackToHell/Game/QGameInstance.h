@@ -13,6 +13,19 @@
 * @brief 증거물 생성완료시점 감지 이벤트
 */
 DECLARE_MULTICAST_DELEGATE(FOnEvidenceDataGenerated);
+USTRUCT(BlueprintType)
+struct FStatementEntry
+{
+	GENERATED_BODY()
+public:
+	// 누가 보낸 발언인지
+	UPROPERTY()
+	bool bServer;
+
+	// 실제 발언 텍스트
+	UPROPERTY()
+	FString Statement;
+};
 
 class AQNPC;
 /**
@@ -22,10 +35,33 @@ UCLASS()
 class QUACKTOHELL_API UQGameInstance : public UGameInstance
 {
 	GENERATED_BODY()
+
+private:
+	//헬퍼메서드
+	bool IsServer() const
+	{
+		if (UWorld* World = GetWorld())
+		{
+			ENetMode Mode = World->GetNetMode();
+			return (Mode == NM_DedicatedServer || Mode == NM_ListenServer);
+		}
+		return false;
+	}
+
+	bool IsClient() const
+	{
+		if (UWorld* World = GetWorld())
+		{
+			return (World->GetNetMode() == NM_Client);
+		}
+		return false;
+	}
+public:
+	UFUNCTION(Server, Reliable)
+	void ServerRPCSaveServerAndClientStatement(const FString& InputText, bool bServer);
 public:
 	void SetOpeningStetementText(FString NewText);
-private:
-	FString OpeningStatementText = "";
+
 	/*             */
 	/**
 	 * @author 전유진.
@@ -56,6 +92,22 @@ public:
 	// 프롬프트 삭제 및 3초 후 재생성 실행
 	void SchedulePromptRegeneration();
 	void StartPromptGeneration();
+public:
+	/** 유지하고 싶은 액터를 등록합니다 (언로드되지 않도록) */
+	UFUNCTION(BlueprintCallable, Category = "Persistence")
+	void RegisterPersistentActor(AActor* Actor);
+protected:
+	/** GameInstance 초기화 시점에 호출됩니다 */
+	virtual void Init() override;
+
+private:
+	/** 맵 로드 완료 직후 콜백 */
+	UFUNCTION()
+	void OnPostLoadMap(UWorld* LoadedWorld);
+
+	/** 등록된 액터 포인터(TWeak로 관리) 리스트 */
+	UPROPERTY()
+	TArray<TWeakObjectPtr<AActor>> PersistentActors;
 
 private:
 	// ID 관리
