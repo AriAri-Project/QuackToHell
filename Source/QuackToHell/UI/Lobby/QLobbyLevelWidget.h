@@ -31,6 +31,8 @@ public:
 
 	UPROPERTY(meta = (BindWidget))
 	UButton* GameButton;
+
+	bool bIsReady = false;
 	
 	UFUNCTION(BlueprintCallable)
 	void SetHostNames(const FString& Host);

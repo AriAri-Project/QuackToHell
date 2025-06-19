@@ -31,7 +31,7 @@ void UQLobbyLevelWidget::NativeConstruct()
 	else
 	{
 		// 클라이언트 버튼 초기화
-		UTexture2D* LoadedTexture = LoadObject<UTexture2D>(nullptr, TEXT("/Game/Art/UI/FinishConverseButton.FinishConverseButton"));
+		UTexture2D* LoadedTexture = LoadObject<UTexture2D>(nullptr, TEXT("/Game/Art/UI/Ready.Ready"));
 		ChangeButtonImage(LoadedTexture);
 		GameButton->SetIsEnabled(true);
 		GameButton->OnClicked.AddDynamic(this, &UQLobbyLevelWidget::OnClientGameButtonClicked);
@@ -70,6 +70,19 @@ void UQLobbyLevelWidget::OnHostGameButtonClicked()
 void UQLobbyLevelWidget::OnClientGameButtonClicked()
 {
 	UE_LOG(LogTemp, Display, TEXT("OnClientGameButtonClicked"));
+
+	bIsReady = !bIsReady;
+	UTexture2D* LoadedTexture;
+	if (bIsReady)
+	{
+		LoadedTexture = LoadObject<UTexture2D>(nullptr, TEXT("/Game/Art/UI/NotReady.NotReady"));
+	}
+	else
+	{
+		LoadedTexture = LoadObject<UTexture2D>(nullptr, TEXT("/Game/Art/UI/Ready.Ready"));
+	}
+	ChangeButtonImage(LoadedTexture);
+	
 	AQLobbyPlayerController* PC = Cast<AQLobbyPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
 	if (PC)
 	{
