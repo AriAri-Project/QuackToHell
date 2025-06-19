@@ -4,20 +4,16 @@
 #include "GodCall.h"
 #include "Game/QGameInstance.h"
 #include "QGameInstanceVillage.h"
-#include "Async/Async.h"
-#include "Game/QGameInstance.h"
 #include "Misc/FileHelper.h"
 #include "Misc/Paths.h"
 #include "HAL/PlatformFilemanager.h"
-#include "Kismet/GameplayStatics.h"
-#include "Engine/World.h"
 #include "Json.h"
 #include "HttpModule.h"
 #include "Interfaces/IHttpRequest.h"
 #include "Interfaces/IHttpResponse.h"
 #include "TimerManager.h"
 
-static int EvidenceCount = 0;
+
 
 // JSON 파일을 읽는 함수
 FString UGodFunction::ReadFileContent(const FString& FilePath)
@@ -129,7 +125,7 @@ bool UGodFunction::SavePromptToFile(const FString& FileName, const FString& Cont
     FilePath = FPaths::ConvertRelativePathToFull(FilePath);
 
     // ✅ 파일 강제 삭제 (존재하지 않는 경우에도 체크)
-    DeleteOldPromptFiles();
+    // DeleteOldPromptFiles();
 
     // ✅ 기존 파일 삭제 후 저장
     IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
@@ -189,11 +185,6 @@ void UGodFunction::CallOpenAIAsync(const FString& Prompt, TFunction<void(FString
     Request->SetHeader("Authorization", "Bearer " + ApiKey);
     Request->SetHeader("Content-Type", "application/json");
 
-    /**
-     * @author 전유진
-     * 
-     * @todo 모델 4o mini로 임시로바꿈(돈이슈) -> 다시 4o로 원상복구하기
-     */
     FString PostData = FString::Printf(
         TEXT("{ \"model\": \"gpt-4o\", \"messages\": [{ \"role\": \"user\", \"content\": \"%s\" }], \"max_tokens\": 2048 }"),
         *EscapeJSON(Prompt)
@@ -426,6 +417,7 @@ void UGodFunction::GenerateNPCPrompts(UWorld* World)
 #include "HAL/PlatformFilemanager.h"
 #include "Json.h"
 
+#include <Kismet/GameplayStatics.h>
 void UGodFunction::GenerateJuryNPC(UWorld* World, int JuryIndex)
 {
     if (!World)
@@ -607,9 +599,16 @@ void UGodFunction::GenerateEvidenceItems(UWorld* World)
             }
 
             UE_LOG(LogTemp, Log, TEXT("증거물 총 %d개 병렬 처리 시작"), EvidenceArray.Num());
-            const int32 MaxCount =  EvidenceArray.Num();
+            const int32 MaxCount = EvidenceArray.Num();
             for (int32 Index = 0; Index < MaxCount; ++Index)
             {
+                if (Index == MaxCount - 1) {
+                    
+                    if (UQGameInstance* GameInstance = Cast<UQGameInstance>(UGameplayStatics::GetGameInstance(World)))
+                    {
+                        GameInstance->OnEvidenceJsonGenerated.Broadcast();
+                    }
+                }
                 const TSharedPtr<FJsonObject>* ItemObj;
                 if (!EvidenceArray[Index]->TryGetObject(ItemObj))
                 {
@@ -651,8 +650,6 @@ void UGodFunction::GenerateEvidenceItems(UWorld* World)
                     if (UQGameInstance* GameInstance = Cast<UQGameInstance>(World->GetGameInstance()))
                     {
                         GameInstance->AddEvidence(Name, Desc, ImageFilePath);
-                        FString FinishTime = FDateTime::Now().ToString();
-                        UE_LOG(LogTemp, Log, TEXT("Prompt generation completed: %s"), *FinishTime);
                     }
                     else
                     {
@@ -667,18 +664,11 @@ void UGodFunction::GenerateEvidenceItems(UWorld* World)
                 // 이미지 비동기 요청 (병렬)
                 DownloadDalleImage(ImgPrompt, ImageFilePath, [Index, MaxCount]()
                     {
-                        EvidenceCount++;
-                        //다 저장되면 브로드캐스트
-                        if (EvidenceCount == MaxCount) {
-                            UWorld* World = GEngine->GetWorldContextFromGameViewport(GEngine->GameViewport)->World();
-                            if (World)
-                            {
-                                if (UQGameInstance* GameInstance = Cast<UQGameInstance>(UGameplayStatics::GetGameInstance(World)))
-                                {
-                                    GameInstance->OnEvidenceJsonGenerated.Broadcast();
-                                }
-                            }
-                        }
+                        
+                        
+                        
+
+
                         UE_LOG(LogTemp, Log, TEXT("[%d] 이미지 저장 완료"), Index + 1);
                     });
             }
@@ -720,36 +710,59 @@ void UGodFunction::DownloadDalleImage(const FString& Prompt, const FString& Save
     Request->SetHeader("Content-Type", "application/json");
     Request->SetContentAsString(RequestBody);
 
-    Request->OnProcessRequestComplete().BindLambda(
-        [SavePath, OnComplete](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+    Request->OnProcessRequestComplete().BindLambda([SavePath](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
         {
             if (!bWasSuccessful || !Response.IsValid())
             {
-                UE_LOG(LogTemp, Error, TEXT("이미지 다운로드 실패"));
+                UE_LOG(LogTemp, Error, TEXT("DALL·E 이미지 생성 요청 실패"));
                 return;
             }
 
-            // PNG 저장
-            const TArray<uint8>& ImageData = Response->GetContent();
-            if (FFileHelper::SaveArrayToFile(ImageData, *SavePath))
+            FString ResponseContent = Response->GetContentAsString();
+            TSharedPtr<FJsonObject> JsonObject;
+            TSharedRef<TJsonReader<>> Reader = TJsonReaderFactory<>::Create(ResponseContent);
+            if (!FJsonSerializer::Deserialize(Reader, JsonObject) || !JsonObject.IsValid())
             {
-                UE_LOG(LogTemp, Log, TEXT("이미지 저장 완료: %s"), *SavePath);
+                UE_LOG(LogTemp, Error, TEXT("DALL·E 응답 파싱 실패"));
+                return;
+            }
 
-                // 게임 스레드로 다시 돌아와서 UObjects 접근
-                AsyncTask(ENamedThreads::GameThread, [SavePath, OnComplete]()
-                    {
-                       
-                        // OnComplete 콜백
-                        if (OnComplete)
-                        {
-                            OnComplete();
-                        }
-                    });
-            }
-            else
+            const TArray<TSharedPtr<FJsonValue>>* DataArray;
+            if (!JsonObject->TryGetArrayField("data", DataArray) || DataArray->Num() == 0)
             {
-                UE_LOG(LogTemp, Error, TEXT("이미지 저장 실패: %s"), *SavePath);
+                UE_LOG(LogTemp, Error, TEXT("DALL·E 응답에 이미지 URL 없음"));
+                return;
             }
+
+            FString ImageUrl = (*DataArray)[0]->AsObject()->GetStringField("url");
+            UE_LOG(LogTemp, Log, TEXT("이미지 URL: %s"), *ImageUrl);
+
+            // 이미지 다운로드 요청
+            TSharedRef<IHttpRequest> DownloadRequest = FHttpModule::Get().CreateRequest();
+            DownloadRequest->SetURL(ImageUrl);
+            DownloadRequest->SetVerb("GET");
+
+            DownloadRequest->OnProcessRequestComplete().BindLambda([SavePath](FHttpRequestPtr Request, FHttpResponsePtr Response, bool bWasSuccessful)
+                {
+                    if (!bWasSuccessful || !Response.IsValid())
+                    {
+                        UE_LOG(LogTemp, Error, TEXT("이미지 다운로드 실패"));
+                        return;
+                    }
+
+                    // PNG 저장
+                    const TArray<uint8>& ImageData = Response->GetContent();
+                    if (FFileHelper::SaveArrayToFile(ImageData, *SavePath))
+                    {
+                        UE_LOG(LogTemp, Log, TEXT("이미지 저장 완료: %s"), *SavePath);
+                    }
+                    else
+                    {
+                        UE_LOG(LogTemp, Error, TEXT("이미지 저장 실패: %s"), *SavePath);
+                    }
+                });
+
+            DownloadRequest->ProcessRequest();
         });
 
     Request->ProcessRequest();
