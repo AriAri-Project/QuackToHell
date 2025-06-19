@@ -1,9 +1,8 @@
 {
-  "created": 1750308862,
-  "data": [
-    {
-      "revised_prompt": "Produce an image illustrating a detailed, close-up view of a contract on a classic wooden desk. The document should exhibit conspicuous edits which emphasize the presence of manipulated signatures and notable irregularities. It should be styled as an isolated object on a transparent background, with minimal shadows. Be sure to create it with icon-style graphics to highlight its significance and questionable attributes.",
-      "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-c56Me2RW0cmFH4PCMNd6kFO7/user-9cvUrDExQOL7h2oLoAd3TnMG/img-ugC4xkigJbiyUAuO2IxcX1yv.png?st=2025-06-19T03%3A54%3A22Z&se=2025-06-19T05%3A54%3A22Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-18T06%3A14%3A00Z&ske=2025-06-19T06%3A14%3A00Z&sks=b&skv=2024-08-04&sig=xLJ79SHYxOPi%2B7%2BWEau1UGk/SFh1C7rsc9FguaRrepg%3D"
-    }
-  ]
+  "error": {
+    "message": null,
+    "type": "image_generation_user_error",
+    "param": null,
+    "code": null
+  }
 }
