@@ -6,6 +6,7 @@
 #include "Engine/GameInstance.h"
 #include "GameData/QConversationData.h"
 #include "GameData/QEvidenceData.h"
+#include "OnlineSessionSettings.h"
 #include "QGameInstance.generated.h"
 
 /**
@@ -126,6 +127,9 @@ protected:
 
 
 private:
+	// 게임 세션 관리
+	FOnlineSession CurrentSessionInfo;
+	
 	// ID 관리
 	static int32 PlayerIDCount;				const int32 PlayerIDInit = 1000;
 	static int32 NPCIDCount;				const int32 NPCIDInit = 2000;
@@ -150,6 +154,9 @@ private:
 	virtual void GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
+	// 세션관리
+	FOnlineSession SetCurrentSessionInfo(FOnlineSession SessionInfo);
+	
 	// 서버에서 실행되는 함수
 	const int32 AddConversationRecord(EConversationType ConversationType, int32 ListenerID, int32 SpeakerID, FDateTime Timestamp, const FString& Message);
 	const int32 AddEvidence(FString EvidenceName, FString EvidenceDescription, FString EvidenceImagePath);
