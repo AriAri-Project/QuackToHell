@@ -89,6 +89,8 @@ protected:
 	 */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Interaction")
 	float SphereRadius = 200.f;
+public:
+	TObjectPtr<AQPlayerState> _GetPlayerState();
 protected:
 	UPROPERTY()
 	TObjectPtr<AQPlayerState> ThisPlayerState;

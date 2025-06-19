@@ -236,9 +236,16 @@ TObjectPtr<AQCourtUIManager> AQCourtUIManager::GetInstance(TObjectPtr<UWorld> Wo
 	return Instance;
 }
 
-TMap<ECourtUIType, TObjectPtr<UUserWidget>> AQCourtUIManager::GetActivedCourtWidgets() const
+TObjectPtr<UUserWidget> AQCourtUIManager::GetActivedCourtWidgets(ECourtUIType UIType) 
 {
-	return ActivedCourtUIWidgets;
+	CreateWidgetIfNotExists(UIType);
+	return ActivedCourtUIWidgets[UIType];
+}
+
+TObjectPtr<UUserWidget> AQCourtUIManager::GetActivedCourtDirectionWidgets(ECourtDirectionType DirectionType) 
+{
+	CreateWidgetIfNotExists(DirectionType);
+	return ActivedCourtDirectionWidgets[DirectionType];
 }
 
 // Called when the game starts or when spawned

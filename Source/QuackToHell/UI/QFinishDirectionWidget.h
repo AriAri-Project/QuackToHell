@@ -5,6 +5,7 @@
 
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
+#include "NPCComponent.h"
 #include "QFinishDirectionWidget.generated.h"
 
 /**
@@ -14,6 +15,9 @@ UCLASS()
 class QUACKTOHELL_API UQFinishDirectionWidget : public UUserWidget
 {
 	GENERATED_BODY()
+public:
+    UFUNCTION(Client,Reliable)
+    void ClientRPCUpdateWidgetText(FOpenAIResponse Response);
 public:
 	// 생성자 선언
 	UQFinishDirectionWidget(const FObjectInitializer& ObjectInitializer);
