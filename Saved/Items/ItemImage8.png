@@ -1,8 +1,9 @@
 {
-  "error": {
-    "message": null,
-    "type": "image_generation_user_error",
-    "param": null,
-    "code": null
-  }
+  "created": 1750318499,
+  "data": [
+    {
+      "revised_prompt": "An image of a newspaper article with headlines discussing massive layoffs and various corporate decisions. Featured with the article is a picture of a non-descript middle-aged man. These images are designed as isolated objects on a transparent background, created in an icon style with minimal shadows.",
+      "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-c56Me2RW0cmFH4PCMNd6kFO7/user-9cvUrDExQOL7h2oLoAd3TnMG/img-flNIX2PsgHJluvVBJNJI3cb9.png?st=2025-06-19T06%3A34%3A59Z&se=2025-06-19T08%3A34%3A59Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-18T08%3A58%3A42Z&ske=2025-06-19T08%3A58%3A42Z&sks=b&skv=2024-08-04&sig=6D6gkQHSw4MOaF56MBPFBdQH9MhhxUzZscqlYPsgVC4%3D"
+    }
+  ]
 }

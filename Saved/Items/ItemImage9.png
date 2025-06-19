@@ -1,8 +1,9 @@
 {
-  "error": {
-    "message": null,
-    "type": "image_generation_user_error",
-    "param": null,
-    "code": null
-  }
+  "created": 1750318498,
+  "data": [
+    {
+      "revised_prompt": "Visualize a luxurious wristwatch or pair of cufflinks resting on an upscale office desktop. The items should exhibit an aura of authority and wealth. An isolated object against a transparent backdrop, it should be crafted in an icon style with minimal shadows, denoting its prominence and elegance.",
+      "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-c56Me2RW0cmFH4PCMNd6kFO7/user-9cvUrDExQOL7h2oLoAd3TnMG/img-ol1jAOagtg7Ef5enG8uX6IvG.png?st=2025-06-19T06%3A34%3A58Z&se=2025-06-19T08%3A34%3A58Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-18T13%3A36%3A53Z&ske=2025-06-19T13%3A36%3A53Z&sks=b&skv=2024-08-04&sig=EY1J9eL5aeNdLASF8d83V/RNQw5JpyJQKlUjDgdO0Z4%3D"
+    }
+  ]
 }

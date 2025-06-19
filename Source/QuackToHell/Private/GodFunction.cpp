@@ -195,7 +195,7 @@ void UGodFunction::CallOpenAIAsync(const FString& Prompt, TFunction<void(FString
      * @todo 모델 4o mini로 임시로바꿈(돈이슈) -> 다시 4o로 원상복구하기
      */
     FString PostData = FString::Printf(
-        TEXT("{ \"model\": \"gpt-4o-mini\", \"messages\": [{ \"role\": \"user\", \"content\": \"%s\" }], \"max_tokens\": 2048 }"),
+        TEXT("{ \"model\": \"gpt-4o\", \"messages\": [{ \"role\": \"user\", \"content\": \"%s\" }], \"max_tokens\": 2048 }"),
         *EscapeJSON(Prompt)
     );
 
