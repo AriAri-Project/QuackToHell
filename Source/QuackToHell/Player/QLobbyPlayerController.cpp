@@ -2,6 +2,10 @@
 
 
 #include "Player/QLobbyPlayerController.h"
+
+#include "QLogCategories.h"
+#include "Components/TextBlock.h"
+#include "Game/QGameStateLobby.h"
 #include "UI/Lobby/QLobbyLevelWidget.h"
 
 AQLobbyPlayerController::AQLobbyPlayerController()
@@ -13,19 +17,31 @@ AQLobbyPlayerController::AQLobbyPlayerController()
 	}
 }
 
-void AQLobbyPlayerController::ClientRPC_ShowLobbyUI_Implementation()
+void AQLobbyPlayerController::BeginPlay()
 {
-	if (LobbyLevelWidget)
-	{
-		CachedLobbyWidget = CreateWidget<UQLobbyLevelWidget>(GetWorld(), LobbyLevelWidget);
-		if (CachedLobbyWidget)
-		{
-			CachedLobbyWidget->AddToViewport();
-		}
-	}
+	Super::BeginPlay();
+
+	FInputModeUIOnly InputMode;
+	InputMode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
+	SetInputMode(InputMode);
+	bShowMouseCursor = true;
 }
 
-void AQLobbyPlayerController::ClientRPC_NewPlayerAlert_Implementation(const FString& PlayerName)
+void AQLobbyPlayerController::ClientRPC_ShowLobbyUI_Implementation()
+{
+	if (!LobbyLevelWidget)
+	{
+		return;
+	}
+	CachedLobbyWidget = CreateWidget<UQLobbyLevelWidget>(GetWorld(), LobbyLevelWidget);
+	if (!CachedLobbyWidget)
+	{
+		return;
+	}
+	CachedLobbyWidget->AddToViewport();
+}
+
+void AQLobbyPlayerController::NewPlayerAlert(const FString& PlayerName)
 {
 	if (CachedLobbyWidget && CachedLobbyWidget->IsInViewport())
 	{
@@ -38,4 +54,21 @@ void AQLobbyPlayerController::ClientRPC_NewPlayerAlert_Implementation(const FStr
 	}
 }
 
+void AQLobbyPlayerController::UpdateHostName(const FString& HostName)
+{
+	CachedLobbyWidget->SetHostNames(HostName);
+}
 
+void AQLobbyPlayerController::UpdateClientName(const FString& ClientName)
+{
+	CachedLobbyWidget->SetClientNames(ClientName);
+}
+
+void AQLobbyPlayerController::ServerRPC_ToggleClientReady_Implementation()
+{
+	AQGameStateLobby* LobbyGS = GetWorld() ? GetWorld()->GetGameState<AQGameStateLobby>() : nullptr;
+	if (LobbyGS)
+	{
+		LobbyGS->UpdateIsClientReady();
+	}
+}

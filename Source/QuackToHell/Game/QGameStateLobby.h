@@ -21,23 +21,18 @@ class QUACKTOHELL_API AQGameStateLobby : public AGameState
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
-	
-
-	UPROPERTY(ReplicatedUsing = OnRep_bIsClientReady)
+	UPROPERTY(Replicated)
 	bool bIsClientReady = false;
 
-	UPROPERTY(ReplicatedUsing = OnRep_bIsGameStarted)
-	bool bIsGameStarted = false;
+	UPROPERTY(Replicated)
+	FString HostName = "";
+
+	UPROPERTY(Replicated)
+	FString ClientName = "";
 
 	UFUNCTION()
-	void OnRep_bIsClientReady();
+	void UpdateIsClientReady();
 
-	UFUNCTION()
-	void OnRep_bIsGameStarted();
-	
-	UFUNCTION(Server, Reliable)
-	void ServerRPCChangeClientReadyState();
-	
-	UFUNCTION()
-	void HostGameStart();
+	UFUNCTION(NetMulticast, Reliable)
+	void MultiCastRPCAlertNewPlayer(const FString& NewPlayerName);
 };

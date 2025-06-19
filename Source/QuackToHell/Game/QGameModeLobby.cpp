@@ -5,12 +5,16 @@
 
 #include "QGameStateLobby.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/TextBlock.h"
+#include "Kismet/GameplayStatics.h"
 #include "Player/QLobbyPlayerController.h"
 #include "Player/QPlayerState.h"
+#include "UI/Lobby/QLobbyLevelWidget.h"
 
 AQGameModeLobby::AQGameModeLobby()
 {
 	bReplicates = true;
+	bUseSeamlessTravel = true;
 	
 	PlayerControllerClass = AQLobbyPlayerController::StaticClass();
 	PlayerStateClass = AQPlayerState::StaticClass();
@@ -25,14 +29,36 @@ AQGameModeLobby::AQGameModeLobby()
 void AQGameModeLobby::PostLogin(APlayerController* NewPlayer)
 {
 	Super::PostLogin(NewPlayer);
+	UE_LOG(LogTemp, Warning, TEXT("[SERVER] PostLogin called. Player: %s"), *NewPlayer->GetName());
 	
 	AQPlayerState* PlayerState = Cast<AQPlayerState>(NewPlayer->PlayerState);
-	if (!PlayerState)
+	AQGameStateLobby* LobbyGS = GetGameState<AQGameStateLobby>();
+	if (!LobbyGS || !PlayerState)
 	{
 		return;
 	}
+	FString NewPlayerName = PlayerState->GetPlayerName();
 	
 	TObjectPtr<AQLobbyPlayerController> LobbyPC = Cast<AQLobbyPlayerController>(NewPlayer);
+	if (LobbyPC->HasAuthority())
+	{
+		LobbyGS->HostName = NewPlayerName;
+	}
+	else
+	{
+		LobbyGS->ClientName = NewPlayerName;
+		AQLobbyPlayerController* LocalPC = Cast<AQLobbyPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(),0));
+		LocalPC->UpdateClientName(NewPlayerName);
+	}
+	
 	LobbyPC->ClientRPC_ShowLobbyUI();
-	LobbyPC->ClientRPC_NewPlayerAlert(PlayerState->GetPlayerName());
+	LobbyGS->MultiCastRPCAlertNewPlayer(NewPlayerName);
+}
+
+void AQGameModeLobby::HostGameStart()
+{
+	UE_LOG(LogTemp, Warning, TEXT("[SERVER] HostGameStart called. Seamless travel to Village map."));
+
+	FString VillageMapPath = TEXT("/Game/Maps/VillageMap?Listen"); 
+	GetWorld()->ServerTravel(VillageMapPath, true); // bSeamless = true
 }

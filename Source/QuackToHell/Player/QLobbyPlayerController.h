@@ -16,6 +16,7 @@ class QUACKTOHELL_API AQLobbyPlayerController : public APlayerController
 	GENERATED_BODY()
 
 	AQLobbyPlayerController();
+	virtual void BeginPlay() override;
 
 public:
 	TSubclassOf<UQLobbyLevelWidget> LobbyLevelWidget;
@@ -24,6 +25,18 @@ public:
 	UFUNCTION(Client, Reliable)
 	void ClientRPC_ShowLobbyUI();
 
-	UFUNCTION(Client, Reliable)
-	void ClientRPC_NewPlayerAlert(const FString& PlayerName);
+	UFUNCTION()
+	void NewPlayerAlert(const FString& PlayerName);
+
+	UFUNCTION()
+	void UpdateHostName(const FString& HostName);
+
+	UFUNCTION()
+	void UpdateClientName(const FString& ClientName);
+	
+	UFUNCTION(Server, Reliable)
+	void ServerRPC_ToggleClientReady();
+	
 };
+
+

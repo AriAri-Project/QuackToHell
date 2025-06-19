@@ -14,6 +14,7 @@
 #include "JuryComponent.h"
 #include "QLogCategories.h"
 #include "ResidentComponent.h"
+#include "Player/QPlayerController.h"
 
 
 AQGameModeVillage::AQGameModeVillage()
@@ -120,4 +121,36 @@ void AQGameModeVillage::TravelToCourtMap()
 	// 2) 서버 주도 맵 전환 (listen 모드 유지)
 	FString URL = TEXT("/Game/Maps/NextMap?listen");
 	GetWorld()->ServerTravel(URL);
+}
+
+void AQGameModeVillage::HandleSeamlessTravelPlayer(AController*& C)
+{
+	Super::HandleSeamlessTravelPlayer(C);
+
+	// 기존 Controller를 새로운 Controller로 교체
+	APlayerController* OldPC = Cast<APlayerController>(C);
+	if (OldPC)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Replacing PlayerController %s with VillageController"), *OldPC->GetName());
+
+		// 복사해 둘 정보
+		FVector OldLocation = OldPC->GetPawn() ? OldPC->GetPawn()->GetActorLocation() : FVector::ZeroVector;
+		FRotator OldRotation = OldPC->GetPawn() ? OldPC->GetPawn()->GetActorRotation() : FRotator::ZeroRotator;
+		FString PlayerName = OldPC->PlayerState ? OldPC->PlayerState->GetPlayerName() : TEXT("Unknown");
+
+		// 기존 컨트롤러 제거
+		OldPC->Destroy();
+
+		// 새 컨트롤러 생성
+		FActorSpawnParameters SpawnParams;
+		SpawnParams.Instigator = nullptr;
+		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+		AQPlayerController* NewPC = GetWorld()->SpawnActor<AQPlayerController>(AQPlayerController::StaticClass(), OldLocation, OldRotation, SpawnParams);
+
+		NewPC->PlayerState->SetPlayerName(PlayerName);
+		C = NewPC;  // 중요: 교체된 컨트롤러를 참조로 되돌려 줘야 함
+
+		// 새 Pawn 스폰
+		RestartPlayer(NewPC);
+	}
 }

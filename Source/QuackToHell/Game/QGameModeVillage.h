@@ -20,6 +20,7 @@ public:
 	virtual void PostInitializeComponents() override;
 	virtual void BeginPlay() override;
 	virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+	virtual void HandleSeamlessTravelPlayer(AController*& C) override;
 	
 	/** @brief 재판장 Travel 함수 */
 	UFUNCTION()

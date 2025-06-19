@@ -17,4 +17,8 @@ class QUACKTOHELL_API AQGameModeLobby : public AGameMode
 	AQGameModeLobby();
 
 	virtual void PostLogin(APlayerController* NewPlayer) override;
+
+public:
+	UFUNCTION(BlueprintCallable)
+	void HostGameStart();
 };

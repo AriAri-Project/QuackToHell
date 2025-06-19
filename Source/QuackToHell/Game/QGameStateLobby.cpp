@@ -2,9 +2,14 @@
 
 
 #include "Game/QGameStateLobby.h"
+
+#include "QLogCategories.h"
 #include "UI/Lobby/QLobbyLevelWidget.h"
 #include "Blueprint/UserWidget.h"
+#include "Components/TextBlock.h"
+#include "Kismet/GameplayStatics.h"
 #include "Net/UnrealNetwork.h"
+#include "Player/QLobbyPlayerController.h"
 
 AQGameStateLobby::AQGameStateLobby()
 {
@@ -15,8 +20,9 @@ void AQGameStateLobby::BeginPlay()
 {
 	Super::BeginPlay();
 
-	//테스트용 위젯 띄우기
-	
+	AQLobbyPlayerController* LocalPC = Cast<AQLobbyPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(),0));
+	LocalPC->CachedLobbyWidget->ClientName->SetText(FText::FromString(ClientName));
+	LocalPC->CachedLobbyWidget->HostName->SetText(FText::FromString(HostName));
 }
 
 void AQGameStateLobby::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
@@ -24,27 +30,23 @@ void AQGameStateLobby::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& Out
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(AQGameStateLobby, bIsClientReady);
-	DOREPLIFETIME(AQGameStateLobby, bIsGameStarted);
+	DOREPLIFETIME(AQGameStateLobby, HostName);
+	DOREPLIFETIME(AQGameStateLobby, ClientName);
 }
 
-void AQGameStateLobby::OnRep_bIsClientReady()
+void AQGameStateLobby::UpdateIsClientReady()
 {
-}
-
-void AQGameStateLobby::OnRep_bIsGameStarted()
-{
-}
-
-void AQGameStateLobby::ServerRPCChangeClientReadyState_Implementation()
-{
-}
-
-void AQGameStateLobby::HostGameStart()
-{
-	if (!HasAuthority())
+	bIsClientReady = !bIsClientReady;
+	AQLobbyPlayerController* LocalPC = Cast<AQLobbyPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
+	if (LocalPC && LocalPC->HasAuthority() && GetNetMode() == NM_ListenServer)
 	{
-		return;
+		// 클라이언트가 준비되었다면 게임시작 버튼 활성화
+		LocalPC->CachedLobbyWidget->UpdateHostButton(bIsClientReady);
 	}
+}
 
-	
+void AQGameStateLobby::MultiCastRPCAlertNewPlayer_Implementation(const FString& NewPlayerName)
+{
+	TObjectPtr<AQLobbyPlayerController> LobbyPC = Cast<AQLobbyPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(),0));
+	LobbyPC->NewPlayerAlert(NewPlayerName);
 }
