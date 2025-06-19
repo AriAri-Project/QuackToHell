@@ -7,6 +7,7 @@
 #include "EnhancedInputSubsystems.h"
 #include "UI/QVillageUIManager.h"
 #include "UI/QMapWidget.h"
+#include "Game/QVillageGameState.h"
 #include "UI/QP2NWidget.h"
 #include "Engine/Engine.h"  
 #include "UI/QEvidenceWidget.h"
@@ -23,7 +24,35 @@
 #include "QGameplayTags.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "NPC/QDynamicNPCController.h"
+#include <Kismet/GameplayStatics.h>
+#include <Game/QGameModeVillage.h>
 
+void AQPlayerController::Client_StartCourtTravelTimer_Implementation()
+{
+	// 디버깅 로그
+	UE_LOG(LogTemp, Warning, TEXT("Client_StartCourtTravelTimer_Implementation fired on %s (NetMode=%d)"),
+		*GetName(),
+		(int)GetNetMode());
+
+	// 화면에도 메시지 띄워 보기
+	if (GEngine && IsLocalController())
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1, 5.f, FColor::Yellow,
+			FString::Printf(TEXT("Client_StartCourtTravelTimer fired on %s"), *GetName())
+		);
+	}
+
+	// 로컬에서 3초 뒤 GoToCourt() 호출
+	FTimerHandle Handle;
+	GetWorldTimerManager().SetTimer(
+		Handle,
+		this,
+		&AQPlayerController::GoToCourt,
+		3.0f,    // Delay 3초
+		false    // 반복 없음
+	);
+}
 void AQPlayerController::MulticastBlockInteraction_Implementation()
 {
 	UE_LOG(LogLogic, Log, TEXT("AQPlayerController::BlockInteraction: 구현됨. "));
@@ -259,6 +288,76 @@ void AQPlayerController::UnFreezePawn()
 	UE_LOG(LogLogic, Log, TEXT("플레이어 이동 재개."));
 }
 
+void AQPlayerController::GoToCourt()
+{
+	UE_LOG(LogTemp, Warning, TEXT("[Client] GoToCourt() 호출됨 on %s"), *GetName());
+	if (GEngine && IsLocalController())
+	{
+		GEngine->AddOnScreenDebugMessage(
+			-1, 3.0f, FColor::Cyan,
+			FString::Printf(TEXT("[Client] GoToCourt() 호출됨 on %s"), *GetName())
+		);
+	}
+
+	auto* PC= Cast<AQPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
+	if (PC)
+	{
+
+		// 재판장으로 이동 요청
+		PC->ServerRPCRequestTravelToCourt(true);
+
+	}
+	else
+	{
+		UE_LOG(LogTemp, Error, TEXT("[Client] GoToCourt: VillageGameState is nullptr"));
+	}
+}
+
+// 재판장 이동 함수 ------------------------------------------------------------------------------------------
+void AQPlayerController::ServerRPCRequestTravelToCourt_Implementation( bool bTravelToCourt)
+{
+	// 1) 서버 로그
+	UE_LOG(LogTemp, Warning, TEXT("[Server] ServerRPCRequestTravelToCourt: Player=%s, bTravel=%s"),
+		PlayerState ? *PlayerState->GetName() : TEXT("nullptr"),
+		bTravelToCourt ? TEXT("true") : TEXT("false"));
+
+	// 2) 화면 메시지 (리스닝 서버 / 클라이언트 둘 다)
+	if (GEngine)
+	{
+		// 서버 자체 뷰포트에
+		GEngine->AddOnScreenDebugMessage(
+			-1, 1.0f, FColor::Yellow,
+			FString::Printf(TEXT("[Server] TravelRequest: %s -> %s"),
+				PlayerState ? *PlayerState->GetName() : TEXT("nullptr"),
+				bTravelToCourt ? TEXT("Ready") : TEXT("NotReady"))
+		);
+
+		// 각 클라이언트에도 띄워 보기 (생략 가능)
+		for (FConstPlayerControllerIterator It = GetWorld()->GetPlayerControllerIterator(); It; ++It)
+		{
+			if (APlayerController* PC = It->Get())
+			{
+				PC->ClientMessage(FString::Printf(
+					TEXT("[Server->Client] %s Travel=%s"),
+					*PC->GetName(),
+					bTravelToCourt ? TEXT("true") : TEXT("false")
+				));
+			}
+		}
+	}
+	AQPlayerState* PS = GetPlayerState<AQPlayerState>();
+	// 3) 준비 상태 저장
+	if (PS)
+	{
+		PS->SetIsReadyToTravelToCourt(bTravelToCourt);
+	}
+
+	// 4) 모두 준비됐으면 맵 전환
+	if (AQGameModeVillage* GM = Cast<AQGameModeVillage>(GetWorld()->GetAuthGameMode()))
+	{
+		GM->TravelToCourtMap();
+	}
+}
 
 
 
@@ -301,7 +400,10 @@ void AQPlayerController::InputInteraction(const FInputActionValue& InputValue)
 
 		/////////////////////////////////////////////////
 		// 인벤토리에 Data넘기기
-		Cast<UQEvidenceWidget>(VillageUIManager->GetActivedWidget(EVillageUIType::Evidence))->AddEvidence(Data);
+		if (UQGameInstance* GI = Cast<UQGameInstance>(UGameplayStatics::GetGameInstance(GetWorld())))
+		{
+			GI->AddInventoryEvidence(Data);
+		}
 
 		// !! 오브젝트 삭제하기
 		Cast<AQPlayer>(GetPawn())->ServerRPCPickUpEvidence(Evidence);

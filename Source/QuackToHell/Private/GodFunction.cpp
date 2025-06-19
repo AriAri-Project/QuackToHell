@@ -129,7 +129,7 @@ bool UGodFunction::SavePromptToFile(const FString& FileName, const FString& Cont
     FilePath = FPaths::ConvertRelativePathToFull(FilePath);
 
     // ✅ 파일 강제 삭제 (존재하지 않는 경우에도 체크)
-    // DeleteOldPromptFiles();
+    DeleteOldPromptFiles();
 
     // ✅ 기존 파일 삭제 후 저장
     IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();

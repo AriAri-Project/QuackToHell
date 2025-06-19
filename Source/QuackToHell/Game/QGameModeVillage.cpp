@@ -118,6 +118,5 @@ void AQGameModeVillage::TravelToCourtMap()
 	bUseSeamlessTravel = true;
 
 	// 2) 서버 주도 맵 전환 (listen 모드 유지)
-	FString URL = TEXT("/Game/Maps/NextMap?listen");
-	GetWorld()->ServerTravel(URL);
+	GetWorld()->ServerTravel(TEXT("/Game/Maps/CourtMap?listen"));
 }

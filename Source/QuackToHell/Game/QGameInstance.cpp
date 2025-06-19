@@ -2,18 +2,80 @@
 
 
 #include "Game/QGameInstance.h"
-
+#include "GameFramework/Actor.h"
 #include "QLogCategories.h"
 #include "Engine/World.h"
 #include "Net/UnrealNetwork.h"
 
 #include "GodFunction.h"
 #include "TimerManager.h"
+#include "QGameStateCourt.h"
+#include <UObject/FastReferenceCollector.h>
 
 int UQGameInstance::PlayerIDCount;
 int UQGameInstance::NPCIDCount;
 int UQGameInstance::ConversationIDCount;
 int UQGameInstance::EvidenceIDCount;
+
+void UQGameInstance::ServerRPCSaveServerAndClientStatement_Implementation(const FString& InputText, bool bServer)
+{
+	AQGameStateCourt* GS = GetWorld()->GetGameState<AQGameStateCourt>();
+
+	if (bServer) {
+		GS->GetOpeningStatements()[0].bServer = true;
+		GS->GetOpeningStatements()[0].Statement= InputText;
+	}
+	else {
+		GS->GetOpeningStatements()[1].bServer = false;
+		GS->GetOpeningStatements()[1].Statement = InputText;
+	}
+}
+
+
+
+
+
+void UQGameInstance::Init()
+{
+	Super::Init();
+
+}
+
+
+
+void UQGameInstance::SetOpeningStetementText(FString NewText)
+{
+	//서버에저장
+	ServerRPCSaveServerAndClientStatement(NewText, IsServer());
+	
+}
+
+void UQGameInstance::AddInventoryEvidence(FEvidence NewEvidence)
+{
+	// 새 증거의 ID 가져오기
+	const int32 NewID = NewEvidence.GetID();
+
+	// PlayerInventoryEvidences 에 이미 같은 ID가 있는지 확인
+	for (const FEvidence& Evidence : PlayerInventoryEvidences)
+	{
+		if (Evidence.GetID() == NewID)
+		{
+			// 이미 인벤토리에 존재하면 바로 리턴
+			return;
+		}
+	}
+
+	// 중복 없으면 추가
+	PlayerInventoryEvidences.Add(NewEvidence);
+}
+
+const TArray<FEvidence>& UQGameInstance::GetInventoryEvidences() const
+{
+	// TODO: 여기에 return 문을 삽입합니다.
+	return PlayerInventoryEvidences;
+}
+
+
 
 UQGameInstance::UQGameInstance()
 {
@@ -22,6 +84,8 @@ UQGameInstance::UQGameInstance()
 	NPCIDCount = NPCIDInit;
 	ConversationIDCount = ConversationIDInit;
 	EvidenceIDCount = EvidenceIDInit;
+
+
 
 	NPCList = {};
 	ConversationList = FConversationList(); // 명시적 초기화
@@ -73,6 +137,7 @@ void UQGameInstance::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>&
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	
 	DOREPLIFETIME(UQGameInstance, NPCList);
+
 	DOREPLIFETIME(UQGameInstance, ConversationList);
 	DOREPLIFETIME(UQGameInstance, EvidenceList);
 }

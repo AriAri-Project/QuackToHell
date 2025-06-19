@@ -19,6 +19,12 @@ class QUACKTOHELL_API AQPlayer : public AQCharacter
 	/*AQPlayerController,UQP2NWidget에게 정보은닉공개 허용*/
 	friend class AQPlayerController;
 	friend class UQP2NWidget;
+
+private:
+	/**
+	 * @brief 증거물 데이터.
+	 */
+	TArray<FEvidence> EvidenceList;
 public:
 	/**
 	 * @author 전유진.
@@ -83,6 +89,8 @@ protected:
 	 */
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Interaction")
 	float SphereRadius = 200.f;
+public:
+	TObjectPtr<AQPlayerState> _GetPlayerState();
 protected:
 	UPROPERTY()
 	TObjectPtr<AQPlayerState> ThisPlayerState;

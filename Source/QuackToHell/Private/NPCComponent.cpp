@@ -5,8 +5,10 @@
 #include "HttpModule.h"
 #include "QLogCategories.h"
 #include "Character/QDynamicNPC.h"
+#include "UI/QFinishDirectionWidget.h"
 #include "Character/QPlayer.h"
 #include "FramePro/FramePro.h"
+#include "UI/QCourtUIManager.h"
 #include "Game/QVillageGameState.h"
 #include "Player/QPlayerController.h"
 #include "Misc/FileHelper.h"
@@ -885,6 +887,8 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 	}
 
 	// 이후 클라이언트 action 호출>
+	AQCourtUIManager* UIMNG;
+	UQFinishDirectionWidget* FNSWidget;
 	switch (Response.ConversationType)
 	{
 	case EConversationType::PStart:
@@ -902,6 +906,12 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 	case EConversationType::NMonologue:
 		break;
 	case EConversationType::OpeningStatement:
+		//@유진 여기에다가 콜백해주기 (모두진술답변 TO Defendant)
+		//UIManage에서 FinishDirection찾고 ClientRPC호출하기
+		UIMNG = AQCourtUIManager::GetInstance(GetWorld());
+		FNSWidget = Cast<UQFinishDirectionWidget>(UIMNG->GetActivedCourtDirectionWidgets()[ECourtDirectionType::Finish]);
+		FNSWidget->ClientRPCUpdateWidgetText(Response);
+
 		break;
 	default:
 		UE_LOG(LogTemp, Error, TEXT("GetNPCResponse -> Invaild ConversationType"));

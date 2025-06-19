@@ -213,6 +213,11 @@ void AQPlayer::OnOverlapEnd(UPrimitiveComponent* OverlappedComp, AActor* OtherAc
 	}
 }
 
+TObjectPtr<AQPlayerState> AQPlayer::_GetPlayerState()
+{
+	return ThisPlayerState;
+}
+
 TObjectPtr<AQPlayer> AQPlayer::GetLocalPlayer()
 {
 	APawn* Pawn = UGameplayStatics::GetPlayerPawn(GetWorld(), 0);

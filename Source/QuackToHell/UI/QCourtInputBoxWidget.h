@@ -15,6 +15,9 @@ class QUACKTOHELL_API UQCourtInputBoxWidget : public UUserWidget
 {
 	GENERATED_BODY()
 public:
+	UFUNCTION(BlueprintCallable)
+	void AlertFinishInput(const FText& NewText);
+public:
 	/**
 	 * @brief 입력을 저장합니다.
 	 */
