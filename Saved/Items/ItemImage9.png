@@ -1,9 +1,8 @@
 {
-  "created": 1750250226,
-  "data": [
-    {
-      "revised_prompt": "Imagine an icon-style illustration of poorly maintained wastewater treatment facilities at an industrial site. The features of the facilities should reflect their inadequacy and lack of proper maintenance. Included should be pipes leaking, rusted equipment, overflowing waste basins, and other signs of neglect. This is an isolated object, meaning there are no other items or background elements in the image. The minimal shadow suggests a flat, simplistic design approach. The whole image is set on a transparent background. ",
-      "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-c56Me2RW0cmFH4PCMNd6kFO7/user-9cvUrDExQOL7h2oLoAd3TnMG/img-KvbYZzfoMKoEzq0AGBDLFr59.png?st=2025-06-18T11%3A37%3A06Z&se=2025-06-18T13%3A37%3A06Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-18T12%3A04%3A54Z&ske=2025-06-19T12%3A04%3A54Z&sks=b&skv=2024-08-04&sig=AhD6V5AvW/i%2Bt4T51p3vXprckpdox%2BsYIwmjhnWRlRQ%3D"
-    }
-  ]
+  "error": {
+    "message": null,
+    "type": "image_generation_user_error",
+    "param": null,
+    "code": null
+  }
 }

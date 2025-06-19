@@ -1,8 +1,9 @@
 {
-  "error": {
-    "message": null,
-    "type": "image_generation_user_error",
-    "param": null,
-    "code": null
-  }
+  "created": 1750308862,
+  "data": [
+    {
+      "revised_prompt": "Generate a detailed image of a neatly arranged stack of legal documents with bold titles such as 'Complaint' and 'Summons'. These documents are carefully placed on a traditional, mahogany lawyer's desk. Close to the pile of papers is a well-polished wooden gavel, often used in courtroom scenarios. The scene should be deeply focused and well lit, exhibiting minimal shadows. The objects are isolated and appear on a transparent background, encapsulating the core essence of icon-style representation.",
+      "url": "https://oaidalleapiprodscus.blob.core.windows.net/private/org-c56Me2RW0cmFH4PCMNd6kFO7/user-9cvUrDExQOL7h2oLoAd3TnMG/img-sYIVZHbzX59vZA56JM7ewbEH.png?st=2025-06-19T03%3A54%3A22Z&se=2025-06-19T05%3A54%3A22Z&sp=r&sv=2024-08-04&sr=b&rscd=inline&rsct=image/png&skoid=cc612491-d948-4d2e-9821-2683df3719f5&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-06-18T06%3A05%3A47Z&ske=2025-06-19T06%3A05%3A47Z&sks=b&skv=2024-08-04&sig=2PjH5IfCnBb2P8RuAHLwcQnrVB50Hg0Mv9TYeudxixo%3D"
+    }
+  ]
 }

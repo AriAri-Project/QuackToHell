@@ -102,6 +102,7 @@ public:
  * @return 위젯을 반드시 반환합니다.
  */
 	UUserWidget* GetActivedWidget(ECourtUIType UIType);
+
 	/**
 * @brief 마을의 위젯들을 리턴합니다.
 *
@@ -171,14 +172,9 @@ public:
 	 *
 	 * @return 재판장 위젯들의 map
 	 */
-	TObjectPtr<UUserWidget> GetActivedCourtWidgets(ECourtUIType UIType) ;
-
-	/**
-	 * @brief 재판장의 연출위젯들을 리턴합니다..
-	 *
-	 * @return 재판장 연출위젯들의 map
-	 */
-	TObjectPtr<UUserWidget> GetActivedCourtDirectionWidgets(ECourtDirectionType DirectionType) ;
+	TMap<ECourtUIType, TObjectPtr<UUserWidget>> GetActivedCourtWidgets() const;
+	
+	TMap<ECourtDirectionType, TObjectPtr<UUserWidget>> GetActivedCourtDirectionWidgets() const;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
