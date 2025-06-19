@@ -56,6 +56,8 @@ private:
 	 * @brief 증거물 데이터들의 리스트. 이 리스트를 각 오브젝트 리스트에 삽입해 오브젝트의 데이터를 초기화해준다.
 	 */
 	TArray<const FEvidence*> EvidenceList;
+private:
+	bool bGenerated = false;
 };
 
 

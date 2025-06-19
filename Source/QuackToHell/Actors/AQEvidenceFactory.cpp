@@ -33,6 +33,10 @@ void AAQEvidenceFactory::BeginPlay()
 
 void AAQEvidenceFactory::SpawnAndInitializeEvidenceActors()
 {
+	if (bGenerated) {
+		return;
+	}
+	bGenerated = true;
 	if (!HasAuthority())
 	{
 		UE_LOG(LogLogic, Warning, TEXT("EvidenceFactory: 클라이언트에서 스폰 로직을 호출했음. 서버만 실행해야 합니다."));
