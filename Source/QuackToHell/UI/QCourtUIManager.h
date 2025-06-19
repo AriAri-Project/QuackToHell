@@ -171,7 +171,14 @@ public:
 	 *
 	 * @return 재판장 위젯들의 map
 	 */
-	TMap<ECourtUIType, TObjectPtr<UUserWidget>> GetActivedCourtWidgets() const;
+	TObjectPtr<UUserWidget> GetActivedCourtWidgets(ECourtUIType UIType) ;
+
+	/**
+	 * @brief 재판장의 연출위젯들을 리턴합니다..
+	 *
+	 * @return 재판장 연출위젯들의 map
+	 */
+	TObjectPtr<UUserWidget> GetActivedCourtDirectionWidgets(ECourtDirectionType DirectionType) ;
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;

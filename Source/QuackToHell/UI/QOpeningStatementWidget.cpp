@@ -72,11 +72,10 @@ void UQOpeningStatementWidget::PopulateEvidenceGrid()
 void UQOpeningStatementWidget::TurnOnTimerUI()
 {
 	//만약 아직 생성되지 않은 상태이면
-	if (!AQCourtUIManager::GetInstance(GetWorld())->GetActivedCourtWidgets().Contains(ECourtUIType::CourtTimer)) {
-		//생성하고
-		AQCourtUIManager::GetInstance(GetWorld())->TurnOnUI(ECourtUIType::CourtTimer);
+	if (!TimerBox->HasAnyChildren()) {
+		
 		//하위컴포넌트로 달아주기
-		TimerBox->AddChild(AQCourtUIManager::GetInstance(GetWorld())->GetActivedCourtWidgets()[ECourtUIType::CourtTimer]);
+		TimerBox->AddChild(AQCourtUIManager::GetInstance(GetWorld())->GetActivedCourtWidgets(ECourtUIType::CourtTimer));
 	}
 	else {
 		//visible로 전환
@@ -87,11 +86,10 @@ void UQOpeningStatementWidget::TurnOnTimerUI()
 void UQOpeningStatementWidget::TurnOnInputBoxUI()
 {
 	//만약 아직 생성되지 않은 상태이면
-	if (!AQCourtUIManager::GetInstance(GetWorld())->GetActivedCourtWidgets().Contains(ECourtUIType::InputBox)) {
-		//생성하고
-		AQCourtUIManager::GetInstance(GetWorld())->TurnOnUI(ECourtUIType::InputBox);
+	if (!InputBox->HasAnyChildren()) {
+		
 		//하위컴포넌트로 달아주기
-		InputBox->AddChild(AQCourtUIManager::GetInstance(GetWorld())->GetActivedCourtWidgets()[ECourtUIType::InputBox]);
+		InputBox->AddChild(AQCourtUIManager::GetInstance(GetWorld())->GetActivedCourtWidgets(ECourtUIType::InputBox));
 	}
 	else {
 		//visible로 전환

@@ -108,6 +108,9 @@ private:
 	/** 등록된 액터 포인터(TWeak로 관리) 리스트 */
 	UPROPERTY()
 	TArray<TWeakObjectPtr<AActor>> PersistentActors;
+public:
+	TArray<TWeakObjectPtr<AActor>> GetPersistentActors() const;
+
 
 private:
 	// ID 관리

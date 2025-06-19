@@ -86,6 +86,11 @@ void UQGameInstance::OnPostLoadMap(UWorld* LoadedWorld)
 	}
 }
 
+TArray<TWeakObjectPtr<AActor>> UQGameInstance::GetPersistentActors() const
+{
+	return PersistentActors;
+}
+
 
 void UQGameInstance::SetOpeningStetementText(FString NewText)
 {
