@@ -66,6 +66,31 @@ public:
 	/**
 	 * @author 전유진.
 	 */
+public:
+	// 레벨 언로드 전에 보관할 NPC ID 리스트
+	UPROPERTY()
+	TArray<int32> SavedNPCIDs = {
+		2000, // Defendant
+		2001, // Jury #1
+		2002, // Jury #2
+		2003, // Jury #3
+	};
+
+	// NPC ID 추가
+
+	void AddNPCID(int32 NPCID)
+	{
+		if (!SavedNPCIDs.Contains(NPCID))
+		{
+			SavedNPCIDs.Add(NPCID);
+		}
+	}
+
+	// 저장된 전체 NPC ID 반환
+	const TArray<int32>& GetSavedNPCIDs() const
+	{
+		return SavedNPCIDs;
+	}
 private:
 	/** 플레이어가 습득한 증거 ID 리스트 */
 	UPROPERTY()
@@ -92,24 +117,12 @@ public:
 	// 프롬프트 삭제 및 3초 후 재생성 실행
 	void SchedulePromptRegeneration();
 	void StartPromptGeneration();
-public:
-	/** 유지하고 싶은 액터를 등록합니다 (언로드되지 않도록) */
-	UFUNCTION(BlueprintCallable, Category = "Persistence")
-	void RegisterPersistentActor(AActor* Actor);
+
 protected:
 	/** GameInstance 초기화 시점에 호출됩니다 */
 	virtual void Init() override;
 
-private:
-	/** 맵 로드 완료 직후 콜백 */
-	UFUNCTION()
-	void OnPostLoadMap(UWorld* LoadedWorld);
 
-	/** 등록된 액터 포인터(TWeak로 관리) 리스트 */
-	UPROPERTY()
-	TArray<TWeakObjectPtr<AActor>> PersistentActors;
-public:
-	TArray<TWeakObjectPtr<AActor>> GetPersistentActors() const;
 
 
 private:

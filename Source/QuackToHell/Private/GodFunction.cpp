@@ -129,7 +129,7 @@ bool UGodFunction::SavePromptToFile(const FString& FileName, const FString& Cont
     FilePath = FPaths::ConvertRelativePathToFull(FilePath);
 
     // ✅ 파일 강제 삭제 (존재하지 않는 경우에도 체크)
-    // DeleteOldPromptFiles();
+    DeleteOldPromptFiles();
 
     // ✅ 기존 파일 삭제 후 저장
     IPlatformFile& PlatformFile = FPlatformFileManager::Get().GetPlatformFile();
@@ -251,51 +251,51 @@ void UGodFunction::CallOpenAIAsync(const FString& Prompt, TFunction<void(FString
 void UGodFunction::DeleteOldPromptFiles()
 {
 
-    //static bool bAlreadyDeleted = false;  // ✅ 중복 실행 방지
-    //if (bAlreadyDeleted)
-    //{
-    //    UE_LOG(LogTemp, Log, TEXT("🛑 DeleteOldPromptFiles()가 이미 실행되었으므로 재실행 방지"));
-    //    return;
-    //}
+    static bool bAlreadyDeleted = false;  // ✅ 중복 실행 방지
+    if (bAlreadyDeleted)
+    {
+        UE_LOG(LogTemp, Log, TEXT("🛑 DeleteOldPromptFiles()가 이미 실행되었으므로 재실행 방지"));
+        return;
+    }
 
-    //FString PromptFolder = FPaths::ProjectSavedDir() + TEXT("Prompt/");
+    FString PromptFolder = FPaths::ProjectSavedDir() + TEXT("Prompt/");
 
-    //if (!FPaths::DirectoryExists(PromptFolder))
-    //{
-    //    UE_LOG(LogTemp, Warning, TEXT("Prompt folder does not exist, skipping deletion."));
-    //    return;
-    //}
+    if (!FPaths::DirectoryExists(PromptFolder))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Prompt folder does not exist, skipping deletion."));
+        return;
+    }
 
-    //IFileManager& FileManager = IFileManager::Get();
-    //// 특정 파일 제외한 파일들만 삭제
-    //TArray<FString> Files;
-    //FileManager.FindFiles(Files, *PromptFolder, TEXT(".json"));
+    IFileManager& FileManager = IFileManager::Get();
+    // 특정 파일 제외한 파일들만 삭제
+    TArray<FString> Files;
+    FileManager.FindFiles(Files, *PromptFolder, TEXT(".json"));
 
-    //for (const FString& File : Files)
-    //{
-    //    if (File.Contains("PromptToGod"))
-    //    {
-    //        UE_LOG(LogTemp, Log, TEXT("Skipping essential file: %s"), *File);
-    //        continue;
-    //    }
+    for (const FString& File : Files)
+    {
+        if (File.Contains("PromptToGod"))
+        {
+            UE_LOG(LogTemp, Log, TEXT("Skipping essential file: %s"), *File);
+            continue;
+        }
 
-    //    FString FilePath = PromptFolder + File;
-    //    FilePath = FPaths::ConvertRelativePathToFull(FilePath);
+        FString FilePath = PromptFolder + File;
+        FilePath = FPaths::ConvertRelativePathToFull(FilePath);
 
-    //    if (FileManager.Delete(*FilePath))
-    //    {
-    //        UE_LOG(LogTemp, Log, TEXT("Deleted old Prompt file: %s"), *FilePath);
-    //    }
-    //    else
-    //    {
-    //        UE_LOG(LogTemp, Error, TEXT("Failed to delete file: %s"), *FilePath);
-    //    }
-    //}
-    //bAlreadyDeleted = true;  // ✅ 삭제가 한 번만 실행되도록 설정
-    //if (UQGameInstanceVillage* GameInstance = Cast<UQGameInstanceVillage>(GEngine->GetWorldContextFromGameViewport(GEngine->GameViewport)->World()->GetGameInstance()))
-    //{
-    //    GameInstance->StartPromptGeneration();
-    //}
+        if (FileManager.Delete(*FilePath))
+        {
+            UE_LOG(LogTemp, Log, TEXT("Deleted old Prompt file: %s"), *FilePath);
+        }
+        else
+        {
+            UE_LOG(LogTemp, Error, TEXT("Failed to delete file: %s"), *FilePath);
+        }
+    }
+    bAlreadyDeleted = true;  // ✅ 삭제가 한 번만 실행되도록 설정
+    if (UQGameInstanceVillage* GameInstance = Cast<UQGameInstanceVillage>(GEngine->GetWorldContextFromGameViewport(GEngine->GameViewport)->World()->GetGameInstance()))
+    {
+        GameInstance->StartPromptGeneration();
+    }
 }
 
 void UGodFunction::GeneratePromptWithDelay(UWorld* World, const FString& FileName, const FString& Prompt, float Delay)
@@ -332,67 +332,67 @@ void UGodFunction::GeneratePromptWithDelay(UWorld* World, const FString& FileNam
 
 void UGodFunction::GenerateDefendantPrompt(UWorld* World, TFunction<void()> Callback)
 {
-    //if (!World)
-    //{
-    //    UE_LOG(LogTemp, Error, TEXT("GenerateDefendantPrompt - World is nullptr!"));
-    //    return;
-    //}
+    if (!World)
+    {
+        UE_LOG(LogTemp, Error, TEXT("GenerateDefendantPrompt - World is nullptr!"));
+        return;
+    }
 
-    //FString DefendantFilePath = FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToDefendant.json");
-    //FString PromptToGodPath = FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToGod.json");
+    FString DefendantFilePath = FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToDefendant.json");
+    FString PromptToGodPath = FPaths::ProjectSavedDir() + TEXT("Prompt/PromptToGod.json");
 
-    //// if (FPaths::FileExists(DefendantFilePath))
-    //// {
-    ////    UE_LOG(LogTemp, Warning, TEXT("PromptToDefendant.json 이미 존재하지만, 새로 생성하여 덮어쓰기 진행."));
-    //// }
+    // if (FPaths::FileExists(DefendantFilePath))
+    // {
+    //    UE_LOG(LogTemp, Warning, TEXT("PromptToDefendant.json 이미 존재하지만, 새로 생성하여 덮어쓰기 진행."));
+    // }
 
-    // // PromptToGod.json이 없으면 재시도
-    //if (!FPaths::FileExists(PromptToGodPath))
-    //{
-    //    UE_LOG(LogTemp, Warning, TEXT("PromptToGod.json이 존재하지 않음. 피고인 프롬프트 생성 대기!"));
-    //    return;
-    //}
+     // PromptToGod.json이 없으면 재시도
+    if (!FPaths::FileExists(PromptToGodPath))
+    {
+        UE_LOG(LogTemp, Warning, TEXT("PromptToGod.json이 존재하지 않음. 피고인 프롬프트 생성 대기!"));
+        return;
+    }
 
-    //// 프롬프트 생성 시작
-    //FString StartTime = FDateTime::Now().ToString();
-    //UE_LOG(LogTemp, Log, TEXT("Start Generating Prompts : %s"), *StartTime);
+    // 프롬프트 생성 시작
+    FString StartTime = FDateTime::Now().ToString();
+    UE_LOG(LogTemp, Log, TEXT("Start Generating Prompts : %s"), *StartTime);
 
-    //FString PromptToGod = ReadFileContent(PromptToGodPath);
-    //FString DefendantPrompt = FString::Printf(
-    //    TEXT("{ \"task\": \"피고인 정보를 생성하세요.\", "
-    //        "\"instructions\": ["
-    //        "\"PromptToGod.json을 바탕으로 피고인(NPC)의 정보를 생성하세요.\", "
-    //        "\"npcid 값을 '2000'으로 설정하세요.\"], "
-    //        "\"references\": { \"PromptToGod\": \"%s\" } }"),
-    //    *EscapeJSON(PromptToGod.Mid(0, 2000))
-    //);
+    FString PromptToGod = ReadFileContent(PromptToGodPath);
+    FString DefendantPrompt = FString::Printf(
+        TEXT("{ \"task\": \"피고인 정보를 생성하세요.\", "
+            "\"instructions\": ["
+            "\"PromptToGod.json을 바탕으로 피고인(NPC)의 정보를 생성하세요.\", "
+            "\"npcid 값을 '2000'으로 설정하세요.\"], "
+            "\"references\": { \"PromptToGod\": \"%s\" } }"),
+        *EscapeJSON(PromptToGod.Mid(0, 2000))
+    );
 
-    //FString DefendantFileName = FString::Printf(TEXT("PromptToDefendant.json"));
-    //UE_LOG(LogTemp, Log, TEXT("Jury JSON 파일명: %s"), *DefendantFileName);
+    FString DefendantFileName = FString::Printf(TEXT("PromptToDefendant.json"));
+    UE_LOG(LogTemp, Log, TEXT("Jury JSON 파일명: %s"), *DefendantFileName);
 
-    //// OpenAI API 호출
-    //CallOpenAIAsync(DefendantPrompt, [World, Callback, DefendantFileName](FString DefendantJson)
-    //    {
-    //        if (!World)
-    //        {
-    //            UE_LOG(LogTemp, Error, TEXT("GenerateDefendantPrompt - World is nullptr in Callback!"));
-    //            return;
-    //        }
+    // OpenAI API 호출
+    CallOpenAIAsync(DefendantPrompt, [World, Callback, DefendantFileName](FString DefendantJson)
+        {
+            if (!World)
+            {
+                UE_LOG(LogTemp, Error, TEXT("GenerateDefendantPrompt - World is nullptr in Callback!"));
+                return;
+            }
 
 
-    //        FString CleanedJson = UGodFunction::CleanUpJson(DefendantJson);
-    //        if (UGodFunction::SavePromptToFile(DefendantFileName, CleanedJson))
-    //        {
-    //            UE_LOG(LogTemp, Log, TEXT("PromptToDefendant.json 저장 완료!"));
-    //            if (Callback) Callback();
-    //            GenerateNPCPrompts(World);
-    //        }
-    //        else
-    //        {
-    //            UE_LOG(LogTemp, Error, TEXT("PromptToDefendant.json 저장 실패! 다시 시도."));
-    //            GenerateDefendantPrompt(World, nullptr);
-    //        }
-    //    });
+            FString CleanedJson = UGodFunction::CleanUpJson(DefendantJson);
+            if (UGodFunction::SavePromptToFile(DefendantFileName, CleanedJson))
+            {
+                UE_LOG(LogTemp, Log, TEXT("PromptToDefendant.json 저장 완료!"));
+                if (Callback) Callback();
+                GenerateNPCPrompts(World);
+            }
+            else
+            {
+                UE_LOG(LogTemp, Error, TEXT("PromptToDefendant.json 저장 실패! 다시 시도."));
+                GenerateDefendantPrompt(World, nullptr);
+            }
+        });
 }
 
 void UGodFunction::GenerateNPCPrompts(UWorld* World)

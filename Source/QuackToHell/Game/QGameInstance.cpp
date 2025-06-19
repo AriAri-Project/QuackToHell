@@ -31,65 +31,16 @@ void UQGameInstance::ServerRPCSaveServerAndClientStatement_Implementation(const 
 	}
 }
 
+
+
+
+
 void UQGameInstance::Init()
 {
 	Super::Init();
-	// 맵 로드 직후 호출될 델리게이트 바인딩
-	FCoreUObjectDelegates::PostLoadMapWithWorld.AddUObject(this, &UQGameInstance::OnPostLoadMap);
+
 }
 
-void UQGameInstance::RegisterPersistentActor(AActor* Actor)
-{
-	if (!Actor)
-	{
-		return;
-	}
-
-	if (!PersistentActors.Contains(Actor))
-	{
-		PersistentActors.Add(Actor);
-	}
-}
-
-void UQGameInstance::OnPostLoadMap(UWorld* LoadedWorld)
-{
-	if (!LoadedWorld)
-	{
-		return;
-	}
-
-	ULevel* PersistentLevel = LoadedWorld->PersistentLevel;
-	// 뒤에서부터 순회하며 제거/이동
-	for (int32 Index = PersistentActors.Num() - 1; Index >= 0; --Index)
-	{
-		TWeakObjectPtr<AActor> WeakPtr = PersistentActors[Index];
-		AActor* Actor = WeakPtr.Get();
-
-		if (!Actor || !IsValid(Actor) || Actor->IsActorBeingDestroyed())
-		{
-			// 이미 파괴된 액터는 리스트에서 제거
-			PersistentActors.RemoveAt(Index);
-			continue;
-		}
-
-		// Persistent Level이 아닌 레벨에 있으면 이동
-		ULevel* CurrentLevel = Actor->GetLevel();
-		if (CurrentLevel && CurrentLevel != PersistentLevel)
-		{
-			// 서브레벨의 액터 배열에서 제거
-			CurrentLevel->Actors.Remove(Actor);
-			// PersistentLevel의 배열에 추가
-			PersistentLevel->Actors.Add(Actor);
-			// 액터의 Outer를 PersistentLevel로 변경 (Rename)
-			Actor->Rename(nullptr, PersistentLevel);
-		}
-	}
-}
-
-TArray<TWeakObjectPtr<AActor>> UQGameInstance::GetPersistentActors() const
-{
-	return PersistentActors;
-}
 
 
 void UQGameInstance::SetOpeningStetementText(FString NewText)
@@ -154,18 +105,18 @@ ENetMode UQGameInstance::GetLocalNetMode()
 
 void UQGameInstance::SchedulePromptRegeneration()
 {
-	//UE_LOG(LogTemp, Log, TEXT("🔄 프롬프트 삭제 후 3초 후 재생성 예약"));
+	UE_LOG(LogTemp, Log, TEXT("🔄 프롬프트 삭제 후 3초 후 재생성 예약"));
 
-	//// 기존 프롬프트 삭제
-	//UGodFunction::DeleteOldPromptFiles();
+	// 기존 프롬프트 삭제
+	UGodFunction::DeleteOldPromptFiles();
 
-	//// ✅ 즉시 프롬프트 생성 시작
-	//StartPromptGeneration();
+	// ✅ 즉시 프롬프트 생성 시작
+	StartPromptGeneration();
 }
 
 void UQGameInstance::StartPromptGeneration()
 {
-	/*UE_LOG(LogTemp, Log, TEXT("🕒 PromptToDefendant.json 생성 시작"));
+	UE_LOG(LogTemp, Log, TEXT("🕒 PromptToDefendant.json 생성 시작"));
 
 	UWorld* World = GetWorld();
 	if (!World)
@@ -178,7 +129,7 @@ void UQGameInstance::StartPromptGeneration()
 		{
 			UE_LOG(LogTemp, Log, TEXT("✅ PromptToDefendant.json 생성 완료! NPC 프롬프트 생성 시작"));
 			UGodFunction::GenerateJuryNPC(GetWorld(), 1);
-		});*/
+		});
 }
 
 void UQGameInstance::GetLifetimeReplicatedProps(TArray<class FLifetimeProperty>& OutLifetimeProps) const

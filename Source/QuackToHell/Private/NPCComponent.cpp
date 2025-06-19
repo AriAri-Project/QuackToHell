@@ -887,6 +887,8 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 	}
 
 	// 이후 클라이언트 action 호출>
+	AQCourtUIManager* UIMNG;
+	UQFinishDirectionWidget* FNSWidget;
 	switch (Response.ConversationType)
 	{
 	case EConversationType::PStart:
@@ -906,7 +908,9 @@ void UNPCComponent::SendNPCResponseToServer_Implementation(const FOpenAIResponse
 	case EConversationType::OpeningStatement:
 		//@유진 여기에다가 콜백해주기 (모두진술답변 TO Defendant)
 		//UIManage에서 FinishDirection찾고 ClientRPC호출하기
-		Cast<UQFinishDirectionWidget>(AQCourtUIManager::GetInstance(GetWorld())->GetActivedCourtDirectionWidgets(ECourtDirectionType::Finish))->ClientRPCUpdateWidgetText(Response);
+		UIMNG = AQCourtUIManager::GetInstance(GetWorld());
+		FNSWidget = Cast<UQFinishDirectionWidget>(UIMNG->GetActivedCourtDirectionWidgets()[ECourtDirectionType::Finish]);
+		FNSWidget->ClientRPCUpdateWidgetText(Response);
 
 		break;
 	default:

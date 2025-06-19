@@ -14,10 +14,26 @@
 
 void UQFinishDirectionWidget::ClientRPCUpdateWidgetText_Implementation(FOpenAIResponse Response)
 {
-    if (Response.ConversationType == EConversationType::OpeningStatement) {
-        DefendantStatement->SetText(FText::FromString(Response.ResponseText));
-    }
-    
+    /** @폐기 */
+    // 1.플레이어 대사들 띄우기
+    //AQGameStateCourt * GS = GetWorld()->GetGameState<AQGameStateCourt>();
+
+    //auto OpeningStatements = GS->GetOpeningStatements();
+
+    //for (auto& Value : OpeningStatements) {
+    //    if (Value.bServer) {
+    //        ServerStatement->SetText(FText::FromString(Value.Statement));
+    //    }
+    //    else {
+    //        ClientStatement->SetText(FText::FromString(Value.Statement));
+    //    }
+    //}
+
+    ////피고인 대사 띄우기
+    //if (Response.ConversationType == EConversationType::OpeningStatement) {
+    //    DefendantStatement->SetText(FText::FromString(Response.ResponseText));
+    //}
+    //
 }
 
 UQFinishDirectionWidget::UQFinishDirectionWidget(const FObjectInitializer& ObjectInitializer)
@@ -27,11 +43,12 @@ UQFinishDirectionWidget::UQFinishDirectionWidget(const FObjectInitializer& Objec
 
 void UQFinishDirectionWidget::SetResultTexts()
 {
-    //1 . 플레이어 대사들 띄우기
-    AQGameStateCourt* GS = GetWorld()->GetGameState<AQGameStateCourt>();
+    
+    // 1.플레이어 대사들 띄우기
+    AQGameStateCourt * GS = GetWorld()->GetGameState<AQGameStateCourt>();
 
     auto OpeningStatements = GS->GetOpeningStatements();
-    
+
     for (auto& Value : OpeningStatements) {
         if (Value.bServer) {
             ServerStatement->SetText(FText::FromString(Value.Statement));
@@ -40,37 +57,40 @@ void UQFinishDirectionWidget::SetResultTexts()
             ClientStatement->SetText(FText::FromString(Value.Statement));
         }
     }
-
-    //필요변수가져오기
-    UQGameInstance* GI = Cast<UQGameInstance>(GetGameInstance());
-    auto Persistents = GI->GetPersistentActors();
-    
-    
-    AQPlayer* PlayerPawn = nullptr;
-    for (auto Actor : Persistents)
+    // 2. 피고인 대사 띄우기
+    if (DefendantStatementsRandList.Num() > 0)
     {
-        if (AQPlayer* Player = Cast<AQPlayer>(Actor)) {
-            PlayerPawn = Player;
-        }
+        int32 Idx = FMath::RandRange(0, DefendantStatementsRandList.Num() - 1);
+        DefendantStatement->SetText(DefendantStatementsRandList[Idx]);
     }
 
-    for (auto Actor : Persistents)
-    {        
-        //2. 대사요청하기 - 피고인
-        if (AQDefendantNPC* Defendant = Cast<AQDefendantNPC>(Actor))
+    // 3. 배심원 대사 띄우기 (중복 없이 3개)
+    const int32 JuryCount = JuryStatementsRandList.Num();
+    if (JuryCount > 0)
+    {
+        int32 I1 = FMath::RandRange(0, JuryCount - 1);
+
+        int32 I2 = FMath::RandRange(0, JuryCount - 1);
+        while (I2 == I1 && JuryCount > 1)
         {
-            FString OpeningStatementsText = GS->GetOpeningStatements()[0].Statement + GS->GetOpeningStatements()[1].Statement;
-            FOpenAIRequest Request(
-                Defendant->FindComponentByClass<UNPCComponent>()->GetNPCID(),
-                PlayerPawn->_GetPlayerState()->GetPlayerId(),
-                EConversationType::JuryFinalOpinion,
-                OpeningStatementsText
-            );
-            Defendant->FindComponentByClass<UNPCComponent>()->TrialStatement(Request);
+            I2 = FMath::RandRange(0, JuryCount - 1);
         }
-        //2. 대사요청하기 - 배심원123
-        //2. 대사요청하기 - 판사
+
+        int32 I3 = FMath::RandRange(0, JuryCount - 1);
+        while ((I3 == I1 || I3 == I2) && JuryCount > 2)
+        {
+            I3 = FMath::RandRange(0, JuryCount - 1);
+        }
+
+        Jury1Statement->SetText(JuryStatementsRandList[I1]);
+        Jury2Statement->SetText(JuryStatementsRandList[I2]);
+        Jury3Statement->SetText(JuryStatementsRandList[I3]);
     }
-    
-   
+
+    // 4. 판사 대사 띄우기
+    if (JudgeStatementsRandList.Num() > 0)
+    {
+        int32 JIdx = FMath::RandRange(0, JudgeStatementsRandList.Num() - 1);
+        JudgeStatement->SetText(JudgeStatementsRandList[JIdx]);
+    }
 }
